@@ -1,0 +1,15 @@
+.navLanding {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .logoDiv {
+        display: flex;
+    }
+    .viewsLanding {
+        display: flex;
+    }
+    .logInOrRegister {
+        display: flex;
+    }
+}
