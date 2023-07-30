@@ -1,23 +1,44 @@
 import style from './navLanding.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 const NavLanding = () => {
+    const navigate = useNavigate()
+    const handlerChange = (
+        event: React.ChangeEvent<HTMLSelectElement>
+    ): void => {
+        const { value } = event.target
+        navigate('/' + value)
+    }
     return (
         <nav className={style.navLanding}>
-            <div className={style.logo}>
+            <div className={style.containerLeft}>
                 <p>Logo</p>
-            </div>
-            <div className={style.viewsLanding}>
-                <Link to={'/company'}>
-                    <p>Compañia</p>
-                </Link>
 
-                <Link to={'/guarantee'}>
-                    <p>Garantías</p>
-                </Link>
+                <div className={style.viewsLanding}>
+                    <select
+                        onChange={handlerChange}
+                        name="company"
+                        defaultValue={'default'}
+                    >
+                        <option
+                            className={style.default}
+                            disabled
+                            value="default"
+                        >
+                            Compañia
+                        </option>
+                        <option value="company">Quiénes Somos</option>
+                        <option value="offer">Que ofrecemos</option>
+                        <option value="howItWorks">Como funciona Auxie</option>
+                    </select>
 
-                <Link to={'/help'}>
-                    <p>Ayuda</p>
-                </Link>
+                    <Link to={'/guarantee'}>
+                        <p>Garantías</p>
+                    </Link>
+
+                    <Link to={'/help'}>
+                        <p>Ayuda</p>
+                    </Link>
+                </div>
             </div>
             <div className={style.logInOrRegister}>
                 <Link to={'/form'}>
