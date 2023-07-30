@@ -1,0 +1,29 @@
+.navLanding {
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .containerLeft {
+        display: flex;
+        gap: 15%;
+        align-items: center;
+        justify-content: center;
+        padding-left: 5%;
+    }
+
+    .viewsLanding {
+        display: flex;
+        gap: 5%;
+    }
+
+    .logInOrRegister {
+        display: flex;
+        gap: 5%;
+        padding-right: 5%;
+    }
+}
+
+.default {
+    display: none;
+}

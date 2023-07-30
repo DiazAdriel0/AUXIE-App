@@ -1,9 +1,10 @@
 import style from './landing.module.scss'
 
+import NavLanding from '../../components/nav-landing/NavLanding'
 const Landing = () => {
     return (
         <div className={style.landing}>
-            <h2>Landing</h2>
+            <NavLanding />
         </div>
     )
 }
