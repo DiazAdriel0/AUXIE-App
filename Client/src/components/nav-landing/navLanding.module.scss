@@ -1,15 +1,25 @@
 .navLanding {
     width: 100vw;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    .logoDiv {
+
+    .containerLeft {
         display: flex;
+        gap: 15%;
+        align-items: center;
+        padding-left: 5%;
     }
     .viewsLanding {
         display: flex;
     }
     .logInOrRegister {
         display: flex;
+        gap: 5%;
+        padding-right: 5%;
     }
+}
+
+.default {
+    display: none;
 }
