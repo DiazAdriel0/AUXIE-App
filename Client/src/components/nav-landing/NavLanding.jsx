@@ -5,17 +5,25 @@ const NavLanding = () => {
         <div className={style.navLanding}>
             <nav>
                 <p>Logo</p>
-                <div>
-                    <Link to={}>
+                <div className={style.viewsLanding}>
+                    <Link to={'/company'}>
                         <p>Compañia</p>
                     </Link>
 
-                    <Link to={}>
+                    <Link to={'/guarantee'}>
                         <p>Garantías</p>
                     </Link>
 
-                    <Link to={}>
+                    <Link to={'/help'}>
                         <p>Ayuda</p>
+                    </Link>
+                </div>
+                <div className={style.logInOrRegister}>
+                    <Link to={'/form'}>
+                        <p>Ingresar</p>
+                    </Link>
+                    <Link to={'/form'}>
+                        <p>Registrarse</p>
                     </Link>
                 </div>
             </nav>
