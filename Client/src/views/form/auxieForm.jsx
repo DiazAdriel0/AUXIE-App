@@ -14,6 +14,7 @@ const Form = () => {
     })
 
 
+        
     const handleChange = (event) => {
         console.log(event)
         setInput({
@@ -24,6 +25,16 @@ const Form = () => {
         //   ...input, 
         //   [event.target.name]: event.target.value}, event.target.name)
       }
+
+
+const handleSubmit=(e)=>{
+    e.preventDefault();
+  
+    // dispatch(postPokemon(input))
+    const form = document.getElementById("form");
+    form.reset()
+  
+  }
 console.log(input)
     return (
         <div className={style.form}>
@@ -31,7 +42,7 @@ console.log(input)
                 Bienvenido futuro Auxie! Completa tu registro ahora!
             </div>
 
-            <form id='form'>
+            <form id='form' onSubmit={handleSubmit}>
                 <div className={style.forminput}>
                     <label>Nombre: </label>
                     <input
