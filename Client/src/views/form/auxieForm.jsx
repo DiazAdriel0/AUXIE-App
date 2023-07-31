@@ -9,8 +9,7 @@ const Form = () => {
         age: 0,
         email: '',
         password: '',
-        address: '',
-        services: [],
+       
     })
 
 
@@ -104,28 +103,7 @@ console.log(input)
                         onChange={handleChange}
                     ></input>
                 </div>
-                <div className={style.forminput}>
-                    <label>Direccion: </label>
-                    <input
-                        name='address'
-                        type='text'
-                        className={style.textInput}
-                        placeholder='Direccion'
-                        onChange={handleChange}
-                    ></input>
-                </div>
-
-                <div className={style.forminput}>
-                    <label>Servicios que ofrece: </label>
-                    {/* (sera checkboxes mapeados de servicios) */}
-                    <input
-                        name='services'
-                        type='text'
-                        className={style.textInput}
-                        placeholder='services'
-                        onChange={handleChange}
-                    ></input>
-                </div>
+            
 
                 <div className={style.submitbutton}>
                     <input type='submit'></input>

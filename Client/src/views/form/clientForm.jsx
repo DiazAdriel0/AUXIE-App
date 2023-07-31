@@ -12,7 +12,7 @@ const ClientForm = () => {
         age: 0,
         email: '',
         password: '',
-        address: '',
+      
       
     })
 
@@ -27,7 +27,7 @@ const ClientForm = () => {
         // validate({
         //   ...input, 
         //   [event.target.name]: event.target.value}, event.target.name)
-        
+
       }
 console.log(input)
 
@@ -108,16 +108,7 @@ const handleSubmit=(e)=>{
                         onChange={handleChange}
                     ></input>
                 </div>
-                <div className={style.forminput}>
-                    <label>Direccion: </label>
-                    <input
-                        name='address'
-                        type='text'
-                        className={style.textInput}
-                        placeholder='Direccion'
-                        onChange={handleChange}
-                    ></input>
-                </div>
+              
 
                 <div className={style.submitbutton}>
                     <input type='submit'></input>
