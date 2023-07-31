@@ -1,0 +1,11 @@
+.cards {
+    height: 90%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+    gap: 16px;
+    max-width: 90vw;
+    margin-left: 5%;
+}

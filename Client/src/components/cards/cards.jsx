@@ -1,3 +1,5 @@
+import style from './cards.module.scss'
+
 import Card from '../card/card'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -7,18 +9,25 @@ const Cards = () => {
     useEffect(() => {
         const executor = async () => {
             const { data } = await axios(
-                'https://run.mocky.io/v3/36a5fcf5-b5d5-4d4f-8553-dc4ac1b34a7f'
+                'https://run.mocky.io/v3/2e14d09c-a9cb-4acf-9e56-a01ef1403342'
             )
 
-            setUsers([data])
+            setUsers(data)
         }
         executor()
     }, [])
-    console.log(users)
+
     return (
-        <div>
-            {users?.map((user) => (
-                <Card key={user.id} user={user} />
+        <div className={style.cards}>
+            {users.map((user) => (
+                <Card
+                    key={user.id}
+                    firstName={user.firstName}
+                    lastName={user.lastName}
+                    services={user.services}
+                    averageRating={user.averageRating}
+                    completedWorks={user.completedWorks}
+                />
             ))}
         </div>
     )
