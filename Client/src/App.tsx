@@ -12,6 +12,7 @@ import PageNotFound from './views/page-not-found/PageNotFound'
 import Company from './views/company/Company'
 import Guarantee from './views/guarantee/Guarantee'
 import Help from './views/help/Help'
+import ClientForm from './views/form/clientForm'
 
 function App() {
     return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/detail" element={<Detail />} />
                 <Route path="/auxieform" element={<Form />} />
+                <Route path="/clientform" element={<ClientForm />} />
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
         </div>

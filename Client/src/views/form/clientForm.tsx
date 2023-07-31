@@ -2,7 +2,7 @@ import React from 'react'
 import style from './clientform.module.scss'
 
 
-const clientForm = () => {
+const ClientForm = () => {
   return (
     <div className={style.form}>
         
@@ -13,4 +13,4 @@ const clientForm = () => {
   )
 }
 
-export default clientForm
+export default ClientForm
