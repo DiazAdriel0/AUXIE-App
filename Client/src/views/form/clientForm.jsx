@@ -27,6 +27,7 @@ const ClientForm = () => {
         // validate({
         //   ...input, 
         //   [event.target.name]: event.target.value}, event.target.name)
+        
       }
 console.log(input)
 
