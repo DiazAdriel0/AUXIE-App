@@ -1,8 +1,8 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose')
 
 const consumerSchema = new Schema({
     isActive: Boolean,
-    isAdmin: Boolean, 
+    isAdmin: Boolean,
 
     firstName: String,
     lastName: String,
@@ -11,18 +11,16 @@ const consumerSchema = new Schema({
 
     email: String,
     username: String,
-    password:  String,
+    password: String,
     registerDate: Date,
- 
+
     ratings: Array,
     averageRating: Number,
     favoritesProviders: Array,
     contractedServices: Number,
     requiredServices: Array,
+})
 
+const Consumer = model('Consumer', consumerSchema)
 
-});
-
-const Consumer = model('Consumer', consumerSchema);
-
-module.exports = Consumer;
+module.exports = Consumer
