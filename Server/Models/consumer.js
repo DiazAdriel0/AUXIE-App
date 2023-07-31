@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose')
 
 const consumerSchema = new Schema({
     isActive: Boolean,
@@ -21,8 +21,8 @@ const consumerSchema = new Schema({
     requiredServices: Array,
 
 
-});
+})
 
-const Consumer = model('Consumer', consumerSchema);
+const Consumer = model('Consumer', consumerSchema)
 
-module.exports = Consumer;
+module.exports = Consumer
