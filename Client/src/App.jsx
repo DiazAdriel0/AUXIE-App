@@ -12,8 +12,10 @@ import PageNotFound from './views/page-not-found/PageNotFound'
 import Company from './views/company/Company'
 import Guarantee from './views/guarantee/Guarantee'
 import Help from './views/help/Help'
+import { useEffect } from 'react'
 
 function App() {
+    useEffect
     return (
         <div>
             <Routes>

@@ -2,9 +2,7 @@ import style from './navLanding.module.scss'
 import { Link, useNavigate } from 'react-router-dom'
 const NavLanding = () => {
     const navigate = useNavigate()
-    const handlerChange = (
-        event: React.ChangeEvent<HTMLSelectElement>
-    ): void => {
+    const handlerChange = (event) => {
         const { value } = event.target
         navigate('/' + value)
     }
