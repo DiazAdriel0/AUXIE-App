@@ -1,0 +1,42 @@
+{
+    "id": 3,
+    "lastName": "cornelio",
+    "firstName": "luca",
+    "email": "luca2020@gmail.com",
+    "username": "luca2020",
+    "bio": "bio luca",
+    "services": [
+        {
+            "service": "jardineria",
+            "price": "15000"
+        },
+        {
+            "service": "plomeria",
+            "price": "23000"
+        }
+    ],
+    "adress": "calle 150",
+    "averageRating": "3.5",
+    "ratings": [4, 3, 3, 4],
+    "completedWorks": [
+        {
+            "service": "jardineria",
+            "reviews": [
+                {
+                    "username": "adrimaster123",
+                    "score": 4,
+                    "review": "me dejó el arbusto muy limpio"
+                }
+            ]
+        }
+    ],
+    "pendingServices": [
+        {
+            "service": "plomeria",
+            "status": "accepted"
+        }
+    ],
+    "registerDate": "may 20 2022",
+    "age": 33,
+    "isActive": true
+}
