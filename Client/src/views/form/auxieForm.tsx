@@ -1,4 +1,4 @@
-import style from './form.module.scss'
+import style from './auxieform.module.scss'
 
 const Form = () => {
     return (
