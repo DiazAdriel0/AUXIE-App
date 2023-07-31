@@ -1,75 +1,87 @@
+import { useState } from 'react'
 import style from './auxieform.module.scss'
 
 const Form = () => {
+    const [input, setInput] = useState({
+        name: '',
+        lastName: '',
+        username: '',
+        age: 0,
+        email: '',
+        password: '',
+        address: '',
+        services: [],
+    })
+
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
                 Bienvenido futuro Auxie! Completa tu registro ahora!
             </div>
 
-            <form id="form">
+            <form id='form'>
                 <div className={style.forminput}>
                     <label>Nombre: </label>
                     <input
-                        name="Nombre"
-                        type="text"
+                        name='Nombre'
+                        type='text'
                         className={style.textInput}
-                        placeholder="Nombre"
+                        placeholder='Nombre'
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Apellido: </label>
                     <input
-                        name="Apellido"
-                        type="text"
+                        name='Apellido'
+                        type='text'
                         className={style.textInput}
-                        placeholder="Apellido"
+                        placeholder='Apellido'
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Edad: </label>
                     <input
-                        name="age"
-                        type="number"
+                        name='age'
+                        type='number'
                         className={style.textInput}
-                        placeholder="Edad"
+                        placeholder='Edad'
                     ></input>
                 </div>
 
                 <div className={style.forminput}>
                     <label>Nombre de usuario: </label>
                     <input
-                        name="Username"
-                        type="text"
+                        name='Username'
+                        type='text'
                         className={style.textInput}
-                        placeholder="Username"
+                        placeholder='Username'
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Email: </label>
                     <input
-                        name="Email"
-                        type="email"
+                        name='Email'
+                        type='email'
                         className={style.textInput}
-                        placeholder="Email"
+                        placeholder='Email'
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Password: </label>
                     <input
-                        name="Password"
-                        type="password"
+                        name='Password'
+                        type='password'
                         className={style.textInput}
-                        placeholder="Password"
+                        placeholder='Password'
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Direccion: </label>
                     <input
-                        name="Direccion"
-                        type="text"
+                        name='Direccion'
+                        type='text'
                         className={style.textInput}
-                        placeholder="Direccion"
+                        placeholder='Direccion'
                     ></input>
                 </div>
 
@@ -77,15 +89,15 @@ const Form = () => {
                     <label>Servicios que ofrece: </label>
                     {/* (sera checkboxes mapeados de servicios) */}
                     <input
-                        name="services"
-                        type="text"
+                        name='services'
+                        type='text'
                         className={style.textInput}
-                        placeholder="services"
+                        placeholder='services'
                     ></input>
                 </div>
 
                 <div className={style.submitbutton}>
-                    <input type="submit"></input>
+                    <input type='submit'></input>
                 </div>
             </form>
         </div>
