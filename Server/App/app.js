@@ -5,8 +5,6 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 // const routes = require('../routes/index.js');
 
-// require('../DataBases/db.js')
-
 const server = express()
 
 server.name = 'AUXIE App'
