@@ -20,6 +20,11 @@ const ClientForm = () => {
             <input name='Apellido'  type='text'  className={style.textInput}  placeholder='Apellido'></input>
            
           </div>
+          <div className={style.forminput}> 
+            <label>Edad:  </label>
+            <input name='age'  type='text'  className={style.textInput}  placeholder='Edad'></input>
+         
+             </div>
         <div className={style.forminput}> 
             <label>Nombre de usuario:  </label>
             <input name='Username'  type='text'  className={style.textInput}  placeholder='Username'></input>

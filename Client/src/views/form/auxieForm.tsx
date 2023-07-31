@@ -18,6 +18,12 @@ const Form = () => {
             <input name='Apellido'  type='text'  className={style.textInput}  placeholder='Apellido'></input>
            
           </div>
+          <div className={style.forminput}> 
+            <label>Edad:  </label>
+            <input name='age'  type='text'  className={style.textInput}  placeholder='Edad'></input>
+         
+             </div>
+
         <div className={style.forminput}> 
             <label>Nombre de usuario:  </label>
             <input name='Username'  type='text'  className={style.textInput}  placeholder='Username'></input>
@@ -36,6 +42,13 @@ const Form = () => {
         <div className={style.forminput}> 
             <label>Direccion:  </label>
             <input name='Direccion'  type='text'  className={style.textInput}  placeholder='Direccion'></input>
+         
+             </div>
+             
+             <div className={style.forminput}> 
+            <label>Servicios que ofrece:  </label>
+            {/* (sera checkboxes mapeados de servicios) */}
+            <input name='services'  type='text'  className={style.textInput}  placeholder='services'></input>
          
              </div>
        
