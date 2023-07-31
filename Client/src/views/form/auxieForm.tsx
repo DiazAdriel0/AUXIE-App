@@ -20,7 +20,7 @@ const Form = () => {
           </div>
           <div className={style.forminput}> 
             <label>Edad:  </label>
-            <input name='age'  type='text'  className={style.textInput}  placeholder='Edad'></input>
+            <input name='age'  type='number'  className={style.textInput}  placeholder='Edad'></input>
          
              </div>
 
@@ -36,7 +36,7 @@ const Form = () => {
           </div>
         <div className={style.forminput}> 
             <label>Password:  </label>
-            <input name='Password'  type='text'  className={style.textInput}  placeholder='Password'></input>
+            <input name='Password'  type='password'  className={style.textInput}  placeholder='Password'></input>
             
             </div>
         <div className={style.forminput}> 
