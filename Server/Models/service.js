@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const noteSchema = new Schema({
+const serviceSchema = new Schema({
     name: String,
     numberOfProviders: Number,
     providers: Array,
@@ -9,6 +9,6 @@ const noteSchema = new Schema({
     isActive: Boolean,
 })
 
-const Service = model('Service', noteSchema)
+const Service = model('Service', serviceSchema)
 
 module.exports = Service
