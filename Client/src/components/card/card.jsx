@@ -1,12 +1,18 @@
+import style from './card.module.scss'
 
-const card = () => {
-  return (
-    <div>
-        <div>
-            <h4>Nombre de Auxie</h4>
+const Card = ({ user }) => {
+    const { lastname, firstname, services, averageRating, completedWorks } =
+        user
+    console.log(user)
+    return (
+        <div className={style.card}>
+            <p>{firstname}</p>
+            <p>{lastname}</p>
+            <p>{services}</p>
+            <p>{averageRating}</p>
+            <p>{completedWorks}</p>
         </div>
-    </div>
-  )
+    )
 }
 
-export default card
+export default Card
