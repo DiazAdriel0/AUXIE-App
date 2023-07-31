@@ -1,10 +1,10 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 const server = require('./App/app')
-const { DB_PASSWORD } = process.env
 
-const PORT = 3001
-const connectionString = `mongodb+srv://AuxieAdminsUsername:${DB_PASSWORD}@cluster0.dlvfdkg.mongodb.net/?retryWrites=true&w=majority`
+const { MONGO_DB_CONNECTION, PORT } = process.env
+
+const connectionString = `${MONGO_DB_CONNECTION}`
 
 mongoose
     .connect(connectionString)
