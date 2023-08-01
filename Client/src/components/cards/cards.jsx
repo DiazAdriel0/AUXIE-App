@@ -1,7 +1,7 @@
 import style from './cards.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import Card from '../card/card'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { getAllAuxies } from '../../redux/auxiesActions'
 
 const Cards = () => {

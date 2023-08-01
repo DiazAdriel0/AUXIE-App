@@ -28,23 +28,34 @@ const NavLanding = () => {
                         <option value="offer">Que ofrecemos</option>
                         <option value="howItWorks">Como funciona Auxie</option>
                     </select>
-
-                    <Link to={'/guarantee'}>
-                        <p>Garantías</p>
-                    </Link>
-
-                    <Link to={'/help'}>
-                        <p>Ayuda</p>
-                    </Link>
+                    <ul>
+                        <li>
+                            <Link to={'/guarantee'}>
+                                <p>Garantías</p>
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={'/help'}>
+                                <p>Ayuda</p>
+                            </Link>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div className={style.logInOrRegister}>
-                <Link to={'/form'}>
-                    <p>Ingresar</p>
-                </Link>
-                <Link to={'/form'}>
-                    <p>Registrarse</p>
-                </Link>
+                <ul>
+                    <li>
+                        <Link to={'/form'}>
+                            <p>Ingresar</p>
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to={'/form'}>
+                            <p>Registrarse</p>
+                        </Link>
+                    </li>
+                </ul>
             </div>
         </nav>
     )

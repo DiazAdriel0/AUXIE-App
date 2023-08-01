@@ -1,12 +1,15 @@
 .navLanding {
     width: 100%;
+    height: 10vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    .containerLeft {
+    ul {
         display: flex;
         gap: 15%;
+    }
+    .containerLeft {
+        display: flex;
         align-items: center;
         justify-content: center;
         padding-left: 5%;

@@ -1,25 +1,30 @@
 .landing {
     display: grid;
-
-    gap: 10px;
 }
 
 /* Estilos para la sección 1 (menuLogo) */
+.sectionMenu {
+    height: 75vh;
+}
 .menuLogo {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin: 5% 20% 5% 0;
+    margin: 2% 20% 5% 0;
+
     .menuMain {
         background-color: var(--secondary--color-light);
         color: var(--primary--color--white);
         width: 40%;
         height: 40vh;
+        border: solid 2px black;
+        margin-top: 5%;
     }
     .buttonsMenuMain {
         display: flex;
         text-align: center;
         height: 25%;
+
         .searchAuxie {
             all: unset;
             display: flex;
@@ -29,7 +34,7 @@
             height: 100%;
         }
         .searchAuxie:hover {
-            background-color: #586f7c;
+            background-color: var(--accent--primary--color-light);
             cursor: pointer;
         }
         .turnAuxie {
@@ -41,7 +46,7 @@
             height: 100%;
         }
         .turnAuxie:hover {
-            background-color: #586f7c;
+            background-color: var(--accent--primary--color-light);
             cursor: pointer;
         }
     }
@@ -55,22 +60,61 @@
     }
     .menuTurnAuxie {
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        align-items: center();
+        align-items: center;
+        gap: 1rem;
     }
 }
 
 /* Estilos para la sección 2 (slogan) */
 .slogan {
     background-color: #b8dbd9;
-}
+    display: flex;
+    flex-direction: column;
 
+    width: 100%;
+    height: 30vh;
+    .divSlogan {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 2% 0 0 10%;
+        gap: 20px;
+
+        h3 {
+            font-size: 30px;
+        }
+        p {
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .buttonSlogan {
+        width: 100px;
+        margin: 2% 0 0 10%;
+    }
+}
 /* Estilos para la sección 3 (cards) */
 .cards {
-    background-color: #586f7c;
+    height: 100vh;
 }
 
 /* Estilos para la sección 4 (landingFooter) */
 .landingFooter {
     background-color: #c0c0c0;
+}
+
+/* Animaciones */
+@keyframes show {
+    from {
+        opacity: 0;
+        scale: 25%;
+    }
+    to {
+        opacity: 1;
+        scale: 100%;
+    }
 }
