@@ -35,6 +35,7 @@ const ClientLogin = () => {
 
     ///validations ///
     const validate = (input, name) => {
+        ///email validations///
         if (name === 'email') {
             if (input.email !== '') {
                 // Use a regular expression to check if the input value is a valid email
@@ -50,9 +51,19 @@ const ClientLogin = () => {
                 setErrors({ ...errors, email: 'Email is required' })
             }
         }
+        ///email validations///
+
         if (name === 'password') {
             //password length//
-            if (input.password.length.trim() < 8 || input.password.length.trim() > 12) {
+            if (input.password.includes(' ')) {
+                setErrors({
+                    ...errors,
+                    password: 'password cannot have blank spaces',
+                })
+            } else if (
+                input.password.length < 8 ||
+                input.password.length > 12
+            ) {
                 setErrors({
                     ...errors,
                     password:
@@ -63,6 +74,8 @@ const ClientLogin = () => {
                 input.password.length <= 12
             ) {
                 setErrors({ ...errors, password: '' })
+            } else {
+                setErrors({ ...errors, password: 'password is required' })
             }
             //password length//
         }
@@ -73,8 +86,11 @@ const ClientLogin = () => {
     //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
         // Check if the "types" field is empty
-        if (input.password.trim().length === 0 || input.email.trim().length === 0) {
-          return true;
+        if (
+            input.password.trim().length === 0 ||
+            input.email.trim().length === 0
+        ) {
+            return true
         }
 
         // Check if any error message is not empty for other fields
@@ -105,8 +121,11 @@ const ClientLogin = () => {
                             placeholder="Correo electronico"
                             onChange={handleChange}
                         ></input>
-                        <p>{errors.email}</p>
+                        <div className={style.errors}>
+                            <p>{errors.email}</p>
+                        </div>
                     </div>
+
                     <div className={style.logininput}>
                         <label>Password: </label>
                         <input
@@ -116,10 +135,16 @@ const ClientLogin = () => {
                             placeholder="Contraseña"
                             onChange={handleChange}
                         ></input>
+                        <div className={style.errors}>
+                            <p>{errors.password}</p>
+                        </div>
                     </div>
-                    <p>{errors.password}</p>
+
                     <div className={style.submitbutton}>
-                        <input type="submit" disabled={buttonDisabled()}></input>
+                        <input
+                            type="submit"
+                            disabled={buttonDisabled()}
+                        ></input>
                     </div>
                 </div>
             </form>
