@@ -33,7 +33,7 @@ const Form = () => {
     return (
         <div className={style.auxieForm}>
             <div className={style.formtitle}>
-                Bienvenido futuro Auxie! Completa tu registro ahora!
+              <h1>Bienvenido futuro Auxie! Completa tu registro ahora!</h1>  
             </div>
 
             <form id="form" onSubmit={handleSubmit}>
