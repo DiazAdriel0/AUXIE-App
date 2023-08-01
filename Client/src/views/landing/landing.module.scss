@@ -1,3 +1,79 @@
 .landing {
     display: grid;
+
+    gap: 10px;
+    background-color: #fff;
+}
+
+/* Estilos para la sección 1 (menuLogo) */
+.menuLogo {
+    background-color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 5% 20% 5% 0;
+    .menuMain {
+        background-color: rgb(20, 33, 61);
+        color: var(--primary--color--white);
+        width: 40%;
+        height: 40vh;
+    }
+    .buttonsMenuMain {
+        display: flex;
+        text-align: center;
+        height: 25%;
+        .searchAuxie {
+            all: unset;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: 100%;
+        }
+        .searchAuxie:hover {
+            background-color: #586f7c;
+            cursor: pointer;
+        }
+        .turnAuxie {
+            all: unset;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: 100%;
+        }
+        .turnAuxie:hover {
+            background-color: #586f7c;
+            cursor: pointer;
+        }
+    }
+    .menuSearchAuxie {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        align-items: center;
+    }
+    .menuTurnAuxie {
+        display: flex;
+        justify-content: center;
+        align-items: center();
+    }
+}
+
+/* Estilos para la sección 2 (slogan) */
+.slogan {
+    background-color: #b8dbd9;
+}
+
+/* Estilos para la sección 3 (cards) */
+.cards {
+    background-color: #586f7c;
+}
+
+/* Estilos para la sección 4 (landingFooter) */
+.landingFooter {
+    background-color: #c0c0c0;
 }
