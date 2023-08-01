@@ -1,79 +1,117 @@
 import style from './clientform.module.scss'
+import { useState } from 'react'
+
 
 const ClientForm = () => {
+
+
+    const [input, setInput] = useState({
+        name: '',
+        lastName: '',
+        username: '',
+        age: 0,
+        email: '',
+        password: '',
+      
+      
+    })
+
+   
+    
+    const handleChange = (event) => {
+        console.log(event)
+        setInput({
+          ...input, 
+          [event.target.name]: event.target.value
+        })
+        // validate({
+        //   ...input, 
+        //   [event.target.name]: event.target.value}, event.target.name)
+
+      }
+
+
+const handleSubmit=(e)=>{
+    e.preventDefault();
+  
+    // dispatch(postPokemon(input))
+    const form = document.getElementById("form");
+    form.reset()
+  
+  }
+
+
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
                 Bienvenido a Auxie! Completa tu registro ahora!
             </div>
-
-            <form id="form">
+            <form id='form' onSubmit={handleSubmit}>
                 <div className={style.forminput}>
                     <label>Nombre: </label>
                     <input
-                        name="Nombre"
-                        type="text"
+                        name='name'
+                        type='text'
                         className={style.textInput}
-                        placeholder="Nombre"
+                        placeholder='Nombre'
+                        onChange={handleChange}
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Apellido: </label>
                     <input
-                        name="Apellido"
-                        type="text"
+                        name='lastName'
+                        type='text'
                         className={style.textInput}
-                        placeholder="Apellido"
+                        placeholder='Apellido'
+                        onChange={handleChange}
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Edad: </label>
                     <input
-                        name="age"
-                        type="number"
+                        name='age'
+                        type='number'
                         className={style.textInput}
-                        placeholder="Edad"
+                        placeholder='Edad'
+                        onChange={handleChange}
                     ></input>
                 </div>
+
                 <div className={style.forminput}>
                     <label>Nombre de usuario: </label>
                     <input
-                        name="Username"
-                        type="text"
+                        name='username'
+                        type='text'
                         className={style.textInput}
-                        placeholder="Username"
+                        placeholder='Username'
+                        onChange={handleChange}
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Email: </label>
                     <input
-                        name="Email"
-                        type="email"
+                        name='email'
+                        type='email'
                         className={style.textInput}
-                        placeholder="Email"
+                        placeholder='Email'
+                        onChange={handleChange}
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Password: </label>
                     <input
-                        name="Password"
-                        type="password"
+                        name='password'
+                        type='password'
                         className={style.textInput}
-                        placeholder="Password"
+                        placeholder='Password'
+                        onChange={handleChange}
                     ></input>
                 </div>
-                <div className={style.forminput}>
-                    <label>Direccion: </label>
-                    <input
-                        name="Direccion"
-                        type="text"
-                        className={style.textInput}
-                        placeholder="Direccion"
-                    ></input>
-                </div>
+              
 
                 <div className={style.submitbutton}>
-                    <input type="submit"></input>
+                    <input type='submit'></input>
                 </div>
             </form>
         </div>
