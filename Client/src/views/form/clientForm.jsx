@@ -37,7 +37,7 @@ const handleSubmit=(e)=>{
     // dispatch(postPokemon(input))
     const form = document.getElementById("form");
     form.reset()
-  
+   //navigate home / search auxies ///
   }
 
 
