@@ -73,9 +73,9 @@ const ClientLogin = () => {
     //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
         // Check if the "types" field is empty
-        // if (input.types.length === 0) {
-        //   return true;
-        // }
+        if (input.password.trim().length === 0 || input.email.trim().length === 0) {
+          return true;
+        }
 
         // Check if any error message is not empty for other fields
         for (let error in errors) {
@@ -119,7 +119,7 @@ const ClientLogin = () => {
                     </div>
                     <p>{errors.password}</p>
                     <div className={style.submitbutton}>
-                        <input type="submit"></input>
+                        <input type="submit" disabled={buttonDisabled()}></input>
                     </div>
                 </div>
             </form>
