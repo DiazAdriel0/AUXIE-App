@@ -1,4 +1,4 @@
-const createProvider = require('./../../Controllers/UsersControllers/createProvider')
+const createProvider = require('../../Controllers/ProvidersControllers/createProvider')
 
 const postProvider = (req, res) => {
     try {
