@@ -28,6 +28,7 @@ const Form = () => {
         // dispatch(postPokemon(input))
         const form = document.getElementById('form')
         form.reset()
+        //navigate home / pending jobs ///
     }
     return (
         <div className={style.auxieForm}>
