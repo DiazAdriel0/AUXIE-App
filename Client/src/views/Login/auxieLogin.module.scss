@@ -21,7 +21,6 @@
         align-items: center;
         margin-bottom: 1rem;
         width: 100%;
-        
 
         label {
             flex: 1;
@@ -73,8 +72,8 @@
             cursor: not-allowed;
         }
     }
-    h1{
-        margin-bottom:2rem;
+    h1 {
+        margin-bottom: 2rem;
     }
 }
 .login {
@@ -86,34 +85,30 @@
     background-color: rgba(0, 0, 0, 1); /* Color y opacidad del fondo */
     z-index: -1; /* Asegura que el fondo esté detrás del contenido */
     /* Estilos para el contenido de tu componente ClientLogin */
-  }
-  
-  /* Estilos para el fondo solo en el path actual */
-  .logininput {
-    
+}
+
+/* Estilos para el fondo solo en el path actual */
+.logininput {
     display: flex;
     align-items: center;
     margin-bottom: 3rem; /* Ajusta el espacio vertical entre los div */
     width: 100%;
-  
 
-        label {
-            flex: 1;
-            font-size: 18px;
-            color: black;
-            min-width: 70px;
-        }
-
-        .textInput {
-            flex: 2;
-            width: 100%;
-            margin-left: 10px;
-            padding: 3px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 14px;
-        
+    label {
+        flex: 1;
+        font-size: 18px;
+        color: black;
+        min-width: 70px;
     }
-  }
-  
+
+    .textInput {
+        flex: 2;
+        width: 100%;
+        margin-left: 10px;
+        padding: 3px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+}
