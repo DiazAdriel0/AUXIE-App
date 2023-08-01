@@ -25,6 +25,7 @@ const consumerSchema = new Schema({
         min: 18
     },
     address: String,
+    image: String,
     email: {
         type: String,
         required: true,
