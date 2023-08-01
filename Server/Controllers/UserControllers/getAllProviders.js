@@ -1,9 +1,13 @@
 const Provider = require('../../Models/provider')
 
 const getAllProviders = async()=>{
-    const providers = await Provider.find({})
+    try {
+        const providers = await Provider.find({})
 
-    return providers
+        return providers
+    } catch (error) {
+        throw new Error('No se encontraron providers')
+    }
 }
 
 module.exports = getAllProviders
