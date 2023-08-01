@@ -1,12 +1,14 @@
 import style from './cards.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import Card from '../card/card'
-import { useEffect } from 'react'
-import { getAllAuxies } from '../../redux/auxiesActions'
+
+import { useEffect} from 'react'
+import { getAllAuxies } from '../../redux/Actions/actions'
+
 
 const Cards = () => {
     const dispatch = useDispatch()
-    const users = useSelector((state) => state.Auxies.auxies)
+    const users = useSelector((state) => state.filteredAuxies)
 
     useEffect(() => {
         dispatch(getAllAuxies())

@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const postProvider = require('./../../Handlers/UsersHandlers/postPorovider')
+const postProvider = require('./../../Handlers/ProvidersHandlers/postPorovider')
 
 const providersRouter = Router()
 

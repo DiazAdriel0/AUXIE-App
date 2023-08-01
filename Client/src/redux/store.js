@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
-import Auxies from './auxiesSlice'
+import {createStore, applyMiddleware } from "redux"
+import thunk from "redux-thunk"
+import rootReducer from "./rootReducer"
 
-export default configureStore({
-    reducer: {
-        Auxies: Auxies,
-    },
-})
+export const store = createStore(
+    rootReducer,
+    applyMiddleware(thunk)
+);
