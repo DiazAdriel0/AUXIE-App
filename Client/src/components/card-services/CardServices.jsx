@@ -1,9 +1,12 @@
 import style from './cardServices.module.scss'
 
-const CardServices = () => {
+const CardServices = (services) => {
+    const { name } = services
+
     return (
         <div className={style.cardServices}>
-            <h3>Card Services</h3>
+            <h3>{name}</h3>
+            <img src="Conseguime una img adri" alt="Conseguime una img adri" />
         </div>
     )
 }

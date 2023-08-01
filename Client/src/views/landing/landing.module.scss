@@ -98,23 +98,48 @@
     }
 }
 /* Estilos para la sección 3 (cards) */
-.cards {
+.serviceCards {
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10%;
+}
+/* Estilos para la sección 4 Auxies */
+.auxies {
+    height: 100vh;
+    background-color: var(--sixth--color-light);
 }
 
-/* Estilos para la sección 4 (landingFooter) */
+/* Estilos para la sección 5 (landingFooter) */
 .landingFooter {
-    background-color: #c0c0c0;
-}
-
-/* Animaciones */
-@keyframes show {
-    from {
-        opacity: 0;
-        scale: 25%;
+    background-color: var(--accent--primary--color-light);
+    height: 100vh;
+    .divFooterTitle {
+        padding-top: 6%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+        h3 {
+            font-size: 50px;
+        }
+        h4 {
+            font-size: 35px;
+        }
     }
-    to {
-        opacity: 1;
-        scale: 100%;
+    .divFooterImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    .divCopy {
+        margin: 17% 0 0 5%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
     }
 }
