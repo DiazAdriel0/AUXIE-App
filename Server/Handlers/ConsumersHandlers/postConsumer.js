@@ -15,7 +15,6 @@ const postConsumer = async (req, res) => {
             username,
             usernameLower: username.toLowerCase(),
             password,
-            isAdmin: false,
             isActive: true,
         }
 
