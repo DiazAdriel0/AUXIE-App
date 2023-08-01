@@ -2,6 +2,7 @@ const createProvider = require('../../Controllers/ProvidersControllers/createPro
 
 const postProvider = (req, res) => {
     try {
+        console.log('Hola')
         const { firstName, lastName, age, email, username, password } = req.body
         const newProvider = {
             firstName,

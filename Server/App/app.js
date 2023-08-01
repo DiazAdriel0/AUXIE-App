@@ -3,7 +3,7 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-// const routes = require('../routes/index.js');
+const mainRouter = require('./../Routes/mainRouter')
 
 const server = express()
 
@@ -27,7 +27,7 @@ server.use((req, res, next) => {
     next()
 })
 
-// server.use('/', routes);
+server.use('/', mainRouter)
 
 // Error catching endware.
 // eslint-disable-next-line no-unused-vars
