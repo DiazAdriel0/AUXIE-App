@@ -1,8 +1,8 @@
 const { Router } = require('express')
 
-const usersRouter = Router()
+const consumersRouter = Router()
 
 // usersRouter.get('/providers', getProviders)
 // usersRouter.get('/consumer', getConsumers)
-//comentario
-module.exports = usersRouter
+
+module.exports = consumersRouter

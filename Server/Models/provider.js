@@ -11,7 +11,10 @@ const providerSchema = new Schema({
     email: String,
     username: String,
     password: String,
-    registerDate: Date,
+    registerDate: {
+        type: Date,
+        default: Date.now(),
+    },
 
     services: Array,
     pendingServices: Array,
