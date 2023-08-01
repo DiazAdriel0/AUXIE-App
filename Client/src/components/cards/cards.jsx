@@ -1,8 +1,10 @@
 import style from './cards.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import Card from '../card/card'
+
 import { useEffect} from 'react'
 import { getAllAuxies } from '../../redux/Actions/actions'
+
 
 const Cards = () => {
     const dispatch = useDispatch()
