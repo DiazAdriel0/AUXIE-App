@@ -10,6 +10,7 @@ const providerSchema = new Schema({
     lastName: { type: String, required: true },
     age: { type: Number, required: true, min: 18 },
     address: { type: String },
+    image: { type: String },
 
     email: { type: String, required: true },
     username: { type: String, required: true },
