@@ -13,6 +13,8 @@ import Company from './views/company/Company'
 import Guarantee from './views/guarantee/Guarantee'
 import Help from './views/help/Help'
 import ClientForm from './views/form/clientForm'
+import ClientLogin from './views/Login/clientLogin'
+import AuxieLogin from './views/Login/auxieLogin'
 
 function App() {
     return (
@@ -25,8 +27,17 @@ function App() {
                 <Route path="/help" element={<Help />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/detail" element={<Detail />} />
+
+                {/* Register paths */}
                 <Route path="/auxieform" element={<Form />} />
                 <Route path="/clientform" element={<ClientForm />} />
+                {/* Register paths */}
+
+                {/* Login paths */}
+                <Route path="/clientlogin" element={<ClientLogin />} />
+                <Route path="/auxielogin" element={<AuxieLogin />} />
+                {/* Login paths */}
+                
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
         </div>
