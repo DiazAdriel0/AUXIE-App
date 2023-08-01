@@ -6,15 +6,15 @@ const providerSchema = new Schema({
         default: true,
     },
 
-    firstName: { type: String },
-    lastName: { type: String },
-    age: { type: Number },
-    address: { type: String, min: 18 },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    age: { type: Number, required: true, min: 18 },
+    address: { type: String },
 
-    email: { type: String },
-    username: { type: String },
+    email: { type: String, required: true },
+    username: { type: String, required: true },
     usernameLower: { type: String },
-    password: { type: String },
+    password: { type: String, required: true },
     registerDate: {
         type: Date,
         default: Date.now(),
