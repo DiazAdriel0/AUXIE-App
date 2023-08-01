@@ -9,6 +9,6 @@ const providersRouter = Router()
 providersRouter.get('/', getProviders)
 providersRouter.post('/', postProvider)
 providersRouter.get('/login', loginProvider)
-providersRouter.delete('/delete/:id', deleteProviderById )
+providersRouter.delete('/:id', deleteProviderById )
 
 module.exports = providersRouter

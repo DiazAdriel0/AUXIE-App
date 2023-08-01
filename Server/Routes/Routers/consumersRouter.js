@@ -9,5 +9,5 @@ const consumersRouter = Router()
 /* consumersRouter.get('/', getConsumers) */
 consumersRouter.post('/', postConsumer)
 consumersRouter.get('/login', loginConsumer)
-consumersRouter.delete('/delete/:id', deleteConsumerById )
+consumersRouter.delete('/:id', deleteConsumerById )
 module.exports = consumersRouter
