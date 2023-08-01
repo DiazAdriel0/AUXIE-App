@@ -1,4 +1,4 @@
-const Provider = require('./../../Models/provider')
+const Provider = require('../../Models/provider')
 
 const createProvider = async (newProvider) => {
     try {
