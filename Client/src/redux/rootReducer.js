@@ -8,11 +8,11 @@ import {
 
 let initialState = {
     auxies: [],
-    backupAuxies:[],
+    backupAuxies: [],
     filteredAuxies: [],
     services: [],
     details: {},
-    filter:'off'
+    filter: 'off',
 }
 function rootReducer(state = initialState, action) {
     switch (action.type) {
@@ -21,15 +21,21 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 auxies: action.payload,
                 filteredAuxies: [...action.payload],
-                backupAuxies: [...action.payload]
+                backupAuxies: [...action.payload],
             }
         case GETAUXIEDETAILS:
             return { ...state, details: action.payload }
+
         case GETALLSERVICES:
             return { ...state, services: action.payload }
+
         case FILTERAUXIESBYSERVICE:
             if (action.payload === 'off') {
-                return { ...state, filteredAuxies: [...state.backupAuxies], filter: action.payload }
+                return {
+                    ...state,
+                    filteredAuxies: [...state.backupAuxies],
+                    filter: action.payload,
+                }
             }
             return {
                 ...state,
@@ -42,30 +48,81 @@ function rootReducer(state = initialState, action) {
                     )
                 ),
             }
+
         case ORDERAUXIESBYPRICE:
-            if (state.filter !== 'off'){
+            if (state.filter !== 'off') {
                 let serviceFiltered = state.filter
                 if (action.payload === 'asc') {
-                    let ascFilter = [...state.filteredAuxies].sort((prev, next) => {
-                        if (prev.services.find(obj => obj.service === serviceFiltered.toLowerCase()).price > next.services.find(obj => obj.service === serviceFiltered.toLowerCase()).price) return 1
-                        if (prev.services.find(obj => obj.service === serviceFiltered.toLowerCase()).price < next.services.find(obj => obj.service === serviceFiltered.toLowerCase()).price) return -1
-                        return 0
-                    })
-                    return { ...state, 
-                        filteredAuxies: [...ascFilter] }
+                    let ascFilter = [...state.filteredAuxies].sort(
+                        (prev, next) => {
+                            if (
+                                prev.services.find(
+                                    (obj) =>
+                                        obj.service ===
+                                        serviceFiltered.toLowerCase()
+                                ).price >
+                                next.services.find(
+                                    (obj) =>
+                                        obj.service ===
+                                        serviceFiltered.toLowerCase()
+                                ).price
+                            )
+                                return 1
+                            if (
+                                prev.services.find(
+                                    (obj) =>
+                                        obj.service ===
+                                        serviceFiltered.toLowerCase()
+                                ).price <
+                                next.services.find(
+                                    (obj) =>
+                                        obj.service ===
+                                        serviceFiltered.toLowerCase()
+                                ).price
+                            )
+                                return -1
+                            return 0
+                        }
+                    )
+                    return { ...state, filteredAuxies: [...ascFilter] }
                 } else {
-                    let descFilter = [...state.filteredAuxies].sort((prev, next) => {
-                        if (prev.services.find(obj => obj.service === serviceFiltered.toLowerCase()).price > next.services.find(obj => obj.service === serviceFiltered.toLowerCase()).price) return -1
-                        if (prev.services.find(obj => obj.service === serviceFiltered.toLowerCase()).price < next.services.find(obj => obj.service === serviceFiltered.toLowerCase()).price) return 1
-                        return 0
-                    })
-                    return { ...state, 
-                        filteredAuxies: [...descFilter]
-                     }
+                    let descFilter = [...state.filteredAuxies].sort(
+                        (prev, next) => {
+                            if (
+                                prev.services.find(
+                                    (obj) =>
+                                        obj.service ===
+                                        serviceFiltered.toLowerCase()
+                                ).price >
+                                next.services.find(
+                                    (obj) =>
+                                        obj.service ===
+                                        serviceFiltered.toLowerCase()
+                                ).price
+                            )
+                                return -1
+                            if (
+                                prev.services.find(
+                                    (obj) =>
+                                        obj.service ===
+                                        serviceFiltered.toLowerCase()
+                                ).price <
+                                next.services.find(
+                                    (obj) =>
+                                        obj.service ===
+                                        serviceFiltered.toLowerCase()
+                                ).price
+                            )
+                                return 1
+                            return 0
+                        }
+                    )
+                    return { ...state, filteredAuxies: [...descFilter] }
                 }
             } else {
-                return {...state}
+                return { ...state }
             }
+
         default:
             return {
                 ...state,

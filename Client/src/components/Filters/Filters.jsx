@@ -1,29 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { getAllServices } from '../../redux/Actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
-import { filterAuxiesByService, orderAuxiesByPrice } from '../../redux/Actions/actions'
+import {
+    filterAuxiesByService,
+    orderAuxiesByPrice,
+} from '../../redux/Actions/actions'
 
 const Filters = () => {
     const dispatch = useDispatch()
     const services = useSelector((state) => state.services)
-    const [selected, setSelected] = useState({
-        filterByService: 'off',
-        orderByPrice: 'off'
-    })
+    const [selected, setSelected] = useState(false)
 
     const filterByService = (e) => {
         dispatch(filterAuxiesByService(e.target.value))
-        setSelected({
-            ...selected,
-            filterByService: e.target.value,
-        })
+        if (e.target.value === 'off') setSelected(false)
+        else setSelected(true)
     }
 
     const orderByPrice = (e) => {
         dispatch(orderAuxiesByPrice(e.target.value))
         setSelected({
             ...selected,
-            orderByPrice: e.target.value
+            orderByPrice: e.target.value,
         })
     }
 
@@ -46,14 +44,20 @@ const Filters = () => {
                         </option>
                     ))}
             </select>
-            <span>Ordenar por precio: </span>
-            <select onChange={orderByPrice} 
-            name="orderByPrice" 
-            value={selected.orderByPrice}>
-                <option value="off">Ordenar por precio</option>
-                <option value="asc">Ascendente</option>
-                <option value="desc">Descendente</option>
-            </select>
+            {selected && (
+                <>
+                    <span>Ordenar por precio: </span>
+                    <select
+                        onChange={orderByPrice}
+                        name="orderByPrice"
+                        value={selected.orderByPrice}
+                    >
+                        <option value="off">Ordenar por precio</option>
+                        <option value="asc">Ascendente</option>
+                        <option value="desc">Descendente</option>
+                    </select>
+                </>
+            )}
         </div>
     )
 }
