@@ -29,7 +29,7 @@ const ClientForm = () => {
         //   [event.target.name]: event.target.value}, event.target.name)
 
       }
-console.log(input)
+
 
 const handleSubmit=(e)=>{
     e.preventDefault();

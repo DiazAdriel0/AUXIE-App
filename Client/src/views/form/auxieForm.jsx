@@ -34,7 +34,6 @@ const handleSubmit=(e)=>{
     form.reset()
   
   }
-console.log(input)
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
