@@ -2,19 +2,16 @@
     display: grid;
 
     gap: 10px;
-    background-color: #fff;
 }
 
 /* Estilos para la sección 1 (menuLogo) */
 .menuLogo {
-    background-color: #fff;
-
     display: flex;
     align-items: center;
     justify-content: flex-end;
     margin: 5% 20% 5% 0;
     .menuMain {
-        background-color: rgb(20, 33, 61);
+        background-color: var(--secondary--color-light);
         color: var(--primary--color--white);
         width: 40%;
         height: 40vh;
