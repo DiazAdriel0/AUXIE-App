@@ -1,8 +1,11 @@
 const createProvider = require('../../Controllers/ProvidersControllers/createProvider')
+const bcrypt = require('bcrypt')
 
 const postProvider = async (req, res) => {
     try {
         const { firstName, lastName, age, email, username, password } = req.body
+
+        const hashedPassword = await bcrypt.hash(password, 10)
 
         const newProvider = {
             firstName,
@@ -11,7 +14,7 @@ const postProvider = async (req, res) => {
             email: email.toLowerCase(),
             username,
             usernameLower: username.toLowerCase(),
-            password,
+            password: hashedPassword,
             isActive: true,
         }
 
