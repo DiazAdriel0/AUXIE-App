@@ -8,7 +8,7 @@ const createProvider = async (newProvider) => {
 
         if (isRepeat)
             throw new Error(
-                `The username ${newProvider.username} already exitsts`
+                `El nombre de usuario: ${newProvider.username} ya existe`
             )
 
         await Provider.create(newProvider)
