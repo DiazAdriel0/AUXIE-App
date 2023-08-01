@@ -2,21 +2,24 @@ const Provider = require('../../Models/provider')
 
 const createProvider = async (newProvider) => {
     try {
-        const isRepeat = await Provider.findOne({
-            username: newProvider.username,
+        const isRepeatEmail = await Provider.findOne({
+            email: newProvider.email,
         })
 
-        if (isRepeat)
-            throw new Error(
-                `El nombre de usuario: ${newProvider.username} ya existe`
-            )
+        if (isRepeatEmail) throw new Error('email repetido')
 
-        await Provider.create(newProvider)
+        const isRepeatUsername = await Provider.findOne({
+            usernameLower: newProvider.usernameLower,
+        })
 
-        return true
+        if (isRepeatUsername) throw new Error('usuario repetido')
+
+        const createdProvider = await Provider.create(newProvider)
+
+        return createdProvider
     } catch (error) {
         console.error(error)
-        return error.message
+        return error
     }
 }
 

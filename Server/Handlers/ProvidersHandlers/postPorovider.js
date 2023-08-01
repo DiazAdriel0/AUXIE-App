@@ -1,19 +1,28 @@
 const createProvider = require('../../Controllers/ProvidersControllers/createProvider')
 
-const postProvider = (req, res) => {
+const postProvider = async (req, res) => {
     try {
-        console.log('Hola')
         const { firstName, lastName, age, email, username, password } = req.body
+
         const newProvider = {
             firstName,
             lastName,
             age,
-            email,
+            email: email.toLowerCase(),
             username,
+            usernameLower: username.toLowerCase(),
             password,
+            isActive: true,
         }
 
-        const createdProvider = createProvider(newProvider)
+        const createdProvider = await createProvider(newProvider)
+
+        if (createdProvider.message === 'usuario repetido')
+            throw new Error(
+                `El nombre de usuario ${newProvider.username} ya existe`
+            )
+        if (createdProvider.message === 'email repetido')
+            throw new Error(`El email ${newProvider.email} ya está registrado`)
 
         res.status(200).json(createdProvider)
     } catch (error) {
