@@ -1,29 +1,60 @@
 import style from './clientform.module.scss'
+import { useState } from 'react'
 
 const ClientForm = () => {
+    const [input, setInput] = useState({
+        name: '',
+        lastName: '',
+        username: '',
+        age: 0,
+        email: '',
+        password: '',
+    })
+
+    const handleChange = (event) => {
+        console.log(event)
+        setInput({
+            ...input,
+            [event.target.name]: event.target.value,
+        })
+        // validate({
+        //   ...input,
+        //   [event.target.name]: event.target.value}, event.target.name)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        // dispatch(postPokemon(input))
+        const form = document.getElementById('form')
+        form.reset()
+        //navigate home / search auxies ///
+    }
+
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
                 Bienvenido a Auxie! Completa tu registro ahora!
             </div>
-
-            <form id="form">
+            <form id="form" onSubmit={handleSubmit}>
                 <div className={style.forminput}>
                     <label>Nombre: </label>
                     <input
-                        name="Nombre"
+                        name="name"
                         type="text"
                         className={style.textInput}
                         placeholder="Nombre"
+                        onChange={handleChange}
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Apellido: </label>
                     <input
-                        name="Apellido"
+                        name="lastName"
                         type="text"
                         className={style.textInput}
                         placeholder="Apellido"
+                        onChange={handleChange}
                     ></input>
                 </div>
                 <div className={style.forminput}>
@@ -33,42 +64,38 @@ const ClientForm = () => {
                         type="number"
                         className={style.textInput}
                         placeholder="Edad"
+                        onChange={handleChange}
                     ></input>
                 </div>
+
                 <div className={style.forminput}>
                     <label>Nombre de usuario: </label>
                     <input
-                        name="Username"
+                        name="username"
                         type="text"
                         className={style.textInput}
                         placeholder="Username"
+                        onChange={handleChange}
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Email: </label>
                     <input
-                        name="Email"
+                        name="email"
                         type="email"
                         className={style.textInput}
                         placeholder="Email"
+                        onChange={handleChange}
                     ></input>
                 </div>
                 <div className={style.forminput}>
                     <label>Password: </label>
                     <input
-                        name="Password"
+                        name="password"
                         type="password"
                         className={style.textInput}
                         placeholder="Password"
-                    ></input>
-                </div>
-                <div className={style.forminput}>
-                    <label>Direccion: </label>
-                    <input
-                        name="Direccion"
-                        type="text"
-                        className={style.textInput}
-                        placeholder="Direccion"
+                        onChange={handleChange}
                     ></input>
                 </div>
 

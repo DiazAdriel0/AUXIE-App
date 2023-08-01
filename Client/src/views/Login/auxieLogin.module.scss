@@ -1,19 +1,4 @@
-/* body {
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url('https://res.cloudinary.com/moneygeek/image/upload/v1615299819/MoneyGeek.com/media/Questions_to_Ask_Before_Hiring_a_Cleaning_Service_image_1_ielhjd.jpg');
-} */
-
+// clientLogin.module.scss
 .form {
     display: flex;
     flex-direction: column;
@@ -24,7 +9,8 @@ body {
     background-color: rgba(195, 201, 255, 0.5);
     border: 2px solid #e0e0e0;
     border-radius: 8px;
-    padding: 20px;
+    padding: 2rem; /* Ajusta el espacio alrededor del formulario */
+    height: 25%;
 
     .formtitle {
         font-size: x-large;
@@ -46,7 +32,7 @@ body {
         .textInput {
             flex: 2;
             width: 100%;
-            margin-left: 10px;
+            margin-left: px;
             padding: 3px;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -64,7 +50,7 @@ body {
     .submitbutton {
         display: flex;
         justify-content: center;
-        margin: 5%;
+        margin: 2rem;
 
         input {
             padding: 8px 16px;
@@ -85,5 +71,44 @@ body {
             background-color: #ccc;
             cursor: not-allowed;
         }
+    }
+    h1 {
+        margin-bottom: 2rem;
+    }
+}
+.login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1); /* Color y opacidad del fondo */
+    z-index: -1; /* Asegura que el fondo esté detrás del contenido */
+    /* Estilos para el contenido de tu componente ClientLogin */
+}
+
+/* Estilos para el fondo solo en el path actual */
+.logininput {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem; /* Ajusta el espacio vertical entre los div */
+    width: 100%;
+
+    label {
+        flex: 1;
+        font-size: 18px;
+        color: black;
+        min-width: 70px;
+    }
+
+    .textInput {
+        flex: 2;
+        width: 100%;
+        margin-left: 10px;
+        padding: 3px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
     }
 }

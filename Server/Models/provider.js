@@ -1,24 +1,32 @@
 const { Schema, model } = require('mongoose')
 
 const providerSchema = new Schema({
-    isActive: Boolean,
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
 
-    firstName: String,
-    lastName: String,
-    age: Number,
-    adress: String,
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    age: { type: Number, required: true, min: 18 },
+    address: { type: String },
 
-    email: String,
-    username: String,
-    password: String,
-    registerDate: Date,
+    email: { type: String, required: true },
+    username: { type: String, required: true },
+    usernameLower: { type: String },
+    password: { type: String, required: true },
+    registerDate: {
+        type: Date,
+        default: Date.now(),
+        immutable: true,
+    },
 
-    services: Array,
-    pendingServices: Array,
-    completedWorks: Array,
-    ratings: Array,
-    averageRating: Number,
-    reviews: Array,
+    services: { type: Array },
+    pendingServices: { type: Array },
+    completedWorks: { type: Array },
+    ratings: { type: Array },
+    averageRating: { type: Number, min: 0 },
+    reviews: { type: Array },
 })
 
 const Provider = model('Provider', providerSchema)

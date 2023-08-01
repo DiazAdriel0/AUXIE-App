@@ -24,7 +24,7 @@ const NavLanding = () => {
                         >
                             Compañia
                         </option>
-                        <option value="company">Quiénes Somos</option>
+                        <option value="aboutUs">Quiénes Somos</option>
                         <option value="offer">Que ofrecemos</option>
                         <option value="howItWorks">Como funciona Auxie</option>
                     </select>

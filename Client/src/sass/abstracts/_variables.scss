@@ -3,5 +3,56 @@
 :root {
     /* fonts */
     --font-poppins: 'Poppins', sans-serif;
-    /* colors */
+
+    /* colors Light Mode */
+    /* Primarios */
+    --primary--color-light: #edf2fb; //* Background Color
+    --secondary--color-light: #c1d3fe; //* Boxes Color
+    --third--color-light: #d7e3fc; //*
+    // --fourth--color-light: #ccdbfd;
+    --fifth--color-light: #b6ccfe;
+    --sixth--color-light: #abc4ff;
+
+    /* Acentos */
+    --accent--primary--color-light: #f7a072;
+    --accent--secondary--color-light: #eddea4;
+    --accent--third--color-light: #0fa3b1;
+
+    /* Colors Dark Mode */
+    --primary--color-dark: #012a4a;
+    --secondary--color-dark: #013a63;
+    --terciary--color-dark: #014f86;
+    --fourth--color-dark: #2a6f97;
+    --fifth--color-dark: #468faf;
+    --sixth--color-dark: #468faf;
+    --seventh--color-dark: #61a5c2;
+    --eighth--color-dark: #89c2d9;
+    --nineth--color-dark: #a9d6e5;
+
+    /* Acentos */
+    --accent--color-light: #f7a072;
+    --accent--secondary--color-light: #eddea4;
+    --accent--terciary--color-light: #0fa3b1;
 }
+
+/* Dark Mode
+#012a4a => Primary
+#013a63
+#014f86 => Third
+#2a6f97
+#2c7da0 => Fifth
+#468faf 
+#61a5c2
+#89c2d9
+#a9d6e5
+*/
+
+/* light mode
+#edf2fb => Primary
+#e2eafc
+#d7e3fc
+#ccdbfd
+#c1d3fe
+#b6ccfe
+#abc4ff => seventh
+*/
