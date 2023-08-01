@@ -32,7 +32,7 @@ const handlerServices = async (req, res) => {
             )
         } */
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        throw new Error('No se pudieron obtener los servicios')
     }
 }
 
