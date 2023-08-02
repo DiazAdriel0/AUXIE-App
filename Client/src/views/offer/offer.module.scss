@@ -1,0 +1,78 @@
+.layout {
+    width: 1500px;
+    height: 900px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px 30px;
+    flex-wrap: wrap;
+    flex-flow: column wrap;
+    justify-content:space-around;
+    align-items: baseline;
+  }
+
+  .Footer {
+    width: 1500px;
+    height: 300px;
+ 
+    display: flex;
+    flex-direction: row;
+    gap: 50px 50px;
+    justify-content: center; 
+    align-items: center; 
+   
+  }
+
+  .Help{
+    width: 20px;
+    height: 150px;
+  }
+
+  .money{
+    width: 20px;
+    height: 150px;
+  }
+
+  .offers{
+    padding: 30px;
+    margin: 100px;
+    background-color: var(--secondary--color-light);
+    border-radius: 20px;
+
+    h1{
+        font-size: 75px;
+    }
+
+    h3{
+        font-size: x-large;
+    }
+  }
+
+  .button{
+    margin: 50px;
+    width: 200px;
+    height: 100px;
+    font-size: x-large;
+    font-weight:400;
+    border-radius: 20px;
+    background-color: var(--accent--third--color-light);
+    border: none;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color:var(--accent--primary--color-light );
+  }
+
+
+  .Register{
+    text-align: center;
+    border: black 1px solid;
+    background-color: var(--secondary--color-light);
+    padding: 100px;
+    border-color: var(--accent--third--color-light);
+    border-radius: 50px;
+    h1{
+        font-size: 50px;
+    }
+  }
