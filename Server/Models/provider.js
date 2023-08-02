@@ -30,6 +30,12 @@ const providerSchema = new Schema({
     reviews: { type: Array },
 })
 
+providerSchema.set('toJSON', (document, returnedObject) => {
+    returnedObject.id = returnedObject._id
+    delete returnedObject._id
+    delete returnedObject.__v
+})
+
 const Provider = model('Provider', providerSchema)
 
 module.exports = Provider
