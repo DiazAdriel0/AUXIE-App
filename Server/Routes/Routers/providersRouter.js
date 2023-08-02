@@ -12,7 +12,7 @@ providersRouter.get('/', getProviders)
 providersRouter.get('/login', loginProvider)
 providersRouter.get('/:id', getProviderById)
 
-providersRouter.put('/:id', updateProvider)
+providersRouter.put('/', updateProvider)
 
 providersRouter.post('/', postProvider)
 
