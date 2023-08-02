@@ -1,6 +1,9 @@
 import style from './clientform.module.scss'
 import { useState } from 'react'
 import { useValidations } from '../../utils/validationutils'
+import axios from 'axios'
+
+
 const ClientForm = () => {
     const { errors, validate } = useValidations()
 
@@ -27,10 +30,26 @@ const ClientForm = () => {
             event.target.name
         )
     }
+    const handlePost = async () => {
+    
+        try {
+            const response = await axios.post(
+                'http://localhost:3001/providers/',
+                input
+            )
+            
+            // setAccess(true)
+            console.log(response)
+            // navigate('/home')
+        } catch (error) {
+            console.log(error)
+            alert(error.message)
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        handlePost()
         // dispatch(postPokemon(input))
         const form = document.getElementById('form')
         form.reset()

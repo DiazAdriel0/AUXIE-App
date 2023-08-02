@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './auxieLogin.module.scss'
 import { useValidations } from '../../utils/validationutils'
 import axios from 'axios'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 const ClientLogin = () => {
     const navigate = useNavigate()
-
 
     const { errors, validate } = useValidations()
     const [input, setInput] = useState({
@@ -30,33 +29,34 @@ const ClientLogin = () => {
         )
         ///validations ///
     }
-    
-    
-        const handleLogin = async () => {
-    
-            try {
-                const response = await axios.get(
-                    'http://localhost:3001/providers/login',
-                    {
-        email: input.email,
-        password: input.password
-      }
-                )
-                setAccess(true)
-                console.log(response)
-                navigate('/home')
-            } catch (error) {
-                console.log(error + error.response.data.error)
-                alert(error.response.data.error)
-            }
-        }
 
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post(
+                'http://localhost:3001/providers/login',
+                input
+            )
+            if(response){setAccess(true)}
+            
+            console.log(response)
+           
+        } catch (error) {
+            console.log(error + error.response.data.error)
+            alert(error.response.data.error)
+        }
+    }
+useEffect(() => {
+    if(access===true){
+        navigate('/home')
+    } 
+},[access])
     const handleSubmit = (e) => {
         e.preventDefault()
 
         handleLogin()
         // algun get en la base de datos que busque si el usuario y contrasena coinciden
         const form = document.getElementById('form')
+       
         form.reset()
         //navigate home / search auxies ///
     }
@@ -82,7 +82,7 @@ const ClientLogin = () => {
     }
 
     //////
-console.log(input)
+    console.log(input)
     return (
         <div className={style.login}>
             <form form id="form" onSubmit={handleSubmit} className={style.form}>
