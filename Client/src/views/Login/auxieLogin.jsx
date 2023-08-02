@@ -12,7 +12,7 @@ const ClientLogin = () => {
         email: '',
         password: '',
     })
-    const [access, setAccess] = useState(false)
+    const [access, setAccess] = useState(false) //eslint-disable-line
 
     const handleChange = (event) => {
         console.log(event)
@@ -41,8 +41,10 @@ const ClientLogin = () => {
                 )
                 setAccess(true)
                 console.log(response)
+                navigate('/home')
             } catch (error) {
                 console.log(error)
+                alert(error.message)
             }
         }
 
