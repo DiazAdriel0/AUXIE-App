@@ -9,7 +9,7 @@ const matchConsumer = async (email, password) => {
                 password,
                 consumer.password
             )
-            console.log(consumer)
+
             return passwordMatch ? consumer : new Error('wrongPassword')
         } else {
             throw new Error('inexistente')
