@@ -1,14 +1,19 @@
 import React, { useState } from 'react'
 import style from './auxieLogin.module.scss'
 import { useValidations } from '../../utils/validationutils'
+import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 const ClientLogin = () => {
-  const {errors, validate} = useValidations();
+    const navigate = useNavigate()
+
+
+    const { errors, validate } = useValidations()
     const [input, setInput] = useState({
         email: '',
         password: '',
     })
+    const [access, setAccess] = useState(false)
 
-   
     const handleChange = (event) => {
         console.log(event)
         setInput({
@@ -23,21 +28,33 @@ const ClientLogin = () => {
             },
             event.target.name
         )
-         ///validations ///
+        ///validations ///
     }
+    
+    
+        const handleLogin = async () => {
+    
+            try {
+                const response = await axios.get(
+                    'http://localhost:3001/providers/login',
+                    input
+                )
+                setAccess(true)
+                console.log(response)
+            } catch (error) {
+                console.log(error)
+            }
+        }
 
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        // dispatch(postPokemon(input))
-       // algun get en la base de datos que busque si el usuario y contrasena coinciden
+        handleLogin()
+        // algun get en la base de datos que busque si el usuario y contrasena coinciden
         const form = document.getElementById('form')
         form.reset()
         //navigate home / search auxies ///
     }
-
-   
-   
 
     //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
@@ -60,7 +77,7 @@ const ClientLogin = () => {
     }
 
     //////
-
+console.log(input)
     return (
         <div className={style.login}>
             <form form id="form" onSubmit={handleSubmit} className={style.form}>

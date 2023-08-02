@@ -37,7 +37,8 @@ export const useValidations = () => {
                     ...errors,
                     password: 'password cannot have blank spaces',
                 })
-            } else if (
+            } 
+            else if (
                 input.password.length < 8 ||
                 input.password.length > 12
             ) {
@@ -46,7 +47,8 @@ export const useValidations = () => {
                     password:
                         'password must be between 8 and 12 characters long',
                 })
-            } else if (
+            } 
+            else if (
                 input.password.length >= 8 &&
                 input.password.length <= 12
             ) {
@@ -54,6 +56,7 @@ export const useValidations = () => {
             } else {
                 setErrors({ ...errors, password: 'password es requerido' })
             }
+            //validation de una mayuscula y un numero//
             //password length//
         }
         if (name === 'age') {
