@@ -5,7 +5,7 @@ const providersRouter = require('./Routers/providersRouter')
 
 const mainRouter = Router()
 
-mainRouter.use('/users', consumersRouter)
+mainRouter.use('/consumers', consumersRouter)
 mainRouter.use('/services', servicesRouter)
 mainRouter.use('/providers', providersRouter)
 
