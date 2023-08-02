@@ -42,26 +42,27 @@ const Filters = () => {
                 isMulti
                 options={options}
             />
-            {priceOn && (
-                <>
-                    <span>Ordenar por precio: </span>
-                    <select onChange={orderByPrice} name="orderByPrice">
-                        <option value="off">Ordenar por precio</option>
-                        <option value="asc">Ascendente</option>
-                        <option value="desc">Descendente</option>
-                    </select>
-                </>
-            )}
             {(
                 <>
                     <span>Ordenar por calificación: </span>
                     <select onChange={orderByRating} name="orderByRating">
                         <option value="off">Orden</option>
-                        <option value="asc">Ascendente</option>
-                        <option value="desc">Descendente</option>
+                        <option value="asc">Menor a Mayor</option>
+                        <option value="desc">Mayor a Menor</option>
                     </select>
                 </>
             )}
+            {priceOn && (
+                <>
+                    <span>Ordenar por precio: </span>
+                    <select onChange={orderByPrice} name="orderByPrice">
+                        <option value="off">Orden</option>
+                        <option value="asc">Menor a Mayor</option>
+                        <option value="desc">Mayor a Menor</option>
+                    </select>
+                </>
+            )}
+            
         </div>
     )
 }
