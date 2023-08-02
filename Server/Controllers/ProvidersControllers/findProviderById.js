@@ -2,13 +2,12 @@ const Provider = require('./../../Models/provider')
 
 const findProviderById = async (id) => {
     try {
-        const foundProvider = await Provider.findById(id)
+        const foundProvider = await Provider.findById(id, {
+            password: 0,
+            usernameLower: 0,
+        })
 
-        const providerWithoutUnnecesary = foundProvider.toObject()
-        delete providerWithoutUnnecesary.password
-        delete providerWithoutUnnecesary.usernameLower
-
-        return providerWithoutUnnecesary
+        return foundProvider
     } catch (error) {
         error.message = 'id inexistente'
         return error
