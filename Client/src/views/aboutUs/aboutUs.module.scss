@@ -3,8 +3,10 @@
     height: 280px;
     border-radius: 2em;
     padding: 10px;
-    background-color: #191919;
-    box-shadow: 5px 5px 30px rgb(4, 4, 4), -5px -5px 30px rgb(57, 57, 57);
+    background-color: var(--sixth--color-light);
+    box-shadow:
+        5px 5px 30px var(--sixth--color-light),
+        -5px -5px 30px var(--sixth--color-light);
     margin: 1rem;
 
     center {
@@ -29,8 +31,8 @@
 
         .Name {
             color: white;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
-                Verdana, sans-serif;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+                'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             padding: 15px;
             font-size: 20px;
             margin-top: 10px;
@@ -43,24 +45,20 @@
             padding: 14px;
             margin-top: 15px;
             color: white;
-            box-shadow: 3px 3px 15px rgb(0, 0, 0), -3px -3px 15px rgb(58, 58, 58);
+            box-shadow:
+                3px 3px 15px var(--sixth--color-light),
+                -3px -3px 15px var(--sixth--color-light);
 
             a {
                 transition: 0.4s;
                 color: white;
-
-
-               
-
-
-             
             }
         }
     }
 }
-.cardcontainer{
+.cardcontainer {
     display: flex;
-    
+
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
