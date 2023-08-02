@@ -1,6 +1,6 @@
 const postServices = require('../../Controllers/ServicesControllers/postService')
 
-const handlerServices = async (req, res) => {
+const handlerPostService = async (req, res) => {
     try {
         const { name, category } = req.body
 
@@ -20,4 +20,4 @@ const handlerServices = async (req, res) => {
     }
 }
 
-module.exports = handlerServices
+module.exports = handlerPostService
