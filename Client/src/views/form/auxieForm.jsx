@@ -30,13 +30,12 @@ const Form = () => {
         )
     }
     const handlePost = async () => {
-    
         try {
             const response = await axios.post(
                 'http://localhost:3001/providers/',
                 input
             )
-            
+
             // setAccess(true)
             console.log(response)
             // navigate('/home')
@@ -135,9 +134,10 @@ const Form = () => {
                         className={style.textInput}
                         placeholder="Username"
                         onChange={handleChange}
-                    ></input><div className={style.errors}>
-                    <p>{errors.username}</p>
-                </div>
+                    ></input>
+                    <div className={style.errors}>
+                        <p>{errors.username}</p>
+                    </div>
                 </div>
                 <div className={style.forminput}>
                     <label>Email: </label>

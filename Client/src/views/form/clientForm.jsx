@@ -3,7 +3,6 @@ import { useState } from 'react'
 import { useValidations } from '../../utils/validationutils'
 import axios from 'axios'
 
-
 const ClientForm = () => {
     const { errors, validate } = useValidations()
 
@@ -31,13 +30,12 @@ const ClientForm = () => {
         )
     }
     const handlePost = async () => {
-    
         try {
             const response = await axios.post(
-                'http://localhost:3001/providers/',
+                'http://localhost:3001/consumers/',
                 input
             )
-            
+
             // setAccess(true)
             console.log(response)
             // navigate('/home')
@@ -136,9 +134,10 @@ const ClientForm = () => {
                         className={style.textInput}
                         placeholder="Username"
                         onChange={handleChange}
-                    ></input><div className={style.errors}>
-                    <p>{errors.username}</p>
-                </div>
+                    ></input>
+                    <div className={style.errors}>
+                        <p>{errors.username}</p>
+                    </div>
                 </div>
                 <div className={style.forminput}>
                     <label>Email: </label>

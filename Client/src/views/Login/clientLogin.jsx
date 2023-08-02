@@ -36,19 +36,23 @@ const ClientLogin = () => {
                 'http://localhost:3001/providers/login',
                 input
             )
-            setAccess(true)
+            if (response) {
+                setAccess(true)
+            }
+
             console.log(response)
-            navigate('/home')
         } catch (error) {
             console.log(error + error.response.data.error)
             alert(error.response.data.error)
         }
     }
-useEffect(() => {
-    if(access===true){
-        navigate('/home')
-    } 
-},[access])
+
+    useEffect(() => {
+        if (access === true) {
+            navigate('/home')
+        }
+    }, [access])
+
     const handleSubmit = (e) => {
         e.preventDefault()
         handleLogin()
