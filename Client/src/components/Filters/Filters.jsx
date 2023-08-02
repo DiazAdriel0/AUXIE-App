@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Select from 'react-select'
 import {
-    getAllServices,
     filterAuxiesByService,
     orderAuxiesByPrice,
     orderAuxiesByRating,
@@ -30,9 +29,6 @@ const Filters = () => {
         dispatch(orderAuxiesByRating(e.target.value))
     }
 
-    useEffect(() => {
-        dispatch(getAllServices())
-    }, [])
     return (
         <div>
             <span>Filtrar por Servicio: </span>
@@ -49,16 +45,19 @@ const Filters = () => {
                         <option value="off">Orden</option>
                         <option value="asc">Menor a Mayor</option>
                         <option value="desc">Mayor a Menor</option>
+
                     </select>
                 </>
             )}
             {priceOn && (
                 <>
+
                     <span>Ordenar por precio: </span>
                     <select onChange={orderByPrice} name="orderByPrice">
                         <option value="off">Orden</option>
                         <option value="asc">Menor a Mayor</option>
                         <option value="desc">Mayor a Menor</option>
+
                     </select>
                 </>
             )}

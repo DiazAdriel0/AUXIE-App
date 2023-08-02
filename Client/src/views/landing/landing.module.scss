@@ -4,6 +4,7 @@
 
 /* Estilos para la sección 1 (menuLogo) */
 .sectionMenu {
+    z-index: 2;
     height: 75vh;
 }
 .menuLogo {
@@ -69,6 +70,7 @@
 
 /* Estilos para la sección 2 (slogan) */
 .slogan {
+    z-index: 3;
     background-color: #b8dbd9;
     display: flex;
     flex-direction: column;
@@ -99,6 +101,7 @@
 }
 /* Estilos para la sección 3 (cards) */
 .serviceCards {
+    z-index: 4;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -108,12 +111,14 @@
 }
 /* Estilos para la sección 4 Auxies */
 .auxies {
+    z-index: 5;
     height: 100vh;
     background-color: var(--sixth--color-light);
 }
 
 /* Estilos para la sección 5 (landingFooter) */
 .landingFooter {
+    z-index: 6;
     background-color: var(--accent--primary--color-light);
     height: 100vh;
     .divFooterTitle {
@@ -142,43 +147,4 @@
         justify-content: flex-start;
         align-items: flex-end;
     }
-}
-
-/* Animations */
-@-webkit-keyframes slideInUp {
-    from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-        visibility: visible;
-    }
-
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-        visibility: visible;
-    }
-
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.slideInUp {
-    -webkit-animation-name: slideInUp;
-    animation-name: slideInUp;
-}
-
-.animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
 }
