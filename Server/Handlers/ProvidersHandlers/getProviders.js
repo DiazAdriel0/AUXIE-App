@@ -3,9 +3,13 @@ const getAllProviders = require('../../Controllers/ProvidersControllers/getAllPr
 const getProviders = async (req, res) => {
     try {
         const providers = await getAllProviders()
-        if (!providers){
-            return res.status(400).json({error:'No se pudieron recuperar los Providers'})
+
+        if (!providers) {
+            return res
+                .status(400)
+                .json({ error: 'No se pudieron recuperar los Providers' })
         }
+
         res.status(200).json(providers)
     } catch (error) {
         res.status(500).send({ error: error.message })
