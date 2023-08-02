@@ -17,7 +17,9 @@ import skipper from '../../assets/skipper.webp'
 
 const Landing = () => {
     const { ref: myRef, inView: myElementIsVisible } = useInView()
+    const { ref: myRef2, inView: mySecondElementIsVisible } = useInView()
     const [cardsAnimated, setCardsAnimated] = useState(false)
+    const [secondCardsAnimated, setSecondCardsAnimated] = useState(false)
     const services = useSelector((state) => state.services)
 
     const [menuChange, setMenuChange] = useState(true)
@@ -28,6 +30,11 @@ const Landing = () => {
         }
     }, [myElementIsVisible])
 
+    useEffect(() => {
+        if (mySecondElementIsVisible) {
+            setSecondCardsAnimated(true)
+        }
+    }, [mySecondElementIsVisible])
     const handlerMenuSearchAuxie = () => {
         setMenuChange(true)
     }
@@ -106,10 +113,11 @@ const Landing = () => {
                 </section>
             </Animated>
             {/* Section Slogan */}
+
             <Animated
                 animationIn="slideInUp"
                 animationOut="fadeOut"
-                animationInDuration={1100}
+                animationInDuration={800}
                 isVisible={true}
             >
                 <section className={style.slogan}>
@@ -132,18 +140,20 @@ const Landing = () => {
 
             {/* Section Cards */}
             {cardsAnimated ? (
-                <Animated
-                    animationIn="slideInUp"
-                    animationOut="fadeOut"
-                    animationInDuration={1500}
-                    isVisible={true}
-                >
-                    <section ref={myRef} className={style.serviceCards}>
-                        <div className={style.serviceCardsTitle}></div>
-                        <h3>Nuestros servicios mas populares</h3>
-                        <CardsServices />
-                    </section>
-                </Animated>
+                <div>
+                    <Animated
+                        animationIn="slideInUp"
+                        animationOut="fadeOut"
+                        animationInDuration={800}
+                        isVisible={true}
+                    >
+                        <section ref={myRef} className={style.serviceCards}>
+                            <div className={style.serviceCardsTitle}></div>
+                            <h3>Nuestros servicios mas populares</h3>
+                            <CardsServices />
+                        </section>
+                    </Animated>
+                </div>
             ) : (
                 <section ref={myRef} className={style.serviceCards}>
                     <div className={style.serviceCardsTitle}></div>
@@ -153,12 +163,28 @@ const Landing = () => {
             )}
 
             {/* Section Auxies */}
-            <section className={style.auxies}>
-                <div className={style.filterBar}>
-                    <Filters />
-                </div>
-                <Cards />
-            </section>
+            {secondCardsAnimated ? (
+                <Animated
+                    animationIn="slideInUp"
+                    animationOut="fadeOut"
+                    animationInDuration={1400}
+                    isVisible={true}
+                >
+                    <section ref={myRef2} className={style.auxies}>
+                        <div className={style.filterBar}>
+                            <Filters />
+                        </div>
+                        <Cards />
+                    </section>
+                </Animated>
+            ) : (
+                <section ref={myRef2} className={style.auxies}>
+                    <div className={style.filterBar}>
+                        <Filters />
+                    </div>
+                    <Cards />
+                </section>
+            )}
 
             {/* Footer */}
             <footer className={style.landingFooter}>
