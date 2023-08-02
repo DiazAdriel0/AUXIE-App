@@ -51,6 +51,14 @@ const consumerSchema = new Schema({
     requiredServices: Array
 })
 
+consumerSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id
+        delete returnedObject._id
+        delete returnedObject.__v
+    },
+})
+
 const Consumer = model('Consumer', consumerSchema)
 
 module.exports = Consumer
