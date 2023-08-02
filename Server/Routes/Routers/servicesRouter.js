@@ -7,6 +7,6 @@ const servicesRouter = Router()
 
 servicesRouter.get('/', handlerGetServices)
 
-servicesRouter.get('/', handlerPostService)
+servicesRouter.post('/', handlerPostService)
 
 module.exports = servicesRouter
