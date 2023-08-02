@@ -4,13 +4,15 @@ const deleteConsumerById = require('../../Handlers/ConsumersHandlers/deleteConsu
 const loginConsumer = require('../../Handlers/ConsumersHandlers/loginConsumer')
 const getConsumerById = require('../../Handlers/ConsumersHandlers/getConsumerById')
 const getAllConsumers = require('../../Handlers/ConsumersHandlers/getAllConsumers')
-
+const updateConsumer = require('../../Handlers/ConsumersHandlers/updateConsumer')
 const consumersRouter = Router()
 
 consumersRouter.get('/', getAllConsumers)
-consumersRouter.post('/login', loginConsumer)
 consumersRouter.get('/:id', getConsumerById)
 
+consumersRouter.put('/profile',updateConsumer)
+
+consumersRouter.post('/login', loginConsumer)
 consumersRouter.post('/', postConsumer)
 
 consumersRouter.delete('/:id', deleteConsumerById)
