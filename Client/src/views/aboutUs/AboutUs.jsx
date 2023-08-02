@@ -52,6 +52,102 @@ const AboutUs = () => {
                     </p>
                 </div>
             </div>
+            {/* ///cards/// */}
+            <div className={style.cardcontainer}>
+            <div className={style.card}>
+  <center>
+    <div className={style.profileimage}>
+      
+    </div>
+    <div className={style.Name}>
+      <p>Carlos Cornelio</p>
+    </div>
+    <div className={style.socialbar}>
+      
+    </div>
+  </center>
+</div>
+<div className={style.card}>
+  <center>
+    <div className={style.profileimage}>
+      
+    </div>
+    <div className={style.Name}>
+      <p>Joshua Candia</p>
+    </div>
+    <div className={style.socialbar}>
+      
+    </div>
+  </center>
+</div>
+<div className={style.card}>
+  <center>
+    <div className={style.profileimage}>
+      
+    </div>
+    <div className={style.Name}>
+      <p>Patricio Bonfigli</p>
+    </div>
+    <div className={style.socialbar}>
+      
+    </div>
+  </center>
+</div>
+<div className={style.card}>
+  <center>
+    <div className={style.profileimage}>
+      
+    </div>
+    <div className={style.Name}>
+      <p>Agustina Fernandez</p>
+    </div>
+    <div className={style.socialbar}>
+      
+    </div>
+  </center>
+</div>
+
+<div className={style.card}>
+  <center>
+    <div className={style.profileimage}>
+      
+    </div>
+    <div className={style.Name}>
+      <p>Adriel Diaz</p>
+    </div>
+    <div className={style.socialbar}>
+      
+    </div>
+  </center>
+</div>
+<div className={style.card}>
+  <center>
+    <div className={style.profileimage}>
+      
+    </div>
+    <div className={style.Name}>
+      <p>Francisco Junoy</p>
+    </div>
+    <div className={style.socialbar}>
+      
+    </div>
+  </center>
+</div>
+<div className={style.card}>
+  <center>
+    <div className={style.profileimage}>
+      
+    </div>
+    <div className={style.Name}>
+      <p>Milagros Guzman</p>
+    </div>
+    <div className={style.socialbar}>
+      
+    </div>
+  </center>
+</div>
+
+            </div>
         </div>
     )
 }

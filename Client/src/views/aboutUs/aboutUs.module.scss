@@ -1,19 +1,87 @@
+.card {
+    width: 230px;
+    height: 280px;
+    border-radius: 2em;
+    padding: 10px;
+    background-color: #191919;
+    box-shadow: 5px 5px 30px rgb(4, 4, 4), -5px -5px 30px rgb(57, 57, 57);
+    margin: 1rem;
+
+    center {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+
+        .profileimage {
+            background-color: transparent;
+            border: none;
+            margin-top: 20px;
+            border-radius: 5em;
+            width: 100px;
+            height: 100px;
+
+            .pfp {
+                border-radius: 35em;
+                fill: white;
+            }
+        }
+
+        .Name {
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva,
+                Verdana, sans-serif;
+            padding: 15px;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        .socialbar {
+            background-color: #ffffff;
+            border-radius: 3em;
+            width: 90%;
+            padding: 14px;
+            margin-top: 15px;
+            color: white;
+            box-shadow: 3px 3px 15px rgb(0, 0, 0), -3px -3px 15px rgb(58, 58, 58);
+
+            a {
+                transition: 0.4s;
+                color: white;
+
+
+               
+
+
+             
+            }
+        }
+    }
+}
+.cardcontainer{
+    display: flex;
+    
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
 .aboutboxes {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     margin: 2rem;
     justify-content: center;
-}
-.aboutbox {
-    background-color: var(--secondary--color-light);
-    margin: 2rem;
-    max-width: 21rem;
-    height: 25rem;
-    padding: auto 1rem;
 
-    p {
+    .aboutbox {
+        background-color: var(--secondary--color-light);
         margin: 2rem;
-        font-size: 0.9rem;
+        max-width: 21rem;
+        height: 25rem;
+        padding: auto 1rem;
+
+        p {
+            margin: 2rem;
+            font-size: 0.9rem;
+        }
     }
 }
