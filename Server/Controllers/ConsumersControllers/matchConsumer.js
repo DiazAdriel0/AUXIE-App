@@ -15,7 +15,7 @@ const matchConsumer = async (email, password) => {
             throw new Error('inexistente')
         }
     } catch (error) {
-        return error.message
+        return error
     }
 }
 
