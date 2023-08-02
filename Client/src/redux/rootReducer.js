@@ -1,10 +1,11 @@
 import {
-    GETALLAUXIES,
-    GETALLSERVICES,
-    GETAUXIEDETAILS,
-    FILTERAUXIESBYSERVICE,
-    ORDERAUXIESBYPRICE,
-} from './Actions/actionTypes'
+    GET_ALL_AUXIES,
+    GET_AUXIE_DETAILS,
+    GET_ALL_SERVICES,
+    FILTER_AUXIES_BY_SERVICE,
+    ORDER_AUXIES_BY_PRICE,
+    ORDER_AUXIES_BY_RATING,
+} from '../redux/Actions/actionTypes'
 
 let initialState = {
     auxies: [],
@@ -14,22 +15,23 @@ let initialState = {
     details: {},
     filter: 'off',
 }
+
 function rootReducer(state = initialState, action) {
     switch (action.type) {
-        case GETALLAUXIES:
+        case GET_ALL_AUXIES:
             return {
                 ...state,
                 auxies: action.payload,
                 filteredAuxies: [...action.payload],
                 backupAuxies: [...action.payload],
             }
-        case GETAUXIEDETAILS:
+        case GET_AUXIE_DETAILS:
             return { ...state, details: action.payload }
 
-        case GETALLSERVICES:
+        case GET_ALL_SERVICES:
             return { ...state, services: action.payload }
 
-        case FILTERAUXIESBYSERVICE:
+        case FILTER_AUXIES_BY_SERVICE:
             if (action.payload === 'off') {
                 return {
                     ...state,
@@ -49,37 +51,50 @@ function rootReducer(state = initialState, action) {
                 ),
             }
 
-        case ORDERAUXIESBYPRICE:
+        case ORDER_AUXIES_BY_PRICE:
             if (state.filter !== 'off') {
                 let serviceFiltered = state.filter
                 if (action.payload === 'asc') {
                     let ascFilter = [...state.filteredAuxies].sort(
+                        (prev, next) =>
+                            prev.services.find(
+                                (obj) =>
+                                    obj.service.toLowerCase() ===
+                                    serviceFiltered.toLowerCase()
+                            ).price -
+                            next.services.find(
+                                (obj) =>
+                                    obj.service.toLowerCase() ===
+                                    serviceFiltered.toLowerCase()
+                            ).price
+                    )
+                    return { ...state, filteredAuxies: [...ascFilter] }
+                } else {
+                    let descFilter = [...state.filteredAuxies].sort(
+                        (prev, next) =>
+                        next.services.find(
+                            (obj) =>
+                                obj.service.toLowerCase() ===
+                                serviceFiltered.toLowerCase()
+                        ).price - prev.services.find(
+                                (obj) =>
+                                    obj.service.toLowerCase() ===
+                                    serviceFiltered.toLowerCase()
+                            ).price 
+                    )
+                    return { ...state, filteredAuxies: [...descFilter] }
+                }
+            } else {
+                return { ...state }
+            }
+        case ORDER_AUXIES_BY_RATING:
+            if (state.filter !== 'off') {
+                if (action.payload === 'asc') {
+                    let ascFilter = [...state.filteredAuxies].sort(
                         (prev, next) => {
-                            if (
-                                prev.services.find(
-                                    (obj) =>
-                                        obj.service ===
-                                        serviceFiltered.toLowerCase()
-                                ).price >
-                                next.services.find(
-                                    (obj) =>
-                                        obj.service ===
-                                        serviceFiltered.toLowerCase()
-                                ).price
-                            )
+                            if (prev.averageRating > next.averageRating)
                                 return 1
-                            if (
-                                prev.services.find(
-                                    (obj) =>
-                                        obj.service ===
-                                        serviceFiltered.toLowerCase()
-                                ).price <
-                                next.services.find(
-                                    (obj) =>
-                                        obj.service ===
-                                        serviceFiltered.toLowerCase()
-                                ).price
-                            )
+                            if (prev.averageRating < next.averageRating)
                                 return -1
                             return 0
                         }
@@ -88,31 +103,9 @@ function rootReducer(state = initialState, action) {
                 } else {
                     let descFilter = [...state.filteredAuxies].sort(
                         (prev, next) => {
-                            if (
-                                prev.services.find(
-                                    (obj) =>
-                                        obj.service ===
-                                        serviceFiltered.toLowerCase()
-                                ).price >
-                                next.services.find(
-                                    (obj) =>
-                                        obj.service ===
-                                        serviceFiltered.toLowerCase()
-                                ).price
-                            )
+                            if (prev.averageRating > next.averageRating)
                                 return -1
-                            if (
-                                prev.services.find(
-                                    (obj) =>
-                                        obj.service ===
-                                        serviceFiltered.toLowerCase()
-                                ).price <
-                                next.services.find(
-                                    (obj) =>
-                                        obj.service ===
-                                        serviceFiltered.toLowerCase()
-                                ).price
-                            )
+                            if (prev.averageRating < next.averageRating)
                                 return 1
                             return 0
                         }
@@ -122,7 +115,6 @@ function rootReducer(state = initialState, action) {
             } else {
                 return { ...state }
             }
-
         default:
             return {
                 ...state,
