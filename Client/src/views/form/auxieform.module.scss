@@ -1,14 +1,16 @@
-.auxieForm {
+// clientLogin.module.scss
+.form {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     margin: 3% auto;
     background-color: rgba(195, 201, 255, 0.5);
     border: 2px solid #e0e0e0;
     border-radius: 8px;
-    padding: 20px;
+    padding: 3rem; /* Ajusta el espacio alrededor del formulario */
+    height: 45%;
 
     .formtitle {
         font-size: x-large;
@@ -30,7 +32,7 @@
         .textInput {
             flex: 2;
             width: 100%;
-            margin-left: 10px;
+            margin-left: px;
             padding: 3px;
             border: 1px solid #ccc;
             border-radius: 4px;
@@ -48,7 +50,7 @@
     .submitbutton {
         display: flex;
         justify-content: center;
-        margin: 5%;
+        margin: 2rem;
 
         input {
             padding: 8px 16px;
@@ -69,5 +71,38 @@
             background-color: #ccc;
             cursor: not-allowed;
         }
+    }
+    h1 {
+        margin-bottom: 4rem;
+    }
+}
+
+/* Estilos para el fondo solo en el path actual */
+.forminput {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7rem; /* Ajusta el espacio vertical entre los div */
+    width: 100%;
+    flex-wrap: wrap; /* Agrega esta línea para permitir que los elementos se envuelvan en la siguiente línea */
+
+    label {
+        flex: 1;
+        font-size: 18px;
+        color: black;
+        min-width: 70px;
+    }
+
+    .textInput {
+        flex: 2;
+        width: 100%;
+        margin-left: 10px;
+        padding: 3px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    .errors {
+        flex-basis: 100%; /* Agrega esta línea para que el mensaje de error ocupe el 100% de su ancho */
     }
 }
