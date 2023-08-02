@@ -93,5 +93,5 @@ export const useValidations = () => {
         }
     }
     return { errors, validate }
-}
+};
 ///validations ///
