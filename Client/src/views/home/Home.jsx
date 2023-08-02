@@ -2,6 +2,7 @@ import style from './home.module.scss'
 import Cards from '../../components/Cards/cards'
 import Filters from '../../components/Filters/Filters'
 
+
 const Home = () => {
     return (
         <div className={style.home}>

@@ -13,7 +13,7 @@ let initialState = {
     filteredAuxies: [],
     services: [],
     details: {},
-    filter: 'off',
+    filter: [],
 }
 
 function rootReducer(state = initialState, action) {
@@ -30,30 +30,35 @@ function rootReducer(state = initialState, action) {
 
         case GET_ALL_SERVICES:
             return { ...state, services: action.payload }
-
+            // filtra mi estado filteredAuxies dependiendo si el auxie tiene alguno de los servicios seleccionados
         case FILTER_AUXIES_BY_SERVICE:
-            if (action.payload === 'off') {
+            if (action.payload.length === 0) {
                 return {
                     ...state,
                     filteredAuxies: [...state.backupAuxies],
                     filter: action.payload,
                 }
-            }
-            return {
-                ...state,
-                filter: action.payload,
-                filteredAuxies: [...state.auxies].filter((aux) =>
-                    aux.services.some(
-                        (serv) =>
-                            serv.service.toUpperCase() ===
-                            action.payload.toUpperCase()
+            } else {
+                const filteredAuxies = action.payload.map((filter) =>
+                    [...state.auxies].filter((aux) =>
+                        aux.services.some(
+                            (serv) =>
+                                serv.service.toUpperCase() ===
+                                filter.toUpperCase()
+                        )
                     )
-                ),
+                )
+                const allFiltered = new Set(filteredAuxies.flat(1))
+                return {
+                    ...state,
+                    filter: action.payload,
+                    filteredAuxies: [...allFiltered],
+                }
             }
-
+        // ordena el estado filteredAuxies por precio del servicio (solo se puede ordenar si todos los auxies de mi estado tienen un servicio en común)
         case ORDER_AUXIES_BY_PRICE:
-            if (state.filter !== 'off') {
-                let serviceFiltered = state.filter
+            if (state.filter.length === 1) {
+                let serviceFiltered = state.filter.toString()
                 if (action.payload === 'asc') {
                     let ascFilter = [...state.filteredAuxies].sort(
                         (prev, next) =>
@@ -72,46 +77,40 @@ function rootReducer(state = initialState, action) {
                 } else {
                     let descFilter = [...state.filteredAuxies].sort(
                         (prev, next) =>
-                        next.services.find(
-                            (obj) =>
-                                obj.service.toLowerCase() ===
-                                serviceFiltered.toLowerCase()
-                        ).price - prev.services.find(
+                            next.services.find(
                                 (obj) =>
                                     obj.service.toLowerCase() ===
                                     serviceFiltered.toLowerCase()
-                            ).price 
+                            ).price -
+                            prev.services.find(
+                                (obj) =>
+                                    obj.service.toLowerCase() ===
+                                    serviceFiltered.toLowerCase()
+                            ).price
                     )
                     return { ...state, filteredAuxies: [...descFilter] }
                 }
             } else {
                 return { ...state }
             }
+        //ordena el estado filteredAuxies por calificación independientemente del filtrado
         case ORDER_AUXIES_BY_RATING:
-            if (state.filter !== 'off') {
-                if (action.payload === 'asc') {
-                    let ascFilter = [...state.filteredAuxies].sort(
-                        (prev, next) => {
-                            if (prev.averageRating > next.averageRating)
-                                return 1
-                            if (prev.averageRating < next.averageRating)
-                                return -1
-                            return 0
-                        }
-                    )
-                    return { ...state, filteredAuxies: [...ascFilter] }
-                } else {
-                    let descFilter = [...state.filteredAuxies].sort(
-                        (prev, next) => {
-                            if (prev.averageRating > next.averageRating)
-                                return -1
-                            if (prev.averageRating < next.averageRating)
-                                return 1
-                            return 0
-                        }
-                    )
-                    return { ...state, filteredAuxies: [...descFilter] }
-                }
+            if (action.payload === 'asc') {
+                let ascFilter = [...state.filteredAuxies].sort((prev, next) => {
+                    if (prev.averageRating > next.averageRating) return 1
+                    if (prev.averageRating < next.averageRating) return -1
+                    return 0
+                })
+                return { ...state, filteredAuxies: [...ascFilter] }
+            } else if (action.payload === 'desc') {
+                let descFilter = [...state.filteredAuxies].sort(
+                    (prev, next) => {
+                        if (prev.averageRating > next.averageRating) return -1
+                        if (prev.averageRating < next.averageRating) return 1
+                        return 0
+                    }
+                )
+                return { ...state, filteredAuxies: [...descFilter] }
             } else {
                 return { ...state }
             }
