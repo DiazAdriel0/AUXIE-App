@@ -1,7 +1,9 @@
 import style from './landing.module.scss'
 
 //* Import Hooks
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useInView } from 'react-intersection-observer'
+
 import { useSelector } from 'react-redux'
 //*Import Animations
 import { Animated } from 'react-animated-css'
@@ -12,17 +14,24 @@ import NavLanding from '../../components/nav-landing/NavLanding'
 import Filters from '../../components/Filters/Filters'
 import Cards from '../../components/cards/cards'
 import skipper from '../../assets/skipper.webp'
+
 const Landing = () => {
+    const { ref: myRef, inView: myElementIsVisible } = useInView()
+    const [cardsAnimated, setCardsAnimated] = useState(false)
     const services = useSelector((state) => state.services)
+
     const [menuChange, setMenuChange] = useState(true)
 
-    /* Handlers */
+    useEffect(() => {
+        if (myElementIsVisible) {
+            setCardsAnimated(true)
+        }
+    }, [myElementIsVisible])
+
     const handlerMenuSearchAuxie = () => {
-        event.preventDefault()
         setMenuChange(true)
     }
     const handlerMenuBeAuxie = () => {
-        event.preventDefault()
         setMenuChange(false)
     }
 
@@ -100,7 +109,7 @@ const Landing = () => {
             <Animated
                 animationIn="slideInUp"
                 animationOut="fadeOut"
-                animationInDuration={1500}
+                animationInDuration={1100}
                 isVisible={true}
             >
                 <section className={style.slogan}>
@@ -122,11 +131,27 @@ const Landing = () => {
             </Animated>
 
             {/* Section Cards */}
-            <section className={style.serviceCards}>
-                <div className={style.serviceCardsTitle}></div>
-                <h3>Nuestros servicios mas populares</h3>
-                <CardsServices />
-            </section>
+            {cardsAnimated ? (
+                <Animated
+                    animationIn="slideInUp"
+                    animationOut="fadeOut"
+                    animationInDuration={1500}
+                    isVisible={true}
+                >
+                    <section ref={myRef} className={style.serviceCards}>
+                        <div className={style.serviceCardsTitle}></div>
+                        <h3>Nuestros servicios mas populares</h3>
+                        <CardsServices />
+                    </section>
+                </Animated>
+            ) : (
+                <section ref={myRef} className={style.serviceCards}>
+                    <div className={style.serviceCardsTitle}></div>
+                    <h3>Nuestros servicios mas populares</h3>
+                    <CardsServices />
+                </section>
+            )}
+
             {/* Section Auxies */}
             <section className={style.auxies}>
                 <div className={style.filterBar}>
