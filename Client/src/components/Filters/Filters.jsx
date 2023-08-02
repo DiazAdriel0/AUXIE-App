@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
-    getAllServices, 
     filterAuxiesByService,
     orderAuxiesByPrice,
-    orderAuxiesByRating 
+    orderAuxiesByRating,
 } from '../../redux/Actions/actions'
 
 const Filters = () => {
@@ -25,9 +24,6 @@ const Filters = () => {
         dispatch(orderAuxiesByRating(e.target.value))
     }
 
-    useEffect(() => {
-        dispatch(getAllServices())
-    }, [])
     return (
         <div>
             <span>Filtrar por Servicio: </span>
@@ -47,10 +43,7 @@ const Filters = () => {
             {selected && (
                 <>
                     <span>Ordenar por precio: </span>
-                    <select
-                        onChange={orderByPrice}
-                        name="orderByPrice"
-                    >
+                    <select onChange={orderByPrice} name="orderByPrice">
                         <option value="off">Ordenar por precio</option>
                         <option value="asc">Ascendente</option>
                         <option value="desc">Descendente</option>
@@ -60,10 +53,7 @@ const Filters = () => {
             {selected && (
                 <>
                     <span>Ordenar por calificación: </span>
-                    <select
-                        onChange={orderByRating}
-                        name="orderByRating"
-                    >
+                    <select onChange={orderByRating} name="orderByRating">
                         <option value="off">Ordenar por calificación</option>
                         <option value="asc">Ascendente</option>
                         <option value="desc">Descendente</option>

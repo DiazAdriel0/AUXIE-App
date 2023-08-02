@@ -4,7 +4,8 @@ import style from './landing.module.scss'
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { getAllAuxies, getAllServices } from '../../redux/Actions/actions'
 //*Import Animations
 import { Animated } from 'react-animated-css'
 
@@ -15,6 +16,8 @@ import NavLanding from '../../components/nav-landing/NavLanding'
 import skipper from '../../assets/skipper.webp'
 
 const Landing = () => {
+    const dispatch = useDispatch()
+
     //* First Intersection Observer
     const { ref: myRef, inView: myElementIsVisible } = useInView()
     const [cardsAnimated, setCardsAnimated] = useState(false)
@@ -24,20 +27,27 @@ const Landing = () => {
 
     //* Global State
     const services = useSelector((state) => state.services)
+    const auxies = useSelector((state) => state.auxies)
     //* state for menu changes
     const [menuChange, setMenuChange] = useState(true)
 
+    //* use Effect to obtain data
+
+    useEffect(() => {
+        if (!auxies.length) dispatch(getAllAuxies())
+        if (!services.length) dispatch(getAllServices())
+    }, [])
+
+    // Use effect animations
     useEffect(() => {
         if (myElementIsVisible) {
             setCardsAnimated(true)
         }
-    }, [myElementIsVisible])
-
-    useEffect(() => {
         if (mySecondElementIsVisible) {
             setSecondCardsAnimated(true)
         }
-    }, [mySecondElementIsVisible])
+    }, [myElementIsVisible, mySecondElementIsVisible])
+
     const handlerMenuSearchAuxie = () => {
         setMenuChange(true)
     }
