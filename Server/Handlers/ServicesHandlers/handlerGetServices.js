@@ -5,7 +5,10 @@ const handlerServices = async (req, res) => {
         /* const { name, category } = req.query
         if (!name && !category) { */
         const allServices = await getAllServices()
-        res.status(200).json({ allServices })
+        if (allServices.message === 'No hay servicios') {
+            throw new Error('No se encontraron los servicios')
+        }
+        res.status(200).json(allServices)
         /* }
         if (name && !category) {
             const servicesByName = await getAllServices({
@@ -32,7 +35,7 @@ const handlerServices = async (req, res) => {
             )
         } */
     } catch (error) {
-        throw new Error('No se pudieron obtener los servicios')
+        res.status(400).json({ error: error.message })
     }
 }
 

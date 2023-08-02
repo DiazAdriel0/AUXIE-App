@@ -5,7 +5,6 @@ const serviceSchema = new Schema({
     numberOfProviders: Number,
     providers: Array,
     category: String,
-    counter: Number,
     isActive: Boolean,
 })
 
