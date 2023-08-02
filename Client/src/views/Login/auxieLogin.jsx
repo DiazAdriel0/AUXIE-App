@@ -37,14 +37,17 @@ const ClientLogin = () => {
             try {
                 const response = await axios.get(
                     'http://localhost:3001/providers/login',
-                    input
+                    {
+        email: input.email,
+        password: input.password
+      }
                 )
                 setAccess(true)
                 console.log(response)
                 navigate('/home')
             } catch (error) {
-                console.log(error)
-                alert(error.message)
+                console.log(error + error.response.data.error)
+                alert(error.response.data.error)
             }
         }
 
