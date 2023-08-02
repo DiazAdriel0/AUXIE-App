@@ -8,7 +8,7 @@ const getProviderById = require('./../../Handlers/ProvidersHandlers/getProviderB
 const providersRouter = Router()
 
 providersRouter.get('/', getProviders)
-providersRouter.get('/login', loginProvider)
+providersRouter.post('/login', loginProvider)
 providersRouter.get('/:id', getProviderById)
 
 providersRouter.post('/', postProvider)
