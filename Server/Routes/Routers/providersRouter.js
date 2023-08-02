@@ -4,12 +4,15 @@ const getProviders = require('../../Handlers/ProvidersHandlers/getProviders')
 const deleteProviderById = require('../../Handlers/ProvidersHandlers/deleteProviderById')
 const loginProvider = require('../../Handlers/ProvidersHandlers/loginProvider')
 const getProviderById = require('./../../Handlers/ProvidersHandlers/getProviderById')
+const updateProvider = require('./../../Handlers/ProvidersHandlers/updateProvider')
 
 const providersRouter = Router()
 
 providersRouter.get('/', getProviders)
 providersRouter.post('/login', loginProvider)
 providersRouter.get('/:id', getProviderById)
+
+providersRouter.put('/profile', updateProvider)
 
 providersRouter.post('/', postProvider)
 
