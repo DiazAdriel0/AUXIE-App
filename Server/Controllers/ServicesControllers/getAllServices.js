@@ -1,7 +1,7 @@
 const { default: mongoose } = require('mongoose')
 const Service = require('../../Models/service')
 
-const getAllServices = async (req, res /* serviceName, serviceCategory */) => {
+const getAllServices = async (/* serviceName, serviceCategory */) => {
     try {
         /* const filter = {}
     if (serviceName) {
@@ -12,9 +12,13 @@ const getAllServices = async (req, res /* serviceName, serviceCategory */) => {
     } */
         const services = await Service.find({})
         mongoose.connection.close()
-        res.status(200).json(services)
+        if (services.length === 0) {
+            throw new Error('No hay servicios')
+        } else {
+            return services
+        }
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        return error
     }
 }
 
