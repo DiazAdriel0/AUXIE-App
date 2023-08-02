@@ -42,7 +42,11 @@ const NavLanding = () => {
                         <option value="offer">Que ofrecemos</option>
                         <option value="howItWorks">Como funciona Auxie</option>
                     </select>
+
                     <ul>
+                        <li>
+                            <Link to={'/home'}>Home</Link>
+                        </li>
                         <li>
                             <Link to={'/guarantee'}>
                                 <p>Garantías</p>
