@@ -1,0 +1,19 @@
+.aboutboxes {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 2rem;
+    justify-content: center;
+}
+.aboutbox {
+    background-color: var(--secondary--color-light);
+    margin: 2rem;
+    max-width: 21rem;
+    height: 25rem;
+    padding: auto 1rem;
+
+    p {
+        margin: 2rem;
+        font-size: 0.9rem;
+    }
+}
