@@ -8,8 +8,8 @@ const getAllConsumers = require('../../Handlers/ConsumersHandlers/getAllConsumer
 const consumersRouter = Router()
 
 consumersRouter.get('/', getAllConsumers)
-consumersRouter.get('/:id', getConsumerById)
 consumersRouter.get('/login', loginConsumer)
+consumersRouter.get('/:id', getConsumerById)
 
 consumersRouter.post('/', postConsumer)
 
