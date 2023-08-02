@@ -13,7 +13,7 @@ let initialState = {
     filteredAuxies: [],
     services: [],
     details: {},
-    filter: 'off',
+    filter: [],
 }
 
 function rootReducer(state = initialState, action) {
@@ -32,28 +32,35 @@ function rootReducer(state = initialState, action) {
             return { ...state, services: action.payload }
 
         case FILTER_AUXIES_BY_SERVICE:
-            if (action.payload === 'off') {
+            if (action.payload.length === 0) {
                 return {
                     ...state,
                     filteredAuxies: [...state.backupAuxies],
                     filter: action.payload,
                 }
-            }
-            return {
-                ...state,
-                filter: action.payload,
-                filteredAuxies: [...state.auxies].filter((aux) =>
-                    aux.services.some(
-                        (serv) =>
-                            serv.service.toUpperCase() ===
-                            action.payload.toUpperCase()
+            } else {
+                const filteredAuxies = action.payload.map((filter) =>
+                    [...state.auxies].filter((aux) =>
+                        aux.services.some(
+                            (serv) =>
+                                serv.service.toUpperCase() ===
+                                filter.toUpperCase()
+                        )
                     )
-                ),
+                )
+                const allFiltered = new Set(filteredAuxies.flat(1))
+
+                console.log(allFiltered)
+                return {
+                    ...state,
+                    filter: action.payload,
+                    filteredAuxies: [...allFiltered]
+                }
             }
 
         case ORDER_AUXIES_BY_PRICE:
-            if (state.filter !== 'off') {
-                let serviceFiltered = state.filter
+            if (state.filter.length === 1) {
+                let serviceFiltered = state.filter.toString()
                 if (action.payload === 'asc') {
                     let ascFilter = [...state.filteredAuxies].sort(
                         (prev, next) =>
@@ -72,15 +79,16 @@ function rootReducer(state = initialState, action) {
                 } else {
                     let descFilter = [...state.filteredAuxies].sort(
                         (prev, next) =>
-                        next.services.find(
-                            (obj) =>
-                                obj.service.toLowerCase() ===
-                                serviceFiltered.toLowerCase()
-                        ).price - prev.services.find(
+                            next.services.find(
                                 (obj) =>
                                     obj.service.toLowerCase() ===
                                     serviceFiltered.toLowerCase()
-                            ).price 
+                            ).price -
+                            prev.services.find(
+                                (obj) =>
+                                    obj.service.toLowerCase() ===
+                                    serviceFiltered.toLowerCase()
+                            ).price
                     )
                     return { ...state, filteredAuxies: [...descFilter] }
                 }
@@ -88,7 +96,6 @@ function rootReducer(state = initialState, action) {
                 return { ...state }
             }
         case ORDER_AUXIES_BY_RATING:
-            if (state.filter !== 'off') {
                 if (action.payload === 'asc') {
                     let ascFilter = [...state.filteredAuxies].sort(
                         (prev, next) => {
@@ -100,7 +107,7 @@ function rootReducer(state = initialState, action) {
                         }
                     )
                     return { ...state, filteredAuxies: [...ascFilter] }
-                } else {
+                } else if (action.payload === 'desc') {
                     let descFilter = [...state.filteredAuxies].sort(
                         (prev, next) => {
                             if (prev.averageRating > next.averageRating)
@@ -111,10 +118,9 @@ function rootReducer(state = initialState, action) {
                         }
                     )
                     return { ...state, filteredAuxies: [...descFilter] }
+                } else {
+                    return{ ...state, filteredAuxies: [...state.backupAuxies] }
                 }
-            } else {
-                return { ...state }
-            }
         default:
             return {
                 ...state,
