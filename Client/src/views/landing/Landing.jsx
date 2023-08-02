@@ -11,17 +11,20 @@ import { Animated } from 'react-animated-css'
 //* Import components
 import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
-import Filters from '../../components/Filters/Filters'
-import Cards from '../../components/cards/cards'
+
 import skipper from '../../assets/skipper.webp'
 
 const Landing = () => {
+    //* First Intersection Observer
     const { ref: myRef, inView: myElementIsVisible } = useInView()
-    const { ref: myRef2, inView: mySecondElementIsVisible } = useInView()
     const [cardsAnimated, setCardsAnimated] = useState(false)
+    //* Second Intersection Observer
+    const { ref: myRef2, inView: mySecondElementIsVisible } = useInView()
     const [secondCardsAnimated, setSecondCardsAnimated] = useState(false)
-    const services = useSelector((state) => state.services)
 
+    //* Global State
+    const services = useSelector((state) => state.services)
+    //* state for menu changes
     const [menuChange, setMenuChange] = useState(true)
 
     useEffect(() => {
@@ -46,8 +49,8 @@ const Landing = () => {
         <main className={style.landing}>
             <NavLanding />
             <Animated
-                animationIn="fadeIn"
-                animationOut="fadeOut"
+                animationIn="bounceInUp"
+                animationOut="bounceInDown"
                 animationInDuration={1000}
                 isVisible={true}
             >
@@ -115,9 +118,9 @@ const Landing = () => {
             {/* Section Slogan */}
 
             <Animated
-                animationIn="slideInUp"
-                animationOut="fadeOut"
-                animationInDuration={800}
+                animationIn="bounceInUp"
+                animationOut="bounceInDown"
+                animationInDuration={1000}
                 isVisible={true}
             >
                 <section className={style.slogan}>
@@ -142,9 +145,9 @@ const Landing = () => {
             {cardsAnimated ? (
                 <div>
                     <Animated
-                        animationIn="slideInUp"
-                        animationOut="fadeOut"
-                        animationInDuration={800}
+                        animationIn="bounceInUp"
+                        animationOut="bounceInDown"
+                        animationInDuration={1000}
                         isVisible={true}
                     >
                         <section ref={myRef} className={style.serviceCards}>
@@ -167,22 +170,16 @@ const Landing = () => {
                 <Animated
                     animationIn="slideInUp"
                     animationOut="fadeOut"
-                    animationInDuration={1400}
+                    animationInDuration={1000}
                     isVisible={true}
                 >
                     <section ref={myRef2} className={style.auxies}>
-                        <div className={style.filterBar}>
-                            <Filters />
-                        </div>
-                        <Cards />
+                        <div className={style.filterBar}></div>
                     </section>
                 </Animated>
             ) : (
                 <section ref={myRef2} className={style.auxies}>
-                    <div className={style.filterBar}>
-                        <Filters />
-                    </div>
-                    <Cards />
+                    <div className={style.filterBar}></div>
                 </section>
             )}
 
