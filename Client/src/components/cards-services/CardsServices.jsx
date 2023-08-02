@@ -4,17 +4,11 @@ import style from './cardsServices.module.scss'
 import CardServices from '../card-services/CardServices'
 
 //* Hooks
-import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { getAllServices } from '../../redux/Actions/actions'
+
+import { useSelector } from 'react-redux'
 
 const CardsServices = () => {
-    const dispatch = useDispatch()
     const services = useSelector((state) => state.services)
-
-    useEffect(() => {
-        dispatch(getAllServices())
-    }, [])
 
     return (
         <div className={style.cardsServices}>
