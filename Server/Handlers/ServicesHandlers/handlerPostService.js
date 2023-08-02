@@ -13,7 +13,6 @@ const handlerPostService = async (req, res) => {
                     'Ya existe un servicio con este nombre y categoría'
                 )
             }
-            console.log(newService)
             res.status(200).json(newService)
         }
     } catch (error) {
