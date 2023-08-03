@@ -6,16 +6,15 @@ const AboutUs = () => {
         <div>
             <NavLanding />
             <div className={style.about}>
+
                 <h1>Todo sobre Auxie</h1>
             </div>
+            
             <div className={style.aboutboxes}>
-                <div className={style.aboutbox}>
-                    <p>
-                        Somos un equipo multicultural de programadores full
-                        stack que fundó Auxie en julio de 2023. Nuestra misión
-                        es transformar la forma en que se accede y se contratan
-                        servicios de mantenimiento del hogar.{' '}
-                    </p>
+            <div className={style.card}>
+                   
+                    <div className={style.cardfront}>
+                   
                     <p>
                         Con pasión y dedicación, hemos creado una plataforma que
                         conecta de manera eficiente a proveedores de servicios
@@ -23,8 +22,25 @@ const AboutUs = () => {
                         muchos más, con clientes que buscan calidad y
                         confiabilidad.
                     </p>
+                       
+                    <p>
+                        Únete a Auxie y descubre una manera simplificada y
+                        eficiente de acceder a servicios de calidad. Permítenos
+                        convertir tus proyectos en realidades y brindarte la
+                        tranquilidad que mereces. ¡Bienvenido a la comunidad
+                        Auxie!
+                    </p>
+                        </div>
+                        <div className={style.cardback}>
+                            {/* Reemplaza el contenido con tu bio */}
+                            <div className={style.imageabout2}>
+                            <img src='https://www.pngkey.com/png/full/319-3193616_handyman-services-competitors-revenue-and-employees-handyman.png' alt="Imagen" />
+                        </div>
+                        </div>
                 </div>
-                <div className={style.aboutbox}>
+                <div className={style.card}>
+                   
+                    <div className={style.cardfront}>
                     <p>
                         En Auxie, valoramos la excelencia y la satisfacción del
                         cliente por encima de todo. Nuestra comunidad de
@@ -33,28 +49,50 @@ const AboutUs = () => {
                         tu hogar.
                     </p>
                     <p>
-                        Únete a Auxie y descubre una manera simplificada y
-                        eficiente de acceder a servicios de calidad. Permítenos
-                        convertir tus proyectos en realidades y brindarte la
-                        tranquilidad que mereces. ¡Bienvenido a la comunidad
-                        Auxie!
+                        Estamos comprometidos a empoderar a nuestros proveedores
+                        para que alcancen el éxito y, al mismo tiempo, ofrecer a
+                        nuestros clientes una experiencia sin igual en el mundo
+                        de los servicios de mantenimiento del hogar.
                     </p>
+                    
+                       
+                        
+                        </div>
+                        <div className={style.cardback}>
+                            {/* Reemplaza el contenido con tu bio */} <div className={style.imageabout2}><img src='https://files.quantzig.com/wp-content/uploads/2020/11/customerSatisfaction.png' alt="Imagen" /></div>
+                            
+                        </div>
+                 
                 </div>
-                <div className={style.aboutbox}>
-                    <p>
+                
+                <div className={style.card}>
+                   
+                   <div className={style.cardfront}>
+                   <p>
                         Nuestra base en Latinoamérica es una fuente de orgullo y
                         fortaleza. La diversidad cultural y la riqueza de
                         conocimientos nos permiten aportar una perspectiva única
                         y enriquecedora a nuestra plataforma.{' '}
                     </p>
                     <p>
-                        Estamos comprometidos a empoderar a nuestros proveedores
-                        para que alcancen el éxito y, al mismo tiempo, ofrecer a
-                        nuestros clientes una experiencia sin igual en el mundo
-                        de los servicios de mantenimiento del hogar.
+                        Somos un equipo multicultural de programadores full
+                        stack que fundó Auxie en julio de 2023. Nuestra misión
+                        es transformar la forma en que se accede y se contratan
+                        servicios de mantenimiento del hogar.{' '}
                     </p>
-                </div>
+                   
+                      
+                       
+                       </div>
+                       <div className={style.cardback}>
+                           {/* Reemplaza el contenido con tu bio */}
+                           <img src='https://ambientelegal.com/wp-content/uploads/2022/07/Map-of-Latin-America-5.png' alt="Imagen" />
+                       </div>
+                
+               </div>
+               
             </div>
+            {/* cards de about */}
             {/* ///cards/// */}
 
             <div className={style.cardcontainer}>
