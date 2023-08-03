@@ -1,4 +1,3 @@
-// const { default: mongoose } = require('mongoose')
 const Service = require('../../Models/service')
 
 const getAllServices = async (/* serviceName, serviceCategory */) => {
@@ -11,7 +10,6 @@ const getAllServices = async (/* serviceName, serviceCategory */) => {
         filter.category = serviceCategory
     } */
         const services = await Service.find({})
-
         if (services.length === 0) {
             throw new Error('No hay servicios')
         } else {

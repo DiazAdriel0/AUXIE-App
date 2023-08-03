@@ -1,4 +1,4 @@
-const postServices = require('../../Controllers/ServicesControllers/postService')
+const postService = require('../../Controllers/ServicesControllers/postService')
 
 const handlerPostService = async (req, res) => {
     try {
@@ -7,7 +7,7 @@ const handlerPostService = async (req, res) => {
         if (!name || !category) {
             throw new Error('Faltan datos')
         } else {
-            const newService = await postServices(name, category)
+            const newService = await postService(name, category)
             if (newService.message === 'Servicio repetido') {
                 throw new Error(
                     'Ya existe un servicio con este nombre y categoría'
