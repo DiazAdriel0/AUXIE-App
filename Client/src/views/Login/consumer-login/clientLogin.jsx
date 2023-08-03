@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import style from './clientLogin.module.scss'
-import { useValidations } from '../../utils/validationutils'
+import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 

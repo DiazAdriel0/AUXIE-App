@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import style from './auxieLogin.module.scss'
-import { useValidations } from '../../utils/validationutils'
+import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 const ClientLogin = () => {
@@ -36,27 +36,28 @@ const ClientLogin = () => {
                 'http://localhost:3001/providers/login',
                 input
             )
-            if(response){setAccess(true)}
-            
+            if (response) {
+                setAccess(true)
+            }
+
             console.log(response)
-           
         } catch (error) {
             console.log(error + error.response.data.error)
             alert(error.response.data.error)
         }
     }
-useEffect(() => {
-    if(access===true){
-        navigate('/home')
-    } 
-},[access])
+    useEffect(() => {
+        if (access === true) {
+            navigate('/home')
+        }
+    }, [access])
     const handleSubmit = (e) => {
         e.preventDefault()
 
         handleLogin()
         // algun get en la base de datos que busque si el usuario y contrasena coinciden
         const form = document.getElementById('form')
-       
+
         form.reset()
         //navigate home / search auxies ///
     }

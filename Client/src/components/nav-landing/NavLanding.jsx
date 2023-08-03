@@ -72,7 +72,10 @@ const NavLanding = ({
 
                     <ul>
                         <li>
-                            <Link to={'/home'}>Home</Link>
+                            <Link to={'/homeconsumer'}>Home Consumer</Link>
+                        </li>
+                        <li>
+                            <Link to={'/homeauxie'}>Home Auxie</Link>
                         </li>
                         <li>
                             <Link to={'/guarantee'}>

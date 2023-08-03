@@ -1,5 +1,5 @@
 import style from './guarantee.module.scss'
-import NavLanding from '../../components/nav-landing/NavLanding'
+import NavLanding from '../../../components/nav-landing/NavLanding'
 import { Link } from 'react-router-dom'
 
 const Guarantee = () => {
@@ -52,7 +52,9 @@ const Guarantee = () => {
                             Si no estás satisfecho, ¡háznoslo saber y
                             trabajaremos para corregirlo!
                         </p>
-                        <button className={style.contact}><Link to='/complain' >Contáctanos</Link></button>
+                        <button className={style.contact}>
+                            <Link to="/complain">Contáctanos</Link>
+                        </button>
                     </div>
                 </div>
             </div>

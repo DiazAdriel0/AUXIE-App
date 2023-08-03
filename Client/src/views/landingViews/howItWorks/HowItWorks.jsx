@@ -1,10 +1,10 @@
 import style from './howItWorks.module.scss'
-import NavLanding from '../../components/nav-landing/NavLanding'
-import StepOne from '../../sass/Logos/StepOne.svg'
-import StepTwo from '../../sass/Logos/StepTwo.svg'
-import StepThree from '../../sass/Logos/StepThree.svg'
-import StepFour from '../../sass/Logos/StepFour.svg'
-import StepFive from '../../sass/Logos/StepFive.svg'
+import NavLanding from '../../../components/nav-landing/NavLanding'
+import StepOne from '../../../assets/Logos/StepOne.svg'
+import StepTwo from '../../../assets/Logos/StepTwo.svg'
+import StepThree from '../../../assets/Logos/StepThree.svg'
+import StepFour from '../../../assets/Logos/StepFour.svg'
+import StepFive from '../../../assets/Logos/StepFive.svg'
 import React, { useState } from 'react'
 const HowItWorks = () => {
     const [faq, setFaq] = useState(null)

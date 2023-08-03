@@ -1,4 +1,4 @@
-import NavLanding from '../../components/nav-landing/NavLanding'
+import NavLanding from '../../../components/nav-landing/NavLanding'
 import style from './aboutUs.module.scss'
 
 const AboutUs = () => {
@@ -56,7 +56,7 @@ const AboutUs = () => {
                 </div>
             </div>
             {/* ///cards/// */}
-           
+
             <div className={style.cardcontainer}>
                 <div className={style.card}>
                     <center>
@@ -123,17 +123,31 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                             <a
-                                 id="Instagram"
-                                 href="https://www.instagram.com/lucawolfp/"
-                                 target="_blank" 
-                                 rel="noopener noreferrer"
-                                 >
-                            <svg xmlns="http://www.w3.org/2000/svg"  width="19" height="19" viewBox="0 0 21 21" strokeWidth="1.5" stroke="black" fill="none" strokeLinecap="round" strokeLinejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
-  <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-  <path d="M16.5 7.5l0 .01" />
-</svg>
+                                id="Instagram"
+                                href="https://www.instagram.com/lucawolfp/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="19"
+                                    height="19"
+                                    viewBox="0 0 21 21"
+                                    strokeWidth="1.5"
+                                    stroke="black"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                    />
+                                    <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+                                    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M16.5 7.5l0 .01" />
+                                </svg>
                             </a>
                         </div>
                     </center>
@@ -437,7 +451,7 @@ const AboutUs = () => {
                             <a
                                 id="linkedIn"
                                 href="https://www.linkedin.com/in/francisco-junoy-28a981225/"
-                                target="_blank" 
+                                target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <svg
@@ -472,17 +486,31 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                             <a
-                                 id="Instagram"
-                                 href="https://www.instagram.com/lataikeada"
-                                 target="_blank" 
-                                 rel="noopener noreferrer"
-                                 >
-                            <svg xmlns="http://www.w3.org/2000/svg"  width="19" height="19" viewBox="0 0 21 21" strokeWidth="1.5" stroke="black" fill="none" strokeLinecap="round" strokeLinejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-  <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
-  <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-  <path d="M16.5 7.5l0 .01" />
-</svg>
+                                id="Instagram"
+                                href="https://www.instagram.com/lataikeada"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="19"
+                                    height="19"
+                                    viewBox="0 0 21 21"
+                                    strokeWidth="1.5"
+                                    stroke="black"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                    />
+                                    <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+                                    <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M16.5 7.5l0 .01" />
+                                </svg>
                             </a>
                         </div>
                     </center>
@@ -500,7 +528,7 @@ const AboutUs = () => {
                             <a
                                 id="github"
                                 href="https://github.com/Milagrosgzmn"
-                                target="_blank" 
+                                target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <svg
@@ -517,7 +545,7 @@ const AboutUs = () => {
                             <a
                                 id="linkedIn"
                                 href="https://www.linkedin.com/in/milagros-guzman-abarca-369bbb250/"
-                                target="_blank" 
+                                target="_blank"
                                 rel="noopener noreferrer"
                             >
                                 <svg
