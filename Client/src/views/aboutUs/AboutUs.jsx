@@ -67,7 +67,12 @@ const AboutUs = () => {
                             <p>Carlos Cornelio</p>
                         </div>
                         <div className={style.socialbar}>
-                            <a id="github" href="https://github.com/CACornelio">
+                            <a
+                                id="github"
+                                href="https://github.com/CACornelio"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 <svg
                                     viewBox="0 0 16 16"
                                     className="bi bi-github"
@@ -82,6 +87,8 @@ const AboutUs = () => {
                             <a
                                 id="linkedIn"
                                 href="https://www.linkedin.com/in/carlos-cornelio-0b44b6162/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -129,6 +136,8 @@ const AboutUs = () => {
                             <a
                                 id="github"
                                 href="https://github.com/JoshuaCandia"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     viewBox="0 0 16 16"
@@ -144,6 +153,8 @@ const AboutUs = () => {
                             <a
                                 id="linkedIn"
                                 href="https://www.linkedin.com/in/bonfiglipatricio-1209/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -188,7 +199,12 @@ const AboutUs = () => {
                             <p>Patricio Bonfigli</p>
                         </div>
                         <div className={style.socialbar}>
-                            <a id="github" href="https://github.com/BonPato98">
+                            <a
+                                id="github"
+                                href="https://github.com/BonPato98"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 <svg
                                     viewBox="0 0 16 16"
                                     className="bi bi-github"
@@ -203,6 +219,8 @@ const AboutUs = () => {
                             <a
                                 id="linkedIn"
                                 href="https://www.linkedin.com/in/bonfiglipatricio-1209/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -250,6 +268,8 @@ const AboutUs = () => {
                             <a
                                 id="github"
                                 href="https://github.com/AgustinaFernandez01"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     viewBox="0 0 16 16"
@@ -265,6 +285,8 @@ const AboutUs = () => {
                             <a
                                 id="linkedIn"
                                 href="https://www.linkedin.com/in/agustina-fern%C3%A1ndez-138b67272/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -313,6 +335,8 @@ const AboutUs = () => {
                             <a
                                 id="github"
                                 href="https://github.com/DiazAdriel0"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     viewBox="0 0 16 16"
@@ -328,6 +352,8 @@ const AboutUs = () => {
                             <a
                                 id="linkedIn"
                                 href="https://www.linkedin.com/in/adriel-n-diaz/"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -372,7 +398,12 @@ const AboutUs = () => {
                             <p>Francisco Junoy</p>
                         </div>
                         <div className={style.socialbar}>
-                            <a id="github" href="https://github.com/franjunoy">
+                            <a
+                                id="github"
+                                href="https://github.com/franjunoy"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
                                 <svg
                                     viewBox="0 0 16 16"
                                     className="bi bi-github"
@@ -387,6 +418,8 @@ const AboutUs = () => {
                             <a
                                 id="linkedIn"
                                 href="https://www.linkedin.com/in/francisco-junoy-28a981225/"
+                                target="_blank" 
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -434,6 +467,8 @@ const AboutUs = () => {
                             <a
                                 id="github"
                                 href="https://github.com/Milagrosgzmn"
+                                target="_blank" 
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     viewBox="0 0 16 16"
@@ -449,6 +484,8 @@ const AboutUs = () => {
                             <a
                                 id="linkedIn"
                                 href="https://www.linkedin.com/in/milagros-guzman-abarca-369bbb250/"
+                                target="_blank" 
+                                rel="noopener noreferrer"
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
