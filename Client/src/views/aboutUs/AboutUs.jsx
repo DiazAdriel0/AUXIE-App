@@ -56,7 +56,7 @@ const AboutUs = () => {
                 </div>
             </div>
             {/* ///cards/// */}
-            {/* los links no abren en new tab / arreglalo diosito  */}
+           
             <div className={style.cardcontainer}>
                 <div className={style.card}>
                     <center>
@@ -66,6 +66,7 @@ const AboutUs = () => {
                         <div className={style.Name}>
                             <p>Carlos Cornelio</p>
                         </div>
+                        <p>Front-End Developer</p>
                         <div className={style.socialbar}>
                             <a
                                 id="github"
@@ -121,6 +122,19 @@ const AboutUs = () => {
                                     <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
                                 </svg>
                             </a>
+                            <a
+                                 id="Instagram"
+                                 href="https://www.instagram.com/lucawolfp/"
+                                 target="_blank" 
+                                 rel="noopener noreferrer"
+                                 >
+                            <svg xmlns="http://www.w3.org/2000/svg"  width="19" height="19" viewBox="0 0 21 21" strokeWidth="1.5" stroke="black" fill="none" strokeLinecap="round" strokeLinejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+  <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M16.5 7.5l0 .01" />
+</svg>
+                            </a>
                         </div>
                     </center>
                 </div>
@@ -132,6 +146,7 @@ const AboutUs = () => {
                         <div className={style.Name}>
                             <p>Joshua Candia</p>
                         </div>
+                        <p>Front-End Developer</p>
                         <div className={style.socialbar}>
                             <a
                                 id="github"
@@ -198,6 +213,7 @@ const AboutUs = () => {
                         <div className={style.Name}>
                             <p>Patricio Bonfigli</p>
                         </div>
+                        <p>Front-End Developer</p>
                         <div className={style.socialbar}>
                             <a
                                 id="github"
@@ -264,6 +280,7 @@ const AboutUs = () => {
                         <div className={style.Name}>
                             <p>Agustina Fernandez</p>
                         </div>
+                        <p>Front-End Developer</p>
                         <div className={style.socialbar}>
                             <a
                                 id="github"
@@ -331,6 +348,7 @@ const AboutUs = () => {
                         <div className={style.Name}>
                             <p>Adriel Diaz</p>
                         </div>
+                        <p>Back-End Developer</p>
                         <div className={style.socialbar}>
                             <a
                                 id="github"
@@ -397,6 +415,7 @@ const AboutUs = () => {
                         <div className={style.Name}>
                             <p>Francisco Junoy</p>
                         </div>
+                        <p>Back-End Developer</p>
                         <div className={style.socialbar}>
                             <a
                                 id="github"
@@ -452,6 +471,19 @@ const AboutUs = () => {
                                     <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
                                 </svg>
                             </a>
+                            <a
+                                 id="Instagram"
+                                 href="https://www.instagram.com/lataikeada"
+                                 target="_blank" 
+                                 rel="noopener noreferrer"
+                                 >
+                            <svg xmlns="http://www.w3.org/2000/svg"  width="19" height="19" viewBox="0 0 21 21" strokeWidth="1.5" stroke="black" fill="none" strokeLinecap="round" strokeLinejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+  <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+  <path d="M16.5 7.5l0 .01" />
+</svg>
+                            </a>
                         </div>
                     </center>
                 </div>
@@ -463,6 +495,7 @@ const AboutUs = () => {
                         <div className={style.Name}>
                             <p>Milagros Guzman</p>
                         </div>
+                        <p>Back-End Developer</p>
                         <div className={style.socialbar}>
                             <a
                                 id="github"
