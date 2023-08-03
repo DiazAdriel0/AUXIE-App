@@ -1,20 +1,25 @@
 import style from './navLanding.module.scss'
 
 // Hooks
-import { useState } from 'react'
+
 import { Link, useNavigate } from 'react-router-dom'
 
-const NavLanding = () => {
+const NavLanding = ({
+    setLogInMenu,
+    setRegisterMenu,
+    logInMenu,
+    registerMenu,
+}) => {
     const navigate = useNavigate()
 
-    const [logInMenu, setLogInMenu] = useState(false)
-    const [registerMenu, setRegisterMenu] = useState(false)
-
     const handlerLogIn = () => {
-        setLogInMenu(true)
+        if (registerMenu) setRegisterMenu(false)
+        setLogInMenu(!logInMenu)
     }
+
     const handlerRegister = () => {
-        setRegisterMenu(true)
+        if (logInMenu) setLogInMenu(false)
+        setRegisterMenu(!registerMenu)
     }
     const handlerChange = (event) => {
         const { value } = event.target
@@ -56,6 +61,7 @@ const NavLanding = () => {
                             <Link to={'/help'}>
                                 <p>Ayuda</p>
                             </Link>
+                            <Link to={'/home'}>Home</Link>
                         </li>
                     </ul>
                 </div>
@@ -75,7 +81,6 @@ const NavLanding = () => {
                     </li>
                 </ul>
             </div>
-            {logInMenu && <div className={style.logInMenu}>LogIn</div>}
         </nav>
     )
 }
