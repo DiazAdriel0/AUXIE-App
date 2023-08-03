@@ -10,7 +10,7 @@ const addFavProviders = async (consumerId, favorite) => {
 
         const updated = await Consumer.updateOne({_id:consumerId},{favoritesProviders:consumer.favoritesProviders})
 
-        if(updated.modifiedCount)return true
+        return updated.modifiedCount ? true : false
 
     } catch (error) {
         
