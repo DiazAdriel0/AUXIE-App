@@ -1,184 +1,202 @@
+.logInMenu {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+
+    z-index: 25;
+    overflow: hidden;
+    div {
+        z-index: 25;
+    }
+    .container {
+        background-color: var(--accent--terciary--color-light);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 100%;
+    }
+}
+.registerMenu {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+
+    z-index: 25;
+    overflow: hidden;
+    div {
+        z-index: 25;
+    }
+    .container {
+        background-color: var(--accent--terciary--color-light);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        width: 100%;
+        height: 100%;
+    }
+}
+.hiden {
+    section {
+        display: none;
+    }
+    footer {
+        display: none;
+    }
+}
 .landing {
     display: grid;
-}
 
-/* Estilos para la sección 1 (menuLogo) */
-.sectionMenu {
-    height: 75vh;
-}
-.menuLogo {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    margin: 2% 20% 5% 0;
-
-    .menuMain {
-        background-color: var(--secondary--color-light);
-        color: var(--primary--color--white);
-        width: 40%;
-        height: 40vh;
-        border: solid 2px black;
-        margin-top: 5%;
+    /* Estilos para la sección 1 (menuLogo) */
+    .sectionMenu {
+        z-index: 2;
+        height: 85vh;
     }
-    .buttonsMenuMain {
-        display: flex;
-        text-align: center;
-        height: 25%;
+    .menuLogo {
+        height: 100%;
 
-        .searchAuxie {
-            all: unset;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin: 2% 20% 5% 0;
+
+        .menuMain {
+            background-color: var(--secondary--color-light);
+            color: var(--primary--color--white);
+            width: 40%;
+            height: 40vh;
+            border: solid 2px black;
+            margin-top: 5%;
+        }
+        .buttonsMenuMain {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50%;
-            height: 100%;
-        }
-        .searchAuxie:hover {
-            background-color: var(--accent--primary--color-light);
-            cursor: pointer;
-        }
-        .turnAuxie {
-            all: unset;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50%;
-            height: 100%;
-        }
-        .turnAuxie:hover {
-            background-color: var(--accent--primary--color-light);
-            cursor: pointer;
-        }
-    }
-    .menuSearchAuxie {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-        align-items: center;
-    }
-    .menuTurnAuxie {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1rem;
-    }
-}
+            text-align: center;
+            height: 25%;
 
-/* Estilos para la sección 2 (slogan) */
-.slogan {
-    background-color: #b8dbd9;
-    display: flex;
-    flex-direction: column;
-
-    width: 100%;
-    height: 30vh;
-    .divSlogan {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: flex-start;
-        padding: 2% 0 0 10%;
-        gap: 20px;
-
-        h3 {
-            font-size: 30px;
+            .searchAuxie {
+                all: unset;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50%;
+                height: 100%;
+            }
+            .searchAuxie:hover {
+                background-color: var(--accent--primary--color-light);
+                cursor: pointer;
+            }
+            .turnAuxie {
+                all: unset;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50%;
+                height: 100%;
+            }
+            .turnAuxie:hover {
+                background-color: var(--accent--primary--color-light);
+                cursor: pointer;
+            }
         }
-        p {
-            font-size: 15px;
+        .menuSearchAuxie {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            align-items: center;
+        }
+        .menuTurnAuxie {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
         }
     }
-    .buttonSlogan {
-        width: 100px;
-        margin: 2% 0 0 10%;
-    }
-}
-/* Estilos para la sección 3 (cards) */
-.serviceCards {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10%;
-}
-/* Estilos para la sección 4 Auxies */
-.auxies {
-    height: 100vh;
-    background-color: var(--sixth--color-light);
-}
 
-/* Estilos para la sección 5 (landingFooter) */
-.landingFooter {
-    background-color: var(--accent--primary--color-light);
-    height: 100vh;
-    .divFooterTitle {
-        padding-top: 6%;
+    /* Estilos para la sección 2 (slogan) */
+    .slogan {
+        z-index: 3;
+        background-color: #b8dbd9;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+
+        width: 100%;
+        height: 30vh;
+        .divSlogan {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            padding: 2% 0 0 10%;
+            gap: 20px;
+
+            h3 {
+                font-size: 30px;
+            }
+            p {
+                font-size: 15px;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        .buttonSlogan {
+            width: 100px;
+            margin: 2% 0 0 10%;
+        }
+    }
+    /* Estilos para la sección 3 (cards) */
+    .serviceCards {
+        z-index: 4;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
         align-items: center;
         gap: 10%;
-        h3 {
-            font-size: 50px;
+    }
+    /* Estilos para la sección 4 Auxies */
+    .auxies {
+        z-index: 5;
+        height: 100vh;
+        background-color: var(--sixth--color-light);
+    }
+
+    /* Estilos para la sección 5 (landingFooter) */
+    .landingFooter {
+        z-index: 6;
+        background-color: var(--accent--primary--color-light);
+        height: 100vh;
+        .divFooterTitle {
+            padding-top: 6%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 10%;
+            h3 {
+                font-size: 50px;
+            }
+            h4 {
+                font-size: 35px;
+            }
         }
-        h4 {
-            font-size: 35px;
+        .divFooterImg {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .divCopy {
+            margin: 17% 0 0 5%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
         }
     }
-    .divFooterImg {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-    }
-    .divCopy {
-        margin: 17% 0 0 5%;
-        display: flex;
-        justify-content: flex-start;
-        align-items: flex-end;
-    }
-}
-
-/* Animations */
-@-webkit-keyframes slideInUp {
-    from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-        visibility: visible;
-    }
-
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-@keyframes slideInUp {
-    from {
-        -webkit-transform: translate3d(0, 100%, 0);
-        transform: translate3d(0, 100%, 0);
-        visibility: visible;
-    }
-
-    to {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-.slideInUp {
-    -webkit-animation-name: slideInUp;
-    animation-name: slideInUp;
-}
-
-.animated {
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
 }

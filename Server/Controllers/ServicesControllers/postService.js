@@ -1,6 +1,6 @@
 const Service = require('../../Models/service')
 
-const createService = async (name, category) => {
+const postService = async (name, category) => {
     try {
         const nameLower = name.toLowerCase()
         const categoryLower = category.toLowerCase()
@@ -24,4 +24,4 @@ const createService = async (name, category) => {
     }
 }
 
-module.exports = createService
+module.exports = postService
