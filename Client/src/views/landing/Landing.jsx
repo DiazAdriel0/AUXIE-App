@@ -16,14 +16,18 @@ import NavLanding from '../../components/nav-landing/NavLanding'
 const Landing = () => {
     //* First Intersection Observer
     const { ref: myRef, inView: myElementIsVisible } = useInView()
-    const [cardsAnimated, setCardsAnimated] = useState(false)
+
     //* Second Intersection Observer
     const { ref: myRef2, inView: mySecondElementIsVisible } = useInView()
-    const [secondCardsAnimated, setSecondCardsAnimated] = useState(false)
+
     //* Third Intersection Observer
     const { ref: myRef3, inView: myThirdElementIsVisible } = useInView()
-    const [footerAnimated, setFooterAnimated] = useState(false)
 
+    const [animationObserver, setAnimationObserver] = useState({
+        cardsAnimated: false,
+        secondCardsAnimated: false,
+        footerAnimated: false,
+    })
     //* Global State
     const services = useSelector((state) => state.services)
     const logOrRegView = useSelector((state) => state.logOrRegView)
@@ -32,17 +36,28 @@ const Landing = () => {
     const [menuChange, setMenuChange] = useState(true)
     const [logInMenu, setLogInMenu] = useState(false)
     const [registerMenu, setRegisterMenu] = useState(false)
-
+    console.log(myElementIsVisible)
+    console.log(animationObserver)
     //* useEffect animations
     useEffect(() => {
         if (myElementIsVisible) {
-            setCardsAnimated(true)
+            setAnimationObserver((prevAnimationObserver) => ({
+                ...prevAnimationObserver,
+                cardsAnimated: true,
+            }))
         }
-        if ((mySecondElementIsVisible, myThirdElementIsVisible)) {
-            setSecondCardsAnimated(true)
+        if (mySecondElementIsVisible) {
+            setAnimationObserver((prevAnimationObserver) => ({
+                ...prevAnimationObserver,
+                secondCardsAnimated: true,
+            }))
         }
+
         if (myThirdElementIsVisible) {
-            setFooterAnimated(true)
+            setAnimationObserver((prevAnimationObserver) => ({
+                ...prevAnimationObserver,
+                footerAnimated: true,
+            }))
         }
     }, [myElementIsVisible, mySecondElementIsVisible, myThirdElementIsVisible])
 
@@ -60,6 +75,8 @@ const Landing = () => {
             behavior: 'smooth',
         })
     }
+    const { cardsAnimated, secondCardsAnimated, footerAnimated } =
+        animationObserver
     return (
         <>
             <NavLanding
@@ -270,7 +287,7 @@ const Landing = () => {
                         animationInDuration={1000}
                     >
                         {/* Section Slogan */}
-                        <section className={style.slogan}>
+                        <section ref={myRef2} className={style.slogan}>
                             <div className={style.divSlogan}>
                                 <h3>Trabaja con nosotros y genera ganancias</h3>
                                 <p>
@@ -286,7 +303,7 @@ const Landing = () => {
                         </section>
 
                         {/* Section Auxies */}
-                        <section ref={myRef2} className={style.auxies}>
+                        <section className={style.auxies}>
                             <h3>Auxies Destacados</h3>
                             <div className={style.featuredAuxies}>
                                 <ul className={style.featuredlist}>
@@ -304,7 +321,16 @@ const Landing = () => {
                         </section>
                     </Animated>
                 ) : (
-                    <section ref={myRef2}></section>
+                    <>
+                        <section
+                            className={style.sloganNone}
+                            ref={myRef2}
+                        ></section>
+                        <section
+                            className={style.auxies}
+                            ref={myRef2}
+                        ></section>
+                    </>
                 )}
                 {/* Footer */}
                 {footerAnimated ? (
@@ -319,7 +345,10 @@ const Landing = () => {
                         </div>
                     </footer>
                 ) : (
-                    <footer ref={myRef3}></footer>
+                    <footer
+                        className={style.landingFooter}
+                        ref={myRef3}
+                    ></footer>
                 )}
             </main>
         </>
