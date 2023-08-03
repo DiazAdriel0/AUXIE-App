@@ -13,7 +13,7 @@ const deleteFavProvider = async (consumerId, providerId) => {
         
         const updated = await Consumer.updateOne({_id:consumerId},{favoritesProviders:filteredFavs})
 
-        return updated.modifiedCount ? true : false
+        return updated.modifiedCount ? consumer : false
 
     } catch (error) {
         return false

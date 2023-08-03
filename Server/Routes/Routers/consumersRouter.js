@@ -17,6 +17,6 @@ consumersRouter.post('/login', loginConsumer)
 consumersRouter.post('/', postConsumer)
 
 consumersRouter.delete('/:id', deleteConsumerById)
-consumersRouter.delete('/fav', deleteFavoriteProv)
+consumersRouter.delete('/delete/fav', deleteFavoriteProv)
 
 module.exports = consumersRouter
