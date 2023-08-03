@@ -5,7 +5,7 @@ const deleteFavoriteProv = async (req, res)=>{
     try {
         const updated = await deleteFavProvider(consumerId, id)
 
-        return updated ? res.status(200).json('Actualizó con exito'+ updated) 
+        return updated ? res.status(200).json('Actualizó con exito') 
             : new Error ('Falla al actualizar')
 
 
