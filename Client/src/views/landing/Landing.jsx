@@ -3,9 +3,11 @@ import style from './landing.module.scss'
 //* Import Hooks
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
+
 import { getAllAuxies, getAllServices } from '../../redux/Actions/actions'
+
 //*Import Animations
 import { Animated } from 'react-animated-css'
 
@@ -30,6 +32,9 @@ const Landing = () => {
     const auxies = useSelector((state) => state.auxies)
     //* state for menu changes
     const [menuChange, setMenuChange] = useState(true)
+
+    const [logInMenu, setLogInMenu] = useState(false)
+    const [registerMenu, setRegisterMenu] = useState(false)
 
     //* use Effect to obtain data
 
@@ -56,11 +61,79 @@ const Landing = () => {
     }
 
     return (
-        <main className={style.landing}>
-            <NavLanding />
+        <main
+            className={
+                !logInMenu && !registerMenu ? style.landing : style.hiden
+            }
+        >
+            <NavLanding
+                logInMenu={logInMenu}
+                registerMenu={registerMenu}
+                setLogInMenu={setLogInMenu}
+                setRegisterMenu={setRegisterMenu}
+            />
+            {logInMenu ? (
+                <Animated
+                    animationIn="zoomIn"
+                    animationOut="zoomDown"
+                    animationInDuration={200}
+                >
+                    <div className={style.logInMenu}>
+                        <div className={style.container}>
+                            <button onClick={() => setLogInMenu()}>
+                                Cerrar
+                            </button>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <Link to={'/clientLogin'}>
+                                            Iniciar Sesion Como Cliente
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={'/auxieLogin'}>
+                                            Iniciar Sesion Como Auxie
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </Animated>
+            ) : null}
+            {registerMenu ? (
+                <Animated
+                    animationIn="zoomIn"
+                    animationOut="zoomDown"
+                    animationInDuration={200}
+                    isVisible={true}
+                >
+                    <div className={style.registerMenu}>
+                        <div className={style.container}>
+                            <button onClick={() => setRegisterMenu()}>
+                                Cerrar
+                            </button>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <Link to={'/clientform'}>
+                                            Registrarse Como Cliente
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={'/auxieform'}>
+                                            Registrarse Como Auxie
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </Animated>
+            ) : null}
             <Animated
-                animationIn="bounceInUp"
-                animationOut="bounceInDown"
+                animationIn="fadeIn"
+                animationOut="fadeOut"
                 animationInDuration={1000}
                 isVisible={true}
             >
@@ -126,10 +199,9 @@ const Landing = () => {
                 </section>
             </Animated>
             {/* Section Slogan */}
-
             <Animated
-                animationIn="bounceInUp"
-                animationOut="bounceInDown"
+                animationIn="slideInUp"
+                animationOut="fadeOut"
                 animationInDuration={1000}
                 isVisible={true}
             >
@@ -150,13 +222,12 @@ const Landing = () => {
                     <button className={style.buttonSlogan}>Contratar</button>
                 </section>
             </Animated>
-
             {/* Section Cards */}
             {cardsAnimated ? (
                 <div>
                     <Animated
-                        animationIn="bounceInUp"
-                        animationOut="bounceInDown"
+                        animationIn="slideInUp"
+                        animationOut="fadeOut"
                         animationInDuration={1000}
                         isVisible={true}
                     >
@@ -174,7 +245,6 @@ const Landing = () => {
                     <CardsServices />
                 </section>
             )}
-
             {/* Section Auxies */}
             {secondCardsAnimated ? (
                 <Animated
@@ -192,7 +262,6 @@ const Landing = () => {
                     <div className={style.filterBar}></div>
                 </section>
             )}
-
             {/* Footer */}
             <footer className={style.landingFooter}>
                 <div className={style.divFooterTitle}>
@@ -212,7 +281,6 @@ const Landing = () => {
                     <p>Copyright © 2023</p>
                 </div>
             </footer>
-            {/* <Cards /> */}
         </main>
     )
 }

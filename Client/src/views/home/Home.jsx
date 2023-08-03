@@ -1,5 +1,5 @@
 import style from './home.module.scss'
-import Cards from '../../components/Cards/cards'
+import Cards from '../../components/Cards/Cards'
 import Filters from '../../components/Filters/Filters'
 
 const Home = () => {
