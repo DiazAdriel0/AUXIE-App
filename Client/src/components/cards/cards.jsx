@@ -3,17 +3,10 @@ import style from './cards.module.scss'
 //* Components
 import Card from '../card/card'
 
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { getAllAuxies } from '../../redux/Actions/actions'
+import { useSelector } from 'react-redux'
 
 const Cards = () => {
-    const dispatch = useDispatch()
     const users = useSelector((state) => state.filteredAuxies)
-
-    useEffect(() => {
-        dispatch(getAllAuxies())
-    }, [])
 
     return (
         <div className={style.cards}>

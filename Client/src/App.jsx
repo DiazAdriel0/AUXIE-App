@@ -2,6 +2,11 @@
 import './App.scss'
 // Import Hooks
 import { Route, Routes } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+// Import Actions
+import { getAllAuxies, getAllServices } from './redux/Actions/actions'
 
 // Import Views
 import Landing from './views/landing/Landing'
@@ -18,7 +23,18 @@ import AuxieLogin from './views/Login/auxieLogin'
 import Offer from './views/offer/Offer'
 import HowItWorks from './views/howItWorks/HowItWorks'
 
+
 function App() {
+    const dispatch = useDispatch()
+    const auxies = useSelector((state) => state.auxies)
+    const services = useSelector((state) => state.services)
+
+      //* use Effect to obtain data
+
+      useEffect(() => {
+        if (!auxies.length) dispatch(getAllAuxies())
+        if (!services.length) dispatch(getAllServices())
+    }, [])
     return (
         <div>
             <Routes>

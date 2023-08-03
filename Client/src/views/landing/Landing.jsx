@@ -18,7 +18,6 @@ import NavLanding from '../../components/nav-landing/NavLanding'
 import skipper from '../../assets/skipper.webp'
 
 const Landing = () => {
-    const dispatch = useDispatch()
 
     //* First Intersection Observer
     const { ref: myRef, inView: myElementIsVisible } = useInView()
@@ -29,7 +28,6 @@ const Landing = () => {
 
     //* Global State
     const services = useSelector((state) => state.services)
-    const auxies = useSelector((state) => state.auxies)
     //* state for menu changes
     const [menuChange, setMenuChange] = useState(true)
 
@@ -42,6 +40,7 @@ const Landing = () => {
         if (!auxies.length) dispatch(getAllAuxies())
         if (!services.length) dispatch(getAllServices())
     }, [])
+
 
     // Use effect animations
     useEffect(() => {
