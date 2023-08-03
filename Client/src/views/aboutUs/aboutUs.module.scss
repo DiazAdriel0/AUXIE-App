@@ -8,7 +8,13 @@
         5px 5px 30px var(--sixth--color-light),
         -5px -5px 30px var(--sixth--color-light);
     margin: 1rem;
-
+img{
+    border-radius: 80%;
+    height: 7rem;
+    width: 7rem;
+    align-items: center;
+    justify-content: center;
+}
     center {
         display: flex;
         flex-direction: column;
@@ -23,10 +29,7 @@
             width: 100px;
             height: 100px;
 
-            .pfp {
-                border-radius: 35em;
-                fill: white;
-            }
+            
         }
 
         .Name {
@@ -55,6 +58,10 @@
             }
         }
     }
+    p {
+        // margin: 2rem;
+        font-size: 1rem;
+    }
 }
 .cardcontainer {
     display: flex;
@@ -63,23 +70,31 @@
     flex-wrap: wrap;
 }
 
+
 .aboutboxes {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     margin: 2rem;
     justify-content: center;
+}
 
-    .aboutbox {
-        background-color: var(--secondary--color-light);
+.aboutbox {
+    background-color: var(--secondary--color-light);
+    margin: 2rem;
+    max-width: 21rem;
+    height: 25rem;
+    padding: auto 1rem;
+    overflow: auto; /* Agregar esta propiedad para permitir el desplazamiento del contenido */
+
+    p {
         margin: 2rem;
-        max-width: 21rem;
-        height: 25rem;
-        padding: auto 1rem;
-
-        p {
-            margin: 2rem;
-            font-size: 0.9rem;
-        }
+        font-size: 0.8rem;
+    }
+}
+.about{
+  
+    h1{
+     text-align: center;
     }
 }
