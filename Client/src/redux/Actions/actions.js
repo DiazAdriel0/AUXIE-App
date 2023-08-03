@@ -65,7 +65,7 @@ export function filterAuxiesByService(service) {
                 payload: service,
             })
         } catch (e) {
-            console.log(e.response.data)
+            console.log(e)
         }
     }
 }
