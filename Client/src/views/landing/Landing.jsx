@@ -256,6 +256,7 @@ const Landing = () => {
                         </button>
                     </section>
                 </Animated>
+
                 {/* Section Cards */}
                 {cardsAnimated ? (
                     <div>
