@@ -25,12 +25,12 @@ const modifyConsumer = async (req)=>{
         const filledObject = Object.fromEntries(filledProperties)
         const consumer = await Consumer.updateOne({_id:id}, filledObject)
 
-        if (!consumer)throw new Error ('IdIncorrecto')
+        if(consumer.modifiedCount===0) throw new Error('No se pudo actualizar')
 
         return consumer
         
     } catch (error) {
-        return error
+        return false
     }
 }
 
