@@ -1,6 +1,6 @@
 const Service = require('../../Models/service')
 
-const getAllServices = async (/* serviceName, serviceCategory */) => {
+const getAllServices = async () => {
     try {
         const services = await Service.find({})
         if (services.length === 0) {
