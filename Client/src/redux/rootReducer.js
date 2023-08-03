@@ -35,7 +35,7 @@ function rootReducer(state = initialState, action) {
             if (action.payload.length === 0) {
                 return {
                     ...state,
-                    filteredAuxies: [...state.backupAuxies],
+                    filteredAuxies: [...state.auxies],
                     filter: action.payload,
                 }
             } else {
@@ -101,7 +101,12 @@ function rootReducer(state = initialState, action) {
                     if (prev.averageRating < next.averageRating) return -1
                     return 0
                 })
-                return { ...state, filteredAuxies: [...ascFilter] }
+                let ascAuxies = [...state.auxies].sort((prev, next) => {
+                    if (prev.averageRating > next.averageRating) return 1
+                    if (prev.averageRating < next.averageRating) return -1
+                    return 0
+                })
+                return { ...state, filteredAuxies: [...ascFilter], auxies: [...ascAuxies] }
             } else if (action.payload === 'desc') {
                 let descFilter = [...state.filteredAuxies].sort(
                     (prev, next) => {
@@ -110,7 +115,14 @@ function rootReducer(state = initialState, action) {
                         return 0
                     }
                 )
-                return { ...state, filteredAuxies: [...descFilter] }
+                let ascAuxies = [...state.filteredAuxies].sort(
+                    (prev, next) => {
+                        if (prev.averageRating > next.averageRating) return -1
+                        if (prev.averageRating < next.averageRating) return 1
+                        return 0
+                    }
+                )
+                return { ...state, filteredAuxies: [...descFilter], auxies: [...ascAuxies] }
             } else {
                 return { ...state }
             }

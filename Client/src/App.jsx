@@ -47,7 +47,7 @@ function App() {
 
                 <Route path="/help" element={<Help />} />
                 <Route path="/home" element={<Home />} />
-                <Route path="/detail" element={<Detail />} />
+                <Route path="/detail/:id" element={<Detail />} />
 
                 {/* Register paths */}
                 <Route path="/auxieform" element={<Form />} />

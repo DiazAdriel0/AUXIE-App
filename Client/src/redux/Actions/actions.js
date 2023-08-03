@@ -19,7 +19,7 @@ export function getAllAuxies() {
                 payload: res.data,
             })
         } catch (e) {
-            console.log(e)
+            console.log(e.response.data)
         }
     }
 }
@@ -35,24 +35,23 @@ export function getAllServices() {
                 payload: res.data,
             })
         } catch (e) {
-            console.log(e)
+            console.log(e.response.data)
         }
     }
 }
 
-//action que pide un auxie especifico por id del back (reemplazar URL)
-export function getDetails() {
+export function getDetails(id) {
     return async function (dispatch) {
         try {
             const res = await axios(
-                'https://run.mocky.io/v3/28f92212-bec6-49bf-b9cb-034610f93603'
+                `http://localhost:3001/providers/${id}`
             )
             return dispatch({
                 type: GET_AUXIE_DETAILS,
                 payload: res.data,
             })
         } catch (e) {
-            console.log(e)
+            console.log(e.response.data)
         }
     }
 }
@@ -65,7 +64,7 @@ export function filterAuxiesByService(service) {
                 payload: service,
             })
         } catch (e) {
-            console.log(e)
+            console.log(e.response.data)
         }
     }
 }
@@ -78,7 +77,7 @@ export function orderAuxiesByPrice(order) {
                 payload: order,
             })
         } catch (e) {
-            console.log(e)
+            console.log(e.response.data)
         }
     }
 }
@@ -90,7 +89,7 @@ export function orderAuxiesByRating(order) {
                 payload: order,
             })
         } catch (e) {
-            console.log(e)
+            console.log(e.response.data)
         }
     }
 }
