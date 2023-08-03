@@ -6,13 +6,14 @@ const getConsumerById = require('../../Handlers/ConsumersHandlers/getConsumerByI
 const getAllConsumers = require('../../Handlers/ConsumersHandlers/getAllConsumers')
 const updateConsumer = require('../../Handlers/ConsumersHandlers/updateConsumer')
 const deleteFavoriteProv = require ('../../Handlers/ConsumersHandlers/deleteFavoriteProv')
+const favoriteProviders = require('../../Handlers/ConsumersHandlers/favoriteProviders')
 const consumersRouter = Router()
 
 consumersRouter.get('/', getAllConsumers)
 consumersRouter.get('/:id', getConsumerById)
 
 consumersRouter.put('/profile',updateConsumer)
-
+consumersRouter.put('/fav', favoriteProviders)
 consumersRouter.post('/login', loginConsumer)
 consumersRouter.post('/', postConsumer)
 
