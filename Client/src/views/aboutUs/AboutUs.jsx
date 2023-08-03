@@ -1,13 +1,17 @@
+
 import NavLanding from '../../components/nav-landing/NavLanding'
+
 import style from './aboutUs.module.scss'
 
 const AboutUs = () => {
     return (
         <div>
+
             <NavLanding />
             <div className={style.about}>
                 <h1>Todo sobre Auxie</h1>
             </div>
+
             <div className={style.aboutboxes}>
                 <div className={style.aboutbox}>
                     <p>
@@ -56,6 +60,7 @@ const AboutUs = () => {
                 </div>
             </div>
             {/* ///cards/// */}
+
            
             <div className={style.cardcontainer}>
                 <div className={style.card}>
@@ -136,10 +141,12 @@ const AboutUs = () => {
 </svg>
                             </a>
                         </div>
+
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
+
                         <div className={style.profileimage}>
                             <img src="https://i.imgur.com/S96s5db.png" />
                         </div>
@@ -203,10 +210,12 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                         </div>
+
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
+
                         <div className={style.profileimage}>
                             <img src="https://i.imgur.com/3MwZD03.png" />
                         </div>
@@ -270,10 +279,12 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                         </div>
+
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
+
                         <div className={style.profileimage}>
                             <img src=" https://i.imgur.com/7mvXvFv.png" />
                         </div>
@@ -337,11 +348,13 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                         </div>
+
                     </center>
                 </div>
 
                 <div className={style.card}>
                     <center>
+
                         <div className={style.profileimage}>
                             <img src="https://i.imgur.com/ZK2LE4a.png" />
                         </div>
@@ -405,10 +418,12 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                         </div>
+
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
+
                         <div className={style.profileimage}>
                             <img src="https://media.licdn.com/dms/image/D4D03AQHqV89liyFm5Q/profile-displayphoto-shrink_400_400/0/1689292250480?e=1696464000&v=beta&t=MDddJDbobF6U5O75F7UxF1_zf1Sco8SMxMsD-J1tMuA" />
                         </div>
@@ -485,10 +500,12 @@ const AboutUs = () => {
 </svg>
                             </a>
                         </div>
+
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
+
                         <div className={style.profileimage}>
                             <img src="https://i.imgur.com/31EqzWi.png" />
                         </div>
@@ -552,6 +569,7 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                         </div>
+
                     </center>
                 </div>
             </div>
