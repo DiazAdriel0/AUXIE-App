@@ -25,7 +25,7 @@ import HomeConsumer from './views/home/home-consumer/HomeConsumer'
 //Forms
 import Form from './views/forms/auxie-form/auxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
-import ComplainForm from './views/forms/ComplainForm'
+import ComplainForm from './views/forms/complain-form/ComplainForm'
 
 // Logins
 import ClientLogin from './views/Login/consumer-login/clientLogin'

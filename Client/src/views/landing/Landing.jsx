@@ -20,27 +20,31 @@ const Landing = () => {
     //* Second Intersection Observer
     const { ref: myRef2, inView: mySecondElementIsVisible } = useInView()
     const [secondCardsAnimated, setSecondCardsAnimated] = useState(false)
+    //* Third Intersection Observer
+    const { ref: myRef3, inView: myThirdElementIsVisible } = useInView()
+    const [footerAnimated, setFooterAnimated] = useState(false)
 
     //* Global State
     const services = useSelector((state) => state.services)
     const logOrRegView = useSelector((state) => state.logOrRegView)
-    //* state for menu changes
-    const [menuChange, setMenuChange] = useState(true)
 
+    //* state for changes
+    const [menuChange, setMenuChange] = useState(true)
     const [logInMenu, setLogInMenu] = useState(false)
     const [registerMenu, setRegisterMenu] = useState(false)
 
-    //* use Effect to obtain data
-
-    // Use effect animations
+    //* useEffect animations
     useEffect(() => {
         if (myElementIsVisible) {
             setCardsAnimated(true)
         }
-        if (mySecondElementIsVisible) {
+        if ((mySecondElementIsVisible, myThirdElementIsVisible)) {
             setSecondCardsAnimated(true)
         }
-    }, [myElementIsVisible, mySecondElementIsVisible])
+        if (myThirdElementIsVisible) {
+            setFooterAnimated(true)
+        }
+    }, [myElementIsVisible, mySecondElementIsVisible, myThirdElementIsVisible])
 
     const handlerMenuSearchAuxie = () => {
         setMenuChange(true)
@@ -49,6 +53,13 @@ const Landing = () => {
         setMenuChange(false)
     }
 
+    const handleButtonUp = () => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        })
+    }
     return (
         <>
             <NavLanding
@@ -57,6 +68,14 @@ const Landing = () => {
                 setLogInMenu={setLogInMenu}
                 setRegisterMenu={setRegisterMenu}
             />
+
+            {myElementIsVisible ||
+            mySecondElementIsVisible ||
+            myThirdElementIsVisible ? (
+                <div className={style.buttonUp}>
+                    <button onClick={handleButtonUp}>SUBIR</button>
+                </div>
+            ) : null}
             <main
                 className={
                     !logInMenu && !registerMenu ? style.landing : style.hiden
@@ -249,7 +268,6 @@ const Landing = () => {
                         animationIn="slideInUp"
                         animationOut="fadeOut"
                         animationInDuration={1000}
-                        isVisible={true}
                     >
                         {/* Section Slogan */}
                         <section className={style.slogan}>
@@ -289,16 +307,20 @@ const Landing = () => {
                     <section ref={myRef2}></section>
                 )}
                 {/* Footer */}
-                <footer className={style.landingFooter}>
-                    <div className={style.divFooterTitle}>
-                        <h3>AUXIE</h3>
-                        <h4>Creado con amor por </h4>
-                    </div>
-                    <div className={style.divFooterImg}></div>
-                    <div className={style.divCopy}>
-                        <p>Copyright © 2023</p>
-                    </div>
-                </footer>
+                {footerAnimated ? (
+                    <footer ref={myRef3} className={style.landingFooter}>
+                        <div className={style.divFooterTitle}>
+                            <h3>AUXIE</h3>
+                            <h4>Creado con amor por </h4>
+                        </div>
+                        <div className={style.divFooterImg}></div>
+                        <div className={style.divCopy}>
+                            <p>Copyright © 2023</p>
+                        </div>
+                    </footer>
+                ) : (
+                    <footer ref={myRef3}></footer>
+                )}
             </main>
         </>
     )
