@@ -139,6 +139,7 @@ const AboutUs = () => {
                 </div>
                 <div className={style.card}>
                     <center>
+                    <div className={style.cardfront}>
                         <div className={style.profileimage}>
                             <img src="https://media.licdn.com/dms/image/D4E03AQHcMdx0oFKtoA/profile-displayphoto-shrink_400_400/0/1690407183115?e=1696464000&v=beta&t=RQ4KpJ48pmfPcjFj-O5HkKLU3HYJOhiIyDtMLQOgZXI"></img>
                         </div>
@@ -229,10 +230,21 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                         </div>
+                        </div>
+                        <div className={style.cardback}>
+                            {/* Reemplaza el contenido con tu bio */}
+                            <p>
+                                Aquí va el contenido de tu bio. Puedes agregar
+                                más información sobre la persona o cualquier
+                                otro detalle que desees mostrar en el reverso de
+                                la tarjeta.
+                            </p>
+                        </div>
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
+                    <div className={style.cardfront}>
                         <div className={style.profileimage}>
                             <img src="https://i.imgur.com/S96s5db.png" />
                         </div>
@@ -296,10 +308,21 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                         </div>
+                        </div>
+                        <div className={style.cardback}>
+                            {/* Reemplaza el contenido con tu bio */}
+                            <p>
+                                Aquí va el contenido de tu bio. Puedes agregar
+                                más información sobre la persona o cualquier
+                                otro detalle que desees mostrar en el reverso de
+                                la tarjeta.
+                            </p>
+                        </div>
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
+                    <div className={style.cardfront}>
                         <div className={style.profileimage}>
                             <img src="https://i.imgur.com/3MwZD03.png" />
                         </div>
@@ -363,11 +386,22 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                         </div>
+                        </div>
+                        <div className={style.cardback}>
+                            {/* Reemplaza el contenido con tu bio */}
+                            <p>
+                                Aquí va el contenido de tu bio. Puedes agregar
+                                más información sobre la persona o cualquier
+                                otro detalle que desees mostrar en el reverso de
+                                la tarjeta.
+                            </p>
+                        </div>
                     </center>
                 </div>
 
                 <div className={style.card}>
                     <center>
+                    <div className={style.cardfront}>
                         <div className={style.profileimage}>
                             <img src="https://i.imgur.com/ZK2LE4a.png" />
                         </div>
@@ -431,10 +465,21 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                         </div>
+                        </div>
+                        <div className={style.cardback}>
+                            {/* Reemplaza el contenido con tu bio */}
+                            <p>
+                                Aquí va el contenido de tu bio. Puedes agregar
+                                más información sobre la persona o cualquier
+                                otro detalle que desees mostrar en el reverso de
+                                la tarjeta.
+                            </p>
+                        </div>
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
+                    <div className={style.cardfront}>
                         <div className={style.profileimage}>
                             <img src="https://media.licdn.com/dms/image/D4D03AQHqV89liyFm5Q/profile-displayphoto-shrink_400_400/0/1689292250480?e=1696464000&v=beta&t=MDddJDbobF6U5O75F7UxF1_zf1Sco8SMxMsD-J1tMuA" />
                         </div>
@@ -525,10 +570,21 @@ const AboutUs = () => {
                                 </svg>
                             </a>
                         </div>
+                        </div>
+                        <div className={style.cardback}>
+                            {/* Reemplaza el contenido con tu bio */}
+                            <p>
+                                Aquí va el contenido de tu bio. Puedes agregar
+                                más información sobre la persona o cualquier
+                                otro detalle que desees mostrar en el reverso de
+                                la tarjeta.
+                            </p>
+                        </div>
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
+                    <div className={style.cardfront}>
                         <div className={style.profileimage}>
                             <img src="https://i.imgur.com/31EqzWi.png" />
                         </div>
@@ -591,6 +647,16 @@ const AboutUs = () => {
                                     <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
                                 </svg>
                             </a>
+                        </div>
+                        </div>
+                        <div className={style.cardback}>
+                            {/* Reemplaza el contenido con tu bio */}
+                            <p>
+                                Aquí va el contenido de tu bio. Puedes agregar
+                                más información sobre la persona o cualquier
+                                otro detalle que desees mostrar en el reverso de
+                                la tarjeta.
+                            </p>
                         </div>
                     </center>
                 </div>

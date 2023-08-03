@@ -83,6 +83,10 @@
     /* Estilos para la cara trasera de la tarjeta */
     .cardback {
       transform: rotateY(180deg);
+      p {
+        margin: 2rem;
+        font-size: 0.8rem;
+      }
     }
   
     /* Mostrar la cara trasera al hacer hover */
