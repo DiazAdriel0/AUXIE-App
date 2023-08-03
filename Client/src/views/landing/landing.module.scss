@@ -54,9 +54,11 @@
     /* Estilos para la sección 1 (menuLogo) */
     .sectionMenu {
         z-index: 2;
-        height: 75vh;
+        height: 85vh;
     }
     .menuLogo {
+        height: 100%;
+
         display: flex;
         align-items: center;
         justify-content: flex-end;
