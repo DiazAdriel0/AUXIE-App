@@ -45,7 +45,7 @@ function rootReducer(state = initialState, action) {
                     [...state.auxies].filter((aux) =>
                         aux.services.some(
                             (serv) =>
-                                serv.service.toUpperCase() ===
+                                serv.name.toUpperCase() ===
                                 filter.toUpperCase()
                         )
                     )
@@ -66,12 +66,12 @@ function rootReducer(state = initialState, action) {
                         (prev, next) =>
                             prev.services.find(
                                 (obj) =>
-                                    obj.service.toLowerCase() ===
+                                    obj.name.toLowerCase() ===
                                     serviceFiltered.toLowerCase()
                             ).price -
                             next.services.find(
                                 (obj) =>
-                                    obj.service.toLowerCase() ===
+                                    obj.name.toLowerCase() ===
                                     serviceFiltered.toLowerCase()
                             ).price
                     )
@@ -81,12 +81,12 @@ function rootReducer(state = initialState, action) {
                         (prev, next) =>
                             next.services.find(
                                 (obj) =>
-                                    obj.service.toLowerCase() ===
+                                    obj.name.toLowerCase() ===
                                     serviceFiltered.toLowerCase()
                             ).price -
                             prev.services.find(
                                 (obj) =>
-                                    obj.service.toLowerCase() ===
+                                    obj.name.toLowerCase() ===
                                     serviceFiltered.toLowerCase()
                             ).price
                     )
@@ -117,7 +117,7 @@ function rootReducer(state = initialState, action) {
                         return 0
                     }
                 )
-                let ascAuxies = [...state.filteredAuxies].sort(
+                let ascAuxies = [...state.auxies].sort(
                     (prev, next) => {
                         if (prev.averageRating > next.averageRating) return -1
                         if (prev.averageRating < next.averageRating) return 1

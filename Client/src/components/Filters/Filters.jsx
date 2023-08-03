@@ -17,8 +17,9 @@ const Filters = () => {
     })
 
     const filterByService = (input) => {
-        dispatch(filterAuxiesByService(input.map(i => i.value)))
-        if (input.length === 1) setpriceOn(true)
+        const filterServices = input.map(i => i.value)
+        dispatch(filterAuxiesByService(filterServices))
+        if (filterServices.length === 1) setpriceOn(true)
         else setpriceOn(false)
     }
 
