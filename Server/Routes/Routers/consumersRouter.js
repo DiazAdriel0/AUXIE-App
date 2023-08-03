@@ -13,7 +13,7 @@ consumersRouter.get('/:id', getConsumerById)
 
 consumersRouter.put('/profile',updateConsumer)
 
-consumersRouter.post('/login', loginConsumer)
+consumersRouter.post('/login', loginConsumer)//aparece?
 consumersRouter.post('/', postConsumer)
 
 consumersRouter.delete('/:id', deleteConsumerById)
