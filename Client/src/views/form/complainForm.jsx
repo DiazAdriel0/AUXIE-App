@@ -1,13 +1,12 @@
 import style from './complainForm.module.scss'
+import React from 'react'
 
-
-const complainForm = () => {
+const ComplainForm = () => {
     return (
         <div className={style.claims}>
             <h1>RECLAMOS</h1>
-            <div>QUE VERGA LE PASAAAAAAAAAA</div>
         </div>
     )
 }
 
-export default complainForm
+export default ComplainForm
