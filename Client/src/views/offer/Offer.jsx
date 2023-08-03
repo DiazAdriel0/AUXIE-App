@@ -39,16 +39,16 @@ const Offer = () => {
                         <img src={FutureIcon} alt="Future Icon" style={{ width: '300px', height: '300px' }} />
                         <h4>
                             Te ayudamos a conectar con el AUXIE que mejor se
-                            adecue a tus necesidades
+                            adecue a vos
                         </h4>
                     </div>
                     <div>
-                        <h3>Servicio en el día</h3>
+                        <h3>Servicios en el día</h3>
                         <img src={ServicesIcon} alt="Services Icon" style={{ width: '300px', height: '300px' }}/>
                         <h4>Conoce a nuestros AUXIE instantaneos</h4>
                     </div>
                     <div>
-                        <h3>Trabaja cuando y con quien quieras</h3>
+                        <h3>Trabaja cuando quieras</h3>
                         <img src={ReviewsIcon} alt="Reviews Icon" style={{ width: '300px', height: '300px' }}/>
                         <h4>Crea una clientela fiel a través de la app</h4>
                     </div>
@@ -63,10 +63,10 @@ const Offer = () => {
                 <section className={style.Footer}>
                     <div className={style.Register}>
                         {/* ACA VAN BOTONES A LOS FORMULARIOS */}
-                        <h1>Quiero ser un AUXIE</h1> 
+                        <h1><Link to='auxieform'>Quiero ser un AUXIE</Link></h1> 
                     </div>
                     <div className={style.Register}>
-                        <h1>Necesito un AUXIE</h1>
+                        <h1><Link to='clientform'>Necesito un AUXIE</Link></h1>
                     </div>
                 </section>
             </div>

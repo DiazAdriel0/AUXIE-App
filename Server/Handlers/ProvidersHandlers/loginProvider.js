@@ -1,19 +1,19 @@
-const loginP = require('../../Controllers/ProvidersControllers/loginP')
+const matchProvider = require('../../Controllers/ProvidersControllers/matchProvider')
 
-const loginProvider = async (req, res)=>{
-    const {password, email} = req.body 
+const loginProvider = async (req, res) => {
+    const { password, email } = req.body
     try {
-        
-        const logedUser = await loginP(email, password)
+        const logedUser = await matchProvider(email, password)
 
-        if (logedUser === 'inexistente') throw new Error(`el correo: ${email} no está registrado`)
+        if (logedUser.message === 'inexistente')
+            throw new Error(`el correo: ${email} no está registrado`)
 
-        if (logedUser === 'wrongPassword') throw new Error('La contraseña es incorrecta')
+        if (logedUser.message === 'wrongPassword')
+            throw new Error('La contraseña es incorrecta')
 
         res.status(200).json(logedUser)
-
     } catch (error) {
-        res.status(400).json({error:error.message})
+        res.status(400).json({ error: error.message })
     }
 }
 

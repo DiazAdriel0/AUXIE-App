@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import style from './auxieform.module.scss'
 import { useValidations } from '../../utils/validationutils'
-
+import axios from 'axios'
 
 const Form = () => {
     const { errors, validate } = useValidations()
@@ -29,10 +29,25 @@ const Form = () => {
             event.target.name
         )
     }
+    const handlePost = async () => {
+        try {
+            const response = await axios.post(
+                'http://localhost:3001/providers/',
+                input
+            )
+
+            // setAccess(true)
+            console.log(response)
+            // navigate('/home')
+        } catch (error) {
+            console.log(error)
+            alert(error.message)
+        }
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-
+        handlePost()
         // dispatch(postPokemon(input))
         const form = document.getElementById('form')
         form.reset()
@@ -119,9 +134,10 @@ const Form = () => {
                         className={style.textInput}
                         placeholder="Username"
                         onChange={handleChange}
-                    ></input><div className={style.errors}>
-                    <p>{errors.username}</p>
-                </div>
+                    ></input>
+                    <div className={style.errors}>
+                        <p>{errors.username}</p>
+                    </div>
                 </div>
                 <div className={style.forminput}>
                     <label>Email: </label>

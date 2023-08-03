@@ -1,11 +1,13 @@
+import { Link } from 'react-router-dom';
 import style from './card.module.scss'
 
 const Card = (user) => {
-    const { lastName, firstName, averageRating, completedWorks, services } =
+    const { id, lastName, firstName, averageRating, completedWorks, services } =
         user
     let completeKey = 0
 
     return (
+        <Link to={`/detail/${id}`}>
         <div className={style.card}>
             <p>{firstName}</p>
             <p>{lastName}</p>
@@ -36,7 +38,7 @@ const Card = (user) => {
                 )
             })}
             <p>Average: {averageRating}</p>
-        </div>
+        </div></Link>
     )
 }
 
