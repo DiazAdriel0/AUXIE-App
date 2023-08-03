@@ -8,6 +8,8 @@ const updateOfferedServices = async (req, res) => {
         if (updatedProvider.message === 'sin cambios')
             throw new Error('No se realizaron cambios en los servicios')
 
+        // Agregar controller que updatea servicios cuando esté creado
+
         res.status(200).json('Servicios vinculados')
     } catch (error) {
         res.status(400).json({ error: error.message })
