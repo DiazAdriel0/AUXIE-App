@@ -6,6 +6,7 @@ const loginProvider = require('../../Handlers/ProvidersHandlers/loginProvider')
 const getProviderById = require('./../../Handlers/ProvidersHandlers/getProviderById')
 const updateProvider = require('./../../Handlers/ProvidersHandlers/updateProvider')
 const updateOfferedServices = require('./../../Handlers/ProvidersHandlers/updateOfferedServices')
+const updateProviderReviews = require('./../../Handlers/ProvidersHandlers/updateProviderReviews')
 
 const providersRouter = Router()
 
@@ -14,6 +15,7 @@ providersRouter.get('/:id', getProviderById)
 
 providersRouter.put('/profile', updateProvider)
 providersRouter.put('/services', updateOfferedServices)
+providersRouter.put('/reviews', updateProviderReviews)
 
 providersRouter.post('/', postProvider)
 providersRouter.post('/login', loginProvider)
