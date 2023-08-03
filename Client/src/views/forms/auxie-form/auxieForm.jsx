@@ -1,9 +1,9 @@
-import style from './clientform.module.scss'
 import { useState } from 'react'
-import { useValidations } from '../../utils/validationutils'
+import style from './auxieform.module.scss'
+import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 
-const ClientForm = () => {
+const Form = () => {
     const { errors, validate } = useValidations()
 
     const [input, setInput] = useState({
@@ -32,7 +32,7 @@ const ClientForm = () => {
     const handlePost = async () => {
         try {
             const response = await axios.post(
-                'http://localhost:3001/consumers/',
+                'http://localhost:3001/providers/',
                 input
             )
 
@@ -83,7 +83,7 @@ const ClientForm = () => {
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
-                <h1>Bienvenido a Auxie! Completa tu registro ahora!</h1>
+                <h1>Bienvenido futuro Auxie! Completa tu registro ahora</h1>
             </div>
             <form id="form" onSubmit={handleSubmit}>
                 <div className={style.forminput}>
@@ -174,4 +174,4 @@ const ClientForm = () => {
     )
 }
 
-export default ClientForm
+export default Form

@@ -9,30 +9,39 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getAllAuxies, getAllServices } from './redux/Actions/actions'
 
 // Import Views
-import Landing from './views/landing/Landing'
-import Home from './views/home/Home'
-import Detail from './views/detail/Detail'
-import Form from './views/form/auxieForm'
-import PageNotFound from './views/page-not-found/PageNotFound'
-import AboutUs from './views/aboutUs/AboutUs'
-import Guarantee from './views/guarantee/Guarantee'
-import Help from './views/help/Help'
-import ClientForm from './views/form/clientForm'
-import ClientLogin from './views/Login/clientLogin'
-import AuxieLogin from './views/Login/auxieLogin'
-import Offer from './views/offer/Offer'
-import HowItWorks from './views/howItWorks/HowItWorks'
-import ComplainForm from './views/form/ComplainForm'
 
+//Landing Views
+import Landing from './views/landing/Landing'
+import AboutUs from './views/landingViews/aboutUs/AboutUs'
+import Guarantee from './views/landingViews/guarantee/Guarantee'
+import Help from './views/landingViews/help/Help'
+import HowItWorks from './views/landingViews/howItWorks/HowItWorks'
+import Offer from './views/landingViews/offer/Offer'
+
+// Home Views
+import HomeAuxie from './views/home/home-auxie/HomeAuxie'
+import HomeConsumer from './views/home/home-consumer/HomeConsumer'
+
+//Forms
+import Form from './views/forms/auxie-form/auxieForm'
+import ClientForm from './views/forms/client-form/ClientForm'
+import ComplainForm from './views/forms/ComplainForm'
+
+// Logins
+import ClientLogin from './views/Login/consumer-login/clientLogin'
+import AuxieLogin from './views/Login/auxie-login/auxieLogin'
+
+import Detail from './views/detail/Detail'
+import PageNotFound from './views/page-not-found/PageNotFound'
 
 function App() {
     const dispatch = useDispatch()
     const auxies = useSelector((state) => state.auxies)
     const services = useSelector((state) => state.services)
 
-      //* use Effect to obtain data
+    //* use Effect to obtain data
 
-      useEffect(() => {
+    useEffect(() => {
         if (!auxies.length) dispatch(getAllAuxies())
         if (!services.length) dispatch(getAllServices())
     }, [])
@@ -45,10 +54,11 @@ function App() {
                 <Route path="/guarantee" element={<Guarantee />} />
                 <Route path="/offer" element={<Offer />} />
                 <Route path="/howItWorks" element={<HowItWorks />} />
-                <Route path="/complain" element={<ComplainForm />}/>
+                <Route path="/complain" element={<ComplainForm />} />
 
                 <Route path="/help" element={<Help />} />
-                <Route path="/home" element={<Home />} />
+                <Route path="/homeconsumer" element={<HomeConsumer />} />
+                <Route path="/homeauxie" element={<HomeAuxie />} />
                 <Route path="/detail/:id" element={<Detail />} />
 
                 {/* Register paths */}
