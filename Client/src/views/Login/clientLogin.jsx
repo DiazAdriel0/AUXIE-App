@@ -15,7 +15,6 @@ const ClientLogin = () => {
     })
 
     const handleChange = (event) => {
-        console.log(event)
         setInput({
             ...input,
             [event.target.name]: event.target.value,
@@ -33,16 +32,14 @@ const ClientLogin = () => {
     const handleLogin = async () => {
         try {
             const response = await axios.post(
-                'http://localhost:3001/providers/login',
+                'http://localhost:3001/consumers/login',
                 input
             )
             if (response) {
                 setAccess(true)
             }
-
-            console.log(response)
         } catch (error) {
-            console.log(error + error.response.data.error)
+            console.error('error: ' + error.response.data.error)
             alert(error.response.data.error)
         }
     }

@@ -4,9 +4,7 @@ import style from './landing.module.scss'
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Link } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-
-import { getAllAuxies, getAllServices } from '../../redux/Actions/actions'
+import { useSelector } from 'react-redux'
 
 //*Import Animations
 import { Animated } from 'react-animated-css'
@@ -18,7 +16,6 @@ import NavLanding from '../../components/nav-landing/NavLanding'
 import skipper from '../../assets/skipper.webp'
 
 const Landing = () => {
-
     //* First Intersection Observer
     const { ref: myRef, inView: myElementIsVisible } = useInView()
     const [cardsAnimated, setCardsAnimated] = useState(false)
@@ -35,12 +32,6 @@ const Landing = () => {
     const [registerMenu, setRegisterMenu] = useState(false)
 
     //* use Effect to obtain data
-
-    useEffect(() => {
-        if (!auxies.length) dispatch(getAllAuxies())
-        if (!services.length) dispatch(getAllServices())
-    }, [])
-
 
     // Use effect animations
     useEffect(() => {
