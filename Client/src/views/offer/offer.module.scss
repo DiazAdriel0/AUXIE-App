@@ -1,14 +1,22 @@
 .layout {
-    width: 1500px;
-    height: 900px;
-
+    width: 100%;
     display: flex;
     flex-direction: row;
-    gap: 10px 30px;
+    gap: 30px 30px;
     flex-wrap: wrap;
     flex-flow: column wrap;
-    justify-content:space-around;
-    align-items: baseline;
+    align-items: last baseline;
+    justify-content: center;
+    height: 100vh; 
+    position:relative;
+
+    div{
+      width: 25%;
+    }
+    
+    h3{
+        font-size: 30px;
+    }
   }
 
   .Footer {
@@ -45,6 +53,11 @@
 
     h3{
         font-size: x-large;
+    }
+
+    button{
+      color:black;
+
     }
   }
 
