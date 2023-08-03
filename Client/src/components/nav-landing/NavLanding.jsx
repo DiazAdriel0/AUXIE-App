@@ -83,7 +83,6 @@ const NavLanding = ({
                             <Link to={'/help'}>
                                 <p>Ayuda</p>
                             </Link>
-                            <Link to={'/home'}>Home</Link>
                         </li>
                     </ul>
                 </div>
