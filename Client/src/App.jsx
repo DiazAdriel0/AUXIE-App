@@ -17,7 +17,7 @@ import ClientLogin from './views/Login/clientLogin'
 import AuxieLogin from './views/Login/auxieLogin'
 import Offer from './views/offer/Offer'
 import HowItWorks from './views/howItWorks/HowItWorks'
-import complainForm from './views/form/complainForm'
+import ComplainForm from './views/form/ComplainForm'
 
 function App() {
     return (
@@ -29,7 +29,7 @@ function App() {
                 <Route path="/guarantee" element={<Guarantee />} />
                 <Route path="/offer" element={<Offer />} />
                 <Route path="/howItWorks" element={<HowItWorks />} />
-                <Route path="/complain" element={<complainForm />}/>
+                <Route path="/complain" element={<ComplainForm />}/>
 
                 <Route path="/help" element={<Help />} />
                 <Route path="/home" element={<Home />} />
