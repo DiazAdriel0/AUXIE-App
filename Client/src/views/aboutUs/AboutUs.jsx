@@ -6,8 +6,8 @@ const AboutUs = () => {
         <div>
             <NavLanding />
             <div className={style.about}>
-            <h1>Todo sobre Auxie</h1>
-</div>
+                <h1>Todo sobre Auxie</h1>
+            </div>
             <div className={style.aboutboxes}>
                 <div className={style.aboutbox}>
                     <p>
@@ -56,6 +56,7 @@ const AboutUs = () => {
                 </div>
             </div>
             {/* ///cards/// */}
+            {/* los links no abren en new tab / arreglalo diosito  */}
             <div className={style.cardcontainer}>
                 <div className={style.card}>
                     <center>
@@ -66,45 +67,237 @@ const AboutUs = () => {
                             <p>Carlos Cornelio</p>
                         </div>
                         <div className={style.socialbar}>
-                        <a id="github" href="https://github.com/CACornelio">
-  <svg viewBox="0 0 16 16" className="bi bi-github" fill="black" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
-    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-  </svg>
-</a>
+                            <a id="github" href="https://github.com/CACornelio">
+                                <svg
+                                    viewBox="0 0 16 16"
+                                    className="bi bi-github"
+                                    fill="black"
+                                    height="16"
+                                    width="16"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                </svg>
+                            </a>
+                            <a
+                                id="linkedIn"
+                                href="https://www.linkedin.com/in/carlos-cornelio-0b44b6162/"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="icon icon-tabler icon-tabler-brand-linkedin"
+                                    width="19"
+                                    height="19"
+                                    viewBox="0 0 22 20"
+                                    strokeWidth="2"
+                                    stroke="black"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    {' '}
+                                    <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                    />{' '}
+                                    <rect
+                                        x="4"
+                                        y="4"
+                                        width="16"
+                                        height="16"
+                                        rx="2"
+                                    />{' '}
+                                    <line x1="8" y1="11" x2="8" y2="16" />{' '}
+                                    <line x1="8" y1="8" x2="8" y2="8.01" />{' '}
+                                    <line x1="12" y1="16" x2="12" y2="11" />{' '}
+                                    <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
+                                </svg>
+                            </a>
                         </div>
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
                         <div className={style.profileimage}>
-                        <img src="https://i.imgur.com/S96s5db.png" />
+                            <img src="https://i.imgur.com/S96s5db.png" />
                         </div>
                         <div className={style.Name}>
                             <p>Joshua Candia</p>
                         </div>
-                        <div className={style.socialbar}></div>
+                        <div className={style.socialbar}>
+                            <a
+                                id="github"
+                                href="https://github.com/JoshuaCandia"
+                            >
+                                <svg
+                                    viewBox="0 0 16 16"
+                                    className="bi bi-github"
+                                    fill="black"
+                                    height="16"
+                                    width="16"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                </svg>
+                            </a>
+                            <a
+                                id="linkedIn"
+                                href="https://www.linkedin.com/in/bonfiglipatricio-1209/"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="icon icon-tabler icon-tabler-brand-linkedin"
+                                    width="19"
+                                    height="19"
+                                    viewBox="0 0 22 20"
+                                    strokeWidth="2"
+                                    stroke="black"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    {' '}
+                                    <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                    />{' '}
+                                    <rect
+                                        x="4"
+                                        y="4"
+                                        width="16"
+                                        height="16"
+                                        rx="2"
+                                    />{' '}
+                                    <line x1="8" y1="11" x2="8" y2="16" />{' '}
+                                    <line x1="8" y1="8" x2="8" y2="8.01" />{' '}
+                                    <line x1="12" y1="16" x2="12" y2="11" />{' '}
+                                    <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
+                                </svg>
+                            </a>
+                        </div>
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
                         <div className={style.profileimage}>
-                        <img src="https://i.imgur.com/3MwZD03.png" />
+                            <img src="https://i.imgur.com/3MwZD03.png" />
                         </div>
                         <div className={style.Name}>
                             <p>Patricio Bonfigli</p>
                         </div>
-                        <div className={style.socialbar}></div>
+                        <div className={style.socialbar}>
+                            <a id="github" href="https://github.com/BonPato98">
+                                <svg
+                                    viewBox="0 0 16 16"
+                                    className="bi bi-github"
+                                    fill="black"
+                                    height="16"
+                                    width="16"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                </svg>
+                            </a>
+                            <a
+                                id="linkedIn"
+                                href="https://www.linkedin.com/in/bonfiglipatricio-1209/"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="icon icon-tabler icon-tabler-brand-linkedin"
+                                    width="19"
+                                    height="19"
+                                    viewBox="0 0 22 20"
+                                    strokeWidth="2"
+                                    stroke="black"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    {' '}
+                                    <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                    />{' '}
+                                    <rect
+                                        x="4"
+                                        y="4"
+                                        width="16"
+                                        height="16"
+                                        rx="2"
+                                    />{' '}
+                                    <line x1="8" y1="11" x2="8" y2="16" />{' '}
+                                    <line x1="8" y1="8" x2="8" y2="8.01" />{' '}
+                                    <line x1="12" y1="16" x2="12" y2="11" />{' '}
+                                    <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
+                                </svg>
+                            </a>
+                        </div>
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
                         <div className={style.profileimage}>
-                        <img src=" https://i.imgur.com/7mvXvFv.png" />
+                            <img src=" https://i.imgur.com/7mvXvFv.png" />
                         </div>
                         <div className={style.Name}>
                             <p>Agustina Fernandez</p>
                         </div>
-                        <div className={style.socialbar}></div>
+                        <div className={style.socialbar}>
+                            <a
+                                id="github"
+                                href="https://github.com/AgustinaFernandez01"
+                            >
+                                <svg
+                                    viewBox="0 0 16 16"
+                                    className="bi bi-github"
+                                    fill="black"
+                                    height="16"
+                                    width="16"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                </svg>
+                            </a>
+                            <a
+                                id="linkedIn"
+                                href="https://www.linkedin.com/in/agustina-fern%C3%A1ndez-138b67272/"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="icon icon-tabler icon-tabler-brand-linkedin"
+                                    width="19"
+                                    height="19"
+                                    viewBox="0 0 22 20"
+                                    strokeWidth="2"
+                                    stroke="black"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    {' '}
+                                    <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                    />{' '}
+                                    <rect
+                                        x="4"
+                                        y="4"
+                                        width="16"
+                                        height="16"
+                                        rx="2"
+                                    />{' '}
+                                    <line x1="8" y1="11" x2="8" y2="16" />{' '}
+                                    <line x1="8" y1="8" x2="8" y2="8.01" />{' '}
+                                    <line x1="12" y1="16" x2="12" y2="11" />{' '}
+                                    <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
+                                </svg>
+                            </a>
+                        </div>
                     </center>
                 </div>
 
@@ -116,7 +309,58 @@ const AboutUs = () => {
                         <div className={style.Name}>
                             <p>Adriel Diaz</p>
                         </div>
-                        <div className={style.socialbar}></div>
+                        <div className={style.socialbar}>
+                            <a
+                                id="github"
+                                href="https://github.com/DiazAdriel0"
+                            >
+                                <svg
+                                    viewBox="0 0 16 16"
+                                    className="bi bi-github"
+                                    fill="black"
+                                    height="16"
+                                    width="16"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                </svg>
+                            </a>
+                            <a
+                                id="linkedIn"
+                                href="https://www.linkedin.com/in/adriel-n-diaz/"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="icon icon-tabler icon-tabler-brand-linkedin"
+                                    width="19"
+                                    height="19"
+                                    viewBox="0 0 22 20"
+                                    strokeWidth="2"
+                                    stroke="black"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    {' '}
+                                    <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                    />{' '}
+                                    <rect
+                                        x="4"
+                                        y="4"
+                                        width="16"
+                                        height="16"
+                                        rx="2"
+                                    />{' '}
+                                    <line x1="8" y1="11" x2="8" y2="16" />{' '}
+                                    <line x1="8" y1="8" x2="8" y2="8.01" />{' '}
+                                    <line x1="12" y1="16" x2="12" y2="11" />{' '}
+                                    <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
+                                </svg>
+                            </a>
+                        </div>
                     </center>
                 </div>
                 <div className={style.card}>
@@ -127,18 +371,117 @@ const AboutUs = () => {
                         <div className={style.Name}>
                             <p>Francisco Junoy</p>
                         </div>
-                        <div className={style.socialbar}></div>
+                        <div className={style.socialbar}>
+                            <a id="github" href="https://github.com/franjunoy">
+                                <svg
+                                    viewBox="0 0 16 16"
+                                    className="bi bi-github"
+                                    fill="black"
+                                    height="16"
+                                    width="16"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                </svg>
+                            </a>
+                            <a
+                                id="linkedIn"
+                                href="https://www.linkedin.com/in/francisco-junoy-28a981225/"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="icon icon-tabler icon-tabler-brand-linkedin"
+                                    width="19"
+                                    height="19"
+                                    viewBox="0 0 22 20"
+                                    strokeWidth="2"
+                                    stroke="black"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    {' '}
+                                    <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                    />{' '}
+                                    <rect
+                                        x="4"
+                                        y="4"
+                                        width="16"
+                                        height="16"
+                                        rx="2"
+                                    />{' '}
+                                    <line x1="8" y1="11" x2="8" y2="16" />{' '}
+                                    <line x1="8" y1="8" x2="8" y2="8.01" />{' '}
+                                    <line x1="12" y1="16" x2="12" y2="11" />{' '}
+                                    <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
+                                </svg>
+                            </a>
+                        </div>
                     </center>
                 </div>
                 <div className={style.card}>
                     <center>
                         <div className={style.profileimage}>
-                        <img src="https://i.imgur.com/31EqzWi.png" />
+                            <img src="https://i.imgur.com/31EqzWi.png" />
                         </div>
                         <div className={style.Name}>
                             <p>Milagros Guzman</p>
                         </div>
-                        <div className={style.socialbar}></div>
+                        <div className={style.socialbar}>
+                            <a
+                                id="github"
+                                href="https://github.com/Milagrosgzmn"
+                            >
+                                <svg
+                                    viewBox="0 0 16 16"
+                                    className="bi bi-github"
+                                    fill="black"
+                                    height="16"
+                                    width="16"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                                </svg>
+                            </a>
+                            <a
+                                id="linkedIn"
+                                href="https://www.linkedin.com/in/milagros-guzman-abarca-369bbb250/"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="icon icon-tabler icon-tabler-brand-linkedin"
+                                    width="19"
+                                    height="19"
+                                    viewBox="0 0 22 20"
+                                    strokeWidth="2"
+                                    stroke="black"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    {' '}
+                                    <path
+                                        stroke="none"
+                                        d="M0 0h24v24H0z"
+                                        fill="none"
+                                    />{' '}
+                                    <rect
+                                        x="4"
+                                        y="4"
+                                        width="16"
+                                        height="16"
+                                        rx="2"
+                                    />{' '}
+                                    <line x1="8" y1="11" x2="8" y2="16" />{' '}
+                                    <line x1="8" y1="8" x2="8" y2="8.01" />{' '}
+                                    <line x1="12" y1="16" x2="12" y2="11" />{' '}
+                                    <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
+                                </svg>
+                            </a>
+                        </div>
                     </center>
                 </div>
             </div>
