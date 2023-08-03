@@ -5,6 +5,7 @@ import {
     FILTER_AUXIES_BY_SERVICE,
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
+    LOG_OR_REG_VIEW,
 } from '../redux/Actions/actionTypes'
 
 let initialState = {
@@ -14,6 +15,7 @@ let initialState = {
     services: [],
     details: {},
     filter: [],
+    logOrRegView: false,
 }
 
 function rootReducer(state = initialState, action) {
@@ -30,7 +32,7 @@ function rootReducer(state = initialState, action) {
 
         case GET_ALL_SERVICES:
             return { ...state, services: action.payload }
-            // filtra mi estado filteredAuxies dependiendo si el auxie tiene alguno de los servicios seleccionados
+        // filtra mi estado filteredAuxies dependiendo si el auxie tiene alguno de los servicios seleccionados
         case FILTER_AUXIES_BY_SERVICE:
             if (action.payload.length === 0) {
                 return {
@@ -126,6 +128,9 @@ function rootReducer(state = initialState, action) {
             } else {
                 return { ...state }
             }
+
+        case LOG_OR_REG_VIEW:
+            return { ...state, logOrRegView: action.payload }
         default:
             return {
                 ...state,
