@@ -12,7 +12,6 @@ import { Animated } from 'react-animated-css'
 //* Import components
 import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
-
 import skipper from '../../assets/skipper.webp'
 
 const Landing = () => {
@@ -25,6 +24,7 @@ const Landing = () => {
 
     //* Global State
     const services = useSelector((state) => state.services)
+    const logOrRegView = useSelector((state) => state.logOrRegView)
     //* state for menu changes
     const [menuChange, setMenuChange] = useState(true)
 
@@ -62,11 +62,12 @@ const Landing = () => {
                 setLogInMenu={setLogInMenu}
                 setRegisterMenu={setRegisterMenu}
             />
-            {logInMenu ? (
+
+            {logInMenu && (
                 <Animated
                     animationIn="zoomIn"
                     animationOut="zoomDown"
-                    animationInDuration={200}
+                    animationInDuration={!logOrRegView ? 200 : 0}
                 >
                     <div className={style.logInMenu}>
                         <div className={style.container}>
@@ -90,12 +91,13 @@ const Landing = () => {
                         </div>
                     </div>
                 </Animated>
-            ) : null}
-            {registerMenu ? (
+            )}
+
+            {registerMenu && (
                 <Animated
                     animationIn="zoomIn"
                     animationOut="zoomDown"
-                    animationInDuration={200}
+                    animationInDuration={!logOrRegView ? 200 : 0}
                     isVisible={true}
                 >
                     <div className={style.registerMenu}>
@@ -120,7 +122,9 @@ const Landing = () => {
                         </div>
                     </div>
                 </Animated>
-            ) : null}
+            )}
+
+            {/* Section Menu Prinipal */}
             <Animated
                 animationIn="fadeIn"
                 animationOut="fadeOut"
@@ -128,7 +132,6 @@ const Landing = () => {
                 isVisible={true}
             >
                 <section className={style.sectionMenu}>
-                    {/* Section Menu Prinipal */}
                     <div className={style.menuLogo}>
                         <div className={style.menuMain}>
                             <div className={style.buttonsMenuMain}>

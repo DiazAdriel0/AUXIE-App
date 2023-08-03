@@ -6,6 +6,7 @@ import {
     FILTER_AUXIES_BY_SERVICE,
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
+    LOG_OR_REG_VIEW,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -88,6 +89,19 @@ export function orderAuxiesByRating(order) {
             return dispatch({
                 type: ORDER_AUXIES_BY_RATING,
                 payload: order,
+            })
+        } catch (e) {
+            console.log(e)
+        }
+    }
+}
+
+export function toggleLogOrRegView(boolean) {
+    return function (dispatch) {
+        try {
+            return dispatch({
+                type: LOG_OR_REG_VIEW,
+                payload: boolean,
             })
         } catch (e) {
             console.log(e)
