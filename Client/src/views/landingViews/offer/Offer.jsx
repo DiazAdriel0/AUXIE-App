@@ -7,7 +7,7 @@ import ServicesIcon from '../../../assets/Logos/ServicesIcon.svg'
 import ReviewsIcon from '../../../assets/Logos/ReviewsIcon.svg'
 import GuaranteesIcon from '../../../assets/Logos/GuaranteesIcon.svg'
 import { Link } from 'react-router-dom'
-
+//comentario random para commitear
 const Offer = () => {
     return ( 
         <div>
