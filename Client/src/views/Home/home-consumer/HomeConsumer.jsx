@@ -8,11 +8,23 @@ const HomeConsumer = () => {
         <>
             <NavLanding />
             <div className={style.contHome}>
-                <div className={style.filters}>
-                    <Filters />
+                <div className={style.welcomeMessage}>
+                    <h1 className={style.message}>Bienvenido/a @user</h1>
                 </div>
-                <div className={style.cards}>
-                    <Cards />
+                <div className={style.auxieCatalog}>
+                    <div className={style.catalogTitleCont}>
+                        <h1 className={style.catalogTitle}>
+                            Contratar un Auxie
+                        </h1>
+                    </div>
+                    <div className={style.catalog}>
+                        <div className={style.filters}>
+                            <Filters />
+                        </div>
+                        <div className={style.cards}>
+                            <Cards />
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
