@@ -1,0 +1,41 @@
+.home {
+    display: grid;
+    grid-template-areas:
+        'header header'
+        'aside main'
+        'footer footer';
+    grid-template-columns: 14% 85%;
+    grid-template-rows: 9% 80% 9%;
+    gap: 1%;
+    height: 100vh;
+    color: white;
+    .header {
+        grid-area: header;
+        background-color: #333;
+        padding: 10px;
+    }
+
+    .main {
+        display: grid;
+        grid-area: main;
+        grid-template-areas: 'services payments';
+        grid-template-columns: 69% 30%;
+        grid-template-rows: 100%;
+        gap: 1%;
+        .services {
+            grid-area: services;
+            background-color: #a7a1a1;
+        }
+        .payments {
+            grid-area: payments;
+            background-color: #222;
+        }
+    }
+
+    .footer {
+        grid-area: footer;
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+    }
+}
