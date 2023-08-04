@@ -9,8 +9,14 @@ const postService = async (name, category) => {
             name: nameLower,
             category: categoryLower,
         })
+
         if (existingService) {
-            throw new Error('Servicio repetido')
+            if (existingService.isActive === true) {
+                throw new Error('Servicio repetido')
+            } else {
+                existingService.isActive = true
+                await existingService.save()
+            }
         } else {
             const newService = await Service.create({
                 name,
