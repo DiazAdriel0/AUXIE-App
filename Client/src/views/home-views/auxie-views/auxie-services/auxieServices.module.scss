@@ -1,0 +1,58 @@
+.services {
+    display: grid;
+    grid-template-areas:
+        'header header'
+        'aside main';
+    grid-template-columns: 14% 85%;
+    grid-template-rows: 10% 89%;
+    gap: 1%;
+    height: 100vh;
+    color: white;
+
+    .header {
+        grid-area: header;
+        background-color: #333;
+    }
+
+    .main {
+        grid-area: main;
+        background-color: #888;
+        .servicesTable {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 16px;
+
+            th,
+            td {
+                border: 1px solid #ccc;
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+                color: #333;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+                color: black;
+            }
+
+            tr:hover {
+                background-color: #e1e1e1;
+                color: black;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .filterMenu {
+        ul {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1% 0 1%;
+        }
+    }
+}
