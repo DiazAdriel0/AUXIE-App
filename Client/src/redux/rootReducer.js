@@ -1,11 +1,11 @@
 import {
     GET_ALL_AUXIES,
-    GET_AUXIE_DETAILS,
     GET_ALL_SERVICES,
     FILTER_AUXIES_BY_SERVICE,
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
     LOG_OR_REG_VIEW,
+    RESET_AUXIES_CATALOG
 } from '../redux/Actions/actionTypes'
 
 let initialState = {
@@ -13,13 +13,13 @@ let initialState = {
     backupAuxies: [],
     filteredAuxies: [],
     services: [],
-    details: {},
     filter: [],
     logOrRegView: false,
 }
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {
+        // obtengo todos los auxies de mi back y los guardo en 3 estados diferentes
         case GET_ALL_AUXIES:
             return {
                 ...state,
@@ -27,9 +27,7 @@ function rootReducer(state = initialState, action) {
                 filteredAuxies: [...action.payload],
                 backupAuxies: [...action.payload],
             }
-        case GET_AUXIE_DETAILS:
-            return { ...state, details: action.payload }
-
+        // obtengo todos los servicios de mi back y los guardo en mi estado global
         case GET_ALL_SERVICES:
             return { ...state, services: action.payload }
         // filtra mi estado filteredAuxies dependiendo si el auxie tiene alguno de los servicios seleccionados
@@ -128,9 +126,15 @@ function rootReducer(state = initialState, action) {
             } else {
                 return { ...state }
             }
-
+        // switch para verificar si el usuario se encuentra en la pantalla de logIn o Register
         case LOG_OR_REG_VIEW:
             return { ...state, logOrRegView: action.payload }
+        // resetea mis estados modificados por mi actions 
+        case RESET_AUXIES_CATALOG:
+            return { ...state, 
+                auxies: [...state.backupAuxies],
+                filteredAuxies: [...state.backupAuxies]}
+        // caso por defecto si por alguna razón no recibe action.type
         default:
             return {
                 ...state,

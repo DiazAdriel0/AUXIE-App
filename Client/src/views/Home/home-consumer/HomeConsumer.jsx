@@ -2,8 +2,17 @@ import style from './homeConsumer.module.scss'
 import Cards from '../../../components/Cards/Cards'
 import Filters from '../../../components/Filters/Filters'
 import NavLanding from '../../../components/nav-landing/NavLanding'
+import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { resetAuxiesCatalog } from '../../../redux/Actions/actions'
 
 const HomeConsumer = () => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(resetAuxiesCatalog())
+    }, [])
+    
     return (
         <>
             <NavLanding />
