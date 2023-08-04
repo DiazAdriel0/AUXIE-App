@@ -44,8 +44,8 @@ const Form = () => {
             console.log(response)
             // navigate('/home')
         } catch (error) {
-            console.log(error)
-            alert(error.message)
+            console.log(error + error.response.data.error)
+            alert(error.response.data.error)
         }
     }
     useEffect(() => {
