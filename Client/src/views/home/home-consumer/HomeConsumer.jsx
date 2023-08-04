@@ -1,7 +1,7 @@
 import style from './home.module.scss'
-import Cards from '../../components/Cards/Cards'
-import Filters from '../../components/Filters/Filters'
-import NavLanding from '../../components/nav-landing/NavLanding'
+import Cards from '../../../components/cards/cards'
+import Filters from '../../../components/Filters/Filters'
+import NavLanding from '../../../components/nav-landing/NavLanding'
 
 const Home = () => {
     return (
