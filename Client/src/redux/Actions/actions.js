@@ -7,6 +7,7 @@ import {
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
     LOG_OR_REG_VIEW,
+    SET_CURRENT_PAGE,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -44,9 +45,7 @@ export function getAllServices() {
 export function getDetails(id) {
     return async function (dispatch) {
         try {
-            const res = await axios(
-                `http://localhost:3001/providers/${id}`
-            )
+            const res = await axios(`http://localhost:3001/providers/${id}`)
             return dispatch({
                 type: GET_AUXIE_DETAILS,
                 payload: res.data,
@@ -105,5 +104,14 @@ export function toggleLogOrRegView(boolean) {
         } catch (e) {
             console.log(e)
         }
+    }
+}
+
+export const setCurrentPage = (page) => {
+    return (dispatch) => {
+        return dispatch({
+            type: SET_CURRENT_PAGE,
+            payload: Number(page),
+        })
     }
 }

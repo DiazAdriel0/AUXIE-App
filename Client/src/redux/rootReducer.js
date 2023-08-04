@@ -6,6 +6,7 @@ import {
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
     LOG_OR_REG_VIEW,
+    SET_CURRENT_PAGE,
 } from '../redux/Actions/actionTypes'
 
 let initialState = {
@@ -16,6 +17,8 @@ let initialState = {
     details: {},
     filter: [],
     logOrRegView: false,
+    currentPage: 1,
+    nightMode: false,
 }
 
 function rootReducer(state = initialState, action) {
@@ -45,8 +48,7 @@ function rootReducer(state = initialState, action) {
                     [...state.auxies].filter((aux) =>
                         aux.services.some(
                             (serv) =>
-                                serv.name.toUpperCase() ===
-                                filter.toUpperCase()
+                                serv.name.toUpperCase() === filter.toUpperCase()
                         )
                     )
                 )
@@ -108,7 +110,11 @@ function rootReducer(state = initialState, action) {
                     if (prev.averageRating < next.averageRating) return -1
                     return 0
                 })
-                return { ...state, filteredAuxies: [...ascFilter], auxies: [...ascAuxies] }
+                return {
+                    ...state,
+                    filteredAuxies: [...ascFilter],
+                    auxies: [...ascAuxies],
+                }
             } else if (action.payload === 'desc') {
                 let descFilter = [...state.filteredAuxies].sort(
                     (prev, next) => {
@@ -117,20 +123,26 @@ function rootReducer(state = initialState, action) {
                         return 0
                     }
                 )
-                let ascAuxies = [...state.auxies].sort(
-                    (prev, next) => {
-                        if (prev.averageRating > next.averageRating) return -1
-                        if (prev.averageRating < next.averageRating) return 1
-                        return 0
-                    }
-                )
-                return { ...state, filteredAuxies: [...descFilter], auxies: [...ascAuxies] }
+                let ascAuxies = [...state.auxies].sort((prev, next) => {
+                    if (prev.averageRating > next.averageRating) return -1
+                    if (prev.averageRating < next.averageRating) return 1
+                    return 0
+                })
+                return {
+                    ...state,
+                    filteredAuxies: [...descFilter],
+                    auxies: [...ascAuxies],
+                }
             } else {
                 return { ...state }
             }
 
         case LOG_OR_REG_VIEW:
             return { ...state, logOrRegView: action.payload }
+
+        case SET_CURRENT_PAGE:
+            return { ...state, currentPage: action.payload }
+
         default:
             return {
                 ...state,
