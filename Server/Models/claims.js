@@ -30,6 +30,10 @@ const consumerSchema = new Schema({
         type: String,
         required: false,
     },
+    answer: {
+        type: String,
+        required: false,
+    },
 })
 
 const Claims = model('Claims', consumerSchema)
