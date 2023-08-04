@@ -7,7 +7,7 @@ import data from '../../../../API/data'
 
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import TableServices from '../../../../components/home-auxie-components/table-services/TableServices'
-import CardsServices from '../../../../components/cards-services/CardsServices'
+import CardsJobs from '../../../../components/home-auxie-components/cards-jobs/CardsJobs'
 import Pagination from '../../../../components/pagination/Pagination'
 
 const AuxieServices = () => {
@@ -27,16 +27,16 @@ const AuxieServices = () => {
                 <button onClick={handleChange}>
                     {tableOrCard ? 'Change to cards' : 'change to table'}
                 </button>
-                {tableOrCard ? (
-                    <TableServices data={data} />
-                ) : (
-                    <CardsServices />
-                )}
+                {tableOrCard ? <TableServices data={data} /> : <CardsJobs />}
             </main>
 
             {/* footer */}
             <footer className={style.footer}>
-                <Pagination data={data} num={15} />
+                {tableOrCard ? (
+                    <Pagination data={data} num={15} />
+                ) : (
+                    <Pagination data={data} num={8} />
+                )}
             </footer>
         </div>
     )
