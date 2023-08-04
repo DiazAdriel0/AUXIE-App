@@ -9,7 +9,7 @@ const AsideAuxie = () => {
                         <Link to={'/homeauxie'}>Home</Link>
                     </li>
                     <li>
-                        <Link to={'/auxieservices'}>Servicios</Link>
+                        <Link to={'/auxieservices'}>Trabajos</Link>
                     </li>
                     <li>
                         <Link to={'/auxiestatistics'}>Estadisticas</Link>

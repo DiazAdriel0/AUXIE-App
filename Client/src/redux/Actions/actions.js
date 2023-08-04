@@ -6,7 +6,9 @@ import {
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
     LOG_OR_REG_VIEW,
+    SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG
+  
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -33,6 +35,21 @@ export function getAllServices() {
 
             return dispatch({
                 type: GET_ALL_SERVICES,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.log(e.response.data)
+        }
+    }
+}
+
+
+export function getDetails(id) {
+    return async function (dispatch) {
+        try {
+            const res = await axios(`http://localhost:3001/providers/${id}`)
+            return dispatch({
+                type: GET_AUXIE_DETAILS,
                 payload: res.data,
             })
         } catch (e) {
@@ -92,6 +109,14 @@ export function toggleLogOrRegView(boolean) {
     }
 }
 
+export const setCurrentPage = (page) => {
+    return (dispatch) => {
+        return dispatch({
+            type: SET_CURRENT_PAGE,
+            payload: Number(page),
+        })
+    }
+}
 export function resetAuxiesCatalog() {
     return function (dispatch) {
         try {
@@ -122,3 +147,4 @@ export function resetAuxiesCatalog() {
 //         }
 //     }
 // }
+

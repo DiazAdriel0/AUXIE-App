@@ -5,7 +5,11 @@ import {
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
     LOG_OR_REG_VIEW,
+
+    SET_CURRENT_PAGE,
+
     RESET_AUXIES_CATALOG
+
 } from '../redux/Actions/actionTypes'
 
 let initialState = {
@@ -15,6 +19,8 @@ let initialState = {
     services: [],
     filter: [],
     logOrRegView: false,
+    currentPage: 1,
+    nightMode: false,
 }
 
 function rootReducer(state = initialState, action) {
@@ -43,8 +49,7 @@ function rootReducer(state = initialState, action) {
                     [...state.auxies].filter((aux) =>
                         aux.services.some(
                             (serv) =>
-                                serv.name.toUpperCase() ===
-                                filter.toUpperCase()
+                                serv.name.toUpperCase() === filter.toUpperCase()
                         )
                     )
                 )
@@ -106,7 +111,11 @@ function rootReducer(state = initialState, action) {
                     if (prev.averageRating < next.averageRating) return -1
                     return 0
                 })
-                return { ...state, filteredAuxies: [...ascFilter], auxies: [...ascAuxies] }
+                return {
+                    ...state,
+                    filteredAuxies: [...ascFilter],
+                    auxies: [...ascAuxies],
+                }
             } else if (action.payload === 'desc') {
                 let descFilter = [...state.filteredAuxies].sort(
                     (prev, next) => {
@@ -115,26 +124,35 @@ function rootReducer(state = initialState, action) {
                         return 0
                     }
                 )
-                let ascAuxies = [...state.auxies].sort(
-                    (prev, next) => {
-                        if (prev.averageRating > next.averageRating) return -1
-                        if (prev.averageRating < next.averageRating) return 1
-                        return 0
-                    }
-                )
-                return { ...state, filteredAuxies: [...descFilter], auxies: [...ascAuxies] }
+                let ascAuxies = [...state.auxies].sort((prev, next) => {
+                    if (prev.averageRating > next.averageRating) return -1
+                    if (prev.averageRating < next.averageRating) return 1
+                    return 0
+                })
+                return {
+                    ...state,
+                    filteredAuxies: [...descFilter],
+                    auxies: [...ascAuxies],
+                }
             } else {
                 return { ...state }
             }
         // switch para verificar si el usuario se encuentra en la pantalla de logIn o Register
         case LOG_OR_REG_VIEW:
             return { ...state, logOrRegView: action.payload }
+
+
+        case SET_CURRENT_PAGE:
+            return { ...state, currentPage: action.payload }
+
+
         // resetea mis estados modificados por mi actions 
         case RESET_AUXIES_CATALOG:
             return { ...state, 
                 auxies: [...state.backupAuxies],
                 filteredAuxies: [...state.backupAuxies]}
         // caso por defecto si por alguna razón no recibe action.type
+
         default:
             return {
                 ...state,
