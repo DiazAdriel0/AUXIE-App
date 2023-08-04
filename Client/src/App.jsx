@@ -25,7 +25,8 @@ import HomeConsumer from './views/home/home-consumer/HomeConsumer'
 //Forms
 import Form from './views/forms/auxie-form/auxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
-import ComplainForm from './views/forms/complain-form/ComplainForm'
+import SupportForm from '../src/views/forms/support-form/SupportForm'
+
 
 // Logins
 import ClientLogin from './views/Login/consumer-login/clientLogin'
@@ -54,7 +55,7 @@ function App() {
                 <Route path="/guarantee" element={<Guarantee />} />
                 <Route path="/offer" element={<Offer />} />
                 <Route path="/howItWorks" element={<HowItWorks />} />
-                <Route path="/complain" element={<ComplainForm />} />
+                <Route path="/support" element={<SupportForm />}/>
 
                 <Route path="/help" element={<Help />} />
                 <Route path="/homeconsumer" element={<HomeConsumer />} />

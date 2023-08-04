@@ -5,7 +5,10 @@ import StepTwo from '../../../assets/Logos/StepTwo.svg'
 import StepThree from '../../../assets/Logos/StepThree.svg'
 import StepFour from '../../../assets/Logos/StepFour.svg'
 import StepFive from '../../../assets/Logos/StepFive.svg'
-import React, { useState } from 'react'
+import ArrowIcon from '../../../assets/Logos/ArrowIcon.svg'
+import ArrowDown from '../../../assets/Logos/ArrowDown.svg'
+import { useState } from 'react'
+
 const HowItWorks = () => {
     const [faq, setFaq] = useState(null)
 
@@ -19,12 +22,12 @@ const HowItWorks = () => {
 
     const faqs = [
         {
-            question: 'Pregunta 1',
-            answer: 'Respuesta a la pregunta 1',
+            question: '¿Qué hace un Auxie?  ',
+            answer: 'Un auxie es un prestador de servicios que decide ofrecer sus habilidades a través de nosotros para una mayor seguridad y satifacción de todas las partes involucradas.',
         },
         {
-            question: 'Pregunta 2',
-            answer: 'Respuesta a la pregunta 2',
+            question: '¿Debo pagar para empezar a prestar mis servicios?  ',
+            answer: 'Por supuesto que no, debes tener las herramientas y habilidades necesarias para realizar aquellos servicios que ofreces, pero si tu no ganas nosostros tampoco.',
         },
         // Agrega más preguntas y respuestas aquí
     ]
@@ -124,7 +127,25 @@ const HowItWorks = () => {
                                 onClick={() => handleFaqClick(index)}
                             >
                                 {faqItem.question}
-                                {faq === index ? '-' : '+'}
+                                {faq === index ? (
+                                    <img
+                                        src={ArrowIcon}
+                                        alt="arrow"
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                ) : (
+                                    <img
+                                        src={ArrowDown}
+                                        alt="arrow down"
+                                        style={{
+                                            width: '20px',
+                                            height: '20px',
+                                        }}
+                                    />
+                                )}
                             </div>
                             {faq === index && (
                                 <div className={style.faqAnswer}>
