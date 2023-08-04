@@ -50,7 +50,7 @@ const Form = () => {
     }
     useEffect(() => {
         if (access === true) {
-            navigate('/homeconsumer')
+            navigate('/homeauxie')
         }
     }, [access])
     const handleSubmit = (e) => {
