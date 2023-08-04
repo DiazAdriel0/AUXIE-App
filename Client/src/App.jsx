@@ -18,15 +18,19 @@ import Help from './views/landingViews/help/Help'
 import HowItWorks from './views/landingViews/howItWorks/HowItWorks'
 import Offer from './views/landingViews/offer/Offer'
 
-// Home Views
+// Home
 import HomeAuxie from './views/home/home-auxie/HomeAuxie'
 import HomeConsumer from './views/home/home-consumer/HomeConsumer'
+
+//Home  Views
+import AuxieInbox from './views/home-views/auxie-views/auxie-inbox/AuxieInbox'
+import AuxieServices from './views/home-views/auxie-views/auxie-services/AuxieServices'
+import AuxieStatistics from './views/home-views/auxie-views/auxie-statistics/AuxieStatistics'
 
 //Forms
 import Form from './views/forms/auxie-form/auxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
 import SupportForm from '../src/views/forms/support-form/SupportForm'
-
 
 // Logins
 import ClientLogin from './views/Login/consumer-login/clientLogin'
@@ -55,11 +59,19 @@ function App() {
                 <Route path="/guarantee" element={<Guarantee />} />
                 <Route path="/offer" element={<Offer />} />
                 <Route path="/howItWorks" element={<HowItWorks />} />
-                <Route path="/support" element={<SupportForm />}/>
-
+                <Route path="/support" element={<SupportForm />} />
                 <Route path="/help" element={<Help />} />
+
+                {/* Home paths */}
                 <Route path="/homeconsumer" element={<HomeConsumer />} />
                 <Route path="/homeauxie" element={<HomeAuxie />} />
+
+                {/* Home views paths */}
+                <Route path="/auxieinbox" element={<AuxieInbox />} />
+                <Route path="/auxieservices" element={<AuxieServices />} />
+                <Route path="/auxiestatistics" element={<AuxieStatistics />} />
+
+                {/*Detail paths  */}
                 <Route path="/detail/:id" element={<Detail />} />
 
                 {/* Register paths */}
@@ -79,4 +91,3 @@ function App() {
 }
 
 export default App
-
