@@ -1,0 +1,64 @@
+.detailCont {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    height: 70vh;
+    margin: 2%;
+    background-color: var(--third--color-light);
+}
+
+
+.infoCont{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    margin: 2%;
+    gap: 2%;
+    flex-grow: auto;
+}
+
+.profilePic {
+    height: 15%;
+}
+
+.name {
+    display: flex;
+    gap: 5%;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 2%;
+}
+
+.contServices {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+
+.serviceDiv {
+    width: 100%;
+    text-align: start;
+    margin-left: 5%;
+}
+
+.serviceName {
+    color: var(--accent--third--color-light);
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent--primary--color-light);
+    width: 100%;
+    flex-grow: 1;
+}
+
+.bio {
+    height: 20%;
+    margin-left: 2%;
+    margin-top: 2%;
+}
