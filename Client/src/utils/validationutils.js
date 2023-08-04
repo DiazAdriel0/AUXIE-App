@@ -16,13 +16,15 @@ export const useValidations = () => {
         if (name === 'email') {
             if (input.email !== '') {
                 // Use a regular expression to check if the input value is a valid email
-                const emailPattern = new RegExp(
-                    /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/ //eslint-disable-line
-                )
-                if (emailPattern.test(input.email)) {
-                    setErrors({ ...errors, email: '' })
-                } else {
-                    setErrors({ ...errors, email: 'Invalid email format' })
+                if (input.email.includes('@')) {
+                    const emailPattern = new RegExp(
+                        /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/ //eslint-disable-line
+                    )
+                    if (emailPattern.test(input.email)) {
+                        setErrors({ ...errors, email: '' })
+                    } else {
+                        setErrors({ ...errors, email: 'Invalid email format' })
+                    }
                 }
             } else {
                 setErrors({ ...errors, email: 'Email es requerido' })
