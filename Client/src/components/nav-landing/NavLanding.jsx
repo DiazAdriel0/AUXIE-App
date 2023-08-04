@@ -50,7 +50,7 @@ const NavLanding = ({
     return (
         <nav className={style.navLanding}>
             <div className={style.containerLeft}>
-                <p>Logo</p>
+            <Link to={'/'}>Logo</Link>
 
                 <div className={style.viewsLanding}>
                     <select
