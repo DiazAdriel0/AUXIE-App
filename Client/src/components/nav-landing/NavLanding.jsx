@@ -18,7 +18,7 @@ const NavLanding = ({
     const logOrRegView = useSelector((state) => state.logOrRegView)
 
     const navigate = useNavigate()
-
+ 
     const handlerLogIn = () => {
         if (registerMenu) setRegisterMenu(false)
 
