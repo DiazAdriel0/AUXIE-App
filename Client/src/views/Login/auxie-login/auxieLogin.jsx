@@ -95,7 +95,7 @@ const ClientLogin = () => {
                         <label>Email: </label>
                         <input
                             name="email"
-                            type="email"
+                            type="text"
                             className={style.textInput}
                             placeholder="Correo electronico"
                             onChange={handleChange}
