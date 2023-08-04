@@ -1,10 +1,14 @@
 import style from './clientform.module.scss'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const ClientForm = () => {
     const { errors, validate } = useValidations()
+    const [access, setAccess] = useState(false) //eslint-disable-line
+    const navigate = useNavigate()
+
 
     const [input, setInput] = useState({
         firstName: '',
@@ -35,16 +39,22 @@ const ClientForm = () => {
                 'http://localhost:3001/consumers/',
                 input
             )
-
+            if (response) {
+                setAccess(true)
+            }
             // setAccess(true)
             console.log(response)
             // navigate('/home')
         } catch (error) {
-            console.log(error)
-            alert(error.message)
+            console.log(error + error.response.data.error)
+            alert(error.response.data.error)
         }
     }
-
+    useEffect(() => {
+        if (access === true) {
+            navigate('/homeconsumer')
+        }
+    }, [access])
     const handleSubmit = (e) => {
         e.preventDefault()
         handlePost()
