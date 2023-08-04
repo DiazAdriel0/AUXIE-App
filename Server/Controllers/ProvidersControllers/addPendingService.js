@@ -1,11 +1,11 @@
-const Provider = require('./../../Models/service')
+const Provider = require('./../../Models/provider')
 
 const addPendingService = async (newPendingService, id) => {
     const { service, clientId } = newPendingService
     try {
         const providerFound = await Provider.findById(id)
 
-        providerFound.pengingServices.push({
+        providerFound.pendingServices.push({
             service,
             clientId,
             status: 'pending',
