@@ -32,35 +32,35 @@ export const useValidations = () => {
         }
         ///email validations///
 
-        // if (name === 'password') {
-        //     //password length//
-        //     if (input.password.includes(' ')) {
-        //         setErrors({
-        //             ...errors,
-        //             password: 'password cannot have blank spaces',
-        //         })
-        //     } 
-        //     else if (
-        //         input.password.length < 8 ||
-        //         input.password.length > 12
-        //     ) {
-        //         setErrors({
-        //             ...errors,
-        //             password:
-        //                 'password must be between 8 and 12 characters long',
-        //         })
-        //     } 
-        //     else if (
-        //         input.password.length >= 8 &&
-        //         input.password.length <= 12
-        //     ) {
-        //         setErrors({ ...errors, password: '' })
-        //     } else {
-        //         setErrors({ ...errors, password: 'password es requerido' })
-        //     }
-        //     //validation de una mayuscula y un numero//
-        //     //password length//
-        // }
+        if (name === 'password') {
+            //password length//
+            if (input.password.includes(' ')) {
+                setErrors({
+                    ...errors,
+                    password: 'password cannot have blank spaces',
+                })
+            } 
+            else if (
+                input.password.length < 8 ||
+                input.password.length > 12
+            ) {
+                setErrors({
+                    ...errors,
+                    password:
+                        'password must be between 8 and 12 characters long',
+                })
+            } 
+            else if (
+                input.password.length >= 8 &&
+                input.password.length <= 12
+            ) {
+                setErrors({ ...errors, password: '' })
+            } else {
+                setErrors({ ...errors, password: 'password es requerido' })
+            }
+            //validation de una mayuscula y un numero//
+            //password length//
+        }
         if (name === 'age') {
             if (input.age !== '') {
                 if (input.age < 18) {
