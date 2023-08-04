@@ -15,7 +15,7 @@ const updateProviderReviews = async (req, res) => {
         if (updateProvider.message === 'service inexistente')
             throw new Error('No existe un service con ese id')
 
-        res.status(200).json(updateProvider)
+        res.status(200).json('Usuario actualizado con éxito')
     } catch (error) {
         res.status(400).json({ error: error.message })
     }
