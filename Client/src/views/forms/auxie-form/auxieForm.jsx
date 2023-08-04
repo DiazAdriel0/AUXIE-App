@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import style from './auxieform.module.scss'
 import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Form = () => {
     const { errors, validate } = useValidations()
-
+    const [access, setAccess] = useState(false) //eslint-disable-line
+    const navigate = useNavigate()
     const [input, setInput] = useState({
         firstName: '',
         lastName: '',
@@ -35,7 +37,9 @@ const Form = () => {
                 'http://localhost:3001/providers/',
                 input
             )
-
+            if (response) {
+                setAccess(true)
+            }
             // setAccess(true)
             console.log(response)
             // navigate('/home')
@@ -44,7 +48,11 @@ const Form = () => {
             alert(error.message)
         }
     }
-
+    useEffect(() => {
+        if (access === true) {
+            navigate('/homeconsumer')
+        }
+    }, [access])
     const handleSubmit = (e) => {
         e.preventDefault()
         handlePost()
