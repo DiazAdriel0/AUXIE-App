@@ -85,7 +85,7 @@
 .about {
     h1 {
         text-align: center;
-        color: pink;
+        color: var(--accent--primary--color-light);
     }
 }
 .aboutboxinner {
@@ -143,7 +143,7 @@
             width: 90%;
             padding: 14px;
             margin-top: 15px;
-            color: white;
+            color: black;
             box-shadow:
                 3px 3px 15px var(--sixth--color-light),
                 -3px -3px 15px var(--sixth--color-light);
