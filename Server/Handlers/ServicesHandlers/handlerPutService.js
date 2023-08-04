@@ -11,7 +11,7 @@ const handlerPutService = async (req, res) => {
             const updatedService = await putService(id, name, category)
 
             if (updatedService.message === 'El servicio no existe') {
-                throw new Error('No existe un servicio con esa Categoria y/o Nombre')
+                throw new Error('No existe un servicio con este nombre y/o categoría')
             } else {
                 res.status(200).json(updatedService)
             }

@@ -10,7 +10,7 @@ const handlerPostService = async (req, res) => {
             const newService = await postService(name, category)
             if (newService.message === 'Servicio repetido') {
                 throw new Error(
-                    'Ya existe un servicio con este nombre y categoría'
+                    'Ya existe un servicio con este nombre y/o categoría'
                 )
             } else {
                 res.status(200).json(newService)
