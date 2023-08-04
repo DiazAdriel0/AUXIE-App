@@ -118,6 +118,7 @@ const AuxieServices = () => {
                     </tbody>
                 </table>
             </main>
+            <footer className={style.footer}></footer>
         </div>
     )
 }
