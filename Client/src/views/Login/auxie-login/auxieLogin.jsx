@@ -48,7 +48,7 @@ const ClientLogin = () => {
     }
     useEffect(() => {
         if (access === true) {
-            navigate('/home')
+            navigate('/homeauxie')
         }
     }, [access])
     const handleSubmit = (e) => {
