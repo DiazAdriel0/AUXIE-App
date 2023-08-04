@@ -1,13 +1,14 @@
 import axios from 'axios'
 import {
     GET_ALL_AUXIES,
-    GET_AUXIE_DETAILS,
     GET_ALL_SERVICES,
     FILTER_AUXIES_BY_SERVICE,
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
     LOG_OR_REG_VIEW,
     SET_CURRENT_PAGE,
+    RESET_AUXIES_CATALOG
+  
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -41,6 +42,7 @@ export function getAllServices() {
         }
     }
 }
+
 
 export function getDetails(id) {
     return async function (dispatch) {
@@ -115,3 +117,34 @@ export const setCurrentPage = (page) => {
         })
     }
 }
+export function resetAuxiesCatalog() {
+    return function (dispatch) {
+        try {
+            return dispatch({
+                type:RESET_AUXIES_CATALOG,
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
+
+
+// action que me guarda los datos de un auxie que me devuelve el back por id (innecesario guardarme esta info en el global state por ahora)
+
+// export function getDetails(id) {
+//     return async function (dispatch) {
+//         try {
+//             const res = await axios(
+//                 `http://localhost:3001/providers/${id}`
+//             )
+//             return dispatch({
+//                 type: GET_AUXIE_DETAILS,
+//                 payload: res.data,
+//             })
+//         } catch (e) {
+//             console.log(e.response.data)
+//         }
+//     }
+// }
+
