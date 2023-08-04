@@ -1,24 +1,30 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { getDetails } from '../../redux/Actions/actions'
 import style from './detail.module.scss'
 
 const Detail = () => {
-    const dispatch = useDispatch()
-    const auxieDetails = useSelector((state) => state.details)
+    const [auxieDetails, setAuxieDetails] = useState({})
     let { id } = useParams()
 
     useEffect(() => {
-        dispatch(getDetails(id))
-        return
+        const getDetails = async function () {
+            const res = await axios.get(`http://localhost:3001/providers/${id}`)
+            setAuxieDetails(res.data)
+        }
+        getDetails()
     }, [])
-
     return (
-        <div className={style.detail}>
-            <h1>{auxieDetails.firstName}</h1>
-            <h1>{auxieDetails.lastName}</h1>
-        </div>
+        <>
+            {auxieDetails && (
+                <>
+                    <div className={style.detail}>
+                        <h1>{auxieDetails.firstName}</h1>
+                        <h1>{auxieDetails.lastName}</h1>
+                    </div>
+                </>
+            )}
+        </>
     )
 }
 
