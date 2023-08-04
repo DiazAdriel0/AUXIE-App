@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import NavLanding from '../../components/nav-landing/NavLanding'
 import style from './detail.module.scss'
 
 const Detail = () => {
@@ -14,16 +15,83 @@ const Detail = () => {
         }
         getDetails()
     }, [])
+    console.log(auxieDetails)
     return (
         <>
-            {auxieDetails && (
-                <>
-                    <div className={style.detail}>
-                        <h1>{auxieDetails.firstName}</h1>
-                        <h1>{auxieDetails.lastName}</h1>
+            <NavLanding />
+            {Object.keys(auxieDetails).length > 0 ? (
+                <div className={style.detailCont}>
+                    <div className={style.infoCont}>
+                        <div className={style.profilePic}>
+                            <img
+                                src="https://img.freepik.com/free-icon/user_318-563642.jpg"
+                                alt="imagen de perfil"
+                                height="100px"
+                                width="100px"
+                            />
+                        </div>
+                        <div className={style.info}>
+                            <div className={style.name}>
+                                <p>{auxieDetails.firstName}</p>
+                                <p>{auxieDetails.lastName}</p>
+                            </div>
+                            <div className={style.rating}>
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className={style.star}
+                                    width="25"
+                                    height="25"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth="2"
+                                    stroke="#ffec00"
+                                    fill="#ffec00"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path
+                                        stroke="#000"
+                                        d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
+                                        fill="none"
+                                        strokeWidth="4px"
+                                    />
+                                    <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
+                                </svg>
+                                <p>{auxieDetails.averageRating}</p>
+                            </div>
+                            <p>({auxieDetails.reviews.length} Reseñas)</p>
+                        </div>
+                        <div className={style.contServices}>
+                            {auxieDetails.services.length > 0 ? (
+                                auxieDetails.services.map((service) => {
+                                    return (
+                                        <div
+                                            className={style.serviceDiv}
+                                            key={service.price}
+                                        >
+                                            <p className={style.serviceName}>
+                                                {service.name}
+                                            </p>
+                                            <p>${service.price}/hr.</p>
+                                        </div>
+                                    )
+                                })
+                            ) : (
+                                <div className={style.noServices}>
+                                    <p className={style.serviceName}>
+                                        No ofrece servicios
+                                    </p>
+                                </div>
+                            )}
+                        </div>
                     </div>
-                </>
-            )}
+                    <div className={style.carousel}>
+                        <p>Carousel</p>
+                    </div>
+                    <div className={style.bio}>
+                        <p> Descripción personalizada del Auxie</p>
+                    </div>
+                </div>
+            ) : null}
         </>
     )
 }
