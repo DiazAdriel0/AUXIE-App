@@ -9,6 +9,7 @@ export const useValidations = () => {
         age: '',
         email: '',
         password: '',
+        gender:'',
     })
 
     const validate = (input, name) => {
@@ -95,6 +96,11 @@ export const useValidations = () => {
                     ...errors,
                     username: 'Nombre de usuario es requerido',
                 })}
+        }
+        if (name === 'gender') {
+            if (input.gender !== '') {
+                setErrors({ ...errors, gender: '' })
+            } else setErrors({ ...errors, gender: 'Genero es requerido' })
         }
     }
     return { errors, validate }

@@ -11,7 +11,16 @@
     border-radius: 8px;
     padding: 3rem; /* Ajusta el espacio alrededor del formulario */
     height: 45%;
-
+select{
+    flex: 2;
+    width: 100%;
+    margin-left: 10px;
+    padding: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
     .formtitle {
         font-size: x-large;
     }
@@ -63,14 +72,7 @@
             text-transform: capitalize;
         }
 
-        input:hover {
-            background-color: rgba(44, 54, 145, 1);
-        }
-
-        input:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
+       
     }
     h1 {
         margin-bottom: 4rem;

@@ -15,6 +15,7 @@ const Form = () => {
         age: 0,
         email: '',
         password: '',
+        gender:'',
     })
 
     const handleChange = (event) => {
@@ -87,20 +88,20 @@ const Form = () => {
     }
 
     //////
-
+console.log(input);
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
                 <h1>Bienvenido futuro Auxie! Completa tu registro ahora</h1>
             </div>
-            <form id="form" onSubmit={handleSubmit}>
+            <form id='form' onSubmit={handleSubmit}>
                 <div className={style.forminput}>
                     <label>Nombre: </label>
                     <input
-                        name="firstName"
-                        type="text"
+                        name='firstName'
+                        type='text'
                         className={style.textInput}
-                        placeholder="Nombre"
+                        placeholder='Nombre'
                         onChange={handleChange}
                     ></input>
                     <div className={style.errors}>
@@ -110,10 +111,10 @@ const Form = () => {
                 <div className={style.forminput}>
                     <label>Apellido: </label>
                     <input
-                        name="lastName"
-                        type="text"
+                        name='lastName'
+                        type='text'
                         className={style.textInput}
-                        placeholder="Apellido"
+                        placeholder='Apellido'
                         onChange={handleChange}
                     ></input>
                     <div className={style.errors}>
@@ -123,24 +124,46 @@ const Form = () => {
                 <div className={style.forminput}>
                     <label>Edad: </label>
                     <input
-                        name="age"
-                        type="number"
+                        name='age'
+                        type='number'
                         className={style.textInput}
-                        placeholder="Edad"
+                        placeholder='Edad'
                         onChange={handleChange}
                     ></input>
                     <div className={style.errors}>
                         <p>{errors.age}</p>
                     </div>
                 </div>
+                <div className={style.forminput}>
+                    <label>Genero: </label>
+                    <select
+                        onChange={handleChange}
+                        name='gender'
+                        defaultValue={''}
+                    >
+                        <option
+                            
+                            // disabled
+                            value=''
+                        >
+                            Genero
+                        </option>
+                        <option value='Masculino'>Masculino</option>
+                        <option value='Femenino'>Femenino</option>
+                        <option value='Otro'>Otro</option>
+                    </select>
 
+                    <div className={style.errors}>
+                        <p>{errors.gender}</p>
+                    </div>
+                </div>
                 <div className={style.forminput}>
                     <label>Nombre de usuario: </label>
                     <input
-                        name="username"
-                        type="text"
+                        name='username'
+                        type='text'
                         className={style.textInput}
-                        placeholder="Username"
+                        placeholder='Username'
                         onChange={handleChange}
                     ></input>
                     <div className={style.errors}>
@@ -150,10 +173,10 @@ const Form = () => {
                 <div className={style.forminput}>
                     <label>Email: </label>
                     <input
-                        name="email"
-                        type="email"
+                        name='email'
+                        type='email'
                         className={style.textInput}
-                        placeholder="Email"
+                        placeholder='Email'
                         onChange={handleChange}
                     ></input>
                     <div className={style.errors}>
@@ -163,10 +186,10 @@ const Form = () => {
                 <div className={style.forminput}>
                     <label>Password: </label>
                     <input
-                        name="password"
-                        type="password"
+                        name='password'
+                        type='password'
                         className={style.textInput}
-                        placeholder="Password"
+                        placeholder='Password'
                         onChange={handleChange}
                     ></input>
                     <div className={style.errors}>
@@ -175,7 +198,7 @@ const Form = () => {
                 </div>
 
                 <div className={style.submitbutton}>
-                    <input type="submit" disabled={buttonDisabled()}></input>
+                    <input type='submit' disabled={buttonDisabled()}></input>
                 </div>
             </form>
         </div>
