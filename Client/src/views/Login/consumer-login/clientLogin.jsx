@@ -46,7 +46,7 @@ const ClientLogin = () => {
 
     useEffect(() => {
         if (access === true) {
-            navigate('/home')
+            navigate('/homeconsumer')
         }
     }, [access])
 
