@@ -16,31 +16,50 @@ import NavLanding from '../../components/nav-landing/NavLanding'
 const Landing = () => {
     //* First Intersection Observer
     const { ref: myRef, inView: myElementIsVisible } = useInView()
-    const [cardsAnimated, setCardsAnimated] = useState(false)
+
     //* Second Intersection Observer
     const { ref: myRef2, inView: mySecondElementIsVisible } = useInView()
-    const [secondCardsAnimated, setSecondCardsAnimated] = useState(false)
 
+    //* Third Intersection Observer
+    const { ref: myRef3, inView: myThirdElementIsVisible } = useInView()
+
+    const [animationObserver, setAnimationObserver] = useState({
+        cardsAnimated: false,
+        secondCardsAnimated: false,
+        footerAnimated: false,
+    })
     //* Global State
     const services = useSelector((state) => state.services)
     const logOrRegView = useSelector((state) => state.logOrRegView)
-    //* state for menu changes
-    const [menuChange, setMenuChange] = useState(true)
 
+    //* state for changes
+    const [menuChange, setMenuChange] = useState(true)
     const [logInMenu, setLogInMenu] = useState(false)
     const [registerMenu, setRegisterMenu] = useState(false)
-
-    //* use Effect to obtain data
-
-    // Use effect animations
+    console.log(myElementIsVisible)
+    console.log(animationObserver)
+    //* useEffect animations
     useEffect(() => {
         if (myElementIsVisible) {
-            setCardsAnimated(true)
+            setAnimationObserver((prevAnimationObserver) => ({
+                ...prevAnimationObserver,
+                cardsAnimated: true,
+            }))
         }
         if (mySecondElementIsVisible) {
-            setSecondCardsAnimated(true)
+            setAnimationObserver((prevAnimationObserver) => ({
+                ...prevAnimationObserver,
+                secondCardsAnimated: true,
+            }))
         }
-    }, [myElementIsVisible, mySecondElementIsVisible])
+
+        if (myThirdElementIsVisible) {
+            setAnimationObserver((prevAnimationObserver) => ({
+                ...prevAnimationObserver,
+                footerAnimated: true,
+            }))
+        }
+    }, [myElementIsVisible, mySecondElementIsVisible, myThirdElementIsVisible])
 
     const handlerMenuSearchAuxie = () => {
         setMenuChange(true)
@@ -49,6 +68,15 @@ const Landing = () => {
         setMenuChange(false)
     }
 
+    const handleButtonUp = () => {
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth',
+        })
+    }
+    const { cardsAnimated, secondCardsAnimated, footerAnimated } =
+        animationObserver
     return (
         <>
             <NavLanding
@@ -57,6 +85,14 @@ const Landing = () => {
                 setLogInMenu={setLogInMenu}
                 setRegisterMenu={setRegisterMenu}
             />
+
+            {myElementIsVisible ||
+            mySecondElementIsVisible ||
+            myThirdElementIsVisible ? (
+                <div className={style.buttonUp}>
+                    <button onClick={handleButtonUp}>SUBIR</button>
+                </div>
+            ) : null}
             <main
                 className={
                     !logInMenu && !registerMenu ? style.landing : style.hiden
@@ -220,6 +256,7 @@ const Landing = () => {
                         </button>
                     </section>
                 </Animated>
+
                 {/* Section Cards */}
                 {cardsAnimated ? (
                     <div>
@@ -249,10 +286,9 @@ const Landing = () => {
                         animationIn="slideInUp"
                         animationOut="fadeOut"
                         animationInDuration={1000}
-                        isVisible={true}
                     >
                         {/* Section Slogan */}
-                        <section className={style.slogan}>
+                        <section ref={myRef2} className={style.slogan}>
                             <div className={style.divSlogan}>
                                 <h3>Trabaja con nosotros y genera ganancias</h3>
                                 <p>
@@ -268,7 +304,7 @@ const Landing = () => {
                         </section>
 
                         {/* Section Auxies */}
-                        <section ref={myRef2} className={style.auxies}>
+                        <section className={style.auxies}>
                             <h3>Auxies Destacados</h3>
                             <div className={style.featuredAuxies}>
                                 <ul className={style.featuredlist}>
@@ -286,19 +322,35 @@ const Landing = () => {
                         </section>
                     </Animated>
                 ) : (
-                    <section ref={myRef2}></section>
+                    <>
+                        <section
+                            className={style.sloganNone}
+                            ref={myRef2}
+                        ></section>
+                        <section
+                            className={style.auxies}
+                            ref={myRef2}
+                        ></section>
+                    </>
                 )}
                 {/* Footer */}
-                <footer className={style.landingFooter}>
-                    <div className={style.divFooterTitle}>
-                        <h3>AUXIE</h3>
-                        <h4>Creado con amor por </h4>
-                    </div>
-                    <div className={style.divFooterImg}></div>
-                    <div className={style.divCopy}>
-                        <p>Copyright © 2023</p>
-                    </div>
-                </footer>
+                {footerAnimated ? (
+                    <footer ref={myRef3} className={style.landingFooter}>
+                        <div className={style.divFooterTitle}>
+                            <h3>AUXIE</h3>
+                            <h4>Creado con amor por </h4>
+                        </div>
+                        <div className={style.divFooterImg}></div>
+                        <div className={style.divCopy}>
+                            <p>Copyright © 2023</p>
+                        </div>
+                    </footer>
+                ) : (
+                    <footer
+                        className={style.landingFooter}
+                        ref={myRef3}
+                    ></footer>
+                )}
             </main>
         </>
     )

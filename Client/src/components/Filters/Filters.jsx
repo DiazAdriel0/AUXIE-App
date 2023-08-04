@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import style from './filters.module.scss'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Select from 'react-select'
 import {
@@ -31,7 +32,7 @@ const Filters = () => {
     }
 
     return (
-        <div>
+        <div className={style.contFilters}>
             <span>Filtrar por Servicio: </span>
             <Select
                 onChange={(input) => filterByService(input)}

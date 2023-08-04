@@ -16,7 +16,6 @@ const postService = async (name, category) => {
                 name,
                 category,
             })
-            console.log(newService)
             return newService
         }
     } catch (error) {
