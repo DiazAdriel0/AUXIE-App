@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose')
 
 const consumerSchema = new Schema({
-
     consumerUsername: {
         type: String,
         required: true,
@@ -26,6 +25,14 @@ const consumerSchema = new Schema({
     pending: {
         type: Boolean,
         default: true,
+    },
+    image: {
+        type: String,
+        required: false,
+    },
+    answer: {
+        type: String,
+        required: false,
     },
 })
 
