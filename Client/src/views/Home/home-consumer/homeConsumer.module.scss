@@ -1,11 +1,58 @@
+//------ Contenedor de todo el Home -----
 .contHome {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
+}
+
+//------ Contenedor de mensaje de bienvenida ----
+.welcomeMessage {
+    width: 100%;
+    font-size: 2rem;
+    background-color: var(--secondary--color-light);
+}
+
+//----- Clase del mensaje de bienvenida ----
+.message {
+    margin: 2%;
+}
+
+//----- Contenedor de titulo y componentes Filters y Cards (catalogo de auxies)-----
+.auxieCatalog {
+    display: flex;
+    flex-flow: row wrap;
     justify-content: space-evenly;
+    width: 100%;
+}
+
+//----- Contenedor de titulo del catalogo de auxies
+.catalogTitleCont {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--third--color-light);
+}
+
+//----- Clase del titulo del catalogo de auxies
+.catalogTitle {
+    margin: 1% 0;
+}
+
+//----- Contenedor de los contenedores de filters y cards
+.catalog {
+    display: flex;
+    justify-content: center;
+    width: 100%;
     margin-top: 2%;
 }
 
+//---- Contenedor del componente filters
 .filters {
-    width: 15rem;
+    width: 15%;
     height: 20rem;
+}
+
+//---- Contenedor del componente Cards
+.cards {
+    width: 80%;
 }
