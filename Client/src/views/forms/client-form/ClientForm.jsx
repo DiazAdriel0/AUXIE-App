@@ -9,7 +9,6 @@ const ClientForm = () => {
     const [access, setAccess] = useState(false) //eslint-disable-line
     const navigate = useNavigate()
 
-
     const [input, setInput] = useState({
         firstName: '',
         lastName: '',
@@ -17,6 +16,7 @@ const ClientForm = () => {
         age: 0,
         email: '',
         password: '',
+        gender: '',
     })
 
     const handleChange = (event) => {
@@ -73,7 +73,8 @@ const ClientForm = () => {
             input.firstName.trim().length === 0 ||
             input.lastName.trim().length === 0 ||
             input.age.trim().length === 0 ||
-            input.username.trim().length === 0
+            input.username.trim().length === 0 ||
+            input.gender.trim().length === 0
         ) {
             return true
         }
@@ -89,7 +90,7 @@ const ClientForm = () => {
     }
 
     //////
-
+    console.log(input)
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
@@ -135,7 +136,25 @@ const ClientForm = () => {
                         <p>{errors.age}</p>
                     </div>
                 </div>
+                <div className={style.forminput}>
+                    <label>Genero: </label>
+                    <select
+                        onChange={handleChange}
+                        name="gender"
+                        defaultValue={''}
+                    >
+                        <option disabled value="">
+                            Genero
+                        </option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Otro">Otro</option>
+                    </select>
 
+                    <div className={style.errors}>
+                        <p>{errors.gender}</p>
+                    </div>
+                </div>
                 <div className={style.forminput}>
                     <label>Nombre de usuario: </label>
                     <input

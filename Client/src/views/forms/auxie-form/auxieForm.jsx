@@ -15,6 +15,7 @@ const Form = () => {
         age: 0,
         email: '',
         password: '',
+        gender: '',
     })
 
     const handleChange = (event) => {
@@ -71,7 +72,8 @@ const Form = () => {
             input.firstName.trim().length === 0 ||
             input.lastName.trim().length === 0 ||
             input.age.trim().length === 0 ||
-            input.username.trim().length === 0
+            input.username.trim().length === 0 ||
+            input.gender.trim().length === 0
         ) {
             return true
         }
@@ -87,7 +89,7 @@ const Form = () => {
     }
 
     //////
-
+    console.log(input)
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
@@ -133,7 +135,25 @@ const Form = () => {
                         <p>{errors.age}</p>
                     </div>
                 </div>
+                <div className={style.forminput}>
+                    <label>Genero: </label>
+                    <select
+                        onChange={handleChange}
+                        name="gender"
+                        defaultValue={''}
+                    >
+                        <option disabled value="">
+                            Genero
+                        </option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Otro">Otro</option>
+                    </select>
 
+                    <div className={style.errors}>
+                        <p>{errors.gender}</p>
+                    </div>
+                </div>
                 <div className={style.forminput}>
                     <label>Nombre de usuario: </label>
                     <input

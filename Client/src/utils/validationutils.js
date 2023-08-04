@@ -9,6 +9,7 @@ export const useValidations = () => {
         age: '',
         email: '',
         password: '',
+        gender: '',
     })
 
     const validate = (input, name) => {
@@ -39,8 +40,7 @@ export const useValidations = () => {
                     ...errors,
                     password: 'password cannot have blank spaces',
                 })
-            } 
-            else if (
+            } else if (
                 input.password.length < 8 ||
                 input.password.length > 12
             ) {
@@ -49,8 +49,7 @@ export const useValidations = () => {
                     password:
                         'password must be between 8 and 12 characters long',
                 })
-            } 
-            else if (
+            } else if (
                 input.password.length >= 8 &&
                 input.password.length <= 12
             ) {
@@ -90,13 +89,19 @@ export const useValidations = () => {
         if (name === 'username') {
             if (input.username !== '') {
                 setErrors({ ...errors, username: '' })
-            } else{
+            } else {
                 setErrors({
                     ...errors,
                     username: 'Nombre de usuario es requerido',
-                })}
+                })
+            }
+        }
+        if (name === 'gender') {
+            if (input.gender !== '') {
+                setErrors({ ...errors, gender: '' })
+            } else setErrors({ ...errors, gender: 'Genero es requerido' })
         }
     }
     return { errors, validate }
-};
+}
 ///validations ///
