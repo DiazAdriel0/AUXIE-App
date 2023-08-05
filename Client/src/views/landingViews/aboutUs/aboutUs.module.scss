@@ -4,6 +4,8 @@
     flex-wrap: wrap;
     flex-direction: row;
     margin: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
     justify-content: center;
     .card {
         background-color: var(--secondary--color-light);
@@ -16,6 +18,11 @@
         border-radius: 1em;
         box-shadow: none;
         
+        .cardfront{
+            h1{
+                font-size: 1.5rem;
+            }
+        }
         p {
             margin: 2rem;
             font-size: 0.8rem;
@@ -83,10 +90,33 @@
     }
 }
 .about {
-    h1 {
-        text-align: center;
-        color: var(--accent--primary--color-light);
+    padding: 2%;
+    background-color: var(--secondary--color-light);
+    border: var(--accent--third--color-light) 3px solid;
+    h1{
+        font-size: 300%;
+        
     }
+    // h1 {
+    //     text-align: center;
+    //     color: var(--accent--primary--color-light);
+    // }
+}
+.about2{
+    center {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    padding: 1%;
+    background-color: var(--secondary--color-light);
+    border: var(--accent--third--color-light) 3px solid;
+    h1{
+        font-size: 200%;
+        
+    }
+    margin-bottom: 2rem;
 }
 .aboutboxinner {
     position: relative; /* Set the position to 'relative' */
@@ -133,8 +163,8 @@
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
                 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             padding: 15px;
-            font-size: 20px;
-            margin-top: 10px;
+            font-size: 1.25rem;
+            margin-top: 1.02rem;
         }
 
         .socialbar {
@@ -152,12 +182,14 @@
                 transition: 0.4s;
                 color: white;
             }
+            p {
+                font-size: 1rem;
+                font-weight: 600;
+            }
         }
     }
 
-    p {
-        font-size: 1rem;
-    }
+    
 
     svg {
         margin-left: 1rem;
@@ -181,6 +213,9 @@
             margin: 2rem;
             font-size: 0.8rem;
         }
+        .socialbar{
+            margin-top: 2.3rem;
+        }
     }
 
     /* Mostrar la cara trasera al hacer hover */
@@ -198,4 +233,25 @@
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    
+}
+
+.custom-shape-divider-top-1691195590 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-top-1691195590 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 140px;
+}
+
+.custom-shape-divider-top-1691195590 .shape-fill {
+    fill: #0FA3B1;
 }

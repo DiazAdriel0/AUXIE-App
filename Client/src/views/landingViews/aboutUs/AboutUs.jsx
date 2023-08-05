@@ -6,12 +6,17 @@ const AboutUs = () => {
         <div>
             <NavLanding />
             <div className={style.about}>
-                <h1>Todo sobre Auxie</h1>
+                <center><h1>Todo sobre Auxie</h1></center>
+                
             </div>
 
             <div className={style.aboutboxes}>
                 <div className={style.card}>
                     <div className={style.cardfront}>
+                        <center>
+                            <h1>Que es Auxie?</h1>
+                        </center>
+
                         <p>
                             Con pasión y dedicación, hemos creado una plataforma
                             que conecta de manera eficiente a proveedores de
@@ -40,6 +45,9 @@ const AboutUs = () => {
                 </div>
                 <div className={style.card}>
                     <div className={style.cardfront}>
+                        <center>
+                            <h1>Por qué usar auxie?</h1>
+                        </center>
                         <p>
                             En Auxie, valoramos la excelencia y la satisfacción
                             del cliente por encima de todo. Nuestra comunidad de
@@ -56,7 +64,6 @@ const AboutUs = () => {
                         </p>
                     </div>
                     <div className={style.cardback}>
-                        {/* Reemplaza el contenido con tu bio */}{' '}
                         <div className={style.imageabout2}>
                             <img
                                 src="https://files.quantzig.com/wp-content/uploads/2020/11/customerSatisfaction.png"
@@ -68,6 +75,10 @@ const AboutUs = () => {
 
                 <div className={style.card}>
                     <div className={style.cardfront}>
+
+                        <center>
+                            <h1>Inicios de Auxie</h1>
+                        </center>
                         <p>
                             Nuestra base en Latinoamérica es una fuente de
                             orgullo y fortaleza. La diversidad cultural y la
@@ -93,6 +104,10 @@ const AboutUs = () => {
             </div>
             {/* cards de about */}
             {/* ///cards/// */}
+            <center>
+            <div className={style.about2}><h1>Conoce al equipo Auxie!</h1> </div>
+                
+            </center>
 
             <div className={style.cardcontainer}>
                 <div className={style.card}>
@@ -175,6 +190,7 @@ const AboutUs = () => {
                         </div>
                     </center>
                 </div>
+                
                 <div className={style.card}>
                     <center>
                         <div className={style.cardfront}>
@@ -358,6 +374,33 @@ const AboutUs = () => {
                                         <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
                                     </svg>
                                 </a>
+                                <a
+                                    id="Instagram"
+                                    href="https://www.instagram.com/candiajoshua_/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="19"
+                                        height="19"
+                                        viewBox="0 0 21 21"
+                                        strokeWidth="1.5"
+                                        stroke="black"
+                                        fill="none"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    >
+                                        <path
+                                            stroke="none"
+                                            d="M0 0h24v24H0z"
+                                            fill="none"
+                                        />
+                                        <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+                                        <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                        <path d="M16.5 7.5l0 .01" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </center>
@@ -453,7 +496,7 @@ const AboutUs = () => {
                                 <p>Adriel Diaz</p>
                             </div>
                             <div className={style.socialbar}>
-                                <p>Front-End Developer</p>
+                                <p>Back-End Developer</p>
                             </div>
                         </div>
                         <div className={style.cardback}>
@@ -535,7 +578,6 @@ const AboutUs = () => {
                             <div className={style.socialbar}>
                                 <p>Back-End Developer</p>
                             </div>
-                            
                         </div>
                         <div className={style.cardback}>
                             {/* Reemplaza el contenido con tu bio */}
@@ -643,7 +685,6 @@ const AboutUs = () => {
                             <div className={style.socialbar}>
                                 <p>Back-End Developer</p>
                             </div>
-                           
                         </div>
                         <div className={style.cardback}>
                             {/* Reemplaza el contenido con tu bio */}
