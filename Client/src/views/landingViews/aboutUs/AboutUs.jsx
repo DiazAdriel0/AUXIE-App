@@ -6,7 +6,8 @@ const AboutUs = () => {
         <div>
             <NavLanding />
             <div className={style.about}>
-                <h1>Todo sobre Auxie</h1>
+                <center><h1>Todo sobre Auxie</h1></center>
+                
             </div>
 
             <div className={style.aboutboxes}>
@@ -45,7 +46,7 @@ const AboutUs = () => {
                 <div className={style.card}>
                     <div className={style.cardfront}>
                         <center>
-                            <h1>Que es Auxie?</h1>
+                            <h1>Por qué usar auxie?</h1>
                         </center>
                         <p>
                             En Auxie, valoramos la excelencia y la satisfacción
@@ -63,7 +64,6 @@ const AboutUs = () => {
                         </p>
                     </div>
                     <div className={style.cardback}>
-                        {/* Reemplaza el contenido con tu bio */}{' '}
                         <div className={style.imageabout2}>
                             <img
                                 src="https://files.quantzig.com/wp-content/uploads/2020/11/customerSatisfaction.png"
@@ -75,8 +75,9 @@ const AboutUs = () => {
 
                 <div className={style.card}>
                     <div className={style.cardfront}>
+
                         <center>
-                            <h1>Donde inicio Auxie?</h1>
+                            <h1>Inicios de Auxie</h1>
                         </center>
                         <p>
                             Nuestra base en Latinoamérica es una fuente de
@@ -103,6 +104,10 @@ const AboutUs = () => {
             </div>
             {/* cards de about */}
             {/* ///cards/// */}
+            <center>
+            <div className={style.about2}><h1>Conoce al equipo Auxie!</h1> </div>
+                
+            </center>
 
             <div className={style.cardcontainer}>
                 <div className={style.card}>
@@ -185,6 +190,7 @@ const AboutUs = () => {
                         </div>
                     </center>
                 </div>
+                
                 <div className={style.card}>
                     <center>
                         <div className={style.cardfront}>
