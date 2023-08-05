@@ -24,6 +24,7 @@ const providerSchema = new Schema({
 
     services: { type: Array },
     pendingServices: { type: Array },
+    jobs: { type: Array },
     completedWorks: { type: Array },
     ratings: { type: Array },
     averageRating: { type: Number, min: 0 },
