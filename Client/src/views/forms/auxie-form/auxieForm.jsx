@@ -40,6 +40,8 @@ const Form = () => {
             )
             if (response) {
                 setAccess(true)
+                const form = document.getElementById('form')
+                form.reset()
             }
             // setAccess(true)
             console.log(response)
@@ -57,10 +59,7 @@ const Form = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         handlePost()
-        // dispatch(postPokemon(input))
-        const form = document.getElementById('form')
-        form.reset()
-        //navigate home / search auxies ///
+       
     }
 
     //////para desabilitar el boton si no esta lleno el formulario=>
