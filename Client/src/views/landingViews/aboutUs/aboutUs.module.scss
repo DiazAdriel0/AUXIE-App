@@ -133,8 +133,8 @@
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
                 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             padding: 15px;
-            font-size: 20px;
-            margin-top: 10px;
+            font-size: 1.25rem;
+            margin-top: 1.02rem;
         }
 
         .socialbar {
@@ -152,12 +152,14 @@
                 transition: 0.4s;
                 color: white;
             }
+            p {
+                font-size: 1rem;
+                font-weight: 600;
+            }
         }
     }
 
-    p {
-        font-size: 1rem;
-    }
+    
 
     svg {
         margin-left: 1rem;
@@ -180,6 +182,9 @@
         p {
             margin: 2rem;
             font-size: 0.8rem;
+        }
+        .socialbar{
+            margin-top: 2.3rem;
         }
     }
 

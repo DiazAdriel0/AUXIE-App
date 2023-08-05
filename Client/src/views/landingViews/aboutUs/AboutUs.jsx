@@ -12,6 +12,10 @@ const AboutUs = () => {
             <div className={style.aboutboxes}>
                 <div className={style.card}>
                     <div className={style.cardfront}>
+                        <center>
+                            <h1>Que es Auxie?</h1>
+                        </center>
+
                         <p>
                             Con pasión y dedicación, hemos creado una plataforma
                             que conecta de manera eficiente a proveedores de
@@ -40,6 +44,9 @@ const AboutUs = () => {
                 </div>
                 <div className={style.card}>
                     <div className={style.cardfront}>
+                        <center>
+                            <h1>Que es Auxie?</h1>
+                        </center>
                         <p>
                             En Auxie, valoramos la excelencia y la satisfacción
                             del cliente por encima de todo. Nuestra comunidad de
@@ -68,6 +75,9 @@ const AboutUs = () => {
 
                 <div className={style.card}>
                     <div className={style.cardfront}>
+                        <center>
+                            <h1>Donde inicio Auxie?</h1>
+                        </center>
                         <p>
                             Nuestra base en Latinoamérica es una fuente de
                             orgullo y fortaleza. La diversidad cultural y la
@@ -453,7 +463,7 @@ const AboutUs = () => {
                                 <p>Adriel Diaz</p>
                             </div>
                             <div className={style.socialbar}>
-                                <p>Front-End Developer</p>
+                                <p>Back-End Developer</p>
                             </div>
                         </div>
                         <div className={style.cardback}>
@@ -535,7 +545,6 @@ const AboutUs = () => {
                             <div className={style.socialbar}>
                                 <p>Back-End Developer</p>
                             </div>
-                            
                         </div>
                         <div className={style.cardback}>
                             {/* Reemplaza el contenido con tu bio */}
@@ -643,7 +652,6 @@ const AboutUs = () => {
                             <div className={style.socialbar}>
                                 <p>Back-End Developer</p>
                             </div>
-                           
                         </div>
                         <div className={style.cardback}>
                             {/* Reemplaza el contenido con tu bio */}
