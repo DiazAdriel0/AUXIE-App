@@ -15,7 +15,7 @@ const Detail = () => {
         }
         getDetails()
     }, [])
-    console.log(auxieDetails)
+
     return (
         <>
             <NavLanding />
