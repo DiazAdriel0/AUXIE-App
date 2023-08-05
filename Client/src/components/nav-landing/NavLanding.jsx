@@ -1,7 +1,7 @@
 import style from './navLanding.module.scss'
 import LogoAuxie from '../../assets/Logos/logoAuxie.svg'
 // Hooks
-import { useDispatch, useSelector } from 'react-redux' 
+import { useDispatch, useSelector } from 'react-redux'
 
 // Actions
 import { toggleLogOrRegView } from '../../redux/Actions/actions'
@@ -18,7 +18,7 @@ const NavLanding = ({
     const logOrRegView = useSelector((state) => state.logOrRegView)
 
     const navigate = useNavigate()
- 
+
     const handlerLogIn = () => {
         if (registerMenu) setRegisterMenu(false)
 
@@ -45,13 +45,19 @@ const NavLanding = ({
 
     const handlerChange = (event) => {
         const { value } = event.target
-        navigate('/' + value) 
+        navigate('/' + value)
     }
-    return ( 
-        <nav className={style.navLanding}>  
-        <div className={style.logoDiv}>
-           <Link to={'/'} ><img src={LogoAuxie} alt='Logo Auxie' className={style.logo}/></Link>  
-        </div>
+    return (
+        <nav className={style.navLanding}>
+            <div className={style.logoDiv}>
+                <Link to={'/'}>
+                    <img
+                        src={LogoAuxie}
+                        alt="Logo Auxie"
+                        className={style.logo}
+                    />
+                </Link>
+            </div>
             <div className={style.containerLeft}>
                 <div className={style.viewsLanding}>
                     <select
@@ -79,7 +85,7 @@ const NavLanding = ({
                             </Link>
                         </li>
                         <li>
-                            <Link to={'/help'} >
+                            <Link to={'/help'}>
                                 <p className={style.help}>Ayuda</p>
                             </Link>
                         </li>
@@ -95,8 +101,11 @@ const NavLanding = ({
                     </li>
 
                     <li>
-                        <button onClick={handlerRegister} className={style.register}>
-                            <p>Regístrarse</p> 
+                        <button
+                            onClick={handlerRegister}
+                            className={style.register}
+                        >
+                            <p>Regístrarse</p>
                         </button>
                     </li>
                 </ul>
