@@ -2,7 +2,7 @@
 import './App.scss'
 import { LocalizationProvider } from '@mui/x-date-pickers' //esto es para date and time picker (para citas)
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs' //esto es para date and time picker (para citas)
-
+import 'dayjs/locale/en-gb';
 // Import Hooks
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -55,7 +55,7 @@ function App() {
         if (!services.length) dispatch(getAllServices())
     }, [])
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
             <div>
                 <Routes>
                     <Route path="/" element={<Landing />} />
