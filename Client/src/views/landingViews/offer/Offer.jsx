@@ -16,14 +16,14 @@ const Offer = () => {
                 <div className={style.offers}>
                     <h1>Las ofertas de AUXIE</h1>
                     <h3>Cambiamos la forma en la que recibis ayuda en casa</h3>
-                    <Link to='/home'><button className={style.button}>Explora la app</button></Link>
+                    <Link to='/homeconsumer'><button className={style.button}>Explora la app</button></Link>
                 </div>
             </div>
             <div>
                 <section className={style.layout}>
                     <div>
                         <h3>Opciones de ayuda</h3>
-                        <div>
+                        <div> 
                         <img src={HelpIcon} alt="Help Icon" style={{ width: '300px', height: '300px' }}/>
                         </div>
                         <h4>Pide un AUXIE cuando más lo necesites</h4>
