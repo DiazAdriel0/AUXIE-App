@@ -11,9 +11,9 @@ const postProvider = async (req, res) => {
             firstName,
             lastName,
             age,
-            email: email.toLowerCase(),
+            email: email?.toLowerCase(),
             username,
-            usernameLower: username.toLowerCase(),
+            usernameLower: username?.toLowerCase(),
             password: hashedPassword,
             isActive: true,
         }
