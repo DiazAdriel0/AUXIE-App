@@ -25,6 +25,7 @@ const postConsumer = async (req, res) => {
             username,
             usernameLower: username.toLowerCase(),
             password: hashedPassword,
+            image: 'https://img.freepik.com/free-icon/user_318-563642.jpg',
             isActive: true,
         }
 
