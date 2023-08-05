@@ -374,6 +374,33 @@ const AboutUs = () => {
                                         <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
                                     </svg>
                                 </a>
+                                <a
+                                    id="Instagram"
+                                    href="https://www.instagram.com/candiajoshua_/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="19"
+                                        height="19"
+                                        viewBox="0 0 21 21"
+                                        strokeWidth="1.5"
+                                        stroke="black"
+                                        fill="none"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    >
+                                        <path
+                                            stroke="none"
+                                            d="M0 0h24v24H0z"
+                                            fill="none"
+                                        />
+                                        <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
+                                        <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                        <path d="M16.5 7.5l0 .01" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     </center>
