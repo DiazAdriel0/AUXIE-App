@@ -14,7 +14,6 @@ const ClientLogin = () => {
     const [access, setAccess] = useState(false) //eslint-disable-line
 
     const handleChange = (event) => {
-        console.log(event)
         setInput({
             ...input,
             [event.target.name]: event.target.value,
