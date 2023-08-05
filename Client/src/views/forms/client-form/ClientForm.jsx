@@ -51,7 +51,7 @@ const ClientForm = () => {
             // navigate('/home')
         } catch (error) {
             console.log(error + error.response.data.error)
-            Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
+         
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
