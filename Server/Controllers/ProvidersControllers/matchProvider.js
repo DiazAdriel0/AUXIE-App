@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt')
 const matchProvider = async (email, password) => {
     try {
         const isMail = email.indexOf('@')
-        if(isMail === -1){
-            const provider = await Provider.findOne({ username:email })
+        if (isMail === -1) {
+            const provider = await Provider.findOne({ username: email })
             if (provider) {
                 const passwordMatch = await bcrypt.compare(
                     password,
@@ -21,12 +21,13 @@ const matchProvider = async (email, password) => {
                     username: provider.username,
                     registerDate: provider.registerDate,
                     services: provider.services,
-                    pendingServices: provider.pendingServices,
-                    completedWorks: provider.completedWorks,
+                    jobs: provider.jobs,
                     ratings: provider.ratings,
-                    reviews: provider.reviews
+                    reviews: provider.reviews,
                 }
-                return passwordMatch ? providerWithout : new Error('wrongPassword')
+                return passwordMatch
+                    ? providerWithout
+                    : new Error('wrongPassword')
             } else {
                 throw new Error('inexistente')
             }
@@ -50,7 +51,7 @@ const matchProvider = async (email, password) => {
                 pendingServices: provider.pendingServices,
                 completedWorks: provider.completedWorks,
                 ratings: provider.ratings,
-                reviews: provider.reviews
+                reviews: provider.reviews,
             }
             return passwordMatch ? providerWithout : new Error('wrongPassword')
         } else {
