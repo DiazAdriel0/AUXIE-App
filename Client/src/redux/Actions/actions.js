@@ -23,7 +23,7 @@ export function getAllAuxies() {
                 payload: res.data,
             })
         } catch (e) {
-            console.log(e.response.data)
+            console.error(e.response.data)
         }
     }
 }
@@ -39,7 +39,7 @@ export function getAllServices() {
                 payload: res.data,
             })
         } catch (e) {
-            console.log(e.response.data)
+            console.error(e.response.data)
         }
     }
 }
@@ -53,7 +53,7 @@ export function getDetails(id) {
                 payload: res.data,
             })
         } catch (e) {
-            console.log(e.response.data)
+            console.error(e.response.data)
         }
     }
 }
@@ -66,7 +66,7 @@ export function filterAuxiesByService(service) {
                 payload: service,
             })
         } catch (e) {
-            console.log(e)
+            console.error(e)
         }
     }
 }
@@ -79,7 +79,7 @@ export function orderAuxiesByPrice(order) {
                 payload: order,
             })
         } catch (e) {
-            console.log(e.response.data)
+            console.error(e.response.data)
         }
     }
 }
@@ -91,7 +91,7 @@ export function orderAuxiesByRating(order) {
                 payload: order,
             })
         } catch (e) {
-            console.log(e.response.data)
+            console.error(e.response.data)
         }
     }
 }
@@ -104,7 +104,7 @@ export function toggleLogOrRegView(boolean) {
                 payload: boolean,
             })
         } catch (e) {
-            console.log(e)
+            console.error(e)
         }
     }
 }
@@ -124,12 +124,12 @@ export function resetAuxiesCatalog() {
                 type: RESET_AUXIES_CATALOG,
             })
         } catch (e) {
-            console.log(e)
+            console.error(e)
         }
     }
 }
 
-export function logedUser(logedUser) {
+export function loggedUser(logedUser) {
     return function (dispatch) {
         try {
             return dispatch({
@@ -137,7 +137,7 @@ export function logedUser(logedUser) {
                 payload: logedUser,
             })
         } catch (e) {
-            console.log(e)
+            console.error(e)
         }
     }
 }
