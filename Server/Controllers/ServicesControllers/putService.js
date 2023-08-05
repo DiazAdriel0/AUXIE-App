@@ -1,25 +1,33 @@
 const Service = require('../../Models/service')
 
-const putService = async (id, name, category) => {
+const putService = async (id, category, name, image) => {
     try {
+        const categoryLower = category.toLowerCase()
+        const nameLower = name.toLowerCase()
         const existingService = await Service.findOne({ _id: id })
 
-        if (!existingService) {
+        if (!existingService || existingService.isActive === false) {
             throw new Error('El servicio no existe')
-        }
+        } else {
+            if (category) {
+                existingService.category = category
+                existingService.categoryLower = categoryLower
+            }
 
-        if (name) {
-            existingService.name = name
-            existingService.nameLower = name.toLowerCase()
-        }
+            if (name) {
+                existingService.name = name
+                existingService.nameLower = nameLower
+            }
 
-        if (category) {
-            existingService.category = category
-            existingService.categoryLower = category.toLowerCase()
-        }
+            if (image) {
+                existingService.image = image
+            }
 
-        const updatedService = await existingService.save()
-        return updatedService
+            await existingService.save()
+            return {
+                message: 'El servicio fue actualizado',
+            }
+        }
     } catch (error) {
         return error
     }

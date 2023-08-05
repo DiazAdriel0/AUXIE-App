@@ -1,6 +1,6 @@
 const Service = require('../../Models/service')
 
-const getAllServices = async () => {
+const getServices = async () => {
     try {
         const services = await Service.find({ isActive: true }).select(
             '-nameLower -categoryLower'
@@ -15,4 +15,4 @@ const getAllServices = async () => {
     }
 }
 
-module.exports = getAllServices
+module.exports = getServices

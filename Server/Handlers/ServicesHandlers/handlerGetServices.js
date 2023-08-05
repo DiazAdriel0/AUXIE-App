@@ -1,8 +1,8 @@
-const getAllServices = require('../../Controllers/ServicesControllers/getAllServices')
+const getServices = require('../../Controllers/ServicesControllers/getServices')
 
-const handlerServices = async (req, res) => {
+const handlerGetServices = async (req, res) => {
     try {
-        const allServices = await getAllServices()
+        const allServices = await getServices()
         if (allServices.message === 'No hay servicios') {
             throw new Error('No se encontraron los servicios')
         }
@@ -12,4 +12,4 @@ const handlerServices = async (req, res) => {
     }
 }
 
-module.exports = handlerServices
+module.exports = handlerGetServices
