@@ -1,6 +1,6 @@
 const getClaim = require('../../Controllers/ClaimsControllers/getClaim')
 
-const handlerServices = async (req, res) => {
+const handlerGetClaim = async (req, res) => {
     try {
         const claim = await getClaim()
         if (claim.message === 'No hay reclamos') {
@@ -12,4 +12,4 @@ const handlerServices = async (req, res) => {
     }
 }
 
-module.exports = handlerServices
+module.exports = handlerGetClaim
