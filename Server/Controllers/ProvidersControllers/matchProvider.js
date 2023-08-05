@@ -48,8 +48,7 @@ const matchProvider = async (email, password) => {
                 username: provider.username,
                 registerDate: provider.registerDate,
                 services: provider.services,
-                pendingServices: provider.pendingServices,
-                completedWorks: provider.completedWorks,
+                jobs: provider.jobs,
                 ratings: provider.ratings,
                 reviews: provider.reviews,
             }
