@@ -1,13 +1,14 @@
-import NavLanding from '../../../components/nav-landing/NavLanding'
+import LoginRegisterMenus from '../../../components/loginRegisterMenus/LoginRegistermenus'
 import style from './aboutUs.module.scss'
 
 const AboutUs = () => {
     return (
         <div>
-            <NavLanding />
+            <LoginRegisterMenus />
             <div className={style.about}>
-                <center><h1>Todo sobre Auxie</h1></center>
-                
+                <center>
+                    <h1>Todo sobre Auxie</h1>
+                </center>
             </div>
 
             <div className={style.aboutboxes}>
@@ -75,7 +76,6 @@ const AboutUs = () => {
 
                 <div className={style.card}>
                     <div className={style.cardfront}>
-
                         <center>
                             <h1>Inicios de Auxie</h1>
                         </center>
@@ -105,8 +105,9 @@ const AboutUs = () => {
             {/* cards de about */}
             {/* ///cards/// */}
             <center>
-            <div className={style.about2}><h1>Conoce al equipo Auxie!</h1> </div>
-                
+                <div className={style.about2}>
+                    <h1>Conoce al equipo Auxie!</h1>{' '}
+                </div>
             </center>
 
             <div className={style.cardcontainer}>
@@ -190,7 +191,7 @@ const AboutUs = () => {
                         </div>
                     </center>
                 </div>
-                
+
                 <div className={style.card}>
                     <center>
                         <div className={style.cardfront}>

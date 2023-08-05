@@ -1,5 +1,5 @@
 import style from './howItWorks.module.scss'
-import NavLanding from '../../../components/nav-landing/NavLanding'
+import LoginRegisterMenus from '../../../components/loginRegisterMenus/LoginRegistermenus'
 import StepOne from '../../../assets/Logos/StepOne.svg'
 import StepTwo from '../../../assets/Logos/StepTwo.svg'
 import StepThree from '../../../assets/Logos/StepThree.svg'
@@ -34,7 +34,7 @@ const HowItWorks = () => {
 
     return (
         <div>
-            <NavLanding />
+            <LoginRegisterMenus />
             <div className={style.howItWorks}>
                 <h1>¿Cómo funciona Auxie?</h1>
             </div>
