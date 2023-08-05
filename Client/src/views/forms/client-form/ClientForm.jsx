@@ -51,7 +51,13 @@ const ClientForm = () => {
             // navigate('/home')
         } catch (error) {
             console.log(error + error.response.data.error)
-            alert(error.response.data.error)
+            Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'error + error.response.data.error!',
+                footer: '<a href="">Why do I have this issue?</a>'
+              })
         }
     }
     useEffect(() => {
