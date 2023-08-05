@@ -9,6 +9,6 @@ claimsRouter.get('/', handlerGetClaim)
 
 claimsRouter.post('/', handlerPostClaim)
 
-claimsRouter.post('/:id', handlerPutClaim)
+claimsRouter.put('/:id', handlerPutClaim)
 
 module.exports = claimsRouter
