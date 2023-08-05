@@ -1,5 +1,8 @@
 // Styles
 import './App.scss'
+import { LocalizationProvider } from '@mui/x-date-pickers' //esto es para date and time picker (para citas)
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs' //esto es para date and time picker (para citas)
+
 // Import Hooks
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -38,6 +41,7 @@ import AuxieLogin from './views/Login/auxie-login/auxieLogin'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
+import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
 
 function App() {
     const dispatch = useDispatch()
@@ -51,42 +55,48 @@ function App() {
         if (!services.length) dispatch(getAllServices())
     }, [])
     return (
-        <div>
-            <Routes>
-                <Route path="/" element={<Landing />} />
-                {/* Landing Nav Views */}
-                <Route path="/aboutUs" element={<AboutUs />} />
-                <Route path="/guarantee" element={<Guarantee />} />
-                <Route path="/offer" element={<Offer />} />
-                <Route path="/howItWorks" element={<HowItWorks />} />
-                <Route path="/support" element={<SupportForm />} />
-                <Route path="/help" element={<Help />} />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <div>
+                <Routes>
+                    <Route path="/" element={<Landing />} />
+                    {/* Landing Nav Views */}
+                    <Route path="/aboutUs" element={<AboutUs />} />
+                    <Route path="/guarantee" element={<Guarantee />} />
+                    <Route path="/offer" element={<Offer />} />
+                    <Route path="/howItWorks" element={<HowItWorks />} />
+                    <Route path="/support" element={<SupportForm />} />
+                    <Route path="/help" element={<Help />} />
 
-                {/* Home paths */}
-                <Route path="/homeconsumer" element={<HomeConsumer />} />
-                <Route path="/homeauxie" element={<HomeAuxie />} />
+                    {/* Home paths */}
+                    <Route path="/homeconsumer" element={<HomeConsumer />} />
+                    <Route path="/homeauxie" element={<HomeAuxie />} />
 
-                {/* Home views paths */}
-                <Route path="/auxieinbox" element={<AuxieInbox />} />
-                <Route path="/auxieservices" element={<AuxieServices />} />
-                <Route path="/auxiestatistics" element={<AuxieStatistics />} />
+                    {/* Home views paths */}
+                    <Route path="/auxieinbox" element={<AuxieInbox />} />
+                    <Route path="/auxieservices" element={<AuxieServices />} />
+                    <Route
+                        path="/auxiestatistics"
+                        element={<AuxieStatistics />}
+                    />
+                    <Route path="/jobrequest" element={<JobRequestForm />} />
 
-                {/*Detail paths  */}
-                <Route path="/detail/:id" element={<Detail />} />
+                    {/*Detail paths  */}
+                    <Route path="/detail/:id" element={<Detail />} />
 
-                {/* Register paths */}
-                <Route path="/auxieform" element={<Form />} />
-                <Route path="/clientform" element={<ClientForm />} />
-                {/* Register paths */}
+                    {/* Register paths */}
+                    <Route path="/auxieform" element={<Form />} />
+                    <Route path="/clientform" element={<ClientForm />} />
+                    {/* Register paths */}
 
-                {/* Login paths */}
-                <Route path="/clientlogin" element={<ClientLogin />} />
-                <Route path="/auxielogin" element={<AuxieLogin />} />
-                {/* Login paths */}
+                    {/* Login paths */}
+                    <Route path="/clientlogin" element={<ClientLogin />} />
+                    <Route path="/auxielogin" element={<AuxieLogin />} />
+                    {/* Login paths */}
 
-                <Route path="*" element={<PageNotFound />} />
-            </Routes>
-        </div>
+                    <Route path="*" element={<PageNotFound />} />
+                </Routes>
+            </div>
+        </LocalizationProvider>
     )
 }
 
