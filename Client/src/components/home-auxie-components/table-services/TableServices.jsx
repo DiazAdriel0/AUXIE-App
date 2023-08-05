@@ -1,7 +1,9 @@
 import style from './tableServices.module.scss'
 import usePagination from '../../pagination/usePagination'
-const TableServices = ({ data }) => {
-    const { currentPageData } = usePagination(15, data)
+import { useSelector } from 'react-redux'
+const TableServices = () => {
+    const loggedUser = useSelector((state) => state.loggedUser)
+    const { currentPageData } = usePagination(15, loggedUser.jobs)
 
     return (
         <table className={style.servicesTable}>
@@ -18,8 +20,8 @@ const TableServices = ({ data }) => {
                 {currentPageData.map((service) => (
                     <tr key={service.id}>
                         <td>{service.id}</td>
-                        <td>{service.name}</td>
-                        <td>{service.trabajo}</td>
+                        <td>{service.service}</td>
+                        <td>{service.description}</td>
                         <td>{service.status}</td>
                         <td>{service.price}</td>
                     </tr>

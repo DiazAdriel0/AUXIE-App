@@ -2,7 +2,7 @@ import style from './auxieServices.module.scss'
 
 //Hooks
 import { useState } from 'react'
-import data from '../../../../API/data'
+import { useSelector } from 'react-redux'
 //Components
 
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
@@ -11,6 +11,7 @@ import CardsJobs from '../../../../components/home-auxie-components/cards-jobs/C
 import Pagination from '../../../../components/pagination/Pagination'
 
 const AuxieServices = () => {
+    const loggedUser = useSelector((state) => state.loggedUser)
     const [tableOrCard, setTableOrCard] = useState(true)
     const handleChange = () => {
         setTableOrCard(!tableOrCard)
@@ -27,15 +28,15 @@ const AuxieServices = () => {
                 <button onClick={handleChange}>
                     {tableOrCard ? 'Change to cards' : 'change to table'}
                 </button>
-                {tableOrCard ? <TableServices data={data} /> : <CardsJobs />}
+                {tableOrCard ? <TableServices /> : <CardsJobs />}
             </main>
 
             {/* footer */}
             <footer className={style.footer}>
                 {tableOrCard ? (
-                    <Pagination data={data} num={15} />
+                    <Pagination data={loggedUser.jobs} num={15} />
                 ) : (
-                    <Pagination data={data} num={8} />
+                    <Pagination data={loggedUser.jobs} num={8} />
                 )}
             </footer>
         </div>

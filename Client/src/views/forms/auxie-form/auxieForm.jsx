@@ -4,15 +4,11 @@ import style from './auxieform.module.scss'
 import { useEffect, useState } from 'react'
 import { useValidations } from '../../../utils/validationutils'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
 
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-import { loggedUser } from '../../../redux/Actions/actions'
-
 const Form = () => {
-    const dispatch = useDispatch()
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
     const navigate = useNavigate()
@@ -46,7 +42,6 @@ const Form = () => {
                 input
             )
             if (response) {
-                dispatch(loggedUser(response.data))
                 setAccess(true)
                 const form = document.getElementById('form')
                 form.reset()
