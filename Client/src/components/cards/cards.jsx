@@ -20,6 +20,7 @@ const Cards = () => {
                         services={user.services}
                         averageRating={user.averageRating}
                         completedWorks={user.completedWorks}
+                        image={user.image}
                     />
                 ))}
         </div>
