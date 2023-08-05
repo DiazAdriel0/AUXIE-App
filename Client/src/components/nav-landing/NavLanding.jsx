@@ -74,12 +74,6 @@ const NavLanding = ({
 
                     <ul>
                         <li>
-                            <Link to={'/homeconsumer'} className={style.consumer}>Clientes</Link>
-                        </li>
-                        <li>
-                            <Link to={'/homeauxie'} className={style.auxie}>Auxie&#39;s</Link>
-                        </li>
-                        <li>
                             <Link to={'/guarantee'}>
                                 <p className={style.guarantee}>Garantías</p>
                             </Link>
