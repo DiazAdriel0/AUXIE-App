@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-
+import Swal from 'sweetalert2'
 const ClientForm = () => {
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
@@ -44,6 +44,7 @@ const ClientForm = () => {
                 // Reset the form only on successful response (2xx)
                 const form = document.getElementById('form')
                 form.reset()
+                Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
             }
             // setAccess(true)
             console.log(response)

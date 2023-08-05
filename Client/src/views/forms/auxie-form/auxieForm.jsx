@@ -42,6 +42,7 @@ const Form = () => {
                 setAccess(true)
                 const form = document.getElementById('form')
                 form.reset()
+                alert('Usuario creado con exito')
             }
             // setAccess(true)
             console.log(response)
