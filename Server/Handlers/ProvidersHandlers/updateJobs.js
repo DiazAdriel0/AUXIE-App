@@ -1,9 +1,9 @@
-const addPendingService = require('./../../Controllers/ProvidersControllers/addPendingService')
+const addJob = require('./../../Controllers/ProvidersControllers/addJob')
 
-const putPendingService = async (req, res) => {
+const updateJobs = async (req, res) => {
     const { id } = req.params
     try {
-        const addService = await addPendingService(req.body, id)
+        const addService = await addJob(req.body, id)
 
         if (addService.message)
             throw new Error('No se pudo agregar el servicio')
@@ -14,4 +14,4 @@ const putPendingService = async (req, res) => {
     }
 }
 
-module.exports = putPendingService
+module.exports = updateJobs

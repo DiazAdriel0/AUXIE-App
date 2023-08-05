@@ -23,8 +23,7 @@ const providerSchema = new Schema({
     },
 
     services: { type: Array },
-    pendingServices: { type: Array },
-    completedWorks: { type: Array },
+    jobs: { type: Array },
     ratings: { type: Array },
     averageRating: { type: Number, min: 0 },
     reviews: { type: Array },
