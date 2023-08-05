@@ -11,7 +11,7 @@ const updateProvider = async (req, res) => {
         address,
         image,
         username,
-        usernameLower: username.toLowerCase(),
+        usernameLower: username?.toLowerCase(),
         services,
         bio,
     }
