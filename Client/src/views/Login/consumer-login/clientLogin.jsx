@@ -3,9 +3,12 @@ import style from './clientLogin.module.scss'
 import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import {loggedUser} from '../../../redux/Actions/actions'
 
 const ClientLogin = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
 
@@ -37,6 +40,7 @@ const ClientLogin = () => {
             )
             if (response) {
                 setAccess(true)
+                dispatch(loggedUser(response.data))
             }
         } catch (error) {
             console.error('error: ' + error.response.data.error)

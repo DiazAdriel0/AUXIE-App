@@ -1,11 +1,11 @@
 const { Schema, model } = require('mongoose')
 
 const consumerSchema = new Schema({
-    consumerUsername: {
-        type: String,
-        required: true,
+    pending: {
+        type: Boolean,
+        default: true,
     },
-    message: {
+    consumerUsername: {
         type: String,
         required: true,
     },
@@ -13,26 +13,30 @@ const consumerSchema = new Schema({
         type: String,
         required: true,
     },
-    date: {
-        type: Date,
-        default: Date.now(),
-        immutable: true,
-    },
     reason: {
         type: String,
         required: true,
     },
-    pending: {
-        type: Boolean,
-        default: true,
+    message: {
+        type: String,
+        required: true,
     },
     image: {
         type: String,
         required: false,
     },
+    dateClaims: {
+        type: Date,
+        default: Date.now(),
+        immutable: true,
+    },
     answer: {
         type: String,
         required: false,
+    },
+    dateAnswer: {
+        type: Date,
+        default: Date.now(),
     },
 })
 

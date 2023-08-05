@@ -9,7 +9,6 @@
   justify-content: center;
   height: 100vh; 
   position:relative;
-  margin-top: 5%;
   div{
     width: 25%;
   }
@@ -43,10 +42,12 @@
 .offers{
   padding: 30px;
   background-color: var(--secondary--color-light);
-  border-radius: 20px;
+  border-bottom: var(--accent--primary--color-light) 2px solid;
+  border-left: var(--accent--primary--color-light) 2px solid;  
+  border-right: var(--accent--primary--color-light) 2px solid;
   h1{
       font-size: 75px;
-      margin-top: 10%;
+      
   }
 
   h3{

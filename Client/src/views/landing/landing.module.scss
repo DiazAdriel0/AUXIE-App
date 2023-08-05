@@ -1,43 +1,83 @@
 .logInMenu {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 90vh;
-
-    z-index: 25;
+    background-color: var(--secondary--color-light);
     overflow: hidden;
-    div {
-        z-index: 25;
-    }
     .container {
-        background-color: var(--accent--terciary--color-light);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        font-size: 200%;
+        
+        div{
+            width: 90%;
+            height: 50%;
+            display:flexbox;
+            margin-top: 5%;
+            div{
+                background-color:var(--accent--primary--color-light);
+                margin-left: 10%;
+                padding-left: 30%;
+                padding: 5%;
+                border-radius: 10px;
+            }
+            
+        }
 
-        width: 100%;
-        height: 100%;
+
+        button{
+            background-color: var(--accent--terciary--color-light);
+            width: 3%;
+            height: 3%;
+            margin-left: 95%;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.5s ease;
+            font-size: 50%;
+        }
+
+        button:hover{
+            background-color: var(--accent--primary--color-light);
+        }
     }
 }
 .registerMenu {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 90vh;
-    z-index: 25;
     overflow: hidden;
-    div {
-        z-index: 25;
-    }
-    .container {
-        background-color: var(--accent--terciary--color-light);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+    background-color: var(--secondary--color-light);
 
-        width: 100%;
-        height: 100%;
+    .container {
+        font-size:200% ;
+        div{
+            width: 90%;
+            height: 50%;
+            display:flexbox;
+            margin-top: 5%;
+
+            div{
+                background-color:var(--accent--primary--color-light);
+                margin-left: 10%;
+                padding-left: 30%;
+                padding: 5%;
+                border-radius: 10px;
+            }
+        }
+        
     }
+    button{
+        background-color: var(--accent--terciary--color-light);
+        width: 3%;
+        height: 3%;
+        margin-left: 95%;
+        border-radius: 5px;
+        border: none;
+        transition: background-color 0.5s ease;
+        font-size: 50%;
+    }
+    button:hover{
+        background-color: var(--accent--primary--color-light);
+    }
+
 }
 .hiden {
     section {
@@ -51,7 +91,14 @@
     z-index: 50;
     position: fixed;
     top: 80%;
-    left: 95%;
+    left: 90%;
+    padding: 1%;
+    border-radius: 10px;
+    font-size: large;
+    font-family: var( --font-poppins);
+    font-weight: 500;
+    background-color: var(--accent--terciary--color-light);
+    border: none;
 }
 .landing {
     display: grid;
@@ -84,7 +131,7 @@
             display: flex;
             text-align: center;
             height: 25%;
-
+          
             .searchAuxie {
                 all: unset;
                 display: flex;
@@ -92,10 +139,15 @@
                 align-items: center;
                 width: 50%;
                 height: 100%;
+                font-size: 150%;
+                transition: background-color 0.5s ease;
+                border-top-left-radius: 9px; 
             }
             .searchAuxie:hover {
                 background-color: var(--accent--primary--color-light);
                 cursor: pointer;
+                border-top-left-radius: 9px; 
+
             }
             .turnAuxie {
                 all: unset;
@@ -104,10 +156,14 @@
                 align-items: center;
                 width: 50%;
                 height: 100%;
+                font-size: 150%;
+                transition: background-color 0.5s ease;
+                border-top-right-radius: 9px; 
             }
             .turnAuxie:hover {
                 background-color: var(--accent--primary--color-light);
                 cursor: pointer;
+                border-top-right-radius: 9px; 
             }
         }
         .menuSearchAuxie {
@@ -117,13 +173,46 @@
             align-items: center;
             gap: 1rem;
             align-items: center;
+            font-size:large ;
+            margin-top: 2%;
+
+            select{
+                border-radius: 10px;
+                padding: 2%;
+                font-size: 110%;
+            }
         }
+        
+        .buttonMenu{
+                background-color: var(--accent--terciary--color-light);
+                padding: 2%;
+                font-size: 120%;
+                font-weight: 500;
+                border-radius: 10px;
+                border: none;
+                margin-top: 2%;
+                font-family: var( --font-poppins);
+            }
+
+            .buttonMenu:hover{
+                background-color: var(--accent--primary--color-light);
+                transition: background-color 0.5s ease;
+            }
+
         .menuTurnAuxie {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             gap: 1rem;
+            font-size:large ;
+            margin-top: 2%;
+
+            select{
+                border-radius: 10px;
+                padding: 2%;
+                font-size: 110%;
+            }
         }
     }
 
@@ -151,15 +240,31 @@
                 font-size: 30px;
             }
             p {
-                font-size: 15px;
+                font-size: 120%;
                 display: flex;
                 flex-direction: column;
             }
         }
         .buttonSlogan {
             width: 120px;
-            margin: 2% 0 0 10%;
+            margin: 1% 0 0 10%;
+            padding: 0.7%;
+            font-size: large;
+            font-family: var( --font-poppins);
+            border-radius: 10px;
+            border: none;
+            background-color: var(--accent--terciary--color-light);
         }
+    }
+    .buttonSlogan1 {
+        width:12% ;
+        margin: 1% 0 0 10%;
+        padding: 1%;
+        font-size: large;
+        font-family: var( --font-poppins);
+        border-radius: 10px;
+        border: none;
+        background-color: var(--accent--terciary--color-light);
     }
     /* Estilos para la sección 3 (cards) */
     .serviceCards {
@@ -171,13 +276,16 @@
         justify-content: flex-start;
         align-items: center;
         gap: 10%;
-        padding: 5% 0 5% 0;
+        padding: 2% 0 5% 0;
+        h3{
+            font-size: xx-large;
+        }
     }
     /* Estilos para la sección 4 Auxies */
     .auxies {
         z-index: 5;
         height: 100vh;
-
+        margin-top: -2%;
         font-size: 35px;
         gap: 10%;
         display: flex;
@@ -207,14 +315,12 @@
     .landingFooter {
         z-index: 6;
         background-color: var(--accent--primary--color-light);
-        height: 100vh;
+        height: 70vh;
         .divFooterTitle {
-            padding-top: 6%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 10%;
             h3 {
                 font-size: 50px;
             }
@@ -227,12 +333,15 @@
             justify-content: center;
             align-items: center;
             gap: 10px;
+            width: 30vh;
+            height: 30vh;
         }
         .divCopy {
-            margin: 17% 0 0 5%;
+            margin: 2% 0 0 2%;
             display: flex;
             justify-content: flex-start;
             align-items: flex-end;
+            margin-top:15%;
         }
     }
 }

@@ -6,7 +6,7 @@ import 'dayjs/locale/en-gb';
 // Import Hooks
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 // Import Actions
 import { getAllAuxies, getAllServices } from './redux/Actions/actions'
@@ -45,14 +45,12 @@ import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
 
 function App() {
     const dispatch = useDispatch()
-    const auxies = useSelector((state) => state.auxies)
-    const services = useSelector((state) => state.services)
 
     //* use Effect to obtain data
 
     useEffect(() => {
-        if (!auxies.length) dispatch(getAllAuxies())
-        if (!services.length) dispatch(getAllServices())
+        dispatch(getAllAuxies())
+        dispatch(getAllServices())
     }, [])
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>

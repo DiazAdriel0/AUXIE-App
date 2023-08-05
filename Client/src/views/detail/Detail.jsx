@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import NavLanding from '../../components/nav-landing/NavLanding'
+import NavGeneral from '../../components/nav-general/NavGeneral'
 import style from './detail.module.scss'
 
 const Detail = () => {
@@ -15,16 +15,15 @@ const Detail = () => {
         }
         getDetails()
     }, [])
-    console.log(auxieDetails)
     return (
         <>
-            <NavLanding />
+            <NavGeneral />
             {Object.keys(auxieDetails).length > 0 ? (
                 <div className={style.detailCont}>
                     <div className={style.infoCont}>
                         <div className={style.profilePic}>
                             <img
-                                src="https://img.freepik.com/free-icon/user_318-563642.jpg"
+                                src={auxieDetails.image}
                                 alt="imagen de perfil"
                                 height="100px"
                                 width="100px"
@@ -88,7 +87,7 @@ const Detail = () => {
                         <p>Carousel</p>
                     </div>
                     <div className={style.bio}>
-                        <p> Descripción personalizada del Auxie</p>
+                        <p> {auxieDetails.bio}</p>
                     </div>
                 </div>
             ) : null}

@@ -1,7 +1,7 @@
 import style from './navLanding.module.scss'
-
+import LogoAuxie from '../../assets/Logos/logoAuxie.svg'
 // Hooks
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux' 
 
 // Actions
 import { toggleLogOrRegView } from '../../redux/Actions/actions'
@@ -45,15 +45,17 @@ const NavLanding = ({
 
     const handlerChange = (event) => {
         const { value } = event.target
-        navigate('/' + value)
+        navigate('/' + value) 
     }
-    return (
-        <nav className={style.navLanding}>
+    return ( 
+        <nav className={style.navLanding}>  
+        <div className={style.logoDiv}>
+           <Link to={'/'} ><img src={LogoAuxie} alt='Logo Auxie' className={style.logo}/></Link>  
+        </div>
             <div className={style.containerLeft}>
-            <Link to={'/'}>Logo</Link>
-
                 <div className={style.viewsLanding}>
                     <select
+                        className={style.select}
                         onChange={handlerChange}
                         name="company"
                         defaultValue={'default'}
@@ -72,19 +74,13 @@ const NavLanding = ({
 
                     <ul>
                         <li>
-                            <Link to={'/homeconsumer'}>Home Consumer</Link>
-                        </li>
-                        <li>
-                            <Link to={'/homeauxie'}>Home Auxie</Link>
-                        </li>
-                        <li>
                             <Link to={'/guarantee'}>
-                                <p>Garantías</p>
+                                <p className={style.guarantee}>Garantías</p>
                             </Link>
                         </li>
                         <li>
-                            <Link to={'/help'}>
-                                <p>Ayuda</p>
+                            <Link to={'/help'} >
+                                <p className={style.help}>Ayuda</p>
                             </Link>
                         </li>
                     </ul>
@@ -93,14 +89,14 @@ const NavLanding = ({
             <div className={style.logInOrRegister}>
                 <ul>
                     <li>
-                        <button onClick={handlerLogIn}>
+                        <button onClick={handlerLogIn} className={style.login}>
                             <p>Ingresar</p>
                         </button>
                     </li>
 
                     <li>
-                        <button onClick={handlerRegister}>
-                            <p>Registrarse</p>
+                        <button onClick={handlerRegister} className={style.register}>
+                            <p>Regístrarse</p> 
                         </button>
                     </li>
                 </ul>

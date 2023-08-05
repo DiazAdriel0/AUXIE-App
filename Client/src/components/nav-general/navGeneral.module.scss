@@ -1,0 +1,37 @@
+.navGeneral {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 30;
+    background-color: var(--accent--third--color-light);
+    ul {
+        display: flex;
+        gap: 15%;
+    }
+    .containerLeft {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 5%;
+    }
+
+    .viewsGeberal {
+        display: flex;
+        gap: 5%;
+    }
+
+    .profile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10%;
+        margin: 5%;
+    }
+
+}
+
+.default {
+    display: none;
+}

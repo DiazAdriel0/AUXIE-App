@@ -3,8 +3,12 @@ import style from './auxieLogin.module.scss'
 import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import {loggedUser} from '../../../redux/Actions/actions'
+
 const ClientLogin = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const { errors, validate } = useValidations()
     const [input, setInput] = useState({
@@ -37,6 +41,7 @@ const ClientLogin = () => {
             )
             if (response) {
                 setAccess(true)
+                dispatch(loggedUser(response.data))
             }
 
             console.log(response)
