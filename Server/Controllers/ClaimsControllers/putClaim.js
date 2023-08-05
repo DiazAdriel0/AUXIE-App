@@ -1,4 +1,4 @@
-const Claims = require('../../Models/claims')
+const Claims = require('../../Models/claim')
 
 const putClaim = async (id, answer) => {
     try {
@@ -12,6 +12,7 @@ const putClaim = async (id, answer) => {
         } else {
             existingClaim.pending = false
             existingClaim.answer = answer
+            existingClaim.dateAnswer = Date.now()
             await existingClaim.save()
             return {
                 message: 'Respondiste al reclamo',

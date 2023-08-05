@@ -37,7 +37,6 @@ const consumerSchema = new Schema({
     dateAnswer: {
         type: Date,
         default: Date.now(),
-        immutable: true,
     },
 })
 

@@ -1,8 +1,9 @@
 .help{
-    padding-top: 6%;
+    padding-top: 1%;
     padding-bottom: 1%;
-    background-color: var(--accent--third--color-light);
+    background-color: var(--secondary--color-light);
     padding-left: 5%;
+    border-bottom: var(--accent--primary--color-light) 2px solid;
     h2{
         font-size: 150%;
     }

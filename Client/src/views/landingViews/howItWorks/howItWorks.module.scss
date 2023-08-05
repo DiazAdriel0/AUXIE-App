@@ -29,7 +29,9 @@ margin-bottom: 40%;
 .howItWorks{
     padding: 3%;
     background-color: var(--secondary--color-light);
-    border: var(--accent--third--color-light) 3px solid;
+    border-bottom: var(--accent--third--color-light) 3px solid;
+    border-left: var(--accent--third--color-light) 3px solid;
+    border-right: var(--accent--third--color-light) 3px solid;
     h1{
         font-size: 300%;
         

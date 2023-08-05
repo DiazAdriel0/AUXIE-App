@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 
 //*Import Animations
 import { Animated } from 'react-animated-css'
+import CircleIconAuxie from '../../assets/Logos/CircleIconAuxie.png'
 
 //* Import components
 import CardsServices from '../../components/cards-services/CardsServices'
@@ -89,8 +90,8 @@ const Landing = () => {
             {myElementIsVisible ||
             mySecondElementIsVisible ||
             myThirdElementIsVisible ? (
-                <div className={style.buttonUp}>
-                    <button onClick={handleButtonUp}>SUBIR</button>
+                <div >
+                    <button onClick={handleButtonUp} className={style.buttonUp}>SUBIR</button>
                 </div>
             ) : null}
             <main
@@ -107,20 +108,22 @@ const Landing = () => {
                         <div className={style.logInMenu}>
                             <div className={style.container}>
                                 <button onClick={() => setLogInMenu()}>
-                                    Cerrar
+                                    X
                                 </button>
                                 <div>
                                     <ul>
-                                        <li>
+                                        <div> 
                                             <Link to={'/clientLogin'}>
                                                 Iniciar Sesion Como Cliente
                                             </Link>
-                                        </li>
-                                        <li>
+                                           
+                                        </div>
+                                       <div>
                                             <Link to={'/auxieLogin'}>
                                                 Iniciar Sesion Como Auxie
                                             </Link>
-                                        </li>
+                                       </div>
+                                       
                                     </ul>
                                 </div>
                             </div>
@@ -138,20 +141,20 @@ const Landing = () => {
                         <div className={style.registerMenu}>
                             <div className={style.container}>
                                 <button onClick={() => setRegisterMenu()}>
-                                    Cerrar
+                                    X
                                 </button>
                                 <div>
                                     <ul>
-                                        <li>
-                                            <Link to={'/clientform'}>
+                                       <div>
+                                        <Link to={'/clientform'}>
                                                 Registrarse Como Cliente
                                             </Link>
-                                        </li>
-                                        <li>
-                                            <Link to={'/auxieform'}>
+                                       </div>
+                                        <div>
+                                           <Link to={'/auxieform'}>
                                                 Registrarse Como Auxie
-                                            </Link>
-                                        </li>
+                                            </Link> 
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
@@ -239,7 +242,7 @@ const Landing = () => {
                 >
                     <section className={style.slogan}>
                         <div className={style.divSlogan}>
-                            <h3>LA VIDA COTIDIANA AHORA ES MAS FACIL</h3>
+                            <h3>TU VIDA COTIDIANA AHORA ES MÁS FÁCIL</h3>
                             <p>
                                 <span>
                                     Esta aplicación esta diseñada para tu
@@ -292,15 +295,13 @@ const Landing = () => {
                             <div className={style.divSlogan}>
                                 <h3>Trabaja con nosotros y genera ganancias</h3>
                                 <p>
-                                    <span>Somos la mejor herramienta para</span>
-                                    <span>
-                                        potenciar tu independencia laboral
-                                    </span>
+                                    <span>Somos la mejor herramienta para potenciar tu independencia laboral</span>
                                 </p>
                             </div>
-                            <button className={style.buttonSlogan}>
+                            <Link to='/help'><button className={style.buttonSlogan1}>
                                 Mas informacion
                             </button>
+                            </Link>
                         </section>
 
                         {/* Section Auxies */}
@@ -337,10 +338,9 @@ const Landing = () => {
                 {footerAnimated ? (
                     <footer ref={myRef3} className={style.landingFooter}>
                         <div className={style.divFooterTitle}>
-                            <h3>AUXIE</h3>
-                            <h4>Creado con amor por </h4>
+                            <img src={CircleIconAuxie} alt='circle icon' className={style.divFooterImg}/>
+                            <h4>Creado con amor por el Auxie Team</h4>
                         </div>
-                        <div className={style.divFooterImg}></div>
                         <div className={style.divCopy}>
                             <p>Copyright © 2023</p>
                         </div>

@@ -150,14 +150,14 @@ function rootReducer(state = initialState, action) {
                 auxies: [...state.backupAuxies],
                 filteredAuxies: [...state.backupAuxies],
             }
-        // caso por defecto si por alguna razón no recibe action.type
-
+        
+        // carga la info del usuario loggueado a mi estado global
         case LOGED_USER:
             return {
                 ...state,
                 loggedUser: action.payload,
             }
-
+        // caso por defecto si por alguna razón no recibe action.type
         default:
             return {
                 ...state,
