@@ -1,11 +1,11 @@
 import style from './guarantee.module.scss'
-import NavLanding from '../../../components/nav-landing/NavLanding'
 import { Link } from 'react-router-dom'
+import LoginRegisterMenus from '../../../components/loginRegisterMenus/LoginRegistermenus'
 
 const Guarantee = () => {
     return (
         <div>
-            <NavLanding />
+            <LoginRegisterMenus />
             <div className={style.guarantee}>
                 <div className={style.square}>
                     <h1>La Garantia de felicidad AUXIE</h1>
@@ -52,7 +52,9 @@ const Guarantee = () => {
                             Si no estás satisfecho, ¡háznoslo saber y
                             trabajaremos para corregirlo!
                         </p>
-                        <button className={style.contact}><Link to='/support' >Contáctanos</Link></button>
+                        <button className={style.contact}>
+                            <Link to="/support">Contáctanos</Link>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -61,4 +63,3 @@ const Guarantee = () => {
 }
 
 export default Guarantee
-
