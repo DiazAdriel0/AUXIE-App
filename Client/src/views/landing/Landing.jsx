@@ -3,7 +3,7 @@ import style from './landing.module.scss'
 //* Import Hooks
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 //*Import Animations
@@ -37,8 +37,9 @@ const Landing = () => {
     const [menuChange, setMenuChange] = useState(true)
     const [logInMenu, setLogInMenu] = useState(false)
     const [registerMenu, setRegisterMenu] = useState(false)
-    console.log(myElementIsVisible)
-    console.log(animationObserver)
+
+    const navigate = useNavigate()
+
     //* useEffect animations
     useEffect(() => {
         if (myElementIsVisible) {
@@ -76,6 +77,18 @@ const Landing = () => {
             behavior: 'smooth',
         })
     }
+
+    const handleClick = (event) => {
+        switch (event.target.value) {
+            case 'toAuxieForm':
+                navigate('/auxieform')
+                break
+            case 'toClientForm':
+                navigate('/clientform')
+                break
+        }
+    }
+
     const { cardsAnimated, secondCardsAnimated, footerAnimated } =
         animationObserver
     return (
@@ -207,7 +220,11 @@ const Landing = () => {
                                                     )
                                                 })}
                                         </select>
-                                        <button className={style.buttonMenu}>
+                                        <button
+                                            onClick={handleClick}
+                                            value={'toClientForm'}
+                                            className={style.buttonMenu}
+                                        >
                                             Necesito un Auxie
                                         </button>
                                     </div>
@@ -233,7 +250,11 @@ const Landing = () => {
                                                     )
                                                 })}
                                         </select>
-                                        <button className={style.buttonMenu}>
+                                        <button
+                                            onClick={handleClick}
+                                            value={'toAuxieForm'}
+                                            className={style.buttonMenu}
+                                        >
                                             Convertirme en Auxie
                                         </button>
                                     </div>
