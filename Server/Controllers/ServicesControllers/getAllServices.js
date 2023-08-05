@@ -2,7 +2,9 @@ const Service = require('../../Models/service')
 
 const getAllServices = async () => {
     try {
-        const services = await Service.find({})
+        const services = await Service.find({ isActive: true }).select(
+            '-nameLower -categoryLower'
+        )
         if (services.length === 0) {
             throw new Error('No hay servicios')
         } else {
