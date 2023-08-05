@@ -8,7 +8,7 @@ const postClaim = async (
     image
 ) => {
     try {
-        const newClaim = await Claims.create({
+        await Claims.create({
             consumerUsername,
             message,
             providerUsername,
@@ -18,7 +18,6 @@ const postClaim = async (
 
         return {
             message: 'Reclamo realizado',
-            claim: newClaim,
         }
     } catch (error) {
         return error

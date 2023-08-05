@@ -6,9 +6,13 @@ const handlerDeleteService = async (req, res) => {
 
         const deletedService = await deleteService(id)
         if (deletedService.message === 'No se encontró el servicio') {
-            throw new Error('No existe un servicio con este nombre y/o categoría')
-        }else{
-            res.status(200).json({ message: 'Servicio eliminado correctamente'})
+            throw new Error(
+                'No existe un servicio con este nombre y/o categoría'
+            )
+        } else {
+            res.status(200).json({
+                message: 'Servicio eliminado correctamente',
+            })
         }
     } catch (error) {
         res.status(400).json({ error: error.message })

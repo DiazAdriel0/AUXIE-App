@@ -1,13 +1,13 @@
 const Service = require('../../Models/service')
 
-const postService = async (name, category, image) => {
+const postService = async (category, name, image) => {
     try {
-        const nameLower = name.toLowerCase()
         const categoryLower = category.toLowerCase()
+        const nameLower = name.toLowerCase()
 
         let existingService = await Service.findOne({
-            nameLower,
             categoryLower,
+            nameLower,
         })
 
         if (existingService) {
@@ -26,7 +26,9 @@ const postService = async (name, category, image) => {
                 nameLower,
                 image,
             })
-            return 'El servicio fue creado'
+            return {
+                message: 'El servicio fue creado',
+            }
         }
     } catch (error) {
         return error
