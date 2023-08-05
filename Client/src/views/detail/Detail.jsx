@@ -23,7 +23,7 @@ const Detail = () => {
                     <div className={style.infoCont}>
                         <div className={style.profilePic}>
                             <img
-                                src="https://img.freepik.com/free-icon/user_318-563642.jpg"
+                                src={auxieDetails.image}
                                 alt="imagen de perfil"
                                 height="100px"
                                 width="100px"
