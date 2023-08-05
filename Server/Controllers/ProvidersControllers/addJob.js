@@ -1,7 +1,7 @@
 const Provider = require('./../../Models/provider')
 
 const addJob = async (newPendingService, id) => {
-    const { service, description, clientId } = newPendingService
+    const { service, description, clientId, jobDate } = newPendingService
     try {
         const providerFound = await Provider.findById(id)
 
@@ -13,6 +13,8 @@ const addJob = async (newPendingService, id) => {
             clientId,
             status: 'pending',
             price: 0,
+            requestDate: Date.now(),
+            jobDate,
         }
 
         if (providerFound.jobs?.length > 0) {
