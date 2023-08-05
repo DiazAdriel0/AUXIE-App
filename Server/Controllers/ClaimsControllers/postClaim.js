@@ -1,4 +1,4 @@
-const Claims = require('../../Models/claims')
+const Claims = require('../../Models/claim')
 
 const postClaim = async (
     consumerUsername,
