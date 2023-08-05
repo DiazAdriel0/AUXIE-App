@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom'
 import style from './card.module.scss'
 
 const Card = (user) => {
-    const { id, lastName, firstName, averageRating, services } = user
-    // let completeKey = 0
+    const { id, lastName, firstName, averageRating, services, image } = user
+
     return (
         <div className={style.card}>
             <div className={style.contPersonal}>
                 <div className={style.profilePic}>
                     <img
-                        src="https://img.freepik.com/free-icon/user_318-563642.jpg"
+                        src={image}
                         alt="imagen de perfil"
                         height="100px"
                         width="100px"
