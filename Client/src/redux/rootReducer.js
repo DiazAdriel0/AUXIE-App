@@ -5,17 +5,16 @@ import {
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
     LOG_OR_REG_VIEW,
-
     SET_CURRENT_PAGE,
-
-    RESET_AUXIES_CATALOG
-
-} from '../redux/Actions/actionTypes'
+    RESET_AUXIES_CATALOG,
+    LOGED_USER,
+} from './Actions/actionTypes'
 
 let initialState = {
     auxies: [],
     backupAuxies: [],
     filteredAuxies: [],
+    loggedUser: [],
     services: [],
     filter: [],
     logOrRegView: false,
@@ -141,17 +140,23 @@ function rootReducer(state = initialState, action) {
         case LOG_OR_REG_VIEW:
             return { ...state, logOrRegView: action.payload }
 
-
         case SET_CURRENT_PAGE:
             return { ...state, currentPage: action.payload }
 
-
-        // resetea mis estados modificados por mi actions 
+        // resetea mis estados modificados por mi actions
         case RESET_AUXIES_CATALOG:
-            return { ...state, 
+            return {
+                ...state,
                 auxies: [...state.backupAuxies],
-                filteredAuxies: [...state.backupAuxies]}
+                filteredAuxies: [...state.backupAuxies],
+            }
         // caso por defecto si por alguna razón no recibe action.type
+
+        case LOGED_USER:
+            return {
+                ...state,
+                loggedUser: action.payload,
+            }
 
         default:
             return {
