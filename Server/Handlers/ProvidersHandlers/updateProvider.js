@@ -1,7 +1,7 @@
 const findAndUpdateProvider = require('./../../Controllers/ProvidersControllers/findAndUpdateProvider')
 
 const updateProvider = async (req, res) => {
-    const { id, firstName, lastName, address, image, username, services } =
+    const { id, firstName, lastName, address, image, username, services, bio } =
         req.body
 
     const recibedProperties = {
@@ -13,6 +13,7 @@ const updateProvider = async (req, res) => {
         username,
         usernameLower: username.toLowerCase(),
         services,
+        bio,
     }
 
     const filledProperties = Object.entries(recibedProperties)
