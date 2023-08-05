@@ -41,6 +41,9 @@ const ClientForm = () => {
             )
             if (response) {
                 setAccess(true)
+                // Reset the form only on successful response (2xx)
+                const form = document.getElementById('form')
+                form.reset()
             }
             // setAccess(true)
             console.log(response)
@@ -52,16 +55,13 @@ const ClientForm = () => {
     }
     useEffect(() => {
         if (access === true) {
-            navigate('/homeconsumer')
+            navigate('/clientlogin')
         }
     }, [access])
     const handleSubmit = (e) => {
         e.preventDefault()
         handlePost()
-        // dispatch(postPokemon(input))
-        const form = document.getElementById('form')
-        form.reset()
-        //navigate home / search auxies ///
+       
     }
 
     //////para desabilitar el boton si no esta lleno el formulario=>

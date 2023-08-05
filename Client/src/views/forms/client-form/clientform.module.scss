@@ -72,7 +72,17 @@ select{
             text-transform: capitalize;
         }
 
-       
+        input:hover {
+            background-color: rgba(44, 54, 145, 1);
+        }
+
+        input:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    }
+    h1 {
+        margin-bottom: 4rem;
     }
     h1 {
         margin-bottom: 4rem;
