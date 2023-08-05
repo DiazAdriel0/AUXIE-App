@@ -90,8 +90,10 @@ const Landing = () => {
             {myElementIsVisible ||
             mySecondElementIsVisible ||
             myThirdElementIsVisible ? (
-                <div >
-                    <button onClick={handleButtonUp} className={style.buttonUp}>SUBIR</button>
+                <div>
+                    <button onClick={handleButtonUp} className={style.buttonUp}>
+                        SUBIR
+                    </button>
                 </div>
             ) : null}
             <main
@@ -112,18 +114,16 @@ const Landing = () => {
                                 </button>
                                 <div>
                                     <ul>
-                                        <div> 
+                                        <div>
                                             <Link to={'/clientLogin'}>
                                                 Iniciar Sesion Como Cliente
                                             </Link>
-                                           
                                         </div>
-                                       <div>
+                                        <div>
                                             <Link to={'/auxieLogin'}>
                                                 Iniciar Sesion Como Auxie
                                             </Link>
-                                       </div>
-                                       
+                                        </div>
                                     </ul>
                                 </div>
                             </div>
@@ -145,15 +145,15 @@ const Landing = () => {
                                 </button>
                                 <div>
                                     <ul>
-                                       <div>
-                                        <Link to={'/clientform'}>
+                                        <div>
+                                            <Link to={'/clientform'}>
                                                 Registrarse Como Cliente
                                             </Link>
-                                       </div>
+                                        </div>
                                         <div>
-                                           <Link to={'/auxieform'}>
+                                            <Link to={'/auxieform'}>
                                                 Registrarse Como Auxie
-                                            </Link> 
+                                            </Link>
                                         </div>
                                     </ul>
                                 </div>
@@ -206,7 +206,6 @@ const Landing = () => {
                                                         </option>
                                                     )
                                                 })}
-                                            {}
                                         </select>
                                         <button className={style.buttonMenu}>
                                             Necesito un Auxie
@@ -222,6 +221,17 @@ const Landing = () => {
                                             <option disabled value="default">
                                                 Servicios a los que Aplicar
                                             </option>
+                                            {services &&
+                                                services.map((service) => {
+                                                    return (
+                                                        <option
+                                                            key={service.name}
+                                                            value={service.name}
+                                                        >
+                                                            {service.name}
+                                                        </option>
+                                                    )
+                                                })}
                                         </select>
                                         <button className={style.buttonMenu}>
                                             Convertirme en Auxie
@@ -295,12 +305,16 @@ const Landing = () => {
                             <div className={style.divSlogan}>
                                 <h3>Trabaja con nosotros y genera ganancias</h3>
                                 <p>
-                                    <span>Somos la mejor herramienta para potenciar tu independencia laboral</span>
+                                    <span>
+                                        Somos la mejor herramienta para
+                                        potenciar tu independencia laboral
+                                    </span>
                                 </p>
                             </div>
-                            <Link to='/help'><button className={style.buttonSlogan1}>
-                                Mas informacion
-                            </button>
+                            <Link to="/help">
+                                <button className={style.buttonSlogan1}>
+                                    Mas informacion
+                                </button>
                             </Link>
                         </section>
 
@@ -338,7 +352,11 @@ const Landing = () => {
                 {footerAnimated ? (
                     <footer ref={myRef3} className={style.landingFooter}>
                         <div className={style.divFooterTitle}>
-                            <img src={CircleIconAuxie} alt='circle icon' className={style.divFooterImg}/>
+                            <img
+                                src={CircleIconAuxie}
+                                alt="circle icon"
+                                className={style.divFooterImg}
+                            />
                             <h4>Creado con amor por el Auxie Team</h4>
                         </div>
                         <div className={style.divCopy}>
