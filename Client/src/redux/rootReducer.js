@@ -14,7 +14,7 @@ let initialState = {
     auxies: [],
     backupAuxies: [],
     filteredAuxies: [],
-    loggedUser: [],
+    loggedUser: {},
     services: [],
     filter: [],
     logOrRegView: false,
