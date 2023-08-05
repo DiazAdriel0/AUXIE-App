@@ -51,7 +51,7 @@ const Form = () => {
     }
     useEffect(() => {
         if (access === true) {
-            navigate('/homeauxie')
+            navigate('/auxielogin')
         }
     }, [access])
     const handleSubmit = (e) => {

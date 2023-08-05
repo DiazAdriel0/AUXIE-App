@@ -52,7 +52,7 @@ const ClientForm = () => {
     }
     useEffect(() => {
         if (access === true) {
-            navigate('/homeconsumer')
+            navigate('/clientlogin')
         }
     }, [access])
     const handleSubmit = (e) => {
