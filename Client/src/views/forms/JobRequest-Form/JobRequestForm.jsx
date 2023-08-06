@@ -7,15 +7,18 @@ import SendIcon from '@mui/icons-material/Send'
 import { useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
-const JobRequestForm = ({ auxieusername, services }) => {
+const JobRequestForm = ({  services }) => {
+    let { id } = useParams()
     const client = useSelector((state) => state.loggedUser)
     // const services = useSelector((state) => state.services)
     const [value, setValue] = useState({
         clientId: client.id,
         service: '',
-        jobDate: '',
+        jobDate:'',
         description: '',
+        // price:'',
     })
     console.log(value)
 
@@ -23,16 +26,23 @@ const JobRequestForm = ({ auxieusername, services }) => {
         const { name, value } = event.target
         setValue((previousvalue) => ({ ...previousvalue, [name]: value }))
     }
+    const handleServiceChange = (event) => {
+        const { value } = event.target; // Obtenemos el valor seleccionado del campo de selección
+        setValue((previousvalue) => ({
+            ...previousvalue,
+            service: value, // Actualizamos solo el campo 'service'
+        }));
+    };
     const handlePost = async () => {
         try {
-            const response = await axios.post(
-                'http://localhost:3001/consumers/',
+            const response = await axios.put(
+                `http://localhost:3001/providers/addJob/${id}`,
                 value
             )
             if (response) {
                 const form = document.getElementById('form')
                 form.reset()
-                Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
+                Swal.fire('Cita solicitada!')
             }
             // setAccess(true)
             console.log(response)
@@ -59,54 +69,20 @@ const JobRequestForm = ({ auxieusername, services }) => {
                 <div className={style.form}>
                     <form id="form" onSubmit={handleSubmit}>
                         <div>
-                            <h1>Job Request Form</h1>
+                            <h1>Agenda cita</h1>
                         </div>
                         <div>
-                            <div>
-                                <label>Tu nombre de usuario</label>
-
-                                <TextField
-                                    className={style.picker}
-                                    fullWidth
-                                    id="outlined-basic"
-                                    label="Usuario"
-                                    name="username"
-                                    variant="outlined"
-                                    required
-                                    color="secondary"
-                                    focused
-                                    value={client.username}
-                                    disabled
-                                />
-                            </div>
-                            <div>
-                                <label>
-                                    Nombre de usuario del Auxie a contratar
-                                </label>
-
-                                <TextField
-                                    className={style.picker}
-                                    fullWidth
-                                    id="outlined-basic"
-                                    variant="outlined"
-                                    required
-                                    color="secondary"
-                                    focused
-                                    value={auxieusername}
-                                    disabled
-                                />
-                            </div>
-
+                           
                             <label>Elige fecha</label>
 
                             <DatePicker
                                 className={style.picker}
                              
                                 value={value}
-                                onChange={(appointment) =>
+                                onChange={(jobDate) =>
                                     setValue((previousvalue) => ({
                                         ...previousvalue,
-                                        appointment,
+                                        jobDate,
                                     }))
                                 }
                                 sx={{
@@ -122,10 +98,10 @@ const JobRequestForm = ({ auxieusername, services }) => {
                             <TimePicker
                                 className={style.picker}
                                 value={value}
-                                onChange={(appointment) =>
+                                onChange={(jobDate) =>
                                     setValue((previousvalue) => ({
                                         ...previousvalue,
-                                        appointment,
+                                        jobDate,
                                     }))
                                 }
                                 sx={{
@@ -152,9 +128,9 @@ const JobRequestForm = ({ auxieusername, services }) => {
                                 focused
                                 name='service'
                                 value={value.service}
-                                onChange={handleInputChange}
+                                onChange={handleServiceChange}
                             >
-                                {services &&
+                                {services ?
                                     services.map((service) => (
                                         <MenuItem
                                             key={service.name}
@@ -162,7 +138,7 @@ const JobRequestForm = ({ auxieusername, services }) => {
                                         >
                                             {service.name}
                                         </MenuItem>
-                                    ))}
+                                    )):<div></div>}
                             </TextField>
                         </div>
                         <div>
@@ -188,6 +164,7 @@ const JobRequestForm = ({ auxieusername, services }) => {
                             className={style.send}
                             variant="contained"
                             endIcon={<SendIcon />}
+                            type='submit'
                         >
                             Send
                         </Button>
