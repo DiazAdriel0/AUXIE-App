@@ -18,7 +18,7 @@ const JobRequestForm = ({  services }) => {
         service: '',
         jobDate:'',
         description: '',
-        price:'',
+        // price:'',
     })
     console.log(value)
 
