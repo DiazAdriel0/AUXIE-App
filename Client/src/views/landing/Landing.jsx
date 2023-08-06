@@ -125,6 +125,10 @@ const Landing = () => {
                                 <button onClick={() => setLogInMenu()}>
                                     X
                                 </button>
+                                <p>
+                                    <span></span>
+                                    <span></span>
+                                </p>
                                 <div>
                                     <ul>
                                         <div>

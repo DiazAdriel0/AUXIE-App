@@ -83,18 +83,28 @@
         display: none;
     }
 }
+
 .buttonUp {
     z-index: 50;
     position: fixed;
-    top: 80%;
+    top: 90%;
     left: 90%;
     padding: 1%;
-    border-radius: 10px;
-    font-size: large;
-    font-family: var(--font-poppins);
-    font-weight: 500;
+    height: 80px;
+    width: 80px;
+    border-radius: 100%;
+    box-shadow:
+        0 0 10px lightgray,
+        0 0 20px white;
     background-color: var(--accent--terciary--color-light);
     border: none;
+    cursor: pointer;
+}
+.buttonUpHide {
+    z-index: 50;
+    position: fixed;
+    top: 110%;
+    left: 90%;
 }
 .landing {
     display: grid;
