@@ -2,10 +2,12 @@ import style from './homeAuxie.module.scss'
 
 //Import components
 import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/AsideAuxie'
+
+//Hooks
+
 const HomeAuxie = () => {
     return (
         <div className={style.home}>
-
             {/* Header */}
             <header className={style.header}>Nav Main</header>
             {/* Aside */}
@@ -21,7 +23,6 @@ const HomeAuxie = () => {
             </main>
             {/* Footer */}
             <footer className={style.footer}>Pie de página</footer>
-
         </div>
     )
 }

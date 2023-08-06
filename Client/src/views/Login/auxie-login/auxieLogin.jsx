@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
 import style from './auxieLogin.module.scss'
-import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
+
+// Hooks
+import { useEffect, useState } from 'react'
+import { useValidations } from '../../../utils/validationutils'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loggedUser } from '../../../redux/Actions/actions'
 
 const ClientLogin = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
@@ -35,16 +38,15 @@ const ClientLogin = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post(
+            const { data } = await axios.post(
                 'http://localhost:3001/providers/login',
                 input
             )
-            if (response) {
+            if (data) {
+                dispatch(loggedUser(data))
                 setAccess(true)
                 dispatch(loggedUser(response.data))
             }
-
-            console.log(response)
         } catch (error) {
             console.log(error + error.response.data.error)
             alert(error.response.data.error)
@@ -86,8 +88,6 @@ const ClientLogin = () => {
         return false
     }
 
-    //////
-    console.log(input)
     return (
         <div className={style.login}>
             <form id="form" onSubmit={handleSubmit} className={style.form}>

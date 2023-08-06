@@ -1,9 +1,12 @@
 import style from './cardsJobs.module.scss'
-import data from '../../../API/data'
+
 import CardJobs from '../card-jobs/CardJobs'
 import usePagination from '../../pagination/usePagination'
+import { useSelector } from 'react-redux'
 const CardsJobs = () => {
-    const { currentPageData } = usePagination(8, data)
+    const loggedUser = useSelector((state) => state.loggedUser)
+
+    const { currentPageData } = usePagination(8, loggedUser.jobs)
     return (
         <div className={style.cardsJobs}>
             {currentPageData.map((data) => (
