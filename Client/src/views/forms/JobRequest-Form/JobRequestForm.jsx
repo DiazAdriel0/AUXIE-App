@@ -5,11 +5,12 @@ import { useState } from 'react'
 import { Button, TextField } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import {  useSelector } from 'react-redux'
-const JobRequestForm = () => {
+const JobRequestForm = ({auxieusername}) => {
   const client = useSelector((state)=> state.loggedUser)
     const [value, setValue] = useState({
       username:client.username,
       description:'',
+      auxieusername:auxieusername,
     })
     console.log(value)
 
@@ -58,6 +59,7 @@ const JobRequestForm = () => {
                                 required
                                 color='secondary'
                                 focused
+                                value={auxieusername}
                             />
                         </div>
 
@@ -66,7 +68,7 @@ const JobRequestForm = () => {
                             <DatePicker
                                 className={style.picker}
                                 value={value}
-                                onChange={(newValue) => setValue(newValue)}
+                                onChange={(newValue) => setValue((previousvalue)=>({ ...previousvalue,newValue}))}
                                 
                                 sx={{border: 2, borderRadius:1.4, borderColor: 'secondary.main' }}
                             />
@@ -77,11 +79,11 @@ const JobRequestForm = () => {
                             <TimePicker
                                 className={style.picker}
                                 value={value}
-                                onChange={(newValue) => setValue(newValue)}
+                                onChange={(newValue) => setValue((previousvalue)=>({ ...previousvalue,newValue}))}
                                 sx={{border: 2, borderRadius:1.4, borderColor: 'secondary.main'}}
                             />
                         </div>
-                        {/* <div>
+                        <div>
                             <label>
                                 Selecciona el servicio que deseas contratar
                             </label>
@@ -96,14 +98,14 @@ const JobRequestForm = () => {
                                 helperText="Selecciona un servicio"
                                 color='secondary'
                                 focused
-                            > */}
+                            >
                                 {/* {currencies.map((option) => (
             <MenuItem key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))} */}
-                            {/* </TextField> */}
-                        {/* </div> */}
+                            </TextField>
+                        </div>
                         <div>
                             <label>Descripción del trabajo que necesita:</label>
                           
