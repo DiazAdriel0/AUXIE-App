@@ -8,7 +8,7 @@ import JobRequestForm from '../forms/JobRequest-Form/JobRequestForm'
 const Detail = () => {
     const [auxieDetails, setAuxieDetails] = useState({})
     let { id } = useParams()
-
+console.log(auxieDetails)
     useEffect(() => {
         const getDetails = async function () {
             const res = await axios.get(`http://localhost:3001/providers/${id}`)
@@ -100,7 +100,7 @@ const Detail = () => {
             ) : null}
           
             </div>
-            <div><JobRequestForm auxieusername={auxieDetails.username} services={auxieDetails.services}/></div>
+            <div><JobRequestForm  services={auxieDetails.services} /></div>
             </div>
         </>
     )
