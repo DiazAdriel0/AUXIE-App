@@ -5,8 +5,8 @@ const CardServices = (services) => {
 
     return (
         <div className={style.cardServices}>
-            <h3>{name}</h3>
             <img src={image} alt={`Imagen del servicio ${name}`} />
+            <h3>{name}</h3>
         </div>
     )
 }
