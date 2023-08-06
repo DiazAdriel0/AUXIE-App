@@ -16,7 +16,7 @@ const JobRequestForm = ({  services }) => {
     const [value, setValue] = useState({
         clientId: client.id,
         service: '',
-        jobDate: new Date(),
+        jobDate:'',
         description: '',
         price:'',
     })
@@ -130,7 +130,7 @@ const JobRequestForm = ({  services }) => {
                                 value={value.service}
                                 onChange={handleServiceChange}
                             >
-                                {services &&
+                                {services ?
                                     services.map((service) => (
                                         <MenuItem
                                             key={service.name}
@@ -138,7 +138,7 @@ const JobRequestForm = ({  services }) => {
                                         >
                                             {service.name}
                                         </MenuItem>
-                                    ))}
+                                    )):<div></div>}
                             </TextField>
                         </div>
                         <div>
