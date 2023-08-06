@@ -6,24 +6,22 @@
     overflow: hidden;
     .container {
         font-size: 200%;
-        
-        div{
+
+        div {
             width: 90%;
             height: 50%;
-            display:flexbox;
+            display: flexbox;
             margin-top: 5%;
-            div{
-                background-color:var(--accent--primary--color-light);
+            div {
+                background-color: var(--accent--primary--color-light);
                 margin-left: 10%;
                 padding-left: 30%;
                 padding: 5%;
                 border-radius: 10px;
             }
-            
         }
 
-
-        button{
+        button {
             background-color: var(--accent--terciary--color-light);
             width: 3%;
             height: 3%;
@@ -34,7 +32,7 @@
             font-size: 50%;
         }
 
-        button:hover{
+        button:hover {
             background-color: var(--accent--primary--color-light);
         }
     }
@@ -47,24 +45,23 @@
     background-color: var(--secondary--color-light);
 
     .container {
-        font-size:200% ;
-        div{
+        font-size: 200%;
+        div {
             width: 90%;
             height: 50%;
-            display:flexbox;
+            display: flexbox;
             margin-top: 5%;
 
-            div{
-                background-color:var(--accent--primary--color-light);
+            div {
+                background-color: var(--accent--primary--color-light);
                 margin-left: 10%;
                 padding-left: 30%;
                 padding: 5%;
                 border-radius: 10px;
             }
         }
-        
     }
-    button{
+    button {
         background-color: var(--accent--terciary--color-light);
         width: 3%;
         height: 3%;
@@ -74,10 +71,9 @@
         transition: background-color 0.5s ease;
         font-size: 50%;
     }
-    button:hover{
+    button:hover {
         background-color: var(--accent--primary--color-light);
     }
-
 }
 .hiden {
     section {
@@ -95,7 +91,7 @@
     padding: 1%;
     border-radius: 10px;
     font-size: large;
-    font-family: var( --font-poppins);
+    font-family: var(--font-poppins);
     font-weight: 500;
     background-color: var(--accent--terciary--color-light);
     border: none;
@@ -131,7 +127,7 @@
             display: flex;
             text-align: center;
             height: 25%;
-          
+
             .searchAuxie {
                 all: unset;
                 display: flex;
@@ -141,13 +137,12 @@
                 height: 100%;
                 font-size: 150%;
                 transition: background-color 0.5s ease;
-                border-top-left-radius: 9px; 
+                border-top-left-radius: 9px;
             }
             .searchAuxie:hover {
                 background-color: var(--accent--primary--color-light);
                 cursor: pointer;
-                border-top-left-radius: 9px; 
-
+                border-top-left-radius: 9px;
             }
             .turnAuxie {
                 all: unset;
@@ -158,12 +153,12 @@
                 height: 100%;
                 font-size: 150%;
                 transition: background-color 0.5s ease;
-                border-top-right-radius: 9px; 
+                border-top-right-radius: 9px;
             }
             .turnAuxie:hover {
                 background-color: var(--accent--primary--color-light);
                 cursor: pointer;
-                border-top-right-radius: 9px; 
+                border-top-right-radius: 9px;
             }
         }
         .menuSearchAuxie {
@@ -173,31 +168,31 @@
             align-items: center;
             gap: 1rem;
             align-items: center;
-            font-size:large ;
+            font-size: large;
             margin-top: 2%;
 
-            select{
+            select {
                 border-radius: 10px;
                 padding: 2%;
                 font-size: 110%;
             }
         }
-        
-        .buttonMenu{
-                background-color: var(--accent--terciary--color-light);
-                padding: 2%;
-                font-size: 120%;
-                font-weight: 500;
-                border-radius: 10px;
-                border: none;
-                margin-top: 2%;
-                font-family: var( --font-poppins);
-            }
 
-            .buttonMenu:hover{
-                background-color: var(--accent--primary--color-light);
-                transition: background-color 0.5s ease;
-            }
+        .buttonMenu {
+            background-color: var(--accent--terciary--color-light);
+            padding: 2%;
+            font-size: 120%;
+            font-weight: 500;
+            border-radius: 10px;
+            border: none;
+            margin-top: 2%;
+            font-family: var(--font-poppins);
+        }
+
+        .buttonMenu:hover {
+            background-color: var(--accent--primary--color-light);
+            transition: background-color 0.5s ease;
+        }
 
         .menuTurnAuxie {
             display: flex;
@@ -205,10 +200,10 @@
             justify-content: center;
             align-items: center;
             gap: 1rem;
-            font-size:large ;
+            font-size: large;
             margin-top: 2%;
 
-            select{
+            select {
                 border-radius: 10px;
                 padding: 2%;
                 font-size: 110%;
@@ -250,18 +245,18 @@
             margin: 1% 0 0 10%;
             padding: 0.7%;
             font-size: large;
-            font-family: var( --font-poppins);
+            font-family: var(--font-poppins);
             border-radius: 10px;
             border: none;
             background-color: var(--accent--terciary--color-light);
         }
     }
     .buttonSlogan1 {
-        width:12% ;
+        width: 12%;
         margin: 1% 0 0 10%;
         padding: 1%;
         font-size: large;
-        font-family: var( --font-poppins);
+        font-family: var(--font-poppins);
         border-radius: 10px;
         border: none;
         background-color: var(--accent--terciary--color-light);
@@ -277,7 +272,7 @@
         align-items: center;
         gap: 10%;
         padding: 2% 0 5% 0;
-        h3{
+        h3 {
             font-size: xx-large;
         }
     }
@@ -341,7 +336,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: flex-end;
-            margin-top:15%;
+            margin-top: 15%;
         }
     }
 }
