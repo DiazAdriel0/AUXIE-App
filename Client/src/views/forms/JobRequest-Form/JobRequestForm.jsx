@@ -5,12 +5,11 @@ import { useState } from 'react'
 import { Button, MenuItem, TextField } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import { useSelector } from 'react-redux'
-const JobRequestForm = ({ auxieusername }) => {
+const JobRequestForm = ({ auxieusername,services }) => {
     const client = useSelector((state) => state.loggedUser)
-    const services = useSelector((state) => state.services)
+    // const services = useSelector((state) => state.services)
     const [value, setValue] = useState({
-        username: client.username,
-        auxieusername: auxieusername,
+        clientId: client.id,
         services: '',
         appointment:'',
         description: '',
@@ -26,15 +25,17 @@ const JobRequestForm = ({ auxieusername }) => {
         //pasar por param id de auxie y por body "service name" (mapeado de servicios) "description" "client id de logged user"
         <div>
             <center>
-                <div>
-                    <h1>Job Request Form</h1>
-                </div>
+               
                 <div className={style.form}>
                     <form
                         id="form"
                         // onSubmit={handleSubmit}
                     >
+                         <div>
+                    <h1>Job Request Form</h1>
+                </div>
                         <div>
+                            
                             <div>
                                 <label>Tu nombre de usuario</label>
 
@@ -61,12 +62,13 @@ const JobRequestForm = ({ auxieusername }) => {
                                     className={style.picker}
                                     fullWidth
                                     id="outlined-basic"
-                                    label="Usuario de Auxie"
+                                   
                                     variant="outlined"
                                     required
                                     color="secondary"
                                     focused
                                     value={auxieusername}
+                                    disabled
                                 />
                             </div>
 

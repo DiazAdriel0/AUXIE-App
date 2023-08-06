@@ -2,7 +2,7 @@
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
-    height: 70vh;
+    height: 76vh;
     margin: 2%;
     background-color: var(--third--color-light);
 }
@@ -61,4 +61,12 @@
     height: 20%;
     margin-left: 2%;
     margin-top: 2%;
+}
+
+.detailall{
+    width: 80%;
+}
+.detailform{
+    display: flex;
+    flex-direction: row;
 }
