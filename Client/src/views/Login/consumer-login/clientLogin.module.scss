@@ -1,16 +1,6 @@
 // clientLogin.module.scss
 .form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 400px;
-    margin: 3% auto;
-    background-color: rgba(195, 201, 255, 0.5);
-    border: 2px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 2rem; /* Ajusta el espacio alrededor del formulario */
-    height: 45%;
+  
 
     .formtitle {
         font-size: x-large;
@@ -50,7 +40,7 @@
     .submitbutton {
         display: flex;
         justify-content: center;
-        margin: 2rem;
+        margin: 1rem;
 
         input {
             padding: 8px 16px;
@@ -76,16 +66,39 @@
         margin-bottom: 4rem;
     }
 }
-// .login {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     // background-color: rgba(0, 0, 0, 1); /* Color y opacidad del fondo */
-//     z-index: -1; /* Asegura que el fondo esté detrás del contenido */
-//     /* Estilos para el contenido de tu componente ClientLogin */
-// }
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 3% auto;
+    background-color: rgba(195, 201, 255, 0.5);
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 3rem; /* Ajusta el espacio alrededor del formulario */
+    height: 45%;
+    button{
+        color: black;
+        border-radius: 5px;
+        border: 2px solid rgba(0, 0, 0, 0.418);
+        padding: 0.5em;
+        margin-top: 1rem;
+        
+          
+    }
+    button:hover {
+        background-image: linear-gradient(90deg, #53cbef 0%, #dcc66c 50%, #ffa3b6 75%, #53cbef 100%);
+        animation: slidernbw 5s linear infinite;
+        color: white;
+
+       }
+    @keyframes slidernbw {
+        to {
+         background-position: 20vw;
+        }
+       }
+}
 
 /* Estilos para el fondo solo en el path actual */
 .logininput {
