@@ -87,7 +87,7 @@ const ClientLogin = () => {
 
     return (
         <div className={style.login}>
-            <form form id="form" onSubmit={handleSubmit} className={style.form}>
+            <form id="form" onSubmit={handleSubmit} className={style.form}>
                 <div>
                     <div>
                         <h1>Inicia sesion para acceder a Auxie</h1>
