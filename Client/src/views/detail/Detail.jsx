@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import NavGeneral from '../../components/nav-general/NavGeneral'
 import style from './detail.module.scss'
+import JobRequestForm from '../forms/JobRequest-Form/JobRequestForm'
 
 const Detail = () => {
     const [auxieDetails, setAuxieDetails] = useState({})
@@ -18,6 +19,8 @@ const Detail = () => {
     return (
         <>
             <NavGeneral />
+            <div className={style.detailform}>
+            <div className={style.detailall}>
             {Object.keys(auxieDetails).length > 0 ? (
                 <div className={style.detailCont}>
                     <div className={style.infoCont}>
@@ -88,9 +91,17 @@ const Detail = () => {
                     </div>
                     <div className={style.bio}>
                         <p> {auxieDetails.bio}</p>
+                       
                     </div>
+                    
                 </div>
+                
+                 
             ) : null}
+          
+            </div>
+            <div><JobRequestForm auxieusername={auxieDetails.username} services={auxieDetails.services}/></div>
+            </div>
         </>
     )
 }
