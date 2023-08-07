@@ -1,39 +1,45 @@
 const Provider = require('./../../Models/provider')
 const Service = require('./../../Models/service')
 
-const modifyProviderServices = async (servicesIds, providerId) => {
+const modifyProviderServices = async (services, providerId) => {
     try {
         const providerFound = await Provider.findById(providerId)
 
         let updatedServices = [...providerFound.services]
 
         // A updatedServices no se pushean servicios que ya esten entre los que el provider ofrece
-        for (const id of servicesIds) {
-            const serviceFound = await Service.findById(id)
+        for (const service of services) {
+            const serviceFound = await Service.findById(service.id)
             if (providerFound.services.length) {
                 const found = providerFound.services.find(
-                    (service) => service._id.toString() === id
+                    (service) => service._id.toString() === service.id
                 )
                 if (!found) {
-                    updatedServices.push(serviceFound)
+                    console.log(serviceFound._id.toString())
+                    updatedServices.push({
+                        id: serviceFound._id.toString(),
+                        price: service.price,
+                    })
                 }
             } else {
-                updatedServices.push(serviceFound)
+                updatedServices.push({
+                    id: serviceFound._id.toString(),
+                    price: service.price,
+                })
             }
-
             //Si el provider no estaba suscrito al servicio se agrega al array providers de la coleccion services
             if (serviceFound.providers.length) {
                 const isSuscribed = serviceFound.providers.find(
                     (provider) =>
-                        provider._id.toString() === providerFound._id.toString()
+                        provider.id.toString() === providerFound._id.toString()
                 )
                 if (!isSuscribed) {
-                    serviceFound.providers.push(providerFound._id)
+                    serviceFound.providers.push(providerFound._id.toString())
 
                     await serviceFound.save()
                 }
             } else {
-                serviceFound.providers.push(providerFound._id)
+                serviceFound.providers.push(providerFound._id.toString())
 
                 await serviceFound.save()
             }
@@ -48,6 +54,7 @@ const modifyProviderServices = async (servicesIds, providerId) => {
 
         return updatedProvider
     } catch (error) {
+        console.error(error)
         return error
     }
 }
