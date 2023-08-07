@@ -172,6 +172,7 @@
                 font-size: 150%;
                 border-top-left-radius: 9px;
                 border-bottom-right-radius: 9px;
+                border-right: 1px solid var(--secondary--anchor--color-hover);
                 background-color: var(--sixth--color-light);
             }
             .searchAuxie:hover {
@@ -188,8 +189,8 @@
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
-                border-top-left-radius: 9px;
-
+                border-top-right-radius: 9px;
+                border-left: 1px solid var(--secondary--anchor--color-hover);
                 border-bottom-left-radius: 9px;
             }
             .turnAuxie:hover {
