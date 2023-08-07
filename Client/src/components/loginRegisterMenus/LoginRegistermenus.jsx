@@ -25,19 +25,20 @@ const LoginRegisterMenus = () => {
                 >
                     <div className={style.logInMenu}>
                         <div className={style.container}>
-                            <button onClick={() => setLogInMenu()}>X</button>
+                            <button
+                                className={style.closeButton}
+                                onClick={() => setLogInMenu()}
+                            >
+                                X
+                            </button>
                             <div>
                                 <ul>
-                                    <div>
-                                        <Link to={'/clientLogin'}>
-                                            Iniciar Sesion Como Cliente
-                                        </Link>
-                                    </div>
-                                    <div>
-                                        <Link to={'/auxieLogin'}>
-                                            Iniciar Sesion Como Auxie
-                                        </Link>
-                                    </div>
+                                    <Link to={'/clientLogin'}>
+                                        <div>Iniciar Sesion Como Cliente</div>
+                                    </Link>
+                                    <Link to={'/auxieLogin'}>
+                                        <div>Iniciar Sesion Como Auxie</div>
+                                    </Link>
                                 </ul>
                             </div>
                         </div>
