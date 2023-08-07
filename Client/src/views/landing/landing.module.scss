@@ -157,29 +157,32 @@
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
-                transition: background-color 0.5s ease;
                 border-top-left-radius: 9px;
+                border-bottom-right-radius: 9px;
+                background-color: var(--sixth--color-light);
             }
             .searchAuxie:hover {
-                background-color: var(--accent--primary--color-light);
+                background-color: var(--secondary--anchor--color-hover);
                 cursor: pointer;
-                border-top-left-radius: 9px;
+                transition: background-color 0.5s ease;
             }
             .turnAuxie {
                 all: unset;
+                background-color: var(--sixth--color-light);
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
-                transition: background-color 0.5s ease;
-                border-top-right-radius: 9px;
+                border-top-left-radius: 9px;
+
+                border-bottom-left-radius: 9px;
             }
             .turnAuxie:hover {
-                background-color: var(--accent--primary--color-light);
+                background-color: var(--secondary--anchor--color-hover);
                 cursor: pointer;
-                border-top-right-radius: 9px;
+                transition: background-color 0.5s ease;
             }
         }
         .menuSearchAuxie {
@@ -201,7 +204,7 @@
 
         .buttonMenu {
             border: none;
-            background-color: var(--sixthh--color-light);
+            background-color: var(--sixth--color-light);
             padding: 2%;
             font-size: 120%;
             font-weight: 500;
@@ -209,8 +212,9 @@
         }
 
         .buttonMenu:hover {
-            background-color: var(--accent--primary--color-light);
+            background-color: var(--secondary--anchor--color-hover);
             transition: background-color 0.5s ease;
+            cursor: pointer;
         }
 
         .menuTurnAuxie {
