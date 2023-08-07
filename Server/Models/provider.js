@@ -29,6 +29,10 @@ const providerSchema = new Schema({
     ratings: { type: Array },
     averageRating: { type: Number, min: 0 },
     reviews: { type: Array },
+    googleId:{
+        type: String,
+        default: '',
+    }
 })
 
 providerSchema.set('toJSON', {

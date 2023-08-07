@@ -64,7 +64,6 @@ const ClientLogin = () => {
                 dispatch(setToken(token))
             }
         })
-        console.log(access)
         if (access === true) {
             navigate('/homeconsumer')
         }
