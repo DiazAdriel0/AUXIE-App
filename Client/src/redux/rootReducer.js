@@ -8,6 +8,7 @@ import {
     SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG,
     LOGED_USER,
+    LOGOUT
 } from './Actions/actionTypes'
 
 let initialState = {
@@ -153,6 +154,11 @@ function rootReducer(state = initialState, action) {
         
         // carga la info del usuario loggueado a mi estado global
         case LOGED_USER:
+            return {
+                ...state,
+                loggedUser: action.payload,
+            }
+        case LOGOUT:
             return {
                 ...state,
                 loggedUser: action.payload,

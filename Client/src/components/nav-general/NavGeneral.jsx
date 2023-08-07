@@ -1,10 +1,18 @@
 import { Link } from 'react-router-dom'
 import style from './navGeneral.module.scss'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import LogoAuxie from '../../assets/Logos/logoAuxie.svg'
+import { logOut } from '../../redux/Actions/actions'
 const NavGeneral = () => {
+    const dispatch = useDispatch()
     const user = useSelector(state => state.loggedUser)
     // const navigate = useNavigate();
+
+
+    const handleLogOut = () => {
+        dispatch(logOut({}))
+    }
+
     return (
         <nav className={style.navGeneral}>
             <div className={style.containerLeft}>
@@ -32,6 +40,9 @@ const NavGeneral = () => {
             <div className={style.profile}>
             <Link to={'/help'}>
                 <p>Ayuda</p>
+            </Link>
+            <Link to={'/'} onClick={handleLogOut}>
+                    <p>Desconectarse</p>
             </Link>
                 <button>
                     <img
