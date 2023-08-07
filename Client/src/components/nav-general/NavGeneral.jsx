@@ -17,6 +17,10 @@ const NavGeneral = () => {
     const navigate = useNavigate()
     const user = useSelector(state => state.loggedUser)
     const [profileMenu, setProfileMenu] = useState(null)
+    const handleClick = (event) => {
+        setProfileMenu(profileMenu ? null : event.currentTarget)
+    }
+    
     // const navigate = useNavigate();
     const token = useSelector(state=>{
         return state.token;
@@ -90,7 +94,7 @@ const NavGeneral = () => {
 
                 {/* Botón para desplegar menu con opciones del perfil*/}
                 <button 
-                // onClick={handleClick} aria-describedby={id}
+                onClick={handleClick} aria-describedby={id}
                 >
 
                     <img
