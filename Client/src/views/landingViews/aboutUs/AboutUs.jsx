@@ -1,10 +1,15 @@
+import { useSelector } from 'react-redux'
 import LoginRegisterMenus from '../../../components/loginRegisterMenus/LoginRegistermenus'
+import NavGeneral from '../../../components/nav-general/NavGeneral'
 import style from './aboutUs.module.scss'
 
 const AboutUs = () => {
+    const user = useSelector((state) => state.loggedUser)
+    const isLogged = Object.keys(user).length > 0
+    
     return (
         <div>
-            <LoginRegisterMenus />
+            {isLogged ? (<NavGeneral/>) : (<LoginRegisterMenus />)}
             <div className={style.about}>
               
                     <h1>Todo sobre Auxie</h1>
