@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import style from './navGeneral.module.scss'
 import { useSelector } from 'react-redux'
-
+import LogoAuxie from '../../assets/Logos/logoAuxie.svg'
 const NavGeneral = () => {
     const user = useSelector(state => state.loggedUser)
     // const navigate = useNavigate();
@@ -11,12 +11,20 @@ const NavGeneral = () => {
                 {Object.keys(user).includes("services") ? (<div className={style.viewsGeneral}>
                     <Link to={'/homeauxie'}>
                         {' '}
-                        <h1>Logo</h1>
+                        <img
+                        src={LogoAuxie}
+                        alt="Logo Auxie"
+                        className={style.logo}
+                    />
                     </Link>
                 </div>):(<div className={style.viewsGeneral}>
                     <Link to={'/homeconsumer'}>
                         {' '}
-                        <h1>Logo</h1>
+                        <img
+                        src={LogoAuxie}
+                        alt="Logo Auxie"
+                        className={style.logo}
+                    />
                     </Link>
                 </div>)}
                 
@@ -28,9 +36,10 @@ const NavGeneral = () => {
                 <button>
                     <img
                         src={user.image}
-                        alt="imagen de perfil"
-                        height="50px"
-                        width="50px"
+                        // alt="imagen de perfil"
+                        height="80rem"
+                        width="80rem"
+                        
                     />
                 </button>
             </div>

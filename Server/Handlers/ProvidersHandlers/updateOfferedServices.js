@@ -1,9 +1,12 @@
 const modifyProviderServices = require('./../../Controllers/ProvidersControllers/modifyProviderServices')
 
 const updateOfferedServices = async (req, res) => {
-    const { services, id } = req.body
+    const { services, providerId } = req.body
     try {
-        const updatedProvider = await modifyProviderServices(services, id)
+        const updatedProvider = await modifyProviderServices(
+            services,
+            providerId
+        )
 
         if (updatedProvider.message === 'sin cambios')
             throw new Error('No se realizaron cambios en los servicios')

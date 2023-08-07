@@ -208,7 +208,7 @@ const Landing = () => {
                                         <h3>
                                             Contrata a un Auxie que te ayude
                                         </h3>
-                                        <select defaultValue="default">
+                                       {/*  <select defaultValue="default">
                                             <option disabled value="default">
                                                 Servicios Mas Solicitados
                                             </option>
@@ -223,7 +223,7 @@ const Landing = () => {
                                                         </option>
                                                     )
                                                 })}
-                                        </select>
+                                        </select> */}
                                         <button
                                             onClick={handleClick}
                                             value={'toClientForm'}
