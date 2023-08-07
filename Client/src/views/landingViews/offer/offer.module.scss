@@ -42,9 +42,7 @@
 .offers{
   padding: 30px;
   background-color: var(--secondary--color-light);
-  border-bottom: var(--accent--primary--color-light) 2px solid;
-  border-left: var(--accent--primary--color-light) 2px solid;  
-  border-right: var(--accent--primary--color-light) 2px solid;
+  border: var(--secondary--anchor--color-hover) 1px solid;
   h1{
       font-size: 3.5em;
       

@@ -2,6 +2,7 @@
     .name {
         padding: 10px;
         font-size: medium;
+        text-align: center;
     }
     background-color: white;
     color: black;
@@ -9,7 +10,7 @@
     flex-direction: column;
     justify-content: start;
     align-items: center;
-    border: 1px solid black;
+    border: var(--secondary--anchor--color-hover) 1px solid;
     width: 15rem;
     min-height: 15rem;
     img {
@@ -17,3 +18,4 @@
         height: 100%;
     }
 }
+
