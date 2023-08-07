@@ -317,7 +317,8 @@
     /* Estilos para la sección 5 (landingFooter) */
     .landingFooter {
         z-index: 6;
-        background-color: var(--accent--primary--color-light);
+        color: white;
+        background-color: #181818;
         height: 70vh;
         .divFooterTitle {
             display: flex;
@@ -342,9 +343,8 @@
         .divCopy {
             margin: 2% 0 0 2%;
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-end;
-            margin-top: 15%;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
