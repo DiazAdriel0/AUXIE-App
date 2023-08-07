@@ -12,7 +12,7 @@ const modifyProviderServices = async (services, providerId) => {
             const serviceFound = await Service.findById(service.id)
             if (providerFound.services.length) {
                 const found = providerFound.services.find(
-                    (service) => service._id.toString() === service.id
+                    (service) => serviceFound._id.toString() === service.id
                 )
                 if (!found) {
                     console.log(serviceFound._id.toString())
@@ -34,8 +34,7 @@ const modifyProviderServices = async (services, providerId) => {
             //Si el provider no estaba suscrito al servicio se agrega al array providers de la coleccion services
             if (serviceFound.providers.length) {
                 const isSuscribed = serviceFound.providers.find(
-                    (provider) =>
-                        provider.id.toString() === providerFound._id.toString()
+                    (provider) => provider === providerFound._id.toString()
                 )
                 if (!isSuscribed) {
                     serviceFound.providers.push(providerFound._id.toString())
