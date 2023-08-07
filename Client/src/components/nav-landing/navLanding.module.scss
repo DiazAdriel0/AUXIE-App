@@ -38,7 +38,7 @@
                     cursor: pointer;
                     border-radius: 30px;
                     padding: 10px;
-                    background-color: var(--primary--anchor--color--hover);
+                    background-color: var(--sixth--color-light);
                     transition: background-color 0.5s ease;
                 }
             }
@@ -71,7 +71,7 @@
         border-radius: 30px;
     }
     .login:hover {
-        background-color: var(--primary--anchor--color--hover);
+        background-color: var(--sixth--color-light);
         transition: background-color 0.5s ease;
     }
     .register {
