@@ -11,9 +11,9 @@ const AboutUs = () => {
         <div>
             {isLogged ? (<NavGeneral/>) : (<LoginRegisterMenus />)}
             <div className={style.about}>
-                <center>
+              
                     <h1>Todo sobre Auxie</h1>
-                </center>
+               
             </div>
 
             <div className={style.aboutboxes}>
