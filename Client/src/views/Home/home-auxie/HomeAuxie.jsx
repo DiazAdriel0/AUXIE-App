@@ -4,17 +4,20 @@ import { useSelector } from 'react-redux'
 //Import components
 import CardServices from '../../../components/card-services/CardServices'
 import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/AsideAuxie'
+import NavGeneral from '../../../components/nav-general/NavGeneral'
 
 //Hooks
 
 const HomeAuxie = () => {
     const loggedUser = useSelector((state) => state.loggedUser)
-    console.log(loggedUser)
+
     const { services } = loggedUser
     return (
         <div className={style.home}>
             {/* Header */}
-            <header className={style.header}>Nav Main</header>
+            <header className={style.header}>
+                <NavGeneral />
+            </header>
             {/* Aside */}
             <AsideAuxie />
             {/* Main */}

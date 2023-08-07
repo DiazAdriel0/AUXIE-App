@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     z-index: 30;
-    background-color: #F4F4F9;
+    background-color: #f4f4f9;
     ul {
         display: flex;
         gap: 15%;
@@ -15,42 +15,36 @@
         align-items: center;
         justify-content: center;
         padding-left: 5%;
-        
     }
 
     .viewsGeneral {
         display: flex;
         gap: 5%;
     }
- 
+
     .profile {
         display: flex;
         justify-content: center;
         align-items: center;
         gap: 10%;
         margin: 5%;
-        p{
+        p {
             font-size: 1.5rem;
         }
-        image{
+        image {
             border-radius: 100%;
-            
         }
-        button{
+        button {
             border-radius: 100%;
             background-color: transparent;
-            border-color: #F4F4F9;
-            
+            border-color: #f4f4f9;
         }
-      
     }
-
 }
-.logo{
+.logo {
     width: 50%;
     margin-top: 10%;
     margin-left: -30%;
-    
 }
 .default {
     display: none;
