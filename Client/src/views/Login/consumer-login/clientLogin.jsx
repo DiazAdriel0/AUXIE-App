@@ -41,6 +41,7 @@ const ClientLogin = () => {
             if (response) {
                 setAccess(true)
                 dispatch(loggedUser(response.data))
+                console.log(response.data)
             }
         } catch (error) {
             console.error('error: ' + error.response.data.error)

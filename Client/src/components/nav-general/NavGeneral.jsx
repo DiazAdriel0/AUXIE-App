@@ -36,9 +36,10 @@ const NavGeneral = () => {
                 <button>
                     <img
                         src={user.image}
-                        alt="imagen de perfil"
+                        // alt="imagen de perfil"
                         height="50px"
                         width="50px"
+                        
                     />
                 </button>
             </div>

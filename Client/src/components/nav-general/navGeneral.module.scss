@@ -5,7 +5,7 @@
     justify-content: space-between;
     align-items: center;
     z-index: 30;
-    background-color: var(--accent--third--color-light);
+    background-color: #F4F4F9;
     ul {
         display: flex;
         gap: 15%;
@@ -15,6 +15,7 @@
         align-items: center;
         justify-content: center;
         padding-left: 5%;
+        
     }
 
     .viewsGeberal {
@@ -28,6 +29,15 @@
         align-items: center;
         gap: 10%;
         margin: 5%;
+        image{
+            border-radius: 100%;
+        }
+        button{
+            border-radius: 100%;
+            
+            
+        }
+      
     }
 
 }
@@ -35,6 +45,7 @@
     width: 50%;
     margin-top: 10%;
     margin-left: -30%;
+    
 }
 .default {
     display: none;
