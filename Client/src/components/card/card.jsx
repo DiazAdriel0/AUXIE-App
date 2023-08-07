@@ -33,7 +33,12 @@ const Card = (user) => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                         >
-                            <path stroke="#000" d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" fill="none" strokeWidth="4px" />
+                            <path
+                                stroke="#000"
+                                d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
+                                fill="none"
+                                strokeWidth="4px"
+                            />
                             <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
                         </svg>
                         <p>{averageRating}</p>
@@ -46,7 +51,7 @@ const Card = (user) => {
                         return (
                             <div
                                 className={style.serviceDiv}
-                                key={service.price}
+                                key={service.name}
                             >
                                 <p className={style.serviceName}>
                                     {service.name}
