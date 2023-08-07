@@ -1,4 +1,4 @@
-//------ Contenedor de todo el Home -----
+//------ Contenedor de todo el Home
 .contHome {
     display: flex;
     flex-flow: row wrap;
@@ -6,37 +6,37 @@
     margin-bottom: 5%;
 }
 
-//------ Contenedor de mensaje de bienvenida ----
+//------ Contenedor de mensaje de bienvenida
 .welcomeMessage {
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background-color: var(--secondary--color-light);
 }
 
-//----- Clase del mensaje de bienvenida ----
+//----- Clase del mensaje de bienvenida
 .message {
     margin: 2%;
 }
 
-//----- Contenedor de titulo y componentes Filters y Cards (catalogo de auxies)-----
+
+
+//----- Contenedor de titulo del catalogo de auxies
+.catalogTitleCont {
+    background-color: var(--third--color-light);
+    width: 100%;
+}
+
+//----- Clase del titulo del catalogo de auxies
+.catalogTitle {
+    margin: 1% 2%;
+}
+
+//----- Contenedor de componentes Filters y Cards (catalogo de auxies)
 .auxieCatalog {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
     width: 100%;
-}
-
-//----- Contenedor de titulo del catalogo de auxies
-.catalogTitleCont {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background-color: var(--third--color-light);
-}
-
-//----- Clase del titulo del catalogo de auxies
-.catalogTitle {
-    margin: 1% 0;
 }
 
 //----- Contenedor de los contenedores de filters y cards
@@ -56,4 +56,48 @@
 //---- Contenedor del componente Cards
 .cards {
     width: 80%;
+}
+
+//--- footer
+.footer {
+    z-index: 6;
+    color: white;
+    background-color: #181818;
+    height: 70vh;
+    p {
+        color: white;
+    }
+    .footerInfo {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        padding: 2%;
+        gap: 2%;
+    }
+    .divFooterTitle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        h3 {
+            font-size: 50px;
+        }
+        h4 {
+            font-size: 35px;
+        }
+    }
+    .divFooterImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 30vh;
+        height: 30vh;
+    }
+    .divCopy {
+        margin: 2% 0 0 2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }

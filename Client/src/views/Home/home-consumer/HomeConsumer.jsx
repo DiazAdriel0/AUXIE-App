@@ -5,7 +5,8 @@ import NavGeneral from '../../../components/nav-general/NavGeneral'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { resetAuxiesCatalog } from '../../../redux/Actions/actions'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import CircleIconAuxie from '../../../assets/Logos/CircleIconAuxie.png'
 
 const HomeConsumer = () => {
     const dispatch = useDispatch()
@@ -30,12 +31,13 @@ const HomeConsumer = () => {
                                 Bienvenido/a {user.firstName}
                             </h1>
                         </div>
-                        <div className={style.auxieCatalog}>
-                            <div className={style.catalogTitleCont}>
-                                <h1 className={style.catalogTitle}>
+                        <div className={style.catalogTitleCont}>
+                                <h2 className={style.catalogTitle}>
                                     Contratar un Auxie
-                                </h1>
+                                </h2>
                             </div>
+                        <div className={style.auxieCatalog}>
+                            
                             <div className={style.catalog}>
                                 <div className={style.filters}>
                                     <Filters />
@@ -46,6 +48,28 @@ const HomeConsumer = () => {
                             </div>
                         </div>
                     </div>
+                    <footer className={style.footer}>
+                    <div className={style.footerInfo}>
+                                    <Link to={'/aboutUs'}><p>Quiénes Somos</p></Link>
+                                    <Link to={'/offer'}><p>Que ofrecemos</p></Link>
+                                    <Link to={'/howItWorks'}>
+                                    <p>Como funciona Auxie</p>
+                                    </Link>
+                                    <Link to={'/guarantee'}><p>Garantías</p> </Link>
+                                    <Link to={'/help'}><p>Ayuda</p></Link>
+                            </div>
+                        <div className={style.divFooterTitle}>
+                            <img
+                                src={CircleIconAuxie}
+                                alt="circle icon"
+                                className={style.divFooterImg}
+                            />
+                            <h4>Creado con amor por el Auxie Team</h4>
+                        </div>
+                        <div className={style.divCopy}>
+                            <p>Copyright © 2023</p>
+                        </div>
+                    </footer>
                 </>
             ) : null}
         </>
