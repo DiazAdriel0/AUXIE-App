@@ -35,6 +35,7 @@ const Landing = () => {
     //* Global State
     const services = useSelector((state) => state.services)
     const logOrRegView = useSelector((state) => state.logOrRegView)
+    const user = useSelector((state) => state.loggedUser)
 
     //* state for changes
     const [menuChange, setMenuChange] = useState(true)
@@ -42,6 +43,13 @@ const Landing = () => {
     const [registerMenu, setRegisterMenu] = useState(false)
 
     const navigate = useNavigate()
+
+    
+
+    useEffect(() => {
+        if (Object.keys(user).includes('requiredServices')) return navigate('/homeconsumer')
+        if (Object.keys(user).includes('services')) return navigate('homeauxie')
+    }, [])
 
     //* useEffect animations
     useEffect(() => {
