@@ -48,7 +48,7 @@ function rootReducer(state = initialState, action) {
                     [...state.auxies].filter((aux) =>
                         aux.services.some(
                             (serv) =>
-                                serv.name.toUpperCase() === filter.toUpperCase()
+                                serv.name === filter
                         )
                     )
                 )
@@ -68,13 +68,13 @@ function rootReducer(state = initialState, action) {
                         (prev, next) =>
                             prev.services.find(
                                 (obj) =>
-                                    obj.name.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                    obj.name ===
+                                    serviceFiltered
                             ).price -
                             next.services.find(
                                 (obj) =>
-                                    obj.name.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                    obj.name ===
+                                    serviceFiltered
                             ).price
                     )
                     return { ...state, filteredAuxies: [...ascFilter] }
@@ -83,13 +83,13 @@ function rootReducer(state = initialState, action) {
                         (prev, next) =>
                             next.services.find(
                                 (obj) =>
-                                    obj.name.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                    obj.name ===
+                                    serviceFiltered
                             ).price -
                             prev.services.find(
                                 (obj) =>
-                                    obj.name.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                    obj.name ===
+                                    serviceFiltered
                             ).price
                     )
                     return { ...state, filteredAuxies: [...descFilter] }
