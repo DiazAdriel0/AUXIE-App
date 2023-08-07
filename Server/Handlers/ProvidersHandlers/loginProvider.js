@@ -1,9 +1,13 @@
 const matchProvider = require('../../Controllers/ProvidersControllers/matchProvider')
 
 const loginProvider = async (req, res) => {
-    const { password, email } = req.body
+    const { password } = req.body
+    let {email} = req.body
     try {
-        const logedUser = await matchProvider(email, password)
+        if(req.user){
+            email = req.user.email
+        }
+        const logedUser = await matchProvider(email, password, req)
 
         if (logedUser.message === 'inexistente')
             throw new Error(`el correo: ${email} no está registrado`)

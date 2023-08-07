@@ -5,8 +5,10 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useValidations } from '../../../utils/validationutils'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { loggedUser } from '../../../redux/Actions/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { loggedUser, setToken } from '../../../redux/Actions/actions'
+import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../../../config/firebase-config'
 
 const ClientLogin = () => {
     const navigate = useNavigate()
@@ -17,6 +19,9 @@ const ClientLogin = () => {
         password: '',
     })
     const [access, setAccess] = useState(false) //eslint-disable-line
+    const token = useSelector(state=>{
+        return state.token;
+    })
 
     const handleChange = (event) => {
         setInput({
@@ -34,34 +39,53 @@ const ClientLogin = () => {
         ///validations ///
     }
 
-    const handleLogin = async () => {
+    const handleLogin = async (token) => {
         try {
             const { data } = await axios.post(
                 'http://localhost:3001/providers/login',
-                input
+                input,{
+                    headers:{
+                        'authorization': `Bearer ${token}`
+                    }
+                }
             )
             if (data) {
                 dispatch(loggedUser(data))
                 setAccess(true)
+                dispatch(setToken(token))
             }
         } catch (error) {
             console.log(error + error.response.data.error)
             alert(error.response.data.error)
         }
     }
+
     useEffect(() => {
+        onAuthStateChanged(auth, (credential)=>{
+            if(credential){
+                dispatch(setToken(token))
+            }
+        })
         if (access === true) {
             navigate('/homeauxie')
         }
     }, [access])
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        handleLogin()
         // algun get en la base de datos que busque si el usuario y contrasena coinciden
         const form = document.getElementById('form')
-
-        form.reset()
+        const email = form.email.value
+        const password= form.password.value
+        try{
+           const credential = await signInWithEmailAndPassword(auth, email,password)
+        if(credential){
+            handleLogin(credential.user.accessToken)
+        }
+        form.reset() 
+        }catch (error){
+            alert(error.message)//o como lo maneje el front sweet alert?
+          }
         //navigate home / search auxies ///
     }
 
@@ -84,6 +108,23 @@ const ClientLogin = () => {
 
         return false
     }
+    //google Login
+    const signInGoogle = async ()=>{
+        try{
+        const provider = new GoogleAuthProvider ();    
+        provider.setCustomParameters({ prompt: 'select_account' });
+        const credential = await signInWithPopup(auth, provider)
+         const token = credential.user.accessToken;
+        if (token) {
+            handleLogin(token)
+        }
+       
+      }catch (error){
+        alert(error.message)//o como lo maneje el front sweet alert?
+      }
+        }
+
+    //////
 
     return (
         <div className={style.login}>
@@ -134,7 +175,7 @@ const ClientLogin = () => {
             </form>
 
             <center>
-                <button>
+                <button onClick={signInGoogle} >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         preserveAspectRatio="xMidYMid"

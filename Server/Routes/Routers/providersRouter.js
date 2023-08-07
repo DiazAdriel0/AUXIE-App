@@ -8,6 +8,7 @@ const updateProvider = require('./../../Handlers/ProvidersHandlers/updateProvide
 const updateOfferedServices = require('./../../Handlers/ProvidersHandlers/updateOfferedServices')
 const updateProviderReviews = require('./../../Handlers/ProvidersHandlers/updateProviderReviews')
 const addNewJob = require('./../../Handlers/ProvidersHandlers/updateJobs')
+const revokeTokens = require('../../Handlers/ConsumersHandlers/revokeTokens')
 
 const providersRouter = Router()
 
@@ -21,6 +22,7 @@ providersRouter.put('/addJob/:id', addNewJob)
 
 providersRouter.post('/', postProvider)
 providersRouter.post('/login', loginProvider)
+providersRouter.post('/logout', revokeTokens)
 
 providersRouter.delete('/:id', deleteProviderById)
 
