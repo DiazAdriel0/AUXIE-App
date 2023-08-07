@@ -7,11 +7,17 @@ import ServicesIcon from '../../../assets/Logos/ServicesIcon.svg'
 import ReviewsIcon from '../../../assets/Logos/ReviewsIcon.svg'
 import GuaranteesIcon from '../../../assets/Logos/GuaranteesIcon.svg'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import NavGeneral from '../../../components/nav-general/NavGeneral'
+
+
 
 const Offer = () => {
+    const user = useSelector((state) => state.loggedUser)
+    const isLogged = Object.keys(user).length > 0
     return (
         <div>
-            <LoginRegisterMenus />
+            {isLogged ? (<NavGeneral/>) : (<LoginRegisterMenus />)}
             <div className={style.offer}>
                 <div className={style.offers}>
                     <h1>Las ofertas de AUXIE</h1>
