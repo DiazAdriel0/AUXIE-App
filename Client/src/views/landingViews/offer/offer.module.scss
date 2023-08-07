@@ -40,17 +40,17 @@
 }
 
 .offers{
-  padding: 30px;
-  background-color: var(--secondary--color-light);
-  border: var(--secondary--anchor--color-hover) 1px solid;
-  h1{
-      font-size: 3.5em;
-      
-  }
 
-  h3{
-      font-size: 1.25em;
-  }
+  padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: var(--secondary--color-light);
+    padding-left: 5%;
+    box-shadow: 0px 30px 52px -25px var(--secondary--color-hover);
+
+
+    h2 {
+        font-size: 150%;
+    }
 
 }
 
@@ -78,11 +78,11 @@
   width: max-content;
   background-color: var(--secondary--color-light);
   padding:1em 1.5em;
-  border-color: var(--accent--third--color-light);
+  border-color: var(--secondary--color-hover);
   border-radius: 1em;
   margin: 2em 0 4em 0;
   h1{
-      font-size: 2em;
+      font-size: 150%;
   }
 }
 
