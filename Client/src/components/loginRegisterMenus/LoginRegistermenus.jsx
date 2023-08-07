@@ -58,16 +58,12 @@ const LoginRegisterMenus = () => {
                             <button onClick={() => setRegisterMenu()}>X</button>
                             <div>
                                 <ul>
-                                    <div>
-                                        <Link to={'/clientform'}>
-                                            Registrarse Como Cliente
-                                        </Link>
-                                    </div>
-                                    <div>
-                                        <Link to={'/auxieform'}>
-                                            Registrarse Como Auxie
-                                        </Link>
-                                    </div>
+                                    <Link to={'/clientform'}>
+                                        <div>Registrarse Como Cliente</div>
+                                    </Link>
+                                    <Link to={'/auxieform'}>
+                                        <div>Registrarse Como Auxie</div>
+                                    </Link>
                                 </ul>
                             </div>
                         </div>
