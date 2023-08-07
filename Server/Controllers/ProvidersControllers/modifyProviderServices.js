@@ -19,12 +19,16 @@ const modifyProviderServices = async (services, providerId) => {
                     updatedServices.push({
                         id: serviceFound._id.toString(),
                         price: service.price,
+                        //provisorio
+                        name: serviceFound.name,
                     })
                 }
             } else {
                 updatedServices.push({
                     id: serviceFound._id.toString(),
                     price: service.price,
+                    //provisorio
+                    name: serviceFound.name,
                 })
             }
             //Si el provider no estaba suscrito al servicio se agrega al array providers de la coleccion services
