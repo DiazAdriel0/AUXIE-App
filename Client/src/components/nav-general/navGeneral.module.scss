@@ -18,7 +18,7 @@
         
     }
 
-    .viewsGeberal {
+    .viewsGeneral {
         display: flex;
         gap: 5%;
     }
@@ -29,12 +29,17 @@
         align-items: center;
         gap: 10%;
         margin: 5%;
+        p{
+            font-size: 1.5rem;
+        }
         image{
             border-radius: 100%;
+            
         }
         button{
             border-radius: 100%;
-            
+            background-color: transparent;
+            border-color: #F4F4F9;
             
         }
       
