@@ -5,108 +5,87 @@
     justify-content: space-between;
     align-items: center;
     z-index: 30;
-    background-color: var(--accent--third--color-light);
-    border-bottom:var(--accent--primary--color-light) 1px solid;
-    ul {
-        display: flex;
-        gap: 15%;
-    }
+
     .containerLeft {
         display: flex;
         align-items: center;
-        justify-content: center;
-        margin-left: 3%;
+        justify-content: start;
+
+        .logoDiv {
+            width: 15%;
+            .logo {
+                width: 100%;
+            }
+        }
+
+        .viewsLanding {
+            display: flex;
+            gap: 5%;
+
+            .select {
+                font-family: var(--font-poppins);
+                font-weight: 500;
+            }
+
+            ul {
+                display: flex;
+                width: 100%;
+                li {
+                    border-radius: 30px;
+                    padding: 10px;
+                }
+                li:hover {
+                    cursor: pointer;
+                    border-radius: 30px;
+                    padding: 10px;
+                    background-color: var(--primary--anchor--color--hover);
+                }
+            }
+            .auxie {
+                font-size: 120%;
+                font-family: var(--font-poppins);
+                font-weight: 500;
+            }
+
+            .consumer {
+                font-size: 120%;
+                font-family: var(--font-poppins);
+                font-weight: 500;
+            }
+        }
     }
+}
 
-   
-
-    .logInOrRegister {
+.logInOrRegister {
+    margin-right: 5%;
+    ul {
         display: flex;
         gap: 5%;
-        margin-right: 5%; 
-        align-items:last baseline;
-        padding: 5%;
+    }
+    .login {
+        all: unset;
+
+        padding: 10px;
+        font-size: large;
+        border-radius: 30px;
+    }
+    .login:hover {
+        background-color: var(--primary--anchor--color--hover);
+    }
+    .register {
+        all: unset;
+
+        padding: 10px;
+        font-size: large;
+        background-color: var(--sixth--color-light);
+        border-radius: 30px;
+    }
+
+    .register:hover {
+        background-color: var(--secondary--color-hover);
     }
 }
 
- .viewsLanding {
-        display: flex;
-        margin-right: 200%;
-    }
-
-.login{
-    padding: 20%;
-    margin-left: -30%;
-    border:none;
-    font-size: 120%;
-    font-family: var( --font-poppins);
-    pointer-events: stroke;
-    background-color: var(--accent--third--color-light);
-    border-radius: 30px;
-    transition: background-color 0.5s ease;
-
-}
-
-.login:hover{
-     background-color:var(--accent--primary--color-light);
-}
-
-.register{
-    padding: 14.5%;
-    border:none;
-    font-size: 120%;
-    font-family: var( --font-poppins);
-    pointer-events: stroke;
-    background-color: var(--sixth--color-light);
-    border-radius: 30px;
-    transition: background-color 0.5s ease;
-}
-
-.register:hover{
-    background-color: var(--accent--primary--color-light);
-}
 .default {
     display: none;
-}
-
-.help{
-    margin-left: 30%;
-    font-size: 120%;
-    font-family: var( --font-poppins);
-    font-weight:500;
-}
-
-.guarantee{
-    margin-left: 30%;
-    font-size: 120%;
-    font-family: var( --font-poppins);
-    font-weight:500;
-}
-
-
-.auxie{
-    margin-left: 50%;
-    font-size: 120%;
-    font-family: var( --font-poppins);
-    font-weight:500;
-}
-
-
-.consumer{
-    margin-left: 40%;
-    font-size: 120%;
-    font-family: var( --font-poppins);
-    font-weight:500;
-}
-
-.select{
-    font-size: 100%;
-    font-family: var( --font-poppins);
-    font-weight:500;
-}
- 
-.logo{
-    width: 50%;
-    margin-top: 10%;
-    margin-left: -10%;
 }

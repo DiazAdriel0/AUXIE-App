@@ -49,16 +49,16 @@ const NavLanding = ({
     }
     return (
         <nav className={style.navLanding}>
-            <div className={style.logoDiv}>
-                <Link to={'/'}>
-                    <img
-                        src={LogoAuxie}
-                        alt="Logo Auxie"
-                        className={style.logo}
-                    />
-                </Link>
-            </div>
             <div className={style.containerLeft}>
+                <div className={style.logoDiv}>
+                    <Link to={'/'}>
+                        <img
+                            src={LogoAuxie}
+                            alt="Logo Auxie"
+                            className={style.logo}
+                        />
+                    </Link>
+                </div>
                 <div className={style.viewsLanding}>
                     <select
                         className={style.select}
@@ -80,14 +80,10 @@ const NavLanding = ({
 
                     <ul>
                         <li>
-                            <Link to={'/guarantee'}>
-                                <p className={style.guarantee}>Garantías</p>
-                            </Link>
+                            <Link to={'/guarantee'}>Garantías</Link>
                         </li>
                         <li>
-                            <Link to={'/help'}>
-                                <p className={style.help}>Ayuda</p>
-                            </Link>
+                            <Link to={'/help'}>Ayuda</Link>
                         </li>
                     </ul>
                 </div>
@@ -96,7 +92,7 @@ const NavLanding = ({
                 <ul>
                     <li>
                         <button onClick={handlerLogIn} className={style.login}>
-                            <p>Ingresar</p>
+                            Ingresar
                         </button>
                     </li>
 
@@ -105,7 +101,7 @@ const NavLanding = ({
                             onClick={handlerRegister}
                             className={style.register}
                         >
-                            <p>Regístrarse</p>
+                            Regístrarse
                         </button>
                     </li>
                 </ul>
