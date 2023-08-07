@@ -1,30 +1,46 @@
 import { Link } from 'react-router-dom'
 import style from './navGeneral.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import LogoAuxie from '../../assets/Logos/logoAuxie.svg'
-import { logOut } from '../../redux/Actions/actions'
-import { Popper, Box } from '@mui/material'
-import { useState } from 'react'
-import ClickAwayListener from '@mui/base/ClickAwayListener'
+
+import { logOut, resetToken } from '../../redux/Actions/actions'
+import { signOut } from 'firebase/auth';
+import { auth } from '../../config/firebase-config';
+import axios from 'axios'
 
 const NavGeneral = () => {
     const dispatch = useDispatch()
-    const user = useSelector((state) => state.loggedUser)
-    const [profileMenu, setProfileMenu] = useState(null)
+    const navigate = useNavigate()
+    const user = useSelector(state => state.loggedUser)
+    // const navigate = useNavigate();
+    const token = useSelector(state=>{
+        return state.token;
+    })
 
-    const handleClick = (event) => {
-        setProfileMenu(profileMenu ? null : event.currentTarget)
-    }
+    const handleLogOut = async() => {
+        try {
+            console.log(user.googleId);
+            if(user.googleId){
+                const response = await axios.post(
+                'http://localhost:3001/consumers/logout', { googleId:`${ user.googleId }`},{
+                    headers:{
+                        'authorization': `Bearer ${token}`
+                    }
+                })
+                if (response) {
+                    dispatch(logOut({}))
+                }
+            }
+            dispatch(logOut({}))
+            await signOut(auth);
+            dispatch(resetToken())
+            navigate('/')
+        } catch (error) {
+            console.error('error: ' + error.message)
+            alert(error.message)
+        }   
 
-    const handleClickAway = () => {
-        setProfileMenu(null)
-    }
-
-    const open = Boolean(profileMenu)
-    const id = open ? 'profileMenu' : undefined
-
-    const handleLogOut = () => {
-        dispatch(logOut({}))
     }
 
     return (
@@ -53,8 +69,18 @@ const NavGeneral = () => {
                 )}
             </div>
             <div className={style.profile}>
+
+            <Link to={'/help'}>
+                <p>Ayuda</p>
+            </Link>
+        
+            <p className={style.logOut} onClick={handleLogOut}>Desconectarse</p>
+         
+              
+
                 {/* Botón para desplegar menu con opciones del perfil*/}
                 <button onClick={handleClick} aria-describedby={id}>
+
                     <img
                         src={user.image}
                         alt="imagen de perfil"

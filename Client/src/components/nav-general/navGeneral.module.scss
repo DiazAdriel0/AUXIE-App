@@ -50,6 +50,10 @@
     display: none;
 }
 
+.logOut:hover{
+    cursor: pointer;
+}
+
 .profileMenu {
     border-radius: 2px;
     text-align: center;
@@ -72,7 +76,3 @@
         border-radius: 0px 0px 2px 2px;
     }
 }
-
-
-
-
