@@ -10,6 +10,9 @@ import { useSelector } from 'react-redux'
 import { Animated } from 'react-animated-css'
 import CircleIconAuxie from '../../assets/Logos/CircleIconAuxie.png'
 
+//* Import icons
+import arrowUp from '../../assets/icons/arrow-up.svg'
+
 //* Import components
 import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
@@ -103,12 +106,21 @@ const Landing = () => {
             {myElementIsVisible ||
             mySecondElementIsVisible ||
             myThirdElementIsVisible ? (
-                <div>
+                <div className={style.upDiv}>
                     <button onClick={handleButtonUp} className={style.buttonUp}>
-                        SUBIR
+                        <img src={arrowUp} alt="" />
                     </button>
                 </div>
-            ) : null}
+            ) : (
+                <div className={style.upDiv}>
+                    <button
+                        onClick={handleButtonUp}
+                        className={style.buttonUpHide}
+                    >
+                        <img src={arrowUp} alt="" />
+                    </button>
+                </div>
+            )}
             <main
                 className={
                     !logInMenu && !registerMenu ? style.landing : style.hiden
