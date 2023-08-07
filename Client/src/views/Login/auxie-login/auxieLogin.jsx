@@ -10,7 +10,7 @@ import { loggedUser } from '../../../redux/Actions/actions'
 
 const ClientLogin = () => {
     const navigate = useNavigate()
-
+    const dispatch = useDispatch()
     const { errors, validate } = useValidations()
     const [input, setInput] = useState({
         email: '',
@@ -43,7 +43,6 @@ const ClientLogin = () => {
             if (data) {
                 dispatch(loggedUser(data))
                 setAccess(true)
-
             }
         } catch (error) {
             console.log(error + error.response.data.error)
