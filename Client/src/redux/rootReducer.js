@@ -21,6 +21,7 @@ let initialState = {
     logOrRegView: false,
     currentPage: 1,
     nightMode: false,
+    token:''
 }
 
 function rootReducer(state = initialState, action) {
