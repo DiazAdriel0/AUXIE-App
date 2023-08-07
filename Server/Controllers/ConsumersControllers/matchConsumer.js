@@ -25,7 +25,8 @@ const matchConsumer = async (email, password) => {
                     favoritesProviders:consumer.favoritesProviders,
                     requiredServices: consumer.requiredServices,
                     registerDate: consumer.registerDate,
-                    id:consumer._id
+                    id:consumer._id,
+                    image: consumer.image,
                 }
     
                 return passwordMatch ? consumerWithout : new Error('wrongPassword')
@@ -52,7 +53,8 @@ const matchConsumer = async (email, password) => {
                 favoritesProviders:consumer.favoritesProviders,
                 requiredServices: consumer.requiredServices,
                 registerDate: consumer.registerDate,
-                id:consumer._id
+                id:consumer._id,
+                image: consumer.image,
             }
 
             return passwordMatch ? consumerWithout : new Error('wrongPassword')
