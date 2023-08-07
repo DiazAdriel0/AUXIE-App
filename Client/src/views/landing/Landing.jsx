@@ -251,7 +251,7 @@ const Landing = () => {
                                             Convertite en Auxie y genera
                                             ganancias
                                         </h3>
-                                        <select defaultValue="default">
+                                        {/* <select defaultValue="default">
                                             <option disabled value="default">
                                                 Servicios a los que Aplicar
                                             </option>
@@ -266,7 +266,7 @@ const Landing = () => {
                                                         </option>
                                                     )
                                                 })}
-                                        </select>
+                                        </select> */}
                                         <button
                                             onClick={handleClick}
                                             value={'toAuxieForm'}
