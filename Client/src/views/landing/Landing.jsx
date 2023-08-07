@@ -44,10 +44,9 @@ const Landing = () => {
 
     const navigate = useNavigate()
 
-    
-
     useEffect(() => {
-        if (Object.keys(user).includes('requiredServices')) return navigate('/homeconsumer')
+        if (Object.keys(user).includes('requiredServices'))
+            return navigate('/homeconsumer')
         if (Object.keys(user).includes('services')) return navigate('homeauxie')
     }, [])
 
@@ -151,16 +150,14 @@ const Landing = () => {
                                 </p>
                                 <div>
                                     <ul>
-                                        <div>
-                                            <Link to={'/clientLogin'}>
+                                        <Link to={'/clientLogin'}>
+                                            <div>
                                                 Iniciar Sesion Como Cliente
-                                            </Link>
-                                        </div>
-                                        <div>
-                                            <Link to={'/auxieLogin'}>
-                                                Iniciar Sesion Como Auxie
-                                            </Link>
-                                        </div>
+                                            </div>
+                                        </Link>
+                                        <Link to={'/auxieLogin'}>
+                                            <div>Iniciar Sesion Como Auxie</div>
+                                        </Link>
                                     </ul>
                                 </div>
                             </div>
@@ -182,16 +179,12 @@ const Landing = () => {
                                 </button>
                                 <div>
                                     <ul>
-                                        <div>
-                                            <Link to={'/clientform'}>
-                                                Registrarse Como Cliente
-                                            </Link>
-                                        </div>
-                                        <div>
-                                            <Link to={'/auxieform'}>
-                                                Registrarse Como Auxie
-                                            </Link>
-                                        </div>
+                                        <Link to={'/clientform'}>
+                                            <div>Registrarse Como Cliente</div>
+                                        </Link>
+                                        <Link to={'/auxieform'}>
+                                            <div>Registrarse Como Auxie</div>
+                                        </Link>
                                     </ul>
                                 </div>
                             </div>
@@ -228,7 +221,7 @@ const Landing = () => {
                                         <h3>
                                             Contrata a un Auxie que te ayude
                                         </h3>
-                                       {/*  <select defaultValue="default">
+                                        {/*  <select defaultValue="default">
                                             <option disabled value="default">
                                                 Servicios Mas Solicitados
                                             </option>
