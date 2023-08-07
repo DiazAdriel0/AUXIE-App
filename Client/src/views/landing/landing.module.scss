@@ -13,16 +13,20 @@
             display: flexbox;
             margin-top: 5%;
             div {
-                background-color: var(--accent--primary--color-light);
+                background-color: var(--sixth--color-light);
                 margin-left: 10%;
                 padding-left: 30%;
                 padding: 5%;
                 border-radius: 10px;
+                transition: background-color 0.5s ease;
+            }
+            div:hover {
+                background-color: var(--secondary--anchor--color-hover);
             }
         }
 
         button {
-            background-color: var(--accent--terciary--color-light);
+            background-color: var(--sixth--color-light);
             width: 3%;
             height: 3%;
             margin-left: 95%;
@@ -30,10 +34,12 @@
             border: none;
             transition: background-color 0.5s ease;
             font-size: 50%;
+            cursor: pointer;
+            padding: 5px;
         }
 
         button:hover {
-            background-color: var(--accent--primary--color-light);
+            background-color: #ff0000ab;
         }
     }
 }
@@ -53,26 +59,33 @@
             margin-top: 5%;
 
             div {
-                background-color: var(--accent--primary--color-light);
+                background-color: var(--sixth--color-light);
                 margin-left: 10%;
                 padding-left: 30%;
                 padding: 5%;
                 border-radius: 10px;
+                transition: background-color 0.5s ease;
+            }
+            div:hover {
+                background-color: var(--secondary--anchor--color-hover);
             }
         }
-    }
-    button {
-        background-color: var(--accent--terciary--color-light);
-        width: 3%;
-        height: 3%;
-        margin-left: 95%;
-        border-radius: 5px;
-        border: none;
-        transition: background-color 0.5s ease;
-        font-size: 50%;
-    }
-    button:hover {
-        background-color: var(--accent--primary--color-light);
+        button {
+            background-color: var(--sixth--color-light);
+            width: 3%;
+            height: 3%;
+            margin-left: 95%;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.5s ease;
+            font-size: 50%;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        button:hover {
+            background-color: #ff0000ab;
+        }
     }
 }
 .hiden {
@@ -83,29 +96,40 @@
         display: none;
     }
 }
+.upDiv {
+    .buttonUp {
+        z-index: 150;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 92%;
+        left: 96%;
+        padding: 1%;
+        height: 50px;
+        width: 50px;
+        border-radius: 100%;
 
-.buttonUp {
-    z-index: 50;
-    position: fixed;
-    top: 85%;
-    left: 90%;
-    padding: 1%;
-    height: 80px;
-    width: 80px;
-    border-radius: 100%;
-    box-shadow:
-        0 0 10px lightgray,
-        0 0 20px white;
-    background-color: var(--accent--terciary--color-light);
-    border: none;
-    cursor: pointer;
+        background-color: #f4f4f9;
+
+        border: none;
+        cursor: pointer;
+
+        transition:
+            top 0.5s ease-in-out,
+            left 0s ease-in-out;
+    }
+    .buttonUp:hover {
+        box-shadow: 0 0 20px gray;
+    }
+
+    .buttonUpHide {
+        z-index: 149;
+        position: fixed;
+        top: 110%;
+    }
 }
-.buttonUpHide {
-    z-index: 50;
-    position: fixed;
-    top: 110%;
-    left: 90%;
-}
+
 .landing {
     display: grid;
 
@@ -146,29 +170,33 @@
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
-                transition: background-color 0.5s ease;
                 border-top-left-radius: 9px;
+                border-bottom-right-radius: 9px;
+                border-right: 1px solid var(--secondary--anchor--color-hover);
+                background-color: var(--sixth--color-light);
             }
             .searchAuxie:hover {
-                background-color: var(--accent--primary--color-light);
+                background-color: var(--secondary--anchor--color-hover);
                 cursor: pointer;
-                border-top-left-radius: 9px;
+                transition: background-color 0.5s ease;
             }
             .turnAuxie {
                 all: unset;
+                background-color: var(--sixth--color-light);
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
-                transition: background-color 0.5s ease;
                 border-top-right-radius: 9px;
+                border-left: 1px solid var(--secondary--anchor--color-hover);
+                border-bottom-left-radius: 9px;
             }
             .turnAuxie:hover {
-                background-color: var(--accent--primary--color-light);
+                background-color: var(--secondary--anchor--color-hover);
                 cursor: pointer;
-                border-top-right-radius: 9px;
+                transition: background-color 0.5s ease;
             }
         }
         .menuSearchAuxie {
@@ -190,7 +218,7 @@
 
         .buttonMenu {
             border: none;
-            background-color: var(--sixthh--color-light);
+            background-color: var(--sixth--color-light);
             padding: 2%;
             font-size: 120%;
             font-weight: 500;
@@ -198,8 +226,9 @@
         }
 
         .buttonMenu:hover {
-            background-color: var(--accent--primary--color-light);
+            background-color: var(--secondary--anchor--color-hover);
             transition: background-color 0.5s ease;
+            cursor: pointer;
         }
 
         .menuTurnAuxie {
@@ -280,7 +309,7 @@
         align-items: center;
         gap: 10%;
         padding: 2% 0 5% 0;
-        h3 {
+        .h3 {
             font-size: xx-large;
         }
     }

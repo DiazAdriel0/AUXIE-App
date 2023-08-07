@@ -1,15 +1,17 @@
 .form {
     max-width: 80%;
-background-color:rgba(195, 201, 255, 0.5);
-    margin-top: 5%;
+    background-color: var(--third--color-light);
+    // margin-top: 5%;
     border-radius: 1rem;
+    border: 2px solid var(--secondary--color-hover);
     .send {
         margin-top: 5%;
-        margin-bottom: 3%;
+        margin-bottom: 5%;
     }
-   
+
     .picker {
         width: 90%;
         margin-bottom: 5%;
+        margin-top: 3%;
     }
 }

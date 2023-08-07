@@ -9,14 +9,14 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
-const JobRequestForm = ({  services }) => {
+const JobRequestForm = ({ services }) => {
     let { id } = useParams()
     const client = useSelector((state) => state.loggedUser)
     // const services = useSelector((state) => state.services)
     const [value, setValue] = useState({
         clientId: client.id,
         service: '',
-        jobDate:'',
+        jobDate: '',
         description: '',
         // price:'',
     })
@@ -27,12 +27,12 @@ const JobRequestForm = ({  services }) => {
         setValue((previousvalue) => ({ ...previousvalue, [name]: value }))
     }
     const handleServiceChange = (event) => {
-        const { value } = event.target; // Obtenemos el valor seleccionado del campo de selección
+        const { value } = event.target // Obtenemos el valor seleccionado del campo de selección
         setValue((previousvalue) => ({
             ...previousvalue,
             service: value, // Actualizamos solo el campo 'service'
-        }));
-    };
+        }))
+    }
     const handlePost = async () => {
         try {
             const response = await axios.put(
@@ -72,12 +72,10 @@ const JobRequestForm = ({  services }) => {
                             <h1>Agenda cita</h1>
                         </div>
                         <div>
-                           
                             <label>Elige fecha</label>
 
                             <DatePicker
                                 className={style.picker}
-                             
                                 value={value}
                                 onChange={(jobDate) =>
                                     setValue((previousvalue) => ({
@@ -86,9 +84,10 @@ const JobRequestForm = ({  services }) => {
                                     }))
                                 }
                                 sx={{
+                                    color: 'primary.main',
                                     border: 2,
                                     borderRadius: 1.4,
-                                    borderColor: 'secondary.main',
+                                    borderColor: 'primary.main',
                                 }}
                             />
                         </div>
@@ -107,7 +106,7 @@ const JobRequestForm = ({  services }) => {
                                 sx={{
                                     border: 2,
                                     borderRadius: 1.4,
-                                    borderColor: 'secondary.main',
+                                    borderColor: 'primary.main',
                                 }}
                             />
                         </div>
@@ -124,13 +123,13 @@ const JobRequestForm = ({  services }) => {
                                 fullWidth
                                 label="Servicio"
                                 helperText="Selecciona un servicio"
-                                color="secondary"
+                                color="primary"
                                 focused
-                                name='service'
+                                name="service"
                                 value={value.service}
                                 onChange={handleServiceChange}
                             >
-                                {services ?
+                                {services ? (
                                     services.map((service) => (
                                         <MenuItem
                                             key={service.name}
@@ -138,7 +137,10 @@ const JobRequestForm = ({  services }) => {
                                         >
                                             {service.name}
                                         </MenuItem>
-                                    )):<div></div>}
+                                    ))
+                                ) : (
+                                    <div></div>
+                                )}
                             </TextField>
                         </div>
                         <div>
@@ -152,7 +154,7 @@ const JobRequestForm = ({  services }) => {
                                 variant="outlined"
                                 required
                                 multiline
-                                color="secondary"
+                                color="primary"
                                 focused
                                 name="description"
                                 value={value.description}
@@ -164,7 +166,7 @@ const JobRequestForm = ({  services }) => {
                             className={style.send}
                             variant="contained"
                             endIcon={<SendIcon />}
-                            type='submit'
+                            type="submit"
                         >
                             Send
                         </Button>

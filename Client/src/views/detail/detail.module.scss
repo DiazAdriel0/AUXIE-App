@@ -3,18 +3,20 @@
     flex-flow: column nowrap;
     justify-content: flex-start;
     height: 76vh;
-    margin: 2%;
+    // margin: 1.3%;
     background-color: var(--third--color-light);
+    border-radius: 1rem;
+    border: 2px solid var(--secondary--color-hover);
 }
 
-
-.infoCont{
+.infoCont {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
     margin: 2%;
     gap: 2%;
     flex-grow: auto;
+    font-size: 1.5rem;
 }
 
 .profilePic {
@@ -35,8 +37,8 @@
 .contServices {
     display: flex;
     flex-flow: column wrap;
+    margin-left: 10%;
 }
-
 
 .serviceDiv {
     width: 100%;
@@ -52,7 +54,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--accent--primary--color-light);
+    background-color: var(--secondary--color-light);
     width: 100%;
     flex-grow: 1;
 }
@@ -63,10 +65,12 @@
     margin-top: 2%;
 }
 
-.detailall{
+.detailall {
     width: 80%;
 }
-.detailform{
+.detailform {
     display: flex;
     flex-direction: row;
+    margin: 2%;
+    padding: 1rem;
 }

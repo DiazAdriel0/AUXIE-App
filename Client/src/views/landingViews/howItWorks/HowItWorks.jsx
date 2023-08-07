@@ -8,8 +8,13 @@ import StepFive from '../../../assets/Logos/StepFive.svg'
 import ArrowIcon from '../../../assets/Logos/ArrowIcon.svg'
 import ArrowDown from '../../../assets/Logos/ArrowDown.svg'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
+import NavGeneral from '../../../components/nav-general/NavGeneral'
 
 const HowItWorks = () => {
+    const user = useSelector((state) => state.loggedUser)
+    const isLogged = Object.keys(user).length > 0
+
     const [faq, setFaq] = useState(null)
 
     const handleFaqClick = (index) => {
@@ -34,9 +39,9 @@ const HowItWorks = () => {
 
     return (
         <div>
-            <LoginRegisterMenus />
+            {isLogged ? (<NavGeneral/>) : (<LoginRegisterMenus />)}
             <div className={style.howItWorks}>
-                <h1>¿Cómo funciona Auxie?</h1>
+                <h2>¿Cómo funciona Auxie?</h2>
             </div>
             <div>
                 <section className={style.layout}>

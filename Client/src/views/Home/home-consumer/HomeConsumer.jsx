@@ -27,7 +27,7 @@ const HomeConsumer = () => {
                     <div className={style.contHome}>
                         <div className={style.welcomeMessage}>
                             <h1 className={style.message}>
-                                Bienvenido/a @user
+                                Bienvenido/a {user.firstName}
                             </h1>
                         </div>
                         <div className={style.auxieCatalog}>

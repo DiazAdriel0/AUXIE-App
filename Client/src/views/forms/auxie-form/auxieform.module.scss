@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 500px;
+    max-width: 30%;
     margin: 3% auto;
     background-color: rgba(195, 201, 255, 0.5);
     border: 2px solid #e0e0e0;
@@ -12,7 +12,7 @@
     padding: 3rem; /* Ajusta el espacio alrededor del formulario */
     height: 45%;
 
-    select{
+    select {
         flex: 2;
         width: 100%;
         margin-left: 10px;
@@ -22,7 +22,7 @@
         box-sizing: border-box;
         font-size: 14px;
     }
-    
+
     .formtitle {
         font-size: x-large;
     }

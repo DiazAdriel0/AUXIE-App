@@ -40,11 +40,13 @@
 }
 
 .offers{
+
   padding-top: 1%;
     padding-bottom: 1%;
     background-color: var(--secondary--color-light);
     padding-left: 5%;
     box-shadow: 0px 30px 52px -25px var(--secondary--color-hover);
+
 
     h2 {
         font-size: 150%;
@@ -72,8 +74,8 @@
 
 .Register{
   text-align: center;
+  border: var(--secondary--color-hover) 1px solid;
   width: max-content;
-  border: 1px solid;
   background-color: var(--secondary--color-light);
   padding:1em 1.5em;
   border-color: var(--secondary--color-hover);
