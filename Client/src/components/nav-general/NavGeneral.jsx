@@ -8,11 +8,19 @@ import { logOut, resetToken } from '../../redux/Actions/actions'
 import { signOut } from 'firebase/auth';
 import { auth } from '../../config/firebase-config';
 import axios from 'axios'
+import { Popper, Box } from '@mui/material'
+import { useState } from 'react'
+import ClickAwayListener from '@mui/base/ClickAwayListener'
 
 const NavGeneral = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector(state => state.loggedUser)
+    const [profileMenu, setProfileMenu] = useState(null)
+    const handleClick = (event) => {
+        setProfileMenu(profileMenu ? null : event.currentTarget)
+    }
+    
     // const navigate = useNavigate();
     const token = useSelector(state=>{
         return state.token;
@@ -42,6 +50,12 @@ const NavGeneral = () => {
         }   
 
     }
+    const handleClickAway = () => {
+        setProfileMenu(null)
+    }
+
+    const open = Boolean(profileMenu)
+    const id = open ? 'profileMenu' : undefined
 
     return (
         <nav className={style.navGeneral}>
@@ -79,7 +93,9 @@ const NavGeneral = () => {
               
 
                 {/* Botón para desplegar menu con opciones del perfil*/}
-                <button onClick={handleClick} aria-describedby={id}>
+                <button 
+                onClick={handleClick} aria-describedby={id}
+                >
 
                     <img
                         src={user.image}
