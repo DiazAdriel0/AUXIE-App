@@ -41,7 +41,7 @@ const HowItWorks = () => {
         <div>
             {isLogged ? (<NavGeneral/>) : (<LoginRegisterMenus />)}
             <div className={style.howItWorks}>
-                <h1>¿Cómo funciona Auxie?</h1>
+                <h2>¿Cómo funciona Auxie?</h2>
             </div>
             <div>
                 <section className={style.layout}>
