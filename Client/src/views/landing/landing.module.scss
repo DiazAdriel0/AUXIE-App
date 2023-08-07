@@ -207,7 +207,7 @@
             gap: 1rem;
             align-items: center;
             font-size: large;
-            margin-top: 2%;
+            margin-top: 8%;
 
             select {
                 border-radius: 10px;
@@ -224,6 +224,7 @@
             font-weight: 500;
             border-radius: 10px;
             color: white;
+            margin-top: 10%;
         }
 
         .buttonMenu:hover {
@@ -239,7 +240,7 @@
             align-items: center;
             gap: 1rem;
             font-size: large;
-            margin-top: 2%;
+            margin-top: 8%;
 
             select {
                 border-radius: 10px;
@@ -276,30 +277,36 @@
                 font-size: 120%;
                 display: flex;
                 flex-direction: column;
+                margin-top: 1%;
+                margin-bottom: 2%;
             }
         }
         .buttonSlogan {
-            width: 120px;
+            width: 12%;
             margin: 1% 0 0 10%;
             padding: 0.7%;
-            font-size: large;
+            font-size: 1.5rem;
             font-family: var(--font-poppins);
             border-radius: 10px;
             border: none;
             background-color: var(--ninth--color-light);
             color: white; 
+            height: 20%;
+            // font-weight: bold;
         }
+        
     }
     .buttonSlogan1 {
         width: 12%;
         margin: 1% 0 0 10%;
         padding: 1%;
-        font-size: large;
+        font-size: 1.5rem;
         font-family: var(--font-poppins);
         border-radius: 10px;
         border: none;
         background-color: var(--ninth--color-light);
         color: white;
+        height: 90%;
     }
     /* Estilos para la sección 3 (cards) */
     .serviceCards {
