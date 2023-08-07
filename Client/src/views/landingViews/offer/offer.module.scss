@@ -46,20 +46,21 @@
   border-left: var(--accent--primary--color-light) 2px solid;  
   border-right: var(--accent--primary--color-light) 2px solid;
   h1{
-      font-size: 75px;
+      font-size: 3.5em;
       
   }
 
   h3{
-      font-size: x-large;
+      font-size: 1.25em;
   }
 
 }
 
 .button{
   margin: 50px;
-  width: 15%;
-  height: 80px;
+  width: max-content;
+  padding: 0.75em;
+  height: max-content;
   font-size: x-large;
   font-weight:400;
   border-radius: 20px;
@@ -76,13 +77,14 @@
 .Register{
   text-align: center;
   border: var(--secondary--color-hover) 1px solid;
+  width: max-content;
   background-color: var(--secondary--color-light);
-  padding: 100px;
+  padding:1em 1.5em;
   border-color: var(--accent--third--color-light);
-  border-radius: 50px;
-  margin-top: 5%;
+  border-radius: 1em;
+  margin: 2em 0 4em 0;
   h1{
-      font-size: 50px;
+      font-size: 2em;
   }
 }
 

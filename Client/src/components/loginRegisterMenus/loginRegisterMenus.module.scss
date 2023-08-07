@@ -13,16 +13,20 @@
             display: flexbox;
             margin-top: 5%;
             div {
-                background-color: var(--accent--primary--color-light);
+                background-color: var(--sixth--color-light);
                 margin-left: 10%;
                 padding-left: 30%;
                 padding: 5%;
                 border-radius: 10px;
+                transition: background-color 0.5s ease;
+            }
+            div:hover {
+                background-color: var(--secondary--color-hover);
             }
         }
 
         button {
-            background-color: var(--accent--terciary--color-light);
+            background-color: var(--sixth--color-light);
             width: 3%;
             height: 3%;
             margin-left: 95%;
@@ -30,10 +34,12 @@
             border: none;
             transition: background-color 0.5s ease;
             font-size: 50%;
+            cursor: pointer;
+            padding: 5px;
         }
 
         button:hover {
-            background-color: var(--accent--primary--color-light);
+            background-color: #ff0000ab;
         }
     }
 }
@@ -53,26 +59,33 @@
             margin-top: 5%;
 
             div {
-                background-color: var(--accent--primary--color-light);
+                background-color: var(--sixth--color-light);
                 margin-left: 10%;
                 padding-left: 30%;
                 padding: 5%;
                 border-radius: 10px;
+                transition: background-color 0.5s ease;
+            }
+            div:hover {
+                background-color: var(--secondary--color-hover);
             }
         }
-    }
-    button {
-        background-color: var(--accent--terciary--color-light);
-        width: 3%;
-        height: 3%;
-        margin-left: 95%;
-        border-radius: 5px;
-        border: none;
-        transition: background-color 0.5s ease;
-        font-size: 50%;
-    }
-    button:hover {
-        background-color: var(--accent--primary--color-light);
+        button {
+            background-color: var(--sixth--color-light);
+            width: 3%;
+            height: 3%;
+            margin-left: 95%;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.5s ease;
+            font-size: 50%;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        button:hover {
+            background-color: #ff0000ab;
+        }
     }
 }
 .hiden {

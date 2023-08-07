@@ -9,7 +9,6 @@ import { useDispatch } from 'react-redux'
 import { loggedUser } from '../../../redux/Actions/actions'
 
 const ClientLogin = () => {
-    const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const { errors, validate } = useValidations()
@@ -44,6 +43,7 @@ const ClientLogin = () => {
             if (data) {
                 dispatch(loggedUser(data))
                 setAccess(true)
+
             }
         } catch (error) {
             console.log(error + error.response.data.error)

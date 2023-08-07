@@ -8,6 +8,7 @@ import {
     SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG,
     LOGED_USER,
+    LOGOUT
 } from './Actions/actionTypes'
 
 let initialState = {
@@ -48,7 +49,7 @@ function rootReducer(state = initialState, action) {
                     [...state.auxies].filter((aux) =>
                         aux.services.some(
                             (serv) =>
-                                serv.name.toUpperCase() === filter.toUpperCase()
+                                serv.name === filter
                         )
                     )
                 )
@@ -68,13 +69,13 @@ function rootReducer(state = initialState, action) {
                         (prev, next) =>
                             prev.services.find(
                                 (obj) =>
-                                    obj.name.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                    obj.name ===
+                                    serviceFiltered
                             ).price -
                             next.services.find(
                                 (obj) =>
-                                    obj.name.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                    obj.name ===
+                                    serviceFiltered
                             ).price
                     )
                     return { ...state, filteredAuxies: [...ascFilter] }
@@ -83,13 +84,13 @@ function rootReducer(state = initialState, action) {
                         (prev, next) =>
                             next.services.find(
                                 (obj) =>
-                                    obj.name.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                    obj.name ===
+                                    serviceFiltered
                             ).price -
                             prev.services.find(
                                 (obj) =>
-                                    obj.name.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                    obj.name ===
+                                    serviceFiltered
                             ).price
                     )
                     return { ...state, filteredAuxies: [...descFilter] }
@@ -153,6 +154,11 @@ function rootReducer(state = initialState, action) {
         
         // carga la info del usuario loggueado a mi estado global
         case LOGED_USER:
+            return {
+                ...state,
+                loggedUser: action.payload,
+            }
+        case LOGOUT:
             return {
                 ...state,
                 loggedUser: action.payload,

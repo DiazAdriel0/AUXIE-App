@@ -10,6 +10,9 @@ import { useSelector } from 'react-redux'
 import { Animated } from 'react-animated-css'
 import CircleIconAuxie from '../../assets/Logos/CircleIconAuxie.png'
 
+//* Import icons
+import arrowUp from '../../assets/icons/arrow-up.svg'
+
 //* Import components
 import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
@@ -103,12 +106,21 @@ const Landing = () => {
             {myElementIsVisible ||
             mySecondElementIsVisible ||
             myThirdElementIsVisible ? (
-                <div>
+                <div className={style.upDiv}>
                     <button onClick={handleButtonUp} className={style.buttonUp}>
-                        SUBIR
+                        <img src={arrowUp} alt="" />
                     </button>
                 </div>
-            ) : null}
+            ) : (
+                <div className={style.upDiv}>
+                    <button
+                        onClick={handleButtonUp}
+                        className={style.buttonUpHide}
+                    >
+                        <img src={arrowUp} alt="" />
+                    </button>
+                </div>
+            )}
             <main
                 className={
                     !logInMenu && !registerMenu ? style.landing : style.hiden
@@ -208,7 +220,7 @@ const Landing = () => {
                                         <h3>
                                             Contrata a un Auxie que te ayude
                                         </h3>
-                                        <select defaultValue="default">
+                                       {/*  <select defaultValue="default">
                                             <option disabled value="default">
                                                 Servicios Mas Solicitados
                                             </option>
@@ -223,7 +235,7 @@ const Landing = () => {
                                                         </option>
                                                     )
                                                 })}
-                                        </select>
+                                        </select> */}
                                         <button
                                             onClick={handleClick}
                                             value={'toClientForm'}
@@ -306,7 +318,9 @@ const Landing = () => {
                         >
                             <section ref={myRef} className={style.serviceCards}>
                                 <div className={style.serviceCardsTitle}></div>
-                                <h3>Nuestros servicios mas populares</h3>
+                                <h3 className={style.h3}>
+                                    Nuestros servicios mas populares
+                                </h3>
                                 <CardsServices />
                             </section>
                         </Animated>

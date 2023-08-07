@@ -1,11 +1,17 @@
 import style from './help.module.scss'
 import { Link } from 'react-router-dom'
 import LoginRegisterMenus from '../../../components/loginRegisterMenus/LoginRegistermenus'
+import { useSelector } from 'react-redux'
+import NavGeneral from '../../../components/nav-general/NavGeneral'
+
+
 
 const Help = () => {
+    const user = useSelector((state) => state.loggedUser)
+    const isLogged = Object.keys(user).length > 0
     return (
         <div>
-            <LoginRegisterMenus />
+            {isLogged ? (<NavGeneral/>) : (<LoginRegisterMenus />)}
             <div className={style.help}>
                 <h2>Ayuda</h2>
             </div>

@@ -10,6 +10,7 @@ import {
     LOG_OR_REG_VIEW,
     SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG,
+    LOGOUT
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -135,6 +136,19 @@ export function loggedUser(logedUser) {
             return dispatch({
                 type: LOGED_USER,
                 payload: logedUser,
+            })
+        } catch (e) {
+            console.error(e)
+        }
+    }
+}
+
+export function logOut(empty) {
+    return function (dispatch) {
+        try {
+            return dispatch({
+                type: LOGOUT,
+                payload: empty,
             })
         } catch (e) {
             console.error(e)
