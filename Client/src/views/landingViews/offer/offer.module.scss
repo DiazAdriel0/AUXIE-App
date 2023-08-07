@@ -76,8 +76,8 @@
 
 .Register{
   text-align: center;
+  border: var(--secondary--color-hover) 1px solid;
   width: max-content;
-  border: 1px solid;
   background-color: var(--secondary--color-light);
   padding:1em 1.5em;
   border-color: var(--accent--third--color-light);
