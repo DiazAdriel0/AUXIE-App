@@ -87,7 +87,7 @@
 .buttonUp {
     z-index: 50;
     position: fixed;
-    top: 90%;
+    top: 85%;
     left: 90%;
     padding: 1%;
     height: 80px;
@@ -126,7 +126,7 @@
             margin-left: 25%;
             border-radius: 10px;
 
-            background-color: var(--secondary--color-light);
+            background-color: var(--primary--color-light);
             color: var(--primary--color--white);
             width: 40%;
             height: 40vh;
@@ -189,14 +189,12 @@
         }
 
         .buttonMenu {
-            background-color: var(--accent--terciary--color-light);
+            border: none;
+            background-color: var(--sixthh--color-light);
             padding: 2%;
             font-size: 120%;
             font-weight: 500;
             border-radius: 10px;
-            border: none;
-            margin-top: 2%;
-            font-family: var(--font-poppins);
         }
 
         .buttonMenu:hover {
