@@ -33,7 +33,7 @@ const Landing = () => {
         footerAnimated: false,
     })
     //* Global State
-    const services = useSelector((state) => state.services)
+    // const services = useSelector((state) => state.services)
     const logOrRegView = useSelector((state) => state.logOrRegView)
     const user = useSelector((state) => state.loggedUser)
 
