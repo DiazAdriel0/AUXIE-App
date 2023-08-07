@@ -43,7 +43,7 @@ margin-bottom: 40%;
     margin-top: 10%;  
     position: relative;
     height: 80%; 
-    border: 1px solid black; 
+    border: var(--secondary--color-hover) 1px solid; 
     border-width: 0 0 0 4px; 
     width: 60%;
     h3{
@@ -63,7 +63,7 @@ margin-bottom: 40%;
         justify-content: center;
         background-color: var(--secondary--color-light);
         padding: 2%;
-        border: var(--accent--third--color-light) 3px solid;
+        border: var(--secondary--color-hover) 3px solid;
     }
 }
 
