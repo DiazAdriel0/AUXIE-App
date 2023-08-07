@@ -318,7 +318,9 @@ const Landing = () => {
                         >
                             <section ref={myRef} className={style.serviceCards}>
                                 <div className={style.serviceCardsTitle}></div>
-                                <h3>Nuestros servicios mas populares</h3>
+                                <h3 className={style.h3}>
+                                    Nuestros servicios mas populares
+                                </h3>
                                 <CardsServices />
                             </section>
                         </Animated>
