@@ -1,10 +1,10 @@
 const modifyProviderServices = require('./../../Controllers/ProvidersControllers/modifyProviderServices')
 
 const updateOfferedServices = async (req, res) => {
-    const { servicesIds, providerId } = req.body
+    const { services, providerId } = req.body
     try {
         const updatedProvider = await modifyProviderServices(
-            servicesIds,
+            services,
             providerId
         )
 
