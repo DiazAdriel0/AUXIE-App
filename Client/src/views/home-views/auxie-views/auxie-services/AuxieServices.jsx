@@ -4,7 +4,7 @@ import style from './auxieServices.module.scss'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 //Components
-
+import NavGeneral from '../../../../components/nav-general/NavGeneral'
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import TableServices from '../../../../components/home-auxie-components/table-services/TableServices'
 import CardsJobs from '../../../../components/home-auxie-components/cards-jobs/CardsJobs'
@@ -19,7 +19,7 @@ const AuxieServices = () => {
     return (
         <div className={style.services}>
             <header className={style.header}>
-                <h2>Auxie Services</h2>
+                <NavGeneral />
             </header>
             {/* aside */}
             <AsideAuxie />
