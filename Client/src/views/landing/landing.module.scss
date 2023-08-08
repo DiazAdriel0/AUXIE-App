@@ -219,12 +219,14 @@
         .buttonMenu {
             border: none;
             background-color: var(--ninth--color-light);
-            padding: 2%;
+            padding: 3.5%;
             font-size: 120%;
             font-weight: 500;
             border-radius: 10px;
             color: white;
             margin-top: 10%;
+            width: 45%;
+            // height: 40%;
         }
 
         .buttonMenu:hover {
