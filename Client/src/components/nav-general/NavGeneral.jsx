@@ -1,15 +1,26 @@
-import { Link } from 'react-router-dom'
+//estilos
 import style from './navGeneral.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import LogoAuxie from '../../assets/Logos/logoAuxie.svg'
 
-import { logOut, resetToken } from '../../redux/Actions/actions'
-import { signOut } from 'firebase/auth'
-import { auth } from '../../config/firebase-config'
-import axios from 'axios'
-import { Popper, Box } from '@mui/material'
+//hooks
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate  } from 'react-router-dom'
+
+//firebase
+import { auth } from '../../config/firebase-config'
+import { signOut } from 'firebase/auth'
+
+//axios
+import axios from 'axios'
+
+//assets
+import LogoAuxie2 from '../../assets/Logos/logoAuxie2.svg'
+
+//actions
+import { logOut, resetToken } from '../../redux/Actions/actions'
+
+//Material UI
+import { Popper, Box } from '@mui/material'
 import ClickAwayListener from '@mui/base/ClickAwayListener'
 
 const NavGeneral = () => {
@@ -71,24 +82,23 @@ const NavGeneral = () => {
 
     return (
         <nav className={style.navGeneral}>
-            <div className={style.containerLeft}>
+            <div className={style.logoCont}>
                 {isAuxie ? (
-                    <div className={style.viewsGeneral}>
+                    <div className={style.logo}>
                         <Link to={'/homeauxie'}>
                             <img
-                                src={LogoAuxie}
+                                src={LogoAuxie2}
                                 alt="Logo Auxie"
-                                className={style.logo}
                             />
                         </Link>
                     </div>
                 ) : (
-                    <div className={style.viewsGeneral}>
+                    <div className={style.logo}>
                         <Link to={'/homeconsumer'}>
                             <img
-                                src={LogoAuxie}
+                                src={LogoAuxie2}
                                 alt="Logo Auxie"
-                                className={style.logo}
+                                className={style.img}
                             />
                         </Link>
                     </div>

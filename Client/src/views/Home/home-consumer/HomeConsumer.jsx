@@ -10,6 +10,7 @@ import style from './homeConsumer.module.scss'
 import Cards from '../../../components/Cards/Cards'
 import Filters from '../../../components/Filters/Filters'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
+// import ClientRequiredServices from '../../../components/clientRequiredServices/clientRequiredServices'
 
 //actions
 import { resetAuxiesCatalog } from '../../../redux/actions/actions'
@@ -21,7 +22,8 @@ const HomeConsumer = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector((state) => state.loggedUser)
-    
+    const isConsumer = Object.keys(user).includes('requiredServices')
+
     useEffect(() => {
         if (Object.keys(user).length === 0) return navigate('/clientlogin')
         if (Object.keys(user).includes('services'))
@@ -31,7 +33,7 @@ const HomeConsumer = () => {
 
     return (
         <>
-            {Object.keys(user).includes('requiredServices') ? (
+            {isConsumer ? (
                 <>
                     <NavGeneral />
                     <div className={style.contHome}>
@@ -41,32 +43,48 @@ const HomeConsumer = () => {
                             </h1>
                         </div>
                         <div className={style.catalogTitleCont}>
-                                <h2 className={style.catalogTitle}>
-                                    Contratar un Auxie
-                                </h2>
-                            </div>
-                        <div className={style.auxieCatalog}>
-                            
+                            <h2 className={style.catalogTitle}>
+                                Contratar un Auxie
+                            </h2>
+                        </div>
+                        <div className={style.catalogCont}>
                             <div className={style.catalog}>
                                 <div className={style.filters}>
-                                    <Filters/>
+                                    <Filters />
                                 </div>
                                 <div className={style.cards}>
-                                    <Cards/>
+                                    <Cards />
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div className={style.servicesTitleCont}>
+                        <h2 className={style.servicesTitle}>
+                            Servicios contratados
+                        </h2>
+                    </div>
+                    <div className={style.services}>
+                        {/* Componente que muestra los objectos de la propiedad requiredServices del usuario, falta agregarles servicios a los usuarios */}
+                        {/* <ClientRequiredServices/> */}
+                    </div>
                     <footer className={style.footer}>
-                    <div className={style.footerInfo}>
-                                    <Link to={'/aboutUs'}><p>Quiénes Somos</p></Link>
-                                    <Link to={'/offer'}><p>Que ofrecemos</p></Link>
-                                    <Link to={'/howItWorks'}>
-                                    <p>Como funciona Auxie</p>
-                                    </Link>
-                                    <Link to={'/guarantee'}><p>Garantías</p> </Link>
-                                    <Link to={'/help'}><p>Ayuda</p></Link>
-                            </div>
+                        <div className={style.footerInfo}>
+                            <Link to={'/aboutUs'}>
+                                <p>Quiénes Somos</p>
+                            </Link>
+                            <Link to={'/offer'}>
+                                <p>Que ofrecemos</p>
+                            </Link>
+                            <Link to={'/howItWorks'}>
+                                <p>Como funciona Auxie</p>
+                            </Link>
+                            <Link to={'/guarantee'}>
+                                <p>Garantías</p>{' '}
+                            </Link>
+                            <Link to={'/help'}>
+                                <p>Ayuda</p>
+                            </Link>
+                        </div>
                         <div className={style.divFooterTitle}>
                             <img
                                 src={CircleIconAuxie}
