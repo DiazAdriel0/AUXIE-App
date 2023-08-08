@@ -3,7 +3,8 @@ const bcrypt = require('bcrypt')
 
 const postProvider = async (req, res) => {
     try {
-        const { firstName, lastName, age, email, username, password } = req.body
+        const { firstName, lastName, age, email, username, password, gender } =
+            req.body
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -13,6 +14,7 @@ const postProvider = async (req, res) => {
             age,
             email: email?.toLowerCase(),
             username,
+            gender,
             usernameLower: username?.toLowerCase(),
             password: hashedPassword,
             image: 'https://img.freepik.com/free-icon/user_318-563642.jpg',
