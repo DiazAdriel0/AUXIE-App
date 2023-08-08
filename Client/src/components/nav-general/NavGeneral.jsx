@@ -38,6 +38,8 @@ const NavGeneral = () => {
                 })
                 if (response) {
                     dispatch(logOut({}))
+                    dispatch(resetToken())
+                    return  navigate('/')
                 }
             }
             dispatch(logOut({}))
@@ -181,15 +183,15 @@ const NavGeneral = () => {
                                             Ayuda
                                         </p>
                                     </Link>
-                                    <Link to={'/'} onClick={handleLogOut}>
-                                        <p
+                                   
+                                        <p onClick={handleLogOut}
                                             className={
                                                 style.profileButtonBottom
                                             }
                                         >
                                             Cerrar sesión
                                         </p>
-                                    </Link>
+                                    
                                 </Box>
                             </ClickAwayListener>
                         </>
