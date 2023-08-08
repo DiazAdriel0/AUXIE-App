@@ -1,6 +1,8 @@
+
 .hide {
     display: none;
 }
+
 .layout {
     width: 100%;
     height: 100%;
@@ -50,7 +52,9 @@
     border-width: 0 0 0 4px;
     width: 60%;
     h3 {
-        color: var(--accent--third--color-light);
+
+        color: var(--accent--first--color-light);
+
     }
     p {
         font-size: 120%;
@@ -72,7 +76,7 @@
     margin-top: 1%;
     padding: 2%;
     font-size: 170%;
-    border-bottom: var(--accent--third--color-light) 3px solid;
+    border-bottom: var(--accent--first--color-light) 3px solid;
 }
 
 .faqAnswer {

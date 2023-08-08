@@ -1,8 +1,13 @@
-import { Link } from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import style from './card.module.scss'
 
 const Card = (user) => {
     const { id, lastName, firstName, averageRating, services, image } = user
+    const navigate = useNavigate()
+
+    const handleDetail = () => {
+        navigate(`/detail/${id}`)
+    }
 
     return (
         <div className={style.card}>
@@ -66,8 +71,7 @@ const Card = (user) => {
                     </div>
                 )}
             </div>
-            <Link to={`/detail/${id}`}>
-                <button className={style.button}>
+                <button className={style.button} onClick={handleDetail}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -82,10 +86,8 @@ const Card = (user) => {
                             d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
                         ></path>
                     </svg>
-
                     <div className={style.text}>Contratar</div>
                 </button>
-            </Link>
         </div>
     )
 }
