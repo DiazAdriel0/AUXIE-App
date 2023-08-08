@@ -10,7 +10,7 @@ import style from './homeConsumer.module.scss'
 import Cards from '../../../components/Cards/Cards'
 import Filters from '../../../components/Filters/Filters'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
-import ClientRequiredServices from '../../../components/clientRequiredServices/clientRequiredServices'
+// import ClientRequiredServices from '../../../components/clientRequiredServices/clientRequiredServices'
 
 //actions
 import { resetAuxiesCatalog } from '../../../redux/actions/actions'
@@ -64,7 +64,8 @@ const HomeConsumer = () => {
                         </h2>
                     </div>
                     <div className={style.services}>
-                        <ClientRequiredServices/>
+                        {/* Componente que muestra los objectos de la propiedad requiredServices del usuario, falta agregarles servicios a los usuarios */}
+                        {/* <ClientRequiredServices/> */}
                     </div>
                     <footer className={style.footer}>
                         <div className={style.footerInfo}>
