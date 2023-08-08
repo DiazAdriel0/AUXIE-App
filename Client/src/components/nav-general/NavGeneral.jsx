@@ -59,6 +59,7 @@ const NavGeneral = () => {
                     }
                 )
                 if (response) {
+                    await signOut(auth)
                     dispatch(logOut({}))
                     dispatch(resetToken())
                     return navigate('/')
