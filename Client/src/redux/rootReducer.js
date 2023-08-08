@@ -8,7 +8,9 @@ import {
     SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG,
     LOGED_USER,
-    LOGOUT
+    LOGOUT,
+    SET_TOKEN,
+    RESET_TOKEN,
 } from './Actions/actionTypes'
 
 let initialState = {
@@ -21,7 +23,7 @@ let initialState = {
     logOrRegView: false,
     currentPage: 1,
     nightMode: false,
-    token:''
+    token: '',
 }
 
 function rootReducer(state = initialState, action) {
@@ -48,10 +50,7 @@ function rootReducer(state = initialState, action) {
             } else {
                 const filteredAuxies = action.payload.map((filter) =>
                     [...state.auxies].filter((aux) =>
-                        aux.services.some(
-                            (serv) =>
-                                serv.name === filter
-                        )
+                        aux.services.some((serv) => serv.name === filter)
                     )
                 )
                 const allFiltered = new Set(filteredAuxies.flat(1))
@@ -69,14 +68,10 @@ function rootReducer(state = initialState, action) {
                     let ascFilter = [...state.filteredAuxies].sort(
                         (prev, next) =>
                             prev.services.find(
-                                (obj) =>
-                                    obj.name ===
-                                    serviceFiltered
+                                (obj) => obj.name === serviceFiltered
                             ).price -
                             next.services.find(
-                                (obj) =>
-                                    obj.name ===
-                                    serviceFiltered
+                                (obj) => obj.name === serviceFiltered
                             ).price
                     )
                     return { ...state, filteredAuxies: [...ascFilter] }
@@ -84,14 +79,10 @@ function rootReducer(state = initialState, action) {
                     let descFilter = [...state.filteredAuxies].sort(
                         (prev, next) =>
                             next.services.find(
-                                (obj) =>
-                                    obj.name ===
-                                    serviceFiltered
+                                (obj) => obj.name === serviceFiltered
                             ).price -
                             prev.services.find(
-                                (obj) =>
-                                    obj.name ===
-                                    serviceFiltered
+                                (obj) => obj.name === serviceFiltered
                             ).price
                     )
                     return { ...state, filteredAuxies: [...descFilter] }
@@ -152,7 +143,7 @@ function rootReducer(state = initialState, action) {
                 auxies: [...state.backupAuxies],
                 filteredAuxies: [...state.backupAuxies],
             }
-        
+
         // carga la info del usuario loggueado a mi estado global
         case LOGED_USER:
             return {
@@ -163,6 +154,16 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 loggedUser: action.payload,
+            }
+        case SET_TOKEN:
+            return {
+                ...state,
+                token: action.payload,
+            }
+        case RESET_TOKEN:
+            return {
+                ...state,
+                token: '',
             }
         // caso por defecto si por alguna razón no recibe action.type
         default:
