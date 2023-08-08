@@ -7,7 +7,7 @@ import {
     LOGED_USER,
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
-    LOG_OR_REG_VIEW,
+    MENU_OPEN,
     SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG,
     LOGOUT,
@@ -22,8 +22,8 @@ export function getAllAuxies(token) {
         try {
             const res = await axios('http://localhost:3001/providers', {
                 headers: {
-                    'authorization': `Bearer ${token}`
-                }
+                    authorization: `Bearer ${token}`,
+                },
             })
             return dispatch({
                 type: GET_ALL_AUXIES,
@@ -41,8 +41,8 @@ export function getAllServices(token) {
         try {
             const res = await axios('http://localhost:3001/services', {
                 headers: {
-                    'authorization': `Bearer ${token}`
-                }
+                    authorization: `Bearer ${token}`,
+                },
             })
 
             return dispatch({
@@ -60,8 +60,8 @@ export function getDetails(id, token) {
         try {
             const res = await axios(`http://localhost:3001/providers/${id}`, {
                 headers: {
-                    'authorization': `Bearer ${token}`
-                }
+                    authorization: `Bearer ${token}`,
+                },
             })
             return dispatch({
                 type: GET_AUXIE_DETAILS,
@@ -111,11 +111,11 @@ export function orderAuxiesByRating(order) {
     }
 }
 
-export function toggleLogOrRegView(boolean) {
+export function menuOpen(boolean) {
     return function (dispatch) {
         try {
             return dispatch({
-                type: LOG_OR_REG_VIEW,
+                type: MENU_OPEN,
                 payload: boolean,
             })
         } catch (e) {
@@ -169,13 +169,13 @@ export function logOut(empty) {
         }
     }
 }
-export function setToken(token){
+export function setToken(token) {
     return {
         type: SET_TOKEN,
-        payload: token
+        payload: token,
     }
 }
-export function resetToken(){
+export function resetToken() {
     return {
         type: RESET_TOKEN,
     }

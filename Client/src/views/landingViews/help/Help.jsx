@@ -7,11 +7,13 @@ import NavLanding from '../../../components/nav-landing/NavLanding'
 
 const Help = () => {
     const user = useSelector((state) => state.loggedUser)
+    const menuLanding = useSelector((state) => state.menuLanding)
     const isLogged = Object.keys(user).length > 0
     return (
-        <div>
+        <>
             {isLogged ? <NavGeneral /> : <NavLanding />}
-            <div className={style.help}>
+
+            <div className={!menuLanding ? style.help : style.helpHide}>
                 <h2>Ayuda</h2>
             </div>
             <div className={style.helpers}>
@@ -33,7 +35,7 @@ const Help = () => {
                     </Link>
                 </section>
             </div>
-        </div>
+        </>
     )
 }
 

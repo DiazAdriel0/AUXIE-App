@@ -1,88 +1,85 @@
+.offerHide {
+    display: none;
+}
 .layout {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 30px 30px;
-  flex-wrap: wrap;
-  flex-flow: column wrap;
-  align-items: last baseline;
-  justify-content: center;
-  height: 100vh; 
-  position:relative;
-  div{
-    width: 25%;
-  }
-  
-  h3{
-      font-size: 30px;
-  }
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 30px 30px;
+    flex-wrap: wrap;
+    flex-flow: column wrap;
+    align-items: last baseline;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    div {
+        width: 25%;
+    }
+
+    h3 {
+        font-size: 30px;
+    }
 }
 
 .Footer {
-  height: 20%;
+    height: 20%;
 
-  display: flex;
-  flex-direction: row;
-  gap: 50px 50px;
-  justify-content: center; 
-  align-items: center; 
- 
+    display: flex;
+    flex-direction: row;
+    gap: 50px 50px;
+    justify-content: center;
+    align-items: center;
 }
 
-.Help{
-  width: 20px;
-  height: 150px;
+.Help {
+    width: 20px;
+    height: 150px;
 }
 
-.money{
-  width: 20px;
-  height: 150px;
+.money {
+    width: 20px;
+    height: 150px;
 }
 
-.offers{
-
-  padding-top: 1%;
+.offers {
+    padding-top: 1%;
     padding-bottom: 1%;
     background-color: var(--secondary--color-light);
     padding-left: 5%;
     box-shadow: 0px 30px 52px -25px var(--secondary--color-hover);
 
-
     h2 {
         font-size: 150%;
     }
-
 }
 
-.button{
-  margin: 50px;
-  width: max-content;
-  padding: 0.75em;
-  height: max-content;
-  font-size: x-large;
-  font-weight:400;
-  border-radius: 20px;
-  background-color: var(--accent--third--color-light);
-  border: none;
-  cursor: pointer;
+.button {
+    margin: 50px;
+    width: max-content;
+    padding: 0.75em;
+    height: max-content;
+    font-size: x-large;
+    font-weight: 400;
+    border-radius: 20px;
+    background-color: var(--accent--third--color-light);
+    border: none;
+    cursor: pointer;
 }
 
 .button:hover {
-  background-color:var(--accent--primary--color-light );
+    background-color: var(--accent--primary--color-light);
 }
 
-
-.Register{
-  text-align: center;
-  border: var(--secondary--color-hover) 1px solid;
-  width: max-content;
-  background-color: var(--secondary--color-light);
-  padding:1em 1.5em;
-  border-color: var(--secondary--color-hover);
-  border-radius: 1em;
-  margin: 2em 0 4em 0;
-  h1{
-      font-size: 150%;
-  }
+.Register {
+    text-align: center;
+    border: var(--secondary--color-hover) 1px solid;
+    width: max-content;
+    background-color: var(--secondary--color-light);
+    padding: 1em 1.5em;
+    border-color: var(--secondary--color-hover);
+    border-radius: 1em;
+    margin: 2em 0 4em 0;
+    h1 {
+        font-size: 150%;
+    }
 }
-

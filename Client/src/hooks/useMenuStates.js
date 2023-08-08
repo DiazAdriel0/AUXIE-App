@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
-
+import { useDispatch } from 'react-redux'
+import { menuOpen } from '../redux/Actions/actions'
 const useMenuStates = () => {
+    const dispatch = useDispatch()
+
     const [logInMenu, setLogInMenu] = useState(false)
     const [registerMenu, setRegisterMenu] = useState(false)
-    const [logOrRegView, setLogOrRegView] = useState(false)
 
     useEffect(() => {
         if (logInMenu || registerMenu) {
-            setLogOrRegView(true)
+            dispatch(menuOpen(true))
         } else {
-            setLogOrRegView(false)
+            dispatch(menuOpen(false))
         }
     }, [logInMenu, registerMenu])
 
@@ -27,7 +29,7 @@ const useMenuStates = () => {
     return {
         logInMenu,
         registerMenu,
-        logOrRegView,
+
         handlerLogIn,
         handlerRegister,
         setLogInMenu,

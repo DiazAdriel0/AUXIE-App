@@ -7,14 +7,14 @@ import { Animated } from 'react-animated-css'
 // Actions
 
 import { Link, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const NavLanding = () => {
     const navigate = useNavigate()
-
+    const menuLanding = useSelector((state) => state.menuLanding)
     const {
         handlerLogIn,
         handlerRegister,
-        logOrRegView,
         logInMenu,
         registerMenu,
         setLogInMenu,
@@ -95,7 +95,7 @@ const NavLanding = () => {
                 <Animated
                     animationIn="zoomIn"
                     animationOut="zoomDown"
-                    animationInDuration={!logOrRegView ? 200 : 0}
+                    animationInDuration={!menuLanding ? 200 : 0}
                 >
                     <div className={style.logInMenu}>
                         <div className={style.container}>
@@ -124,7 +124,7 @@ const NavLanding = () => {
                 <Animated
                     animationIn="zoomIn"
                     animationOut="zoomDown"
-                    animationInDuration={!logOrRegView ? 200 : 0}
+                    animationInDuration={!menuLanding ? 200 : 0}
                     isVisible={true}
                 >
                     <div className={style.registerMenu}>

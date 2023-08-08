@@ -1,7 +1,6 @@
 import style from './landing.module.scss'
 
 //* Import Hooks
-import useMenuStates from '../../hooks/useMenuStates'
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Link, useNavigate } from 'react-router-dom'
@@ -45,11 +44,9 @@ const Landing = () => {
     const user = useSelector((state) => state.loggedUser)
     const auxies = useSelector((state) => state.auxies)
     const services = useSelector((state) => state.services)
-
+    const menuLanding = useSelector((state) => state.menuLanding)
     //* state for changes
     const [menuChange, setMenuChange] = useState(true)
-
-    const { logOrRegView } = useMenuStates()
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -151,7 +148,7 @@ const Landing = () => {
             />
 
             {/* main */}
-            <main className={!logOrRegView ? style.landing : style.hiden}>
+            <main className={!menuLanding ? style.landing : style.hiden}>
                 {/* Section Menu Prinipal */}
                 <Animated
                     animationIn="fadeIn"

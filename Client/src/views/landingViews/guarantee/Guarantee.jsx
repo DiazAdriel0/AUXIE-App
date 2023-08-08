@@ -7,11 +7,14 @@ import NavLanding from '../../../components/nav-landing/NavLanding'
 
 const Guarantee = () => {
     const user = useSelector((state) => state.loggedUser)
+    const menuLanding = useSelector((state) => state.menuLanding)
     const isLogged = Object.keys(user).length > 0
     return (
         <>
             {isLogged ? <NavGeneral /> : <NavLanding />}
-            <div className={style.guarantee}>
+            <div
+                className={!menuLanding ? style.guarantee : style.guaranteeHide}
+            >
                 <div className={style.reset}>
                     <div>
                         <div className={style.title}>
