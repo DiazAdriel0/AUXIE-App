@@ -33,7 +33,7 @@
         }
         img {
             border-radius: 100%;
-            clip-path:circle();
+            clip-path: circle();
         }
         button {
             border-radius: 100%;
@@ -51,7 +51,7 @@
     display: none;
 }
 
-.logOut:hover{
+.logOut:hover {
     cursor: pointer;
 }
 
@@ -60,20 +60,20 @@
     text-align: center;
     background-color: var(--third--color-light);
     .profileButtonTop {
-        border-bottom: 1px var(--accent--third--color-light) solid;
+        border-bottom: 1px var(--accent--first--color-light) solid;
     }
-    .profileButtonTop:hover{
-        background-color: var(--accent--third--color-light);
+    .profileButtonTop:hover {
+        background-color: var(--accent--first--color-light);
         border-radius: 2px 2px 0px 0px;
     }
     .profileButtonMiddle {
-        border-bottom: 1px var(--accent--third--color-light) solid;
+        border-bottom: 1px var(--accent--first--color-light) solid;
     }
     .profileButtonMiddle:hover {
-        background-color: var(--accent--third--color-light);
+        background-color: var(--accent--first--color-light);
     }
     .profileButtonBottom:hover {
-        background-color: var(--accent--third--color-light);
+        background-color: var(--accent--first--color-light);
         border-radius: 0px 0px 2px 2px;
     }
 }

@@ -150,7 +150,7 @@
             margin-left: 25%;
             border-radius: 10px;
 
-            background-color: var(--eight--color-light);
+            background-color: var(--fifth--color-light);
             color: var(--primary--color--white);
             width: 40%;
             height: 40vh;
@@ -218,7 +218,7 @@
 
         .buttonMenu {
             border: none;
-            background-color: var(--ninth--color-light);
+            background-color: var(--fourth--color-light);
             padding: 3.5%;
             font-size: 120%;
             font-weight: 500;
@@ -230,7 +230,7 @@
         }
 
         .buttonMenu:hover {
-            background-color: var(--primary--anchor--color-hover);
+            background-color: var(--primary--anchor--color--hover);
             transition: background-color 0.5s ease;
             cursor: pointer;
         }
@@ -258,7 +258,7 @@
     }
     .slogan {
         z-index: 3;
-        background-color: var(--eight--color-light);
+        background-color: var(--fifth--color-light);
         display: flex;
         flex-direction: column;
 
@@ -291,12 +291,11 @@
             font-family: var(--font-poppins);
             border-radius: 10px;
             border: none;
-            background-color: var(--ninth--color-light);
-            color: white; 
+            background-color: var(--fourth--color-light);
+            color: white;
             height: 20%;
             // font-weight: bold;
         }
-        
     }
     .buttonSlogan1 {
         width: 12%;
@@ -306,7 +305,7 @@
         font-family: var(--font-poppins);
         border-radius: 10px;
         border: none;
-        background-color: var(--ninth--color-light);
+        background-color: var(--fourth--color-light);
         color: white;
         height: 90%;
     }
@@ -321,7 +320,7 @@
         align-items: center;
         gap: 20%;
         padding: 2% 0 5% 0;
-        
+
         .h3 {
             font-size: xx-large;
         }
@@ -337,7 +336,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
 
         .featuredAuxies {
             border-radius: 10px;
@@ -347,7 +345,7 @@
             width: 50%;
             height: 50%;
             background-color: #b8dbd9;
-            
+
             .featuredlist {
                 display: flex;
                 justify-content: center;
