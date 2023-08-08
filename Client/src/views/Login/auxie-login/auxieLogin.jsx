@@ -5,9 +5,9 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useValidations } from '../../../utils/validationutils'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { loggedUser, setToken } from '../../../redux/Actions/actions'
-import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../config/firebase-config'
 
 const ClientLogin = () => {
@@ -19,9 +19,6 @@ const ClientLogin = () => {
         password: '',
     })
     const [access, setAccess] = useState(false) //eslint-disable-line
-    const token = useSelector(state=>{
-        return state.token;
-    })
 
     const handleChange = (event) => {
         setInput({
@@ -61,11 +58,6 @@ const ClientLogin = () => {
     }
 
     useEffect(() => {
-        onAuthStateChanged(auth, (credential)=>{
-            if(credential){
-                dispatch(setToken(token))
-            }
-        })
         if (access === true) {
             navigate('/homeauxie')
         }

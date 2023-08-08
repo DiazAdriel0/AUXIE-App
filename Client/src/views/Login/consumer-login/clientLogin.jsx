@@ -3,9 +3,9 @@ import style from './clientLogin.module.scss'
 import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import {loggedUser, setToken} from '../../../redux/Actions/actions'
-import { signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../config/firebase-config'
 
 const ClientLogin = () => {
@@ -17,9 +17,6 @@ const ClientLogin = () => {
     const [input, setInput] = useState({
         email: '',
         password: '',
-    })
-    const token = useSelector(state=>{
-        return state.token;
     })
 
     const handleChange = (event) => {
@@ -59,11 +56,6 @@ const ClientLogin = () => {
     }
 
     useEffect(() => {
-        onAuthStateChanged(auth, (credential)=>{
-            if(credential){
-                dispatch(setToken(token))
-            }
-        })
         if (access === true) {
             navigate('/homeconsumer')
         }
