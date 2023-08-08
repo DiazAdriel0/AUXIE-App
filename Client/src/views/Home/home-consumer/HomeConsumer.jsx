@@ -1,11 +1,20 @@
+// hooks
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
+
+// estilos
 import style from './homeConsumer.module.scss'
+
+//componentes
 import Cards from '../../../components/Cards/Cards'
 import Filters from '../../../components/Filters/Filters'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
-import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { resetAuxiesCatalog } from '../../../redux/Actions/actions'
-import { useNavigate, Link } from 'react-router-dom'
+
+//actions
+import { resetAuxiesCatalog } from '../../../redux/actions/actions'
+
+//assets
 import CircleIconAuxie from '../../../assets/Logos/CircleIconAuxie.png'
 
 const HomeConsumer = () => {
@@ -40,10 +49,10 @@ const HomeConsumer = () => {
                             
                             <div className={style.catalog}>
                                 <div className={style.filters}>
-                                    <Filters />
+                                    <Filters/>
                                 </div>
                                 <div className={style.cards}>
-                                    <Cards />
+                                    <Cards/>
                                 </div>
                             </div>
                         </div>

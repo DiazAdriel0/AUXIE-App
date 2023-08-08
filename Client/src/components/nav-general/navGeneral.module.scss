@@ -51,14 +51,20 @@
     display: none;
 }
 
-.logOut:hover{
-    cursor: pointer;
+.profile{
+    button:hover {
+        cursor: pointer;
+    }
+    
 }
 
 .profileMenu {
     border-radius: 2px;
     text-align: center;
     background-color: var(--fourth--color-light);
+    p:hover {
+        cursor: pointer;
+    }
     .profileButtonTop {
         border-bottom: 1px var(--accent--third--color-light) solid;
     }

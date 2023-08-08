@@ -2,16 +2,21 @@ import style from './cards.module.scss'
 
 //* Components
 import Card from '../card/card'
+import usePagination from '../pagination/usePagination'
+import Pagination from '../pagination/Pagination'
+
 
 import { useSelector } from 'react-redux'
 
 const Cards = () => {
     const users = useSelector((state) => state.filteredAuxies)
+    const { currentPageData } = usePagination(12, users)
 
     return (
+        <>
         <div className={style.cards}>
-            {users &&
-                users.map((user) => (
+            {currentPageData &&
+                currentPageData.map((user) => (
                     <Card
                         key={user.id}
                         id={user.id}
@@ -24,6 +29,9 @@ const Cards = () => {
                     />
                 ))}
         </div>
+        <div className={style.pagination}><Pagination num={12} data={users}/></div>
+        
+        </>
     )
 }
 
