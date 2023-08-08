@@ -1,15 +1,16 @@
 import style from './guarantee.module.scss'
 import { Link } from 'react-router-dom'
-import LoginRegisterMenus from '../../../components/loginRegisterMenus/LoginRegistermenus'
+
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import { useSelector } from 'react-redux'
+import NavLanding from '../../../components/nav-landing/NavLanding'
 
 const Guarantee = () => {
     const user = useSelector((state) => state.loggedUser)
     const isLogged = Object.keys(user).length > 0
     return (
         <>
-            {isLogged ? <NavGeneral /> : <LoginRegisterMenus />}
+            {isLogged ? <NavGeneral /> : <NavLanding />}
             <div className={style.guarantee}>
                 <div className={style.reset}>
                     <div>

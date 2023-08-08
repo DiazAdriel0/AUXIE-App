@@ -1,5 +1,4 @@
 import style from './howItWorks.module.scss'
-import LoginRegisterMenus from '../../../components/loginRegisterMenus/LoginRegistermenus'
 import StepOne from '../../../assets/Logos/StepOne.svg'
 import StepTwo from '../../../assets/Logos/StepTwo.svg'
 import StepThree from '../../../assets/Logos/StepThree.svg'
@@ -10,6 +9,7 @@ import ArrowDown from '../../../assets/Logos/ArrowDown.svg'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
+import NavLanding from '../../../components/nav-landing/NavLanding'
 
 const HowItWorks = () => {
     const user = useSelector((state) => state.loggedUser)
@@ -39,7 +39,7 @@ const HowItWorks = () => {
 
     return (
         <div>
-            {isLogged ? (<NavGeneral/>) : (<LoginRegisterMenus />)}
+            {isLogged ? <NavGeneral /> : <NavLanding />}
             <div className={style.howItWorks}>
                 <h2>¿Cómo funciona Auxie?</h2>
             </div>

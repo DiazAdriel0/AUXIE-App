@@ -96,39 +96,6 @@
         display: none;
     }
 }
-.upDiv {
-    .buttonUp {
-        z-index: 150;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 92%;
-        left: 96%;
-        padding: 1%;
-        height: 50px;
-        width: 50px;
-        border-radius: 100%;
-
-        background-color: #f4f4f9;
-
-        border: none;
-        cursor: pointer;
-
-        transition:
-            top 0.5s ease-in-out,
-            left 0s ease-in-out;
-    }
-    .buttonUp:hover {
-        box-shadow: 0 0 20px gray;
-    }
-
-    .buttonUpHide {
-        z-index: 149;
-        position: fixed;
-        top: 110%;
-    }
-}
 
 .landing {
     display: grid;
@@ -292,11 +259,10 @@
             border-radius: 10px;
             border: none;
             background-color: var(--ninth--color-light);
-            color: white; 
+            color: white;
             height: 20%;
             // font-weight: bold;
         }
-        
     }
     .buttonSlogan1 {
         width: 12%;
@@ -321,7 +287,7 @@
         align-items: center;
         gap: 20%;
         padding: 2% 0 5% 0;
-        
+
         .h3 {
             font-size: xx-large;
         }
@@ -337,7 +303,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        
 
         .featuredAuxies {
             border-radius: 10px;
@@ -347,7 +312,7 @@
             width: 50%;
             height: 50%;
             background-color: #b8dbd9;
-            
+
             .featuredlist {
                 display: flex;
                 justify-content: center;

@@ -1,5 +1,5 @@
 import style from './offer.module.scss'
-import LoginRegisterMenus from '../../../components/loginRegisterMenus/LoginRegistermenus'
+
 import MoneyIcon from '../../../assets/Logos/MoneyIcon.svg'
 import HelpIcon from '../../../assets/Logos/HelpIcon.svg'
 import FutureIcon from '../../../assets/Logos/FutureIcon.svg'
@@ -9,15 +9,14 @@ import GuaranteesIcon from '../../../assets/Logos/GuaranteesIcon.svg'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
-
-
+import NavLanding from '../../../components/nav-landing/NavLanding'
 
 const Offer = () => {
     const user = useSelector((state) => state.loggedUser)
     const isLogged = Object.keys(user).length > 0
     return (
         <div>
-            {isLogged ? (<NavGeneral/>) : (<LoginRegisterMenus />)}
+            {isLogged ? <NavGeneral /> : <NavLanding />}
             <div className={style.offer}>
                 <div className={style.offers}>
                     <h1>Las ofertas de AUXIE</h1>

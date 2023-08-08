@@ -1,6 +1,7 @@
 import style from './landing.module.scss'
 
 //* Import Hooks
+import useMenuStates from '../../hooks/useMenuStates'
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Link, useNavigate } from 'react-router-dom'
@@ -11,27 +12,27 @@ import { Animated } from 'react-animated-css'
 import CircleIconAuxie from '../../assets/Logos/CircleIconAuxie.png'
 
 //* Import icons
-import arrowUp from '../../assets/icons/arrow-up.svg'
 
 //* Import components
 import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
+import ButtonUp from '../../components/buttons/buttonUp/ButtonUp'
 
 //anonimos tokens y actions
 import { getAllAuxies, getAllServices } from '../../redux/Actions/actions'
+
 import { auth } from '../../config/firebase-config'
 import { onAuthStateChanged, signInAnonymously } from 'firebase/auth'
 
-
 const Landing = () => {
     //* First Intersection Observer
-    const { ref: myRef, inView: myElementIsVisible } = useInView()
+    const { ref: myRef, inView: firstObserver } = useInView()
 
     //* Second Intersection Observer
-    const { ref: myRef2, inView: mySecondElementIsVisible } = useInView()
+    const { ref: myRef2, inView: secondObserver } = useInView()
 
     //* Third Intersection Observer
-    const { ref: myRef3, inView: myThirdElementIsVisible } = useInView()
+    const { ref: myRef3, inView: thirdObserver } = useInView()
 
     const [animationObserver, setAnimationObserver] = useState({
         cardsAnimated: false,
@@ -40,31 +41,31 @@ const Landing = () => {
     })
     //* Global State
     // const services = useSelector((state) => state.services)
-    const logOrRegView = useSelector((state) => state.logOrRegView)
+
     const user = useSelector((state) => state.loggedUser)
     const auxies = useSelector((state) => state.auxies)
     const services = useSelector((state) => state.services)
 
     //* state for changes
     const [menuChange, setMenuChange] = useState(true)
-    const [logInMenu, setLogInMenu] = useState(false)
-    const [registerMenu, setRegisterMenu] = useState(false)
+
+    const { logOrRegView } = useMenuStates()
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if (Object.keys(user).includes('requiredServices')){
+        if (Object.keys(user).includes('requiredServices')) {
             return navigate('/homeconsumer')
         }
-        if (Object.keys(user).includes('services')){
+        if (Object.keys(user).includes('services')) {
             return navigate('homeauxie')
-        } 
-    
+        }
+
         //crea un token anonimo
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
-                const token = await user.getIdToken();
+                const token = await user.getIdToken()
                 if (!auxies.length) {
                     dispatch(getAllAuxies(token))
                 }
@@ -74,60 +75,52 @@ const Landing = () => {
             } else {
                 const generateAnonymousToken = async () => {
                     try {
-                        const userCredential = await signInAnonymously(auth);
-                        const user = userCredential.user;
-                        const token = await user.getIdToken();
-                        console.log('anonimo:'+ token);
+                        const userCredential = await signInAnonymously(auth)
+                        const user = userCredential.user
+                        const token = await user.getIdToken()
+                        console.log('anonimo:' + token)
                         // Puedes utilizar el token como token para tus solicitudes
-                            dispatch(getAllAuxies(token))
-                            dispatch(getAllServices(token))
+                        dispatch(getAllAuxies(token))
+                        dispatch(getAllServices(token))
                     } catch (error) {
-                        console.error('Error al generar token anónimo:', error);
+                        console.error('Error al generar token anónimo:', error)
                     }
-                };
-                generateAnonymousToken();
+                }
+                generateAnonymousToken()
             }
-        });
-    
-        return () => unsubscribe();
+        })
+
+        return () => unsubscribe()
     }, [])
 
     //* useEffect animations
     useEffect(() => {
-        if (myElementIsVisible) {
+        if (firstObserver) {
             setAnimationObserver((prevAnimationObserver) => ({
                 ...prevAnimationObserver,
                 cardsAnimated: true,
             }))
         }
-        if (mySecondElementIsVisible) {
+        if (secondObserver) {
             setAnimationObserver((prevAnimationObserver) => ({
                 ...prevAnimationObserver,
                 secondCardsAnimated: true,
             }))
         }
 
-        if (myThirdElementIsVisible) {
+        if (thirdObserver) {
             setAnimationObserver((prevAnimationObserver) => ({
                 ...prevAnimationObserver,
                 footerAnimated: true,
             }))
         }
-    }, [myElementIsVisible, mySecondElementIsVisible, myThirdElementIsVisible])
+    }, [firstObserver, secondObserver, thirdObserver])
 
     const handlerMenuSearchAuxie = () => {
         setMenuChange(true)
     }
     const handlerMenuBeAuxie = () => {
         setMenuChange(false)
-    }
-
-    const handleButtonUp = () => {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth',
-        })
     }
 
     const handleClick = (event) => {
@@ -143,97 +136,22 @@ const Landing = () => {
 
     const { cardsAnimated, secondCardsAnimated, footerAnimated } =
         animationObserver
+
     return (
         <>
-            <NavLanding
-                logInMenu={logInMenu}
-                registerMenu={registerMenu}
-                setLogInMenu={setLogInMenu}
-                setRegisterMenu={setRegisterMenu}
+            <NavLanding />
+
+            {/* Button to go up */}
+            <ButtonUp
+                observersLanding={{
+                    firstObserver,
+                    secondObserver,
+                    thirdObserver,
+                }}
             />
 
-            {myElementIsVisible ||
-            mySecondElementIsVisible ||
-            myThirdElementIsVisible ? (
-                <div className={style.upDiv}>
-                    <button onClick={handleButtonUp} className={style.buttonUp}>
-                        <img src={arrowUp} alt="" />
-                    </button>
-                </div>
-            ) : (
-                <div className={style.upDiv}>
-                    <button
-                        onClick={handleButtonUp}
-                        className={style.buttonUpHide}
-                    >
-                        <img src={arrowUp} alt="" />
-                    </button>
-                </div>
-            )}
-            <main
-                className={
-                    !logInMenu && !registerMenu ? style.landing : style.hiden
-                }
-            >
-                {logInMenu && (
-                    <Animated
-                        animationIn="zoomIn"
-                        animationOut="zoomDown"
-                        animationInDuration={!logOrRegView ? 200 : 0}
-                    >
-                        <div className={style.logInMenu}>
-                            <div className={style.container}>
-                                <button onClick={() => setLogInMenu()}>
-                                    X
-                                </button>
-                                <p>
-                                    <span></span>
-                                    <span></span>
-                                </p>
-                                <div>
-                                    <ul>
-                                        <Link to={'/clientLogin'}>
-                                            <div>
-                                                Iniciar Sesion Como Cliente
-                                            </div>
-                                        </Link>
-                                        <Link to={'/auxieLogin'}>
-                                            <div>Iniciar Sesion Como Auxie</div>
-                                        </Link>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </Animated>
-                )}
-
-                {registerMenu && (
-                    <Animated
-                        animationIn="zoomIn"
-                        animationOut="zoomDown"
-                        animationInDuration={!logOrRegView ? 200 : 0}
-                        isVisible={true}
-                    >
-                        <div className={style.registerMenu}>
-                            <div className={style.container}>
-                                <button onClick={() => setRegisterMenu()}>
-                                    X
-                                </button>
-                                <div>
-                                    <ul>
-                                        <Link to={'/clientform'}>
-                                            <div>Registrarse Como Cliente</div>
-                                        </Link>
-                                        <Link to={'/auxieform'}>
-                                            <div>Registrarse Como Auxie</div>
-                                        </Link>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </Animated>
-                )}
-
+            {/* main */}
+            <main className={!logOrRegView ? style.landing : style.hiden}>
                 {/* Section Menu Prinipal */}
                 <Animated
                     animationIn="fadeIn"
