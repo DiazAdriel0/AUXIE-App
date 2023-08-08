@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
+import { createUserWithEmailAndPassword } from "firebase/auth"
+import { auth } from '../../../config/firebase-config'
+
 const Form = () => {
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
@@ -35,11 +38,15 @@ const Form = () => {
             event.target.name
         )
     }
-    const handlePost = async () => {
+    const handlePost = async (token) => {
         try {
             const response = await axios.post(
                 'http://localhost:3001/providers/',
-                input
+                input,{
+                    headers:{
+                        'authorization': `Bearer ${token}`
+                    }
+                }
             )
             if (response) {
                 setAccess(true)
@@ -61,9 +68,17 @@ const Form = () => {
             navigate('/auxielogin')
         }
     }, [access])
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        handlePost()
+        try {
+            const credential = await createUserWithEmailAndPassword(auth, input.email, input.password)
+            const user = credential.user;
+            const token = await user.getIdToken();
+            handlePost(token)
+        } catch (error) {
+            console.error(error.message);
+        }
     }
 
     //////para desabilitar el boton si no esta lleno el formulario=>
