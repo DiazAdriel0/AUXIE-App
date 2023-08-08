@@ -7,24 +7,19 @@
     /* colors Light Mode */
 
     /* Hovers */
-    --primary--anchor--color--hover: #c3c3c3;
+    --primary--anchor--color--hover: #0d3619dc;
     --secondary--anchor--color-hover: #6c95f6;
     --third--anchor--color-hover: #0d3619dc;
     /* Primarios */
     --primary--color-light: #ffffff; //* Background Color
-
     --secondary--color-light: #c1d3fe; //* Boxes Color
     --third--color-light: #d7e3fc; //*
-    --fourth--color-light: #ccdbfd;
-    --fifth--color-light: #b6ccfe;
+    --fourth--color-light: #295d39e7; //buttons chicos
+    --fifth--color-light: #f9f5e9; //* Background Color 2 (cremita)
     --sixth--color-light: #abc4ff;
-    --seventh--color-light: #b8dbd9;
-    --eight--color-light: #f9f5e9; //* Background Color 2
-    --ninth--color-light:#295d39e7; //buttons chicos
+
     /* Acentos */
-    --accent--primary--color-light: #f7a072;
-    --accent--secondary--color-light: #eddea4;
-    --accent--third--color-light: #0fa3b1;
+    --accent--first--color-light: #0fa3b1;
 
     /* Colors Dark Mode */
     --primary--color-dark: #012a4a;
@@ -38,8 +33,7 @@
     --nineth--color-dark: #a9d6e5;
 
     /* Acentos */
-    --accent--color-light: #f7a072;
-    --accent--secondary--color-light: #eddea4;
+
     --accent--terciary--color-light: #0fa3b1;
 }
 
