@@ -33,15 +33,19 @@
         }
         img {
             border-radius: 100%;
-            clip-path:circle();
+            clip-path: circle();
         }
         button {
             border-radius: 100%;
             background-color: transparent;
             border-color: #f4f4f9;
         }
+        button:hover {
+          cursor: pointer;
+        }
     }
 }
+
 .logo {
     width: 50%;
     margin-top: 10%;
@@ -51,35 +55,29 @@
     display: none;
 }
 
-.profile{
-    button:hover {
-        cursor: pointer;
-    }
-    
-}
-
 .profileMenu {
     border-radius: 2px;
     text-align: center;
-    background-color: var(--fourth--color-light);
+    background-color: var(--third--color-light);
     p:hover {
         cursor: pointer;
     }
+
     .profileButtonTop {
-        border-bottom: 1px var(--accent--third--color-light) solid;
+        border-bottom: 1px var(--accent--first--color-light) solid;
     }
-    .profileButtonTop:hover{
-        background-color: var(--accent--third--color-light);
+    .profileButtonTop:hover {
+        background-color: var(--accent--first--color-light);
         border-radius: 2px 2px 0px 0px;
     }
     .profileButtonMiddle {
-        border-bottom: 1px var(--accent--third--color-light) solid;
+        border-bottom: 1px var(--accent--first--color-light) solid;
     }
     .profileButtonMiddle:hover {
-        background-color: var(--accent--third--color-light);
+        background-color: var(--accent--first--color-light);
     }
     .profileButtonBottom:hover {
-        background-color: var(--accent--third--color-light);
+        background-color: var(--accent--first--color-light);
         border-radius: 0px 0px 2px 2px;
     }
 }

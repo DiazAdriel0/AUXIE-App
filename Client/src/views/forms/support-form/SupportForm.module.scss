@@ -5,30 +5,30 @@
     width: 100%;
     max-width: 500px;
     margin: 3% auto;
-    background-color: var( --sixth--color-light);
+    background-color: var(--sixth--color-light);
     border: 2px solid var(--accent--primary--color-light);
     border-radius: 8px;
-    padding: 3rem; 
+    padding: 3rem;
     height: 45%;
     justify-content: center;
-  }
-  
-  /* Estilos para los campos del formulario */
-  .formlabel {
+}
+
+/* Estilos para los campos del formulario */
+.formlabel {
     margin-bottom: 0.5rem;
-  }
-  
-  .claims input,
-  .claims textarea,
-  .claims select {
+}
+
+.claims input,
+.claims textarea,
+.claims select {
     width: 100%;
     padding: 0.5rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     margin-bottom: 1rem;
-  }
-  
-  .claims button {
+}
+
+.claims button {
     width: 100%;
     padding: 0.75rem;
     border: none;
@@ -37,43 +37,40 @@
     color: black;
     font-size: 1.5rem;
     cursor: pointer;
-  }
-  
-  .claims button:hover {
-    background-color: var(--accent--third--color-light);
-  }
-  
-  .claims button:disabled {
-    cursor: not-allowed;
-  }
+}
 
-  .claims input[type="checkbox"] {
+.claims button:hover {
+    background-color: var(--accent--first--color-light);
+}
+
+.claims button:disabled {
+    cursor: not-allowed;
+}
+
+.claims input[type='checkbox'] {
     margin-right: 0.5rem;
-  }
-  
-  /* Estilos para las etiquetas de los checkboxes */
-  .claims label {
+}
+
+/* Estilos para las etiquetas de los checkboxes */
+.claims label {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
-  }
-  
-  
-  .claims input[type="checkbox"] {
-    display:flex;
-    position:absolute;
+}
+
+.claims input[type='checkbox'] {
+    display: flex;
+    position: absolute;
     opacity: 1;
     cursor: pointer;
-  }
-  
-  /* Estilos para el marcador del checkbox */
-  .claims input[type="checkbox"] + label::before {
-    content: "";
+}
+
+/* Estilos para el marcador del checkbox */
+.claims input[type='checkbox'] + label::before {
+    content: '';
     display: inline-block;
     width: 1rem;
     height: 1rem;
     border: 2px solid #000000;
     border-radius: 4px;
-  }
-  
-  
+}
