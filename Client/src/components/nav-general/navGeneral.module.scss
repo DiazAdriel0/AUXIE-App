@@ -31,8 +31,9 @@
         p {
             font-size: 1.5rem;
         }
-        image {
+        img {
             border-radius: 100%;
+            clip-path:circle();
         }
         button {
             border-radius: 100%;

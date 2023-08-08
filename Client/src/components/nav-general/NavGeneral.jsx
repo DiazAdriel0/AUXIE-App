@@ -83,21 +83,12 @@ const NavGeneral = () => {
                 )}
             </div>
             <div className={style.profile}>
-
-            <Link to={'/help'}>
-                <p>Ayuda</p>
-            </Link>
-        
-            <p className={style.logOut} onClick={handleLogOut}>Desconectarse</p>
-         
-              
-
                 {/* Botón para desplegar menu con opciones del perfil*/}
                 <button 
                 onClick={handleClick} aria-describedby={id}
                 >
-
                     <img
+                        className={style.img}
                         src={user.image}
                         alt="imagen de perfil"
                         height="80rem"
