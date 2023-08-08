@@ -40,8 +40,12 @@
             background-color: transparent;
             border-color: #f4f4f9;
         }
+        button:hover {
+          cursor: pointer;
+        }
     }
 }
+
 .logo {
     width: 50%;
     margin-top: 10%;
@@ -51,14 +55,14 @@
     display: none;
 }
 
-.logOut:hover {
-    cursor: pointer;
-}
-
 .profileMenu {
     border-radius: 2px;
     text-align: center;
     background-color: var(--third--color-light);
+    p:hover {
+        cursor: pointer;
+    }
+
     .profileButtonTop {
         border-bottom: 1px var(--accent--first--color-light) solid;
     }
