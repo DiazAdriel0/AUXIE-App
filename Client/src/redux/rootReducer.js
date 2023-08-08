@@ -4,7 +4,7 @@ import {
     FILTER_AUXIES_BY_SERVICE,
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
-    LOG_OR_REG_VIEW,
+    MENU_OPEN,
     SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG,
     LOGED_USER,
@@ -20,7 +20,7 @@ let initialState = {
     loggedUser: {},
     services: [],
     filter: [],
-    logOrRegView: false,
+    menuLanding: false,
     currentPage: 1,
     nightMode: false,
     token: '',
@@ -130,8 +130,8 @@ function rootReducer(state = initialState, action) {
                 return { ...state }
             }
         // switch para verificar si el usuario se encuentra en la pantalla de logIn o Register
-        case LOG_OR_REG_VIEW:
-            return { ...state, logOrRegView: action.payload }
+        case MENU_OPEN:
+            return { ...state, menuLanding: action.payload }
 
         case SET_CURRENT_PAGE:
             return { ...state, currentPage: action.payload }
