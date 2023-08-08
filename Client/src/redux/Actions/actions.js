@@ -10,15 +10,21 @@ import {
     LOG_OR_REG_VIEW,
     SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG,
-    LOGOUT
+    LOGOUT,
+    SET_TOKEN,
+    RESET_TOKEN,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
-export function getAllAuxies() {
+export function getAllAuxies(token) {
     return async function (dispatch) {
         /* 'https://run.mocky.io/v3/f408d4d3-183d-46de-9b9b-e2eb86327ef0' */
         try {
-            const res = await axios('http://localhost:3001/providers')
+            const res = await axios('http://localhost:3001/providers', {
+                headers: {
+                    'authorization': `Bearer ${token}`
+                }
+            })
             return dispatch({
                 type: GET_ALL_AUXIES,
                 payload: res.data,
@@ -30,10 +36,14 @@ export function getAllAuxies() {
 }
 
 //action que pide todos los servicios del back (reemplazar URL)
-export function getAllServices() {
+export function getAllServices(token) {
     return async function (dispatch) {
         try {
-            const res = await axios('http://localhost:3001/services')
+            const res = await axios('http://localhost:3001/services', {
+                headers: {
+                    'authorization': `Bearer ${token}`
+                }
+            })
 
             return dispatch({
                 type: GET_ALL_SERVICES,
@@ -45,10 +55,14 @@ export function getAllServices() {
     }
 }
 
-export function getDetails(id) {
+export function getDetails(id, token) {
     return async function (dispatch) {
         try {
-            const res = await axios(`http://localhost:3001/providers/${id}`)
+            const res = await axios(`http://localhost:3001/providers/${id}`, {
+                headers: {
+                    'authorization': `Bearer ${token}`
+                }
+            })
             return dispatch({
                 type: GET_AUXIE_DETAILS,
                 payload: res.data,
@@ -153,6 +167,17 @@ export function logOut(empty) {
         } catch (e) {
             console.error(e)
         }
+    }
+}
+export function setToken(token){
+    return {
+        type: SET_TOKEN,
+        payload: token
+    }
+}
+export function resetToken(){
+    return {
+        type: RESET_TOKEN,
     }
 }
 

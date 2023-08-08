@@ -4,17 +4,25 @@ import { useParams } from 'react-router-dom'
 import NavGeneral from '../../components/nav-general/NavGeneral'
 import style from './detail.module.scss'
 import JobRequestForm from '../forms/JobRequest-Form/JobRequestForm'
+import { useSelector } from 'react-redux'
 
 const Detail = () => {
     const [auxieDetails, setAuxieDetails] = useState({})
     let { id } = useParams()
+    const token = useSelector(state=>{
+        return state.token;
+    })
     console.log(auxieDetails)
     useEffect(() => {
-        const getDetails = async function () {
-            const res = await axios.get(`http://localhost:3001/providers/${id}`)
+        const getDetails = async function (token) {
+            const res = await axios.get(`http://localhost:3001/providers/${id}`, {
+                headers: {
+                    'authorization': `Bearer ${token}`
+                }
+            })
             setAuxieDetails(res.data)
         }
-        getDetails()
+        getDetails(token)
     }, [])
     return (
         <>
