@@ -101,7 +101,7 @@ const matchConsumer = async (email, password, req) => {
             throw new Error('inexistente')
         }
     } catch (error) {
-        console.log('se rompe')
+        console.error(error.message)
         return error
     }
 }

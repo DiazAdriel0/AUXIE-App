@@ -54,7 +54,6 @@ const Landing = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        console.log(user)
         if (Object.keys(user).includes('requiredServices')){
             return navigate('/homeconsumer')
         }

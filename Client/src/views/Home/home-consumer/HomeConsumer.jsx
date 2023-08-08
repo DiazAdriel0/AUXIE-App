@@ -12,7 +12,7 @@ const HomeConsumer = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector((state) => state.loggedUser)
-    console.log(user);
+    
     useEffect(() => {
         if (Object.keys(user).length === 0) return navigate('/clientlogin')
         if (Object.keys(user).includes('services'))
