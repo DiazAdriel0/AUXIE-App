@@ -40,7 +40,7 @@ const matchConsumer = async (email, password, req) => {
                 if (!newConsumer.hasOwnProperty('lastName')) {
                     newConsumer.firstName = req.user.name
                 }
-                newConsumer.image = req.user.picture
+                newConsumer.image = { secure_url: req.user.picture }
                 const theConsumer = await Consumer.create(newConsumer)
                 return theConsumer
             }
