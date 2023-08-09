@@ -1,14 +1,30 @@
 import style from './SupportForm.module.scss'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { useValidations } from '../../../utils/validationutils'
+// import { useValidations } from '../../../utils/validationutils'
+import axios from 'axios'
 
+
+const validate = (input) => {
+    let errors = {};
+    if (!input.consumerUsername || input.consumerUsername.trim() === '') {
+        errors.name = 'Ingresa tu nombre de usuario'
+    } if (!input.message || input.message.trim() === '') {
+        errors.name = 'Escribe de forma breve tu reclamo'
+    } if (!input.providerUsername || input.providerUsername.trim() === '') {
+        errors.name = 'Ingresa el nombre del Auxie'
+    } if (!input.reason || input.reason.trim() === '') {
+        errors.name = 'Selecciona la naturaleza del reclamo'
+    } 
+    return errors;
+} 
 const SupportForm = () => {
-    const { errors, validate } = useValidations()
-    const [motives, setMotives] = useState([])
+    const [errors, setErrors] = useState({});
     const [input, setInput] = useState({
-        username: '',
-        email: '',
+        consumerUsername: '',
+        message: '',
+        providerUsername: '',
+        reason: ''
     })
 
     const handleChange = (event) => {
@@ -17,44 +33,43 @@ const SupportForm = () => {
             ...prevInput,
             [name]: value,
         }))
-        validate(
+        setErrors(
+            validate( 
             {
                 ...input,
                 [name]: value,
             },
             name
         )
+        )
     }
 
     const handlePost = async () => {
         try {
-            // Aquí puedes realizar la lógica para enviar los datos del formulario
-            // a tu backend o realizar alguna acción necesaria
+            const response = await axios.post(
+                'http://localhost:3001/claims/',
+                input
+            )
+            if (response) {
+                alert('Solicitud enviada')
+                console.log(response)
+            }
         } catch (error) {
-            alert(error.message)
+            alert('estas haciendo todo mal')
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        handlePost()
+        await handlePost()
 
         const form = document.getElementById('form')
         form.reset()
     }
-
-    const handleCheckboxChange = (e, value) => {
-        if (e.target.checked) {
-            setMotives([...motives, value])
-        } else {
-            setMotives(motives.filter((item) => item !== value))
-        }
-    }
-
+    
     const buttonDisabled = () => {
         if (
-            input.email.trim().length === 0 ||
-            input.username.trim().length === 0
+            input.consumerUsername.trim().length === 0
         ) {
             return true
         }
@@ -72,114 +87,55 @@ const SupportForm = () => {
                 <h1>Soporte técnico</h1>
                 <form id="form" onSubmit={handleSubmit}>
                     <div>
-                        <label htmlFor="email" className={style.formlabel}>
-                            Email
-                        </label>
-                        <input
-                            type="email"
-                            name="email"
-                            className="form-control"
-                            id="email"
-                            onChange={handleChange}
-                        />
-                        {errors.email && (
-                            <p className={style.error}>{errors.email}</p>
-                        )}
-                    </div>
-                    <div>
-                        <label htmlFor="username" className={style.formlabel}>
-                            Nombre de Usuario
+                        <label htmlFor="consumerUsername" className={style.formlabel}>
+                            Nombre de Usuario:
                         </label>
                         <input
                             type="text"
-                            name="username"
-                            className="form-control"
-                            id="username"
+                            name="consumerUsername"
+                            className={style.formControl}
                             onChange={handleChange}
+                            placeholder="Nombre de usuario"
                         />
-                        {errors.username && (
-                            <p className={style.error}>{errors.username}</p>
+                        {errors.consumerUsername && (
+                            <p className={style.error}>{errors.consumerUsername}</p>
                         )}
                     </div>
                     <div>
-                        <label htmlFor="complaint" className={style.formlabel}>
+                        <label htmlFor="message" className={style.formlabel}>
                             Reclamo
                         </label>
                         <textarea
-                            id="complaint"
-                            name="complaint"
+                            name="message"
                             onChange={handleChange}
+                            placeholder="Escribe tu reclamo aquí"
                         ></textarea>
                     </div>
                     <div>
-                        <label htmlFor="auxieName" className={style.formlabel}>
+                        <label htmlFor="providerUsername" className={style.formlabel}>
                             Nombre del Auxie
                         </label>
                         <input
                             type="text"
-                            id="auxieName"
-                            name="auxieName"
+                            name="providerUsername"
                             onChange={handleChange}
+                            placeholder="Nombre del Auxie"
                         />
                     </div>
                     <div>
-                        <label htmlFor="motives" className={style.formlabel}>
+                        <label htmlFor="reason" className={style.formlabel}>
                             Selección de Motivos
                         </label>
                         <div>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    value="retraso"
-                                    checked={motives.includes('retraso')}
-                                    onChange={(e) =>
-                                        handleCheckboxChange(e, 'retraso')
-                                    }
-                                />
-                                Retraso
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    value="calidad"
-                                    checked={motives.includes('calidad')}
-                                    onChange={(e) =>
-                                        handleCheckboxChange(e, 'calidad')
-                                    }
-                                />
-                                Calidad del Servicio
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    value="comportamiento"
-                                    checked={motives.includes('comportamiento')}
-                                    onChange={(e) =>
-                                        handleCheckboxChange(
-                                            e,
-                                            'comportamiento'
-                                        )
-                                    }
-                                />
-                                Comportamiento del Auxie
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    value="otro"
-                                    checked={motives.includes('otro')}
-                                    onChange={(e) =>
-                                        handleCheckboxChange(e, 'otro')
-                                    }
-                                />
-                                Otro
-                            </label>
+                            <select name="reason" onChange={handleChange} defaultValue={''}>
+                            <option disabled value="">
+                            Motivos
+                        </option>
+                                <option value="late">Retraso</option>
+                                <option value="behavior">Comportamiento inadecuado</option>
+                                <option value="quality">Calidad del servicio</option>
+                                <option value="other">Otro</option>
+                            </select> 
                         </div>
                     </div>
                     <button
