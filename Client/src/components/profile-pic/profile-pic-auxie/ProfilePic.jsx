@@ -78,7 +78,11 @@ const ProfilePicAuxie = () => {
     return (
         <div className={style.profile}>
             {/* Botón para desplegar menu con opciones del perfil*/}
-            <button onClick={handleClick} aria-describedby={id}>
+            <button
+                onClick={handleClick}
+                aria-describedby={id}
+                className={style.buttonPic}
+            >
                 <img
                     className={style.img}
                     src={user.image?.secure_url}
