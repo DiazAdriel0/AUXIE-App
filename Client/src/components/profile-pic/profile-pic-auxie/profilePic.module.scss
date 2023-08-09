@@ -2,27 +2,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    height: 100%;
     p {
         font-size: 2rem;
     }
 
     .buttonPic {
         all: unset;
+        clip-path: circle();
+        height: 100%;
+        background-color: transparent;
+    }
+
+    img {
+        height: 80%;
         width: 100%;
         clip-path: circle();
-        img {
-            height: 80%;
-            width: 100%;
-            border-radius: 100%;
-            clip-path: circle();
-        }
-
-        height: 10vh;
-        border-radius: 100%;
-        background-color: transparent;
-        border-color: #f4f4f9;
     }
+
     .buttonPic:hover {
         cursor: pointer;
     }
