@@ -40,10 +40,7 @@ const NavGeneral = () => {
     }
 
     const handleRedirect = (e) => {
-        if (e.target.innerText === 'Perfil' && isAuxie)
-            return navigate('/homeauxie')
-        if (e.target.innerText === 'Perfil' && !isAuxie)
-            return navigate('/homeconsumer')
+        if (e.target.innerText === 'Perfil') return navigate('/profile')
         if (e.target.innerText === 'Ayuda') return navigate('/help')
     }
 
@@ -109,7 +106,7 @@ const NavGeneral = () => {
                 <button onClick={handleClick} aria-describedby={id}>
                     <img
                         className={style.img}
-                        src={user.image.secure_url}
+                        src={user.image?.secure_url}
                         alt="imagen de perfil"
                         height="80rem"
                         width="80rem"

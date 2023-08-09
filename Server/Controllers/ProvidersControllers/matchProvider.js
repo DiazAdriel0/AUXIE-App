@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 
 const matchProvider = async (email, password, req) => {
     try {
-        if(req.user.email){
+        if (req.user.email) {
             const provider = await Provider.findOne({ email })
             if (provider) {
                 const providerWithout = {
@@ -23,25 +23,27 @@ const matchProvider = async (email, password, req) => {
                     googleId: provider.googleId,
                 }
                 return providerWithout
-            }else{
-                
-                let newProvider = {email:`${req.user.email}`,
-                    isActive:true,
-                    googleId:`${req.user.user_id}`}
+            } else {
+                let newProvider = {
+                    email: `${req.user.email}`,
+                    isActive: true,
+                    googleId: `${req.user.user_id}`,
+                }
 
-                if(req.user.name.indexOf(' ')!==-1){
-                    const names= req.user.name.split(' ')
+                if (req.user.name.indexOf(' ') !== -1) {
+                    const names = req.user.name.split(' ')
                     newProvider.firstName = names[0]
                     newProvider.lastName = names[1]
                 }
                 // eslint-disable-next-line no-prototype-builtins
-                if(!newProvider.hasOwnProperty('lastName')){
+                if (!newProvider.hasOwnProperty('lastName')) {
                     newProvider.firstName = req.user.name
                 }
-                newProvider.image = req.user.picture
+                newProvider.image = { secure_url: req.user.picture }
                 const theProvider = await Provider.create(newProvider)
-                return theProvider}
-        } 
+                return theProvider
+            }
+        }
         const provider = await Provider.findOne({ email })
         const isMail = email.indexOf('@')
         if (isMail === -1) {
