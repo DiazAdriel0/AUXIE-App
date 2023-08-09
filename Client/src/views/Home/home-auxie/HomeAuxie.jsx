@@ -10,7 +10,7 @@ import NavGeneral from '../../../components/nav-general/NavGeneral'
 
 const HomeAuxie = () => {
     const loggedUser = useSelector((state) => state.loggedUser)
-    const lastJobs = loggedUser.reviews.slice(0, 4)
+    const lastJobs = loggedUser.reviews?.slice(0, 4)
 
     const { services } = loggedUser
     return (
@@ -50,7 +50,7 @@ const HomeAuxie = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {lastJobs.map((review, index) => (
+                                {lastJobs?.map((review, index) => (
                                     <tr key={index}>
                                         <td>{review.service}</td>
                                         <td>{review.review}</td>
