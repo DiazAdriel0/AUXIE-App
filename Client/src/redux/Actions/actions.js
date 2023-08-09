@@ -151,11 +151,15 @@ export const setCurrentPage = (page) => {
         })
     }
 }
-export function resetAuxiesCatalog() {
+export function resetAuxiesCatalog(token) {
     return function (dispatch) {
         try {
             return dispatch({
                 type: RESET_AUXIES_CATALOG,
+            }, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
             })
         } catch (e) {
             console.error(e)

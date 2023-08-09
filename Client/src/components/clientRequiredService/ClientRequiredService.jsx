@@ -1,12 +1,13 @@
 
 
 const ClientRequiredService = (job) => {
-   const {firstName, lastName, name, status} = job
+   const {providerName, serviceName, status, jobDate, price} = job
   return (
     <div>
-        {firstName}
-        {lastName}
-        {name}
+        {providerName}
+        {serviceName}
+        {jobDate}
+        {price}
         {status}
     </div>
   )
