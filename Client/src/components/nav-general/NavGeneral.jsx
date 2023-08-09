@@ -4,7 +4,7 @@ import style from './navGeneral.module.scss'
 //hooks
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate  } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 //firebase
 import { auth } from '../../config/firebase-config'
@@ -30,7 +30,7 @@ const NavGeneral = () => {
     const [profileMenu, setProfileMenu] = useState(null)
 
     const isAuxie = Object.keys(user).includes('services') ? true : false
-    
+
     const token = useSelector((state) => {
         return state.token
     })
@@ -40,8 +40,10 @@ const NavGeneral = () => {
     }
 
     const handleRedirect = (e) => {
-        if (e.target.innerText === 'Perfil' && isAuxie) return navigate('/homeauxie')
-        if (e.target.innerText === 'Perfil' && !isAuxie) return navigate('/homeconsumer')
+        if (e.target.innerText === 'Perfil' && isAuxie)
+            return navigate('/homeauxie')
+        if (e.target.innerText === 'Perfil' && !isAuxie)
+            return navigate('/homeconsumer')
         if (e.target.innerText === 'Ayuda') return navigate('/help')
     }
 
@@ -87,10 +89,7 @@ const NavGeneral = () => {
                 {isAuxie ? (
                     <div className={style.logo}>
                         <Link to={'/homeauxie'}>
-                            <img
-                                src={LogoAuxie2}
-                                alt="Logo Auxie"
-                            />
+                            <img src={LogoAuxie2} alt="Logo Auxie" />
                         </Link>
                     </div>
                 ) : (
@@ -110,7 +109,7 @@ const NavGeneral = () => {
                 <button onClick={handleClick} aria-describedby={id}>
                     <img
                         className={style.img}
-                        src={user.image}
+                        src={user.image.secure_url}
                         alt="imagen de perfil"
                         height="80rem"
                         width="80rem"
@@ -157,13 +156,22 @@ const NavGeneral = () => {
                             {/*Botones para el perfil auxie*/}
                             <ClickAwayListener onClickAway={handleClickAway}>
                                 <Box className={style.profileMenu}>
-                                <p onClick={handleRedirect} className={style.profileButtonTop}>
-                                            Perfil
-                                        </p>
-                                        <p onClick={handleRedirect} className={style.profileButtonMiddle}>
-                                            Ayuda
-                                        </p>
-                                    <p onClick={handleLogOut} className={style.profileButtonBottom}>
+                                    <p
+                                        onClick={handleRedirect}
+                                        className={style.profileButtonTop}
+                                    >
+                                        Perfil
+                                    </p>
+                                    <p
+                                        onClick={handleRedirect}
+                                        className={style.profileButtonMiddle}
+                                    >
+                                        Ayuda
+                                    </p>
+                                    <p
+                                        onClick={handleLogOut}
+                                        className={style.profileButtonBottom}
+                                    >
                                         Cerrar sesión
                                     </p>
                                 </Box>
@@ -174,13 +182,22 @@ const NavGeneral = () => {
                             {/*Botones para el perfil consumer*/}
                             <ClickAwayListener onClickAway={handleClickAway}>
                                 <Box className={style.profileMenu}>
-                                        <p onClick={handleRedirect} className={style.profileButtonTop}>
-                                            Perfil
-                                        </p>
-                                        <p onClick={handleRedirect} className={style.profileButtonMiddle}>
-                                            Ayuda
-                                        </p>
-                                    <p onClick={handleLogOut} className={style.profileButtonBottom}>
+                                    <p
+                                        onClick={handleRedirect}
+                                        className={style.profileButtonTop}
+                                    >
+                                        Perfil
+                                    </p>
+                                    <p
+                                        onClick={handleRedirect}
+                                        className={style.profileButtonMiddle}
+                                    >
+                                        Ayuda
+                                    </p>
+                                    <p
+                                        onClick={handleLogOut}
+                                        className={style.profileButtonBottom}
+                                    >
                                         Cerrar sesión
                                     </p>
                                 </Box>

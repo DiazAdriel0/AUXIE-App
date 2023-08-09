@@ -9,17 +9,20 @@ import { useSelector } from 'react-redux'
 const Detail = () => {
     const [auxieDetails, setAuxieDetails] = useState({})
     let { id } = useParams()
-    const token = useSelector(state=>{
-        return state.token;
+    const token = useSelector((state) => {
+        return state.token
     })
     console.log(auxieDetails)
     useEffect(() => {
         const getDetails = async function (token) {
-            const res = await axios.get(`http://localhost:3001/providers/${id}`, {
-                headers: {
-                    'authorization': `Bearer ${token}`
+            const res = await axios.get(
+                `http://localhost:3001/providers/${id}`,
+                {
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
                 }
-            })
+            )
             setAuxieDetails(res.data)
         }
         getDetails(token)
@@ -34,7 +37,7 @@ const Detail = () => {
                             <div className={style.infoCont}>
                                 <div className={style.profilePic}>
                                     <img
-                                        src={auxieDetails.image}
+                                        src={auxieDetails.image.secure_url}
                                         alt="imagen de perfil"
                                         height="100px"
                                         width="100px"

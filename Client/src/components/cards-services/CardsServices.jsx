@@ -17,7 +17,7 @@ const CardsServices = () => {
                     <CardServices
                         key={services.name}
                         name={services.name}
-                        image={services.image}
+                        image={services.image.secure_url}
                         providers={services.providers}
                         category={services.category}
                     />
