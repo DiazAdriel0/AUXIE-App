@@ -10,29 +10,6 @@ servicesRouter.get('/', handlerGetServices)
 
 servicesRouter.post('/', handlerPostService)
 
-const Service = require('./../../Models/service')
-const { uploadServiceImage } = require('./../../Utils/cloudinary')
-
-servicesRouter.put('/addPhoto', async (req, res) => {
-    const { id } = req.body
-    const serviceFound = await Service.findById(id)
-    let image
-
-    if (req.files?.image) {
-        const result = await uploadServiceImage(req.files.image.tempFilePath)
-        image = {
-            public_id: result.public_id,
-            secure_url: result.secure_url,
-        }
-    }
-
-    serviceFound.image = image
-
-    await serviceFound.save()
-
-    res.status(200).json('ok')
-})
-
 servicesRouter.put('/:id', handlerPutService)
 
 servicesRouter.delete('/:id', handlerDeleteService)

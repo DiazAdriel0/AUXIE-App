@@ -31,7 +31,7 @@ const HomeAuxie = () => {
                                 <CardServices
                                     key={service.name}
                                     name={service.name}
-                                    image={service.image.secure_url}
+                                    image={service.image?.secure_url}
                                 />
                             ))
                         ) : (
