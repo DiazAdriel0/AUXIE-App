@@ -106,7 +106,7 @@ const NavGeneral = () => {
                 <button onClick={handleClick} aria-describedby={id}>
                     <img
                         className={style.img}
-                        src={user.image.secure_url}
+                        src={user.image?.secure_url}
                         alt="imagen de perfil"
                         height="80rem"
                         width="80rem"
