@@ -1,0 +1,60 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3%;
+    p {
+        font-size: 2rem;
+    }
+    img {
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+        clip-path: circle();
+    }
+    button {
+        height: 10vh;
+        border-radius: 100%;
+        background-color: transparent;
+        border-color: #f4f4f9;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+}
+
+.profileMenu {
+    border-radius: 2px;
+    text-align: center;
+    background-color: var(--third--color-light);
+    width: 8rem;
+    p:hover {
+        cursor: pointer;
+    }
+
+    .profileButtonTop {
+        border-bottom: 1px var(--accent--first--color-light) solid;
+        height: 2rem;
+        padding-top: 2%;
+    }
+    .profileButtonTop:hover {
+        background-color: var(--accent--first--color-light);
+        border-radius: 2px 2px 0px 0px;
+    }
+    .profileButtonMiddle {
+        border-bottom: 1px var(--accent--first--color-light) solid;
+        height: 2rem;
+        padding-top: 2%;
+    }
+    .profileButtonMiddle:hover {
+        background-color: var(--accent--first--color-light);
+    }
+    .profileButtonBottom {
+        height: 2rem;
+        padding-top: 2%;
+    }
+    .profileButtonBottom:hover {
+        background-color: var(--accent--first--color-light);
+        border-radius: 0px 0px 2px 2px;
+    }
+}

@@ -1,17 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-// import { useEffect } from 'react'
-// import { useParams } from 'react-router-dom'
-// import { getDetails } from '../../../redux/Actions/actions'
 
 const ProfileAuxies = () => {
-    // const { id } = useParams()
     const provider = useSelector((state) => state.loggedUser)
-    // const token = useSelector((state) => state.token)
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     dispatch(getDetails(id, token))
-    // }, [dispatch, id])
+
     return (
         <div>
             <div>
