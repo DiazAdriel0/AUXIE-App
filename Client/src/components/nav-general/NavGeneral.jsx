@@ -40,10 +40,7 @@ const NavGeneral = () => {
     }
 
     const handleRedirect = (e) => {
-        if (e.target.innerText === 'Perfil' && isAuxie)
-            return navigate('/homeauxie')
-        if (e.target.innerText === 'Perfil' && !isAuxie)
-            return navigate('/homeconsumer')
+        if (e.target.innerText === 'Perfil') return navigate('/profile')
         if (e.target.innerText === 'Ayuda') return navigate('/help')
     }
 

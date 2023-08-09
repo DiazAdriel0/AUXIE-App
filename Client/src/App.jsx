@@ -30,6 +30,8 @@ import AuxieInbox from './views/home-views/auxie-views/auxie-inbox/AuxieInbox'
 import AuxieServices from './views/home-views/auxie-views/auxie-services/AuxieServices'
 import AuxieStatistics from './views/home-views/auxie-views/auxie-statistics/AuxieStatistics'
 
+import ProfilePage from './views/profile/profilePage/profilePage'
+
 //Forms
 import Form from './views/forms/auxie-form/auxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
@@ -52,7 +54,7 @@ const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
 axios.defaults.baseURL = urlApi
 
-import { logOut, resetToken } from './redux/Actions/actions';
+// import { logOut, resetToken } from './redux/Actions/actions';
 
 function App() {
     const dispatch = useDispatch()
@@ -60,11 +62,11 @@ function App() {
         return state.token;
     })
 
-    window.addEventListener('beforeunload', function () {
-        // Aquí puedes ejecutar la lógica de tu función logOut
-        dispatch(logOut({}))
-        dispatch(resetToken())
-    })
+    // window.addEventListener('beforeunload', function () {
+    //     // Aquí puedes ejecutar la lógica de tu función logOut
+    //     dispatch(logOut({}))
+    //     dispatch(resetToken())
+    // })
     //* use Effect to obtain data
 
     useEffect(() => {
@@ -101,6 +103,9 @@ function App() {
 
                     {/*Detail paths  */}
                     <Route path="/detail/:id" element={<Detail />} />
+
+                    {/*Profile paths */}
+                    <Route path='/profile' element={<ProfilePage />} />
 
                     {/* Register paths */}
                     <Route path="/auxieform" element={<Form />} />
