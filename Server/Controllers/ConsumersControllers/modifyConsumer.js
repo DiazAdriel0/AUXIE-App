@@ -1,4 +1,5 @@
 const Consumer = require('../../Models/consumer')
+const fs = require('fs-extra')
 const { uploadProfileImageToConsumer } = require('../../Utils/cloudinary')
 
 const modifyConsumer = async (req) => {
@@ -21,6 +22,8 @@ const modifyConsumer = async (req) => {
                 public_id: result.public_id,
                 secure_url: result.secure_url,
             }
+
+            await fs.unlink(req.files.image.tempFilePath)
         }
 
         const filledProperties = Object.entries(recibedProperties)

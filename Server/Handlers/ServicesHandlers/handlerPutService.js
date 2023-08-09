@@ -1,4 +1,5 @@
 const putService = require('../../Controllers/ServicesControllers/putService')
+const fs = require('fs-extra')
 const { uploadServiceImage } = require('./../../Utils/cloudinary')
 
 const handlerPutService = async (req, res) => {
@@ -17,6 +18,7 @@ const handlerPutService = async (req, res) => {
                 public_id: result.public_id,
                 secure_url: result.secure_url,
             }
+            await fs.unlink(req.files.image.tempFilePath)
         } else {
             const updatedService = await putService(id, category, name, image)
 
