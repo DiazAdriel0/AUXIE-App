@@ -4,6 +4,7 @@ import {
     GET_ALL_SERVICES,
     FILTER_AUXIES_BY_SERVICE,
     GET_AUXIE_DETAILS,
+    GET_CONSUMER_DETAILS,
     LOGED_USER,
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
@@ -65,6 +66,24 @@ export function getDetails(id, token) {
             })
             return dispatch({
                 type: GET_AUXIE_DETAILS,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
+export function getDetailsConsumer(id, token) {
+    return async function (dispatch) {
+        try {
+            const res = await axios(`http://localhost:3001/consumers/${id}`, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            })
+            return dispatch({
+                type: GET_CONSUMER_DETAILS,
                 payload: res.data,
             })
         } catch (e) {
