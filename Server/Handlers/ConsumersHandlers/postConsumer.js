@@ -25,6 +25,12 @@ const postConsumer = async (req, res) => {
             username,
             usernameLower: username.toLowerCase(),
             password: hashedPassword,
+            image: {
+                public_id:
+                    'AUXIE App/Profile photos/Providers/mbvrsqvhpkjdffahemw1',
+                secure_url:
+                    'https://res.cloudinary.com/dvj387b1u/image/upload/v1691558271/AUXIE%20App/Profile%20photos/Providers/mbvrsqvhpkjdffahemw1.png',
+            },
             isActive: true,
         }
 

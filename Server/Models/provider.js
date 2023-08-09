@@ -9,8 +9,10 @@ const providerSchema = new Schema({
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
     age: { type: Number, required: true, min: 18 },
+    gender: { type: String },
     address: { type: String },
-    image: { type: String },
+    image: { public_id: String, secure_url: String },
+    bio: { type: String },
 
     email: { type: String, required: true },
     username: { type: String, required: true },
@@ -23,11 +25,14 @@ const providerSchema = new Schema({
     },
 
     services: { type: Array },
-    pendingServices: { type: Array },
-    completedWorks: { type: Array },
+    jobs: { type: Array },
     ratings: { type: Array },
     averageRating: { type: Number, min: 0 },
     reviews: { type: Array },
+    googleId: {
+        type: String,
+        default: '',
+    },
 })
 
 providerSchema.set('toJSON', {
