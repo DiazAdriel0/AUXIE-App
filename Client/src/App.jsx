@@ -42,13 +42,18 @@ import AuxieLogin from './views/Login/auxie-login/auxieLogin'
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
 import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
-
+import { logOut, resetToken } from './redux/Actions/actions';
 function App() {
     const dispatch = useDispatch()
     const token = useSelector(state=>{
         return state.token;
     })
-    
+
+    window.addEventListener('beforeunload', function () {
+        // Aquí puedes ejecutar la lógica de tu función logOut
+        dispatch(logOut({}))
+        dispatch(resetToken())
+    })
     //* use Effect to obtain data
 
     useEffect(() => {
