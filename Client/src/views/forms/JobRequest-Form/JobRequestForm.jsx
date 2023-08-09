@@ -10,6 +10,9 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
 const JobRequestForm = ({ services }) => {
+    const apiBackUrl = import.meta.env.VITE_API_BACK_URL
+    const urlApi = apiBackUrl || 'localhost:3001'
+
     let { id } = useParams()
     const client = useSelector((state) => state.loggedUser)
     // const services = useSelector((state) => state.services)
@@ -36,7 +39,7 @@ const JobRequestForm = ({ services }) => {
     const handlePost = async () => {
         try {
             const response = await axios.put(
-                `http://localhost:3001/providers/addJob/${id}`,
+                `http://${urlApi}/providers/addJob/${id}`,
                 value
             )
             if (response) {
