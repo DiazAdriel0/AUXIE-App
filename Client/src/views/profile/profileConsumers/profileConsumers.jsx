@@ -26,7 +26,7 @@ const ProfileConsumers = () => {
                 </h4>
                 <h4>Genero: {consumer.gender}</h4>
                 <h3>Email: {consumer.email}</h3>
-                <h6>Te uniste:{consumer.registerDate}</h6>
+                <h6>Te uniste: {consumer.registerDate}</h6>
                 <div>
                     <h5>Auxies favoritos: {consumer.favoritesProviders}</h5>
                     <h5>Servicios contratados: {consumer.requiredServices}</h5>
