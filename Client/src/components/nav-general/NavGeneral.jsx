@@ -24,10 +24,6 @@ import { Popper, Box } from '@mui/material'
 import ClickAwayListener from '@mui/base/ClickAwayListener'
 
 const NavGeneral = () => {
-
-    const apiBackUrl = import.meta.env.VITE_API_BACK_URL
-    const urlApi = apiBackUrl || 'localhost:3001'
-
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector((state) => state.loggedUser)
@@ -56,7 +52,7 @@ const NavGeneral = () => {
             console.log(user.googleId)
             if (user.googleId) {
                 const response = await axios.post(
-                    `http://${urlApi}/consumers/logout`,
+                    '/consumers/logout',
                     { googleId: `${user.googleId}` },
                     {
                         headers: {
