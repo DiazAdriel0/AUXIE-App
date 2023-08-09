@@ -3,10 +3,10 @@ const bcrypt = require('bcrypt')
 
 const matchConsumer = async (email, password, req) => {
     try {
-        if(req.user.email){
+        if (req.user.email) {
             const consumer = await Consumer.findOne({ email })
-        
-            if(consumer){
+
+            if (consumer) {
                 const consumerWithout = {
                     isActive: true,
                     isAdmin: false,
@@ -16,38 +16,40 @@ const matchConsumer = async (email, password, req) => {
                     email: consumer.email,
                     username: consumer.username,
                     ratings: consumer.ratings,
-                    favoritesProviders:consumer.favoritesProviders,
+                    favoritesProviders: consumer.favoritesProviders,
                     requiredServices: consumer.requiredServices,
                     registerDate: consumer.registerDate,
-                    id:consumer._id,
+                    id: consumer._id,
                     image: consumer.image,
                     googleId: consumer.googleId,
                 }
                 return consumerWithout
-            }else{
-                let newConsumer = {email:`${req.user.email}`,
-                    isActive:true,
-                    googleId:`${req.user.user_id}`}
+            } else {
+                let newConsumer = {
+                    email: `${req.user.email}`,
+                    isActive: true,
+                    googleId: `${req.user.user_id}`,
+                }
 
-                if(req.user.name.indexOf(' ')!==-1){
-                    const names= req.user.name.split(' ')
+                if (req.user.name.indexOf(' ') !== -1) {
+                    const names = req.user.name.split(' ')
                     newConsumer.firstName = names[0]
                     newConsumer.lastName = names[1]
                 }
                 // eslint-disable-next-line no-prototype-builtins
-                if(!newConsumer.hasOwnProperty('lastName')){
+                if (!newConsumer.hasOwnProperty('lastName')) {
                     newConsumer.firstName = req.user.name
                 }
                 newConsumer.image = req.user.picture
                 const theConsumer = await Consumer.create(newConsumer)
-                return theConsumer}
+                return theConsumer
+            }
         }
         const consumer = await Consumer.findOne({ email })
         const isMail = email.indexOf('@')
-        if(isMail === -1){
-            const consumer = await Consumer.findOne({ username:email })
+        if (isMail === -1) {
+            const consumer = await Consumer.findOne({ username: email })
             if (consumer) {
-
                 const passwordMatch = await bcrypt.compare(
                     password,
                     consumer.password
@@ -61,21 +63,21 @@ const matchConsumer = async (email, password, req) => {
                     email: consumer.email,
                     username: consumer.username,
                     ratings: consumer.ratings,
-                    favoritesProviders:consumer.favoritesProviders,
+                    favoritesProviders: consumer.favoritesProviders,
                     requiredServices: consumer.requiredServices,
                     registerDate: consumer.registerDate,
-                    id:consumer._id,
+                    id: consumer._id,
                     image: consumer.image,
                 }
-    
-                return passwordMatch ? consumerWithout : new Error('wrongPassword')
+
+                return passwordMatch
+                    ? consumerWithout
+                    : new Error('wrongPassword')
             } else {
                 throw new Error('inexistente')
             }
-
-        }    
+        }
         if (consumer) {
-
             const passwordMatch = await bcrypt.compare(
                 password,
                 consumer.password
@@ -89,10 +91,10 @@ const matchConsumer = async (email, password, req) => {
                 email: consumer.email,
                 username: consumer.username,
                 ratings: consumer.ratings,
-                favoritesProviders:consumer.favoritesProviders,
+                favoritesProviders: consumer.favoritesProviders,
                 requiredServices: consumer.requiredServices,
                 registerDate: consumer.registerDate,
-                id:consumer._id,
+                id: consumer._id,
                 image: consumer.image,
             }
 
