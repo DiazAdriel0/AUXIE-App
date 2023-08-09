@@ -7,9 +7,7 @@ import JobRequestForm from '../forms/JobRequest-Form/JobRequestForm'
 import { useSelector } from 'react-redux'
 
 const Detail = () => {
-    const apiBackUrl = import.meta.env.VITE_API_BACK_URL
-    const urlApi = apiBackUrl || 'localhost:3001'
-
+    
     const [auxieDetails, setAuxieDetails] = useState({})
     let { id } = useParams()
     const token = useSelector((state) => {
@@ -19,7 +17,7 @@ const Detail = () => {
     useEffect(() => {
         const getDetails = async function (token) {
             const res = await axios.get(
-                `http://${urlApi}/providers/${id}`,
+                `/providers/${id}`,
                 {
                     headers: {
                         authorization: `Bearer ${token}`,

@@ -8,8 +8,6 @@ import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../../../config/firebase-config'
 
 const ClientForm = () => {
-    const apiBackUrl = import.meta.env.VITE_API_BACK_URL
-    const urlApi = apiBackUrl || 'localhost:3001'
 
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
@@ -43,7 +41,7 @@ const ClientForm = () => {
     const handlePost = async (token) => {
         try {
             const response = await axios.post(
-                `http://${urlApi}/consumers/`,
+                '/consumers/',
                 input,{
                     headers:{
                         'authorization': `Bearer ${token}`

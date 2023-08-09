@@ -16,15 +16,12 @@ import {
     RESET_TOKEN,
 } from './actionTypes'
 
-const apiBackUrl = import.meta.env.VITE_API_BACK_URL
-const urlApi = apiBackUrl || 'localhost:3001'
-
 //action que pide todos los auxies del back (reemplazar URL)
 export function getAllAuxies(token) {
     return async function (dispatch) {
         /* 'https://run.mocky.io/v3/f408d4d3-183d-46de-9b9b-e2eb86327ef0' */
         try {
-            const res = await axios(`http://${urlApi}/providers`, {
+            const res = await axios('/providers', {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
@@ -43,7 +40,7 @@ export function getAllAuxies(token) {
 export function getAllServices(token) {
     return async function (dispatch) {
         try {
-            const res = await axios(`http://${urlApi}/services`, {
+            const res = await axios('/services', {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
@@ -62,7 +59,7 @@ export function getAllServices(token) {
 export function getDetails(id, token) {
     return async function (dispatch) {
         try {
-            const res = await axios(`http://${urlApi}/providers/${id}`, {
+            const res = await axios(`/providers/${id}`, {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
@@ -80,7 +77,7 @@ export function getDetails(id, token) {
 export function getDetailsConsumer(id, token) {
     return async function (dispatch) {
         try {
-            const res = await axios(`http://${urlApi}/consumers/${id}`, {
+            const res = await axios(`/consumers/${id}`, {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
@@ -209,7 +206,7 @@ export function resetToken() {
 //     return async function (dispatch) {
 //         try {
 //             const res = await axios(
-//                 `http://${urlApi}/providers/${id}`
+//                 `/providers/${id}`
 //             )
 //             return dispatch({
 //                 type: GET_AUXIE_DETAILS,

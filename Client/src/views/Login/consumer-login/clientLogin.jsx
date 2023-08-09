@@ -9,8 +9,6 @@ import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 
 import { auth } from '../../../config/firebase-config'
 
 const ClientLogin = () => {
-    const apiBackUrl = import.meta.env.VITE_API_BACK_URL
-    const urlApi = apiBackUrl || 'localhost:3001'
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -40,7 +38,7 @@ const ClientLogin = () => {
     const handleLogin = async (token) => {
         try {
             const response = await axios.post(
-                `http://${urlApi}/consumers/login`,
+                '/consumers/login',
                 input,{
                     headers:{
                         'authorization': `Bearer ${token}`

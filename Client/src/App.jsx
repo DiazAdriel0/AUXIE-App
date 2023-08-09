@@ -46,6 +46,11 @@ import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
 // import Chat from './views/Chat/chat';
 import ChatApp from './views/Chat/App';
 
+//URL Back
+import axios from 'axios'
+const apiBackUrl = import.meta.env.VITE_API_BACK_URL
+const urlApi = apiBackUrl || 'http://localhost:3001'
+axios.defaults.baseURL = urlApi
 
 import { logOut, resetToken } from './redux/Actions/actions';
 
