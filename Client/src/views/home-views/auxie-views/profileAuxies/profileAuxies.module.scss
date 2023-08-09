@@ -1,4 +1,4 @@
-.services {
+.profileAuxi {
     display: grid;
     grid-template-areas:
         'header header'
@@ -8,20 +8,20 @@
     grid-template-rows: 8% 85% 5%;
     gap: 1%;
     height: 100vh;
-    color: white;
+    background-color: #1f1f1f;
+    /* Colores to change */
 
+    color: white;
+    /* End of colors  */
     .header {
         grid-area: header;
-        background-color: #333;
     }
-
     .main {
         grid-area: main;
+        background-color: #999999;
     }
-    background-color: #888;
-
     .footer {
         grid-area: footer;
-        background-color: #333;
+        background-color: #999999;
     }
 }
