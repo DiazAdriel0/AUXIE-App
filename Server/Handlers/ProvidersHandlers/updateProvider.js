@@ -1,4 +1,5 @@
 const findAndUpdateProvider = require('./../../Controllers/ProvidersControllers/findAndUpdateProvider')
+const fs = require('fs-extra')
 const { uploadProfileImageToProvider } = require('./../../Utils/cloudinary')
 
 const updateProvider = async (req, res) => {
@@ -24,6 +25,8 @@ const updateProvider = async (req, res) => {
             public_id: result.public_id,
             secure_url: result.secure_url,
         }
+
+        await fs.unlink(req.files.image.tempFilePath)
     }
 
     const filledProperties = Object.entries(recibedProperties)

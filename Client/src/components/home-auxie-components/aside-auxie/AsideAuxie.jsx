@@ -8,12 +8,19 @@ const AsideAuxie = () => {
                     <li>
                         <Link to={'/homeauxie'}>Home</Link>
                     </li>
+
+                    <li>
+                        <Link to={'/profile'}>Perfil</Link>
+                    </li>
+
                     <li>
                         <Link to={'/auxieservices'}>Trabajos</Link>
                     </li>
+
                     <li>
                         <Link to={'/auxiestatistics'}>Estadisticas</Link>
                     </li>
+
                     <li>
                         <Link to={'/auxieinbox'}>inbox</Link>
                     </li>
