@@ -19,7 +19,10 @@ server.use(cookieParser())
 server.use(morgan('dev'))
 
 server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5173')
+    res.header(
+        'Access-Control-Allow-Origin',
+        process.env ? 'http://localhost:5173' : 'PONER DOMINIO DEL DEPLOY'
+    )
     res.header('Access-Control-Allow-Credentials', 'true')
     res.header(
         'Access-Control-Allow-Headers',
