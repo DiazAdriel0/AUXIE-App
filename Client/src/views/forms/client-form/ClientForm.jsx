@@ -80,6 +80,7 @@ const ClientForm = () => {
             const user = credential.user;
             const token = await user.getIdToken();
             handlePost(token)
+            console.log(credential)
         } catch (error) {
             console.error(error.message);
         }       
