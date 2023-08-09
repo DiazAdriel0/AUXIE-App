@@ -21,7 +21,6 @@ const JobRequestForm = ({ services }) => {
         description: '',
         // price:'',
     })
-    console.log(value)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
