@@ -76,9 +76,11 @@ const Form = () => {
             const user = credential.user;
             const token = await user.getIdToken();
             handlePost(token)
+            
         } catch (error) {
             console.error(error.message);
         }
+        
     }
 
     //////para desabilitar el boton si no esta lleno el formulario=>

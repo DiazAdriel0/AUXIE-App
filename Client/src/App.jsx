@@ -42,7 +42,13 @@ import AuxieLogin from './views/Login/auxie-login/auxieLogin'
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
 import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
+
+// import Chat from './views/Chat/chat';
+import ChatApp from './views/Chat/App';
+
+
 import { logOut, resetToken } from './redux/Actions/actions';
+
 function App() {
     const dispatch = useDispatch()
     const token = useSelector(state=>{
@@ -102,6 +108,7 @@ function App() {
                     {/* Login paths */}
 
                     <Route path="*" element={<PageNotFound />} />
+                    <Route path="/chat" element={<ChatApp />} />
                 </Routes>
             </div>
         </LocalizationProvider>
