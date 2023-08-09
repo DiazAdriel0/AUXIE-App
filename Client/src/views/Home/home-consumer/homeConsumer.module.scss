@@ -11,51 +11,52 @@
     width: 100%;
     font-size: 1.5rem;
     background-color: var(--secondary--color-light);
+    .message {
+        margin: 2%;
+    }
 }
-
-//----- Clase del mensaje de bienvenida
-.message {
-    margin: 2%;
-}
-
-
 
 //----- Contenedor de titulo del catalogo de auxies
 .catalogTitleCont {
     background-color: var(--third--color-light);
     width: 100%;
+    .catalogTitle {
+        margin: 1% 2%;
+    }
 }
 
-//----- Clase del titulo del catalogo de auxies
-.catalogTitle {
-    margin: 1% 2%;
-}
 
 //----- Contenedor de componentes Filters y Cards (catalogo de auxies)
-.auxieCatalog {
+.catalogCont {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
     width: 100%;
+    .catalog {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 2%;
+        .filters {
+            width: 15%;
+            height: 20rem;
+        }
+        .cards {
+            width: 80%;
+        }
+    }
 }
 
-//----- Contenedor de los contenedores de filters y cards
-.catalog {
-    display: flex;
-    justify-content: center;
+.servicesTitleCont {
+    background-color: var(--third--color-light);
     width: 100%;
-    margin-top: 2%;
+    .servicesTitle {
+        margin: 1% 2%;
+    }
 }
 
-//---- Contenedor del componente filters
-.filters {
-    width: 15%;
-    height: 20rem;
-}
-
-//---- Contenedor del componente Cards
-.cards {
-    width: 80%;
+.servicesCont {
+    display: flex;
 }
 
 //--- footer

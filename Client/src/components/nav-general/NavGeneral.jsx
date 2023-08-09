@@ -1,56 +1,78 @@
-import { Link } from 'react-router-dom'
+//estilos
 import style from './navGeneral.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import LogoAuxie from '../../assets/Logos/logoAuxie.svg'
 
-import { logOut, resetToken } from '../../redux/Actions/actions'
-import { signOut } from 'firebase/auth';
-import { auth } from '../../config/firebase-config';
-import axios from 'axios'
-import { Popper, Box } from '@mui/material'
+//hooks
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate  } from 'react-router-dom'
+
+//firebase
+import { auth } from '../../config/firebase-config'
+import { signOut } from 'firebase/auth'
+
+//axios
+import axios from 'axios'
+
+//assets
+import LogoAuxie2 from '../../assets/Logos/logoAuxie2.svg'
+
+//actions
+import { logOut, resetToken } from '../../redux/Actions/actions'
+
+//Material UI
+import { Popper, Box } from '@mui/material'
 import ClickAwayListener from '@mui/base/ClickAwayListener'
 
 const NavGeneral = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const user = useSelector(state => state.loggedUser)
+    const user = useSelector((state) => state.loggedUser)
     const [profileMenu, setProfileMenu] = useState(null)
+
+    const isAuxie = Object.keys(user).includes('services') ? true : false
+    
+    const token = useSelector((state) => {
+        return state.token
+    })
+
     const handleClick = (event) => {
         setProfileMenu(profileMenu ? null : event.currentTarget)
     }
-    
-    // const navigate = useNavigate();
-    const token = useSelector(state=>{
-        return state.token;
-    })
 
-    const handleLogOut = async() => {
+    const handleRedirect = (e) => {
+        if (e.target.innerText === 'Perfil' && isAuxie) return navigate('/homeauxie')
+        if (e.target.innerText === 'Perfil' && !isAuxie) return navigate('/homeconsumer')
+        if (e.target.innerText === 'Ayuda') return navigate('/help')
+    }
+
+    const handleLogOut = async () => {
         try {
-            console.log(user.googleId);
-            if(user.googleId){
+            console.log(user.googleId)
+            if (user.googleId) {
                 const response = await axios.post(
-                'http://localhost:3001/consumers/logout', { googleId:`${ user.googleId }`},{
-                    headers:{
-                        'authorization': `Bearer ${token}`
+                    'http://localhost:3001/consumers/logout',
+                    { googleId: `${user.googleId}` },
+                    {
+                        headers: {
+                            authorization: `Bearer ${token}`,
+                        },
                     }
-                })
+                )
                 if (response) {
+                    await signOut(auth)
                     dispatch(logOut({}))
                     dispatch(resetToken())
-                    return  navigate('/')
+                    return navigate('/')
                 }
             }
             dispatch(logOut({}))
-            await signOut(auth);
+            await signOut(auth)
             dispatch(resetToken())
             navigate('/')
         } catch (error) {
             console.error('error: ' + error.message)
             alert(error.message)
-        }   
-
+        }
     }
     const handleClickAway = () => {
         setProfileMenu(null)
@@ -61,24 +83,23 @@ const NavGeneral = () => {
 
     return (
         <nav className={style.navGeneral}>
-            <div className={style.containerLeft}>
-                {Object.keys(user).includes('services') ? (
-                    <div className={style.viewsGeneral}>
+            <div className={style.logoCont}>
+                {isAuxie ? (
+                    <div className={style.logo}>
                         <Link to={'/homeauxie'}>
                             <img
-                                src={LogoAuxie}
+                                src={LogoAuxie2}
                                 alt="Logo Auxie"
-                                className={style.logo}
                             />
                         </Link>
                     </div>
                 ) : (
-                    <div className={style.viewsGeneral}>
+                    <div className={style.logo}>
                         <Link to={'/homeconsumer'}>
                             <img
-                                src={LogoAuxie}
+                                src={LogoAuxie2}
                                 alt="Logo Auxie"
-                                className={style.logo}
+                                className={style.img}
                             />
                         </Link>
                     </div>
@@ -86,9 +107,7 @@ const NavGeneral = () => {
             </div>
             <div className={style.profile}>
                 {/* Botón para desplegar menu con opciones del perfil*/}
-                <button 
-                onClick={handleClick} aria-describedby={id}
-                >
+                <button onClick={handleClick} aria-describedby={id}>
                     <img
                         className={style.img}
                         src={user.image}
@@ -133,65 +152,37 @@ const NavGeneral = () => {
                         },
                     ]}
                 >
-                    {Object.keys(user).includes('services') ? (
+                    {isAuxie ? (
                         <>
-                        {/*Botones para el perfil auxie*/}
+                            {/*Botones para el perfil auxie*/}
                             <ClickAwayListener onClickAway={handleClickAway}>
                                 <Box className={style.profileMenu}>
-                                    <Link to={'/homeauxie'}>
-                                        <p className={style.profileButtonTop}>
+                                <p onClick={handleRedirect} className={style.profileButtonTop}>
                                             Perfil
                                         </p>
-                                    </Link>
-                                    <Link to={'/help'}>
-                                        <p
-                                            className={
-                                                style.profileButtonMiddle
-                                            }
-                                        >
+                                        <p onClick={handleRedirect} className={style.profileButtonMiddle}>
                                             Ayuda
                                         </p>
-                                    </Link>
-                                    <Link to={'/'} onClick={handleLogOut}>
-                                        <p
-                                            className={
-                                                style.profileButtonBottom
-                                            }
-                                        >
-                                            Cerrar sesión
-                                        </p>
-                                    </Link>
+                                    <p onClick={handleLogOut} className={style.profileButtonBottom}>
+                                        Cerrar sesión
+                                    </p>
                                 </Box>
                             </ClickAwayListener>
                         </>
                     ) : (
                         <>
-                         {/*Botones para el perfil consumer*/}
+                            {/*Botones para el perfil consumer*/}
                             <ClickAwayListener onClickAway={handleClickAway}>
                                 <Box className={style.profileMenu}>
-                                    <Link to={'/homeconsumer'}>
-                                        <p className={style.profileButtonTop}>
+                                        <p onClick={handleRedirect} className={style.profileButtonTop}>
                                             Perfil
                                         </p>
-                                    </Link>
-                                    <Link to={'/help'}>
-                                        <p
-                                            className={
-                                                style.profileButtonMiddle
-                                            }
-                                        >
+                                        <p onClick={handleRedirect} className={style.profileButtonMiddle}>
                                             Ayuda
                                         </p>
-                                    </Link>
-                                   
-                                        <p onClick={handleLogOut}
-                                            className={
-                                                style.profileButtonBottom
-                                            }
-                                        >
-                                            Cerrar sesión
-                                        </p>
-                                    
+                                    <p onClick={handleLogOut} className={style.profileButtonBottom}>
+                                        Cerrar sesión
+                                    </p>
                                 </Box>
                             </ClickAwayListener>
                         </>
