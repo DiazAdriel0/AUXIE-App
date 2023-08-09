@@ -14,6 +14,8 @@ import {
     LOGOUT,
     SET_TOKEN,
     RESET_TOKEN,
+    ADD_FAVORITE,
+    DELETE_FAVORITE
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -51,7 +53,7 @@ export function getAllServices(token) {
                 payload: res.data,
             })
         } catch (e) {
-            console.error(e.response.data)
+            console.error(e.response)
         }
     }
 }
@@ -69,7 +71,7 @@ export function getDetails(id, token) {
                 payload: res.data,
             })
         } catch (e) {
-            console.error(e.response.data)
+            console.error(e.response)
         }
     }
 }
@@ -201,6 +203,45 @@ export function setToken(token) {
 export function resetToken() {
     return {
         type: RESET_TOKEN,
+    }
+}
+
+export function addFavorite(fav, token) {
+    return async function (dispatch) {
+        try {
+            const res = await axios.put('/consumers/fav', fav, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            })
+
+            return dispatch({
+                type: ADD_FAVORITE,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.error)
+        }
+    }
+}
+
+export function removeFavorite(fav, token) {
+    return async function (dispatch) {
+        try {
+            const res = await axios.delete(`http://localhost:3001/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`,{
+                headers: {
+                    authorization: `Bearer ${token}`,
+                }
+            })
+            console.log(res)
+
+            return dispatch({
+                type: DELETE_FAVORITE,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.error)
+        }
     }
 }
 

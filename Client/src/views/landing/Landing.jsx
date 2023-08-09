@@ -75,7 +75,6 @@ const Landing = () => {
                         const userCredential = await signInAnonymously(auth)
                         const user = userCredential.user
                         const token = await user.getIdToken()
-                        console.log('anonimo:' + token)
                         // Puedes utilizar el token como token para tus solicitudes
                         dispatch(getAllAuxies(token))
                         dispatch(getAllServices(token))

@@ -46,7 +46,6 @@ const NavGeneral = () => {
 
     const handleLogOut = async () => {
         try {
-            console.log(user.googleId)
             if (user.googleId) {
                 const response = await axios.post(
                     '/consumers/logout',
