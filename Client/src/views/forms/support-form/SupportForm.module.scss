@@ -58,19 +58,8 @@
     margin-bottom: 1rem;
 }
 
-.claims input[type='checkbox'] {
-    display: flex;
-    position: absolute;
-    opacity: 1;
-    cursor: pointer;
+.error{
+    background-color: brown;
+    font-size: xx-large;
 }
 
-/* Estilos para el marcador del checkbox */
-.claims input[type='checkbox'] + label::before {
-    content: '';
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border: 2px solid #000000;
-    border-radius: 4px;
-}
