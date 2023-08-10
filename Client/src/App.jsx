@@ -53,7 +53,7 @@ import axios from 'axios'
 // const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 // const urlApi = apiBackUrl || 'http://localhost:3001'
 axios.defaults.baseURL = 'https://auxie-app-production.up.railway.app'
-console.log(urlApi)
+// console.log(urlApi)
 // import { logOut, resetToken } from './redux/actions/actions';
 
 function App() {
