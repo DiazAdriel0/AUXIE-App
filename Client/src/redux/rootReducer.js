@@ -11,13 +11,10 @@ import {
     LOGOUT,
     SET_TOKEN,
     RESET_TOKEN,
-
     UPDATE_PROFILE,
-
     ADD_FAVORITE,
     DELETE_FAVORITE
-
-} from './Actions/actionTypes'
+} from './actions/actionTypes'
 
 let initialState = {
     auxies: [],
@@ -176,7 +173,7 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 loggedUser: action.payload,
-
+            }
             case ADD_FAVORITE:
                 return {
                     ...state,

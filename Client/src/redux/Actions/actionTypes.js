@@ -11,9 +11,7 @@ export const LOGED_USER = 'LOGED_USER'
 export const LOGOUT = 'LOGOUT'
 export const SET_TOKEN = 'SET_TOKEN'
 export const RESET_TOKEN = 'RESET_TOKEN'
-
 export const UPDATE_PROFILE = 'UPDATE_PROFILE'
-
 export const GET_CONSUMER_DETAILS = 'GET_CONSUMER_DETAILS'
 export const ADD_FAVORITE = 'ADD_FAVORITE'
 export const DELETE_FAVORITE = 'DELETE_FAVORITE'

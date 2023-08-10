@@ -3,7 +3,6 @@ const fs = require('fs-extra')
 const { uploadProfileImageToConsumer } = require('../../Utils/cloudinary')
 
 const modifyConsumer = async (req) => {
-
     const { firstName, lastName, address, image, username, userUid, id } =
         req.body
 
@@ -20,9 +19,6 @@ const modifyConsumer = async (req) => {
             image,
         }
 
-
-        }
-
         if (req.files?.image) {
             const result = await uploadProfileImageToConsumer(
                 req.files.image.tempFilePath
@@ -34,7 +30,6 @@ const modifyConsumer = async (req) => {
 
             await fs.unlink(req.files.image.tempFilePath)
         }
-
 
         const filledProperties = Object.entries(recibedProperties)
             // eslint-disable-next-line no-unused-vars
@@ -54,7 +49,6 @@ const modifyConsumer = async (req) => {
         const consumer2 = await Consumer.findById({ _id: id })
 
         return consumer2
-
     } catch (error) {
         console.error(error)
         return false
