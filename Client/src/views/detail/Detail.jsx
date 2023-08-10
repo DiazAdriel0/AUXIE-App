@@ -5,6 +5,8 @@ import NavGeneral from '../../components/nav-general/NavGeneral'
 import style from './detail.module.scss'
 import JobRequestForm from '../forms/JobRequest-Form/JobRequestForm'
 import { useSelector } from 'react-redux'
+import ChatApp from '../Chat/App'
+import { Chat } from '../Chat/chat'
 
 const Detail = () => {
     
@@ -27,6 +29,7 @@ const Detail = () => {
         }
         getDetails(token)
     }, [])
+    console.log()
     return (
         <>
             <NavGeneral />
@@ -113,6 +116,7 @@ const Detail = () => {
                     ) : null}
                 </div>
                 <JobRequestForm services={auxieDetails.services} />
+                <Chat recipient={auxieDetails.userUid}auxiedetails={auxieDetails} />
             </div>
         </>
     )
