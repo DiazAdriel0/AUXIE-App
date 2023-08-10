@@ -8,16 +8,16 @@ import axios from 'axios'
 const validate = (input) => {
     let errors = {}
     if (!input.consumerUsername || input.consumerUsername.trim() === '') {
-        errors.name = 'Ingresa tu nombre de usuario'
+        errors.consumerUsername = 'Ingresa tu nombre de usuario'
     }
     if (!input.message || input.message.trim() === '') {
-        errors.name = 'Escribe de forma breve tu reclamo'
+        errors.message = 'Escribe de forma breve tu reclamo'
     }
     if (!input.providerUsername || input.providerUsername.trim() === '') {
-        errors.name = 'Ingresa el nombre del Auxie'
+        errors.providerUsername = 'Ingresa el nombre del Auxie'
     }
     if (!input.reason || input.reason.trim() === '') {
-        errors.name = 'Selecciona la naturaleza del reclamo'
+        errors.reason = 'Selecciona la naturaleza del reclamo'
     }
     return errors
 }
@@ -44,17 +44,13 @@ const SupportForm = () => {
             ...input,
             [name]: value,
         }))
-        setErrors(
-            validate(
-                {
-                    ...input,
-                    [name]: value,
-                },
-                name
-            )
-        )
+        const updatedErrors = validate({
+            ...input,
+            [name]: value,
+        })
+        setErrors(updatedErrors)
         checkFormValidity()
-    }
+    } 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
