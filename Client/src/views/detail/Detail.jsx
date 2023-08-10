@@ -5,11 +5,13 @@ import NavGeneral from '../../components/nav-general/NavGeneral'
 import style from './detail.module.scss'
 import JobRequestForm from '../forms/JobRequest-Form/JobRequestForm'
 import { useSelector } from 'react-redux'
-import ChatApp from '../Chat/App'
+// import ChatApp from '../Chat/App'
 import { Chat } from '../Chat/chat'
-
+// import { AppWrapper } from '../Chat/AppWrapper'
+import {auth} from "../../config/firebase-config";
 const Detail = () => {
     
+    const [isInChat, setIsInChat] = useState(false)
     const [auxieDetails, setAuxieDetails] = useState({})
     let { id } = useParams()
     const token = useSelector((state) => {
@@ -17,19 +19,34 @@ const Detail = () => {
     })
     useEffect(() => {
         const getDetails = async function (token) {
-            const res = await axios.get(
-                `/providers/${id}`,
-                {
-                    headers: {
-                        authorization: `Bearer ${token}`,
-                    },
-                }
-            )
+            const res = await axios.get(`/providers/${id}`, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            })
             setAuxieDetails(res.data)
         }
         getDetails(token)
     }, [])
-    console.log()
+    const handleClick = async () => {
+        setIsInChat(true)
+
+        await axios.put(
+            '/providers/inbox/',
+            {
+                id,
+                inbox: {
+                    sender: auth.currentUser.uid,
+                },
+            },
+            {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            }
+        )
+    }
+    console.log(auth.currentUser.uid)
     return (
         <>
             <NavGeneral />
@@ -116,7 +133,14 @@ const Detail = () => {
                     ) : null}
                 </div>
                 <JobRequestForm services={auxieDetails.services} />
-                <Chat recipient={auxieDetails.userUid}auxiedetails={auxieDetails} />
+                {isInChat ? (
+                    <Chat
+                        recipient={auxieDetails.userUid}
+                        auxiedetails={auxieDetails}
+                    />
+                ) : (
+                    <button onClick={handleClick}>Start Chat</button>
+                )}
             </div>
         </>
     )

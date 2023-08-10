@@ -23,6 +23,7 @@ const matchProvider = async (email, password, req) => {
                     reviews: provider.reviews,
                     googleId: provider.googleId,
                     userUid: provider.userUid,
+                    inbox: provider.inbox,
                 }
                 return providerWithout
             } else {
@@ -69,6 +70,7 @@ const matchProvider = async (email, password, req) => {
                 ratings: provider.ratings,
                 reviews: provider.reviews,
                 userUid: provider.userUid,
+                inbox: provider.inbox,
             }
             return passwordMatch ? providerWithout : new Error('wrongPassword')
         } else {
