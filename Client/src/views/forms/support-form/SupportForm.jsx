@@ -1,6 +1,7 @@
 import style from './SupportForm.module.scss'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import {useSelector} from 'react-redux'
 // import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 
@@ -21,6 +22,7 @@ const validate = (input) => {
     return errors
 }
 const SupportForm = () => {
+    const token = useSelector(state => state.token)
     const [errors, setErrors] = useState({})
     const [isFormValid, setIsFormValid] = useState(false)
     const [input, setInput] = useState({
@@ -61,8 +63,12 @@ const SupportForm = () => {
         } else {
             try {
                 const response = await axios.post(
-                    'http://localhost:3001/claims/',
-                    input
+                    '/claims/',
+                    input, {
+                        headers: {
+                            'authorization': `Bearer ${token}`
+                        }
+                    }
                 )
                 setInput({
                     consumerUsername: '',
@@ -160,7 +166,7 @@ const SupportForm = () => {
                                 name="reason"
                                 value={input.reason}
                                 onChange={(e) => handleChange(e)}
-                                defaultValue={''}
+                               
                             >
                                 <option disabled value="">
                                     Motivos
