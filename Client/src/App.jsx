@@ -20,7 +20,7 @@ import Guarantee from './views/landingViews/guarantee/Guarantee'
 import Help from './views/landingViews/help/Help'
 import HowItWorks from './views/landingViews/howItWorks/HowItWorks'
 import Offer from './views/landingViews/offer/Offer'
-
+//pudo haber sido peor
 // Home
 import HomeAuxie from './views/home/home-auxie/HomeAuxie'
 import HomeConsumer from './views/home/home-consumer/HomeConsumer'
