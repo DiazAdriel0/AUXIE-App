@@ -50,9 +50,9 @@ import ChatApp from './views/chat/App'
 
 //URL Back
 import axios from 'axios'
-// const apiBackUrl = import.meta.env.VITE_API_BACK_URL
-// const urlApi = apiBackUrl || 'http://localhost:3001'
-axios.defaults.baseURL = 'https://auxie-app-production.up.railway.app'
+const apiBackUrl = import.meta.env.VITE_API_BACK_URL
+const urlApi = apiBackUrl || 'http://localhost:3001'
+axios.defaults.baseURL = urlApi
 // console.log(urlApi)
 // import { logOut, resetToken } from './redux/actions/actions';
 
