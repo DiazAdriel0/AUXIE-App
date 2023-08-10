@@ -5,7 +5,7 @@ import { getFirestore } from 'firebase/firestore'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 const firebaseConfig = import.meta.env.NEXT_PUBLIC_FIREBASE_CONFIG
-// Your web app's Firebase configuration
+// Your web app's Firebase configuration .
 console.log(firebaseConfig)
 // Initialize Firebase
 const app = initializeApp(JSON.parse(firebaseConfig))
