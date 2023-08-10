@@ -1,0 +1,195 @@
+.navLanding {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 30;
+
+    .containerLeft {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+
+        .logoDiv {
+            width: 15%;
+            .logo {
+                width: 100%;
+            }
+        }
+
+        .viewsLanding {
+            display: flex;
+            gap: 5%;
+
+            .select {
+                font-family: var(--font-poppins);
+                font-weight: 500;
+            }
+
+            ul {
+                display: flex;
+                width: 100%;
+                li {
+                    border-radius: 30px;
+                    padding: 10px;
+                }
+                li:hover {
+                    cursor: pointer;
+                    border-radius: 30px;
+                    padding: 10px;
+                    background-color: var(--sixth--color-light);
+                    transition: background-color 0.5s ease;
+                }
+            }
+            .auxie {
+                font-size: 120%;
+                font-family: var(--font-poppins);
+                font-weight: 500;
+            }
+
+            .consumer {
+                font-size: 120%;
+                font-family: var(--font-poppins);
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.logInOrRegister {
+    margin-right: 5%;
+    ul {
+        display: flex;
+        gap: 5%;
+    }
+    .login {
+        all: unset;
+
+        padding: 10px;
+        font-size: large;
+        border-radius: 30px;
+    }
+    .login:hover {
+        background-color: var(--sixth--color-light);
+        transition: background-color 0.5s ease;
+    }
+    .register {
+        all: unset;
+
+        padding: 10px;
+        font-size: large;
+        background-color: var(--sixth--color-light);
+        border-radius: 30px;
+    }
+
+    .register:hover {
+        background-color: var(--secondary--anchor--color-hover);
+        transition: background-color 0.5s ease;
+    }
+}
+
+.default {
+    display: none;
+}
+
+/* Menu condicional */
+
+.logInMenu {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    background-color: var(--secondary--color-light);
+    overflow: hidden;
+    .container {
+        font-size: 200%;
+
+        div {
+            width: 90%;
+            height: 50%;
+            display: flexbox;
+            margin-top: 5%;
+            div {
+                background-color: var(--sixth--color-light);
+                margin-left: 10%;
+                padding-left: 30%;
+                padding: 5%;
+                border-radius: 10px;
+                transition: background-color 0.5s ease;
+            }
+            div:hover {
+                background-color: var(--secondary--anchor--color-hover);
+            }
+        }
+
+        button {
+            background-color: var(--sixth--color-light);
+            width: 3%;
+            height: 3%;
+            margin-left: 95%;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.5s ease;
+            font-size: 50%;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        button:hover {
+            background-color: #ff0000ab;
+        }
+    }
+}
+.registerMenu {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    background-color: var(--secondary--color-light);
+
+    .container {
+        font-size: 200%;
+        div {
+            width: 90%;
+            height: 50%;
+            display: flexbox;
+            margin-top: 5%;
+
+            div {
+                background-color: var(--sixth--color-light);
+                margin-left: 10%;
+                padding-left: 30%;
+                padding: 5%;
+                border-radius: 10px;
+                transition: background-color 0.5s ease;
+            }
+            div:hover {
+                background-color: var(--secondary--anchor--color-hover);
+            }
+        }
+        button {
+            background-color: var(--sixth--color-light);
+            width: 3%;
+            height: 3%;
+            margin-left: 95%;
+            border-radius: 5px;
+            border: none;
+            transition: background-color 0.5s ease;
+            font-size: 50%;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        button:hover {
+            background-color: #ff0000ab;
+        }
+    }
+}
+.hiden {
+    section {
+        display: none;
+    }
+    footer {
+        display: none;
+    }
+}

@@ -1,0 +1,13 @@
+.cardsServices {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    gap: 10% 5%;
+ 
+    max-width: 90vw;
+    margin-left: 5%;
+    grid-template-columns: repeat(4, 1fr);
+   margin-bottom: 5%;
+    
+}

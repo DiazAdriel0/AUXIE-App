@@ -1,0 +1,99 @@
+.card {
+    background-color: var(--secondary--color-light);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid var(--secondary--color-hover);
+    border-radius: 1.5%;
+    width: 300px;
+    height: 300px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+    transition: all 0.5s;
+}
+.card:hover {
+    border: 1px solid var(--secondary--color-hover);
+    transform: scale(1.03);
+}
+
+.contPersonal {
+    display: flex;
+    width: 90%;
+    margin: 5%;
+    gap: 1%;
+}
+
+.info {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    width: 50%;
+}
+
+.name {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.profilePic {
+    display: flex;
+    justify-content: flex-start;
+    width: 50%;
+}
+
+.contServices {
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    border-top: 1px var(--accent--first--color-light) solid;
+    border-bottom: 1px var(--accent--first--color-light) solid;
+}
+
+.serviceDiv {
+    width: 100%;
+    text-align: start;
+    margin-left: 5%;
+}
+
+.serviceName {
+    color: var(--accent--first--color-light);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 2%;
+}
+
+.button {
+    background-color: var(--accent--first--color-light);
+    color: #000;
+    width: 8.5em;
+    height: 2.9em;
+    border: var(--accent--first--color-light) 0.2em solid;
+    border-radius: 7px;
+    text-align: right;
+    transition: all 0.6s ease;
+}
+
+.button:hover {
+    background-color: #15c9da;
+    border: #15c9da 0.2em solid;
+    cursor: pointer;
+}
+
+.button svg {
+    width: 1.6em;
+    margin: -0.2em 0.8em 1em;
+    position: absolute;
+    display: flex;
+    transition: all 0.6s ease;
+}
+
+.button:hover svg {
+    transform: translateX(5px);
+}
+
+.text {
+    margin: 0 1em;
+}
