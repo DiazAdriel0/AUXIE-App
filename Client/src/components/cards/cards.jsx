@@ -1,7 +1,7 @@
 import style from './cards.module.scss'
 
 //* Components
-import Card from '../card/card'
+import Card from '../card/Card'
 import usePagination from '../pagination/usePagination'
 import Pagination from '../pagination/Pagination'
 

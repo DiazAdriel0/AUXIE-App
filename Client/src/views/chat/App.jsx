@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Chat } from '../chat/chat'
+import { Chat } from '../chat/Chat'
 import { Auth } from '../chat/Auth'
 import { AppWrapper } from '../chat/AppWrapper'
 import Cookies from 'universal-cookie'
