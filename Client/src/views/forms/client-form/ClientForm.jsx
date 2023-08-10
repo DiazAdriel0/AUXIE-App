@@ -23,6 +23,14 @@ const ClientForm = () => {
         gender: '',
     })
 
+    const sendWelcome = async function(token) {
+        await axios.post('/consumers/welcomeEmail', {email: input.email} ,{
+            headers:{
+                'authorization': `Bearer ${token}`
+            }
+        })
+    }
+
     const handleChange = (event) => {
         setInput({
             ...input,
@@ -48,11 +56,7 @@ const ClientForm = () => {
                 }
             )
             if (response) {
-                await axios.post('/consumers/welcomeEmail', {email: input.email} ,{
-                    headers:{
-                        'authorization': `Bearer ${token}`
-                    }
-                })
+                await sendWelcome(token)
                 setAccess(true)
                 // Reset the form only on successful response (2xx)
                 const form = document.getElementById('form')
