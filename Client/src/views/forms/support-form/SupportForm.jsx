@@ -63,7 +63,7 @@ const SupportForm = () => {
         checkFormValidity()
     }
 
-    const handleSubmit = async (e, token) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         if (Object.values(errors).length > 0) {
             alert('Por favor completa todos los campos')
@@ -71,11 +71,7 @@ const SupportForm = () => {
             try {
                 const response = await axios.post(
                     'http://localhost:3001/claims/',
-                    input, {
-                        headers:{
-                            'authorization': `Bearer ${token}`
-                        }
-                    }
+                    input
                 )
                 setInput({
                     consumerUsername: '',
