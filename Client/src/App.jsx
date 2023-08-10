@@ -2,7 +2,7 @@
 import './App.scss'
 import { LocalizationProvider } from '@mui/x-date-pickers' //esto es para date and time picker (para citas)
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs' //esto es para date and time picker (para citas)
-import 'dayjs/locale/en-gb';
+import 'dayjs/locale/en-gb'
 // Import Hooks
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -22,8 +22,8 @@ import HowItWorks from './views/landingViews/howItWorks/HowItWorks'
 import Offer from './views/landingViews/offer/Offer'
 
 // Home
-import HomeAuxie from './views/home/home-auxie/HomeAuxie'
-import HomeConsumer from './views/home/home-consumer/HomeConsumer'
+import HomeAuxie from './views/Home/home-auxie/HomeAuxie'
+import HomeConsumer from './views/Home/home-consumer/HomeConsumer'
 
 //Home  Views
 import AuxieInbox from './views/home-views/auxie-views/auxie-inbox/AuxieInbox'
@@ -46,7 +46,7 @@ import PageNotFound from './views/page-not-found/PageNotFound'
 import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
 
 // import Chat from './views/Chat/chat';
-import ChatApp from './views/Chat/App';
+import ChatApp from './views/Chat/App'
 
 //URL Back
 import axios from 'axios'
@@ -58,8 +58,8 @@ axios.defaults.baseURL = urlApi
 
 function App() {
     const dispatch = useDispatch()
-    const token = useSelector(state=>{
-        return state.token;
+    const token = useSelector((state) => {
+        return state.token
     })
 
     // window.addEventListener('beforeunload', function () {
@@ -71,12 +71,12 @@ function App() {
 
     useEffect(() => {
         if (token) {
-        dispatch(getAllAuxies(token))
-        dispatch(getAllServices(token))
+            dispatch(getAllAuxies(token))
+            dispatch(getAllServices(token))
         }
     }, [])
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
             <div>
                 <Routes>
                     <Route path="/" element={<Landing />} />
@@ -105,7 +105,7 @@ function App() {
                     <Route path="/detail/:id" element={<Detail />} />
 
                     {/*Profile paths */}
-                    <Route path='/profile' element={<ProfilePage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
 
                     {/* Register paths */}
                     <Route path="/auxieform" element={<Form />} />
