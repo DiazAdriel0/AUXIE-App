@@ -25,6 +25,7 @@
 		"express-fileupload": "^1.4.0",
 		"firebase-admin": "^11.10.1",
 		"fs-extra": "^11.1.1",
+		"mercadopago": "^1.5.17",
 		"mongoose": "^7.4.1",
 		"morgan": "^1.10.0"
 	},
