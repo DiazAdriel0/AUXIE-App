@@ -4,81 +4,95 @@ import { useState } from 'react'
 // import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 
-
 const validate = (input) => {
-    let errors = {};
+    let errors = {}
     if (!input.consumerUsername || input.consumerUsername.trim() === '') {
         errors.name = 'Ingresa tu nombre de usuario'
-    } if (!input.message || input.message.trim() === '') {
+    }
+    if (!input.message || input.message.trim() === '') {
         errors.name = 'Escribe de forma breve tu reclamo'
-    } if (!input.providerUsername || input.providerUsername.trim() === '') {
+    }
+    if (!input.providerUsername || input.providerUsername.trim() === '') {
         errors.name = 'Ingresa el nombre del Auxie'
-    } if (!input.reason || input.reason.trim() === '') {
+    }
+    if (!input.reason || input.reason.trim() === '') {
         errors.name = 'Selecciona la naturaleza del reclamo'
-    } 
-    return errors;
-} 
+    }
+    return errors
+}
 const SupportForm = () => {
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({})
+    const [isFormValid, setIsFormValid] = useState(false)
+    const [touchedFields, setTouchedFields] = useState({})
     const [input, setInput] = useState({
         consumerUsername: '',
         message: '',
         providerUsername: '',
-        reason: ''
+        reason: '',
+        image: ''
     })
+
+    const handleInputBlur = (e) => {
+        const { name } = e.target
+        setTouchedFields({
+            ...touchedFields,
+            [name]: true,
+        })
+    }
+
+    const checkFormValidity = () => {
+        const formIsValid = Object.keys(errors).length === 0
+        setIsFormValid(formIsValid)
+    }
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        setInput((prevInput) => ({
-            ...prevInput,
+        setInput((input) => ({
+            ...input,
             [name]: value,
         }))
         setErrors(
-            validate( 
-            {
-                ...input,
-                [name]: value,
-            },
-            name
-        )
-        )
-    }
-
-    const handlePost = async () => {
-        try {
-            const response = await axios.post(
-                'http://localhost:3001/claims/',
-                input
+            validate(
+                {
+                    ...input,
+                    [name]: value,
+                },
+                name
             )
-            if (response) {
-                alert('Solicitud enviada')
-                console.log(response)
-            }
-        } catch (error) {
-            alert('estas haciendo todo mal')
-        }
+        )
+        checkFormValidity()
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e, token) => {
         e.preventDefault()
-        await handlePost()
-
-        const form = document.getElementById('form')
-        form.reset()
-    }
-    
-    const buttonDisabled = () => {
-        if (
-            input.consumerUsername.trim().length === 0
-        ) {
-            return true
-        }
-        for (let error in errors) {
-            if (errors[error] !== '') {
-                return true
+        if (Object.values(errors).length > 0) {
+            alert('Por favor completa todos los campos')
+        } else {
+            try {
+                const response = await axios.post(
+                    'http://localhost:3001/claims/',
+                    input, {
+                        headers:{
+                            'authorization': `Bearer ${token}`
+                        }
+                    }
+                )
+                setInput({
+                    consumerUsername: '',
+                    providerUsername: '',
+                    message: '',
+                    image: '',
+                    reason: ''
+                })
+                if (response) {
+                    alert('Solicitud enviada')
+                    console.log(response)
+                }
+                setIsFormValid(false)
+            } catch (error) {
+                alert('Error al enviar la solicitud:' + error.message)
             }
         }
-        return false
     }
 
     return (
@@ -87,18 +101,23 @@ const SupportForm = () => {
                 <h1>Soporte técnico</h1>
                 <form id="form" onSubmit={handleSubmit}>
                     <div>
-                        <label htmlFor="consumerUsername" className={style.formlabel}>
+                        <label
+                            htmlFor="consumerUsername"
+                            className={style.formlabel}
+                        >
                             Nombre de Usuario:
                         </label>
                         <input
                             type="text"
                             name="consumerUsername"
+                            onBlur={handleInputBlur}
                             className={style.formControl}
-                            onChange={handleChange}
+                            value={input.consumerUsername}
+                            onChange={(e) => handleChange(e)}
                             placeholder="Nombre de usuario"
                         />
-                        {errors.consumerUsername && (
-                            <p className={style.error}>{errors.consumerUsername}</p>
+                        {touchedFields.name && errors.name && (
+                            <p className={style.error}>{errors.name}</p>
                         )}
                     </div>
                     <div>
@@ -107,41 +126,76 @@ const SupportForm = () => {
                         </label>
                         <textarea
                             name="message"
-                            onChange={handleChange}
+                            value={input.message}
+                            onChange={(e) => handleChange(e)}
                             placeholder="Escribe tu reclamo aquí"
-                        ></textarea>
+                        />
+                        {errors.message && (
+                            <p className={style.error}>{errors.message}</p>
+                        )}
                     </div>
                     <div>
-                        <label htmlFor="providerUsername" className={style.formlabel}>
+                        <label
+                            htmlFor="providerUsername"
+                            className={style.formlabel}
+                        >
                             Nombre del Auxie
                         </label>
                         <input
                             type="text"
                             name="providerUsername"
-                            onChange={handleChange}
+                            value={input.providerUsername}
+                            onChange={(e) => handleChange(e)}
                             placeholder="Nombre del Auxie"
                         />
+                        {errors.providerUsername && (
+                            <p className={style.error}>
+                                {errors.providerUsername}
+                            </p>
+                        )}
+                    </div>
+                    <div>
+                        <label>Imagen</label>
+                        <input
+                            type="text"
+                            value={input.image}
+                            name="image"
+                            onChange={(e) => handleChange(e)}
+                        />
+                        {errors.image && <p>{errors.image}</p>}
                     </div>
                     <div>
                         <label htmlFor="reason" className={style.formlabel}>
                             Selección de Motivos
                         </label>
                         <div>
-                            <select name="reason" onChange={handleChange} defaultValue={''}>
-                            <option disabled value="">
-                            Motivos
-                        </option>
+                            <select
+                                name="reason"
+                                value={input.reason}
+                                onChange={(e) => handleChange(e)}
+                                defaultValue={''}
+                            >
+                                <option disabled value="">
+                                    Motivos
+                                </option>
                                 <option value="late">Retraso</option>
-                                <option value="behavior">Comportamiento inadecuado</option>
-                                <option value="quality">Calidad del servicio</option>
+                                <option value="behavior">
+                                    Comportamiento inadecuado
+                                </option>
+                                <option value="quality">
+                                    Calidad del servicio
+                                </option>
                                 <option value="other">Otro</option>
-                            </select> 
+                            </select>
+                            {errors.reason && (
+                                <p className={style.error}>{errors.reason}</p>
+                            )}
                         </div>
                     </div>
                     <button
                         type="submit"
                         className={style.claims}
-                        disabled={buttonDisabled()}
+                        disabled={!isFormValid}
                     >
                         Enviar
                     </button>
