@@ -23,7 +23,6 @@ const validate = (input) => {
 const SupportForm = () => {
     const [errors, setErrors] = useState({})
     const [isFormValid, setIsFormValid] = useState(false)
-    const [touchedFields, setTouchedFields] = useState({})
     const [input, setInput] = useState({
         consumerUsername: '',
         message: '',
@@ -31,14 +30,6 @@ const SupportForm = () => {
         reason: '',
         image: ''
     })
-
-    const handleInputBlur = (e) => {
-        const { name } = e.target
-        setTouchedFields({
-            ...touchedFields,
-            [name]: true,
-        })
-    }
 
     const checkFormValidity = () => {
         const formIsValid = Object.keys(errors).length === 0
@@ -106,14 +97,14 @@ const SupportForm = () => {
                         <input
                             type="text"
                             name="consumerUsername"
-                            onBlur={handleInputBlur}
+                    
                             className={style.formControl}
                             value={input.consumerUsername}
                             onChange={(e) => handleChange(e)}
                             placeholder="Nombre de usuario"
                         />
-                        {touchedFields.name && errors.name && (
-                            <p className={style.error}>{errors.name}</p>
+                        {errors.consumerUsername && (
+                            <p className={style.error}>{errors.consumerUsername}</p>
                         )}
                     </div>
                     <div>
