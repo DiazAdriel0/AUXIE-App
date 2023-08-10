@@ -14,7 +14,7 @@ import { signOut } from 'firebase/auth'
 import axios from 'axios'
 
 //assets
-import LogoAuxie2 from '../../assets/logos/logoAuxie2.svg'
+import LogoAuxie2 from '../../assets/logos/LogoAuxie2.svg'
 
 //actions
 import { logOut, resetToken } from '../../redux/actions/actions'
