@@ -13,7 +13,7 @@ import NavGeneral from '../../../components/nav-general/NavGeneral'
 // import ClientRequiredServices from '../../../components/clientRequiredServices/clientRequiredServices'
 
 //actions
-import { resetAuxiesCatalog } from '../../../redux/actions/actions'
+import { resetAuxiesCatalog } from '../../../redux/Actions/actions'
 
 //assets
 import CircleIconAuxie from '../../../assets/Logos/CircleIconAuxie.png'
@@ -22,13 +22,14 @@ const HomeConsumer = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector((state) => state.loggedUser)
+    const token = useSelector((state) => state.token)
     const isConsumer = Object.keys(user).includes('requiredServices')
 
     useEffect(() => {
         if (Object.keys(user).length === 0) return navigate('/clientlogin')
         if (Object.keys(user).includes('services'))
             return navigate('/homeAuxie')
-        dispatch(resetAuxiesCatalog())
+        dispatch(resetAuxiesCatalog(token))
     }, [])
 
     return (

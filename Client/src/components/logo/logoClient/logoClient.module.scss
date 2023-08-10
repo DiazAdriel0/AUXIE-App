@@ -1,0 +1,15 @@
+.logo {
+    width: 20%;
+    display: flex;
+    margin-left: 2%;
+
+    .img {
+        width: 100%;
+    }
+    a {
+        width: 30%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}

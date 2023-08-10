@@ -5,7 +5,6 @@ import Card from '../card/card'
 import usePagination from '../pagination/usePagination'
 import Pagination from '../pagination/Pagination'
 
-
 import { useSelector } from 'react-redux'
 
 const Cards = () => {
@@ -14,23 +13,24 @@ const Cards = () => {
 
     return (
         <>
-        <div className={style.cards}>
-            {currentPageData &&
-                currentPageData.map((user) => (
-                    <Card
-                        key={user.id}
-                        id={user.id}
-                        firstName={user.firstName}
-                        lastName={user.lastName}
-                        services={user.services}
-                        averageRating={user.averageRating}
-                        completedWorks={user.completedWorks}
-                        image={user.image}
-                    />
-                ))}
-        </div>
-        <div className={style.pagination}><Pagination num={12} data={users}/></div>
-        
+            <div className={style.cards}>
+                {currentPageData &&
+                    currentPageData.map((user) => (
+                        <Card
+                            key={user.id}
+                            id={user.id}
+                            firstName={user.firstName}
+                            lastName={user.lastName}
+                            services={user.services}
+                            averageRating={user.averageRating}
+                            completedWorks={user.completedWorks}
+                            image={user.image.secure_url}
+                        />
+                    ))}
+            </div>
+            <div className={style.pagination}>
+                <Pagination num={12} data={users} />
+            </div>
         </>
     )
 }

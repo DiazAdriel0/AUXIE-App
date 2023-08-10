@@ -12,6 +12,7 @@ const matchConsumer = async (email, password, req) => {
                     isAdmin: false,
                     firstName: consumer.firstName,
                     lastName: consumer.lastName,
+                    gender: consumer.gender,
                     age: consumer.age,
                     email: consumer.email,
                     username: consumer.username,
@@ -40,7 +41,7 @@ const matchConsumer = async (email, password, req) => {
                 if (!newConsumer.hasOwnProperty('lastName')) {
                     newConsumer.firstName = req.user.name
                 }
-                newConsumer.image = req.user.picture
+                newConsumer.image = { secure_url: req.user.picture }
                 const theConsumer = await Consumer.create(newConsumer)
                 return theConsumer
             }

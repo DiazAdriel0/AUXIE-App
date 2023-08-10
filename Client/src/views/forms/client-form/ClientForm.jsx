@@ -8,6 +8,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../../../config/firebase-config'
 
 const ClientForm = () => {
+
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
     const navigate = useNavigate()
@@ -23,7 +24,6 @@ const ClientForm = () => {
     })
 
     const handleChange = (event) => {
-        console.log(event)
         setInput({
             ...input,
             [event.target.name]: event.target.value,
@@ -40,7 +40,7 @@ const ClientForm = () => {
     const handlePost = async (token) => {
         try {
             const response = await axios.post(
-                'http://localhost:3001/consumers/',
+                '/consumers/',
                 input,{
                     headers:{
                         'authorization': `Bearer ${token}`
@@ -80,7 +80,6 @@ const ClientForm = () => {
             const user = credential.user;
             const token = await user.getIdToken();
             handlePost(token)
-            console.log(credential)
         } catch (error) {
             console.error(error.message);
         }       

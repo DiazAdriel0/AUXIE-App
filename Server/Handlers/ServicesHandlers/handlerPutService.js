@@ -1,12 +1,24 @@
 const putService = require('../../Controllers/ServicesControllers/putService')
+const fs = require('fs-extra')
+const { uploadServiceImage } = require('./../../Utils/cloudinary')
 
 const handlerPutService = async (req, res) => {
     try {
-        const { category, name, image } = req.body
+        const { category, name } = req.body
         const { id } = req.params
+        let image
 
-        if (!name && !category && !image) {
+        if (!name && !category) {
             throw new Error('Faltan datos')
+        } else if (req.files?.image) {
+            const result = await uploadServiceImage(
+                req.files.image.tempFilePath
+            )
+            image = {
+                public_id: result.public_id,
+                secure_url: result.secure_url,
+            }
+            await fs.unlink(req.files.image.tempFilePath)
         } else {
             const updatedService = await putService(id, category, name, image)
 

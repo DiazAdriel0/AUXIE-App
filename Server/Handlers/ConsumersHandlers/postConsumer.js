@@ -2,11 +2,12 @@ const createConsumer = require('../../Controllers/ConsumersControllers/createCon
 const bcrypt = require('bcrypt')
 
 const postConsumer = async (req, res) => {
-    const { firstName, lastName, age, email, username, password } = req.body
+    const { firstName, lastName, gender, age, email, username, password } = req.body
     try {
         if (
             !firstName ||
             !lastName ||
+            !gender ||
             !age ||
             !email ||
             !username ||
@@ -20,12 +21,18 @@ const postConsumer = async (req, res) => {
         const newConsumer = {
             firstName,
             lastName,
+            gender,
             age,
             email,
             username,
             usernameLower: username.toLowerCase(),
             password: hashedPassword,
-            image: 'https://img.freepik.com/free-icon/user_318-563642.jpg',
+            image: {
+                public_id:
+                    'AUXIE App/Profile photos/Providers/mbvrsqvhpkjdffahemw1',
+                secure_url:
+                    'https://res.cloudinary.com/dvj387b1u/image/upload/v1691558271/AUXIE%20App/Profile%20photos/Providers/mbvrsqvhpkjdffahemw1.png',
+            },
             isActive: true,
             userUid: '',
         }

@@ -5,13 +5,14 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "tsc && vite build",
+        "build": "vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview"
     },
     "dependencies": {
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
+        "@mercadopago/sdk-react": "^0.0.13",
         "@mui/icons-material": "^5.14.3",
         "@mui/material": "^5.14.3",
         "@mui/x-date-pickers": "^6.11.0",
@@ -19,6 +20,7 @@
         "@reduxjs/toolkit": "^1.9.5",
         "axios": "^1.4.0",
         "dayjs": "^1.11.9",
+        "dotenv": "^16.3.1",
         "firebase": "^10.1.0",
         "prettier": "^3.0.0",
         "react": "^18.2.0",

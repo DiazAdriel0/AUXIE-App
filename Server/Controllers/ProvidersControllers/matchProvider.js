@@ -11,6 +11,7 @@ const matchProvider = async (email, password, req) => {
                     isActive: provider.isActive,
                     firstName: provider.firstName,
                     lastName: provider.lastName,
+                    gender: provider.gender,
                     age: provider.age,
                     email: provider.email,
                     username: provider.username,
@@ -40,9 +41,10 @@ const matchProvider = async (email, password, req) => {
                 if (!newProvider.hasOwnProperty('lastName')) {
                     newProvider.firstName = req.user.name
                 }
-                newProvider.image = req.user.picture
+                newProvider.image = { secure_url: req.user.picture }
                 const theProvider = await Provider.create(newProvider)
                 return theProvider
+
             }
         }
         const provider = await Provider.findOne({ email })

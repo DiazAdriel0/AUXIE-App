@@ -11,7 +11,7 @@ const providerSchema = new Schema({
     age: { type: Number, required: true, min: 18 },
     gender: { type: String },
     address: { type: String },
-    image: { type: String },
+    image: { public_id: String, secure_url: String },
     bio: { type: String },
 
     email: { type: String, required: true },
@@ -29,14 +29,16 @@ const providerSchema = new Schema({
     ratings: { type: Array },
     averageRating: { type: Number, min: 0 },
     reviews: { type: Array },
-    googleId:{
+    googleId: {
         type: String,
         default: '',
     },
+
     userUid:{
         type: String,
         default: '',
     }
+
 })
 
 providerSchema.set('toJSON', {

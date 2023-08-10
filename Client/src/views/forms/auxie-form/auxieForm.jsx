@@ -12,6 +12,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth"
 import { auth } from '../../../config/firebase-config'
 
 const Form = () => {
+
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
     const navigate = useNavigate()
@@ -41,7 +42,7 @@ const Form = () => {
     const handlePost = async (token) => {
         try {
             const response = await axios.post(
-                'http://localhost:3001/providers/',
+                '/providers/',
                 input,{
                     headers:{
                         'authorization': `Bearer ${token}`

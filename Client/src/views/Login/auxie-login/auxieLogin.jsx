@@ -19,6 +19,7 @@ import {
 import { auth } from '../../../config/firebase-config'
 
 const ClientLogin = () => {
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { errors, validate } = useValidations()
@@ -47,12 +48,13 @@ const ClientLogin = () => {
     const handleLogin = async (token) => {
         try {
             const { data } = await axios.post(
-                'http://localhost:3001/providers/login',
-                input,
-                {
-                    headers: {
-                        authorization: `Bearer ${token}`,
-                    },
+
+                '/providers/login',
+                input,{
+                    headers:{
+                        'authorization': `Bearer ${token}`
+                    }
+
                 }
             )
             if (data) {

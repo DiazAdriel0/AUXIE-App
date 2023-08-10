@@ -3,9 +3,9 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
-const cors = require ('cors')
+const cors = require('cors')
 const middleware = require('../middleware')
-
+const fileUpload = require('express-fileupload')
 
 const mainRouter = require('./../Routes/mainRouter')
 
@@ -19,7 +19,10 @@ server.use(cookieParser())
 server.use(morgan('dev'))
 
 server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5173')
+    res.header(
+        'Access-Control-Allow-Origin',
+        process.env ? 'http://localhost:5173' : 'PONER DOMINIO DEL DEPLOY'
+    )
     res.header('Access-Control-Allow-Credentials', 'true')
     res.header(
         'Access-Control-Allow-Headers',
@@ -32,6 +35,12 @@ server.use((req, res, next) => {
     next()
 })
 server.use(middleware)
+server.use(
+    fileUpload({
+        useTempFiles: true,
+        tempFileDir: './Uploads',
+    })
+)
 server.use('/', mainRouter)
 
 // Error catching endware.

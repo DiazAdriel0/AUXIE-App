@@ -27,10 +27,7 @@ const serviceSchema = new Schema({
     numberOfProviders: {
         type: Number,
     },
-    image: {
-        type: String,
-        required: true,
-    },
+    image: { public_id: String, secure_url: String },
     isActive: {
         type: Boolean,
         default: true,

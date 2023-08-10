@@ -4,6 +4,7 @@ import {
     GET_ALL_SERVICES,
     FILTER_AUXIES_BY_SERVICE,
     GET_AUXIE_DETAILS,
+    GET_CONSUMER_DETAILS,
     LOGED_USER,
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
@@ -13,7 +14,12 @@ import {
     LOGOUT,
     SET_TOKEN,
     RESET_TOKEN,
+
     UPDATE_PROFILE,
+
+    ADD_FAVORITE,
+    DELETE_FAVORITE
+
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -21,7 +27,7 @@ export function getAllAuxies(token) {
     return async function (dispatch) {
         /* 'https://run.mocky.io/v3/f408d4d3-183d-46de-9b9b-e2eb86327ef0' */
         try {
-            const res = await axios('http://localhost:3001/providers', {
+            const res = await axios('/providers', {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
@@ -40,7 +46,7 @@ export function getAllAuxies(token) {
 export function getAllServices(token) {
     return async function (dispatch) {
         try {
-            const res = await axios('http://localhost:3001/services', {
+            const res = await axios('/services', {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
@@ -51,7 +57,7 @@ export function getAllServices(token) {
                 payload: res.data,
             })
         } catch (e) {
-            console.error(e.response.data)
+            console.error(e.response)
         }
     }
 }
@@ -59,13 +65,31 @@ export function getAllServices(token) {
 export function getDetails(id, token) {
     return async function (dispatch) {
         try {
-            const res = await axios(`http://localhost:3001/providers/${id}`, {
+            const res = await axios(`/providers/${id}`, {
                 headers: {
                     authorization: `Bearer ${token}`,
                 },
             })
             return dispatch({
                 type: GET_AUXIE_DETAILS,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response)
+        }
+    }
+}
+
+export function getDetailsConsumer(id, token) {
+    return async function (dispatch) {
+        try {
+            const res = await axios(`/consumers/${id}`, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            })
+            return dispatch({
+                type: GET_CONSUMER_DETAILS,
                 payload: res.data,
             })
         } catch (e) {
@@ -133,11 +157,15 @@ export const setCurrentPage = (page) => {
         })
     }
 }
-export function resetAuxiesCatalog() {
+export function resetAuxiesCatalog(token) {
     return function (dispatch) {
         try {
             return dispatch({
                 type: RESET_AUXIES_CATALOG,
+            }, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
             })
         } catch (e) {
             console.error(e)
@@ -209,13 +237,52 @@ export function updateProfile(input, token,user) {
     }
 }
 
+export function addFavorite(fav, token) {
+    return async function (dispatch) {
+        try {
+            const res = await axios.put('/consumers/fav', fav, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            })
+
+            return dispatch({
+                type: ADD_FAVORITE,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.error)
+        }
+    }
+}
+
+export function removeFavorite(fav, token) {
+    return async function (dispatch) {
+        try {
+            const res = await axios.delete(`http://localhost:3001/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`,{
+                headers: {
+                    authorization: `Bearer ${token}`,
+                }
+            })
+            console.log(res)
+
+            return dispatch({
+                type: DELETE_FAVORITE,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.error)
+        }
+    }
+}
+
 // action que me guarda los datos de un auxie que me devuelve el back por id (innecesario guardarme esta info en el global state por ahora)
 
 // export function getDetails(id) {
 //     return async function (dispatch) {
 //         try {
 //             const res = await axios(
-//                 `http://localhost:3001/providers/${id}`
+//                 `/providers/${id}`
 //             )
 //             return dispatch({
 //                 type: GET_AUXIE_DETAILS,

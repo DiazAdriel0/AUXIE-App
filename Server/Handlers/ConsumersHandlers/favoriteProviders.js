@@ -8,7 +8,7 @@ const favoriteProviders = async (req, res) => {
         
         const addedFav = await addFavProviders( consumerId, favorite)
         
-        if(addedFav)return res.status(200).json('Actualizó con exito')
+        if(addedFav)return res.status(200).json(favorite)
 
     } catch (error) {
         res.status(500).json({error:error.message})

@@ -10,6 +10,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
 const JobRequestForm = ({ services }) => {
+
     let { id } = useParams()
     const client = useSelector((state) => state.loggedUser)
     // const services = useSelector((state) => state.services)
@@ -20,7 +21,6 @@ const JobRequestForm = ({ services }) => {
         description: '',
         // price:'',
     })
-    console.log(value)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -36,7 +36,7 @@ const JobRequestForm = ({ services }) => {
     const handlePost = async () => {
         try {
             const response = await axios.put(
-                `http://localhost:3001/providers/addJob/${id}`,
+                `/providers/addJob/${id}`,
                 value
             )
             if (response) {
