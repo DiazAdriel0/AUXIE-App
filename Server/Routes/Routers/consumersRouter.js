@@ -8,6 +8,7 @@ const updateConsumer = require('../../Handlers/ConsumersHandlers/updateConsumer'
 const deleteFavoriteProv = require('../../Handlers/ConsumersHandlers/deleteFavoriteProv')
 const favoriteProviders = require('../../Handlers/ConsumersHandlers/favoriteProviders')
 const revokeTokens = require('../../Handlers/ConsumersHandlers/revokeTokens')
+const welcomeEmail = require('../../Handlers/ConsumersHandlers/welcomeEmail')
 const consumersRouter = Router()
 
 consumersRouter.get('/', getAllConsumers)
@@ -18,6 +19,7 @@ consumersRouter.put('/fav', favoriteProviders)
 consumersRouter.post('/login', loginConsumer)
 consumersRouter.post('/', postConsumer)
 consumersRouter.post('/logout', revokeTokens)
+consumersRouter.post('/welcomeEmail', welcomeEmail)
 
 consumersRouter.delete('/:id', deleteConsumerById)
 consumersRouter.delete('/delete/fav', deleteFavoriteProv)

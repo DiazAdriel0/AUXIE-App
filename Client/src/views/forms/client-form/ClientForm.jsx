@@ -48,6 +48,11 @@ const ClientForm = () => {
                 }
             )
             if (response) {
+                await axios.post('/consumers/welcomeEmail', {email: input.email} ,{
+                    headers:{
+                        'authorization': `Bearer ${token}`
+                    }
+                })
                 setAccess(true)
                 // Reset the form only on successful response (2xx)
                 const form = document.getElementById('form')
