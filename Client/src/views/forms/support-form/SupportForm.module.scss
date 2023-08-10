@@ -59,7 +59,10 @@
 }
 
 .error{
-    background-color: brown;
-    font-size: xx-large;
+    font-size: 100%;
+    color:red;
+    background-color: var(--primary--color-light);
+    padding: 1%;
+    border-radius: 10px;
 }
 
