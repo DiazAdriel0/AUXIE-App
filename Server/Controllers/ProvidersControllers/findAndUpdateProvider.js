@@ -1,6 +1,6 @@
 const Provider = require('./../../Models/provider')
 
-const findAndUpdateProvider = async (update) => {
+const findAndUpdateProvider = async (update, id) => {
     try {
         const query = { _id: update.id }
         delete update.id
@@ -20,10 +20,12 @@ const findAndUpdateProvider = async (update) => {
 
         if (updatedProvider.modifiedCount === 0)
             throw new Error('sin modificaciones')
+        const provider2 = await Provider.findById({ _id: id })
 
-        return updatedProvider
+        // return updatedProvider
+        return provider2
     } catch (error) {
-        return error
+        return false
     }
 }
 

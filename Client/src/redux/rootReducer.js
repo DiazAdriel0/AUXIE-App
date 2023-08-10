@@ -11,8 +11,12 @@ import {
     LOGOUT,
     SET_TOKEN,
     RESET_TOKEN,
+
+    UPDATE_PROFILE,
+
     ADD_FAVORITE,
     DELETE_FAVORITE
+
 } from './Actions/actionTypes'
 
 let initialState = {
@@ -167,6 +171,12 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 token: '',
             }
+
+        case UPDATE_PROFILE:
+            return {
+                ...state,
+                loggedUser: action.payload,
+
             case ADD_FAVORITE:
                 return {
                     ...state,
@@ -177,7 +187,7 @@ function rootReducer(state = initialState, action) {
                 ...state, 
                 loggedUser: {...state.loggedUser, favoritesProviders: [...action.payload]}
             }
-                
+
         // caso por defecto si por alguna razón no recibe action.type
         default:
             return {

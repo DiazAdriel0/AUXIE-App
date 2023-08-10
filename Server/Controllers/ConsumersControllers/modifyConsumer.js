@@ -3,15 +3,24 @@ const fs = require('fs-extra')
 const { uploadProfileImageToConsumer } = require('../../Utils/cloudinary')
 
 const modifyConsumer = async (req) => {
-    const { firstName, lastName, address, username, id } = req.body
+
+    const { firstName, lastName, address, image, username, userUid, id } =
+        req.body
+
     try {
         const recibedProperties = {
             id,
+            userUid,
             firstName,
             lastName,
             address,
             username,
             usernameLower: username?.toLowerCase(),
+
+            image,
+        }
+
+
         }
 
         if (req.files?.image) {
@@ -26,6 +35,7 @@ const modifyConsumer = async (req) => {
             await fs.unlink(req.files.image.tempFilePath)
         }
 
+
         const filledProperties = Object.entries(recibedProperties)
             // eslint-disable-next-line no-unused-vars
             .filter(([_, value]) => {
@@ -35,16 +45,16 @@ const modifyConsumer = async (req) => {
                     typeof value === 'object'
                 )
             })
-            .map(([key, value]) => [key, value])
 
         const filledObject = Object.fromEntries(filledProperties)
-
         const consumer = await Consumer.updateOne({ _id: id }, filledObject)
-
+        console.log(consumer)
         if (consumer.modifiedCount === 0)
             throw new Error('No se pudo actualizar')
+        const consumer2 = await Consumer.findById({ _id: id })
 
-        return consumer
+        return consumer2
+
     } catch (error) {
         console.error(error)
         return false

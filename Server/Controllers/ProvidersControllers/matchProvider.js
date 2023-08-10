@@ -22,6 +22,7 @@ const matchProvider = async (email, password, req) => {
                     ratings: provider.ratings,
                     reviews: provider.reviews,
                     googleId: provider.googleId,
+                    userUid: provider.userUid,
                 }
                 return providerWithout
             } else {
@@ -43,40 +44,11 @@ const matchProvider = async (email, password, req) => {
                 newProvider.image = { secure_url: req.user.picture }
                 const theProvider = await Provider.create(newProvider)
                 return theProvider
+
             }
         }
         const provider = await Provider.findOne({ email })
-        const isMail = email.indexOf('@')
-        if (isMail === -1) {
-            const provider = await Provider.findOne({ username: email })
-            if (provider) {
-                const passwordMatch = await bcrypt.compare(
-                    password,
-                    provider.password
-                )
-                const providerWithout = {
-                    id: provider._id,
-                    isActive: provider.isActive,
-                    firstName: provider.firstName,
-                    lastName: provider.lastName,
-                    gender: provider.gender,
-                    age: provider.age,
-                    email: provider.email,
-                    username: provider.username,
-                    image: provider.image,
-                    registerDate: provider.registerDate,
-                    services: provider.services,
-                    jobs: provider.jobs,
-                    ratings: provider.ratings,
-                    reviews: provider.reviews,
-                }
-                return passwordMatch
-                    ? providerWithout
-                    : new Error('wrongPassword')
-            } else {
-                throw new Error('inexistente')
-            }
-        }
+
         if (provider) {
             const passwordMatch = await bcrypt.compare(
                 password,
@@ -96,6 +68,7 @@ const matchProvider = async (email, password, req) => {
                 jobs: provider.jobs,
                 ratings: provider.ratings,
                 reviews: provider.reviews,
+                userUid: provider.userUid,
             }
             return passwordMatch ? providerWithout : new Error('wrongPassword')
         } else {

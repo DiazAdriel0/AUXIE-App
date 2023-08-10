@@ -33,6 +33,12 @@ const providerSchema = new Schema({
         type: String,
         default: '',
     },
+
+    userUid:{
+        type: String,
+        default: '',
+    }
+
 })
 
 providerSchema.set('toJSON', {
