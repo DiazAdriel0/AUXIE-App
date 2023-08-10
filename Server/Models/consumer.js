@@ -4,23 +4,23 @@ const consumerSchema = new Schema({
     isActive: {
         type: Boolean,
         required: true,
-        default: false
+        default: false,
     },
     isAdmin: {
         type: Boolean,
         required: true,
-        default: false
+        default: false,
     },
     firstName: {
-        type: String
+        type: String,
     },
     lastName: {
-        type: String
+        type: String,
     },
     gender: String,
     age: {
         type: Number,
-        min: 18
+        min: 18,
     },
     address: String,
     image: String,
@@ -33,22 +33,25 @@ const consumerSchema = new Schema({
     },
     usernameLower: String,
     password: {
-        type: String
+        type: String,
     },
     registerDate: {
         type: Date,
         default: Date.now,
-        immutable: true 
+        immutable: true,
     },
     ratings: Array,
     averageRating: Number,
     favoritesProviders: Array,
     contractedServices: Number,
     requiredServices: Array,
-    googleId:{
+    googleId: {
         type: String,
         default: '',
-    }
+    },
+    userUid: {
+        type: String,
+    },
 })
 
 consumerSchema.set('toJSON', {

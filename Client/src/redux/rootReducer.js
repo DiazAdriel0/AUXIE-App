@@ -11,6 +11,7 @@ import {
     LOGOUT,
     SET_TOKEN,
     RESET_TOKEN,
+    UPDATE_PROFILE,
 } from './Actions/actionTypes'
 
 let initialState = {
@@ -164,6 +165,11 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 token: '',
+            }
+        case UPDATE_PROFILE:
+            return {
+                ...state,
+                loggedUser: action.payload,
             }
         // caso por defecto si por alguna razón no recibe action.type
         default:

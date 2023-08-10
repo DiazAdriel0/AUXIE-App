@@ -13,6 +13,7 @@ import {
     LOGOUT,
     SET_TOKEN,
     RESET_TOKEN,
+    UPDATE_PROFILE,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -178,6 +179,33 @@ export function setToken(token) {
 export function resetToken() {
     return {
         type: RESET_TOKEN,
+    }
+}
+UPDATE_PROFILE
+
+export function updateProfile(input, token,user) {
+    return async function (dispatch) {
+        
+        try {
+            const res = await axios.put(
+                
+                `http://localhost:3001/${user}/profile`,
+                
+                input,
+                {
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
+                }
+            )
+
+            return dispatch({
+                type: UPDATE_PROFILE,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.log(e.response.data)
+        }
     }
 }
 

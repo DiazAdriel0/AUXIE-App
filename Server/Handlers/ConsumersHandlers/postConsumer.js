@@ -27,6 +27,7 @@ const postConsumer = async (req, res) => {
             password: hashedPassword,
             image: 'https://img.freepik.com/free-icon/user_318-563642.jpg',
             isActive: true,
+            userUid: '',
         }
 
         const createdConsumer = await createConsumer(newConsumer)

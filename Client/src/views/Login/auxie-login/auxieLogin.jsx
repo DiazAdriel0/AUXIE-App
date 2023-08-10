@@ -5,9 +5,17 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useValidations } from '../../../utils/validationutils'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { loggedUser, setToken } from '../../../redux/Actions/actions'
-import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch, useSelector } from 'react-redux'
+import {
+    loggedUser,
+    setToken,
+    updateProfile,
+} from '../../../redux/Actions/actions'
+import {
+    signInWithPopup,
+    GoogleAuthProvider,
+    signInWithEmailAndPassword,
+} from 'firebase/auth'
 import { auth } from '../../../config/firebase-config'
 
 const ClientLogin = () => {
@@ -19,7 +27,7 @@ const ClientLogin = () => {
         password: '',
     })
     const [access, setAccess] = useState(false) //eslint-disable-line
-
+    const logged = useSelector((state) => state.loggedUser)
     const handleChange = (event) => {
         setInput({
             ...input,
@@ -40,10 +48,11 @@ const ClientLogin = () => {
         try {
             const { data } = await axios.post(
                 'http://localhost:3001/providers/login',
-                input,{
-                    headers:{
-                        'authorization': `Bearer ${token}`
-                    }
+                input,
+                {
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
                 }
             )
             if (data) {
@@ -60,6 +69,14 @@ const ClientLogin = () => {
     useEffect(() => {
         if (access === true) {
             navigate('/homeauxie')
+            if (!logged?.userUid) {
+                dispatch(
+                    updateProfile(
+                        { userUid: auth.currentUser.uid, id: logged.id },
+                        auth.currentUser.accessToken, 'providers',
+                    )
+                )
+            }
         }
     }, [access])
     const handleSubmit = async (e) => {
@@ -68,16 +85,20 @@ const ClientLogin = () => {
         // algun get en la base de datos que busque si el usuario y contrasena coinciden
         const form = document.getElementById('form')
         const email = form.email.value
-        const password= form.password.value
-        try{
-           const credential = await signInWithEmailAndPassword(auth, email,password)
-        if(credential){
-            handleLogin(credential.user.accessToken)
+        const password = form.password.value
+        try {
+            const credential = await signInWithEmailAndPassword(
+                auth,
+                email,
+                password
+            )
+            if (credential) {
+                handleLogin(credential.user.accessToken)
+            }
+            form.reset()
+        } catch (error) {
+            alert(error.message) //o como lo maneje el front sweet alert?
         }
-        form.reset() 
-        }catch (error){
-            alert(error.message)//o como lo maneje el front sweet alert?
-          }
         //navigate home / search auxies ///
     }
 
@@ -101,20 +122,19 @@ const ClientLogin = () => {
         return false
     }
     //google Login
-    const signInGoogle = async ()=>{
-        try{
-        const provider = new GoogleAuthProvider ();    
-        provider.setCustomParameters({ prompt: 'select_account' });
-        const credential = await signInWithPopup(auth, provider)
-         const token = credential.user.accessToken;
-        if (token) {
-            handleLogin(token)
+    const signInGoogle = async () => {
+        try {
+            const provider = new GoogleAuthProvider()
+            provider.setCustomParameters({ prompt: 'select_account' })
+            const credential = await signInWithPopup(auth, provider)
+            const token = credential.user.accessToken
+            if (token) {
+                handleLogin(token)
+            }
+        } catch (error) {
+            alert(error.message) //o como lo maneje el front sweet alert?
         }
-       
-      }catch (error){
-        alert(error.message)//o como lo maneje el front sweet alert?
-      }
-        }
+    }
 
     //////
 
@@ -167,7 +187,7 @@ const ClientLogin = () => {
             </form>
 
             <center>
-                <button onClick={signInGoogle} >
+                <button onClick={signInGoogle}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         preserveAspectRatio="xMidYMid"

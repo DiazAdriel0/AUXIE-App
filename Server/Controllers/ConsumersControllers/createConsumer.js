@@ -10,10 +10,9 @@ const createConsumer = async (newConsumer) => {
         })
         if (emailRepeated) throw new Error('emailRepetido')
         if (usernameRepeated) throw new Error('usernameRepetido')
-    
+
         await Consumer.create(newConsumer)
         return true
-
     } catch (error) {
         return error.message
     }

@@ -9,8 +9,8 @@ const cookies = new Cookies();
 
 function ChatApp() {
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
-  const [isInChat, setIsInChat] = useState(null);
-  const [room, setRoom] = useState("");
+  const [recipient, setRecipient] = useState(""); // Change: Use 'recipient' instead of 'room'
+  const [isInChat, setIsInChat] = useState(false);
 
   if (!isAuth) {
     return (
@@ -28,18 +28,18 @@ function ChatApp() {
     <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
       {!isInChat ? (
         <div className="room">
-          <label> Type room name: </label>
-          <input onChange={(e) => setRoom(e.target.value)} />
+          <label> Type user ID: </label> {/* Change: Update label */}
+          <input onChange={(e) => setRecipient(e.target.value)} /> {/* Change: Use 'recipient' */}
           <button
             onClick={() => {
               setIsInChat(true);
             }}
           >
-            Enter Chat
+            Start Conversation
           </button>
         </div>
       ) : (
-        <Chat room={room} />
+        <Chat recipient={recipient} /> /* Change: Pass 'recipient' prop */
       )}
     </AppWrapper>
   );

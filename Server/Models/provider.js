@@ -32,6 +32,10 @@ const providerSchema = new Schema({
     googleId:{
         type: String,
         default: '',
+    },
+    userUid:{
+        type: String,
+        default: '',
     }
 })
 
