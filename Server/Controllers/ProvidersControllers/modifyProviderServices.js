@@ -15,7 +15,6 @@ const modifyProviderServices = async (services, providerId) => {
                     (service) => serviceFound._id.toString() === service.id
                 )
                 if (!found) {
-                    console.log(serviceFound._id.toString())
                     updatedServices.push({
                         id: serviceFound._id.toString(),
                         price: service.price,

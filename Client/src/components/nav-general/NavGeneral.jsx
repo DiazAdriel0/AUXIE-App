@@ -13,7 +13,6 @@ import LogoClient from '../logo/logoClient/LogoCLient'
 
 const NavGeneral = () => {
     const user = useSelector((state) => state.loggedUser)
-
     const isAuxie = Object.keys(user).includes('services') ? true : false
 
     return (

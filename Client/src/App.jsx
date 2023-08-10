@@ -48,6 +48,8 @@ import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
 // import Chat from './views/Chat/chat';
 import ChatApp from './views/Chat/App'
 
+import ButtonMercadoPago from './components/buttonMercadoPago/buttonMercadoPago';
+
 //URL Back
 import axios from 'axios'
 const apiBackUrl = import.meta.env.VITE_API_BACK_URL
@@ -119,6 +121,8 @@ function App() {
 
                     <Route path="*" element={<PageNotFound />} />
                     <Route path="/chat" element={<ChatApp />} />
+
+                    <Route path='/create_preference' element={<ButtonMercadoPago/>}/>
                 </Routes>
             </div>
         </LocalizationProvider>

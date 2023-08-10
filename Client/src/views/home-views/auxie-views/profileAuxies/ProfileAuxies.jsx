@@ -26,7 +26,7 @@ const ProfileAuxies = () => {
                 <h4>Gender: {provider.gender}</h4>
                 <h3>Email: {provider.email}</h3>
                 <h3>{provider.bio}</h3>
-                <h6>Te uniste:{provider.registerDate}</h6>
+                <h6>Te uniste: {provider.registerDate}</h6>
                 <div>
                     <h5>Servicios que ofrece:</h5>
                     <h5>Trabajos realizados: </h5>

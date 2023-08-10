@@ -1,11 +1,10 @@
 const deleteFavProvider = require('../../Controllers/ConsumersControllers/deleteFavProvider')
 
 const deleteFavoriteProv = async (req, res)=>{
-    const {consumerId, id} = req.body
+    const {consumerId, id} = req.query
     try {
         const updated = await deleteFavProvider(consumerId, id)
-
-        return updated ? res.status(200).json('Actualizó con exito') 
+        return updated ? res.status(200).json(updated.favoritesProviders)
             : new Error ('Falla al actualizar')
 
 

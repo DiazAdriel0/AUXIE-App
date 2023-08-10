@@ -2,11 +2,12 @@ const createConsumer = require('../../Controllers/ConsumersControllers/createCon
 const bcrypt = require('bcrypt')
 
 const postConsumer = async (req, res) => {
-    const { firstName, lastName, age, email, username, password } = req.body
+    const { firstName, lastName, gender, age, email, username, password } = req.body
     try {
         if (
             !firstName ||
             !lastName ||
+            !gender ||
             !age ||
             !email ||
             !username ||
@@ -20,6 +21,7 @@ const postConsumer = async (req, res) => {
         const newConsumer = {
             firstName,
             lastName,
+            gender,
             age,
             email,
             username,
