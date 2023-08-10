@@ -61,7 +61,7 @@ function App() {
     const token = useSelector((state) => {
         return state.token
     })
-
+    console.log(token)
     // window.addEventListener('beforeunload', function () {
     //     // Aquí puedes ejecutar la lógica de tu función logOut
     //     dispatch(logOut({}))
