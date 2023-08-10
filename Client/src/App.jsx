@@ -30,23 +30,22 @@ import AuxieInbox from './views/home-views/auxie-views/auxie-inbox/AuxieInbox'
 import AuxieServices from './views/home-views/auxie-views/auxie-services/AuxieServices'
 import AuxieStatistics from './views/home-views/auxie-views/auxie-statistics/AuxieStatistics'
 
-import ProfilePage from './views/profile/profilePage/profilePage'
+import ProfilePage from './views/profile/profilePage/ProfilePage'
 
 //Forms
-import Form from './views/forms/auxie-form/auxieForm'
+import Form from './views/forms/auxie-form/AuxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
 import SupportForm from '../src/views/forms/support-form/SupportForm'
-//fix
 
 // Logins
-import ClientLogin from './views/login/consumer-login/clientLogin'
-import AuxieLogin from './views/login/auxie-login/auxieLogin'
+import ClientLogin from './views/login/consumer-login/ClientLogin'
+import AuxieLogin from './views/login/auxie-login/AuxieLogin'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
 import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
 
-// import Chat from './views/Chat/chat';
+// import Chat from './views/chat/Chat';
 import ChatApp from './views/chat/App'
 
 //URL Back

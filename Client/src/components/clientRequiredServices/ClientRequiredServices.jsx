@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import style from './clientRequiredServices.module.scss'
-import ClientRequiredService from '../clientRequiredService/clientRequiredService'
+import ClientRequiredService from '../clientRequiredService/ClientRequiredService'
 
 const ClientRequiredServices = () => {
     const client = useSelector((state) => state.loggedUser)
