@@ -21,9 +21,7 @@ server.use(morgan('dev'))
 server.use((req, res, next) => {
     res.header(
         'Access-Control-Allow-Origin',
-        process.env
-            ? 'http://localhost:5173'
-            : 'https://auxie-q19vthw69-diazadriel0.vercel.app'
+        process.env ? 'http://localhost:5173' : 'https://auxie-app.vercel.app'
     )
     res.header('Access-Control-Allow-Credentials', 'true')
     res.header(
