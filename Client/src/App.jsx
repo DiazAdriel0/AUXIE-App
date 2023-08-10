@@ -7,7 +7,7 @@ import 'dayjs/locale/en-gb'
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-//fix
+
 // Import Actions
 import { getAllAuxies, getAllServices } from './redux/actions/actions'
 
