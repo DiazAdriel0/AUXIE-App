@@ -47,38 +47,7 @@ const matchConsumer = async (email, password, req) => {
             }
         }
         const consumer = await Consumer.findOne({ email })
-        const isMail = email.indexOf('@')
-        if (isMail === -1) {
-            const consumer = await Consumer.findOne({ username: email })
-            if (consumer) {
-                const passwordMatch = await bcrypt.compare(
-                    password,
-                    consumer.password
-                )
-                const consumerWithout = {
-                    isActive: true,
-                    isAdmin: false,
-                    firstName: consumer.firstName,
-                    lastName: consumer.lastName,
-                    gender: consumer.gender,
-                    age: consumer.age,
-                    email: consumer.email,
-                    username: consumer.username,
-                    ratings: consumer.ratings,
-                    favoritesProviders: consumer.favoritesProviders,
-                    requiredServices: consumer.requiredServices,
-                    registerDate: consumer.registerDate,
-                    id: consumer._id,
-                    image: consumer.image,
-                }
 
-                return passwordMatch
-                    ? consumerWithout
-                    : new Error('wrongPassword')
-            } else {
-                throw new Error('inexistente')
-            }
-        }
         if (consumer) {
             const passwordMatch = await bcrypt.compare(
                 password,
@@ -98,6 +67,7 @@ const matchConsumer = async (email, password, req) => {
                 registerDate: consumer.registerDate,
                 id: consumer._id,
                 image: consumer.image,
+                userUid: consumer.userUid,
             }
 
             return passwordMatch ? consumerWithout : new Error('wrongPassword')

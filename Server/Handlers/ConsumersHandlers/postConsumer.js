@@ -34,6 +34,7 @@ const postConsumer = async (req, res) => {
                     'https://res.cloudinary.com/dvj387b1u/image/upload/v1691558271/AUXIE%20App/Profile%20photos/Providers/mbvrsqvhpkjdffahemw1.png',
             },
             isActive: true,
+            userUid: '',
         }
 
         const createdConsumer = await createConsumer(newConsumer)
