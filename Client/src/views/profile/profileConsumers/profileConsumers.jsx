@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 // import { useEffect } from 'react'
 // import { useParams } from 'react-router-dom'
-// import { getDetailsConsumer } from '../../../redux/Actions/actions'
+// import { getDetailsConsumer } from '../../../redux/actions/actions'
 
 const ProfileConsumers = () => {
     // const { id } = useParams()

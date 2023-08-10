@@ -9,7 +9,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // Import Actions
-import { getAllAuxies, getAllServices } from './redux/Actions/actions'
+import { getAllAuxies, getAllServices } from './redux/actions/actions'
 
 // Import Views
 
@@ -22,8 +22,8 @@ import HowItWorks from './views/landingViews/howItWorks/HowItWorks'
 import Offer from './views/landingViews/offer/Offer'
 
 // Home
-import HomeAuxie from './views/Home/home-auxie/HomeAuxie'
-import HomeConsumer from './views/Home/home-consumer/HomeConsumer'
+import HomeAuxie from './views/home/home-auxie/HomeAuxie'
+import HomeConsumer from './views/home/home-consumer/HomeConsumer'
 // a ver
 
 //Home  Views
@@ -39,15 +39,15 @@ import ClientForm from './views/forms/client-form/ClientForm'
 import SupportForm from '../src/views/forms/support-form/SupportForm'
 
 // Logins
-import ClientLogin from './views/Login/consumer-login/clientLogin'
-import AuxieLogin from './views/Login/auxie-login/auxieLogin'
+import ClientLogin from './views/login/consumer-login/clientLogin'
+import AuxieLogin from './views/login/auxie-login/auxieLogin'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
-import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
+import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
 
 // import Chat from './views/Chat/chat';
-import ChatApp from './views/Chat/App'
+import ChatApp from './views/chat/App'
 
 //URL Back
 import axios from 'axios'
@@ -55,7 +55,7 @@ const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
 axios.defaults.baseURL = urlApi
 
-// import { logOut, resetToken } from './redux/Actions/actions';
+// import { logOut, resetToken } from './redux/actions/actions';
 
 function App() {
     const dispatch = useDispatch()

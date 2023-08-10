@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 //*Import Animations
 import { Animated } from 'react-animated-css'
-import CircleIconAuxie from '../../assets/Logos/CircleIconAuxie.png'
+import CircleIconAuxie from '../../assets/logos/CircleIconAuxie.png'
 
 //* Import icons
 
@@ -18,7 +18,7 @@ import NavLanding from '../../components/nav-landing/NavLanding'
 import ButtonUp from '../../components/buttons/buttonUp/ButtonUp'
 
 //anonimos tokens y actions
-import { getAllAuxies, getAllServices } from '../../redux/Actions/actions'
+import { getAllAuxies, getAllServices } from '../../redux/actions/actions'
 
 import { auth } from '../../config/firebase-config'
 import { onAuthStateChanged, signInAnonymously } from 'firebase/auth'

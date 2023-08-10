@@ -7,16 +7,16 @@ import { useNavigate, Link } from 'react-router-dom'
 import style from './homeConsumer.module.scss'
 
 //componentes
-import Cards from '../../../components/Cards/Cards'
-import Filters from '../../../components/Filters/Filters'
+import Cards from '../../../components/cards/Cards'
+import Filters from '../../../components/filters/Filters'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 // import ClientRequiredServices from '../../../components/clientRequiredServices/clientRequiredServices'
 
 //actions
-import { resetAuxiesCatalog } from '../../../redux/Actions/actions'
+import { resetAuxiesCatalog } from '../../../redux/actions/actions'
 
 //assets
-import CircleIconAuxie from '../../../assets/Logos/CircleIconAuxie.png'
+import CircleIconAuxie from '../../../assets/logos/CircleIconAuxie.png'
 
 const HomeConsumer = () => {
     const dispatch = useDispatch()

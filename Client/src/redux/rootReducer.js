@@ -11,7 +11,7 @@ import {
     LOGOUT,
     SET_TOKEN,
     RESET_TOKEN,
-} from './Actions/actionTypes'
+} from './actions/actionTypes'
 
 let initialState = {
     auxies: [],

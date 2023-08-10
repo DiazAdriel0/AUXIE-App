@@ -6,7 +6,7 @@ import {
     filterAuxiesByService,
     orderAuxiesByPrice,
     orderAuxiesByRating,
-} from '../../redux/Actions/actions'
+} from '../../redux/actions/actions'
 
 const Filters = () => {
     const dispatch = useDispatch()

@@ -14,10 +14,10 @@ import { signOut } from 'firebase/auth'
 import axios from 'axios'
 
 //assets
-import LogoAuxie2 from '../../assets/Logos/logoAuxie2.svg'
+import LogoAuxie2 from '../../assets/logos/logoAuxie2.svg'
 
 //actions
-import { logOut, resetToken } from '../../redux/Actions/actions'
+import { logOut, resetToken } from '../../redux/actions/actions'
 
 //Material UI
 import { Popper, Box } from '@mui/material'
