@@ -24,6 +24,7 @@ import Offer from './views/landingViews/offer/Offer'
 // Home
 import HomeAuxie from './views/Home/home-auxie/HomeAuxie'
 import HomeConsumer from './views/Home/home-consumer/HomeConsumer'
+// a ver
 
 //Home  Views
 import AuxieInbox from './views/home-views/auxie-views/auxie-inbox/AuxieInbox'
