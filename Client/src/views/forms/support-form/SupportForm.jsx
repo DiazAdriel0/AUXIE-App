@@ -63,7 +63,7 @@ const SupportForm = () => {
         } else {
             try {
                 const response = await axios.post(
-                    '/claims/',
+                    'http://localhost:3001/claims/',
                     input, {
                         headers: {
                             'authorization': `Bearer ${token}`
