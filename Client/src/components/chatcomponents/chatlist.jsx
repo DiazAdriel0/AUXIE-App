@@ -5,7 +5,7 @@ import ChatSelector from './ChatSelector'; // Import the ChatSelector component
 import { doc, onSnapshot } from 'firebase/firestore';
 import { auth, db } from '../../config/firebase-config';
 import { Chat } from '../../views/Chat/chat';
-
+import style from './chatlist.module.scss'
 const Chatlist = () => {
   const [selectedUser, setSelectedUser] = useState(null); // Store the selected sender
   const [chats, setChats] = useState([]);
@@ -28,9 +28,27 @@ const Chatlist = () => {
 
     user.uid && getChats();
   }, [user.uid]);
+//   useEffect(() => {
+//     getUser(token, uid)
+// }, [selectedUser])
+// const getUser = async (token, uid) => {
+//     try {
+//         const response = await axios.get(`/consumers/${uid}`, {
+//             headers: {
+//                 authorization: `Bearer ${token}`,
+//             },
+//         })
+//         if (response) {
+//             setUser(response.data)
+//         }
+//     } catch (error) {
+//         console.error(error.message)
+//     }
+// }
+
   console.log('sender' + user.inbox[0].sender)
   return (
-    <div>
+    <div className={style.chatselector}>
       {/* Display the ChatSelector component */}
       <ChatSelector inbox={user.inbox} handleUserSelection={handleUserSelection} />
      
