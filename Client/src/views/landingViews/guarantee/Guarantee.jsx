@@ -14,7 +14,8 @@ const Guarantee = () => {
             {isLogged ? <NavGeneral /> : <NavLanding />}
             <div
                 className={!menuLanding ? style.guarantee : style.guaranteeHide}
-            >
+                
+            > </div>
                 <div className={style.reset}>
                     <div>
                         <div className={style.title}>
@@ -72,7 +73,6 @@ const Guarantee = () => {
                         </button>
                     </div>
                 </div>
-            </div>
         </>
     )
 }

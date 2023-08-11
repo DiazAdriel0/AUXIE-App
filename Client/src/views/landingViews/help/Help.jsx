@@ -13,6 +13,7 @@ const Help = () => {
         <>
             {isLogged ? <NavGeneral /> : <NavLanding />}
             <div className={!menuLanding ? style.helpShow : style.helpHide}>
+            </div>
                 <div className={style.help}>
                     <h2>Ayuda</h2>
                 </div>
@@ -37,7 +38,6 @@ const Help = () => {
                         </Link>
                     </section>
                 </div>
-            </div>
         </>
     )
 }
