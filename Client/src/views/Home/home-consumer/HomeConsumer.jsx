@@ -24,6 +24,7 @@ const HomeConsumer = () => {
     const user = useSelector((state) => state.loggedUser)
     const token = useSelector((state) => state.token)
     const isConsumer = Object.keys(user).includes('requiredServices')
+    const isOtro = !user.gender ? true : (user.gender === 'Otro' ? true : false)
 
     useEffect(() => {
         if (Object.keys(user).length === 0) return navigate('/clientlogin')
@@ -32,6 +33,7 @@ const HomeConsumer = () => {
         dispatch(resetAuxiesCatalog(token))
     }, [])
 
+
     return (
         <>
             {isConsumer ? (
@@ -39,9 +41,18 @@ const HomeConsumer = () => {
                     <NavGeneral />
                     <div className={style.contHome}>
                         <div className={style.welcomeMessage}>
+                        {user.gender && user.gender === 'Masculino' ? (
                             <h1 className={style.message}>
-                                Bienvenido/a {user.firstName}
-                            </h1>
+                                Bienvenido {user.firstName}
+                            </h1>):null}
+                        {user.gender && user.gender === 'Femenino' ? (
+                            <h1 className={style.message}>
+                                Bienvenida {user.firstName}
+                            </h1>):null}
+                        {isOtro ? (
+                        <h1 className={style.message}>
+                                Bienvenide {user.firstName}
+                            </h1>): null}
                         </div>
                         <div className={style.catalogTitleCont}>
                             <h2 className={style.catalogTitle}>
@@ -59,15 +70,14 @@ const HomeConsumer = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={style.servicesTitleCont}>
+                    {/* <div className={style.servicesTitleCont}>
                         <h2 className={style.servicesTitle}>
                             Servicios contratados
                         </h2>
                     </div>
-                    <div className={style.services}>
-                        {/* Componente que muestra los objectos de la propiedad requiredServices del usuario, falta agregarles servicios a los usuarios */}
-                        {/* <ClientRequiredServices/> */}
-                    </div>
+                    <div className={style.services}>  
+                        { <ClientRequiredServices/> } // Componente que muestra los objectos de la propiedad requiredServices del usuario, falta agregarles servicios a los usuarios
+                    </div> */}
                     <footer className={style.footer}>
                         <div className={style.footerInfo}>
                             <Link to={'/aboutUs'}>
