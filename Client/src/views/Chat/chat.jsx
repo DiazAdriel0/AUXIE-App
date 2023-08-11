@@ -18,12 +18,22 @@ export const Chat = ({ recipient,auxiedetails }) => {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const conversationsRef = collection(db, "conversations"); // Change: Use 'conversations' collection
-  const participants = [user.userUid || user.googleId, recipient];
-  participants.sort(); // Sort for consistent order
-  const conversationId = participants.join("_");
-console.log(conversationId)
-  const conversationData = { participants };
+  const participants = [auth.currentUser.uid, recipient];
+  const ordered =participants.sort((a,b)=>{
+    if (a.toLowerCase() > b.toLowerCase()) {
+      return -1;
+    } else if (a.toLowerCase() < b.toLowerCase()) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }); // Sort for consistent order
+  
+  console.log(ordered)
+  const conversationId = ordered.join("_");
 
+  const conversationData = { participants };
+//ZpsbcXOZ7SSFon98N3REltncKZU2_dCsvWUrHtZhArwOzAYTzF5Y74Sf2
   useEffect(() => {
     // Fetch or create a conversation document
     const getOrCreateConversation = async () => {
@@ -79,7 +89,7 @@ console.log(conversationId)
       <div className="messages">
         {messages.map((message) => (
           <div key={message.id} className="message">
-            <span className="user">{message.sender === user.userUid || user.googleId ? "You" : `User ${recipient}`}:</span> {message.text}
+            <span className="user">{message.recipient === auth.currentUser.uid ? `User ${recipient}` : "You"}:</span> {message.text}
           </div>
         ))}
       </div>

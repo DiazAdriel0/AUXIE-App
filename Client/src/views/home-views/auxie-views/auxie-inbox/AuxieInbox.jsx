@@ -20,6 +20,7 @@ const AuxieInbox = () => {
                     <div className={style.inProgress}>
                         <span>In Progress...</span>
                         <Chat auxiedetails={auth.currentUser.uid}recipient={user.inbox[0].sender}/>
+                        
                     </div>
                 </div>
                 <div className={style.payments}>

@@ -17,6 +17,7 @@ const Detail = () => {
     const token = useSelector((state) => {
         return state.token
     })
+    console.log(auxieDetails)
     useEffect(() => {
         const getDetails = async function (token) {
             const res = await axios.get(`/providers/${id}`, {
