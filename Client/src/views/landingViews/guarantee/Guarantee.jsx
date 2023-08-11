@@ -14,22 +14,23 @@ const Guarantee = () => {
             {isLogged ? <NavGeneral /> : <NavLanding />}
             <div
                 className={!menuLanding ? style.guarantee : style.guaranteeHide}
+                lang='scss'
             >
-                <div className={style.reset}>
+                <div className={style.reset} lang='scss'>
                     <div>
-                        <div className={style.title}>
+                        <div className={style.title} lang='scss'>
                             <h2>Garantias</h2>
                         </div>
                     </div>
                 </div>
-                <div className={style.square}>
+                <div className={style.square} lang='scss'>
                     <h1>La Garantia de felicidad AUXIE</h1>
                     <p>
                         Tu felicidad es nuestra meta. Si no estas feliz, es
                         nuestro deber arreglarlo.
                     </p>
                 </div>
-                <div className={style.anotherSection}>
+                <div className={style.anotherSection} lang='scss'>
                     <h2>Tu experiencia importa</h2>
                     <p>
                         AUXIE se esfuerza por conectarlo con el profesional
@@ -38,8 +39,8 @@ const Guarantee = () => {
                         pagó directamente en la plataforma, enviaremos otro
                         profesional sin cargo adicional para su próxima reserva.
                     </p>
-                    <div className={style.section1}>
-                        <div className={style.customShapeDividerTop1690916851}>
+                    <div className={style.section1} lang='scss'>
+                        <div className={style.customShapeDividerTop1690916851} lang='scss'>
                             <svg
                                 data-name="Layer 1"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +68,7 @@ const Guarantee = () => {
                             Si no estás satisfecho, ¡háznoslo saber y
                             trabajaremos para corregirlo!
                         </p>
-                        <button className={style.contact}>
+                        <button className={style.contact} lang='scss'>
                             <Link to="/support">Contáctanos</Link>
                         </button>
                     </div>
