@@ -48,6 +48,9 @@ import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
 // import Chat from './views/chat/Chat';
 import ChatApp from './views/chat/App'
 
+import { onAuthStateChanged, signInAnonymously } from 'firebase/auth'
+import { auth } from './config/firebase-config'
+
 //URL Back
 import axios from 'axios'
 const apiBackUrl = import.meta.env.VITE_API_BACK_URL
@@ -61,7 +64,9 @@ function App() {
     const token = useSelector((state) => {
         return state.token
     })
-    console.log(token)
+
+    const auxies = useSelector((state) => state.auxies)
+    const services = useSelector((state) => state.services)
     // window.addEventListener('beforeunload', function () {
     //     // Aquí puedes ejecutar la lógica de tu función logOut
     //     dispatch(logOut({}))
@@ -74,6 +79,34 @@ function App() {
             dispatch(getAllAuxies(token))
             dispatch(getAllServices(token))
         }
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                const token = await user.getIdToken()
+                if (!auxies.length) {
+                    dispatch(getAllAuxies(token))
+                }
+                if (!services.length) {
+                    dispatch(getAllServices(token))
+                }
+            } else {
+                const generateAnonymousToken = async () => {
+                    try {
+                        const userCredential = await signInAnonymously(auth)
+                        const user = userCredential.user
+                        const token = await user.getIdToken()
+                        console.log('anonimo:' + token)
+                        // Puedes utilizar el token como token para tus solicitudes
+                        dispatch(getAllAuxies(token))
+                        dispatch(getAllServices(token))
+                    } catch (error) {
+                        console.error('Error al generar token anónimo:', error)
+                    }
+                }
+                generateAnonymousToken()
+            }
+        })
+
+        return () => unsubscribe()
     }, [])
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
