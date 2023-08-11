@@ -1,5 +1,6 @@
 const createProvider = require('../../Controllers/ProvidersControllers/createProvider')
 const bcrypt = require('bcrypt')
+const transporter = require('./../../Utils/nodemailer')
 
 const postProvider = async (req, res) => {
     try {
@@ -34,6 +35,31 @@ const postProvider = async (req, res) => {
             )
         if (createdProvider.message === 'email repetido')
             throw new Error(`El email ${newProvider.email} ya está registrado`)
+
+        let pronoun
+
+        // prettier-ignore
+        switch (gender) {
+        case 'Masculino':
+            pronoun = 'o'
+            break
+        case 'Femenino':
+            pronoun = 'a'
+            break
+        case 'Otro':
+            pronoun = 'e'
+            break
+        default:
+            pronoun = 'x'
+            break
+        }
+
+        await transporter.sendMail({
+            from: `Team Auxie ${process.env.EMAIL}`,
+            to: email,
+            subject: `Bienvenid${pronoun} ${firstName}`,
+            text: `Bienvenid${pronoun} a Auxie!`,
+        })
 
         res.status(200).json(createdProvider)
     } catch (error) {

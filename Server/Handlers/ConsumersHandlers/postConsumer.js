@@ -49,19 +49,20 @@ const postConsumer = async (req, res) => {
 
         let pronoun
 
+        // prettier-ignore
         switch (gender) {
-            case 'Masculino':
-                pronoun = 'o'
-                break
-            case 'Femenino':
-                pronoun = 'a'
-                break
-            case 'Otro':
-                pronoun = 'e'
-                break
-            default:
-                pronoun = 'x'
-                break
+        case 'Masculino':
+            pronoun = 'o'
+            break
+        case 'Femenino':
+            pronoun = 'a'
+            break
+        case 'Otro':
+            pronoun = 'e'
+            break
+        default:
+            pronoun = 'x'
+            break
         }
 
         await transporter.sendMail({
@@ -73,6 +74,7 @@ const postConsumer = async (req, res) => {
 
         res.status(200).json('usuario creado con exito')
     } catch (error) {
+        console.error(error)
         res.status(400).json({ error: error.message })
     }
 }
