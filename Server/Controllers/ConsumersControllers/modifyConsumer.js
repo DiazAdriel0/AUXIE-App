@@ -40,7 +40,7 @@ const modifyConsumer = async (req) => {
                     typeof value === 'object'
                 )
             })
-
+        console.log(filledProperties)
         const filledObject = Object.fromEntries(filledProperties)
         const consumer = await Consumer.updateOne({ _id: id }, filledObject)
         console.log(consumer)

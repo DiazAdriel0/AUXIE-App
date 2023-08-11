@@ -28,7 +28,13 @@ const ProfileAuxies = () => {
         const formData = new FormData()
         formData.append('image', newImage)
         formData.append('bio', newBio)
-        dispatch( updateProfile({ image: newImage, bio: newBio }, token, 'consumers'))
+        dispatch(
+            updateProfile(
+                { id: provider.id, image: newImage, bio: newBio },
+                token,
+                'consumers'
+            )
+        )
     }
 
     return (
@@ -41,10 +47,12 @@ const ProfileAuxies = () => {
                     onChange={handleImageChange}
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <h1>{provider.firstName} {provider.lastName}</h1>
+                <h1>
+                    {provider.firstName} {provider.lastName}
+                </h1>
                 <h4>Genero: {provider.gender}</h4>
                 <h3>
-                    Email: {provider.email}{' '} <button>Cambiar contraseña</button>
+                    Email: {provider.email} <button>Cambiar contraseña</button>
                 </h3>
                 <textarea value={newBio} onChange={handleBioChange} />
                 <h6>Te uniste: {provider.registerDate}</h6>

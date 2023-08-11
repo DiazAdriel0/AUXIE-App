@@ -20,9 +20,15 @@ const ProfileConsumers = () => {
     }
 
     const handleUpdateProfile = () => {
-        const formData = new FormData()
+        const formData = new FormData('image', newImage)
         formData.append('image', newImage)
-        dispatch(updateProfile({ image: newImage }, token, 'consumers'))
+        dispatch(
+            updateProfile(
+                { id: consumer.id, image: newImage },
+                token,
+                'consumers'
+            )
+        )
     }
 
     return (
@@ -35,7 +41,9 @@ const ProfileConsumers = () => {
                     onChange={handleImageChange}
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <h1>{consumer.firstName} {consumer.lastName}</h1>
+                <h1>
+                    {consumer.firstName} {consumer.lastName}
+                </h1>
                 <h4>
                     {consumer.isAdmin && (
                         <div>
