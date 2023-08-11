@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import Onechat from './onechat';
 import ChatSelector from './ChatSelector'; // Import the ChatSelector component
 import { doc, onSnapshot } from 'firebase/firestore';
 import { auth, db } from '../../config/firebase-config';
-import { Chat } from '../../views/Chat/chat';
+import { Chat } from '../../views/chat/chat';
 import style from './chatlist.module.scss'
 const Chatlist = () => {
   const [selectedUser, setSelectedUser] = useState(null); // Store the selected sender

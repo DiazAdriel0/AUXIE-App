@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import style from './card.module.scss'
-import { addFavorite, removeFavorite } from '../../redux/Actions/actions'
+import { addFavorite, removeFavorite } from '../../redux/actions/actions'
 import Checkbox from '@mui/material/Checkbox'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
@@ -82,12 +82,14 @@ const Card = (user) => {
                         <p>{averageRating}</p>
                     </div>
                 </div>
-                <div className={style.favorite}><Checkbox
-                icon={<FavoriteBorder />}
-                checkedIcon={<Favorite />}
-                onClick={handleFavorite}
-                checked={isFav}
-            /></div>
+                <div className={style.favorite}>
+                    <Checkbox
+                        icon={<FavoriteBorder />}
+                        checkedIcon={<Favorite />}
+                        onClick={handleFavorite}
+                        checked={isFav}
+                    />
+                </div>
             </div>
             <div className={style.contServices}>
                 {services.length > 0 ? (

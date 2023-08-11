@@ -2,14 +2,14 @@
 import './App.scss'
 import { LocalizationProvider } from '@mui/x-date-pickers' //esto es para date and time picker (para citas)
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs' //esto es para date and time picker (para citas)
-import 'dayjs/locale/en-gb';
+import 'dayjs/locale/en-gb'
 // Import Hooks
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 // Import Actions
-import { getAllAuxies, getAllServices } from './redux/Actions/actions'
+import { getAllAuxies, getAllServices } from './redux/actions/actions'
 
 // Import Views
 
@@ -38,17 +38,16 @@ import ClientForm from './views/forms/client-form/ClientForm'
 import SupportForm from '../src/views/forms/support-form/SupportForm'
 
 // Logins
-import ClientLogin from './views/Login/consumer-login/clientLogin'
-import AuxieLogin from './views/Login/auxie-login/auxieLogin'
+import ClientLogin from './views/login/consumer-login/clientLogin'
+import AuxieLogin from './views/login/auxie-login/auxieLogin'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
-import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
+import JobRequestForm from './views/forms/jobrequest-form/JobRequestForm'
 
-// import Chat from './views/Chat/chat';
-import ChatApp from './views/Chat/App';
+import ChatApp from './views/chat/App'
 
-import ButtonMercadoPago from './components/buttonMercadoPago/ButtonMercadoPago';
+import ButtonMercadoPago from './components/buttonMercadoPago/ButtonMercadoPago'
 
 //URL Back
 import axios from 'axios'
@@ -60,8 +59,8 @@ axios.defaults.baseURL = urlApi
 
 function App() {
     const dispatch = useDispatch()
-    const token = useSelector(state=>{
-        return state.token;
+    const token = useSelector((state) => {
+        return state.token
     })
 
     // window.addEventListener('beforeunload', function () {
@@ -73,12 +72,12 @@ function App() {
 
     useEffect(() => {
         if (token) {
-        dispatch(getAllAuxies(token))
-        dispatch(getAllServices(token))
+            dispatch(getAllAuxies(token))
+            dispatch(getAllServices(token))
         }
     }, [])
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
             <div>
                 <Routes>
                     <Route path="/" element={<Landing />} />
@@ -107,7 +106,7 @@ function App() {
                     <Route path="/detail/:id" element={<Detail />} />
 
                     {/*Profile paths */}
-                    <Route path='/profile' element={<ProfilePage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
 
                     {/* Register paths */}
                     <Route path="/auxieform" element={<Form />} />
@@ -122,7 +121,7 @@ function App() {
                     <Route path="*" element={<PageNotFound />} />
                     <Route path="/chat" element={<ChatApp />} />
 
-                    <Route path='/buy' element={<ButtonMercadoPago/>}/>
+                    <Route path="/buy" element={<ButtonMercadoPago />} />
                 </Routes>
             </div>
         </LocalizationProvider>

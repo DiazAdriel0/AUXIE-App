@@ -10,7 +10,7 @@ import {
     loggedUser,
     setToken,
     updateProfile,
-} from '../../../redux/Actions/actions'
+} from '../../../redux/actions/actions'
 import {
     signInWithPopup,
     GoogleAuthProvider,
@@ -19,7 +19,6 @@ import {
 import { auth } from '../../../config/firebase-config'
 
 const ClientLogin = () => {
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { errors, validate } = useValidations()
@@ -47,16 +46,11 @@ const ClientLogin = () => {
 
     const handleLogin = async (token) => {
         try {
-            const { data } = await axios.post(
-
-                '/providers/login',
-                input,{
-                    headers:{
-                        'authorization': `Bearer ${token}`
-                    }
-
-                }
-            )
+            const { data } = await axios.post('/providers/login', input, {
+                headers: {
+                    authorization: `Bearer ${token}`,
+                },
+            })
             if (data) {
                 dispatch(loggedUser(data))
                 setAccess(true)
@@ -75,7 +69,8 @@ const ClientLogin = () => {
                 dispatch(
                     updateProfile(
                         { userUid: auth.currentUser.uid, id: logged.id },
-                        auth.currentUser.accessToken, 'providers',
+                        auth.currentUser.accessToken,
+                        'providers'
                     )
                 )
             }

@@ -14,7 +14,7 @@ import { signOut } from 'firebase/auth'
 import axios from 'axios'
 
 //actions
-import { logOut, resetToken } from '../../../redux/Actions/actions'
+import { logOut, resetToken } from '../../../redux/actions/actions'
 
 //Material UI
 import { Popper, Box } from '@mui/material'

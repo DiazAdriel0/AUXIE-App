@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { menuOpen } from '../redux/Actions/actions'
+import { menuOpen } from '../redux/actions/actions'
 const useMenuStates = () => {
     const dispatch = useDispatch()
 
