@@ -5,13 +5,10 @@ import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()
 
-export const AppWrapper = ({ children, isAuth, setIsAuth, setIsInChat }) => {
-    // const signUserOut = async () => {
-    //   await signOut(auth);
+export const AppWrapper = ({ children, setIsInChat }) => {
+  
     cookies.remove('auth-token')
-    //   setIsAuth(false);
-    //   setIsInChat(false);
-    // };
+  
 
     return (
         <div className="App">

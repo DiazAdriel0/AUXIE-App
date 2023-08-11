@@ -19,7 +19,7 @@ function ChatApp({recipient}) {
         setIsAuth={setIsAuth}
         setIsInChat={setIsInChat}
       >
-        {/* <Auth setIsAuth={setIsAuth} /> */}
+        
       </AppWrapper>
     );
   }
