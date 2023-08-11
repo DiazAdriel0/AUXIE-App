@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import style from './card.module.scss'
 import { addFavorite, removeFavorite } from '../../redux/Actions/actions'
+import Checkbox from '@mui/material/Checkbox'
+import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
+import Favorite from '@mui/icons-material/Favorite'
 
 const Card = (user) => {
     const dispatch = useDispatch()
@@ -15,14 +18,14 @@ const Card = (user) => {
     const handleFavorite = () => {
         const remover = {
             consumerId: consumer.id,
-            id: id
+            id: id,
         }
         if (isFav) {
             dispatch(removeFavorite(remover, token))
             setIsFav(false)
         }
         if (!isFav) {
-            dispatch(addFavorite({...user, consumerId: consumer.id}, token))
+            dispatch(addFavorite({ ...user, consumerId: consumer.id }, token))
             setIsFav(true)
         }
     }
@@ -34,16 +37,13 @@ const Card = (user) => {
     useEffect(() => {
         consumer.favoritesProviders.forEach((fav) => {
             if (fav.id === id) {
-               setIsFav(true);
+                setIsFav(true)
             }
-         });
-    },[consumer.favoritesProviders])
+        })
+    }, [])
 
     return (
         <div className={style.card}>
-            <button className={style.favButton} onClick={handleFavorite}>
-                Fav
-            </button>
             <div className={style.contPersonal}>
                 <div className={style.profilePic}>
                     <img
@@ -82,6 +82,12 @@ const Card = (user) => {
                         <p>{averageRating}</p>
                     </div>
                 </div>
+                <div className={style.favorite}><Checkbox
+                icon={<FavoriteBorder />}
+                checkedIcon={<Favorite />}
+                onClick={handleFavorite}
+                checked={isFav}
+            /></div>
             </div>
             <div className={style.contServices}>
                 {services.length > 0 ? (
@@ -126,21 +132,3 @@ const Card = (user) => {
 }
 
 export default Card
-
-/* {completedWorks?.map((complete) => {
-                return (
-                    <div className={style.completedDiv} key={completeKey++}>
-                        <h5>Servicios Completados</h5>
-                        <p>{complete.service}</p>
-
-                        {complete.reviews.map((review) => {
-                            return (
-                                <p key={review.review}>
-                                    {` Review de ${review.username} :`}
-                                    {review.review}
-                                </p>
-                            )
-                        })}
-                    </div>
-                )
-            })} */
