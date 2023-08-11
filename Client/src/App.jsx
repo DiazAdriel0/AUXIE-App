@@ -48,7 +48,7 @@ import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
 // import Chat from './views/Chat/chat';
 import ChatApp from './views/Chat/App';
 
-import ButtonMercadoPago from './components/buttonMercadoPago/buttonMercadoPago';
+import ButtonMercadoPago from './components/buttonMercadoPago/ButtonMercadoPago';
 
 //URL Back
 import axios from 'axios'
@@ -122,7 +122,7 @@ function App() {
                     <Route path="*" element={<PageNotFound />} />
                     <Route path="/chat" element={<ChatApp />} />
 
-                    <Route path='/create_preference' element={<ButtonMercadoPago/>}/>
+                    <Route path='/buy' element={<ButtonMercadoPago/>}/>
                 </Routes>
             </div>
         </LocalizationProvider>
