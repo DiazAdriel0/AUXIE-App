@@ -16,6 +16,7 @@ import CircleIconAuxie from '../../assets/Logos/CircleIconAuxie.png'
 import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
 import ButtonUp from '../../components/buttons/buttonUp/ButtonUp'
+import FeaturedAuxies from '../../components/featuredAuxies/FeaturedAuxies'
 
 //anonimos tokens y actions
 import { getAllAuxies, getAllServices } from '../../redux/Actions/actions'
@@ -321,18 +322,8 @@ const Landing = () => {
                         {/* Section Auxies */}
                         <section className={style.auxies}>
                             <h3>Auxies Destacados</h3>
-                            <div className={style.featuredAuxies}>
-                                <ul className={style.featuredlist}>
-                                    <li className={style.cardFeatured}>
-                                        Josecito
-                                    </li>
-                                    <li className={style.cardFeatured}>
-                                        Manueh
-                                    </li>
-                                    <li className={style.cardFeatured}>
-                                        Abril
-                                    </li>
-                                </ul>
+                            <div className={style.featuredAuxiesCont}>
+                                <FeaturedAuxies />
                             </div>
                         </section>
                     </Animated>
