@@ -306,13 +306,9 @@
         justify-content: center;
         align-items: center;
 
-        .featuredAuxies {
+        .featuredAuxiesCont {
             border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50%;
-            height: 50%;
+            width: 80%;
             background-color: #b8dbd9;
 
             .featuredlist {
