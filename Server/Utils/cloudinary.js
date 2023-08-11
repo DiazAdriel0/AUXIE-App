@@ -27,8 +27,15 @@ const uploadServiceImage = async (filePath) => {
     })
 }
 
+const uploadClaimImage = async (filePath) => {
+    return await cloudinary.uploader.upload(filePath, {
+        folder: 'AUXIE App/Claims Images',
+    })
+}
+
 module.exports = {
     uploadProfileImageToProvider,
     uploadProfileImageToConsumer,
     uploadServiceImage,
+    uploadClaimImage,
 }
