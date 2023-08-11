@@ -1,23 +1,16 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-// import { useEffect } from 'react'
-// import { useParams } from 'react-router-dom'
-// import { getDetailsConsumer } from '../../../redux/Actions/actions'
+import { updateProfile } from '../../../redux/Actions/actions'
 
 const ProfileConsumers = () => {
-    // const { id } = useParams()
     const consumer = useSelector((state) => state.loggedUser)
+    const token = useSelector((state) => state.token)
     const [newImage, setNewImage] = useState(null)
     const [error, setError] = useState(null)
     const dispatch = useDispatch()
-    // const token = useSelector((state) => state.token)
-    // const dispatch = useDispatch()
-    // useEffect(() => {
-    //     dispatch(getDetailsConsumer(id, token))
-    // }, [dispatch, id])
 
-    const handleImageChange = (e) => {
-        const file = e.target.files[0]
+    const handleImageChange = (elem) => {
+        const file = elem.target.files[0]
         if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
             setNewImage(file)
             setError(null)
@@ -27,14 +20,9 @@ const ProfileConsumers = () => {
     }
 
     const handleUpdateProfile = () => {
-        if (newImage) {
-            const formData = new FormData()
-            formData.append('image', newImage)
-
-            dispatch(updateConsumerProfile(consumer.id, formData))
-        } else {
-            setError('Por favor, selecciona una imagen antes de guardar.')
-        }
+        const formData = new FormData()
+        formData.append('image', newImage)
+        dispatch(updateProfile({ image: newImage }, token, 'consumers'))
     }
 
     return (
@@ -47,7 +35,7 @@ const ProfileConsumers = () => {
                     onChange={handleImageChange}
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <h1>{`${consumer.firstName} ${consumer.lastName}`}</h1>
+                <h1>{consumer.firstName} {consumer.lastName}</h1>
                 <h4>
                     {consumer.isAdmin && (
                         <div>

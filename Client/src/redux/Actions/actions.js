@@ -211,7 +211,7 @@ export function resetToken() {
 }
 UPDATE_PROFILE
 
-export function updateProfile(input, token,user) {
+export function updateProfile(input, token, user) {
     return async function (dispatch) {
         
         try {
