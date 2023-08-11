@@ -132,21 +132,3 @@ const Card = (user) => {
 }
 
 export default Card
-
-/* {completedWorks?.map((complete) => {
-                return (
-                    <div className={style.completedDiv} key={completeKey++}>
-                        <h5>Servicios Completados</h5>
-                        <p>{complete.service}</p>
-
-                        {complete.reviews.map((review) => {
-                            return (
-                                <p key={review.review}>
-                                    {` Review de ${review.username} :`}
-                                    {review.review}
-                                </p>
-                            )
-                        })}
-                    </div>
-                )
-            })} */
