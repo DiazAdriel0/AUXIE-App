@@ -3,7 +3,7 @@ import style from './landing.module.scss'
 //* Import Hooks
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
 //*Import Animations
@@ -127,6 +127,8 @@ const Landing = () => {
             case 'toClientForm':
                 navigate('/clientform')
                 break
+            case 'toHelp':
+                navigate('/help')
         }
     }
 
@@ -258,9 +260,11 @@ const Landing = () => {
                                 </span>
                             </p>
                         </div>
-                        <button className={style.buttonSlogan}>
-                            Contratar
-                        </button>
+                        <div className={style.buttonSloganCont}>
+                            <button className={style.buttonSlogan} onClick={handleClick} value={'toClientForm'}>
+                                Contratar
+                            </button>
+                        </div>
                     </section>
                 </Animated>
 
@@ -307,11 +311,11 @@ const Landing = () => {
                                     </span>
                                 </p>
                             </div>
-                            <Link to="/help">
-                                <button className={style.buttonSlogan1}>
-                                    Mas informacion
-                                </button>
-                            </Link>
+                            <div className={style.buttonSlogan1Cont}>
+                                    <button className={style.buttonSlogan1} onClick={handleClick} value={'toHelp'}>
+                                        Mas informacion
+                                    </button>
+                            </div>
                         </section>
 
                         {/* Section Auxies */}
