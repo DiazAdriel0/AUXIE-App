@@ -11,17 +11,29 @@ import {
 } from "firebase/firestore";
 
 import "./Chat.css";
+import { useSelector } from "react-redux";
 
-export const Chat = ({ recipient }) => {
+export const Chat = ({ recipient,auxiedetails }) => {
+  const user = useSelector((state)=>state.loggedUser)
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const conversationsRef = collection(db, "conversations"); // Change: Use 'conversations' collection
   const participants = [auth.currentUser.uid, recipient];
-  participants.sort(); // Sort for consistent order
-  const conversationId = participants.join("_");
-console.log(conversationId)
-  const conversationData = { participants };
+  const ordered =participants.sort((a,b)=>{
+    if (a.toLowerCase() > b.toLowerCase()) {
+      return -1;
+    } else if (a.toLowerCase() < b.toLowerCase()) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }); // Sort for consistent order
+  
+  console.log(ordered)
+  const conversationId = ordered.join("_");
 
+  const conversationData = { participants };
+//ZpsbcXOZ7SSFon98N3REltncKZU2_dCsvWUrHtZhArwOzAYTzF5Y74Sf2
   useEffect(() => {
     // Fetch or create a conversation document
     const getOrCreateConversation = async () => {
@@ -62,7 +74,7 @@ console.log(conversationId)
     await addDoc(messagesRef, {
       text: newMessage,
       createdAt: serverTimestamp(),
-      sender: auth.currentUser.uid,
+      sender: user.userUid || user.googleId,
       recipient: recipient,
     });
 
@@ -72,12 +84,12 @@ console.log(conversationId)
   return (
     <div className="chat-app">
       <div className="header">
-        <h1>Conversation with User: {recipient}</h1>
+        <h1>Conversation with User: {auxiedetails.firstName}</h1>
       </div>
       <div className="messages">
         {messages.map((message) => (
           <div key={message.id} className="message">
-            <span className="user">{message.sender === auth.currentUser.uid ? "You" : `User ${recipient}`}:</span> {message.text}
+            <span className="user">{message.recipient === auth.currentUser.uid ? `User ${recipient}` : "You"}:</span> {message.text}
           </div>
         ))}
       </div>

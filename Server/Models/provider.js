@@ -37,8 +37,11 @@ const providerSchema = new Schema({
     userUid:{
         type: String,
         default: '',
+    },
+    inbox:{
+        type: Array,
+        
     }
-
 })
 
 providerSchema.set('toJSON', {

@@ -9,7 +9,6 @@ const updateProvider = async (req, res) => {
         firstName,
         lastName,
         address,
-        image,
         username,
         services,
         bio,
