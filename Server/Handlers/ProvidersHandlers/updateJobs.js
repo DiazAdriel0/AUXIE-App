@@ -1,36 +1,19 @@
 const addJob = require('./../../Controllers/ProvidersControllers/addJob')
+const transporter = require('./../../Utils/nodemailer')
 
 const updateJobs = async (req, res) => {
     const { id } = req.params
     try {
-        const addService = await addJob(req.body, id)
+        const providerToAdd = await addJob(req.body, id)
 
-        if (addService.message)
+        if (providerToAdd.message)
             throw new Error('No se pudo agregar el servicio')
-
-        let pronoun
-
-        // prettier-ignore
-        switch (gender) {
-        case 'Masculino':
-            pronoun = 'o'
-            break
-        case 'Femenino':
-            pronoun = 'a'
-            break
-        case 'Otro':
-            pronoun = 'e'
-            break
-        default:
-            pronoun = 'x'
-            break
-        }
 
         await transporter.sendMail({
             from: `Team Auxie ${process.env.EMAIL}`,
-            to: email,
-            subject: `Bienvenid${pronoun} ${firstName}`,
-            text: `Bienvenid${pronoun} a Auxie!`,
+            to: providerToAdd.email,
+            subject: `${providerToAdd.firstName} has recibido una solicitud de trabajo`,
+            text: `Recibiste una solicitud para el servicio ${req.body.service}`,
         })
 
         res.status(200).json('Servicio solicitado con éxito')

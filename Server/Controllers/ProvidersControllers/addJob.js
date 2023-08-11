@@ -27,7 +27,7 @@ const addJob = async (newPendingService, id) => {
 
         await providerFound.save()
 
-        return true
+        return providerFound
     } catch (error) {
         console.error(error)
         return error
