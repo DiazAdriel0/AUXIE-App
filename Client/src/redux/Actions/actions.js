@@ -217,7 +217,7 @@ export function updateProfile(input, token,user) {
         try {
             const res = await axios.put(
                 
-                `http://localhost:3001/${user}/profile`,
+                `/${user}/profile`,
                 
                 input,
                 {
@@ -259,7 +259,7 @@ export function addFavorite(fav, token) {
 export function removeFavorite(fav, token) {
     return async function (dispatch) {
         try {
-            const res = await axios.delete(`http://localhost:3001/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`,{
+            const res = await axios.delete(`/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`,{
                 headers: {
                     authorization: `Bearer ${token}`,
                 }
