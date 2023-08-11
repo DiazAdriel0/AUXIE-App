@@ -14,9 +14,11 @@ const Guarantee = () => {
             {isLogged ? <NavGeneral /> : <NavLanding />}
             <div
                 className={!menuLanding ? style.guarantee : style.guaranteeHide}
+
                 lang='scss'
             >
                 <div className={style.reset} lang='scss'>
+
                     <div>
                         <div className={style.title} lang='scss'>
                             <h2>Garantias</h2>
@@ -73,7 +75,6 @@ const Guarantee = () => {
                         </button>
                     </div>
                 </div>
-            </div>
         </>
     )
 }

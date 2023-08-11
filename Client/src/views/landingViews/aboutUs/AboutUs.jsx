@@ -14,6 +14,7 @@ const AboutUs = () => {
         <>
             {isLogged ? <NavGeneral /> : <NavLanding />}
             <main className={!menuLanding ? style.main : style.mainHide}>
+            </main>
                 <div className={style.about}>
                     <h2>Todo sobre Auxie</h2>
                 </div>
@@ -869,7 +870,7 @@ const AboutUs = () => {
                         </center>
                     </div>
                 </div>
-            </main>
+            
         </>
     )
 }
