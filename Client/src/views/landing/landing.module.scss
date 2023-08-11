@@ -138,8 +138,6 @@
                 height: 100%;
                 font-size: 150%;
                 border-top-left-radius: 9px;
-                border-bottom-right-radius: 9px;
-                border-right: 1px solid var(--secondary--anchor--color-hover);
                 background-color: var(--sixth--color-light);
             }
             .searchAuxie:hover {
@@ -157,8 +155,6 @@
                 height: 100%;
                 font-size: 150%;
                 border-top-right-radius: 9px;
-                border-left: 1px solid var(--secondary--anchor--color-hover);
-                border-bottom-left-radius: 9px;
             }
             .turnAuxie:hover {
                 background-color: var(--secondary--anchor--color-hover);
@@ -191,7 +187,7 @@
             font-weight: 500;
             border-radius: 10px;
             color: white;
-            margin-top: 10%;
+            margin-top: 5%;
             width: 45%;
             // height: 40%;
         }
@@ -227,8 +223,7 @@
         z-index: 3;
         background-color: var(--fifth--color-light);
         display: flex;
-        flex-direction: column;
-
+        flex-flow: column wrap;
         width: 100%;
         height: 30vh;
         .divSlogan {
@@ -250,34 +245,55 @@
                 margin-bottom: 2%;
             }
         }
+        .buttonSloganCont{
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+            flex-grow: 30;
+        }
         .buttonSlogan {
             width: 12%;
+            height: 60%;
             margin: 1% 0 0 10%;
-            padding: 0.7%;
-            font-size: 1.5rem;
+            font-size: 120%;
+            text-align: center;
             font-family: var(--font-poppins);
             border-radius: 10px;
             border: none;
-
             background-color: var(--fourth--color-light);
-
             color: white;
-            height: 20%;
             // font-weight: bold;
         }
+        .buttonSlogan:hover {
+            cursor: pointer;
+            background-color: var(--primary--anchor--color--hover);
+            transition: background-color 0.5s ease;
+        }
     }
+.buttonSlogan1Cont {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        flex-grow: 30;
     .buttonSlogan1 {
-        width: 12%;
-        margin: 1% 0 0 10%;
-        padding: 1%;
-        font-size: 1.5rem;
-        font-family: var(--font-poppins);
-        border-radius: 10px;
-        border: none;
-        background-color: var(--fourth--color-light);
-        color: white;
-        height: 90%;
+            width: 12%;
+            height: 60%;
+            margin: 1% 0 0 10%;
+            font-size: 120%;
+            text-align: center;
+            font-family: var(--font-poppins);
+            border-radius: 10px;
+            border: none;
+            background-color: var(--fourth--color-light);
+            color: white;
     }
+    .buttonSlogan1:hover {
+        cursor: pointer;
+        background-color: var(--primary--anchor--color--hover);
+        transition: background-color 0.5s ease;
+    }
+}
+    
     /* Estilos para la sección 3 (cards) */
     .serviceCards {
         z-index: 4;
