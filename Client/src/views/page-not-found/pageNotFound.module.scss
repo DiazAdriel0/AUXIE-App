@@ -1,0 +1,30 @@
+.pageNotFound {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #0fa3b1;
+    .imgContainer {
+        height: 50%;
+        .logo {
+            width: 100%;
+        }
+    }
+    .textContainer {
+        font-family: var(--font-lilita);
+        -webkit-text-stroke: 1px rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        h2 {
+            font-size: 60px;
+        }
+        h4 {
+            font-size: 30px;
+        }
+        height: 25%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
