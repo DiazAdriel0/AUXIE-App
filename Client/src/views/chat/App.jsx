@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Chat } from '../chat/Chat'
-import { Auth } from '../chat/Auth'
 import { AppWrapper } from '../chat/AppWrapper'
 import Cookies from 'universal-cookie'
 import './App.css'
@@ -18,9 +17,7 @@ function ChatApp() {
                 isAuth={isAuth}
                 setIsAuth={setIsAuth}
                 setIsInChat={setIsInChat}
-            >
-                <Auth setIsAuth={setIsAuth} />
-            </AppWrapper>
+            ></AppWrapper>
         )
     }
 
