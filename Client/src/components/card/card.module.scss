@@ -39,6 +39,9 @@
     display: flex;
     justify-content: flex-start;
     width: 50%;
+    img {
+        object-fit: cover;
+    }
 }
 
 .contServices {

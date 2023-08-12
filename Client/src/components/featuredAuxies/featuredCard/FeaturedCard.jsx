@@ -9,6 +9,8 @@ const FeaturedCard = (user) => {
                 <img
                     src={image}
                     alt="imagen de perfil"
+                    width='100px'
+                    height='100px'
                 />
             </div>
             <div className={style.info}>
