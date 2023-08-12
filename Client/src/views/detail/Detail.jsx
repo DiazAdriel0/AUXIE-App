@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import NavGeneral from '../../components/nav-general/NavGeneral'
 import style from './detail.module.scss'
 import JobRequestForm from '../forms/JobRequest-Form/JobRequestForm'
-import { useSelector } from 'react-redux'
 // import ChatApp from '../Chat/App'
 import { Chat } from '../Chat/chat'
 // import { AppWrapper } from '../Chat/AppWrapper'
@@ -13,20 +12,14 @@ const Detail = () => {
     const [isInChat, setIsInChat] = useState(false)
     const [auxieDetails, setAuxieDetails] = useState({})
     let { id } = useParams()
-    const token = useSelector((state) => {
-        return state.token
-    })
+
 
     useEffect(() => {
-        const getDetails = async function (token) {
-            const res = await axios.get(`/providers/${id}`, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+        const getDetails = async function () {
+            const res = await axios.get(`/providers/${id}`)
             setAuxieDetails(res.data)
         }
-        getDetails(token)
+        getDetails()
     }, [])
     const handleClick = async () => {
         setIsInChat(true)
@@ -38,13 +31,7 @@ const Detail = () => {
                 inbox: {
                     sender: auth.currentUser.uid,
                 },
-            },
-            {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            }
-        )
+            })
     }
 
     return (

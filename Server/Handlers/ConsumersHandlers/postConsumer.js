@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt')
 const transporter = require('./../../Utils/nodemailer')
 
 const postConsumer = async (req, res) => {
-    const { firstName, lastName, gender, age, email, username, password } =
+    const { firstName,userUid, lastName, gender, age, email, username, password } =
         req.body
     try {
         if (
@@ -36,7 +36,7 @@ const postConsumer = async (req, res) => {
                     'https://res.cloudinary.com/dvj387b1u/image/upload/v1691558271/AUXIE%20App/Profile%20photos/Providers/mbvrsqvhpkjdffahemw1.png',
             },
             isActive: true,
-            userUid: '',
+            userUid,
         }
 
         const createdConsumer = await createConsumer(newConsumer)

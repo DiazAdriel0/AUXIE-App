@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     loggedUser,
-    setToken,
     updateProfile,
 } from '../../../redux/Actions/actions'
 import {
@@ -42,35 +41,35 @@ const ClientLogin = () => {
         )
         ///validations ///
     }
-    const handleLogin = async (token) => {
+    const handleLogin = async (input) => {
         try {
-            const response = await axios.post('/consumers/login', input, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
-            if (response) {
+
+            const response = await axios.post('/consumers/login',input)
+                if (response) {
+           
                 setAccess(true)
                 dispatch(loggedUser(response.data))
-                dispatch(setToken(token))
+
             }
         } catch (error) {
-            console.error('error: ' + error.response.data.error)
-            alert(error.response.data.error)
+            console.error('error: ' + error.message)
+            alert(error.message)
         }
     }
 
     useEffect(() => {
         if (access === true) {
             navigate('/homeconsumer')
-            if (!logged?.userUid) {
+            console.log(logged);
+            // eslint-disable-next-line no-prototype-builtins
+            if(logged.hasOwnProperty('firstName')){
+               if (!logged?.userUid) {
                 dispatch(
                     updateProfile(
-                        { userUid: auth.currentUser.uid, id: logged.id },
-                        auth.currentUser.accessToken,
-                        'consumers'
-                    )
-                )
+
+                        { userUid: auth.currentUser.uid, id: logged.id },'consumers')
+                )} 
+
             }
         }
     }, [access])
@@ -83,12 +82,11 @@ const ClientLogin = () => {
         const password = form.password.value
         try {
             const credential = await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            )
+                auth, email, password)
             if (credential) {
-                handleLogin(credential.user.accessToken)
+
+                handleLogin(input)
+
             }
             form.reset()
         } catch (error) {
@@ -122,9 +120,19 @@ const ClientLogin = () => {
             const provider = new GoogleAuthProvider()
             provider.setCustomParameters({ prompt: 'select_account' })
             const credential = await signInWithPopup(auth, provider)
-            const token = credential.user.accessToken
-            if (token) {
-                handleLogin(token)
+            const email = credential.user.email
+            const googleId = credential.user.uid
+            
+            if (credential) {
+                const data ={
+                    email:email,
+                    password:{
+                        googleId: `${googleId}`,
+                        name: `${credential.user.displayName}`,
+                        picture:`${credential.user.photoURL}` 
+                        }
+                    }
+                handleLogin(data)
             }
         } catch (error) {
             alert(error.message) //o como lo maneje el front sweet alert?

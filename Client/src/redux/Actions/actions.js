@@ -20,15 +20,11 @@ import {
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
-export function getAllAuxies(token) {
+export function getAllAuxies() {
     return async function (dispatch) {
         /* 'https://run.mocky.io/v3/f408d4d3-183d-46de-9b9b-e2eb86327ef0' */
         try {
-            const res = await axios('/providers', {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+            const res = await axios('/providers')
             return dispatch({
                 type: GET_ALL_AUXIES,
                 payload: res.data,
@@ -40,14 +36,10 @@ export function getAllAuxies(token) {
 }
 
 //action que pide todos los servicios del back (reemplazar URL)
-export function getAllServices(token) {
+export function getAllServices() {
     return async function (dispatch) {
         try {
-            const res = await axios('/services', {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+            const res = await axios('/services')
 
             return dispatch({
                 type: GET_ALL_SERVICES,
@@ -59,14 +51,10 @@ export function getAllServices(token) {
     }
 }
 
-export function getDetails(id, token) {
+export function getDetails(id) {
     return async function (dispatch) {
         try {
-            const res = await axios(`/providers/${id}`, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+            const res = await axios(`/providers/${id}`)
             return dispatch({
                 type: GET_AUXIE_DETAILS,
                 payload: res.data,
@@ -77,14 +65,10 @@ export function getDetails(id, token) {
     }
 }
 
-export function getDetailsConsumer(id, token) {
+export function getDetailsConsumer(id) {
     return async function (dispatch) {
         try {
-            const res = await axios(`/consumers/${id}`, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+            const res = await axios(`/consumers/${id}`)
             return dispatch({
                 type: GET_CONSUMER_DETAILS,
                 payload: res.data,
@@ -154,19 +138,14 @@ export const setCurrentPage = (page) => {
         })
     }
 }
-export function resetAuxiesCatalog(token) {
+export function resetAuxiesCatalog() {
     return function (dispatch) {
         try {
-            return dispatch(
-                {
-                    type: RESET_AUXIES_CATALOG,
-                },
-                {
-                    headers: {
-                        authorization: `Bearer ${token}`,
-                    },
-                }
-            )
+
+            return dispatch({
+                type: RESET_AUXIES_CATALOG,
+            })
+
         } catch (e) {
             console.error(e)
         }
@@ -198,7 +177,7 @@ export function logOut(empty) {
         }
     }
 }
-export function setToken(token) {
+/* export function setToken(token) {
     return {
         type: SET_TOKEN,
         payload: token,
@@ -208,42 +187,39 @@ export function resetToken() {
     return {
         type: RESET_TOKEN,
     }
-}
+} */
 UPDATE_PROFILE
 
-export function updateProfile(input, token, user) {
+export function updateProfile(input, user) {
     return async function (dispatch) {
         try {
             const res = await axios.put(
-                `/${user}/profile`,
 
+                `/${user}/profile`,
                 input,
                 {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        authorization: `Bearer ${token}`,
+                     
                     },
                 }
             )
+
 
             return dispatch({
                 type: UPDATE_PROFILE,
                 payload: res.data,
             })
         } catch (e) {
-            console.log(e.response.data)
+            console.error(e.message)
         }
     }
 }
 
-export function addFavorite(fav, token) {
+export function addFavorite(fav) {
     return async function (dispatch) {
         try {
-            const res = await axios.put('/consumers/fav', fav, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+            const res = await axios.put('/consumers/fav', fav)
 
             return dispatch({
                 type: ADD_FAVORITE,
@@ -255,17 +231,12 @@ export function addFavorite(fav, token) {
     }
 }
 
-export function removeFavorite(fav, token) {
+export function removeFavorite(fav) {
     return async function (dispatch) {
         try {
-            const res = await axios.delete(
-                `/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`,
-                {
-                    headers: {
-                        authorization: `Bearer ${token}`,
-                    },
-                }
-            )
+
+            const res = await axios.delete(`/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`)
+
 
             return dispatch({
                 type: DELETE_FAVORITE,

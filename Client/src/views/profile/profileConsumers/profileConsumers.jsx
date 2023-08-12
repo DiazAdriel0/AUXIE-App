@@ -5,7 +5,6 @@ import { DateTime } from 'luxon'
 
 const ProfileConsumers = () => {
     const consumer = useSelector((state) => state.loggedUser)
-    const token = useSelector((state) => state.token)
     const [newImage, setNewImage] = useState(null)
     const [error, setError] = useState(null)
     const dispatch = useDispatch()
@@ -30,13 +29,15 @@ const ProfileConsumers = () => {
     const handleUpdateProfile = () => {
         const formData = new FormData()
         formData.append('image', newImage)
+
         dispatch(
             updateProfile(
                 { id: consumer.id, image: newImage },
-                token,
+           
                 'consumers'
             )
         )
+
     }
 
     return (

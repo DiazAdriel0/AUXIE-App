@@ -11,7 +11,6 @@ const Card = (user) => {
     const dispatch = useDispatch()
     const { id, lastName, firstName, averageRating, services, image } = user
     const consumer = useSelector((state) => state.loggedUser)
-    const token = useSelector((state) => state.token)
     const navigate = useNavigate()
     const [isFav, setIsFav] = useState(false)
 
@@ -21,11 +20,11 @@ const Card = (user) => {
             id: id,
         }
         if (isFav) {
-            dispatch(removeFavorite(remover, token))
+            dispatch(removeFavorite(remover))
             setIsFav(false)
         }
         if (!isFav) {
-            dispatch(addFavorite({ ...user, consumerId: consumer.id }, token))
+            dispatch(addFavorite({ ...user, consumerId: consumer.id }))
             setIsFav(true)
         }
     }

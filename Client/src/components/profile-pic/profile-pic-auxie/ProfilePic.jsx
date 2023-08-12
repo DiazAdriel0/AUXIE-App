@@ -14,7 +14,7 @@ import { signOut } from 'firebase/auth'
 import axios from 'axios'
 
 //actions
-import { logOut, resetToken } from '../../../redux/Actions/actions'
+import { logOut } from '../../../redux/Actions/actions'
 
 //Material UI
 import { Popper, Box } from '@mui/material'
@@ -26,10 +26,6 @@ const ProfilePicAuxie = () => {
     const [profileMenu, setProfileMenu] = useState(null)
 
     const isAuxie = Object.keys(user).includes('services') ? true : false
-
-    const token = useSelector((state) => {
-        return state.token
-    })
 
     const handleClick = (event) => {
         setProfileMenu(profileMenu ? null : event.currentTarget)
@@ -45,23 +41,16 @@ const ProfilePicAuxie = () => {
             if (user.googleId) {
                 const response = await axios.post(
                     '/consumers/logout',
-                    { googleId: `${user.googleId}` },
-                    {
-                        headers: {
-                            authorization: `Bearer ${token}`,
-                        },
-                    }
+                    { googleId: `${user.googleId}` }
                 )
                 if (response) {
                     await signOut(auth)
                     dispatch(logOut({}))
-                    dispatch(resetToken())
                     return navigate('/')
                 }
             }
             dispatch(logOut({}))
             await signOut(auth)
-            dispatch(resetToken())
             navigate('/')
         } catch (error) {
             console.error('error: ' + error.message)
