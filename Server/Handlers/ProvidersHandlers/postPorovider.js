@@ -1,6 +1,6 @@
 const createProvider = require('../../Controllers/ProvidersControllers/createProvider')
 const bcrypt = require('bcrypt')
-const mailSender = require('./../../Utils/prueba')
+const mailSender = require('../../Utils/nodemailer')
 
 const postProvider = async (req, res) => {
     try {
