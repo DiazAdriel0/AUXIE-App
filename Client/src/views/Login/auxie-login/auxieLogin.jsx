@@ -1,15 +1,12 @@
 import style from './auxieLogin.module.scss'
 import axios from 'axios'
-
+import { Link } from 'react-router-dom'
 // Hooks
 import { useEffect, useState } from 'react'
 import { useValidations } from '../../../utils/validationutils'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-    loggedUser,
-    updateProfile,
-} from '../../../redux/actions/actions'
+import { loggedUser, updateProfile } from '../../../redux/actions/actions'
 import {
     signInWithPopup,
     GoogleAuthProvider,
@@ -45,10 +42,7 @@ const ClientLogin = () => {
 
     const handleLogin = async (input) => {
         try {
-
-            const { data } = await axios.post(
-                '/providers/login',
-                input)
+            const { data } = await axios.post('/providers/login', input)
 
             if (data) {
                 dispatch(loggedUser(data))
@@ -66,9 +60,8 @@ const ClientLogin = () => {
             if (!logged?.userUid) {
                 dispatch(
                     updateProfile(
-
-                        { userUid: auth.currentUser.uid, id: logged.id }, 'providers',
-
+                        { userUid: auth.currentUser.uid, id: logged.id },
+                        'providers'
                     )
                 )
             }
@@ -83,7 +76,9 @@ const ClientLogin = () => {
         const password = form.password.value
         try {
             const credential = await signInWithEmailAndPassword(
-                auth,email,password
+                auth,
+                email,
+                password
             )
             if (credential) {
                 handleLogin(input)
@@ -123,13 +118,13 @@ const ClientLogin = () => {
             const email = credential.user.email
             const googleId = credential.user.uid
             if (credential) {
-                const data={
-                    email:email,
-                    password:{
+                const data = {
+                    email: email,
+                    password: {
                         googleId: `${googleId}`,
                         name: `${credential.user.displayName}`,
-                        picture:`${credential.user.photoURL}` 
-                        }
+                        picture: `${credential.user.photoURL}`,
+                    },
                 }
                 handleLogin(data)
             }
@@ -174,7 +169,11 @@ const ClientLogin = () => {
                             <p>{errors.password}</p>
                         </div>
                     </div>
-
+                    <Link to={'/resetpassword'}>
+                        <p style={{ textAlign: 'start', color: '#4C6C95' }}>
+                            ¿Olvidaste tu contraseña?
+                        </p>
+                    </Link>
                     <div className={style.submitbutton}>
                         <input
                             type="submit"

@@ -36,6 +36,7 @@ import './config/firebase-config'
 import Form from './views/forms/auxie-form/AuxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
 import SupportForm from '../src/views/forms/support-form/SupportForm'
+import ResetPassword from './views/reset-password/ResetPassword'
 
 // Logins
 import ClientLogin from './views/login/consumer-login/ClientLogin'
@@ -60,12 +61,9 @@ axios.defaults.baseURL = urlApi
 function App() {
     const dispatch = useDispatch()
 
-
     useEffect(() => {
-      
         dispatch(getAllAuxies())
-        dispatch(getAllServices()) 
-
+        dispatch(getAllServices())
     }, [])
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
@@ -108,11 +106,11 @@ function App() {
                     <Route path="/clientlogin" element={<ClientLogin />} />
                     <Route path="/auxielogin" element={<AuxieLogin />} />
                     {/* Login paths */}
+                    <Route path="/resetpassword" element={<ResetPassword />} />
+                    <Route path="/chat" element={<ChatApp />} />
+                    <Route path="/buy" element={<ButtonMercadoPago />} />
 
                     <Route path="*" element={<PageNotFound />} />
-                    <Route path="/chat" element={<ChatApp />} />
-
-                    <Route path="/buy" element={<ButtonMercadoPago />} />
                 </Routes>
             </div>
         </LocalizationProvider>

@@ -2,12 +2,10 @@ import React, { useEffect, useState } from 'react'
 import style from './clientLogin.module.scss'
 import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-    loggedUser,
-    updateProfile,
-} from '../../../redux/actions/actions'
+import { loggedUser, updateProfile } from '../../../redux/actions/actions'
 import {
     signInWithPopup,
     GoogleAuthProvider,
@@ -43,14 +41,10 @@ const ClientLogin = () => {
     }
     const handleLogin = async (input) => {
         try {
-
-
-            const response = await axios.post('/consumers/login',input)
-                if (response) {
-   
+            const response = await axios.post('/consumers/login', input)
+            if (response) {
                 setAccess(true)
                 dispatch(loggedUser(response.data))
-
             }
         } catch (error) {
             console.error('error: ' + error.message)
@@ -61,45 +55,44 @@ const ClientLogin = () => {
     useEffect(() => {
         if (access === true) {
             navigate('/homeconsumer')
-            console.log(logged);
+            console.log(logged)
             // eslint-disable-next-line no-prototype-builtins
-            if(logged.hasOwnProperty('firstName')){
-               if (!logged?.userUid) {
-                dispatch(
-                    updateProfile(
-
-
-                        { userUid: auth.currentUser.uid, id: logged.id },'consumers')
-                )} 
-
+            if (logged.hasOwnProperty('firstName')) {
+                if (!logged?.userUid) {
+                    dispatch(
+                        updateProfile(
+                            { userUid: auth.currentUser.uid, id: logged.id },
+                            'consumers'
+                        )
+                    )
+                }
             }
         }
     }, [access])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-     
+
         const form = document.getElementById('form')
         const email = form.email.value
         const password = form.password.value
         try {
             const credential = await signInWithEmailAndPassword(
-                auth, email, password)
+                auth,
+                email,
+                password
+            )
             if (credential) {
-
                 handleLogin(input)
-
             }
             form.reset()
         } catch (error) {
             alert(error.message) //o como lo maneje el front sweet alert?
         }
-  
     }
 
     //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
-   
         if (
             input.password.trim().length === 0 ||
             input.email.trim().length === 0
@@ -124,16 +117,16 @@ const ClientLogin = () => {
             const credential = await signInWithPopup(auth, provider)
             const email = credential.user.email
             const googleId = credential.user.uid
-            
+
             if (credential) {
-                const data ={
-                    email:email,
-                    password:{
+                const data = {
+                    email: email,
+                    password: {
                         googleId: `${googleId}`,
                         name: `${credential.user.displayName}`,
-                        picture:`${credential.user.photoURL}` 
-                        }
-                    }
+                        picture: `${credential.user.photoURL}`,
+                    },
+                }
                 handleLogin(data)
             }
         } catch (error) {
@@ -177,7 +170,11 @@ const ClientLogin = () => {
                             <p>{errors.password}</p>
                         </div>
                     </div>
-
+                    <Link to={'/resetpassword'}>
+                        <p style={{ textAlign: 'start', color: '#4C6C95' }}>
+                            ¿Olvidaste tu contraseña?
+                        </p>
+                    </Link>
                     <div className={style.submitbutton}>
                         <input
                             type="submit"
