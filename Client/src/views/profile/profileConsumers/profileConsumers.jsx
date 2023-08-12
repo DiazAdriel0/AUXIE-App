@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../../../redux/Actions/actions'
+import { DateTime } from 'luxon'
 
 const ProfileConsumers = () => {
     const consumer = useSelector((state) => state.loggedUser)
@@ -8,10 +9,17 @@ const ProfileConsumers = () => {
     const [error, setError] = useState(null)
     const dispatch = useDispatch()
 
-    const handleImageChange = (elem) => {
-        const file = elem.target.files[0]
-        if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
-            setNewImage(file)
+    const registerDate = consumer.registerDate
+    const luxonDate = DateTime.fromISO(registerDate)
+    const toDateMed = luxonDate.toLocaleString(DateTime.DATE_MED)
+
+    const handleImageChange = (event) => {
+        const fileInput = event.target.files[0]
+        if (
+            fileInput &&
+            (fileInput.type === 'image/jpeg' || fileInput.type === 'image/png')
+        ) {
+            setNewImage(fileInput)
             setError(null)
         } else {
             setError('Por favor, selecciona un archivo PNG o JPG.')
@@ -21,7 +29,15 @@ const ProfileConsumers = () => {
     const handleUpdateProfile = () => {
         const formData = new FormData()
         formData.append('image', newImage)
-        dispatch(updateProfile({ image: newImage },'consumers'))
+
+        dispatch(
+            updateProfile(
+                { id: consumer.id, image: newImage },
+           
+                'consumers'
+            )
+        )
+
     }
 
     return (
@@ -34,7 +50,9 @@ const ProfileConsumers = () => {
                     onChange={handleImageChange}
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <h1>{consumer.firstName} {consumer.lastName}</h1>
+                <h1>
+                    {consumer.firstName} {consumer.lastName}
+                </h1>
                 <h4>
                     {consumer.isAdmin && (
                         <div>
@@ -47,7 +65,7 @@ const ProfileConsumers = () => {
                     Email: {consumer.email}{' '}
                     <button>Cambiar la contraseña</button>
                 </h3>
-                <h6>Te uniste: {consumer.registerDate}</h6>
+                <h6>Te uniste: {toDateMed}</h6>
                 <div>
                     <h5>Auxies favoritos: {consumer.favoritesProviders}</h5>
                     <h5>Servicios contratados: {consumer.requiredServices}</h5>

@@ -14,12 +14,9 @@ import {
     LOGOUT,
     SET_TOKEN,
     RESET_TOKEN,
-
     UPDATE_PROFILE,
-
     ADD_FAVORITE,
-    DELETE_FAVORITE
-
+    DELETE_FAVORITE,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -144,9 +141,11 @@ export const setCurrentPage = (page) => {
 export function resetAuxiesCatalog() {
     return function (dispatch) {
         try {
+
             return dispatch({
                 type: RESET_AUXIES_CATALOG,
             })
+
         } catch (e) {
             console.error(e)
         }
@@ -193,11 +192,19 @@ UPDATE_PROFILE
 
 export function updateProfile(input, user) {
     return async function (dispatch) {
-        
         try {
             const res = await axios.put(
-                
-                `/${user}/profile`,input)
+
+                `/${user}/profile`,
+                input,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                     
+                    },
+                }
+            )
+
 
             return dispatch({
                 type: UPDATE_PROFILE,
@@ -227,7 +234,9 @@ export function addFavorite(fav) {
 export function removeFavorite(fav) {
     return async function (dispatch) {
         try {
+
             const res = await axios.delete(`/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`)
+
 
             return dispatch({
                 type: DELETE_FAVORITE,

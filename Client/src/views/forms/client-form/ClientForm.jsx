@@ -48,7 +48,6 @@ const ClientForm = () => {
                 Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
             }
             // setAccess(true)
-            console.log(response)
             // navigate('/home')
         } catch (error) {
             console.log(error + error.response.data.error)
@@ -113,8 +112,6 @@ const ClientForm = () => {
         return false
     }
 
-    //////
-    console.log(input)
     return (
         <div className={style.form}>
             <div className={style.formtitle}>

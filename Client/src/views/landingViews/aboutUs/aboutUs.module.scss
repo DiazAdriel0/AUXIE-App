@@ -38,10 +38,13 @@
             border-radius: 0;
         }
         .imageabout2 {
-            height: 80%;
-            width: 80%;
-            margin-left: 2.3rem;
-            margin-top: 1.5rem;
+            height: 70%;
+            width: 100%;
+            margin-left: 1.5%;
+            margin-top: 4rem;
+            align-content: center;
+            justify-self: center;
+            object-fit: cover;
         }
     }
 }
@@ -208,9 +211,20 @@
     /* Estilos para la cara trasera de la tarjeta */
     .cardback {
         transform: rotateY(180deg);
+    
+        
+        .bio{
+            overflow: scroll;
+            height: fit-content;
+            max-height: 50%;
+            min-height: 50%;
+        }
         p {
-            margin: 2rem;
+           padding: 10%;
             font-size: 0.8rem;
+            height: 20%;
+         
+            text-align: start;
         }
         .socialbar {
             margin-top: 2.3rem;

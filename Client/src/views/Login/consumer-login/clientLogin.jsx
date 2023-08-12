@@ -16,7 +16,6 @@ import {
 import { auth } from '../../../config/firebase-config'
 
 const ClientLogin = () => {
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { errors, validate } = useValidations()
@@ -44,11 +43,13 @@ const ClientLogin = () => {
     }
     const handleLogin = async (input) => {
         try {
+
             const response = await axios.post('/consumers/login',input)
                 if (response) {
-                console.log(response.data);
+           
                 setAccess(true)
                 dispatch(loggedUser(response.data))
+
             }
         } catch (error) {
             console.error('error: ' + error.message)
@@ -65,14 +66,13 @@ const ClientLogin = () => {
                if (!logged?.userUid) {
                 dispatch(
                     updateProfile(
+
                         { userUid: auth.currentUser.uid, id: logged.id },'consumers')
                 )} 
+
             }
         }
     }, [access])
-
-    
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -84,7 +84,9 @@ const ClientLogin = () => {
             const credential = await signInWithEmailAndPassword(
                 auth, email, password)
             if (credential) {
+
                 handleLogin(input)
+
             }
             form.reset()
         } catch (error) {

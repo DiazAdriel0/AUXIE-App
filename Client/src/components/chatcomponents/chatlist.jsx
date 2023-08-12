@@ -1,6 +1,7 @@
+
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-/* import Onechat from './onechat'; */
+
 import ChatSelector from './ChatSelector'; // Import the ChatSelector component
 import { doc, onSnapshot } from 'firebase/firestore';
 import { auth, db } from '../../config/firebase-config';
@@ -14,31 +15,46 @@ const Chatlist = () => {
     setSelectedUser(sender);
   };
 
-  const user = useSelector((state) => state.loggedUser);
 
-  useEffect(() => {
-    const getChats = () => {
-      const unsub = onSnapshot(doc(db, 'conversations', user.uid), (doc) => {
-        setChats(doc.data());
-      });
+    const user = useSelector((state) => state.loggedUser)
 
-      return () => {
-        unsub();
-      };
-    };
+    useEffect(() => {
+        const getChats = () => {
+            const unsub = onSnapshot(
+                doc(db, 'conversations', user.uid),
+                (doc) => {
+                    setChats(doc.data())
+                }
+            )
 
-    user.uid && getChats();
-  }, [user.uid]);
+            return () => {
+                unsub()
+            }
+        }
 
-  return (
-    <div className={style.chatselector}>
-      {/* Display the ChatSelector component */}
-      <ChatSelector inbox={user.inbox} handleUserSelection={handleUserSelection} />
-       
-      {/* Only display the chat component if a user is selected */}
-      {selectedUser &&  <Chat auxiedetails={auth.currentUser.uid}recipient={selectedUser}/>}
-    </div>
-  );
-};
 
-export default Chatlist;
+        user.uid && getChats()
+    }, [user.uid])
+    
+
+    return (
+        <div className={style.chatselector}>
+            {/* Display the ChatSelector component */}
+            <ChatSelector
+                inbox={user.inbox}
+                handleUserSelection={handleUserSelection}
+            />
+
+
+            {/* Only display the chat component if a user is selected */}
+            {selectedUser && (
+                <Chat
+                    auxiedetails={auth.currentUser.uid}
+                    recipient={selectedUser}
+                />
+            )}
+        </div>
+    )
+}
+
+export default Chatlist
