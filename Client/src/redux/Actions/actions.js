@@ -14,12 +14,9 @@ import {
     LOGOUT,
     SET_TOKEN,
     RESET_TOKEN,
-
     UPDATE_PROFILE,
-
     ADD_FAVORITE,
-    DELETE_FAVORITE
-
+    DELETE_FAVORITE,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -160,13 +157,16 @@ export const setCurrentPage = (page) => {
 export function resetAuxiesCatalog(token) {
     return function (dispatch) {
         try {
-            return dispatch({
-                type: RESET_AUXIES_CATALOG,
-            }, {
-                headers: {
-                    authorization: `Bearer ${token}`,
+            return dispatch(
+                {
+                    type: RESET_AUXIES_CATALOG,
                 },
-            })
+                {
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
+                }
+            )
         } catch (e) {
             console.error(e)
         }
@@ -213,15 +213,14 @@ UPDATE_PROFILE
 
 export function updateProfile(input, token, user) {
     return async function (dispatch) {
-        
         try {
             const res = await axios.put(
-                
                 `/${user}/profile`,
-                
+
                 input,
                 {
                     headers: {
+                        'Content-Type': 'multipart/form-data',
                         authorization: `Bearer ${token}`,
                     },
                 }
@@ -259,12 +258,14 @@ export function addFavorite(fav, token) {
 export function removeFavorite(fav, token) {
     return async function (dispatch) {
         try {
-            const res = await axios.delete(`/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`,{
-                headers: {
-                    authorization: `Bearer ${token}`,
+            const res = await axios.delete(
+                `/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`,
+                {
+                    headers: {
+                        authorization: `Bearer ${token}`,
+                    },
                 }
-            })
-            console.log(res)
+            )
 
             return dispatch({
                 type: DELETE_FAVORITE,

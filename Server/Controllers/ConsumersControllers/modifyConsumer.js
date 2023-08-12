@@ -43,7 +43,7 @@ const modifyConsumer = async (req) => {
 
         const filledObject = Object.fromEntries(filledProperties)
         const consumer = await Consumer.updateOne({ _id: id }, filledObject)
-        console.log(consumer)
+
         const consumer2 = await Consumer.findById({ _id: id })
 
         if (consumer.modifiedCount === 0 && consumer.matchedCount === 1) {

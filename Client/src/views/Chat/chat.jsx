@@ -29,7 +29,6 @@ export const Chat = ({ recipient, auxiedetails }) => {
         }
     }) // Sort for consistent order
 
-    console.log(ordered)
     const conversationId = ordered.join('_')
 
     const conversationData = { participants }
@@ -107,7 +106,6 @@ export const Chat = ({ recipient, auxiedetails }) => {
                             {message.recipient === auth.currentUser.uid
                                 ? `${message.firstName} ${message.lastName} `
                                 : 'You'}
-                            
                         </span>
 
                         <div
