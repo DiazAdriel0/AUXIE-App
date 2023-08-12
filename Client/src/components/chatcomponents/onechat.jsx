@@ -1,20 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useSelector } from 'react-redux'
 const Onechat = ({ uid }) => {
     const [user, setUser] = useState({})
     
-    const token = useSelector((state) => state.token)
     useEffect(() => {
-        getUser(token, uid)
+        getUser(uid)
     }, [])
-    const getUser = async (token, uid) => {
+    const getUser = async (uid) => {
         try {
-            const response = await axios.get(`/consumers/${uid}`, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+            const response = await axios.get(`/consumers/${uid}`)
             if (response) {
                 setUser(response.data)
             }

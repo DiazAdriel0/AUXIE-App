@@ -75,6 +75,7 @@ const Guarantee = () => {
                         </button>
                     </div>
                 </div>
+             </div>   
         </>
     )
 }

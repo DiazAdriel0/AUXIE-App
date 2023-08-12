@@ -1,7 +1,6 @@
 import style from './SupportForm.module.scss'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
 // import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 
@@ -22,7 +21,6 @@ const validate = (input) => {
     return errors
 }
 const SupportForm = () => {
-    const token = useSelector((state) => state.token)
     const [errors, setErrors] = useState({})
     const [isFormValid, setIsFormValid] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
@@ -86,12 +84,7 @@ const SupportForm = () => {
                 formData.append('message', input.message)
                 formData.append('reason', input.reason)
 
-                const response = await axios.post('/claims/', formData, {
-                    headers: {
-                        authorization: `Bearer ${token}`,
-                        'Content-Type': 'multipart/form-data',
-                    },
-                })
+                const response = await axios.post('/claims/', formData)
                 setInput({
                     consumerUsername: '',
                     providerUsername: '',

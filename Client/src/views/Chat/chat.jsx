@@ -3,6 +3,7 @@ import { db, auth } from '../../config/firebase-config'
 import {
     collection,
     addDoc,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     where,
     serverTimestamp,
     onSnapshot,

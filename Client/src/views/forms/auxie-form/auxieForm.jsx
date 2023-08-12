@@ -39,16 +39,11 @@ const Form = () => {
             event.target.name
         )
     }
-    const handlePost = async (token) => {
+    const handlePost = async () => {
         try {
             const response = await axios.post(
                 '/providers/',
-                input,{
-                    headers:{
-                        'authorization': `Bearer ${token}`
-                    }
-                }
-            )
+                input)
             if (response) {
                 setAccess(true)
                 const form = document.getElementById('form')
@@ -75,8 +70,9 @@ const Form = () => {
         try {
             const credential = await createUserWithEmailAndPassword(auth, input.email, input.password)
             const user = credential.user;
-            const token = await user.getIdToken();
-            handlePost(token)
+            const uid = user.uid
+            console.log(uid);
+            handlePost()
             
         } catch (error) {
             console.error(error.message);

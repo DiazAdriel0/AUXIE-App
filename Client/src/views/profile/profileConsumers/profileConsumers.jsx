@@ -4,7 +4,6 @@ import { updateProfile } from '../../../redux/Actions/actions'
 
 const ProfileConsumers = () => {
     const consumer = useSelector((state) => state.loggedUser)
-    const token = useSelector((state) => state.token)
     const [newImage, setNewImage] = useState(null)
     const [error, setError] = useState(null)
     const dispatch = useDispatch()
@@ -22,7 +21,7 @@ const ProfileConsumers = () => {
     const handleUpdateProfile = () => {
         const formData = new FormData()
         formData.append('image', newImage)
-        dispatch(updateProfile({ image: newImage }, token, 'consumers'))
+        dispatch(updateProfile({ image: newImage },'consumers'))
     }
 
     return (

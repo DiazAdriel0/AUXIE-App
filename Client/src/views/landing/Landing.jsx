@@ -4,7 +4,7 @@ import style from './landing.module.scss'
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 //*Import Animations
 import { Animated } from 'react-animated-css'
@@ -17,12 +17,6 @@ import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
 import ButtonUp from '../../components/buttons/buttonUp/ButtonUp'
 import FeaturedAuxies from '../../components/featuredAuxies/FeaturedAuxies'
-
-//anonimos tokens y actions
-import { getAllAuxies, getAllServices } from '../../redux/Actions/actions'
-
-import { auth } from '../../config/firebase-config'
-import { onAuthStateChanged, signInAnonymously } from 'firebase/auth'
 
 const Landing = () => {
     //* First Intersection Observer
@@ -43,14 +37,11 @@ const Landing = () => {
     // const services = useSelector((state) => state.services)
 
     const user = useSelector((state) => state.loggedUser)
-    const auxies = useSelector((state) => state.auxies)
-    const services = useSelector((state) => state.services)
     const menuLanding = useSelector((state) => state.menuLanding)
     //* state for changes
     const [menuChange, setMenuChange] = useState(true)
 
     const navigate = useNavigate()
-    const dispatch = useDispatch()
 
     useEffect(() => {
         if (Object.keys(user).includes('requiredServices')) {
@@ -59,35 +50,6 @@ const Landing = () => {
         if (Object.keys(user).includes('services')) {
             return navigate('homeauxie')
         }
-
-        //crea un token anonimo
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                const token = await user.getIdToken()
-                if (!auxies.length) {
-                    dispatch(getAllAuxies(token))
-                }
-                if (!services.length) {
-                    dispatch(getAllServices(token))
-                }
-            } else {
-                const generateAnonymousToken = async () => {
-                    try {
-                        const userCredential = await signInAnonymously(auth)
-                        const user = userCredential.user
-                        const token = await user.getIdToken()
-                        // Puedes utilizar el token como token para tus solicitudes
-                        dispatch(getAllAuxies(token))
-                        dispatch(getAllServices(token))
-                    } catch (error) {
-                        console.error('Error al generar token anónimo:', error)
-                    }
-                }
-                generateAnonymousToken()
-            }
-        })
-
-        return () => unsubscribe()
     }, [])
 
     //* useEffect animations
