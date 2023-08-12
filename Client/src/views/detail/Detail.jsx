@@ -6,6 +6,8 @@ import style from './detail.module.scss'
 import JobRequestForm from '../forms/jobRequest-Form/JobRequestForm'
 import { Chat } from '../chat/Chat'
 import { auth } from '../../config/firebase-config'
+import { Carousel } from 'react-responsive-carousel'
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 const Detail = () => {
     const [isInChat, setIsInChat] = useState(false)
@@ -109,9 +111,23 @@ const Detail = () => {
                                 </div>
                             </div>
                             <div className={style.carousel}>
-                                <p>Carousel</p>
+                                <Carousel>
+                                    <div>
+                                        <img src="https://www.readersdigest.ca/wp-content/uploads/2021/03/how-to-clean-bathroom-luxurious-bathroom.jpg"/>
+                                        <p className="legend">Trabajo 1</p>
+                                    </div>
+                                    <div>
+                                        <img src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_16:9/at%2Fhouse%20tours%20stock%20archive%2F2e3210d61011254a4aae43df9f239c6ab2db6292" />
+                                        <p className="legend">Trabajo 2</p>
+                                    </div>
+                                    <div>
+                                        <img src="https://mcgrathelectricaldata.com.au/wp-content/uploads/2022/01/Electrician-Inspecting-An-Electrical-Cabinet.jpg" />
+                                        <p className="legend">Trabajo 3</p>
+                                    </div>
+                                </Carousel>
                             </div>
                             <div className={style.bio}>
+                                <h3>Acerca de mí</h3>
                                 <p> {auxieDetails.bio}</p>
                             </div>
                         </div>
