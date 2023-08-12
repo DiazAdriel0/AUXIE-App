@@ -1,10 +1,9 @@
 const matchConsumer = require('../../Controllers/ConsumersControllers/matchConsumer')
 
 const loginConsumer = async (req, res) => {
-    const { password, email } = req.body
+    const { password, email} = req.body
     try {
         const logedUser = await matchConsumer(email, password)
-
         if (logedUser.message === 'inexistente')
             throw new Error(`el correo: ${email} no está registrado`)
 

@@ -5,16 +5,21 @@ const loginConsumer = require('../../Handlers/ConsumersHandlers/loginConsumer')
 const getConsumerById = require('../../Handlers/ConsumersHandlers/getConsumerById')
 const getAllConsumers = require('../../Handlers/ConsumersHandlers/getAllConsumers')
 const updateConsumer = require('../../Handlers/ConsumersHandlers/updateConsumer')
+const deleteFavoriteProv = require('../../Handlers/ConsumersHandlers/deleteFavoriteProv')
+const favoriteProviders = require('../../Handlers/ConsumersHandlers/favoriteProviders')
+const revokeTokens = require('../../Handlers/ConsumersHandlers/revokeTokens')
 const consumersRouter = Router()
 
 consumersRouter.get('/', getAllConsumers)
 consumersRouter.get('/:id', getConsumerById)
 
-consumersRouter.put('/profile',updateConsumer)
-
+consumersRouter.put('/profile', updateConsumer)
+consumersRouter.put('/fav', favoriteProviders)
 consumersRouter.post('/login', loginConsumer)
 consumersRouter.post('/', postConsumer)
+consumersRouter.post('/logout', revokeTokens)
 
 consumersRouter.delete('/:id', deleteConsumerById)
+consumersRouter.delete('/delete/fav', deleteFavoriteProv)
 
 module.exports = consumersRouter

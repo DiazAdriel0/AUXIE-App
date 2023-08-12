@@ -1,25 +1,35 @@
 import {
     GET_ALL_AUXIES,
-    GET_AUXIE_DETAILS,
     GET_ALL_SERVICES,
     FILTER_AUXIES_BY_SERVICE,
     ORDER_AUXIES_BY_PRICE,
     ORDER_AUXIES_BY_RATING,
-    LOG_OR_REG_VIEW,
-} from '../redux/Actions/actionTypes'
+    MENU_OPEN,
+    SET_CURRENT_PAGE,
+    RESET_AUXIES_CATALOG,
+    LOGED_USER,
+    LOGOUT,
+    UPDATE_PROFILE,
+    ADD_FAVORITE,
+    DELETE_FAVORITE,
+} from './actions/actionTypes'
 
 let initialState = {
     auxies: [],
     backupAuxies: [],
     filteredAuxies: [],
+    loggedUser: {},
     services: [],
-    details: {},
     filter: [],
-    logOrRegView: false,
+    menuLanding: false,
+    currentPage: 1,
+    nightMode: false,
+    token: '',
 }
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {
+        // obtengo todos los auxies de mi back y los guardo en 3 estados diferentes
         case GET_ALL_AUXIES:
             return {
                 ...state,
@@ -27,9 +37,7 @@ function rootReducer(state = initialState, action) {
                 filteredAuxies: [...action.payload],
                 backupAuxies: [...action.payload],
             }
-        case GET_AUXIE_DETAILS:
-            return { ...state, details: action.payload }
-
+        // obtengo todos los servicios de mi back y los guardo en mi estado global
         case GET_ALL_SERVICES:
             return { ...state, services: action.payload }
         // filtra mi estado filteredAuxies dependiendo si el auxie tiene alguno de los servicios seleccionados
@@ -43,11 +51,7 @@ function rootReducer(state = initialState, action) {
             } else {
                 const filteredAuxies = action.payload.map((filter) =>
                     [...state.auxies].filter((aux) =>
-                        aux.services.some(
-                            (serv) =>
-                                serv.service.toUpperCase() ===
-                                filter.toUpperCase()
-                        )
+                        aux.services.some((serv) => serv.name === filter)
                     )
                 )
                 const allFiltered = new Set(filteredAuxies.flat(1))
@@ -65,14 +69,10 @@ function rootReducer(state = initialState, action) {
                     let ascFilter = [...state.filteredAuxies].sort(
                         (prev, next) =>
                             prev.services.find(
-                                (obj) =>
-                                    obj.service.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                (obj) => obj.name === serviceFiltered
                             ).price -
                             next.services.find(
-                                (obj) =>
-                                    obj.service.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                (obj) => obj.name === serviceFiltered
                             ).price
                     )
                     return { ...state, filteredAuxies: [...ascFilter] }
@@ -80,14 +80,10 @@ function rootReducer(state = initialState, action) {
                     let descFilter = [...state.filteredAuxies].sort(
                         (prev, next) =>
                             next.services.find(
-                                (obj) =>
-                                    obj.service.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                (obj) => obj.name === serviceFiltered
                             ).price -
                             prev.services.find(
-                                (obj) =>
-                                    obj.service.toLowerCase() ===
-                                    serviceFiltered.toLowerCase()
+                                (obj) => obj.name === serviceFiltered
                             ).price
                     )
                     return { ...state, filteredAuxies: [...descFilter] }
@@ -108,7 +104,11 @@ function rootReducer(state = initialState, action) {
                     if (prev.averageRating < next.averageRating) return -1
                     return 0
                 })
-                return { ...state, filteredAuxies: [...ascFilter], auxies: [...ascAuxies] }
+                return {
+                    ...state,
+                    filteredAuxies: [...ascFilter],
+                    auxies: [...ascAuxies],
+                }
             } else if (action.payload === 'desc') {
                 let descFilter = [...state.filteredAuxies].sort(
                     (prev, next) => {
@@ -117,20 +117,71 @@ function rootReducer(state = initialState, action) {
                         return 0
                     }
                 )
-                let ascAuxies = [...state.filteredAuxies].sort(
-                    (prev, next) => {
-                        if (prev.averageRating > next.averageRating) return -1
-                        if (prev.averageRating < next.averageRating) return 1
-                        return 0
-                    }
-                )
-                return { ...state, filteredAuxies: [...descFilter], auxies: [...ascAuxies] }
+                let ascAuxies = [...state.auxies].sort((prev, next) => {
+                    if (prev.averageRating > next.averageRating) return -1
+                    if (prev.averageRating < next.averageRating) return 1
+                    return 0
+                })
+                return {
+                    ...state,
+                    filteredAuxies: [...descFilter],
+                    auxies: [...ascAuxies],
+                }
             } else {
                 return { ...state }
             }
+        // switch para verificar si el usuario se encuentra en la pantalla de logIn o Register
+        case MENU_OPEN:
+            return { ...state, menuLanding: action.payload }
 
-        case LOG_OR_REG_VIEW:
-            return { ...state, logOrRegView: action.payload }
+        case SET_CURRENT_PAGE:
+            return { ...state, currentPage: action.payload }
+
+        // resetea mis estados modificados por mi actions
+        case RESET_AUXIES_CATALOG:
+            return {
+                ...state,
+                auxies: [...state.backupAuxies],
+                filteredAuxies: [...state.backupAuxies],
+            }
+
+        // carga la info del usuario loggueado a mi estado global
+        case LOGED_USER:
+            return {
+                ...state,
+                loggedUser: action.payload,
+            }
+        case LOGOUT:
+            return {
+                ...state,
+                loggedUser: action.payload,
+            }
+        case UPDATE_PROFILE:
+            return {
+                ...state,
+                loggedUser: action.payload,
+            }
+        case ADD_FAVORITE:
+            return {
+                ...state,
+                loggedUser: {
+                    ...state.loggedUser,
+                    favoritesProviders: [
+                        ...state.loggedUser.favoritesProviders,
+                        action.payload,
+                    ],
+                },
+            }
+        case DELETE_FAVORITE:
+            return {
+                ...state,
+                loggedUser: {
+                    ...state.loggedUser,
+                    favoritesProviders: [...action.payload],
+                },
+            }
+
+        // caso por defecto si por alguna razón no recibe action.type
         default:
             return {
                 ...state,

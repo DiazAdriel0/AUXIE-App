@@ -3,8 +3,11 @@
     justify-content: center;
     align-items: center;
     margin-top: 2%;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 300px));
-    gap: 16px;
+    gap: 10% 5%;
+ 
     max-width: 90vw;
     margin-left: 5%;
+    grid-template-columns: repeat(4, 1fr);
+   margin-bottom: 5%;
+    
 }

@@ -3,7 +3,6 @@ import { Chat } from '../chat/Chat'
 import { AppWrapper } from '../chat/AppWrapper'
 import Cookies from 'universal-cookie'
 
-
 const cookies = new Cookies()
 
 function ChatApp() {

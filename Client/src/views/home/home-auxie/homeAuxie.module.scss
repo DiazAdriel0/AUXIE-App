@@ -1,0 +1,83 @@
+.home {
+    display: grid;
+    grid-template-areas:
+        'header header'
+        'aside main'
+        'footer footer';
+    grid-template-columns: 14% 85%;
+    grid-template-rows: 8% 85% 5%;
+    gap: 1%;
+    height: 100vh;
+
+    /* Colores to change */
+    background-color: #1f1f1f;
+    color: white;
+    /* End of colors  */
+
+    .header {
+        grid-area: header;
+    }
+
+    .main {
+        display: grid;
+        grid-area: main;
+        grid-template-areas: 'services payments';
+        grid-template-columns: 69% 30%;
+        grid-template-rows: 100%;
+        gap: 1%;
+        .services {
+            grid-area: services;
+            background-color: #a7a1a1;
+            display: flex;
+            flex-direction: column;
+            gap: 5%;
+            .userServices {
+                display: flex;
+                justify-content: center;
+                flex-flow: row wrap;
+                gap: 1%;
+            }
+        }
+        .payments {
+            grid-area: payments;
+            background-color: #222;
+        }
+    }
+
+    .footer {
+        grid-area: footer;
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+    }
+}
+
+.servicesTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 16px;
+
+    th,
+    td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+        color: black;
+    }
+
+    tr:hover {
+        background-color: #e1e1e1;
+        color: black;
+        cursor: pointer;
+    }
+}

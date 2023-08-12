@@ -9,7 +9,15 @@ const serviceSchema = new Schema({
         type: String,
         required: true,
     },
+    categoryLower: {
+        type: String,
+        required: true,
+    },
     name: {
+        type: String,
+        required: true,
+    },
+    nameLower: {
         type: String,
         required: true,
     },
@@ -19,6 +27,7 @@ const serviceSchema = new Schema({
     numberOfProviders: {
         type: Number,
     },
+    image: { public_id: String, secure_url: String },
     isActive: {
         type: Boolean,
         default: true,

@@ -1,23 +1,34 @@
 const Service = require('../../Models/service')
 
-const postService = async (name, category) => {
+const postService = async (category, name, image) => {
     try {
-        const nameLower = name.toLowerCase()
         const categoryLower = category.toLowerCase()
+        const nameLower = name.toLowerCase()
 
-        const existingService = await Service.findOne({
-            name: nameLower,
-            category: categoryLower,
+        let existingService = await Service.findOne({
+            categoryLower,
+            nameLower,
         })
+
         if (existingService) {
-            throw new Error('Servicio repetido')
+            if (existingService.isActive) {
+                throw new Error('Servicio repetido')
+            } else {
+                existingService.isActive = true
+                await existingService.save()
+                return 'El servicio fue creado'
+            }
         } else {
-            const newService = await Service.create({
-                name,
+            await Service.create({
                 category,
+                categoryLower,
+                name,
+                nameLower,
+                image,
             })
-            console.log(newService)
-            return newService
+            return {
+                message: 'El servicio fue creado',
+            }
         }
     } catch (error) {
         return error

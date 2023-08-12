@@ -3,18 +3,22 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const cors = require('cors')
+const fileUpload = require('express-fileupload')
+
 const mainRouter = require('./../Routes/mainRouter')
 
 const server = express()
 
 server.name = 'AUXIE App'
-
+server.use(cors())
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }))
 server.use(bodyParser.json({ limit: '50mb' }))
 server.use(cookieParser())
 server.use(morgan('dev'))
+
 server.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:5173')
+    res.header('Access-Control-Allow-Origin', '*')
     res.header('Access-Control-Allow-Credentials', 'true')
     res.header(
         'Access-Control-Allow-Headers',
@@ -27,6 +31,12 @@ server.use((req, res, next) => {
     next()
 })
 
+server.use(
+    fileUpload({
+        useTempFiles: true,
+        tempFileDir: './Uploads',
+    })
+)
 server.use('/', mainRouter)
 
 // Error catching endware.
