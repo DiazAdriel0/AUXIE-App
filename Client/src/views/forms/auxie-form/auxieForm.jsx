@@ -24,6 +24,7 @@ const Form = () => {
         email: '',
         password: '',
         gender: '',
+        userUid:''
     })
 
     const handleChange = (event) => {
@@ -39,7 +40,7 @@ const Form = () => {
             event.target.name
         )
     }
-    const handlePost = async () => {
+    const handlePost = async (input) => {
         try {
             const response = await axios.post(
                 '/providers/',
@@ -71,8 +72,14 @@ const Form = () => {
             const credential = await createUserWithEmailAndPassword(auth, input.email, input.password)
             const user = credential.user;
             const uid = user.uid
-            console.log(uid);
-            handlePost()
+            let data = {}
+            if(credential){
+                data = {
+                    ...input,
+                    userUid: uid,
+                }
+            }
+            handlePost(data)
             
         } catch (error) {
             console.error(error.message);

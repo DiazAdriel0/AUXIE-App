@@ -42,8 +42,9 @@ const matchProvider = async (email, password) => {
                     newProvider.firstName =password.name
                 }
                 newProvider.image = { secure_url: password.picture }
-                const theProvider = await Provider.create(newProvider)
-                return theProvider
+                await Provider.create(newProvider)
+                const theProvider =  await Provider.findOne({ email })
+                return theProvider 
 
             }
         }

@@ -46,7 +46,7 @@ const ClientLogin = () => {
         try {
             const response = await axios.post('/consumers/login',input)
                 if (response) {
-                console.log(input);
+                console.log(response.data);
                 setAccess(true)
                 dispatch(loggedUser(response.data))
             }

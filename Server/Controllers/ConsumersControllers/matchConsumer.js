@@ -42,7 +42,8 @@ const matchConsumer = async (email, password) => {
                     newConsumer.firstName = password.name
                 }
                 newConsumer.image = { secure_url: password.picture }
-                const theConsumer = await Consumer.create(newConsumer)
+                await Consumer.create(newConsumer)
+                const theConsumer = await Consumer.findOne({ email })
                 return theConsumer
             }
         }

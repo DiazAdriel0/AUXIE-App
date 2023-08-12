@@ -20,6 +20,7 @@ const ClientForm = () => {
         email: '',
         password: '',
         gender: '',
+        userUid:''
     })
 
     const handleChange = (event) => {
@@ -36,13 +37,9 @@ const ClientForm = () => {
         )
     }
 
-    const handlePost = async (token) => {
+    const handlePost = async (input) => {
         try {
-            const response = await axios.post('/consumers/', input, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+            const response = await axios.post('/consumers/', input)
             if (response) {
                 setAccess(true)
                 // Reset the form only on successful response (2xx)
@@ -77,9 +74,15 @@ const ClientForm = () => {
                 input.email,
                 input.password
             )
-            const user = credential.user
-            const token = await user.getIdToken()
-            handlePost(token)
+            const uid = credential.user.uid
+            let data = {}
+            if(credential){
+                data = {
+                    ...input,
+                    userUid: uid,
+                }
+            }
+            handlePost(data)
         } catch (error) {
             console.error(error.message)
         }
