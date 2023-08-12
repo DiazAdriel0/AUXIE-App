@@ -1,5 +1,5 @@
 import style from './pageNotFound.module.scss'
-import logo from '../../assets/Logos/6.png'
+import logo from '../../assets/logos/6.png'
 import { Link } from 'react-router-dom'
 const PageNotFound = () => {
     return (
