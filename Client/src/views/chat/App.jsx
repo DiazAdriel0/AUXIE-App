@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Chat } from '../chat/Chat'
 import { AppWrapper } from '../chat/AppWrapper'
 import Cookies from 'universal-cookie'
-import './App.css'
 
 const cookies = new Cookies()
 
