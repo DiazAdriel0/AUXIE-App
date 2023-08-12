@@ -11,7 +11,6 @@ import {
     orderBy,
 } from 'firebase/firestore'
 import style from './chat.module.scss'
-import './Chat.css'
 import { useSelector } from 'react-redux'
 
 export const Chat = ({ recipient, auxiedetails }) => {
