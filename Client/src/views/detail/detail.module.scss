@@ -21,6 +21,9 @@
 
 .profilePic {
     height: 15%;
+    img {
+        object-fit: cover;
+    }
 }
 
 .name {
