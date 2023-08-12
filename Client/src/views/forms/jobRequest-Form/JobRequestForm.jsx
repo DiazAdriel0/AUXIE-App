@@ -70,6 +70,7 @@ const JobRequestForm = ({ services }) => {
 
                             <DatePicker
                                 className={style.picker}
+                                disablePast
                                 value={value}
                                 onChange={(date) =>
                                     setValue((previousvalue) => ({
