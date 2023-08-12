@@ -3,8 +3,8 @@ import style from './landing.module.scss'
 //* Import Hooks
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
-import { Link, useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 //*Import Animations
 import { Animated } from 'react-animated-css'
@@ -17,11 +17,14 @@ import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
 import ButtonUp from '../../components/buttons/buttonUp/ButtonUp'
 
+
 //anonimos tokens y actions
 import { getAllAuxies, getAllServices } from '../../redux/actions/actions'
 
 import { auth } from '../../config/firebase-config'
-import { onAuthStateChanged, signInAnonymously } from 'firebase/auth'
+
+import FeaturedAuxies from '../../components/featuredAuxies/FeaturedAuxies'
+
 
 const Landing = () => {
     //* First Intersection Observer
@@ -42,14 +45,11 @@ const Landing = () => {
     // const services = useSelector((state) => state.services)
 
     const user = useSelector((state) => state.loggedUser)
-    const auxies = useSelector((state) => state.auxies)
-    const services = useSelector((state) => state.services)
     const menuLanding = useSelector((state) => state.menuLanding)
     //* state for changes
     const [menuChange, setMenuChange] = useState(true)
 
     const navigate = useNavigate()
-    const dispatch = useDispatch()
 
     useEffect(() => {
         if (Object.keys(user).includes('requiredServices')) {
@@ -58,35 +58,6 @@ const Landing = () => {
         if (Object.keys(user).includes('services')) {
             return navigate('homeauxie')
         }
-
-        //crea un token anonimo
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                const token = await user.getIdToken()
-                if (!auxies.length) {
-                    dispatch(getAllAuxies(token))
-                }
-                if (!services.length) {
-                    dispatch(getAllServices(token))
-                }
-            } else {
-                const generateAnonymousToken = async () => {
-                    try {
-                        const userCredential = await signInAnonymously(auth)
-                        const user = userCredential.user
-                        const token = await user.getIdToken()
-                        // Puedes utilizar el token como token para tus solicitudes
-                        dispatch(getAllAuxies(token))
-                        dispatch(getAllServices(token))
-                    } catch (error) {
-                        console.error('Error al generar token anónimo:', error)
-                    }
-                }
-                generateAnonymousToken()
-            }
-        })
-
-        return () => unsubscribe()
     }, [])
 
     //* useEffect animations
@@ -127,6 +98,8 @@ const Landing = () => {
             case 'toClientForm':
                 navigate('/clientform')
                 break
+            case 'toHelp':
+                navigate('/help')
         }
     }
 
@@ -258,9 +231,11 @@ const Landing = () => {
                                 </span>
                             </p>
                         </div>
-                        <button className={style.buttonSlogan}>
-                            Contratar
-                        </button>
+                        <div className={style.buttonSloganCont}>
+                            <button className={style.buttonSlogan} onClick={handleClick} value={'toClientForm'}>
+                                Contratar
+                            </button>
+                        </div>
                     </section>
                 </Animated>
 
@@ -307,28 +282,18 @@ const Landing = () => {
                                     </span>
                                 </p>
                             </div>
-                            <Link to="/help">
-                                <button className={style.buttonSlogan1}>
-                                    Mas informacion
-                                </button>
-                            </Link>
+                            <div className={style.buttonSlogan1Cont}>
+                                    <button className={style.buttonSlogan1} onClick={handleClick} value={'toHelp'}>
+                                        Mas informacion
+                                    </button>
+                            </div>
                         </section>
 
                         {/* Section Auxies */}
                         <section className={style.auxies}>
                             <h3>Auxies Destacados</h3>
-                            <div className={style.featuredAuxies}>
-                                <ul className={style.featuredlist}>
-                                    <li className={style.cardFeatured}>
-                                        Josecito
-                                    </li>
-                                    <li className={style.cardFeatured}>
-                                        Manueh
-                                    </li>
-                                    <li className={style.cardFeatured}>
-                                        Abril
-                                    </li>
-                                </ul>
+                            <div className={style.featuredAuxiesCont}>
+                                <FeaturedAuxies />
                             </div>
                         </section>
                     </Animated>

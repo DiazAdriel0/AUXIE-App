@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import {
     loggedUser,
-    setToken,
     updateProfile,
 } from '../../../redux/actions/actions'
 import {
@@ -44,20 +43,19 @@ const ClientLogin = () => {
         ///validations ///
     }
 
-    const handleLogin = async (token) => {
+    const handleLogin = async (input) => {
         try {
-            const { data } = await axios.post('/providers/login', input, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+
+            const { data } = await axios.post(
+                '/providers/login',
+                input)
+
             if (data) {
                 dispatch(loggedUser(data))
                 setAccess(true)
-                dispatch(setToken(token))
             }
         } catch (error) {
-            console.log(error + error.response.data.error)
+            console.log(error.message)
             alert(error.response.data.error)
         }
     }
@@ -68,9 +66,9 @@ const ClientLogin = () => {
             if (!logged?.userUid) {
                 dispatch(
                     updateProfile(
-                        { userUid: auth.currentUser.uid, id: logged.id },
-                        auth.currentUser.accessToken,
-                        'providers'
+
+                        { userUid: auth.currentUser.uid, id: logged.id }, 'providers',
+
                     )
                 )
             }
@@ -85,12 +83,10 @@ const ClientLogin = () => {
         const password = form.password.value
         try {
             const credential = await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
+                auth,email,password
             )
             if (credential) {
-                handleLogin(credential.user.accessToken)
+                handleLogin(input)
             }
             form.reset()
         } catch (error) {
@@ -124,9 +120,18 @@ const ClientLogin = () => {
             const provider = new GoogleAuthProvider()
             provider.setCustomParameters({ prompt: 'select_account' })
             const credential = await signInWithPopup(auth, provider)
-            const token = credential.user.accessToken
-            if (token) {
-                handleLogin(token)
+            const email = credential.user.email
+            const googleId = credential.user.uid
+            if (credential) {
+                const data={
+                    email:email,
+                    password:{
+                        googleId: `${googleId}`,
+                        name: `${credential.user.displayName}`,
+                        picture:`${credential.user.photoURL}` 
+                        }
+                }
+                handleLogin(data)
             }
         } catch (error) {
             alert(error.message) //o como lo maneje el front sweet alert?

@@ -3,29 +3,24 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import NavGeneral from '../../components/nav-general/NavGeneral'
 import style from './detail.module.scss'
+
 import JobRequestForm from '../forms/jobrequest-form/JobRequestForm'
 import { useSelector } from 'react-redux'
-import { Chat } from '../chat/chat'
+import { Chat } from '../chat/Chat'
 import {auth} from "../../config/firebase-config";
+
 const Detail = () => {
-    
     const [isInChat, setIsInChat] = useState(false)
     const [auxieDetails, setAuxieDetails] = useState({})
     let { id } = useParams()
-    const token = useSelector((state) => {
-        return state.token
-    })
-    console.log(auxieDetails)
+
+
     useEffect(() => {
-        const getDetails = async function (token) {
-            const res = await axios.get(`/providers/${id}`, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+        const getDetails = async function () {
+            const res = await axios.get(`/providers/${id}`)
             setAuxieDetails(res.data)
         }
-        getDetails(token)
+        getDetails()
     }, [])
     const handleClick = async () => {
         setIsInChat(true)
@@ -37,15 +32,9 @@ const Detail = () => {
                 inbox: {
                     sender: auth.currentUser.uid,
                 },
-            },
-            {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            }
-        )
+            })
     }
-    console.log(auth.currentUser.uid)
+
     return (
         <>
             <NavGeneral />

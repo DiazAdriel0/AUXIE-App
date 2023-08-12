@@ -6,7 +6,7 @@ import 'dayjs/locale/en-gb'
 // Import Hooks
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 // Import Actions
 import { getAllAuxies, getAllServices } from './redux/actions/actions'
@@ -30,16 +30,16 @@ import AuxieInbox from './views/home-views/auxie-views/auxie-inbox/AuxieInbox'
 import AuxieServices from './views/home-views/auxie-views/auxie-services/AuxieServices'
 import AuxieStatistics from './views/home-views/auxie-views/auxie-statistics/AuxieStatistics'
 
-import ProfilePage from './views/profile/profilePage/profilePage'
-
+import ProfilePage from './views/profile/profilePage/ProfilePage'
+import './config/firebase-config'
 //Forms
-import Form from './views/forms/auxie-form/auxieForm'
+import Form from './views/forms/auxie-form/AuxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
 import SupportForm from '../src/views/forms/support-form/SupportForm'
 
 // Logins
-import ClientLogin from './views/login/consumer-login/clientLogin'
-import AuxieLogin from './views/login/auxie-login/auxieLogin'
+import ClientLogin from './views/login/consumer-login/ClientLogin'
+import AuxieLogin from './views/login/auxie-login/AuxieLogin'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
@@ -51,30 +51,21 @@ import ButtonMercadoPago from './components/buttonMercadoPago/ButtonMercadoPago'
 
 //URL Back
 import axios from 'axios'
+
 const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
-axios.defaults.baseURL = urlApi
 
-// import { logOut, resetToken } from './redux/Actions/actions';
+axios.defaults.baseURL = urlApi
 
 function App() {
     const dispatch = useDispatch()
-    const token = useSelector((state) => {
-        return state.token
-    })
 
-    // window.addEventListener('beforeunload', function () {
-    //     // Aquí puedes ejecutar la lógica de tu función logOut
-    //     dispatch(logOut({}))
-    //     dispatch(resetToken())
-    // })
-    //* use Effect to obtain data
 
     useEffect(() => {
-        if (token) {
-            dispatch(getAllAuxies(token))
-            dispatch(getAllServices(token))
-        }
+      
+        dispatch(getAllAuxies())
+        dispatch(getAllServices()) 
+
     }, [])
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">

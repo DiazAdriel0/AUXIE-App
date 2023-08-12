@@ -22,7 +22,6 @@ const HomeConsumer = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector((state) => state.loggedUser)
-    const token = useSelector((state) => state.token)
     const isConsumer = Object.keys(user).includes('requiredServices')
     const isOtro = !user.gender ? true : user.gender === 'Otro' ? true : false
 
@@ -30,7 +29,7 @@ const HomeConsumer = () => {
         if (Object.keys(user).length === 0) return navigate('/clientlogin')
         if (Object.keys(user).includes('services'))
             return navigate('/homeAuxie')
-        dispatch(resetAuxiesCatalog(token))
+        dispatch(resetAuxiesCatalog())
     }, [])
 
     return (

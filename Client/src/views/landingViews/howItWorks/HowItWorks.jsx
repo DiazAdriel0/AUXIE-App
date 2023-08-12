@@ -42,6 +42,7 @@ const HowItWorks = () => {
         <>
             {isLogged ? <NavGeneral /> : <NavLanding />}
             <div className={!menuLanding ? style.show : style.hide}>
+            </div>
                 <div className={style.howItWorks}>
                     <h2>¿Cómo funciona Auxie?</h2>
                 </div>
@@ -168,7 +169,7 @@ const HowItWorks = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+            
         </>
     )
 }

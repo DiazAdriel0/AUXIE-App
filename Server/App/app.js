@@ -4,7 +4,6 @@ const cookieParser = require('cookie-parser')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
-const middleware = require('../middleware')
 const fileUpload = require('express-fileupload')
 
 const mainRouter = require('./../Routes/mainRouter')
@@ -34,7 +33,7 @@ server.use((req, res, next) => {
     )
     next()
 })
-server.use(middleware)
+
 server.use(
     fileUpload({
         useTempFiles: true,

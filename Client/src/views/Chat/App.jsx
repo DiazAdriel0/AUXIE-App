@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+
+import React, { useState } from "react";
 import { Chat } from "./chat";
 import { AppWrapper } from "./AppWrapper";
+
 import Cookies from "universal-cookie";
 import "./App.css";
  

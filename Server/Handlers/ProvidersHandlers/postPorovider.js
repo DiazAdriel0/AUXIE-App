@@ -4,7 +4,7 @@ const transporter = require('./../../Utils/nodemailer')
 
 const postProvider = async (req, res) => {
     try {
-        const { firstName, lastName, age, email, username, password, gender } =
+        const { firstName,userUid, lastName, age, email, username, password, gender } =
             req.body
 
         const hashedPassword = await bcrypt.hash(password, 10)
@@ -25,6 +25,7 @@ const postProvider = async (req, res) => {
                     'https://res.cloudinary.com/dvj387b1u/image/upload/v1691558271/AUXIE%20App/Profile%20photos/Providers/mbvrsqvhpkjdffahemw1.png',
             },
             isActive: true,
+            userUid,
         }
 
         const createdProvider = await createProvider(newProvider)
