@@ -66,19 +66,19 @@
 }
 
 .button {
-    background-color: var(--accent--first--color-light);
-    color: #000;
+    background-color: var(--fourth--color-light);
+    color: #FFF;
     width: 8.5em;
     height: 2.9em;
-    border: var(--accent--first--color-light) 0.2em solid;
+    border:  var(--fourth--color-light) 0.2em solid;
     border-radius: 7px;
     text-align: right;
     transition: all 0.6s ease;
 }
 
 .button:hover {
-    background-color: #15c9da;
-    border: #15c9da 0.2em solid;
+    background-color: var(--primary--anchor--color--hover);
+    border:  var(--fourth--color-light) 0.2em solid;
     cursor: pointer;
 }
 
