@@ -1,90 +1,46 @@
 const nodemailer = require('nodemailer')
 const { google } = require('googleapis')
-const accountTransport = require('./../config/account_transport.json')
+const { CLIENT_ID, CLIENT_SECRET, EMAIL, REFRESH_TOKEN } = process.env
 const OAuth2 = google.auth.OAuth2
 
-const mail_rover = async () => {
+const mailSender = async (mailOptions) => {
     try {
-        let transporter
         const oAuth2Client = new OAuth2(
-            accountTransport.auth.clientId,
-            accountTransport.auth.clientSecret,
+            CLIENT_ID,
+            CLIENT_SECRET,
             'https://developers.google.com/oauthplayground'
         )
         oAuth2Client.setCredentials({
-            refresh_token: accountTransport.auth.refreshToken,
+            refresh_token: REFRESH_TOKEN,
             tls: {
                 rejectUnauthorized: false,
             },
         })
-        oAuth2Client.getAccessToken((err, token) => {
-            if (err) return console.log(err)
-            accountTransport.auth.accessToken = token
-            transporter = nodemailer.createTransport(accountTransport)
+
+        const accessToken = await oAuth2Client.getAccessToken()
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                type: 'OAuth2',
+                user: EMAIL,
+                clientId: CLIENT_ID,
+                clientSecret: CLIENT_SECRET,
+                refreshToken: REFRESH_TOKEN,
+                accessToken: accessToken,
+            },
+            host: 'smtp.gmail.com',
+            port: 465,
+            secure: true,
+            tls: { rejectUnauthorized: false },
         })
-        const info = await transporter.sendMail({
-            from: 'AUXIE App <auxieapp@gmail.com>',
-            to: 'diazadriel0@gmail.com, baz@example.com',
-            subject: 'Asunto',
-            text: 'Hello world?', // plain text body
-            html: '<b>Hello world?</b>', // html body
-        })
-        return info
+
+        const result = await transporter.sendMail(mailOptions)
+
+        return result
     } catch (error) {
         console.log(error)
     }
-    /* mail_rover()
-        .then(() => res.status(200).json('Mail enviado'))
-        .catch((error) => console.log(error)) */
 }
 
-module.exports = mail_rover
-/* const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-        user: 'REPLACE-WITH-YOUR-ALIAS@YOURDOMAIN.COM',
-        pass: 'REPLACE-WITH-YOUR-GENERATED-PASSWORD',
-    },
-}) */
-
-/* async function sendMail() {
-    // send mail with defined transport object
-    const info = await transporter.sendMail({
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
-        to: 'bar@example.com, baz@example.com', // list of receivers
-        subject: 'Hello ✔', // Subject line
-        text: 'Hello world?', // plain text body
-        html: '<b>Hello world?</b>', // html body
-    })
-} */
-
-/* const transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,
-    auth: {
-        // TODO: replace `user` and `pass` values from <https://forwardemail.net>
-        user: 'REPLACE-WITH-YOUR-ALIAS@YOURDOMAIN.COM',
-        pass: 'REPLACE-WITH-YOUR-GENERATED-PASSWORD',
-    },
-})
-
-// async..await is not allowed in global scope, must use a wrapper
-async function main() {
-    // send mail with defined transport object
-    const info = await transporter.sendMail({
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
-        to: 'bar@example.com, baz@example.com', // list of receivers
-        subject: 'Hello ✔', // Subject line
-        text: 'Hello world?', // plain text body
-        html: '<b>Hello world?</b>', // html body
-    })
-
-    console.log('Message sent: %s', info.messageId)
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-}
-
-main().catch(console.error) */
+module.exports = mailSender
