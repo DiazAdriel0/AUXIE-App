@@ -8,16 +8,15 @@ import { useSelector } from 'react-redux'
 // import ChatApp from '../Chat/App'
 import { Chat } from '../Chat/chat'
 // import { AppWrapper } from '../Chat/AppWrapper'
-import {auth} from "../../config/firebase-config";
+import { auth } from '../../config/firebase-config'
 const Detail = () => {
-    
     const [isInChat, setIsInChat] = useState(false)
     const [auxieDetails, setAuxieDetails] = useState({})
     let { id } = useParams()
     const token = useSelector((state) => {
         return state.token
     })
-    console.log(auxieDetails)
+
     useEffect(() => {
         const getDetails = async function (token) {
             const res = await axios.get(`/providers/${id}`, {
@@ -47,7 +46,7 @@ const Detail = () => {
             }
         )
     }
-    console.log(auth.currentUser.uid)
+
     return (
         <>
             <NavGeneral />

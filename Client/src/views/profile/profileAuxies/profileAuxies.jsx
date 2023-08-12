@@ -1,19 +1,27 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfile } from '../../../redux/Actions/actions'
+import { DateTime } from 'luxon'
 
 const ProfileAuxies = () => {
     const provider = useSelector((state) => state.loggedUser)
     const token = useSelector((state) => state.token)
     const [newImage, setNewImage] = useState('')
-    const [newBio, setNewBio] = useState('')
+    const [newBio, setNewBio] = useState(provider.bio)
     const [error, setError] = useState(null)
-    const dispatch = useDispatch
+    const dispatch = useDispatch()
 
-    const handleImageChange = (elem) => {
-        const file = elem.target.files[0]
-        if (file && (file.type === 'image/jpeg' || file.type === 'image/png')) {
-            setNewImage(file)
+    const registerDate = provider.registerDate
+    const luxonDate = DateTime.fromISO(registerDate)
+    const toDateMed = luxonDate.toLocaleString(DateTime.DATE_MED)
+
+    const handleImageChange = (event) => {
+        const fileInput = event.target.files[0]
+        if (
+            fileInput &&
+            (fileInput.type === 'image/jpeg' || fileInput.type === 'image/png')
+        ) {
+            setNewImage(fileInput)
             setError(null)
         } else {
             setError('Por favor, selecciona un archivo PNG o JPG.')
@@ -32,7 +40,7 @@ const ProfileAuxies = () => {
             updateProfile(
                 { id: provider.id, image: newImage, bio: newBio },
                 token,
-                'consumers'
+                'providers'
             )
         )
     }
@@ -55,7 +63,7 @@ const ProfileAuxies = () => {
                     Email: {provider.email} <button>Cambiar contraseña</button>
                 </h3>
                 <textarea value={newBio} onChange={handleBioChange} />
-                <h6>Te uniste: {provider.registerDate}</h6>
+                <h6>Te uniste: {toDateMed}</h6>
                 <div>
                     <h5>Servicios que ofrece:</h5>
                     <h5>Trabajos realizados: </h5>
