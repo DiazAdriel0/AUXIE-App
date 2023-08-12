@@ -32,6 +32,7 @@ import AuxieStatistics from './views/home-views/auxie-views/auxie-statistics/Aux
 
 import ProfilePage from './views/profile/profilePage/ProfilePage'
 import './config/firebase-config'
+
 //Forms
 import Form from './views/forms/auxie-form/AuxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
@@ -44,18 +45,15 @@ import AuxieLogin from './views/login/auxie-login/AuxieLogin'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
-import JobRequestForm from './views/forms/jobrequest-form/JobRequestForm'
-
-import ChatApp from './views/chat/App'
-
 import ButtonMercadoPago from './components/buttonMercadoPago/ButtonMercadoPago'
+import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
+import ChatApp from './views/chat/App'
 
 //URL Back
 import axios from 'axios'
 
 const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
-
 axios.defaults.baseURL = urlApi
 
 function App() {

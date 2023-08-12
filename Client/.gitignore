@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 node_modules
-config
+
 
 node_modules
 
@@ -26,3 +26,4 @@ dist-ssr
 *.sln
 *.sw?
 .env.local
+.env.production

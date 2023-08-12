@@ -9,8 +9,6 @@ import LogoAuxie from '../logo/logoAuxie/LogoAuxie'
 import ProfilePic from '../profile-pic/profile-pic-auxie/ProfilePic'
 import LogoClient from '../logo/logoClient/LogoCLient'
 
-//assets
-
 const NavGeneral = () => {
     const user = useSelector((state) => state.loggedUser)
     const isAuxie = Object.keys(user).includes('services') ? true : false

@@ -43,7 +43,6 @@ const ClientLogin = () => {
     const handleLogin = async (input) => {
         try {
             const { data } = await axios.post('/providers/login', input)
-
             if (data) {
                 dispatch(loggedUser(data))
                 setAccess(true)
@@ -90,7 +89,7 @@ const ClientLogin = () => {
         //navigate home / search auxies ///
     }
 
-    //////para desabilitar el boton si no esta lleno el formulario=>
+    //para desabilitar el boton si no esta lleno el formulario
     const buttonDisabled = () => {
         // Check if the "types" field is empty
         if (
@@ -132,8 +131,6 @@ const ClientLogin = () => {
             alert(error.message) //o como lo maneje el front sweet alert?
         }
     }
-
-    //////
 
     return (
         <div className={style.login}>
