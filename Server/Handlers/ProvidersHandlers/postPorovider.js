@@ -1,11 +1,20 @@
 const createProvider = require('../../Controllers/ProvidersControllers/createProvider')
 const bcrypt = require('bcrypt')
-const transporter = require('./../../Utils/nodemailer')
+const mail_rover = require('./../../Utils/prueba')
+// const transporter = require('./../../Utils/nodemailer')
 
 const postProvider = async (req, res) => {
     try {
-        const { firstName,userUid, lastName, age, email, username, password, gender } =
-            req.body
+        const {
+            firstName,
+            userUid,
+            lastName,
+            age,
+            email,
+            username,
+            password,
+            gender,
+        } = req.body
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -37,31 +46,31 @@ const postProvider = async (req, res) => {
         if (createdProvider.message === 'email repetido')
             throw new Error(`El email ${newProvider.email} ya está registrado`)
 
-        let pronoun
+        // let pronoun
 
-        // prettier-ignore
-        switch (gender) {
-        case 'Masculino':
-            pronoun = 'o'
-            break
-        case 'Femenino':
-            pronoun = 'a'
-            break
-        case 'Otro':
-            pronoun = 'e'
-            break
-        default:
-            pronoun = 'x'
-            break
-        }
+        // // prettier-ignore
+        // switch (gender) {
+        // case 'Masculino':
+        //     pronoun = 'o'
+        //     break
+        // case 'Femenino':
+        //     pronoun = 'a'
+        //     break
+        // case 'Otro':
+        //     pronoun = 'e'
+        //     break
+        // default:
+        //     pronoun = 'x'
+        //     break
+        // }
 
-        await transporter.sendMail({
-            from: `Team Auxie ${process.env.EMAIL}`,
-            to: email,
-            subject: `Bienvenid${pronoun} ${firstName}`,
-            text: `Bienvenid${pronoun} a Auxie!`,
-        })
-
+        // await transporter.sendMail({
+        //     from: `Team Auxie ${process.env.EMAIL}`,
+        //     to: email,
+        //     subject: `Bienvenid${pronoun} ${firstName}`,
+        //     text: `Bienvenid${pronoun} a Auxie!`,
+        // })
+        await mail_rover()
         res.status(200).json(createdProvider)
     } catch (error) {
         console.error(error)
