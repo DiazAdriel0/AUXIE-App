@@ -136,12 +136,44 @@ const AboutUs = () => {
                             </div>
                             <div className={style.cardback}>
                                 {/* Reemplaza el contenido con tu bio */}
-                                <p>
-                                    Aquí va el contenido de tu bio. Puedes
-                                    agregar más información sobre la persona o
-                                    cualquier otro detalle que desees mostrar en
-                                    el reverso de la tarjeta.
-                                </p>
+                                <div className={style.bio}>
+                                    <p>
+                                        Soy una apasionada Full Stack Developer
+                                        con un sólido background en docencia, lo
+                                        que me ha permitido liderar, planificar
+                                        e idear con éxito todos los proyectos
+                                        que me he propuesto.
+                                        <br />
+                                        <br />
+                                        Mis preferencias se encuentran en el
+                                        área del Front-end, donde combino mis
+                                        habilidades técnicas y pedagógicas para
+                                        crear experiencias de usuario
+                                        excepcionales. Además de mis habilidades
+                                        técnicas, cuento con valiosas
+                                        habilidades blandas, incluyendo una
+                                        comunicación efectiva que me ha
+                                        facilitado trabajar en equipos
+                                        colaborativos y liderar proyectos con
+                                        éxito. <br />
+                                        <br />
+                                        Mi enfoque en la resolución de problemas
+                                        me ha permitido enfrentar desafíos
+                                        técnicos de manera eficiente y encontrar
+                                        soluciones creativas. Con un nivel de
+                                        inglés avanzado (C1), me siento cómoda
+                                        trabajando en entornos diversos y
+                                        colaborando con equipos multiculturales.
+                                        Siempre estoy ansiosa por aprender y
+                                        mantenerme actualizada con las últimas
+                                        tendencias y avances tecnológicos.
+                                        ¡Estoy emocionada por seguir creciendo
+                                        como profesional, contribuyendo con mi
+                                        experiencia y pasión por el desarrollo
+                                        web en proyectos que tengan un impacto
+                                        positivo en la sociedad!
+                                    </p>
+                                </div>
                                 <div className={style.socialbar}>
                                     <a
                                         id="github"
@@ -232,12 +264,26 @@ const AboutUs = () => {
                             </div>
                             <div className={style.cardback}>
                                 {/* Reemplaza el contenido con tu bio */}
-                                <p>
-                                    Aquí va el contenido de tu bio. Puedes
-                                    agregar más información sobre la persona o
-                                    cualquier otro detalle que desees mostrar en
-                                    el reverso de la tarjeta.
-                                </p>
+                                <div className={style.bio}>
+                                    <p>
+                                        I&apos;m originally a Biochemical
+                                        Engineer with a specialization in Food
+                                        Science. I&apos;ve always been intrigued
+                                        by IT and software development, thinking
+                                        about it since 2016 up until 2023 when I
+                                        finally decided to join Soy Henry in
+                                        their Full Stack boot camp. I&apos;ve
+                                        never felt more satisfied with my work
+                                        since joining them.
+                                        <br /> <br />
+                                        I&apos;m fullstack but I have more of an
+                                        affinity towards front-end development.
+                                        I&apos;m currently working on a project
+                                        with 6 others. Lets network and watch
+                                        each other grow and flourish as
+                                        developers!
+                                    </p>
+                                </div>
                                 <div className={style.socialbar}>
                                     <a
                                         id="github"
@@ -354,12 +400,38 @@ const AboutUs = () => {
                             </div>
                             <div className={style.cardback}>
                                 {/* Reemplaza el contenido con tu bio */}
-                                <p>
-                                    Aquí va el contenido de tu bio. Puedes
-                                    agregar más información sobre la persona o
-                                    cualquier otro detalle que desees mostrar en
-                                    el reverso de la tarjeta.
-                                </p>
+                                <div className={style.bio}>
+                                    <p>
+                                        ¡Hola! Soy un desarrollador web con
+                                        experiencia en el desarrollo de
+                                        aplicaciones utilizando JavaScript (JS),
+                                        tanto en el frontend como en el backend.
+                                        <br />
+                                        <br />
+                                        Tengo conocimientos en tecnologías como
+                                        React para el frontend, Express para el
+                                        desarrollo de apis, Redux para la
+                                        gestión del estado de la aplicación y
+                                        Sequelize para trabajar con bases de
+                                        datos relacionales. Siempre estoy en
+                                        busca de nuevos desafíos y oportunidades
+                                        para aprender y crecer en mi campo.
+                                        Disfruto trabajar en equipo y compartir
+                                        mis conocimientos con otros
+                                        desarrolladores.
+                                        <br />
+                                        <br />
+                                        Creo firmemente en la importancia de la
+                                        comunicación clara y efectiva para
+                                        lograr resultados exitosos en cualquier
+                                        proyecto. Me apasiona comprender las
+                                        necesidades de los clientes y crear
+                                        soluciones elegantes y efectivas que las
+                                        satisfagan. Estoy constantemente abierto
+                                        a nuevas ideas y me esfuerzo por mejorar
+                                        continuamente mis habilidades.
+                                    </p>
+                                </div>
                                 <div className={style.socialbar}>
                                     <a
                                         id="github"
@@ -476,12 +548,20 @@ const AboutUs = () => {
                             </div>
                             <div className={style.cardback}>
                                 {/* Reemplaza el contenido con tu bio */}
-                                <p>
-                                    Aquí va el contenido de tu bio. Puedes
-                                    agregar más información sobre la persona o
-                                    cualquier otro detalle que desees mostrar en
-                                    el reverso de la tarjeta.
-                                </p>
+
+                                <div className={style.bio}>
+                                    <p>
+                                        Estudiante Full Stack Web Developer en
+                                        SoyHenry. Actualmente interesado en
+                                        aprender y mejorar mis habilidades en
+                                        Frontend, ya que me considero una
+                                        persona artística y me atrae el lado
+                                        visual de las cosas. <br/><br/>Sin embargo,
+                                        también me fascina el manejo y la
+                                        manipulación de datos que puede
+                                        presentar el Backend.
+                                    </p>
+                                </div>
                                 <div className={style.socialbar}>
                                     <a
                                         id="github"
@@ -571,13 +651,16 @@ const AboutUs = () => {
                                 </div>
                             </div>
                             <div className={style.cardback}>
-                                {/* Reemplaza el contenido con tu bio */}
-                                <p>
-                                    Aquí va el contenido de tu bio. Puedes
-                                    agregar más información sobre la persona o
-                                    cualquier otro detalle que desees mostrar en
-                                    el reverso de la tarjeta.
-                                </p>
+                                <div className={style.bio}>
+                                    <p>
+                                        Un joven con muchas ganas de aprender,
+                                        formar un equipo y ganar experiencia en
+                                        el ambito del desarrollo web.
+                                        Aprendiendo de forma autodidacta y con
+                                        cursos busco desenvolverme cada vez con
+                                        mas soltura en la programación.
+                                    </p>
+                                </div>
                                 <div className={style.socialbar}>
                                     <a
                                         id="github"
@@ -666,13 +749,27 @@ const AboutUs = () => {
                                 </div>
                             </div>
                             <div className={style.cardback}>
-                                {/* Reemplaza el contenido con tu bio */}
-                                <p>
-                                    Aquí va el contenido de tu bio. Puedes
-                                    agregar más información sobre la persona o
-                                    cualquier otro detalle que desees mostrar en
-                                    el reverso de la tarjeta.
-                                </p>
+                                <div className={style.bio}>
+                                    <p>
+                                        Soy un desarrollador web con experiencia
+                                        en la creación de aplicaciones
+                                        utilizando JavaScript (JS) en el
+                                        frontend y el backend. <br />
+                                        <br />
+                                        Estoy familiarizado con tecnologías como
+                                        React para el desarrollo del frontend,
+                                        Express para la creación de APIs, Redux
+                                        para la gestión del estado de la
+                                        aplicación, PostgreSQL y MySQL para
+                                        trabajar con bases de datos relacionales
+                                        y CSS para agregar estilo. <br />
+                                        <br />
+                                        También tengo conocimientos básicos en
+                                        Lenguaje C, Haskell y SAS, manejo
+                                        aplicaciones de Office: Word, Excel,
+                                        PowerPoint y Outlook y Prezi
+                                    </p>
+                                </div>
                                 <div className={style.socialbar}>
                                     <a
                                         id="github"
@@ -788,13 +885,39 @@ const AboutUs = () => {
                                 </div>
                             </div>
                             <div className={style.cardback}>
-                                {/* Reemplaza el contenido con tu bio */}
-                                <p>
-                                    Aquí va el contenido de tu bio. Puedes
-                                    agregar más información sobre la persona o
-                                    cualquier otro detalle que desees mostrar en
-                                    el reverso de la tarjeta.
-                                </p>
+                                <div className={style.bio}>
+                                    <p>
+                                        ¡Hola! Soy Milagros, una Fullstack
+                                        developer en crecimiento. Desde siempre,
+                                        he sentido una afinidad por las
+                                        disciplinas prácticas, la ciencia, el
+                                        arte y la tecnología, pero no fue hasta
+                                        más tarde que incursioné en el mundo
+                                        Tech.
+                                        <br />
+                                        <br /> Durante mi paso por la carrera de
+                                        Tecnología Multimedia, tuve la
+                                        oportunidad de explorar un poco la
+                                        programación, y descubrí que me
+                                        fascinaba el mundo tech y la resolución
+                                        de problemas a través del desarrollo de
+                                        software. <br />
+                                        <br />
+                                        Fue entonces cuando decidí tomar un
+                                        nuevo camino y unirme al bootcamp de Soy
+                                        Henry, donde adquirí conocimientos
+                                        sólidos en tecnologías como Javascript,
+                                        React, Redux, Express, Node.js,
+                                        PostgreSQL y Sequelize. Mi viaje en la
+                                        industria tech aún es joven, y eso me
+                                        motiva aún más para seguir aprendiendo
+                                        nuevas tecnologías de forma constante.
+                                        Estoy lista para enfrentar nuevos
+                                        desafíos y seguir creciendo como
+                                        profesional en este apasionante campo.
+                                        ¡No dudes en contactarme!
+                                    </p>
+                                </div>
                                 <div className={style.socialbar}>
                                     <a
                                         id="github"
