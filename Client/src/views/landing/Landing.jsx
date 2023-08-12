@@ -16,13 +16,6 @@ import CircleIconAuxie from '../../assets/logos/CircleIconAuxie.png'
 import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
 import ButtonUp from '../../components/buttons/buttonUp/ButtonUp'
-
-
-//anonimos tokens y actions
-import { getAllAuxies, getAllServices } from '../../redux/actions/actions'
-
-import { auth } from '../../config/firebase-config'
-
 import FeaturedAuxies from '../../components/featuredAuxies/FeaturedAuxies'
 
 
