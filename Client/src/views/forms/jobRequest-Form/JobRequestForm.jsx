@@ -17,6 +17,7 @@ const JobRequestForm = ({ services }) => {
         clientId: client.id,
         service: '',
         jobDate: '',
+        jobTime: '',
         description: '',
         // price:'',
     })
@@ -46,8 +47,8 @@ const JobRequestForm = ({ services }) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'error + error.response.data.error!',
-                footer: '<a href="">Why do I have this issue?</a>',
+                text: error.response.data.error,
+                footer: '<a href="">¿Por qué está pasando esto?</a>',
             })
         }
     }
@@ -70,10 +71,10 @@ const JobRequestForm = ({ services }) => {
                             <DatePicker
                                 className={style.picker}
                                 value={value}
-                                onChange={(jobDate) =>
+                                onChange={(date) =>
                                     setValue((previousvalue) => ({
                                         ...previousvalue,
-                                        jobDate,
+                                        jobDate: date,
                                     }))
                                 }
                                 sx={{
@@ -90,10 +91,10 @@ const JobRequestForm = ({ services }) => {
                             <TimePicker
                                 className={style.picker}
                                 value={value}
-                                onChange={(jobDate) =>
+                                onChange={(time) =>
                                     setValue((previousvalue) => ({
                                         ...previousvalue,
-                                        jobDate,
+                                        jobTime: time,
                                     }))
                                 }
                                 sx={{
