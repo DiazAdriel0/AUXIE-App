@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import NavGeneral from '../../components/nav-general/NavGeneral'
 import style from './detail.module.scss'
-import JobRequestForm from '../forms/JobRequest-Form/JobRequestForm'
-// import ChatApp from '../Chat/App'
-import { Chat } from '../Chat/chat'
-// import { AppWrapper } from '../Chat/AppWrapper'
-import { auth } from '../../config/firebase-config'
+
+import JobRequestForm from '../forms/jobrequest-form/JobRequestForm'
+import { useSelector } from 'react-redux'
+import { Chat } from '../chat/Chat'
+import {auth} from "../../config/firebase-config";
+
 const Detail = () => {
     const [isInChat, setIsInChat] = useState(false)
     const [auxieDetails, setAuxieDetails] = useState({})

@@ -1,6 +1,6 @@
 import style from './logoAuxie.module.scss'
 
-import LogoAuxie2 from '../../../assets/Logos/LogoAuxie2.svg'
+import LogoAuxie2 from '../../../assets/logos/LogoAuxie2.svg'
 import { Link } from 'react-router-dom'
 
 const LogoAuxie = () => {

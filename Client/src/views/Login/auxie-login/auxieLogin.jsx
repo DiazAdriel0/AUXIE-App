@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
     loggedUser,
     updateProfile,
-} from '../../../redux/Actions/actions'
+} from '../../../redux/actions/actions'
 import {
     signInWithPopup,
     GoogleAuthProvider,
@@ -18,7 +18,6 @@ import {
 import { auth } from '../../../config/firebase-config'
 
 const ClientLogin = () => {
-
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const { errors, validate } = useValidations()
@@ -46,9 +45,11 @@ const ClientLogin = () => {
 
     const handleLogin = async (input) => {
         try {
+
             const { data } = await axios.post(
                 '/providers/login',
                 input)
+
             if (data) {
                 dispatch(loggedUser(data))
                 setAccess(true)
@@ -65,7 +66,9 @@ const ClientLogin = () => {
             if (!logged?.userUid) {
                 dispatch(
                     updateProfile(
+
                         { userUid: auth.currentUser.uid, id: logged.id }, 'providers',
+
                     )
                 )
             }

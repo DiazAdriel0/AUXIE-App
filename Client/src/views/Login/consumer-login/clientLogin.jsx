@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
     loggedUser,
     updateProfile,
-} from '../../../redux/Actions/actions'
+} from '../../../redux/actions/actions'
 import {
     signInWithPopup,
     GoogleAuthProvider,
@@ -44,9 +44,10 @@ const ClientLogin = () => {
     const handleLogin = async (input) => {
         try {
 
+
             const response = await axios.post('/consumers/login',input)
                 if (response) {
-           
+   
                 setAccess(true)
                 dispatch(loggedUser(response.data))
 
@@ -67,6 +68,7 @@ const ClientLogin = () => {
                 dispatch(
                     updateProfile(
 
+
                         { userUid: auth.currentUser.uid, id: logged.id },'consumers')
                 )} 
 
@@ -76,7 +78,7 @@ const ClientLogin = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // dispatch(postPokemon(input))
+     
         const form = document.getElementById('form')
         const email = form.email.value
         const password = form.password.value
@@ -92,12 +94,12 @@ const ClientLogin = () => {
         } catch (error) {
             alert(error.message) //o como lo maneje el front sweet alert?
         }
-        //navigate home / search auxies ///
+  
     }
 
     //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
-        // Check if the "types" field is empty
+   
         if (
             input.password.trim().length === 0 ||
             input.email.trim().length === 0

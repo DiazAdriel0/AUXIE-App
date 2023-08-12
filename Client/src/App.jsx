@@ -2,14 +2,14 @@
 import './App.scss'
 import { LocalizationProvider } from '@mui/x-date-pickers' //esto es para date and time picker (para citas)
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs' //esto es para date and time picker (para citas)
-import 'dayjs/locale/en-gb';
+import 'dayjs/locale/en-gb'
 // Import Hooks
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 
 // Import Actions
-import { getAllAuxies, getAllServices } from './redux/Actions/actions'
+import { getAllAuxies, getAllServices } from './redux/actions/actions'
 
 // Import Views
 
@@ -30,25 +30,24 @@ import AuxieInbox from './views/home-views/auxie-views/auxie-inbox/AuxieInbox'
 import AuxieServices from './views/home-views/auxie-views/auxie-services/AuxieServices'
 import AuxieStatistics from './views/home-views/auxie-views/auxie-statistics/AuxieStatistics'
 
-import ProfilePage from './views/profile/profilePage/profilePage'
+import ProfilePage from './views/profile/profilePage/ProfilePage'
 import './config/firebase-config'
 //Forms
-import Form from './views/forms/auxie-form/auxieForm'
+import Form from './views/forms/auxie-form/AuxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
 import SupportForm from '../src/views/forms/support-form/SupportForm'
 
 // Logins
-import ClientLogin from './views/Login/consumer-login/clientLogin'
-import AuxieLogin from './views/Login/auxie-login/auxieLogin'
+import ClientLogin from './views/login/consumer-login/ClientLogin'
+import AuxieLogin from './views/login/auxie-login/AuxieLogin'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
-import JobRequestForm from './views/forms/JobRequest-Form/JobRequestForm'
+import JobRequestForm from './views/forms/jobrequest-form/JobRequestForm'
 
-// import Chat from './views/Chat/chat';
-import ChatApp from './views/Chat/App';
+import ChatApp from './views/chat/App'
 
-import ButtonMercadoPago from './components/buttonMercadoPago/ButtonMercadoPago';
+import ButtonMercadoPago from './components/buttonMercadoPago/ButtonMercadoPago'
 
 //URL Back
 import axios from 'axios'
@@ -61,13 +60,15 @@ axios.defaults.baseURL = urlApi
 function App() {
     const dispatch = useDispatch()
 
+
     useEffect(() => {
       
         dispatch(getAllAuxies())
         dispatch(getAllServices()) 
+
     }, [])
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
             <div>
                 <Routes>
                     <Route path="/" element={<Landing />} />
@@ -96,7 +97,7 @@ function App() {
                     <Route path="/detail/:id" element={<Detail />} />
 
                     {/*Profile paths */}
-                    <Route path='/profile' element={<ProfilePage />} />
+                    <Route path="/profile" element={<ProfilePage />} />
 
                     {/* Register paths */}
                     <Route path="/auxieform" element={<Form />} />
@@ -111,7 +112,7 @@ function App() {
                     <Route path="*" element={<PageNotFound />} />
                     <Route path="/chat" element={<ChatApp />} />
 
-                    <Route path='/buy' element={<ButtonMercadoPago/>}/>
+                    <Route path="/buy" element={<ButtonMercadoPago />} />
                 </Routes>
             </div>
         </LocalizationProvider>
