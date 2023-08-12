@@ -6,7 +6,7 @@ import 'dayjs/locale/en-gb'
 // Import Hooks
 import { Route, Routes } from 'react-router-dom'
 import { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 // Import Actions
 import { getAllAuxies, getAllServices } from './redux/actions/actions'
@@ -31,11 +31,13 @@ import AuxieServices from './views/home-views/auxie-views/auxie-services/AuxieSe
 import AuxieStatistics from './views/home-views/auxie-views/auxie-statistics/AuxieStatistics'
 
 import ProfilePage from './views/profile/profilePage/ProfilePage'
+import './config/firebase-config'
 
 //Forms
 import Form from './views/forms/auxie-form/AuxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
 import SupportForm from '../src/views/forms/support-form/SupportForm'
+import ResetPassword from './views/reset-password/ResetPassword'
 
 // Logins
 import ClientLogin from './views/login/consumer-login/ClientLogin'
@@ -43,70 +45,23 @@ import AuxieLogin from './views/login/auxie-login/AuxieLogin'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
+import ButtonMercadoPago from './components/buttonMercadoPago/ButtonMercadoPago'
 import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
-
-// import Chat from './views/chat/Chat';
 import ChatApp from './views/chat/App'
-
-import { onAuthStateChanged, signInAnonymously } from 'firebase/auth'
-import { auth } from './config/firebase-config'
 
 //URL Back
 import axios from 'axios'
+
 const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
 axios.defaults.baseURL = urlApi
-// console.log(urlApi)
-// import { logOut, resetToken } from './redux/actions/actions';
 
 function App() {
     const dispatch = useDispatch()
-    const token = useSelector((state) => {
-        return state.token
-    })
-
-    const auxies = useSelector((state) => state.auxies)
-    const services = useSelector((state) => state.services)
-    // window.addEventListener('beforeunload', function () {
-    //     // Aquí puedes ejecutar la lógica de tu función logOut
-    //     dispatch(logOut({}))
-    //     dispatch(resetToken())
-    // })
-    //* use Effect to obtain data
 
     useEffect(() => {
-        if (token) {
-            dispatch(getAllAuxies(token))
-            dispatch(getAllServices(token))
-        }
-        const unsubscribe = onAuthStateChanged(auth, async (user) => {
-            if (user) {
-                const token = await user.getIdToken()
-                if (!auxies.length) {
-                    dispatch(getAllAuxies(token))
-                }
-                if (!services.length) {
-                    dispatch(getAllServices(token))
-                }
-            } else {
-                const generateAnonymousToken = async () => {
-                    try {
-                        const userCredential = await signInAnonymously(auth)
-                        const user = userCredential.user
-                        const token = await user.getIdToken()
-                        console.log('anonimo:' + token)
-                        // Puedes utilizar el token como token para tus solicitudes
-                        dispatch(getAllAuxies(token))
-                        dispatch(getAllServices(token))
-                    } catch (error) {
-                        console.error('Error al generar token anónimo:', error)
-                    }
-                }
-                generateAnonymousToken()
-            }
-        })
-
-        return () => unsubscribe()
+        dispatch(getAllAuxies())
+        dispatch(getAllServices())
     }, [])
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
@@ -149,9 +104,11 @@ function App() {
                     <Route path="/clientlogin" element={<ClientLogin />} />
                     <Route path="/auxielogin" element={<AuxieLogin />} />
                     {/* Login paths */}
+                    <Route path="/resetpassword" element={<ResetPassword />} />
+                    <Route path="/chat" element={<ChatApp />} />
+                    <Route path="/buy" element={<ButtonMercadoPago />} />
 
                     <Route path="*" element={<PageNotFound />} />
-                    <Route path="/chat" element={<ChatApp />} />
                 </Routes>
             </div>
         </LocalizationProvider>

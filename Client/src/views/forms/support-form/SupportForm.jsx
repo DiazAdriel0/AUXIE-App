@@ -1,198 +1,237 @@
 import style from './SupportForm.module.scss'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import { useValidations } from '../../../utils/validationutils'
+// import { useValidations } from '../../../utils/validationutils'
+import axios from 'axios'
 
+const validate = (input) => {
+    let errors = {}
+    if (!input.consumerUsername || input.consumerUsername.trim() === '') {
+        errors.consumerUsername = 'Ingresa tu nombre de usuario'
+    }
+    if (!input.message || input.message.trim() === '') {
+        errors.message = 'Escribe de forma breve tu reclamo'
+    }
+    if (!input.providerUsername || input.providerUsername.trim() === '') {
+        errors.providerUsername = 'Ingresa el nombre del Auxie'
+    }
+    if (!input.reason || input.reason.trim() === '') {
+        errors.reason = 'Selecciona la naturaleza del reclamo'
+    }
+    return errors
+}
 const SupportForm = () => {
-    const { errors, validate } = useValidations()
-    const [motives, setMotives] = useState([])
+    const [errors, setErrors] = useState({})
+    const [isFormValid, setIsFormValid] = useState(false)
+    const [isSubmitted, setIsSubmitted] = useState(false)
     const [input, setInput] = useState({
-        username: '',
-        email: '',
+        consumerUsername: '',
+        message: '',
+        providerUsername: '',
+        reason: '',
+        image: '',
     })
+
+    const [selectedImage, setSelectedImage] = useState(null)
+
+    const checkFormValidity = () => {
+        const formIsValid = Object.keys(errors).length === 0
+        setIsFormValid(formIsValid)
+    }
 
     const handleChange = (event) => {
         const { name, value } = event.target
-        setInput((prevInput) => ({
-            ...prevInput,
+        setInput((input) => ({
+            ...input,
             [name]: value,
         }))
-        validate(
-            {
-                ...input,
-                [name]: value,
-            },
-            name
-        )
+        const updatedErrors = validate({
+            ...input,
+            [name]: value,
+        })
+        setErrors(updatedErrors)
+        checkFormValidity()
     }
 
-    const handlePost = async () => {
-        try {
-            // Aquí puedes realizar la lógica para enviar los datos del formulario
-            // a tu backend o realizar alguna acción necesaria
-        } catch (error) {
-            alert(error.message)
+    const handleImageChange = (event) => {
+        const file = event.target.files[0]
+
+        if (file) {
+            setSelectedImage(file)
+            setInput((prevInput) => ({
+                ...prevInput,
+                image: file.name,
+            }))
+
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                image: '',
+            }))
         }
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        handlePost()
-
-        const form = document.getElementById('form')
-        form.reset()
-    }
-
-    const handleCheckboxChange = (e, value) => {
-        if (e.target.checked) {
-            setMotives([...motives, value])
+        
+        if (Object.values(errors).length > 0) {
+            alert('Por favor completa todos los campos')
         } else {
-            setMotives(motives.filter((item) => item !== value))
-        }
-    }
+            try {
+                const formData = new FormData()
+                formData.append('image', selectedImage)
+                formData.append('consumerUsername', input.consumerUsername)
+                formData.append('providerUsername', input.providerUsername)
+                formData.append('message', input.message)
+                formData.append('reason', input.reason)
 
-    const buttonDisabled = () => {
-        if (
-            input.email.trim().length === 0 ||
-            input.username.trim().length === 0
-        ) {
-            return true
-        }
-        for (let error in errors) {
-            if (errors[error] !== '') {
-                return true
+                const response = await axios.post('/claims/', formData)
+                setInput({
+                    consumerUsername: '',
+                    providerUsername: '',
+                    message: '',
+                    image: '',
+                    reason: '',
+                })
+                setSelectedImage(null)
+
+                if (response) {
+                    setIsSubmitted(true)
+                }
+            } catch (error) {
+                alert('Error al enviar la solicitud:' + error.message)
             }
         }
-        return false
     }
 
     return (
         <div>
             <div className={style.claims}>
-                <h1>Soporte técnico</h1>
-                <form id="form" onSubmit={handleSubmit}>
+                {isSubmitted ? (
                     <div>
-                        <label htmlFor="email" className={style.formlabel}>
-                            Email
-                        </label>
-                        <input
-                            type="email"
-                            name="email"
-                            className="form-control"
-                            id="email"
-                            onChange={handleChange}
-                        />
-                        {errors.email && (
-                            <p className={style.error}>{errors.email}</p>
-                        )}
+                        <p>¡Tu reclamo ha sido enviado con éxito!</p>
+                        <Link to="/">Volver a la página principal</Link>
                     </div>
+                ) : (
                     <div>
-                        <label htmlFor="username" className={style.formlabel}>
-                            Nombre de Usuario
-                        </label>
-                        <input
-                            type="text"
-                            name="username"
-                            className="form-control"
-                            id="username"
-                            onChange={handleChange}
-                        />
-                        {errors.username && (
-                            <p className={style.error}>{errors.username}</p>
-                        )}
-                    </div>
-                    <div>
-                        <label htmlFor="complaint" className={style.formlabel}>
-                            Reclamo
-                        </label>
-                        <textarea
-                            id="complaint"
-                            name="complaint"
-                            onChange={handleChange}
-                        ></textarea>
-                    </div>
-                    <div>
-                        <label htmlFor="auxieName" className={style.formlabel}>
-                            Nombre del Auxie
-                        </label>
-                        <input
-                            type="text"
-                            id="auxieName"
-                            name="auxieName"
-                            onChange={handleChange}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="motives" className={style.formlabel}>
-                            Selección de Motivos
-                        </label>
-                        <div>
-                            <label>
+                        <h1>Soporte técnico</h1>
+                        <form id="form" onSubmit={handleSubmit}>
+                            <div>
+                                <label
+                                    htmlFor="consumerUsername"
+                                    className={style.formlabel}
+                                >
+                                    Nombre de Usuario:
+                                </label>
                                 <input
-                                    type="checkbox"
-                                    value="retraso"
-                                    checked={motives.includes('retraso')}
-                                    onChange={(e) =>
-                                        handleCheckboxChange(e, 'retraso')
-                                    }
+                                    type="text"
+                                    name="consumerUsername"
+                                    className={style.formControl}
+                                    value={input.consumerUsername}
+                                    onChange={(e) => handleChange(e)}
+                                    placeholder="Nombre de usuario"
                                 />
-                                Retraso
-                            </label>
-                        </div>
-                        <div>
-                            <label>
+                                {errors.consumerUsername && (
+                                    <p className={style.error}>
+                                        {errors.consumerUsername}
+                                    </p>
+                                )}
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="message"
+                                    className={style.formlabel}
+                                >
+                                    Reclamo
+                                </label>
+                                <textarea
+                                    name="message"
+                                    value={input.message}
+                                    onChange={(e) => handleChange(e)}
+                                    placeholder="Escribe tu reclamo aquí"
+                                />
+                                {errors.message && (
+                                    <p className={style.error}>
+                                        {errors.message}
+                                    </p>
+                                )}
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="providerUsername"
+                                    className={style.formlabel}
+                                >
+                                    Nombre del Auxie
+                                </label>
                                 <input
-                                    type="checkbox"
-                                    value="calidad"
-                                    checked={motives.includes('calidad')}
-                                    onChange={(e) =>
-                                        handleCheckboxChange(e, 'calidad')
-                                    }
+                                    type="text"
+                                    name="providerUsername"
+                                    value={input.providerUsername}
+                                    onChange={(e) => handleChange(e)}
+                                    placeholder="Nombre del Auxie"
                                 />
-                                Calidad del Servicio
-                            </label>
-                        </div>
-                        <div>
-                            <label>
+                                {errors.providerUsername && (
+                                    <p className={style.error}>
+                                        {errors.providerUsername}
+                                    </p>
+                                )}
+                            </div>
+                            <div>
+                                <label>Imagen</label>
                                 <input
-                                    type="checkbox"
-                                    value="comportamiento"
-                                    checked={motives.includes('comportamiento')}
-                                    onChange={(e) =>
-                                        handleCheckboxChange(
-                                            e,
-                                            'comportamiento'
-                                        )
-                                    }
+                                    type="file"
+                                    accept=".jpg, .jpeg, .png"
+                                    name="image"
+                                    onChange={(e) => handleImageChange(e)}
                                 />
-                                Comportamiento del Auxie
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                <input
-                                    type="checkbox"
-                                    value="otro"
-                                    checked={motives.includes('otro')}
-                                    onChange={(e) =>
-                                        handleCheckboxChange(e, 'otro')
-                                    }
-                                />
-                                Otro
-                            </label>
-                        </div>
+                                {errors.image && <p>{errors.image}</p>}
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="reason"
+                                    className={style.formlabel}
+                                >
+                                    Selección de Motivos
+                                </label>
+                                <div>
+                                    <select
+                                        name="reason"
+                                        value={input.reason}
+                                        onChange={(e) => handleChange(e)}
+                                    >
+                                        <option disabled value="">
+                                            Motivos
+                                        </option>
+                                        <option value="late">Retraso</option>
+                                        <option value="behavior">
+                                            Comportamiento inadecuado
+                                        </option>
+                                        <option value="quality">
+                                            Calidad del servicio
+                                        </option>
+                                        <option value="other">Otro</option>
+                                    </select>
+                                    {errors.reason && (
+                                        <p className={style.error}>
+                                            {errors.reason}
+                                        </p>
+                                    )}
+                                </div>
+                            </div>
+                            <div>
+                                <button
+                                    type="submit"
+                                    className={style.claims}
+                                    disabled={!isFormValid}
+                                >
+                                    Enviar
+                                </button>
+                                <Link to="/">
+                                    <button>Atrás</button>
+                                </Link>
+                            </div>
+                        </form>
                     </div>
-                    <button
-                        type="submit"
-                        className={style.claims}
-                        disabled={buttonDisabled()}
-                    >
-                        Enviar
-                    </button>
-                    <Link to="/">
-                        <button>Atrás</button>
-                    </Link>
-                </form>
+                )}
             </div>
         </div>
     )

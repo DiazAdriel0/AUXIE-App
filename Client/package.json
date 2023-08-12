@@ -12,6 +12,7 @@
     "dependencies": {
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
+        "@mercadopago/sdk-react": "^0.0.13",
         "@mui/icons-material": "^5.14.3",
         "@mui/material": "^5.14.3",
         "@mui/x-date-pickers": "^6.11.0",
@@ -21,6 +22,8 @@
         "dayjs": "^1.11.9",
         "dotenv": "^16.3.1",
         "firebase": "^10.1.0",
+        "luxon": "^3.4.0",
+        "node-sass": "^9.0.0",
         "prettier": "^3.0.0",
         "react": "^18.2.0",
         "react-animated-css": "^1.2.1",
@@ -33,6 +36,7 @@
         "redux": "^4.2.1",
         "redux-persist": "^6.0.0",
         "sass": "^1.64.1",
+        "svelte-preprocess": "^5.0.4",
         "sweetalert2": "^11.7.20",
         "universal-cookie": "^4.0.4"
     },

@@ -18,14 +18,14 @@ const ProfilePage = () => {
                 {isAuxie ? (
                     <div>
                         <Link to="/homeauxie">
-                            <button>Yoyua</button>
+                            <button>Volver</button>
                         </Link>
                         <ProfileAuxies />
                     </div>
                 ) : (
                     <div>
                         <Link to="/homeconsumer">
-                            <button>Yoyua</button>
+                            <button>Volver</button>
                         </Link>
                         <ProfileConsumers />
                     </div>

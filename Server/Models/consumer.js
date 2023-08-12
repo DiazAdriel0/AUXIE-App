@@ -16,13 +16,19 @@ const consumerSchema = new Schema({
     },
     lastName: {
         type: String,
+
     },
-    gender: String,
+    gender: {
+        type: String,
+
+    },
     age: {
         type: Number,
         min: 18,
     },
-    address: String,
+    address: {
+        type: String,
+    },
     image: { public_id: String, secure_url: String },
     email: {
         type: String,
@@ -49,6 +55,11 @@ const consumerSchema = new Schema({
         type: String,
         default: '',
     },
+
+    userUid: {
+        type: String,
+    },
+
 })
 
 consumerSchema.set('toJSON', {

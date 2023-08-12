@@ -1,12 +1,15 @@
 const createConsumer = require('../../Controllers/ConsumersControllers/createConsumer')
 const bcrypt = require('bcrypt')
+const transporter = require('./../../Utils/nodemailer')
 
 const postConsumer = async (req, res) => {
-    const { firstName, lastName, age, email, username, password } = req.body
+    const { firstName,userUid, lastName, gender, age, email, username, password } =
+        req.body
     try {
         if (
             !firstName ||
             !lastName ||
+            !gender ||
             !age ||
             !email ||
             !username ||
@@ -20,6 +23,7 @@ const postConsumer = async (req, res) => {
         const newConsumer = {
             firstName,
             lastName,
+            gender,
             age,
             email,
             username,
@@ -32,6 +36,7 @@ const postConsumer = async (req, res) => {
                     'https://res.cloudinary.com/dvj387b1u/image/upload/v1691558271/AUXIE%20App/Profile%20photos/Providers/mbvrsqvhpkjdffahemw1.png',
             },
             isActive: true,
+            userUid,
         }
 
         const createdConsumer = await createConsumer(newConsumer)
@@ -42,8 +47,34 @@ const postConsumer = async (req, res) => {
         if (createdConsumer === 'usernameRepetido')
             throw new Error(`El username ${email} ya esta registrado`)
 
+        let pronoun
+
+        // prettier-ignore
+        switch (gender) {
+        case 'Masculino':
+            pronoun = 'o'
+            break
+        case 'Femenino':
+            pronoun = 'a'
+            break
+        case 'Otro':
+            pronoun = 'e'
+            break
+        default:
+            pronoun = 'x'
+            break
+        }
+
+        await transporter.sendMail({
+            from: `Team Auxie ${process.env.EMAIL}`,
+            to: email,
+            subject: `Bienvenid${pronoun} ${firstName}`,
+            text: `Bienvenid${pronoun} a Auxie!`,
+        })
+
         res.status(200).json('usuario creado con exito')
     } catch (error) {
+        console.error(error)
         res.status(400).json({ error: error.message })
     }
 }

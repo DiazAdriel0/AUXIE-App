@@ -4,11 +4,10 @@ import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { createUserWithEmailAndPassword } from "firebase/auth"
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../config/firebase-config'
 
 const ClientForm = () => {
-
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
     const navigate = useNavigate()
@@ -21,10 +20,10 @@ const ClientForm = () => {
         email: '',
         password: '',
         gender: '',
+        userUid:''
     })
 
     const handleChange = (event) => {
-        console.log(event)
         setInput({
             ...input,
             [event.target.name]: event.target.value,
@@ -38,16 +37,9 @@ const ClientForm = () => {
         )
     }
 
-    const handlePost = async (token) => {
+    const handlePost = async (input) => {
         try {
-            const response = await axios.post(
-                '/consumers/',
-                input,{
-                    headers:{
-                        'authorization': `Bearer ${token}`
-                    }
-                }
-            )
+            const response = await axios.post('/consumers/', input)
             if (response) {
                 setAccess(true)
                 // Reset the form only on successful response (2xx)
@@ -56,17 +48,16 @@ const ClientForm = () => {
                 Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
             }
             // setAccess(true)
-            console.log(response)
             // navigate('/home')
         } catch (error) {
             console.log(error + error.response.data.error)
-         
+
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
                 text: 'error + error.response.data.error!',
-                footer: '<a href="">Why do I have this issue?</a>'
-              })
+                footer: '<a href="">Why do I have this issue?</a>',
+            })
         }
     }
     useEffect(() => {
@@ -77,14 +68,23 @@ const ClientForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const credential = await createUserWithEmailAndPassword(auth, input.email, input.password)
-            const user = credential.user;
-            const token = await user.getIdToken();
-            handlePost(token)
-            console.log(credential)
+            const credential = await createUserWithEmailAndPassword(
+                auth,
+                input.email,
+                input.password
+            )
+            const uid = credential.user.uid
+            let data = {}
+            if(credential){
+                data = {
+                    ...input,
+                    userUid: uid,
+                }
+            }
+            handlePost(data)
         } catch (error) {
-            console.error(error.message);
-        }       
+            console.error(error.message)
+        }
     }
 
     //////para desabilitar el boton si no esta lleno el formulario=>
@@ -112,8 +112,6 @@ const ClientForm = () => {
         return false
     }
 
-    //////
-    console.log(input)
     return (
         <div className={style.form}>
             <div className={style.formtitle}>

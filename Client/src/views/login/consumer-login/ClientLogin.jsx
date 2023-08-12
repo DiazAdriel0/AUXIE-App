@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import style from './clientLogin.module.scss'
 import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { loggedUser, setToken } from '../../../redux/actions/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { loggedUser, updateProfile } from '../../../redux/actions/actions'
 import {
     signInWithPopup,
     GoogleAuthProvider,
@@ -22,7 +23,7 @@ const ClientLogin = () => {
         email: '',
         password: '',
     })
-
+    const logged = useSelector((state) => state.loggedUser)
     const handleChange = (event) => {
         setInput({
             ...input,
@@ -38,33 +39,40 @@ const ClientLogin = () => {
         )
         ///validations ///
     }
-    const handleLogin = async (token) => {
+    const handleLogin = async (input) => {
         try {
-            const response = await axios.post('/consumers/login', input, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+            const response = await axios.post('/consumers/login', input)
             if (response) {
                 setAccess(true)
                 dispatch(loggedUser(response.data))
-                dispatch(setToken(token))
             }
         } catch (error) {
-            console.error('error: ' + error.response.data.error)
-            alert(error.response.data.error)
+            console.error('error: ' + error.message)
+            alert(error.message)
         }
     }
 
     useEffect(() => {
         if (access === true) {
             navigate('/homeconsumer')
+            console.log(logged)
+            // eslint-disable-next-line no-prototype-builtins
+            if (logged.hasOwnProperty('firstName')) {
+                if (!logged?.userUid) {
+                    dispatch(
+                        updateProfile(
+                            { userUid: auth.currentUser.uid, id: logged.id },
+                            'consumers'
+                        )
+                    )
+                }
+            }
         }
     }, [access])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // dispatch(postPokemon(input))
+
         const form = document.getElementById('form')
         const email = form.email.value
         const password = form.password.value
@@ -75,18 +83,16 @@ const ClientLogin = () => {
                 password
             )
             if (credential) {
-                handleLogin(credential.user.accessToken)
+                handleLogin(input)
             }
             form.reset()
         } catch (error) {
             alert(error.message) //o como lo maneje el front sweet alert?
         }
-        //navigate home / search auxies ///
     }
 
     //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
-        // Check if the "types" field is empty
         if (
             input.password.trim().length === 0 ||
             input.email.trim().length === 0
@@ -109,9 +115,19 @@ const ClientLogin = () => {
             const provider = new GoogleAuthProvider()
             provider.setCustomParameters({ prompt: 'select_account' })
             const credential = await signInWithPopup(auth, provider)
-            const token = credential.user.accessToken
-            if (token) {
-                handleLogin(token)
+            const email = credential.user.email
+            const googleId = credential.user.uid
+
+            if (credential) {
+                const data = {
+                    email: email,
+                    password: {
+                        googleId: `${googleId}`,
+                        name: `${credential.user.displayName}`,
+                        picture: `${credential.user.photoURL}`,
+                    },
+                }
+                handleLogin(data)
             }
         } catch (error) {
             alert(error.message) //o como lo maneje el front sweet alert?
@@ -154,7 +170,11 @@ const ClientLogin = () => {
                             <p>{errors.password}</p>
                         </div>
                     </div>
-
+                    <Link to={'/resetpassword'}>
+                        <p style={{ textAlign: 'start', color: '#4C6C95' }}>
+                            ¿Olvidaste tu contraseña?
+                        </p>
+                    </Link>
                     <div className={style.submitbutton}>
                         <input
                             type="submit"

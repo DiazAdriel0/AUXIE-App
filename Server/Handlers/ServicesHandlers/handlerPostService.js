@@ -1,4 +1,5 @@
 const postService = require('../../Controllers/ServicesControllers/postService')
+const fs = require('fs-extra')
 const { uploadServiceImage } = require('./../../Utils/cloudinary')
 
 const handlerPostService = async (req, res) => {
@@ -16,6 +17,7 @@ const handlerPostService = async (req, res) => {
                 public_id: result.public_id,
                 secure_url: result.secure_url,
             }
+            await fs.unlink(req.files.image.tempFilePath)
         } else {
             const newService = await postService(category, name, image)
             if (newService.message === 'Servicio repetido') {

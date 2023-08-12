@@ -19,6 +19,7 @@ const Offer = () => {
         <>
             {isLogged ? <NavGeneral /> : <NavLanding />}
             <div className={!menuLanding ? style.offerShow : style.offerHide}>
+            </div>
                 <div className={style.offer}>
                     <div className={style.offers}>
                         <h1>Las ofertas de AUXIE</h1>
@@ -107,7 +108,7 @@ const Offer = () => {
                         </div>
                     </section>
                 </div>
-            </div>
+           
         </>
     )
 }

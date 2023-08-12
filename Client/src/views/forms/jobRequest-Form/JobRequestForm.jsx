@@ -10,7 +10,6 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
 const JobRequestForm = ({ services }) => {
-
     let { id } = useParams()
     const client = useSelector((state) => state.loggedUser)
     // const services = useSelector((state) => state.services)
@@ -21,7 +20,6 @@ const JobRequestForm = ({ services }) => {
         description: '',
         // price:'',
     })
-    console.log(value)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -36,18 +34,12 @@ const JobRequestForm = ({ services }) => {
     }
     const handlePost = async () => {
         try {
-            const response = await axios.put(
-                `/providers/addJob/${id}`,
-                value
-            )
+            const response = await axios.put(`/providers/addJob/${id}`, value)
             if (response) {
                 const form = document.getElementById('form')
                 form.reset()
                 Swal.fire('Cita solicitada!')
             }
-            // setAccess(true)
-            console.log(response)
-            // navigate('/home')
         } catch (error) {
             console.log(error + error.response.data.error)
 

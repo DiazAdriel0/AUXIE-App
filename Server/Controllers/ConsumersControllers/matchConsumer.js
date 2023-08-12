@@ -1,9 +1,9 @@
 const Consumer = require('../../Models/consumer')
 const bcrypt = require('bcrypt')
 
-const matchConsumer = async (email, password, req) => {
+const matchConsumer = async (email, password) => {
     try {
-        if (req.user.email) {
+        if (password.googleId) {
             const consumer = await Consumer.findOne({ email })
 
             if (consumer) {
@@ -12,6 +12,7 @@ const matchConsumer = async (email, password, req) => {
                     isAdmin: false,
                     firstName: consumer.firstName,
                     lastName: consumer.lastName,
+                    gender: consumer.gender,
                     age: consumer.age,
                     email: consumer.email,
                     username: consumer.username,
@@ -26,57 +27,29 @@ const matchConsumer = async (email, password, req) => {
                 return consumerWithout
             } else {
                 let newConsumer = {
-                    email: `${req.user.email}`,
-                    isActive: true,
-                    googleId: `${req.user.user_id}`,
+                    email,
+                    googleId: password.googleId,
+                    isActive: true,   
                 }
 
-                if (req.user.name.indexOf(' ') !== -1) {
-                    const names = req.user.name.split(' ')
+                if (password.name.indexOf(' ') !== -1) {
+                    const names = password.name.split(' ')
                     newConsumer.firstName = names[0]
                     newConsumer.lastName = names[1]
                 }
                 // eslint-disable-next-line no-prototype-builtins
                 if (!newConsumer.hasOwnProperty('lastName')) {
-                    newConsumer.firstName = req.user.name
+                    newConsumer.firstName = password.name
                 }
-                newConsumer.image = { secure_url: req.user.picture }
-                const theConsumer = await Consumer.create(newConsumer)
+                newConsumer.image = { secure_url: password.picture }
+                await Consumer.create(newConsumer)
+                const theConsumer = await Consumer.findOne({ email })
                 return theConsumer
             }
         }
-        const consumer = await Consumer.findOne({ email })
-        const isMail = email.indexOf('@')
-        if (isMail === -1) {
-            const consumer = await Consumer.findOne({ username: email })
-            if (consumer) {
-                const passwordMatch = await bcrypt.compare(
-                    password,
-                    consumer.password
-                )
-                const consumerWithout = {
-                    isActive: true,
-                    isAdmin: false,
-                    firstName: consumer.firstName,
-                    lastName: consumer.lastName,
-                    age: consumer.age,
-                    email: consumer.email,
-                    username: consumer.username,
-                    ratings: consumer.ratings,
-                    favoritesProviders: consumer.favoritesProviders,
-                    requiredServices: consumer.requiredServices,
-                    registerDate: consumer.registerDate,
-                    id: consumer._id,
-                    image: consumer.image,
-                }
 
-                return passwordMatch
-                    ? consumerWithout
-                    : new Error('wrongPassword')
-            } else {
-                throw new Error('inexistente')
-            }
-        }
+        const consumer = await Consumer.findOne({ email })
+
         if (consumer) {
             const passwordMatch = await bcrypt.compare(
                 password,
@@ -96,6 +69,7 @@ const matchConsumer = async (email, password, req) => {
                 registerDate: consumer.registerDate,
                 id: consumer._id,
                 image: consumer.image,
+                userUid: consumer.userUid,
             }
 
             return passwordMatch ? consumerWithout : new Error('wrongPassword')

@@ -4,26 +4,34 @@ import { useParams } from 'react-router-dom'
 import NavGeneral from '../../components/nav-general/NavGeneral'
 import style from './detail.module.scss'
 import JobRequestForm from '../forms/jobRequest-Form/JobRequestForm'
-import { useSelector } from 'react-redux'
+import { Chat } from '../chat/Chat'
+import { auth } from '../../config/firebase-config'
 
 const Detail = () => {
+    const [isInChat, setIsInChat] = useState(false)
+
     const [auxieDetails, setAuxieDetails] = useState({})
     let { id } = useParams()
-    const token = useSelector((state) => {
-        return state.token
-    })
-    console.log(auxieDetails)
+
     useEffect(() => {
-        const getDetails = async function (token) {
-            const res = await axios.get(`/providers/${id}`, {
-                headers: {
-                    authorization: `Bearer ${token}`,
-                },
-            })
+        const getDetails = async function () {
+            const res = await axios.get(`/providers/${id}`)
+
             setAuxieDetails(res.data)
         }
-        getDetails(token)
+        getDetails()
     }, [])
+    const handleClick = async () => {
+        setIsInChat(true)
+
+        await axios.put('/providers/inbox/', {
+            id,
+            inbox: {
+                sender: auth.currentUser.uid,
+            },
+        })
+    }
+
     return (
         <>
             <NavGeneral />
@@ -110,6 +118,14 @@ const Detail = () => {
                     ) : null}
                 </div>
                 <JobRequestForm services={auxieDetails.services} />
+                {isInChat ? (
+                    <Chat
+                        recipient={auxieDetails.userUid}
+                        auxiedetails={auxieDetails}
+                    />
+                ) : (
+                    <button onClick={handleClick}>Start Chat</button>
+                )}
             </div>
         </>
     )
