@@ -1,11 +1,19 @@
 const createProvider = require('../../Controllers/ProvidersControllers/createProvider')
 const bcrypt = require('bcrypt')
-const transporter = require('./../../Utils/nodemailer')
+const mailSender = require('../../Utils/nodemailer')
 
 const postProvider = async (req, res) => {
     try {
-        const { firstName,userUid, lastName, age, email, username, password, gender } =
-            req.body
+        const {
+            firstName,
+            userUid,
+            lastName,
+            age,
+            email,
+            username,
+            password,
+            gender,
+        } = req.body
 
         const hashedPassword = await bcrypt.hash(password, 10)
 
@@ -55,12 +63,14 @@ const postProvider = async (req, res) => {
             break
         }
 
-        await transporter.sendMail({
+        const mailOptions = {
             from: `Team Auxie ${process.env.EMAIL}`,
             to: email,
             subject: `Bienvenid${pronoun} ${firstName}`,
             text: `Bienvenid${pronoun} a Auxie!`,
-        })
+        }
+
+        await mailSender(mailOptions)
 
         res.status(200).json(createdProvider)
     } catch (error) {
