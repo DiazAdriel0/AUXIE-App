@@ -1,15 +1,16 @@
 import { useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { updateProfile } from '../../../redux/Actions/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateProfile } from '../../../redux/actions/actions'
 import { DateTime } from 'luxon'
 
-const ProfileConsumers = () => {
-    const consumer = useSelector((state) => state.loggedUser)
-    const [newImage, setNewImage] = useState(null)
+const ProfileAuxies = () => {
+    const provider = useSelector((state) => state.loggedUser)
+    const [newImage, setNewImage] = useState('')
+    const [newBio, setNewBio] = useState(provider.bio)
     const [error, setError] = useState(null)
     const dispatch = useDispatch()
 
-    const registerDate = consumer.registerDate
+    const registerDate = provider.registerDate
     const luxonDate = DateTime.fromISO(registerDate)
     const toDateMed = luxonDate.toLocaleString(DateTime.DATE_MED)
 
@@ -26,24 +27,28 @@ const ProfileConsumers = () => {
         }
     }
 
+    const handleBioChange = (e) => {
+        setNewBio(e.target.value)
+    }
+
     const handleUpdateProfile = () => {
         const formData = new FormData()
         formData.append('image', newImage)
+        formData.append('bio', newBio)
 
         dispatch(
             updateProfile(
-                { id: consumer.id, image: newImage },
-           
-                'consumers'
+                { id: provider.id, image: newImage, bio: newBio },
+
+                'providers'
             )
         )
-
     }
 
     return (
         <div>
             <div>
-                <img src={consumer.image.secure_url} alt="imagen de perfil" />
+                <img src={provider.image.secure_url} alt="imagen de perfil" />
                 <input
                     type="file"
                     accept=".jpg, .png"
@@ -51,32 +56,24 @@ const ProfileConsumers = () => {
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 <h1>
-                    {consumer.firstName} {consumer.lastName}
+                    {provider.firstName} {provider.lastName}
                 </h1>
-                <h4>
-                    {consumer.isAdmin && (
-                        <div>
-                            <h4>Admin</h4>
-                        </div>
-                    )}
-                </h4>
-                <h4>Genero: {consumer.gender}</h4>
+                <h4>Genero: {provider.gender}</h4>
                 <h3>
-                    Email: {consumer.email}{' '}
-                    <button>Cambiar la contraseña</button>
+                    Email: {provider.email} <button>Cambiar contraseña</button>
                 </h3>
+                <textarea value={newBio} onChange={handleBioChange} />
                 <h6>Te uniste: {toDateMed}</h6>
                 <div>
-                    <h5>Auxies favoritos: {consumer.favoritesProviders}</h5>
-                    <h5>Servicios contratados: {consumer.requiredServices}</h5>
-                    <h5>Servicios requeridos: {consumer.requiredServices}</h5>
-                    <h5>Average Rating: {consumer.averageRating}</h5>
-                    <h5>Ratings: {consumer.ratings}</h5>
+                    <h5>Servicios que ofrece:</h5>
+                    <h5>Trabajos realizados: </h5>
+                    <h5>Rating: </h5>
+                    <h5>Average Rating: {provider.averageRating}</h5>
+                    <h5>Reviews:</h5>
                 </div>
                 <button onClick={handleUpdateProfile}>Guardar Cambios</button>
             </div>
         </div>
     )
 }
-
-export default ProfileConsumers
+export default ProfileAuxies

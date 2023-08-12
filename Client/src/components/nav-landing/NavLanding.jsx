@@ -1,5 +1,6 @@
 import style from './navLanding.module.scss'
-import LogoAuxie from '../../assets/logos/logoAuxie.svg'
+import LogoAuxie from '../../assets/logos/LogoAuxie.svg'
+
 // Hooks
 
 import useMenuStates from '../../hooks/useMenuStates'

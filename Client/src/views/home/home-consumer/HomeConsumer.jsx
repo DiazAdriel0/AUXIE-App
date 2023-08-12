@@ -10,7 +10,7 @@ import style from './homeConsumer.module.scss'
 import Cards from '../../../components/cards/Cards'
 import Filters from '../../../components/filters/Filters'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
-// import ClientRequiredServices from '../../../components/clientRequiredServices/clientRequiredServices'
+// import ClientRequiredServices from '../../../components/clientRequiredServices/ClientRequiredServices'
 
 //actions
 import { resetAuxiesCatalog } from '../../../redux/actions/actions'
