@@ -2,7 +2,6 @@ import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const AppWrapper = ({ children, setIsInChat }) => {
   
     cookies.remove('auth-token')

@@ -3,7 +3,6 @@ import { db, auth } from '../../config/firebase-config'
 import {
     collection,
     addDoc,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     where,
     serverTimestamp,
     onSnapshot,
@@ -11,6 +10,7 @@ import {
     orderBy,
 } from 'firebase/firestore'
 import style from './chat.module.scss'
+import './Chat.css'
 import { useSelector } from 'react-redux'
 
 export const Chat = ({ recipient, auxiedetails }) => {
@@ -29,6 +29,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
         }
     }) // Sort for consistent order
 
+    console.log(ordered)
     const conversationId = ordered.join('_')
 
     const conversationData = { participants }
@@ -57,6 +58,8 @@ export const Chat = ({ recipient, auxiedetails }) => {
 
         getOrCreateConversation()
     }, [recipient])
+
+    console.log(messages)
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -106,6 +109,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
                             {message.recipient === auth.currentUser.uid
                                 ? `${message.firstName} ${message.lastName} `
                                 : 'You'}
+                            
                         </span>
 
                         <div
