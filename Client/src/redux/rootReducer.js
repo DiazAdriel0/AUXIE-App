@@ -12,6 +12,7 @@ import {
     UPDATE_PROFILE,
     ADD_FAVORITE,
     DELETE_FAVORITE,
+    TURN_LIGHT_NIGHT_MODE,
 } from './actions/actionTypes'
 
 let initialState = {
@@ -179,6 +180,11 @@ function rootReducer(state = initialState, action) {
                     ...state.loggedUser,
                     favoritesProviders: [...action.payload],
                 },
+            }
+        case TURN_LIGHT_NIGHT_MODE:
+            return {
+                ...state,
+                nightMode: action.payload,
             }
 
         // caso por defecto si por alguna razón no recibe action.type
