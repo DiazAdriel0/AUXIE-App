@@ -10,9 +10,10 @@ const ProfileAuxies = () => {
     const [newImage, setNewImage] = useState('')
     const [newBio, setNewBio] = useState(provider.bio)
     const [error, setError] = useState(null)
+    const [gallery, setGallery] = useState([])
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    
+
     const registerDate = provider.registerDate
     const luxonDate = DateTime.fromISO(registerDate)
     const toDateMed = luxonDate.toLocaleString(DateTime.DATE_MED)
@@ -34,10 +35,26 @@ const ProfileAuxies = () => {
         setNewBio(e.target.value)
     }
 
+    const handleAddPhoto = (event) => {
+        const newPhotos = [...gallery, event.target.files[0]]
+        if (newPhotos.length <= 5) {
+            setGallery(newPhotos)
+        }
+    }
+
+    const handleRemovePhoto = (index) => {
+        const newPhotos = gallery.filter((_, i) => i !== index)
+        setGallery(newPhotos)
+    }
+
     const handleUpdateProfile = () => {
         const formData = new FormData()
         formData.append('image', newImage)
         formData.append('bio', newBio)
+
+        gallery.forEach((gallery, index) => {
+            formData.append(`gallery-${index}`, gallery)
+        })
 
         dispatch(
             updateProfile(
@@ -63,7 +80,10 @@ const ProfileAuxies = () => {
                 </h1>
                 <h4>Genero: {provider.gender}</h4>
                 <h3>
-                    Email: {provider.email} <button onClick={()=>navigate('/resetpassword')}>Cambiar contraseña</button>
+                    Email: {provider.email}{' '}
+                    <button onClick={() => navigate('/resetpassword')}>
+                        Cambiar contraseña
+                    </button>
                 </h3>
                 <textarea value={newBio} onChange={handleBioChange} />
                 <h6>Te uniste: {toDateMed}</h6>
@@ -74,9 +94,35 @@ const ProfileAuxies = () => {
                     <h5>Average Rating: {provider.averageRating}</h5>
                     <h5>Reviews:</h5>
                 </div>
+                <div className="gallery-container">
+                    <h5>Fotos de tus trabajos realizados:</h5>
+                    <input
+                        type="file"
+                        accept=".jpg, .png"
+                        multiple
+                        onChange={handleAddPhoto}
+                    />
+                    <ul>
+                        {gallery.map((photo, index) => (
+                            <li className="gallery-item" key={index}>
+                                <img
+                                    src={URL.createObjectURL(photo)}
+                                    alt={`Photo ${index}`}
+                                />
+                                <button
+                                    className="delete-button"
+                                    onClick={() => handleRemovePhoto(index)}
+                                >
+                                    X
+                                </button>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
                 <button onClick={handleUpdateProfile}>Guardar Cambios</button>
             </div>
         </div>
     )
 }
+
 export default ProfileAuxies
