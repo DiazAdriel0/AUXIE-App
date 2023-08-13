@@ -17,3 +17,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </Provider>
     </BrowserRouter>
 )
+store.subscribe(() => {
+    const state = store.getState()
+    const body = document.body
+
+    if (state.nightMode) {
+        body.classList.add('night-mode')
+        body.classList.remove('day-mode')
+    } else {
+        body.classList.add('day-mode')
+        body.classList.remove('night-mode')
+    }
+})

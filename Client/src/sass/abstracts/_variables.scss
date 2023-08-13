@@ -52,4 +52,7 @@
     /*New Colors Dark Mode */
     --background-dark: #0b0b25;
     --text-color-dark: #fcfcfc;
+    /*Transition color  */
+    --transition-color: background-color 0.3s ease-in-out,
+        color 0.3s ease-in-out;
 }
