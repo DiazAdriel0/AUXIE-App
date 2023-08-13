@@ -43,6 +43,7 @@
 
     /* New Colors Light Mode */
     --background-light: #fcfcfc;
+    --text-color-light: #012a4a;
     --contrast-color-light: #111645;
 
     /* Buttons Blue */
@@ -51,8 +52,13 @@
 
     /*New Colors Dark Mode */
     --background-dark: #0b0b25;
+    --div-color-dark: #0b0b25d5;
+    --contrast-div-color-dark: #3434c5d5;
+    --button-color-dark: #0b0b25d5;
+    --hover-color-dark: #3434c5d5;
     --text-color-dark: #fcfcfc;
+
     /*Transition color  */
-    --transition-color: background-color 0.3s ease-in-out,
-        color 0.3s ease-in-out;
+    --transition-background-color: background-color 0.3s ease-in-out;
+    --transition-color: color 0.3s ease-in-out;
 }

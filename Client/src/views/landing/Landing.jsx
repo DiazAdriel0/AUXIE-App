@@ -18,8 +18,15 @@ import NavLanding from '../../components/nav-landing/NavLanding'
 import ButtonUp from '../../components/buttons/buttonUp/ButtonUp'
 import FeaturedAuxies from '../../components/featuredAuxies/FeaturedAuxies'
 
-
 const Landing = () => {
+    //style tags
+    const {
+        slogan,
+        divSlogan,
+        divSloganNight,
+        buttonSloganCont,
+        buttonSloganContNight,
+    } = style
     //* First Intersection Observer
     const { ref: myRef, inView: firstObserver } = useInView()
 
@@ -35,8 +42,7 @@ const Landing = () => {
         footerAnimated: false,
     })
     //* Global State
-    // const services = useSelector((state) => state.services)
-
+    const nightMode = useSelector((state) => state.nightMode)
     const user = useSelector((state) => state.loggedUser)
     const menuLanding = useSelector((state) => state.menuLanding)
     //* state for changes
@@ -211,7 +217,13 @@ const Landing = () => {
                     isVisible={true}
                 >
                     <section className={style.slogan}>
-                        <div className={style.divSlogan}>
+                        <div
+                            className={
+                                !nightMode
+                                    ? divSlogan
+                                    : `${divSlogan} ${divSloganNight}`
+                            }
+                        >
                             <h3>TU VIDA COTIDIANA AHORA ES MÁS FÁCIL</h3>
                             <p>
                                 <span>
@@ -224,8 +236,18 @@ const Landing = () => {
                                 </span>
                             </p>
                         </div>
-                        <div className={style.buttonSloganCont}>
-                            <button className={style.buttonSlogan} onClick={handleClick} value={'toClientForm'}>
+                        <div
+                            className={
+                                !nightMode
+                                    ? buttonSloganCont
+                                    : `${buttonSloganCont} ${buttonSloganContNight}`
+                            }
+                        >
+                            <button
+                                className={style.buttonSlogan}
+                                onClick={handleClick}
+                                value={'toClientForm'}
+                            >
                                 Contratar
                             </button>
                         </div>
@@ -265,8 +287,8 @@ const Landing = () => {
                         animationInDuration={1000}
                     >
                         {/* Section Slogan */}
-                        <section ref={myRef2} className={style.slogan}>
-                            <div className={style.divSlogan}>
+                        <section ref={myRef2} className={slogan}>
+                            <div className={divSlogan}>
                                 <h3>Trabaja con nosotros y genera ganancias</h3>
                                 <p>
                                     <span>
@@ -275,10 +297,14 @@ const Landing = () => {
                                     </span>
                                 </p>
                             </div>
-                            <div className={style.buttonSlogan1Cont}>
-                                    <button className={style.buttonSlogan1} onClick={handleClick} value={'toHelp'}>
-                                        Mas informacion
-                                    </button>
+                            <div className={style.buttonSloganCont}>
+                                <button
+                                    className={style.buttonSlogan}
+                                    onClick={handleClick}
+                                    value={'toHelp'}
+                                >
+                                    Mas informacion
+                                </button>
                             </div>
                         </section>
 
