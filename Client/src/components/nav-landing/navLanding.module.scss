@@ -58,7 +58,9 @@
 }
 
 .logInOrRegister {
-    margin-right: 5%;
+    display: flex;
+    margin-right: 3%;
+    gap: 20px;
     ul {
         display: flex;
         gap: 5%;

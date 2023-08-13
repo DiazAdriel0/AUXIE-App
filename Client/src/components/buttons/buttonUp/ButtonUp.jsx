@@ -23,13 +23,7 @@ const ButtonUp = ({ observersLanding }) => {
         <>
             {firstObserver || secondObserver || thirdObserver ? (
                 <div className={upDiv}>
-                    <Button
-                        style={
-                            !nightMode ? null : { backgroundColor: '#0b0b25' }
-                        }
-                        onClick={handleButtonUp}
-                        className={buttonUp}
-                    >
+                    <Button onClick={handleButtonUp} className={buttonUp}>
                         <KeyboardArrowUpIcon
                             style={{ color: buttonColor, fontSize: '4rem' }}
                         />
