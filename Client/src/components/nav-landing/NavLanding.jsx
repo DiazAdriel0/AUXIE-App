@@ -10,6 +10,9 @@ import { Animated } from 'react-animated-css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+//components
+import ButtonLightNight from '../buttons/button-light-night/ButtonLightNight'
+
 const NavLanding = () => {
     const navigate = useNavigate()
     const menuLanding = useSelector((state) => state.menuLanding)
@@ -91,6 +94,7 @@ const NavLanding = () => {
                         </li>
                     </ul>
                 </div>
+                <ButtonLightNight />
             </nav>
             {logInMenu && (
                 <Animated
