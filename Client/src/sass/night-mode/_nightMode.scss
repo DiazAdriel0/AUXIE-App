@@ -1,0 +1,12 @@
+.night-mode {
+    background-color: var(--background-dark);
+    color: var(--text-color-dark);
+    transition: var(--transition-color);
+}
+
+// Estilos para el modo diurno
+.day-mode {
+    background-color: var(--background-light);
+    color: var(--contrast-color-light);
+    transition: var(--transition-color);
+}
