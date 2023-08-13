@@ -58,7 +58,12 @@ const ProfileAuxies = () => {
 
         dispatch(
             updateProfile(
-                { id: provider.id, image: newImage, bio: newBio },
+                {
+                    id: provider.id,
+                    image: newImage,
+                    bio: newBio,
+                    gallery: gallery,
+                },
 
                 'providers'
             )
@@ -119,7 +124,9 @@ const ProfileAuxies = () => {
                         ))}
                     </ul>
                 </div>
-                <button onClick={handleUpdateProfile}>Guardar Cambios</button>
+                <button className="update-button" onClick={handleUpdateProfile}>
+                    Guardar Cambios
+                </button>
             </div>
         </div>
     )

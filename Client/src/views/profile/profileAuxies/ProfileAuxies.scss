@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 150vh;
+    height: 200vh;
     
     img {
       width: 150px;
@@ -97,5 +97,11 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
+  }
+
+  .update-button{
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
   }
 }
