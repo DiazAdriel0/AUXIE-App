@@ -23,29 +23,29 @@ const matchProvider = async (email, password) => {
                     reviews: provider.reviews,
                     googleId: provider.googleId,
                     inbox: provider.inbox,
+                    gallery: provider.gallery,
                 }
                 return providerWithout
             } else {
                 let newProvider = {
                     email: password.email,
                     isActive: true,
-                    googleId:password.googleId,
+                    googleId: password.googleId,
                 }
 
                 if (password.name.indexOf(' ') !== -1) {
-                    const names =password.name.split(' ')
+                    const names = password.name.split(' ')
                     newProvider.firstName = names[0]
                     newProvider.lastName = names[1]
                 }
                 // eslint-disable-next-line no-prototype-builtins
                 if (!newProvider.hasOwnProperty('lastName')) {
-                    newProvider.firstName =password.name
+                    newProvider.firstName = password.name
                 }
                 newProvider.image = { secure_url: password.picture }
                 await Provider.create(newProvider)
-                const theProvider =  await Provider.findOne({ email })
-                return theProvider 
-
+                const theProvider = await Provider.findOne({ email })
+                return theProvider
             }
         }
         const provider = await Provider.findOne({ email })
@@ -71,6 +71,7 @@ const matchProvider = async (email, password) => {
                 reviews: provider.reviews,
                 userUid: provider.userUid,
                 inbox: provider.inbox,
+                gallery: provider.gallery,
             }
             return passwordMatch ? providerWithout : new Error('wrongPassword')
         } else {
