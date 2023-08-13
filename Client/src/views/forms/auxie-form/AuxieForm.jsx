@@ -52,10 +52,12 @@ const Form = () => {
                 Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
             }
         } catch (error) {
+            let er = error.response.data.error
+            console.error(er)
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'error + error.response.data.error!',
+                text: `${er}`,
                 footer: '<a href="">Why do I have this issue?</a>',
             })
         }
