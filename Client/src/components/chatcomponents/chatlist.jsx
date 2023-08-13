@@ -28,7 +28,7 @@ const Chatlist = () => {
     user.uid && getChats();
   }, [user.uid]);
 
-
+console.log(selectedUser)
   return (
     <div className={style.chatselector}>
       {/* Display the ChatSelector component */}

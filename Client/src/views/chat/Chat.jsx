@@ -10,11 +10,11 @@ import {
     orderBy,
 } from 'firebase/firestore'
 import style from './chat.module.scss'
-import './Chat.css'
 import { useSelector } from 'react-redux'
 
 export const Chat = ({ recipient, auxiedetails }) => {
     const user = useSelector((state) => state.loggedUser)
+    const inbox =useSelector((state) => state.loggedUser.inbox)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
     const conversationsRef = collection(db, 'conversations') // Change: Use 'conversations' collection
@@ -96,7 +96,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
     return (
         <div className="chat-app">
             <div className="header">
-                <h1>Conversation with User: {auxiedetails.firstName}</h1>
+    
             </div>
 
             <div className={style.messages}>
@@ -137,7 +137,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
                     className={style.messageinput}
                     placeholder="Type your message here..."
                 />
-                <button type="submit" className="send-button">
+                <button type="submit" className={style.send}>
                     Send
                 </button>
             </form>

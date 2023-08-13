@@ -5,7 +5,7 @@ const ChatSelector = ({ inbox, handleUserSelection }) => {
     <div >
       {inbox.map((item, index) => (
         <div className={style.chatlist} key={index} onClick={() => handleUserSelection(item.sender)}>
-          User: {item.sender}
+          User: {item.name}
         </div>
       ))}
     </div>
