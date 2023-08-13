@@ -33,15 +33,15 @@ const providerSchema = new Schema({
         type: String,
         default: '',
     },
+    gallery: { type: Array },
 
-    userUid:{
+    userUid: {
         type: String,
         default: '',
     },
-    inbox:{
+    inbox: {
         type: Array,
-        
-    }
+    },
 })
 
 providerSchema.set('toJSON', {
