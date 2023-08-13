@@ -84,6 +84,11 @@ const ClientForm = () => {
             handlePost(data)
         } catch (error) {
             console.error(error.message)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Parece que el correo proporcionado ya está en uso.',
+            })
         }
     }
 

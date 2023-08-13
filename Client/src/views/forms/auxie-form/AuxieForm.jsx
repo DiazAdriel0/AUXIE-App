@@ -83,6 +83,11 @@ const Form = () => {
             
         } catch (error) {
             console.error(error.message);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Parece que el correo proporcionado ya está en uso.',
+            })
         }
         
     }
