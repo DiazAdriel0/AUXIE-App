@@ -1,48 +1,47 @@
-import React, { useState } from 'react'
-import { Chat } from '../chat/Chat'
-import { AppWrapper } from '../chat/AppWrapper'
-import Cookies from 'universal-cookie'
+import React, { useState} from "react";
+import { Chat } from "../Chat/chat";
+// import { Auth } from "../Chat/Auth";
+import { AppWrapper } from "../Chat/AppWrapper";
+import Cookies from "universal-cookie";
+import "./App.css";
+ 
+const cookies = new Cookies();
 
-const cookies = new Cookies()
+function ChatApp({recipient}) {
+  const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
+  // const [recipient, setRecipient] = useState(""); // Change: Use 'recipient' instead of 'room'
+  const [isInChat, setIsInChat] = useState(false);
 
-function ChatApp() {
-    const [isAuth, setIsAuth] = useState(cookies.get('auth-token'))
-    const [isInChat, setIsInChat] = useState(null)
-    const [room, setRoom] = useState('')
-
-    if (!isAuth) {
-        return (
-            <AppWrapper
-                isAuth={isAuth}
-                setIsAuth={setIsAuth}
-                setIsInChat={setIsInChat}
-            ></AppWrapper>
-        )
-    }
-
+  if (!isAuth) {
     return (
-        <AppWrapper
-            isAuth={isAuth}
-            setIsAuth={setIsAuth}
-            setIsInChat={setIsInChat}
-        >
-            {!isInChat ? (
-                <div className="room">
-                    <label> Type room name: </label>
-                    <input onChange={(e) => setRoom(e.target.value)} />
-                    <button
-                        onClick={() => {
-                            setIsInChat(true)
-                        }}
-                    >
-                        Enter Chat
-                    </button>
-                </div>
-            ) : (
-                <Chat room={room} />
-            )}
-        </AppWrapper>
-    )
+      <AppWrapper
+        isAuth={isAuth}
+        setIsAuth={setIsAuth}
+        setIsInChat={setIsInChat}
+      >
+        
+      </AppWrapper>
+    );
+  }
+
+  return (
+    <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
+      {!isInChat ? (
+        <div className="room">
+          
+          <button
+            onClick={() => {
+              setIsInChat(true);
+            }}
+          >
+            Start Conversation
+          </button>
+        </div>
+      ) : (
+        <Chat recipient={recipient} /> /* Change: Pass 'recipient' prop */
+      )}
+    </AppWrapper>
+  );
 }
 
-export default ChatApp
+export default ChatApp;
