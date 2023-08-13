@@ -9,11 +9,11 @@ import { useSelector } from 'react-redux'
 
 const CardsServices = () => {
     const services = useSelector((state) => state.services)
-
+    const popularServices = services.slice(5, 13)
     return (
         <div className={style.cardsServices}>
             {services &&
-                services.map((services) => (
+                popularServices.map((services) => (
                     <CardServices
                         key={services.name}
                         name={services.name}
