@@ -30,10 +30,12 @@ const Detail = () => {
             id,
             inbox: {
                 sender: auth.currentUser.uid,
+                
             },
         })
     }
 
+    console.log(auth.currentUser)
     return (
         <>
             <NavGeneral />
@@ -119,16 +121,7 @@ const Detail = () => {
                             </div>
                             <div className={style.carousel}>
                                 <Carousel>
-                                    {/* {auxieDetails.gallery.map(
-                                        (photo, index) => (
-                                            <div key={index}>
-                                                <img
-                                                    src={photo.secure_url}
-                                                    alt={`Foto ${index}`}
-                                                />
-                                            </div>
-                                        )
-                                    )} */}
+                                 
                                 </Carousel>
                             </div>
                         </div>

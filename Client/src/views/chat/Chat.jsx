@@ -114,7 +114,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
                                 : 'You'}
                             
                         </span>
-
+                        <div className={style.chatbubbles}>
                         <div
                             className={` ${
                                 message.recipient === auth.currentUser.uid
@@ -122,18 +122,19 @@ export const Chat = ({ recipient, auxiedetails }) => {
                                     : style.sender
                             }`}
                         >
+                            
                             {message.text}
-                            <br />
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
-            <form onSubmit={handleSubmit} className="new-message-form">
+            <form onSubmit={handleSubmit} className={style.chatform}>
                 <input
                     type="text"
                     value={newMessage}
                     onChange={(event) => setNewMessage(event.target.value)}
-                    className="new-message-input"
+                    className={style.messageinput}
                     placeholder="Type your message here..."
                 />
                 <button type="submit" className="send-button">
