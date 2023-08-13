@@ -2,12 +2,14 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
 import { DateTime } from 'luxon'
+import { useNavigate } from 'react-router-dom'
 
 const ProfileConsumers = () => {
     const consumer = useSelector((state) => state.loggedUser)
     const [newImage, setNewImage] = useState(null)
     const [error, setError] = useState(null)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const registerDate = consumer.registerDate
     const luxonDate = DateTime.fromISO(registerDate)
@@ -62,7 +64,7 @@ const ProfileConsumers = () => {
                 <h4>Genero: {consumer.gender}</h4>
                 <h3>
                     Email: {consumer.email}{' '}
-                    <button>Cambiar la contraseña</button>
+                    <button onClick={()=>navigate('/resetpassword')}>Cambiar la contraseña</button>
                 </h3>
                 <h6>Te uniste: {toDateMed}</h6>
                 <div>

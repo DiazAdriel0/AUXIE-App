@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
 import { DateTime } from 'luxon'
+import { useNavigate } from 'react-router-dom'
 
 const ProfileAuxies = () => {
     const provider = useSelector((state) => state.loggedUser)
@@ -9,7 +10,8 @@ const ProfileAuxies = () => {
     const [newBio, setNewBio] = useState(provider.bio)
     const [error, setError] = useState(null)
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
+    
     const registerDate = provider.registerDate
     const luxonDate = DateTime.fromISO(registerDate)
     const toDateMed = luxonDate.toLocaleString(DateTime.DATE_MED)
@@ -60,7 +62,7 @@ const ProfileAuxies = () => {
                 </h1>
                 <h4>Genero: {provider.gender}</h4>
                 <h3>
-                    Email: {provider.email} <button>Cambiar contraseña</button>
+                    Email: {provider.email} <button onClick={()=>navigate('/resetpassword')}>Cambiar contraseña</button>
                 </h3>
                 <textarea value={newBio} onChange={handleBioChange} />
                 <h6>Te uniste: {toDateMed}</h6>
