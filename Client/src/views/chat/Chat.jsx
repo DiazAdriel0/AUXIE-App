@@ -32,6 +32,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
     const conversationId = ordered.join('_')
 
     const conversationData = { participants }
+ 
     //ZpsbcXOZ7SSFon98N3REltncKZU2_dCsvWUrHtZhArwOzAYTzF5Y74Sf2
     useEffect(() => {
         // Fetch or create a conversation document
@@ -48,15 +49,17 @@ export const Chat = ({ recipient, auxiedetails }) => {
                 let messages = []
                 snapshot.forEach((doc) => {
                     messages.push({ ...doc.data(), id: doc.id })
+                   
                 })
                 setMessages(messages)
+                
             })
 
             return () => unsubscribe()
         }
 
         getOrCreateConversation()
-    }, [recipient])
+    }, [recipient, conversationId])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -66,7 +69,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
         // Fetch or create a conversation document
         const participants = [auth.currentUser.uid, recipient]
         participants.sort() // Sort for consistent order
-        const conversationId = participants.join('_')
+        const conversationId = ordered.join('_')
         const conversationData = { participants }
         await addDoc(conversationsRef, conversationData) // Create the conversation if it doesn't exist
 
@@ -78,7 +81,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
         await addDoc(messagesRef, {
             text: newMessage,
             createdAt: serverTimestamp(),
-            sender: user.userUid || user.googleId,
+            sender: auth.currentUser.uid,
             recipient: recipient,
             firstName: user.firstName,
             lastName: user.lastName,
