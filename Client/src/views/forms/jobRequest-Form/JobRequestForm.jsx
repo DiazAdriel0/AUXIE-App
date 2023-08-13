@@ -19,6 +19,7 @@ const JobRequestForm = ({ services }) => {
         jobDate: '',
         jobTime: '',
         description: '',
+        paymentMethod: '',
         // price:'',
     })
 
@@ -31,6 +32,13 @@ const JobRequestForm = ({ services }) => {
         setValue((previousvalue) => ({
             ...previousvalue,
             service: value, // Actualizamos solo el campo 'service'
+        }))
+    }
+    const handlePaymentChange = (event) => {
+        const { value } = event.target
+        setValue((previousvalue) => ({
+            ...previousvalue,
+            paymentMethod: value,
         }))
     }
     const handlePost = async () => {
@@ -155,6 +163,30 @@ const JobRequestForm = ({ services }) => {
                                 value={value.description}
                                 onChange={handleInputChange}
                             />
+                        </div>
+                        <div>
+                            <label>Método de pago:</label>
+                            <TextField
+                                required
+                                className={style.picker}
+                                id="payment"
+                                select
+                                fullWidth
+                                label="Servicio"
+                                helperText="Selecciona un servicio"
+                                color="primary"
+                                focused
+                                name="payment"
+                                value={value.paymentMethod}
+                                onChange={handlePaymentChange}
+                            >
+                                <MenuItem value="efectivo">
+                                    Efectivo en persona
+                                </MenuItem>
+                                <MenuItem value="app">
+                                    A través de nuestra app
+                                </MenuItem>
+                            </TextField>
                         </div>
 
                         <Button
