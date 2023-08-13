@@ -2,6 +2,10 @@
     background-color: var(--background-dark);
     color: var(--text-color-dark);
     transition: var(--transition-color);
+
+    a {
+        color: var(--text-color-light);
+    }
 }
 
 // Estilos para el modo diurno
@@ -9,4 +13,7 @@
     background-color: var(--background-light);
     color: var(--contrast-color-light);
     transition: var(--transition-color);
+    a {
+        color: var(--text-color-light);
+    }
 }

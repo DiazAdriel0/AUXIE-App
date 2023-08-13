@@ -10,13 +10,15 @@ const ButtonLightNight = () => {
     const nightMode = useSelector((state) => state.nightMode)
 
     return (
-        <Button
-            onClick={() => dispatch(turnLightNightMode(!nightMode))}
-            className={style.button}
-            startIcon={!nightMode ? <LightMode /> : <NightlightRound />}
-        >
-            {!nightMode ? 'Light' : 'Night'}
-        </Button>
+        <div className={style.buttonContainer}>
+            <Button
+                onClick={() => dispatch(turnLightNightMode(!nightMode))}
+                className={style.button}
+                startIcon={!nightMode ? <LightMode /> : <NightlightRound />}
+            >
+                {!nightMode ? 'Light' : 'Night'}
+            </Button>
+        </div>
     )
 }
 

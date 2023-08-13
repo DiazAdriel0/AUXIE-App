@@ -1,5 +1,5 @@
 import style from './navLanding.module.scss'
-import LogoAuxie from '../../assets/logos/LogoAuxie.svg'
+import LogoAuxie from '../../assets/logos/2.png'
 
 // Hooks
 
@@ -91,8 +91,8 @@ const NavLanding = () => {
                             </button>
                         </li>
                     </ul>
+                    <ButtonLightNight />
                 </div>
-                <ButtonLightNight />
             </nav>
             {logInMenu && (
                 <Animated
