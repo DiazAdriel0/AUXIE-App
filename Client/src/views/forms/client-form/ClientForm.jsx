@@ -50,12 +50,12 @@ const ClientForm = () => {
             // setAccess(true)
             // navigate('/home')
         } catch (error) {
-            console.log(error + error.response.data.error)
-
+            let er = error.response.data.error
+            console.error(er)
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'error + error.response.data.error!',
+                text: `${er}`,
                 footer: '<a href="">Why do I have this issue?</a>',
             })
         }
@@ -84,6 +84,11 @@ const ClientForm = () => {
             handlePost(data)
         } catch (error) {
             console.error(error.message)
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Parece que el correo proporcionado ya está en uso.',
+            })
         }
     }
 
