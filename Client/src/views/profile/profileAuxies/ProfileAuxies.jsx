@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { DateTime } from 'luxon'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
-import { DateTime } from 'luxon'
 import { useNavigate } from 'react-router-dom'
+import './ProfileAuxies.scss'
 
 const ProfileAuxies = () => {
     const provider = useSelector((state) => state.loggedUser)
@@ -48,7 +49,7 @@ const ProfileAuxies = () => {
     }
 
     return (
-        <div>
+        <div className="profile-container">
             <div>
                 <img src={provider.image.secure_url} alt="imagen de perfil" />
                 <input

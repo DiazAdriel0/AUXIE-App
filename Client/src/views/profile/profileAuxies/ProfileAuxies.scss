@@ -1,0 +1,67 @@
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Asegura que el contenido esté centrado verticalmente en la página */
+    
+    img {
+      width: 150px; /* Ajusta el tamaño de la foto de perfil */
+      height: 150px;
+      border-radius: 50%; /* Hace que la imagen sea redonda */
+      margin-bottom: 10px;
+    }
+  
+    input[type="file"] {
+      margin-top: 10px;
+    }
+  
+    h1 {
+      margin-top: 10px;
+    }
+  
+    h4 {
+      display: flex;
+      align-items: center;
+      margin-top: 5px;
+      
+      /* Estilo para el caso de isAdmin */
+      &.isAdmin {
+        margin-left: auto;
+      }
+    }
+  
+    h4:nth-child(3) {
+      text-align: center;
+      margin-top: 10px;
+    }
+  
+    h3 {
+      text-align: left;
+      margin-top: 10px;
+  
+      button {
+        margin-left: 10px;
+      }
+    }
+  
+    h6 {
+      text-align: right;
+      margin-top: 10px;
+    }
+  
+    div {
+      margin-top: 20px;
+  
+      h5 {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 5px 0;
+        list-style: square;
+      }
+    }
+  
+    button {
+      margin-top: 20px;
+    }
+  }

@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import { DateTime } from 'luxon'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
-import { DateTime } from 'luxon'
 import { useNavigate } from 'react-router-dom'
+import './ProfileConsumers.scss'
 
 const ProfileConsumers = () => {
     const consumer = useSelector((state) => state.loggedUser)
@@ -42,7 +43,7 @@ const ProfileConsumers = () => {
     }
 
     return (
-        <div>
+        <div className="profile-container">
             <div>
                 <img src={consumer.image.secure_url} alt="imagen de perfil" />
                 <input
