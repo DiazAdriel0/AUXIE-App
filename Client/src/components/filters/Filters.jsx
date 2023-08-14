@@ -21,9 +21,13 @@ const Filters = () => {
         label: 'Ordenar',
     })
 
+    const off = { value: 'off', label: 'Filtrar' }
+
     const options = services.map((serv) => {
         return { value: serv.name, label: serv.name }
     })
+
+    options.unshift(off)
 
     const order = [
         { value: 'off', label: 'Ordenar' },
@@ -32,10 +36,10 @@ const Filters = () => {
     ]
 
     const filterByService = (input) => {
-        const filterServices = input.map((i) => i.value)
-        dispatch(filterAuxiesByService(filterServices))
-        if (filterServices.length === 1) setpriceOn(true)
-        else setpriceOn(false)
+        const filterService = input.value
+        dispatch(filterAuxiesByService(filterService))
+        if (filterService === 'off') setpriceOn(false)
+        else setpriceOn(true)
     }
 
     const orderByRating = (input) => {
@@ -59,7 +63,7 @@ const Filters = () => {
                 placeholder="Elegir servicios"
                 onChange={(input) => filterByService(input)}
                 name="services"
-                isMulti
+                defaultValue={off}
                 options={options}
             />
             {
