@@ -8,6 +8,7 @@ const ButtonMercadoPago = (props) => {
     const [description, setDescription] = useState(props.description)
     const [price, setPrice] = useState(props.price)
     const [quantity, setQuantity] = useState(props.quantity)
+    const [showPayButton, setShowPayButton] = useState(false)
 
     initMercadoPago('TEST-4f16f016-a822-4c4d-bb35-e48447a441d6')
 
@@ -21,6 +22,7 @@ const ButtonMercadoPago = (props) => {
             })
 
             const { id } = response.data
+            setShowPayButton(true)
             return id
         } catch (error) {
             console.log(error)
@@ -36,7 +38,7 @@ const ButtonMercadoPago = (props) => {
 
     return (
         <div>
-            <img src="" alt="" />
+            {/*  <img src="" alt="" />
             <h3>Boton de Pago</h3>
             <input
                 type="text"
@@ -58,9 +60,10 @@ const ButtonMercadoPago = (props) => {
                 value={quantity}
                 readOnly
                 // onChange={(elem) => setQuantity(elem.target.value)}
-            />
-            <button onClick={handleBuy}>Pagar</button>
-            {preferenceId && <Wallet initialization={{ preferenceId }} />}
+            />*/}
+
+            {!showPayButton && <button onClick={handleBuy}>Pagar</button>}
+            {showPayButton && <Wallet initialization={{ preferenceId }} />}
         </div>
     )
 }
