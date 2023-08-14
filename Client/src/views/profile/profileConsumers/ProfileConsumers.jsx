@@ -3,7 +3,7 @@ import { DateTime } from 'luxon'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
 import { useNavigate } from 'react-router-dom'
-import './ProfileConsumers.scss'
+import style from  './ProfileConsumers.module.scss'
 
 const ProfileConsumers = () => {
     const consumer = useSelector((state) => state.loggedUser)
@@ -43,18 +43,20 @@ const ProfileConsumers = () => {
     }
 
     return (
-        <div className="profile-container">
+        <div className={style.profileContainer}>
             <div>
+                <h1 className={style.name}>
+                    {consumer.firstName} {consumer.lastName}
+                </h1>
                 <img src={consumer.image.secure_url} alt="imagen de perfil" />
                 <input
                     type="file"
                     accept=".jpg, .png"
                     onChange={handleImageChange}
+                    className={style.imageButton}
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <h1>
-                    {consumer.firstName} {consumer.lastName}
-                </h1>
+                
                 <h4>
                     {consumer.isAdmin && (
                         <div>
