@@ -36,6 +36,7 @@ const ProfileAuxies = () => {
     }
 
     const handleAddPhoto = (event) => {
+        console.log(event.target.files)
         const newPhotos = [...gallery, event.target.files[0]]
         if (newPhotos.length <= 5) {
             setGallery(newPhotos)
@@ -51,10 +52,11 @@ const ProfileAuxies = () => {
         const formData = new FormData()
         formData.append('image', newImage)
         formData.append('bio', newBio)
+        formData.append('gallery', gallery)
 
-        gallery.forEach((gallery, index) => {
+        /* gallery.forEach((gallery, index) => {
             formData.append(`gallery-${index}`, gallery)
-        })
+        }) */
 
         dispatch(
             updateProfile(
@@ -83,7 +85,7 @@ const ProfileAuxies = () => {
                     onChange={handleImageChange}
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                
+
                 <h4>Genero: {provider.gender}</h4>
                 <h3>
                     Email: {provider.email}{' '}
@@ -126,7 +128,10 @@ const ProfileAuxies = () => {
                         ))}
                     </ul>
                 </div>
-                <button className={style.updatebutton} onClick={handleUpdateProfile}>
+                <button
+                    className={style.updatebutton}
+                    onClick={handleUpdateProfile}
+                >
                     Guardar Cambios
                 </button>
             </div>

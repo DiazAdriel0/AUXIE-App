@@ -2,9 +2,9 @@ const Provider = require('./../../Models/provider')
 
 const updateGallery = async (newPhotos, id) => {
     try {
-        const providerFound = Provider.findById(id)
+        const providerFound = await Provider.findById(id)
 
-        if (providerFound.gallery.length)
+        if (providerFound.gallery?.length)
             providerFound.gallery = [...newPhotos, ...providerFound.gallery]
         else providerFound.gallery = [...newPhotos]
 
@@ -12,6 +12,7 @@ const updateGallery = async (newPhotos, id) => {
 
         return true
     } catch (error) {
+        console.error(error)
         return false
     }
 }
