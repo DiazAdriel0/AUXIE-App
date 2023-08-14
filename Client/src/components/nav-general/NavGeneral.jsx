@@ -24,12 +24,15 @@ const NavGeneral = () => {
                 </>
             ) : (
                 <>
+                
                     <LogoClient />
-                    <div className={style.right}>
-                        <ProfilePic />
-                        <div className={style.nightswitch}>
+                    <div className={style.nightswitch}>
                             <ButtonLightNight />
                         </div>
+                    <div className={style.right}>
+                    
+                        <ProfilePic />
+                        
                     </div>
                 </>
             )}
