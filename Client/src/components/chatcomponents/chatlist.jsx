@@ -27,28 +27,12 @@ const Chatlist = () => {
 
     user.uid && getChats();
   }, [user.uid]);
-//   useEffect(() => {
-//     getUser(token, uid)
-// }, [selectedUser])
-// const getUser = async (token, uid) => {
-//     try {
-//         const response = await axios.get(`/consumers/${uid}`, {
-//             headers: {
-//                 authorization: `Bearer ${token}`,
-//             },
-//         })
-//         if (response) {
-//             setUser(response.data)
-//         }
-//     } catch (error) {
-//         console.error(error.message)
-//     }
-// }
 
-  console.log('sender' + user.inbox[0].sender)
+console.log(selectedUser)
   return (
     <div className={style.chatselector}>
       {/* Display the ChatSelector component */}
+      
       <ChatSelector inbox={user.inbox} handleUserSelection={handleUserSelection} />
      
       

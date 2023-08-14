@@ -10,11 +10,11 @@ import {
     orderBy,
 } from 'firebase/firestore'
 import style from './chat.module.scss'
-import './Chat.css'
 import { useSelector } from 'react-redux'
 
 export const Chat = ({ recipient, auxiedetails }) => {
     const user = useSelector((state) => state.loggedUser)
+    const inbox =useSelector((state) => state.loggedUser.inbox)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
     const conversationsRef = collection(db, 'conversations') // Change: Use 'conversations' collection
@@ -96,7 +96,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
     return (
         <div className="chat-app">
             <div className="header">
-                <h1>Conversation with User: {auxiedetails.firstName}</h1>
+    
             </div>
 
             <div className={style.messages}>
@@ -114,7 +114,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
                                 : 'You'}
                             
                         </span>
-
+                        <div className={style.chatbubbles}>
                         <div
                             className={` ${
                                 message.recipient === auth.currentUser.uid
@@ -122,21 +122,22 @@ export const Chat = ({ recipient, auxiedetails }) => {
                                     : style.sender
                             }`}
                         >
+                            
                             {message.text}
-                            <br />
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
-            <form onSubmit={handleSubmit} className="new-message-form">
+            <form onSubmit={handleSubmit} className={style.chatform}>
                 <input
                     type="text"
                     value={newMessage}
                     onChange={(event) => setNewMessage(event.target.value)}
-                    className="new-message-input"
+                    className={style.messageinput}
                     placeholder="Type your message here..."
                 />
-                <button type="submit" className="send-button">
+                <button type="submit" className={style.send}>
                     Send
                 </button>
             </form>

@@ -8,8 +8,11 @@ import { Chat } from '../chat/Chat'
 import { auth } from '../../config/firebase-config'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { useSelector } from 'react-redux'
 
 const Detail = () => {
+    const user = useSelector((state)=>state.loggedUser)
+    
     const [isInChat, setIsInChat] = useState(false)
 
     const [auxieDetails, setAuxieDetails] = useState({})
@@ -30,10 +33,12 @@ const Detail = () => {
             id,
             inbox: {
                 sender: auth.currentUser.uid,
+                name: `${user.firstName} ${user.lastName}`
             },
         })
     }
 
+    console.log(auth.currentUser)
     return (
         <>
             <NavGeneral />
@@ -119,16 +124,7 @@ const Detail = () => {
                             </div>
                             <div className={style.carousel}>
                                 <Carousel>
-                                    {/* {auxieDetails.gallery.map(
-                                        (photo, index) => (
-                                            <div key={index}>
-                                                <img
-                                                    src={photo.secure_url}
-                                                    alt={`Foto ${index}`}
-                                                />
-                                            </div>
-                                        )
-                                    )} */}
+                                 
                                 </Carousel>
                             </div>
                         </div>
