@@ -17,7 +17,9 @@ const JobRequestForm = ({ services }) => {
         clientId: client.id,
         service: '',
         jobDate: '',
+        jobTime: '',
         description: '',
+        paymentMethod: '',
         // price:'',
     })
 
@@ -30,6 +32,13 @@ const JobRequestForm = ({ services }) => {
         setValue((previousvalue) => ({
             ...previousvalue,
             service: value, // Actualizamos solo el campo 'service'
+        }))
+    }
+    const handlePaymentChange = (event) => {
+        const { value } = event.target
+        setValue((previousvalue) => ({
+            ...previousvalue,
+            paymentMethod: value,
         }))
     }
     const handlePost = async () => {
@@ -46,8 +55,8 @@ const JobRequestForm = ({ services }) => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'error + error.response.data.error!',
-                footer: '<a href="">Why do I have this issue?</a>',
+                text: error.response.data.error,
+                footer: '<a href="">¿Por qué está pasando esto?</a>',
             })
         }
     }
@@ -69,11 +78,12 @@ const JobRequestForm = ({ services }) => {
 
                             <DatePicker
                                 className={style.picker}
+                                disablePast
                                 value={value}
-                                onChange={(jobDate) =>
+                                onChange={(date) =>
                                     setValue((previousvalue) => ({
                                         ...previousvalue,
-                                        jobDate,
+                                        jobDate: date,
                                     }))
                                 }
                                 sx={{
@@ -90,16 +100,17 @@ const JobRequestForm = ({ services }) => {
                             <TimePicker
                                 className={style.picker}
                                 value={value}
-                                onChange={(jobDate) =>
+                                onChange={(time) =>
                                     setValue((previousvalue) => ({
                                         ...previousvalue,
-                                        jobDate,
+                                        jobTime: time,
                                     }))
                                 }
                                 sx={{
                                     border: 2,
                                     borderRadius: 1.4,
                                     borderColor: 'primary.main',
+                                    
                                 }}
                             />
                         </div>
@@ -121,6 +132,7 @@ const JobRequestForm = ({ services }) => {
                                 name="service"
                                 value={value.service}
                                 onChange={handleServiceChange}
+                                
                             >
                                 {services ? (
                                     services.map((service) => (
@@ -153,6 +165,30 @@ const JobRequestForm = ({ services }) => {
                                 value={value.description}
                                 onChange={handleInputChange}
                             />
+                        </div>
+                        <div>
+                            <label>Método de pago:</label>
+                            <TextField
+                                required
+                                className={style.picker}
+                                id="payment"
+                                select
+                                fullWidth
+                                label="Método de pago"
+                                helperText="Selecciona un método de pago"
+                                color="primary"
+                                focused
+                                name="payment"
+                                value={value.paymentMethod}
+                                onChange={handlePaymentChange}
+                            >
+                                <MenuItem value="efectivo">
+                                    Efectivo en persona
+                                </MenuItem>
+                                <MenuItem value="app">
+                                    A través de nuestra app
+                                </MenuItem>
+                            </TextField>
                         </div>
 
                         <Button

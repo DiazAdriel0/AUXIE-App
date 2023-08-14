@@ -1,27 +1,34 @@
 .messages {
     padding: 10px;
-    margin: 5px;
+    // margin: 5px;
     border: 1px solid #c8faab;
-    border-radius: 10px;
+    // border-radius: 10px;
     width: 100%;
-    height: 73vh;
+    height: 75vh;
     overflow: scroll;
-    position: relative; /* Añadimos posicionamiento relativo */
+    // position: relative; /* Añadimos posicionamiento relativo */
+    background-image:url('../../assets/chats-background.png') ; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; 
+    max-width: 100%;
 }
 
 .sender {
     text-align: right;
     background-color: #a7d8fe;
-    border-radius: 10px 10px 0px 10px;
+    border-radius: 10px 0px 10px 10px;
     white-space: pre-line;
     margin-left: auto;
-    margin-right: 20px;
+    // margin-right: 2%;
     word-wrap: break-word;
-    margin-bottom: 3%;
+    color: black;
+    margin-bottom: 1%;
     padding: 2%;
-    max-width: 80%;
-    margin-top: 1%;
+    max-width: 40%;
     position: relative; /* Añadimos posicionamiento relativo */
+    display: block; /* Para que el ancho sea automático */
+    float: inline-end;
 }
 
 .receiver {
@@ -29,20 +36,52 @@
     background-color: #bafc7d;
     max-width: max-content;
     margin-bottom: 5%;
-    border-radius: 10px 10px 10px 0px;
+    border-radius: 0px 10px 10px 10px;
     color: black;
     padding: 2%;
-    white-space: pre-line;
     word-wrap: break-word;
-    position: relative; /* Añadimos posicionamiento relativo */
+    position: relative;
+    margin-top: 10px; /* Add more margin here */
 }
 
+
 .sendername {
-    text-align: right;
+    align-content: end;
     white-space: pre-line;
-    margin-left: 87%;
+    margin-left: 85%;
     word-wrap: break-word;
     margin-bottom: 3%;
     padding: 2%;
     max-width: 80%;
+    color: black;
+    font-weight: bold;
+}
+.receivername {
+  font-weight: bold;
+    color: black;
+}
+
+.messageinput{
+    flex: 1;
+    // border: none;
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    width: 30vw;
+    height: 3rem;
+    border: 1px solid black;
+}
+.chatbubbles{
+    margin-bottom: 10%;
+    
+}
+.send{
+    height: 3rem;
+    width: 5rem;
+    border: none;
+    background-color: blue;
+    color: white;
 }

@@ -1,9 +1,12 @@
 const findAndUpdateProvider = require('./../../Controllers/ProvidersControllers/findAndUpdateProvider')
+const updateGallery = require('./../../Controllers/ProvidersControllers/updateGallery')
 const fs = require('fs-extra')
-const { uploadProfileImageToProvider } = require('./../../Utils/cloudinary')
+const {
+    uploadProfileImageToProvider,
+    uploadGalleryOfJobs,
+} = require('./../../Utils/cloudinary')
 
 const updateProvider = async (req, res) => {
-
     const {
         id,
         firstName,
@@ -14,7 +17,6 @@ const updateProvider = async (req, res) => {
         bio,
         userUid,
     } = req.body
-
 
     const recibedProperties = {
         id,
@@ -38,6 +40,28 @@ const updateProvider = async (req, res) => {
         }
 
         await fs.unlink(req.files.image.tempFilePath)
+    }
+
+    if (req.files['gallery[]']) {
+        try {
+            const newPhotos = []
+            for (const photo of req.files['gallery[]']) {
+                const result = await uploadGalleryOfJobs(photo.tempFilePath, id)
+                newPhotos.push({
+                    public_id: result.public_id,
+                    secure_url: result.secure_url,
+                })
+
+                await fs.unlink(photo.tempFilePath)
+            }
+            const addImages = await updateGallery(newPhotos, id)
+            if (!addImages)
+                throw new Error(
+                    'No se pudieron agregar las imagenes a la galería'
+                )
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     const filledProperties = Object.entries(recibedProperties)

@@ -1,3 +1,42 @@
+.menuLogoNight {
+    background-image: url('../../assets/3000.jpg');
+    background-size: cover;
+    opacity: 1;
+}
+
+.menuLogoLight {
+    background-image: url('../../assets/background-main.png');
+
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+}
+
+.menuMainLight {
+    background-color: var(--background-light);
+}
+
+.menuMainNight {
+    background-color: var(--div-color-dark);
+}
+
+.menuSearchAuxieNight {
+    background-color: var(--div-color-dark);
+}
+
+.divSloganLight {
+    background-color: var(--div-color-light);
+}
+.divSloganNight {
+    background-color: var(--contrast-div-color-dark);
+}
+.buttonSloganContLight {
+    background-color: var(--div-color-light);
+}
+.buttonSloganContNight {
+    background-color: var(--contrast-div-color-dark);
+}
+
 .logInMenu {
     position: relative;
     width: 100%;
@@ -24,23 +63,6 @@
                 background-color: var(--secondary--anchor--color-hover);
             }
         }
-
-        button {
-            background-color: var(--sixth--color-light);
-            width: 3%;
-            height: 3%;
-            margin-left: 95%;
-            border-radius: 5px;
-            border: none;
-            transition: background-color 0.5s ease;
-            font-size: 50%;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        button:hover {
-            background-color: #ff0000ab;
-        }
     }
 }
 .registerMenu {
@@ -48,7 +70,6 @@
     width: 100%;
     height: 90vh;
     overflow: hidden;
-    background-color: var(--secondary--color-light);
 
     .container {
         font-size: 200%;
@@ -59,32 +80,22 @@
             margin-top: 5%;
 
             div {
-                background-color: var(--sixth--color-light);
                 margin-left: 10%;
                 padding-left: 30%;
                 padding: 5%;
                 border-radius: 10px;
-                transition: background-color 0.5s ease;
-            }
-            div:hover {
-                background-color: var(--secondary--anchor--color-hover);
             }
         }
         button {
-            background-color: var(--sixth--color-light);
             width: 3%;
             height: 3%;
             margin-left: 95%;
             border-radius: 5px;
             border: none;
-            transition: background-color 0.5s ease;
+
             font-size: 50%;
             cursor: pointer;
             padding: 5px;
-        }
-
-        button:hover {
-            background-color: #ff0000ab;
         }
     }
 }
@@ -103,26 +114,20 @@
     /* Estilos para la sección 1 (menuLogo) */
     .sectionMenu {
         z-index: 2;
-        height: 78vh;
+        height: 70vh;
     }
     .menuLogo {
-        background-image: url('../../assets/background-main.jpg');
-        background-size: cover;
         height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
 
         .menuMain {
-            margin-left: 25%;
             border-radius: 10px;
 
-            background-color: var(--fifth--color-light);
-            color: var(--primary--color--white);
             width: 40%;
             height: 40vh;
-
-            margin-top: 5%;
+            margin-left: 15%;
         }
         .buttonsMenuMain {
             display: flex;
@@ -130,36 +135,21 @@
             height: 25%;
 
             .searchAuxie {
-                all: unset;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
-                border-top-left-radius: 9px;
-                background-color: var(--sixth--color-light);
             }
-            .searchAuxie:hover {
-                background-color: var(--secondary--anchor--color-hover);
-                cursor: pointer;
-                transition: background-color 0.5s ease;
-            }
+
             .turnAuxie {
-                all: unset;
-                background-color: var(--sixth--color-light);
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
-                border-top-right-radius: 9px;
-            }
-            .turnAuxie:hover {
-                background-color: var(--secondary--anchor--color-hover);
-                cursor: pointer;
-                transition: background-color 0.5s ease;
             }
         }
         .menuSearchAuxie {
@@ -180,22 +170,9 @@
         }
 
         .buttonMenu {
-            border: none;
-            background-color: var(--fourth--color-light);
-            padding: 3.5%;
-            font-size: 120%;
-            font-weight: 500;
-            border-radius: 10px;
-            color: white;
-            margin-top: 5%;
-            width: 45%;
-            // height: 40%;
-        }
-
-        .buttonMenu:hover {
-            background-color: var(--primary--anchor--color--hover);
-            transition: background-color 0.5s ease;
-            cursor: pointer;
+            width: 200px;
+            height: 50px;
+            border-radius: 4px;
         }
 
         .menuTurnAuxie {
@@ -221,11 +198,11 @@
     }
     .slogan {
         z-index: 3;
-        background-color: var(--fifth--color-light);
         display: flex;
         flex-flow: column wrap;
         width: 100%;
-        height: 30vh;
+        height: 35vh;
+
         .divSlogan {
             display: flex;
             flex-direction: column;
@@ -233,7 +210,6 @@
             align-items: flex-start;
             padding: 2% 0 0 10%;
             gap: 20px;
-
             h3 {
                 font-size: 30px;
             }
@@ -245,13 +221,29 @@
                 margin-bottom: 2%;
             }
         }
-        .buttonSloganCont{
+        .buttonSloganCont {
             display: flex;
             flex-flow: row wrap;
             justify-content: flex-start;
             flex-grow: 30;
         }
+
         .buttonSlogan {
+            width: 150px;
+            height: 60px;
+            margin: 2% 0 0 10%;
+            font-size: 120%;
+            text-align: center;
+            border-radius: 10px;
+            border: none;
+        }
+    }
+    .buttonSlogan1Cont {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: flex-start;
+        flex-grow: 30;
+        .buttonSlogan1 {
             width: 12%;
             height: 60%;
             margin: 1% 0 0 10%;
@@ -262,38 +254,14 @@
             border: none;
             background-color: var(--fourth--color-light);
             color: white;
-            // font-weight: bold;
         }
-        .buttonSlogan:hover {
+        .buttonSlogan1:hover {
             cursor: pointer;
             background-color: var(--primary--anchor--color--hover);
             transition: background-color 0.5s ease;
         }
     }
-.buttonSlogan1Cont {
-        display: flex;
-        flex-flow: row wrap;
-        justify-content: flex-start;
-        flex-grow: 30;
-    .buttonSlogan1 {
-            width: 12%;
-            height: 60%;
-            margin: 1% 0 0 10%;
-            font-size: 120%;
-            text-align: center;
-            font-family: var(--font-poppins);
-            border-radius: 10px;
-            border: none;
-            background-color: var(--fourth--color-light);
-            color: white;
-    }
-    .buttonSlogan1:hover {
-        cursor: pointer;
-        background-color: var(--primary--anchor--color--hover);
-        transition: background-color 0.5s ease;
-    }
-}
-    
+
     /* Estilos para la sección 3 (cards) */
     .serviceCards {
         z-index: 4;
@@ -325,7 +293,6 @@
         .featuredAuxiesCont {
             border-radius: 10px;
             width: 80%;
-            background-color: #b8dbd9;
 
             .featuredlist {
                 display: flex;

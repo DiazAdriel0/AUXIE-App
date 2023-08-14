@@ -1,13 +1,13 @@
 import style from './logoClient.module.scss'
 import { Link } from 'react-router-dom'
 
-import LogoAuxie2 from '../../../assets/logos/LogoAuxie2.svg'
+import Logo from '../../../assets/logos/2.png'
 
 const LogoClient = () => {
     return (
         <div className={style.logo}>
             <Link to={'/homeconsumer'}>
-                <img src={LogoAuxie2} alt="Logo Auxie" className={style.img} />
+                <img src={Logo} alt="Logo Auxie" className={style.img} />
             </Link>
         </div>
     )

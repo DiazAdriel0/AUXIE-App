@@ -3,8 +3,6 @@ import { db, auth } from '../../config/firebase-config'
 import {
     collection,
     addDoc,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    where,
     serverTimestamp,
     onSnapshot,
     query,
@@ -15,6 +13,7 @@ import { useSelector } from 'react-redux'
 
 export const Chat = ({ recipient, auxiedetails }) => {
     const user = useSelector((state) => state.loggedUser)
+    const inbox =useSelector((state) => state.loggedUser.inbox)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
     const conversationsRef = collection(db, 'conversations') // Change: Use 'conversations' collection
@@ -28,11 +27,10 @@ export const Chat = ({ recipient, auxiedetails }) => {
             return 0
         }
     }) // Sort for consistent order
-
     const conversationId = ordered.join('_')
 
     const conversationData = { participants }
-    //ZpsbcXOZ7SSFon98N3REltncKZU2_dCsvWUrHtZhArwOzAYTzF5Y74Sf2
+
     useEffect(() => {
         // Fetch or create a conversation document
         const getOrCreateConversation = async () => {
@@ -47,7 +45,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
             const unsubscribe = onSnapshot(queryMessages, (snapshot) => {
                 let messages = []
                 snapshot.forEach((doc) => {
-                    messages.push({ ...doc.data(), id: doc.id })
+                    messages.push({ ...doc.data(), id: doc.id })  
                 })
                 setMessages(messages)
             })
@@ -56,7 +54,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
         }
 
         getOrCreateConversation()
-    }, [recipient])
+    }, [recipient, conversationId])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -66,8 +64,10 @@ export const Chat = ({ recipient, auxiedetails }) => {
         // Fetch or create a conversation document
         const participants = [auth.currentUser.uid, recipient]
         participants.sort() // Sort for consistent order
-        const conversationId = participants.join('_')
+
+        const conversationId = ordered.join('_')
         const conversationData = { participants }
+        
         await addDoc(conversationsRef, conversationData) // Create the conversation if it doesn't exist
 
         // Store the message with the conversation ID
@@ -78,7 +78,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
         await addDoc(messagesRef, {
             text: newMessage,
             createdAt: serverTimestamp(),
-            sender: user.userUid || user.googleId,
+            sender: auth.currentUser.uid,
             recipient: recipient,
             firstName: user.firstName,
             lastName: user.lastName,
@@ -90,7 +90,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
     return (
         <div className="chat-app">
             <div className="header">
-                <h1>Conversation with User: {auxiedetails.firstName}</h1>
+                <h1>Conversación con {auxiedetails.firstName}</h1>
             </div>
 
             <div className={style.messages}>
@@ -106,30 +106,32 @@ export const Chat = ({ recipient, auxiedetails }) => {
                             {message.recipient === auth.currentUser.uid
                                 ? `${message.firstName} ${message.lastName} `
                                 : 'You'}
+                            
                         </span>
-
-                        <div
-                            className={` ${
-                                message.recipient === auth.currentUser.uid
-                                    ? style.receiver
-                                    : style.sender
-                            }`}
-                        >
-                            {message.text}
-                            <br />
+                        <div className={style.chatbubbles}>
+                            <div
+                                className={` ${
+                                    message.recipient === auth.currentUser.uid
+                                        ? style.receiver
+                                        : style.sender
+                                }`}
+                            >         
+                                {message.text}
+                            </div>
                         </div>
                     </div>
                 ))}
             </div>
-            <form onSubmit={handleSubmit} className="new-message-form">
+
+            <form onSubmit={handleSubmit} className={style.chatform}>
                 <input
                     type="text"
                     value={newMessage}
                     onChange={(event) => setNewMessage(event.target.value)}
-                    className="new-message-input"
+                    className={style.messageinput}
                     placeholder="Type your message here..."
                 />
-                <button type="submit" className="send-button">
+                <button type="submit" className={style.send}>
                     Send
                 </button>
             </form>

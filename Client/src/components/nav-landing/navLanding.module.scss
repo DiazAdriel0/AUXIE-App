@@ -25,6 +25,7 @@
             .select {
                 font-family: var(--font-poppins);
                 font-weight: 500;
+                border-radius: 5px;
             }
 
             ul {
@@ -58,34 +59,36 @@
 }
 
 .logInOrRegister {
-    margin-right: 5%;
+    display: flex;
+    margin-right: 3%;
+    gap: 20px;
     ul {
+        height: 50px;
         display: flex;
-        gap: 5%;
+        padding: 10px;
+        gap: 10%;
     }
     .login {
         all: unset;
 
-        padding: 10px;
         font-size: large;
-        border-radius: 30px;
     }
     .login:hover {
-        background-color: var(--sixth--color-light);
-        transition: background-color 0.5s ease;
+        all: unset;
+        cursor: pointer;
+        font-size: large;
+        border-bottom: 2px solid var(--button-color-light);
     }
     .register {
         all: unset;
-
-        padding: 10px;
         font-size: large;
-        background-color: var(--sixth--color-light);
-        border-radius: 30px;
     }
 
     .register:hover {
-        background-color: var(--secondary--anchor--color-hover);
-        transition: background-color 0.5s ease;
+        all: unset;
+        cursor: pointer;
+        font-size: large;
+        border-bottom: 2px solid var(--button-color-light);
     }
 }
 
@@ -121,23 +124,6 @@
                 background-color: var(--secondary--anchor--color-hover);
             }
         }
-
-        button {
-            background-color: var(--sixth--color-light);
-            width: 3%;
-            height: 3%;
-            margin-left: 95%;
-            border-radius: 5px;
-            border: none;
-            transition: background-color 0.5s ease;
-            font-size: 50%;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        button:hover {
-            background-color: #ff0000ab;
-        }
     }
 }
 .registerMenu {
@@ -166,22 +152,6 @@
             div:hover {
                 background-color: var(--secondary--anchor--color-hover);
             }
-        }
-        button {
-            background-color: var(--sixth--color-light);
-            width: 3%;
-            height: 3%;
-            margin-left: 95%;
-            border-radius: 5px;
-            border: none;
-            transition: background-color 0.5s ease;
-            font-size: 50%;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        button:hover {
-            background-color: #ff0000ab;
         }
     }
 }

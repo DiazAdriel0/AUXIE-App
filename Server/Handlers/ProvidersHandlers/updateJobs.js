@@ -1,5 +1,7 @@
 const addJob = require('./../../Controllers/ProvidersControllers/addJob')
-const transporter = require('./../../Utils/nodemailer')
+const getConsumerById = require('./../../Controllers/ConsumersControllers/getConsumerById')
+const mailSender = require('../../Utils/nodemailer')
+const { order } = require('./../../Utils/mailTemplates')
 
 const updateJobs = async (req, res) => {
     const { id } = req.params
@@ -9,12 +11,39 @@ const updateJobs = async (req, res) => {
         if (providerToAdd.message)
             throw new Error('No se pudo agregar el servicio')
 
-        await transporter.sendMail({
+        const client = await getConsumerById(req.body.clientId)
+
+        if (!client) throw new Error('Error inesperado en el servidor')
+
+        const {
+            id: idRequest,
+            service: serviceName,
+            jobDate,
+            paymentMethod,
+        } = providerToAdd.jobs[providerToAdd.jobs.length - 1]
+
+        const clientName = `${client.firstName} ${client.lastName}`
+        const auxieName = `${providerToAdd.firstName} ${providerToAdd.lastName}`
+        const currency = 'ARS' // Cambiar a variable y agregarlo al formulario de solicitud y al controller que agrega el job
+
+        const HTMLContent = order(
+            idRequest,
+            jobDate,
+            serviceName,
+            auxieName,
+            clientName,
+            paymentMethod,
+            currency
+        )
+
+        const mailOptions = {
             from: `Team Auxie ${process.env.EMAIL}`,
             to: providerToAdd.email,
-            subject: `${providerToAdd.firstName} has recibido una solicitud de trabajo`,
-            text: `Recibiste una solicitud para el servicio ${req.body.service}`,
-        })
+            subject: 'Nueva solicitud de servicio',
+            html: HTMLContent,
+        }
+
+        await mailSender(mailOptions)
 
         res.status(200).json('Servicio solicitado con éxito')
     } catch (error) {

@@ -52,10 +52,12 @@ const Form = () => {
                 Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
             }
         } catch (error) {
+            let er = error.response.data.error
+            console.error(er)
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'error + error.response.data.error!',
+                text: `${er}`,
                 footer: '<a href="">Why do I have this issue?</a>',
             })
         }
@@ -83,6 +85,11 @@ const Form = () => {
             
         } catch (error) {
             console.error(error.message);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Parece que el correo proporcionado ya está en uso.',
+            })
         }
         
     }
@@ -115,7 +122,7 @@ const Form = () => {
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
-                <h1>Bienvenido futuro Auxie! Completa tu registro ahora</h1>
+                <h3>Bienvenido futuro Auxie! Completa tu registro ahora</h3>
             </div>
             <form id="form" onSubmit={handleSubmit}>
                 <div className={style.forminput}>

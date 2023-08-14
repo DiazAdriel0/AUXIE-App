@@ -1,0 +1,77 @@
+.night-mode {
+    background-color: var(--background-dark);
+    color: var(--text-color-dark);
+    transition: var(--transition-color);
+
+    a {
+        color: var(--text-color-dark);
+        transition: var(--transition-color);
+        border-bottom: none;
+        border-color: var(--hover-color-dark);
+    }
+    a:hover {
+        border-bottom: 1px solid var(--hover-color-dark);
+        transition: ease-in 0.5s;
+    }
+
+    button {
+        color: var(--text-color-dark);
+        background-color: var(--button-color-dark);
+        border: none;
+        cursor: pointer;
+        padding: 8px 16px;
+        font-size: 15px;
+        text-decoration: none;
+        text-align: center;
+
+        transition:
+            background-color 0.3s,
+            color 0.3s;
+    }
+    button:hover {
+        background-color: var(--hover-color-dark);
+
+        transition: background-color 0.5s ease;
+    }
+}
+
+.day-mode {
+    background-color: var(--background-light);
+    color: var(--text-color-light);
+    transition: var(--transition-background-color);
+    transition: var(--transition-color);
+
+    a {
+        color: var(--text-color-light);
+        transition: var(--transition-color);
+        border-bottom: none;
+        border-color: var(--button-color-light);
+    }
+    a:hover {
+        border-bottom: 1px solid var(--button-color-light);
+        transition: ease-in 0.5s;
+    }
+    label {
+        color: var(--text-color-light);
+        transition: var(--transition-color);
+    }
+
+    button {
+        color: #fcfcfc;
+        background-color: var(--button-color-light);
+        border: none;
+        cursor: pointer;
+        padding: 8px 16px;
+        font-size: 15px;
+        text-decoration: none;
+        text-align: center;
+
+        transition:
+            background-color 0.3s,
+            color 0.3s;
+    }
+    button:hover {
+        background-color: var(--hover-color-light);
+        transition: background-color 0.5s ease;
+    }
+}

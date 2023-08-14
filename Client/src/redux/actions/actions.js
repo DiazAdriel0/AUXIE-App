@@ -12,11 +12,12 @@ import {
     SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG,
     LOGOUT,
-    SET_TOKEN,
-    RESET_TOKEN,
+    /* SET_TOKEN,
+    RESET_TOKEN, */
     UPDATE_PROFILE,
     ADD_FAVORITE,
     DELETE_FAVORITE,
+    TURN_LIGHT_NIGHT_MODE,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -141,11 +142,9 @@ export const setCurrentPage = (page) => {
 export function resetAuxiesCatalog() {
     return function (dispatch) {
         try {
-
             return dispatch({
                 type: RESET_AUXIES_CATALOG,
             })
-
         } catch (e) {
             console.error(e)
         }
@@ -193,18 +192,11 @@ UPDATE_PROFILE
 export function updateProfile(input, user) {
     return async function (dispatch) {
         try {
-            const res = await axios.put(
-
-                `/${user}/profile`,
-                input,
-                {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                     
-                    },
-                }
-            )
-
+            const res = await axios.put(`/${user}/profile`, input, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            })
 
             return dispatch({
                 type: UPDATE_PROFILE,
@@ -234,9 +226,9 @@ export function addFavorite(fav) {
 export function removeFavorite(fav) {
     return async function (dispatch) {
         try {
-
-            const res = await axios.delete(`/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`)
-
+            const res = await axios.delete(
+                `/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`
+            )
 
             return dispatch({
                 type: DELETE_FAVORITE,
@@ -244,6 +236,19 @@ export function removeFavorite(fav) {
             })
         } catch (e) {
             console.error(e.error)
+        }
+    }
+}
+
+export function turnLightNightMode(boolean) {
+    return function (dispatch) {
+        try {
+            return dispatch({
+                type: TURN_LIGHT_NIGHT_MODE,
+                payload: boolean,
+            })
+        } catch (e) {
+            console.error(e)
         }
     }
 }

@@ -1,0 +1,11 @@
+.back{
+    padding: 1%;
+    border-radius: 5px;
+    font-family: var(--font-poppins);
+    margin-top:1%;
+    margin-bottom: 2%;
+    display: flex;
+    justify-content: flex-start; /* Alinea el contenido al lado izquierdo */
+    margin-left: 10%; /* Mueve el botón hacia el medio de la pantalla */
+    transform: translateX(-50%);
+}

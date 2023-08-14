@@ -1,8 +1,14 @@
+import React from 'react'
+import { Button } from '@mui/material'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import { useSelector } from 'react-redux'
 import style from './buttonUp.module.scss'
-import arrowUp from '../../../assets/icons/arrow-up.svg'
 
 const ButtonUp = ({ observersLanding }) => {
     const { firstObserver, secondObserver, thirdObserver } = observersLanding
+    const { upDiv, buttonUp, buttonUpHide } = style
+    const nightMode = useSelector((state) => state.nightMode)
+
     const handleButtonUp = () => {
         window.scrollTo({
             top: 0,
@@ -10,22 +16,26 @@ const ButtonUp = ({ observersLanding }) => {
             behavior: 'smooth',
         })
     }
+
+    const buttonColor = !nightMode ? '#333' : '#fff' // Cambia el color según el modo
+
     return (
         <>
             {firstObserver || secondObserver || thirdObserver ? (
-                <div className={style.upDiv}>
-                    <button onClick={handleButtonUp} className={style.buttonUp}>
-                        <img src={arrowUp} alt="" />
-                    </button>
+                <div className={upDiv}>
+                    <Button onClick={handleButtonUp} className={buttonUp}>
+                        <KeyboardArrowUpIcon
+                            style={{ color: buttonColor, fontSize: '4rem' }}
+                        />
+                    </Button>
                 </div>
             ) : (
-                <div className={style.upDiv}>
-                    <button
-                        onClick={handleButtonUp}
-                        className={style.buttonUpHide}
-                    >
-                        <img src={arrowUp} alt="" />
-                    </button>
+                <div className={upDiv}>
+                    <Button onClick={handleButtonUp} className={buttonUpHide}>
+                        <KeyboardArrowUpIcon
+                            style={{ color: buttonColor, fontSize: '2rem' }}
+                        />
+                    </Button>
                 </div>
             )}
         </>

@@ -1,13 +1,18 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import NavGeneral from '../../components/nav-general/NavGeneral'
 import style from './detail.module.scss'
 import JobRequestForm from '../forms/jobRequest-Form/JobRequestForm'
 import { Chat } from '../chat/Chat'
 import { auth } from '../../config/firebase-config'
+import { Carousel } from 'react-responsive-carousel'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import { useSelector } from 'react-redux'
 
 const Detail = () => {
+    const user = useSelector((state)=>state.loggedUser)
+    
     const [isInChat, setIsInChat] = useState(false)
 
     const [auxieDetails, setAuxieDetails] = useState({})
@@ -28,13 +33,18 @@ const Detail = () => {
             id,
             inbox: {
                 sender: auth.currentUser.uid,
+                name: `${user.firstName} ${user.lastName}`
             },
         })
     }
 
+    console.log(auth.currentUser)
     return (
         <>
             <NavGeneral />
+            <Link to="/homeconsumer">
+                <button>Volver</button>
+            </Link>
             <div className={style.detailform}>
                 <div className={style.detailall}>
                     {Object.keys(auxieDetails).length > 0 ? (
@@ -108,11 +118,14 @@ const Detail = () => {
                                     )}
                                 </div>
                             </div>
-                            <div className={style.carousel}>
-                                <p>Carousel</p>
-                            </div>
                             <div className={style.bio}>
+                                <h3>Acerca de mí</h3>
                                 <p> {auxieDetails.bio}</p>
+                            </div>
+                            <div className={style.carousel}>
+                                <Carousel>
+                                 
+                                </Carousel>
                             </div>
                         </div>
                     ) : null}
@@ -124,7 +137,9 @@ const Detail = () => {
                         auxiedetails={auxieDetails}
                     />
                 ) : (
+                    <div className={style.chatbutton}>
                     <button onClick={handleClick}>Start Chat</button>
+                    </div>
                 )}
             </div>
         </>

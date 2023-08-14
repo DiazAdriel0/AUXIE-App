@@ -1,13 +1,17 @@
 import { useState } from 'react'
+import { DateTime } from 'luxon'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
-import { DateTime } from 'luxon'
+import { useNavigate } from 'react-router-dom'
+import ClientRequiredServices from '../../../components/clientRequiredServices/ClientRequiredServices'
+import style from './ProfileConsumers.module.scss'
 
 const ProfileConsumers = () => {
     const consumer = useSelector((state) => state.loggedUser)
     const [newImage, setNewImage] = useState(null)
     const [error, setError] = useState(null)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const registerDate = consumer.registerDate
     const luxonDate = DateTime.fromISO(registerDate)
@@ -39,19 +43,30 @@ const ProfileConsumers = () => {
         )
     }
 
+    const favNames = consumer.favoritesProviders
+        .map((favorite) => favorite.firstName)
+        .join(' | ')
+
+    const requiredServicesNames = consumer.requiredServices
+        .map((service) => service.service)
+        .join(' | ')
+    const requiredServicesNamesSet = new Set(requiredServicesNames)
+
     return (
-        <div>
+        <div className={style.profileContainer}>
             <div>
+                <h1 className={style.name}>
+                    {consumer.firstName} {consumer.lastName}
+                </h1>
                 <img src={consumer.image.secure_url} alt="imagen de perfil" />
                 <input
                     type="file"
                     accept=".jpg, .png"
                     onChange={handleImageChange}
+                    className={style.imageButton}
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <h1>
-                    {consumer.firstName} {consumer.lastName}
-                </h1>
+
                 <h4>
                     {consumer.isAdmin && (
                         <div>
@@ -60,19 +75,32 @@ const ProfileConsumers = () => {
                     )}
                 </h4>
                 <h4>Genero: {consumer.gender}</h4>
-                <h3>
-                    Email: {consumer.email}{' '}
-                    <button>Cambiar la contraseña</button>
-                </h3>
+                <div className={style.emailpassword}>
+                    <h3>
+                        Email: {consumer.email}{' '}
+                        <button onClick={() => navigate('/resetpassword')}>
+                            Cambiar la contraseña
+                        </button>
+                    </h3>
+                </div>
                 <h6>Te uniste: {toDateMed}</h6>
                 <div>
-                    <h5>Auxies favoritos: {consumer.favoritesProviders}</h5>
-                    <h5>Servicios contratados: {consumer.requiredServices}</h5>
-                    <h5>Servicios requeridos: {consumer.requiredServices}</h5>
+                    <h5>Auxies favoritos: {favNames}</h5>
+                    <h5>Servicios contratados: {requiredServicesNamesSet}</h5>
+                    <h5>
+                        Servicios requeridos:
+                        {consumer.requiredServices.length && (
+                            <ClientRequiredServices />
+                        )}
+                    </h5>
                     <h5>Average Rating: {consumer.averageRating}</h5>
                     <h5>Ratings: {consumer.ratings}</h5>
                 </div>
-                <button onClick={handleUpdateProfile}>Guardar Cambios</button>
+                <div className={style.savebutton}>
+                    <button onClick={handleUpdateProfile}>
+                        Guardar Cambios
+                    </button>
+                </div>
             </div>
         </div>
     )
