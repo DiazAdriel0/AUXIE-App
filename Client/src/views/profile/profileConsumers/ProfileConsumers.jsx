@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
 import { useNavigate } from 'react-router-dom'
 import ClientRequiredServices from '../../../components/clientRequiredServices/ClientRequiredServices'
+import NavGeneral from '../../../components/nav-general/NavGeneral'
 import style from './ProfileConsumers.module.scss'
 
 const ProfileConsumers = () => {
@@ -53,6 +54,9 @@ const ProfileConsumers = () => {
     const requiredServicesNamesSet = new Set(requiredServicesNames)
 
     return (
+        <>
+        <div><NavGeneral /></div>
+        
         <div className={style.profileContainer}>
             <div>
                 <h1 className={style.name}>
@@ -103,6 +107,7 @@ const ProfileConsumers = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

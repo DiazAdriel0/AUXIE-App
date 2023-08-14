@@ -1,5 +1,7 @@
 import style from './auxieform.module.scss'
 
+import NavLanding from '../../../components/nav-landing/NavLanding'
+
 // Hooks
 import { useEffect, useState } from 'react'
 import { useValidations } from '../../../utils/validationutils'
@@ -120,6 +122,8 @@ const Form = () => {
     }
 
     return (
+        <>
+        <NavLanding />
         <div className={style.form}>
             <div className={style.formtitle}>
                 <h3>Bienvenido futuro Auxie! Completa tu registro ahora</h3>
@@ -228,6 +232,7 @@ const Form = () => {
                 </div>
             </form>
         </div>
+        </>
     )
 }
 
