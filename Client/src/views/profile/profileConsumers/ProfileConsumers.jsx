@@ -65,10 +65,15 @@ const ProfileConsumers = () => {
                     )}
                 </h4>
                 <h4>Genero: {consumer.gender}</h4>
+                <div className={style.emailpassword}>
                 <h3>
-                    Email: {consumer.email}{' '}
-                    <button onClick={()=>navigate('/resetpassword')}>Cambiar la contraseña</button>
+                    
+                Email: {consumer.email}{' '}
+                <button onClick={()=>navigate('/resetpassword')}>Cambiar la contraseña</button>
+                    
                 </h3>
+               
+                </div>
                 <h6>Te uniste: {toDateMed}</h6>
                 <div>
                     <h5>Auxies favoritos: {consumer.favoritesProviders}</h5>
@@ -77,7 +82,9 @@ const ProfileConsumers = () => {
                     <h5>Average Rating: {consumer.averageRating}</h5>
                     <h5>Ratings: {consumer.ratings}</h5>
                 </div>
+                <div className={style.savebutton}>
                 <button onClick={handleUpdateProfile}>Guardar Cambios</button>
+                </div>
             </div>
         </div>
     )
