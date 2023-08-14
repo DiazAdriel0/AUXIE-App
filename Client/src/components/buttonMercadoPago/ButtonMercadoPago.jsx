@@ -23,6 +23,7 @@ const ButtonMercadoPago = (props) => {
 
             const { id } = response.data
             setShowPayButton(true)
+
             return id
         } catch (error) {
             console.log(error)

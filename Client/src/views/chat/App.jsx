@@ -1,9 +1,7 @@
-import React, { useState} from "react";
-import { Chat } from "../Chat/chat";
-// import { Auth } from "../Chat/Auth";
-import { AppWrapper } from "../Chat/AppWrapper";
-import Cookies from "universal-cookie";
-
+import React, { useState } from 'react'
+import { Chat } from '../chat/Chat'
+import { AppWrapper } from '../chat/AppWrapper'
+import Cookies from 'universal-cookie'
  
 const cookies = new Cookies();
 

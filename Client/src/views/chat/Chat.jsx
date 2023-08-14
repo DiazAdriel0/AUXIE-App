@@ -3,7 +3,6 @@ import { db, auth } from '../../config/firebase-config'
 import {
     collection,
     addDoc,
-    where,
     serverTimestamp,
     onSnapshot,
     query,
@@ -28,13 +27,10 @@ export const Chat = ({ recipient, auxiedetails }) => {
             return 0
         }
     }) // Sort for consistent order
-
-    console.log(ordered)
     const conversationId = ordered.join('_')
 
     const conversationData = { participants }
- 
-    //ZpsbcXOZ7SSFon98N3REltncKZU2_dCsvWUrHtZhArwOzAYTzF5Y74Sf2
+
     useEffect(() => {
         // Fetch or create a conversation document
         const getOrCreateConversation = async () => {
@@ -49,11 +45,9 @@ export const Chat = ({ recipient, auxiedetails }) => {
             const unsubscribe = onSnapshot(queryMessages, (snapshot) => {
                 let messages = []
                 snapshot.forEach((doc) => {
-                    messages.push({ ...doc.data(), id: doc.id })
-                   
+                    messages.push({ ...doc.data(), id: doc.id })  
                 })
                 setMessages(messages)
-                
             })
 
             return () => unsubscribe()
@@ -61,8 +55,6 @@ export const Chat = ({ recipient, auxiedetails }) => {
 
         getOrCreateConversation()
     }, [recipient, conversationId])
-
-    console.log(messages)
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -72,8 +64,10 @@ export const Chat = ({ recipient, auxiedetails }) => {
         // Fetch or create a conversation document
         const participants = [auth.currentUser.uid, recipient]
         participants.sort() // Sort for consistent order
+
         const conversationId = ordered.join('_')
         const conversationData = { participants }
+        
         await addDoc(conversationsRef, conversationData) // Create the conversation if it doesn't exist
 
         // Store the message with the conversation ID
@@ -96,7 +90,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
     return (
         <div className="chat-app">
             <div className="header">
-    
+                <h1>Conversación con {auxiedetails.firstName}</h1>
             </div>
 
             <div className={style.messages}>
@@ -115,20 +109,20 @@ export const Chat = ({ recipient, auxiedetails }) => {
                             
                         </span>
                         <div className={style.chatbubbles}>
-                        <div
-                            className={` ${
-                                message.recipient === auth.currentUser.uid
-                                    ? style.receiver
-                                    : style.sender
-                            }`}
-                        >
-                            
-                            {message.text}
+                            <div
+                                className={` ${
+                                    message.recipient === auth.currentUser.uid
+                                        ? style.receiver
+                                        : style.sender
+                                }`}
+                            >         
+                                {message.text}
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
+
             <form onSubmit={handleSubmit} className={style.chatform}>
                 <input
                     type="text"
