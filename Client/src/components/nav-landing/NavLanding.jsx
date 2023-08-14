@@ -1,6 +1,7 @@
 import style from './navLanding.module.scss'
 
-import LogoLight from '../../assets/logos/logoLight.png'
+import LogoLight from '../../assets/logos/1.png'
+import LogoNight from '../../assets/logos/logoLight.png'
 // Hooks
 import useMenuStates from '../../hooks/useMenuStates'
 import { Animated } from 'react-animated-css'
@@ -36,7 +37,7 @@ const NavLanding = () => {
                                         ? { filter: 'invert(100%)' }
                                         : null
                                 }
-                                src={LogoLight}
+                                src={!nightMode ? LogoLight : LogoNight}
                                 alt="Logo Auxie"
                                 className={style.logo}
                             />
