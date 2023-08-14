@@ -120,7 +120,7 @@ const ClientForm = () => {
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
-                <h1>Bienvenido a Auxie! Completa tu registro ahora!</h1>
+                <h3>Bienvenido a Auxie! Completa tu registro ahora!</h3>
             </div>
             <form id="form" onSubmit={handleSubmit}>
                 <div className={style.forminput}>
@@ -133,6 +133,7 @@ const ClientForm = () => {
                         onChange={handleChange}
                     ></input>
                     <div className={style.errors}>
+                        
                         <p>{errors.firstName}</p>
                     </div>
                 </div>

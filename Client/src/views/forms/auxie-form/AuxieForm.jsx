@@ -122,7 +122,7 @@ const Form = () => {
     return (
         <div className={style.form}>
             <div className={style.formtitle}>
-                <h1>Bienvenido futuro Auxie! Completa tu registro ahora</h1>
+                <h3>Bienvenido futuro Auxie! Completa tu registro ahora</h3>
             </div>
             <form id="form" onSubmit={handleSubmit}>
                 <div className={style.forminput}>
