@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux'
 import LogoAuxie from '../logo/logoAuxie/LogoAuxie'
 import ProfilePic from '../profile-pic/profile-pic-auxie/ProfilePic'
 import LogoClient from '../logo/logoClient/LogoCLient'
+import ButtonLightNight from '../buttons/button-light-night/ButtonLightNight'
 
 const NavGeneral = () => {
     const user = useSelector((state) => state.loggedUser)
@@ -19,11 +20,17 @@ const NavGeneral = () => {
                 <>
                     <LogoAuxie />
                     <ProfilePic />
+                    <ButtonLightNight />
                 </>
             ) : (
                 <>
                     <LogoClient />
-                    <ProfilePic />
+                    <div className={style.right}>
+                        <ProfilePic />
+                        <div className={style.nightswitch}>
+                            <ButtonLightNight />
+                        </div>
+                    </div>
                 </>
             )}
         </nav>
