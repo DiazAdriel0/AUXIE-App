@@ -23,6 +23,9 @@ const Landing = () => {
     const {
         landing,
         hiden,
+        menuLogo,
+        menuLogoLight,
+        menuLogoNight,
         slogan,
         divSlogan,
         divSloganNight,
@@ -138,7 +141,13 @@ const Landing = () => {
                     isVisible={true}
                 >
                     <section className={sectionMenu}>
-                        <div className={style.menuLogo}>
+                        <div
+                            className={
+                                !nightMode
+                                    ? `${menuLogo} ${menuLogoLight}`
+                                    : `${menuLogo} ${menuLogoNight}`
+                            }
+                        >
                             <div
                                 className={
                                     !nightMode
