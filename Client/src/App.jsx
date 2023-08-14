@@ -51,6 +51,7 @@ import ChatApp from './views/chat/App'
 
 //URL Back
 import axios from 'axios'
+import ReviewForm from './views/forms/review-form/ReviewForm'
 
 const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
@@ -107,7 +108,7 @@ function App() {
                     <Route path="/resetpassword" element={<ResetPassword />} />
                     <Route path="/chat" element={<ChatApp />} />
                     <Route path="/buy" element={<ButtonMercadoPago />} />
-
+                    <Route path="/review" element={<ReviewForm/>} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </div>
