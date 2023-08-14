@@ -9,6 +9,12 @@ cloudinary.config({
     secure: true,
 })
 
+const uploadGalleryOfJobs = async (filePath, auxieId) => {
+    return await cloudinary.uploader.upload(filePath, {
+        folder: `AUXIE App/Jobs/Providers/${auxieId}`,
+    })
+}
+
 const uploadProfileImageToProvider = async (filePath) => {
     return await cloudinary.uploader.upload(filePath, {
         folder: 'AUXIE App/Profile photos/Providers',
@@ -34,6 +40,7 @@ const uploadClaimImage = async (filePath) => {
 }
 
 module.exports = {
+    uploadGalleryOfJobs,
     uploadProfileImageToProvider,
     uploadProfileImageToConsumer,
     uploadServiceImage,
