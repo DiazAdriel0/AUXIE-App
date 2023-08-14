@@ -2,7 +2,7 @@ import style from './homeAuxie.module.scss'
 
 import { useSelector } from 'react-redux'
 //Import components
-import CardServices from '../../../components/card-services/CardServices'
+// import CardServices from '../../../components/card-services/CardServices'
 import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 
@@ -28,11 +28,16 @@ const HomeAuxie = () => {
                     <div className={style.userServices}>
                         {services ? (
                             services.map((service) => (
-                                <CardServices
+                                <div
+                                    className={style.cardServices}
                                     key={service.name}
-                                    name={service.name}
-                                    image={service.image?.secure_url}
-                                />
+                                >
+                                    <img
+                                        src={service.image?.secure_url}
+                                        alt={service.name}
+                                    />
+                                    <h4>{service.name}</h4>
+                                </div>
                             ))
                         ) : (
                             <p>No ofrece servicios</p>
