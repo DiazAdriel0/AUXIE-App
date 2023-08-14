@@ -3,6 +3,7 @@ import ProfileAuxies from '../profileAuxies/ProfileAuxies'
 import { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import style from './ProfilePage.module.scss'
 
 const ProfilePage = () => {
     const navigate = useNavigate()
@@ -17,17 +18,19 @@ const ProfilePage = () => {
             <div>
                 {isAuxie ? (
                     <div>
-                        <Link to="/homeauxie">
-                            <button>Volver</button>
-                        </Link>
                         <ProfileAuxies />
+                        <Link to="/homeauxie">
+                            <button className={style.back}>Volver</button>
+                        </Link>
+                        
                     </div>
                 ) : (
                     <div>
-                        <Link to="/homeconsumer">
-                            <button>Volver</button>
-                        </Link>
                         <ProfileConsumers />
+                        <Link to="/homeconsumer">
+                            <button className={style.back}>Volver</button>
+                        </Link>
+                        
                     </div>
                 )}
             </div>
