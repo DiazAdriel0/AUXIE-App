@@ -19,8 +19,12 @@ const NavGeneral = () => {
             {isAuxie ? (
                 <>
                     <LogoAuxie />
-                    <ProfilePic />
-                    <ButtonLightNight />
+                    <div className={style.nightswitch}>
+                            <ButtonLightNight />
+                        </div>
+                    <div className={style.right}>
+                        <ProfilePic />
+                    </div>
                 </>
             ) : (
                 <>
@@ -30,9 +34,7 @@ const NavGeneral = () => {
                             <ButtonLightNight />
                         </div>
                     <div className={style.right}>
-                    
                         <ProfilePic />
-                        
                     </div>
                 </>
             )}

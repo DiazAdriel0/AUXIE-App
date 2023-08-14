@@ -41,15 +41,28 @@ const ProfilePicAuxie = () => {
     const handleLogOut = async () => {
         try {
             if (user.googleId) {
-                const response = await axios.post(
-                    '/consumers/logout',
-                    { googleId: `${user.googleId}` }
-                )
-                if (response) {
-                    await signOut(auth)
-                    dispatch(logOut({}))
-                    return navigate('/')
+                if(isAuxie) {
+                    const response = await axios.post(
+                        '/providers/logout',
+                        { googleId: `${user.googleId}` }
+                    )
+                    if (response) {
+                        await signOut(auth)
+                        dispatch(logOut({}))
+                        return navigate('/')
+                    }
+                } else {
+                    const response = await axios.post(
+                        '/consumers/logout',
+                        { googleId: `${user.googleId}` }
+                    )
+                    if (response) {
+                        await signOut(auth)
+                        dispatch(logOut({}))
+                        return navigate('/')
+                    }
                 }
+                
             }
             dispatch(logOut({}))
             await signOut(auth)

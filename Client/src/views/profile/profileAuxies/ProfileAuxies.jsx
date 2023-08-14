@@ -3,6 +3,7 @@ import { DateTime } from 'luxon'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
 import { useNavigate } from 'react-router-dom'
+import NavGeneral from '../../../components/nav-general/NavGeneral'
 import style from './ProfileAuxies.module.scss'
 
 const ProfileAuxies = () => {
@@ -69,6 +70,8 @@ const ProfileAuxies = () => {
     }
 
     return (
+        <>
+        <NavGeneral />
         <div className={style.profilecontainer}>
             <div>
                 <h1>
@@ -132,6 +135,7 @@ const ProfileAuxies = () => {
                 </button>
             </div>
         </div>
+        </>
     )
 }
 

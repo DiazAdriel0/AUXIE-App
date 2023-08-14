@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../config/firebase-config'
+import NavLanding from '../../../components/nav-landing/NavLanding'
 
 const ClientForm = () => {
     const { errors, validate } = useValidations()
@@ -20,7 +21,7 @@ const ClientForm = () => {
         email: '',
         password: '',
         gender: '',
-        userUid:''
+        userUid: '',
     })
 
     const handleChange = (event) => {
@@ -75,7 +76,7 @@ const ClientForm = () => {
             )
             const uid = credential.user.uid
             let data = {}
-            if(credential){
+            if (credential) {
                 data = {
                     ...input,
                     userUid: uid,
@@ -118,115 +119,120 @@ const ClientForm = () => {
     }
 
     return (
-        <div className={style.form}>
-            <div className={style.formtitle}>
-                <h3>Bienvenido a Auxie! Completa tu registro ahora!</h3>
+        <>
+            <NavLanding />
+            <div className={style.form}>
+                <div className={style.formtitle}>
+                    <h3>Bienvenido a Auxie! Completa tu registro ahora!</h3>
+                </div>
+                <form id="form" onSubmit={handleSubmit}>
+                    <div className={style.forminput}>
+                        <label>Nombre: </label>
+                        <input
+                            name="firstName"
+                            type="text"
+                            className={style.textInput}
+                            placeholder="Nombre"
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.firstName}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Apellido: </label>
+                        <input
+                            name="lastName"
+                            type="text"
+                            className={style.textInput}
+                            placeholder="Apellido"
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.lastName}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Edad: </label>
+                        <input
+                            name="age"
+                            type="number"
+                            className={style.textInput}
+                            placeholder="Edad"
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.age}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Genero: </label>
+                        <select
+                            onChange={handleChange}
+                            name="gender"
+                            defaultValue={''}
+                        >
+                            <option disabled value="">
+                                Genero
+                            </option>
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+
+                        <div className={style.errors}>
+                            <p>{errors.gender}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Nombre de usuario: </label>
+                        <input
+                            name="username"
+                            type="text"
+                            className={style.textInput}
+                            placeholder="Username"
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.username}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Email: </label>
+                        <input
+                            name="email"
+                            type="email"
+                            className={style.textInput}
+                            placeholder="Email"
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.email}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Password: </label>
+                        <input
+                            name="password"
+                            type="password"
+                            className={style.textInput}
+                            placeholder="Password"
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.password}</p>
+                        </div>
+                    </div>
+
+                    <div className={style.submitbutton}>
+                        <input
+                            type="submit"
+                            disabled={buttonDisabled()}
+                        ></input>
+                    </div>
+                </form>
             </div>
-            <form id="form" onSubmit={handleSubmit}>
-                <div className={style.forminput}>
-                    <label>Nombre: </label>
-                    <input
-                        name="firstName"
-                        type="text"
-                        className={style.textInput}
-                        placeholder="Nombre"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        
-                        <p>{errors.firstName}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Apellido: </label>
-                    <input
-                        name="lastName"
-                        type="text"
-                        className={style.textInput}
-                        placeholder="Apellido"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        <p>{errors.lastName}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Edad: </label>
-                    <input
-                        name="age"
-                        type="number"
-                        className={style.textInput}
-                        placeholder="Edad"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        <p>{errors.age}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Genero: </label>
-                    <select
-                        onChange={handleChange}
-                        name="gender"
-                        defaultValue={''}
-                    >
-                        <option disabled value="">
-                            Genero
-                        </option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
-                        <option value="Otro">Otro</option>
-                    </select>
-
-                    <div className={style.errors}>
-                        <p>{errors.gender}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Nombre de usuario: </label>
-                    <input
-                        name="username"
-                        type="text"
-                        className={style.textInput}
-                        placeholder="Username"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        <p>{errors.username}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Email: </label>
-                    <input
-                        name="email"
-                        type="email"
-                        className={style.textInput}
-                        placeholder="Email"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        <p>{errors.email}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Password: </label>
-                    <input
-                        name="password"
-                        type="password"
-                        className={style.textInput}
-                        placeholder="Password"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        <p>{errors.password}</p>
-                    </div>
-                </div>
-
-                <div className={style.submitbutton}>
-                    <input type="submit" disabled={buttonDisabled()}></input>
-                </div>
-            </form>
-        </div>
+        </>
     )
 }
 
