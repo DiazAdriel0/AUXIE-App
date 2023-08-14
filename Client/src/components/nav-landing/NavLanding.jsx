@@ -1,19 +1,20 @@
 import style from './navLanding.module.scss'
-import LogoAuxie from '../../assets/logos/2.png'
 
+import LogoLight from '../../assets/logos/logoLight.png'
 // Hooks
-
 import useMenuStates from '../../hooks/useMenuStates'
 import { Animated } from 'react-animated-css'
-// Actions
 
-import { Link, useNavigate } from 'react-router-dom'
+// Actions
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+//Components
+import BasicSelect from '../selects/Select'
 import ButtonLightNight from '../buttons/button-light-night/ButtonLightNight'
 const NavLanding = () => {
-    const navigate = useNavigate()
     const menuLanding = useSelector((state) => state.menuLanding)
+    const nightMode = useSelector((state) => state.nightMode)
     const {
         handlerLogIn,
         handlerRegister,
@@ -23,10 +24,6 @@ const NavLanding = () => {
         setRegisterMenu,
     } = useMenuStates()
 
-    const handlerChange = (event) => {
-        const { value } = event.target
-        navigate('/' + value)
-    }
     return (
         <>
             <nav className={style.navLanding}>
@@ -34,32 +31,19 @@ const NavLanding = () => {
                     <div className={style.logoDiv}>
                         <Link to={'/'}>
                             <img
-                                src={LogoAuxie}
+                                style={
+                                    nightMode
+                                        ? { filter: 'invert(100%)' }
+                                        : null
+                                }
+                                src={LogoLight}
                                 alt="Logo Auxie"
                                 className={style.logo}
                             />
                         </Link>
                     </div>
                     <div className={style.viewsLanding}>
-                        <select
-                            className={style.select}
-                            onChange={handlerChange}
-                            name="company"
-                            defaultValue={'default'}
-                        >
-                            <option
-                                className={style.default}
-                                disabled
-                                value="default"
-                            >
-                                Compañia
-                            </option>
-                            <option value="aboutUs">Quiénes Somos</option>
-                            <option value="offer">Que ofrecemos</option>
-                            <option value="howItWorks">
-                                Como funciona Auxie
-                            </option>
-                        </select>
+                        <BasicSelect />
 
                         <ul>
                             <li>

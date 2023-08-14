@@ -1,3 +1,25 @@
+.menuMainLight {
+    background-color: var(--background-light);
+}
+.menuMainNight {
+    background-color: var(--div-color-dark);
+}
+.menuSearchAuxieNight {
+    background-color: var(--div-color-dark);
+}
+.divSloganLight {
+    background-color: var(--div-color-light);
+}
+.divSloganNight {
+    background-color: var(--contrast-div-color-dark);
+}
+.buttonSloganContLight {
+    background-color: var(--div-color-light);
+}
+.buttonSloganContNight {
+    background-color: var(--contrast-div-color-dark);
+}
+
 .logInMenu {
     position: relative;
     width: 100%;
@@ -23,23 +45,6 @@
             div:hover {
                 background-color: var(--secondary--anchor--color-hover);
             }
-        }
-
-        button {
-            background-color: var(--sixth--color-light);
-            width: 3%;
-            height: 3%;
-            margin-left: 95%;
-            border-radius: 5px;
-            border: none;
-            transition: background-color 0.5s ease;
-            font-size: 50%;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        button:hover {
-            background-color: #ff0000ab;
         }
     }
 }
@@ -123,12 +128,8 @@
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
-                border-top-left-radius: 9px;
             }
-            .searchAuxie:hover {
-                cursor: pointer;
-                transition: background-color 0.5s ease;
-            }
+
             .turnAuxie {
                 display: flex;
                 justify-content: center;
@@ -136,12 +137,6 @@
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
-                border-top-right-radius: 9px;
-            }
-            .turnAuxie:hover {
-                background-color: var(--secondary--anchor--color-hover);
-                cursor: pointer;
-                transition: background-color 0.5s ease;
             }
         }
         .menuSearchAuxie {
@@ -162,22 +157,9 @@
         }
 
         .buttonMenu {
-            border: none;
-            background-color: var(--fourth--color-light);
-            padding: 3.5%;
-            font-size: 120%;
-            font-weight: 500;
-            border-radius: 10px;
-            color: white;
-            margin-top: 5%;
-            width: 45%;
-            // height: 40%;
-        }
-
-        .buttonMenu:hover {
-            background-color: var(--primary--anchor--color--hover);
-            transition: background-color 0.5s ease;
-            cursor: pointer;
+            width: 200px;
+            height: 50px;
+            border-radius: 4px;
         }
 
         .menuTurnAuxie {
@@ -208,9 +190,6 @@
         width: 100%;
         height: 35vh;
 
-        .divSloganNight {
-            background-color: var(--contrast-div-color-dark);
-        }
         .divSlogan {
             display: flex;
             flex-direction: column;
@@ -235,26 +214,15 @@
             justify-content: flex-start;
             flex-grow: 30;
         }
-        .buttonSloganContNight {
-            background-color: var(--contrast-div-color-dark);
-        }
+
         .buttonSlogan {
-            width: 12%;
-            height: 60%;
-            margin: 1% 0 0 10%;
+            width: 150px;
+            height: 60px;
+            margin: 2% 0 0 10%;
             font-size: 120%;
             text-align: center;
-            font-family: var(--font-poppins);
             border-radius: 10px;
             border: none;
-            background-color: var(--fourth--color-light);
-            color: white;
-            // font-weight: bold;
-        }
-        .buttonSlogan:hover {
-            cursor: pointer;
-            background-color: var(--primary--anchor--color--hover);
-            transition: background-color 0.5s ease;
         }
     }
     .buttonSlogan1Cont {
@@ -312,7 +280,6 @@
         .featuredAuxiesCont {
             border-radius: 10px;
             width: 80%;
-            background-color: #b8dbd9;
 
             .featuredlist {
                 display: flex;

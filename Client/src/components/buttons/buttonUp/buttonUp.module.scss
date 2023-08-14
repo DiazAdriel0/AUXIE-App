@@ -8,9 +8,9 @@
         top: 92%;
         left: 96%;
         padding: 1%;
-        height: 50px;
-        width: 50px;
-        border-radius: 100%;
+        width: 40px;
+        height: 60px;
+        border-radius: 50%;
 
         border: none;
         cursor: pointer;
@@ -18,9 +18,6 @@
         transition:
             top 0.5s ease-in-out,
             left 0s ease-in-out;
-    }
-    .buttonUp:hover {
-        box-shadow: 0 0 20px gray;
     }
 
     .buttonUpHide {

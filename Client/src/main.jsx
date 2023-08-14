@@ -20,12 +20,17 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 store.subscribe(() => {
     const state = store.getState()
     const body = document.body
+    const html = document.documentElement
 
     if (state.nightMode) {
         body.classList.add('night-mode')
         body.classList.remove('day-mode')
+        html.classList.add('night-mode')
+        html.classList.remove('day-mode')
     } else {
         body.classList.add('day-mode')
         body.classList.remove('night-mode')
+        html.classList.add('day-mode')
+        html.classList.remove('night-mode')
     }
 })
