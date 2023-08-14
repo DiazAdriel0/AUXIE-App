@@ -54,10 +54,6 @@ const ProfileAuxies = () => {
         formData.append('bio', newBio)
         formData.append('gallery', gallery)
 
-        /* gallery.forEach((gallery, index) => {
-            formData.append(`gallery-${index}`, gallery)
-        }) */
-
         dispatch(
             updateProfile(
                 {
