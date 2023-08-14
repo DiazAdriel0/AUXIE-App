@@ -25,6 +25,7 @@ const ProfilePicAuxie = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector((state) => state.loggedUser)
+    const nightMode = useSelector((state) => state.nightMode)
     const [profileMenu, setProfileMenu] = useState(null)
 
     const isAuxie = Object.keys(user).includes('services') ? true : false
@@ -124,7 +125,7 @@ const ProfilePicAuxie = () => {
                         name: 'arrow',
                         enabled: true,
                         options: {
-                            element: 'profileMenu',
+                            element: profileMenu,
                         },
                     },
                 ]}
@@ -159,7 +160,7 @@ const ProfilePicAuxie = () => {
                     <>
                         {/*Botones para el perfil consumer*/}
                         <ClickAwayListener onClickAway={handleClickAway}>
-                            <Box className={style.profileMenu}>
+                            <Box className={nightMode ? style.profileMenuNight : style.profileMenu}>
                                 <p
                                     onClick={handleRedirect}
                                     className={style.profileButtonTop}

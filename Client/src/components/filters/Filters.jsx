@@ -60,6 +60,8 @@ const Filters = () => {
         <div className={style.contFilters}>
             <span>Filtrar por Servicios: </span>
             <Select
+                className={style.filtersSelectCont}
+                classNamePrefix={style.filtersSelect}
                 placeholder="Elegir servicios"
                 onChange={(input) => filterByService(input)}
                 name="services"
