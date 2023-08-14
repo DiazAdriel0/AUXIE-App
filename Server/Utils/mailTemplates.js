@@ -1,3 +1,4 @@
+// prettier-ignore
 const welcome = () => {
     return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -457,7 +458,7 @@ const profile = () => {
     </html>`
 }
 
-const password =  () => {
+const password = () => {
     return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <head>
@@ -618,9 +619,21 @@ const password =  () => {
     </table>
     </div>
     </body>
-    </html>` }
+    </html>`
+}
 
-const order = () => {
+const order = (
+    id,
+    jobDate,
+    serviceName,
+    auxieName,
+    price,
+    taxes,
+    total,
+    clientName,
+    paymentMethod,
+    currency
+) => {
     return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <head>
@@ -766,13 +779,13 @@ const order = () => {
     <td align="center" valign="top" style="padding:0;Margin:0;width:570px">
     <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
     <tr>
-    <td align="center" class="es-m-txt-c" style="padding:0;Margin:0"><h2 style="Margin:0;font-family:verdana, geneva, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:26px;font-style:normal;font-weight:bold;line-height:31px;color:#000000">Reserva NUMERO</h2></td>
+    <td align="center" class="es-m-txt-c" style="padding:0;Margin:0"><h2 style="Margin:0;font-family:verdana, geneva, sans-serif;mso-line-height-rule:exactly;letter-spacing:0;font-size:26px;font-style:normal;font-weight:bold;line-height:31px;color:#000000">Reserva ${id}</h2></td>
     </tr>
     <tr>
-    <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-right:40px;padding-bottom:5px;padding-left:40px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Abril 23, 2023</p></td>
+    <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-right:40px;padding-bottom:5px;padding-left:40px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">${jobDate}</p></td>
     </tr>
     <tr>
-    <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-right:40px;padding-left:40px;padding-bottom:15px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Este Email contiene los datos confirmados de tus reserva con Auxie.</p></td>
+    <td align="center" class="es-m-p0r es-m-p0l" style="Margin:0;padding-top:5px;padding-right:40px;padding-left:40px;padding-bottom:15px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Este Email contiene los datos confirmados de tu reserva con Auxie.</p></td>
     </tr>
     <tr>
     <td align="center" style="padding:0;Margin:0"><span class="es-button-border" style="border-style:solid;border-color:#38761d;background:#38761d;border-width:2px;display:inline-block;border-radius:6px;width:auto"><a href="" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none !important;mso-line-height-rule:exactly;color:#FFFFFF;font-size:20px;padding:10px 30px 10px 30px;display:inline-block;background:#38761d;border-radius:6px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:24px !important;width:auto;text-align:center;letter-spacing:0;mso-padding-alt:0;mso-border-alt:10px solid #38761d;border-left-width:30px;border-right-width:30px">Ver más</a></span></td>
@@ -806,10 +819,10 @@ const order = () => {
     <td align="left" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><strong>Servicio Reservado:</strong></p></td>
     </tr>
     <tr>
-    <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><strong>Servicio:</strong> SERVICIO</p></td>
+    <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><strong>Servicio:</strong> ${serviceName}</p></td>
     </tr>
     <tr>
-    <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><strong>Auxie:</strong> AUXIE</p></td>
+    <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><strong>Auxie:</strong> ${auxieName}</p></td>
     </tr>
     </table></td>
     </tr>
@@ -824,7 +837,7 @@ const order = () => {
     <td class="es-m-p0r" align="center" style="padding:0;Margin:0;width:560px">
     <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;border-top:2px solid #efefef;border-bottom:2px solid #efefef;border-color:#efefef #808080 #efefef #12419f">
     <tr>
-    <td align="left" class="es-m-txt-r" bgcolor="#c1d3fe" style="padding:0;Margin:0;padding-top:10px;padding-bottom:20px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:verdana, geneva, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><span style="background:#c1d3fe">Subtotal: </span><strong><span style="background:#c1d3fe">//!! $00.00</span></strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:verdana, geneva, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><span style="background:#c1d3fe">Impuestos:&nbsp;</span><strong><span style="background:#c1d3fe">$00.00&nbsp;</span><br></strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:verdana, geneva, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><span style="background:#c1d3fe">Total:&nbsp;</span><strong><span style="background:#c1d3fe">$00.00</span></strong></p></td>
+    <td align="left" class="es-m-txt-r" bgcolor="#c1d3fe" style="padding:0;Margin:0;padding-top:10px;padding-bottom:20px"><p style="Margin:0;mso-line-height-rule:exactly;font-family:verdana, geneva, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><span style="background:#c1d3fe">Subtotal: </span><strong><span style="background:#c1d3fe">//!! $${price}</span></strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:verdana, geneva, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><span style="background:#c1d3fe">Impuestos:&nbsp;</span><strong><span style="background:#c1d3fe">$${taxes}&nbsp;</span><br></strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:verdana, geneva, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><span style="background:#c1d3fe">Total:&nbsp;</span><strong><span style="background:#c1d3fe">$${total}</span></strong></p></td>
     </tr>
     </table></td>
     </tr>
@@ -837,7 +850,7 @@ const order = () => {
     <td class="es-m-p0r" align="center" style="padding:0;Margin:0;width:580px">
     <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
     <tr>
-    <td align="left" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Cliente:&nbsp;<strong>//!sarah_powell@domain.com</strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Numero de reserva:&nbsp;<strong>#65000500</strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Día del servicio:<strong> 12 de abril del 2023</strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Forma de Pago: <strong>Mercado Pago</strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Divisa:&nbsp;<strong>Peso Argentino($)</strong></p></td>
+    <td align="left" style="padding:0;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Cliente:&nbsp;<strong>${clientName}</strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Numero de reserva:&nbsp;<strong>${id}</strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Día del servicio:<strong>${jobDate}</strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Forma de Pago: <strong>${paymentMethod}</strong></p><p style="Margin:0;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px">Divisa:&nbsp;<strong>${currency}($)</strong></p></td>
     </tr>
     </table></td>
     </tr>
@@ -910,7 +923,6 @@ const order = () => {
 }
 
 const messagesAuxie = () => {
-
     return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
     <head>
@@ -1112,4 +1124,3 @@ const messagesAuxie = () => {
 }
 
 module.exports = { welcome, profile, password, order, messagesAuxie }
-

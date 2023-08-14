@@ -1,6 +1,7 @@
 const createProvider = require('../../Controllers/ProvidersControllers/createProvider')
 const bcrypt = require('bcrypt')
 const mailSender = require('../../Utils/nodemailer')
+const { welcome } = require('./../../Utils/mailTemplates')
 
 const postProvider = async (req, res) => {
     try {
@@ -63,11 +64,13 @@ const postProvider = async (req, res) => {
             break
         }
 
+        const HTMLContent = welcome()
+
         const mailOptions = {
             from: `Team Auxie ${process.env.EMAIL}`,
             to: email,
             subject: `Bienvenid${pronoun} ${firstName}`,
-            text: `Bienvenid${pronoun} a Auxie!`,
+            html: HTMLContent,
         }
 
         await mailSender(mailOptions)
