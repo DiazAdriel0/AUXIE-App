@@ -1,27 +1,29 @@
 .profileContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%; /* Asegura que el contenido esté centrado verticalmente en la página */
-    border: 2px solid black;
-    padding: -200px;
-    margin: 15%;
-    margin-top: 5%;
-    border-radius: 2%;
-    padding-left: -20%;
-    padding-right: -20%;
-    
-    img {
-      width: 150px; /* Ajusta el tamaño de la foto de perfil */
-      height: 150px;
-      border-radius: 50%; /* Hace que la imagen sea redonda */
-      margin-top: 10%;
-      margin-bottom: -15%;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  border: 2px solid black;
+  padding: 20px; /* Adjust padding as needed */
+  margin: 15%;
+  margin-top: -5%;
+  border-radius: 2%;
+  box-sizing: border-box; /* Ensure padding doesn't increase the element's width */
+
+  img {
+      max-width: 100%; /* Set maximum width for the image */
+      height: auto; /* Allow image to maintain its aspect ratio */
+      border-radius: 50%;
+      margin-top: 20px; /* Adjust margin as needed */
+      margin-left: 15%;
+  }
   
     input[type="file"] {
-      margin-top: 20%;
+      margin-top: 10%;
+      // margin-left: 35%;
+     background-color: rgb(202, 202, 202);
+     max-width: 100%;
     }
   
    
@@ -43,11 +45,11 @@
     }
   
     h3 {
-      text-align: left;
+      // text-align: center;
       margin-top: 10px;
   
       button {
-        margin-left: 10px;
+        // margin-left: 10px;
         padding: 1%;
         border-radius: 5px;
         font-family: var(--font-poppins);
@@ -68,23 +70,26 @@
         padding: 10px;
         margin: 5px 0;
         list-style: square;
+        margin-bottom: 2%;
+        
       }
     }
   
     button {
       margin-top: 20px;
-      margin-bottom: 20%;
+      margin-bottom: 5%;
       padding: 1%;
       border-radius: 5px;
       font-family: var(--font-poppins);
+      
     }
   }
   
   .name {
       height: 150px;
-      margin-right: 40%;
-      margin-left: -40%;
-      width: 180%;
+      // margin-right: 40%;
+      // margin-left: -40%;
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -97,4 +102,16 @@
       padding: 1%;
       border-radius: 5px;
       font-family: var(--font-poppins);
+      
+    }
+    .emailpassword{
+      margin-top: 15%;
+      margin-bottom: 15%;
+      display: flex;
+      // justify-content: center;
+      // margin-left: -18%;
+    }
+    .savebutton{
+      display: flex;
+      justify-content: center;
     }

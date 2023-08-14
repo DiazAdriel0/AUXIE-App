@@ -26,10 +26,11 @@ const ProfilePage = () => {
                     </div>
                 ) : (
                     <div>
-                        <ProfileConsumers />
                         <Link to="/homeconsumer">
                             <button className={style.back}>Volver</button>
                         </Link>
+                        <ProfileConsumers />
+                        
                         
                     </div>
                 )}
