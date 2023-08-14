@@ -3,11 +3,11 @@ import axios from 'axios'
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 
 
-const ButtonMercadoPago = () => {
+const ButtonMercadoPago = (props) => {
     const [preferenceId, setPreferenceId] = useState(null)
-    const [description, setDescription] = useState('')
-    const [price, setPrice] = useState('')
-    const [quantity, setQuantity] = useState('')
+    const [description, setDescription] = useState(props.description)
+    const [price, setPrice] = useState(props.price)
+    const [quantity, setQuantity] = useState(props.quantity)
 
     initMercadoPago('TEST-4f16f016-a822-4c4d-bb35-e48447a441d6')
 
@@ -43,21 +43,21 @@ const ButtonMercadoPago = () => {
             <h3>Boton de Pago</h3>
             <input
                 type="text"
-                placeholder="Descripción"
+                placeholder={description}
                 value={description}
-                onChange={(elem) => setDescription(elem.target.value)}
+                // onChange={(elem) => setDescription(elem.target.value)}
             />
             <input
                 type="text"
-                placeholder="Precio"
+                placeholder={price}
                 value={price}
-                onChange={(elem) => setPrice(elem.target.value)}
+                // onChange={(elem) => setPrice(elem.target.value)}
             />
             <input
                 type="number"
-                placeholder="Cantidad"
+                placeholder={quantity}
                 value={quantity}
-                onChange={(elem) => setQuantity(elem.target.value)}
+                // onChange={(elem) => setQuantity(elem.target.value)}
             />
             <button onClick={handleBuy}>Pagar</button>
             {preferenceId && <Wallet initialization={{ preferenceId }} />}

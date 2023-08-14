@@ -3,6 +3,7 @@ import { DateTime } from 'luxon'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
 import { useNavigate } from 'react-router-dom'
+import ClientRequiredServices from '../../../components/clientRequiredServices/ClientRequiredServices'
 import style from  './ProfileConsumers.module.scss'
 
 const ProfileConsumers = () => {
@@ -77,8 +78,8 @@ const ProfileConsumers = () => {
                 <h6>Te uniste: {toDateMed}</h6>
                 <div>
                     <h5>Auxies favoritos: {consumer.favoritesProviders}</h5>
-                    <h5>Servicios contratados: {consumer.requiredServices}</h5>
-                    <h5>Servicios requeridos: {consumer.requiredServices}</h5>
+                    {/* <h5>Servicios contratados: {consumer.requiredServices}</h5> */}
+                    <h5>Servicios requeridos: {consumer.requiredServices.length && <ClientRequiredServices/>}</h5>
                     <h5>Average Rating: {consumer.averageRating}</h5>
                     <h5>Ratings: {consumer.ratings}</h5>
                 </div>

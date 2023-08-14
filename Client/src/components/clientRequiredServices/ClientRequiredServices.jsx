@@ -8,13 +8,15 @@ const ClientRequiredServices = () => {
         <>
             <div className={style.clientServices}>
                 {client.requiredServices.length > 0 &&
-                    client.requiredServices.map((service, index) => (
+                    client.requiredServices.map((service) => (
                         <ClientRequiredService
-                            key={index}
-                            firstName={service.firstName}
-                            lastName={service.lastName}
-                            name={service.name}
+                            key={service.id}
+                            service={service.service}
+                            requestDate={service.requestDate}
                             status={service.status}
+                            description={service.description}
+                            price={service.price}
+                            paymentMethod={service.paymentMethod}
                         />
                     ))}
             </div>
