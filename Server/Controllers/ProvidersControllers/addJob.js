@@ -13,7 +13,6 @@ const addJob = async (newPendingService, id) => {
             service,
             clientId,
             status: 'pending',
-            price: 0,
             requestDate: Date.now(),
             jobDate,
             paymentMethod,

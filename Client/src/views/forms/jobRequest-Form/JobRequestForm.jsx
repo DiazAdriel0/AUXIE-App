@@ -172,8 +172,8 @@ const JobRequestForm = ({ services }) => {
                                 id="payment"
                                 select
                                 fullWidth
-                                label="Servicio"
-                                helperText="Selecciona un servicio"
+                                label="Método de pago"
+                                helperText="Selecciona un método de pago"
                                 color="primary"
                                 focused
                                 name="payment"
