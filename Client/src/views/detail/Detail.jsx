@@ -137,7 +137,9 @@ const Detail = () => {
                         auxiedetails={auxieDetails}
                     />
                 ) : (
+                    <div className={style.chatbutton}>
                     <button onClick={handleClick}>Start Chat</button>
+                    </div>
                 )}
             </div>
         </>

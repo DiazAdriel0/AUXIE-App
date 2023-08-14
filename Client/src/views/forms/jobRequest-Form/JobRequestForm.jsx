@@ -110,6 +110,7 @@ const JobRequestForm = ({ services }) => {
                                     border: 2,
                                     borderRadius: 1.4,
                                     borderColor: 'primary.main',
+                                    
                                 }}
                             />
                         </div>
@@ -131,6 +132,7 @@ const JobRequestForm = ({ services }) => {
                                 name="service"
                                 value={value.service}
                                 onChange={handleServiceChange}
+                                
                             >
                                 {services ? (
                                     services.map((service) => (
