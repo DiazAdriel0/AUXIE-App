@@ -3,7 +3,7 @@ import { DateTime } from 'luxon'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
 import { useNavigate } from 'react-router-dom'
-import './ProfileAuxies.scss'
+import style from './ProfileAuxies.module.scss'
 
 const ProfileAuxies = () => {
     const provider = useSelector((state) => state.loggedUser)
@@ -71,8 +71,11 @@ const ProfileAuxies = () => {
     }
 
     return (
-        <div className="profile-container">
+        <div className={style.profilecontainer}>
             <div>
+                <h1>
+                    {provider.firstName} {provider.lastName}
+                </h1>
                 <img src={provider.image.secure_url} alt="imagen de perfil" />
                 <input
                     type="file"
@@ -80,9 +83,7 @@ const ProfileAuxies = () => {
                     onChange={handleImageChange}
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                <h1>
-                    {provider.firstName} {provider.lastName}
-                </h1>
+                
                 <h4>Genero: {provider.gender}</h4>
                 <h3>
                     Email: {provider.email}{' '}
@@ -90,6 +91,7 @@ const ProfileAuxies = () => {
                         Cambiar contraseña
                     </button>
                 </h3>
+                <h3>Descripción:</h3>
                 <textarea value={newBio} onChange={handleBioChange} />
                 <h6>Te uniste: {toDateMed}</h6>
                 <div>
@@ -124,7 +126,7 @@ const ProfileAuxies = () => {
                         ))}
                     </ul>
                 </div>
-                <button className="update-button" onClick={handleUpdateProfile}>
+                <button className={style.updatebutton} onClick={handleUpdateProfile}>
                     Guardar Cambios
                 </button>
             </div>
