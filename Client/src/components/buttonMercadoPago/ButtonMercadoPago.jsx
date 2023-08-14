@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from 'react'
 import axios from 'axios'
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
-
 
 const ButtonMercadoPago = (props) => {
     const [preferenceId, setPreferenceId] = useState(null)
@@ -13,15 +13,12 @@ const ButtonMercadoPago = (props) => {
 
     const createPreference = async () => {
         try {
-            const response = await axios.post(
-                '/buy',
-                {
-                    description,
-                    price: parseFloat(price),
-                    quantity: parseInt(quantity),
-                    currency_id: 'ARS',
-                }
-            )
+            const response = await axios.post('/buy', {
+                description,
+                price: parseFloat(price),
+                quantity: parseInt(quantity),
+                currency_id: 'ARS',
+            })
 
             const { id } = response.data
             return id
@@ -45,18 +42,21 @@ const ButtonMercadoPago = (props) => {
                 type="text"
                 placeholder={description}
                 value={description}
+                readOnly
                 // onChange={(elem) => setDescription(elem.target.value)}
             />
             <input
                 type="text"
                 placeholder={price}
                 value={price}
+                readOnly
                 // onChange={(elem) => setPrice(elem.target.value)}
             />
             <input
                 type="number"
                 placeholder={quantity}
                 value={quantity}
+                readOnly
                 // onChange={(elem) => setQuantity(elem.target.value)}
             />
             <button onClick={handleBuy}>Pagar</button>
@@ -66,4 +66,3 @@ const ButtonMercadoPago = (props) => {
 }
 
 export default ButtonMercadoPago
-
