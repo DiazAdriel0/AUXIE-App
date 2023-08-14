@@ -7,14 +7,16 @@
     z-index: 30;
 }
 
-.right{
+.right {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 10%;
-    width: 15%;
-    .nightswitch{
-        height: 50%;
-    }
+    width: auto; /* Allow the content to determine width */
 }
 
+.nightswitch {
+    margin-left: auto; /* Push to the rightmost position within .right */
+    height: 50%;
+    margin-right: 3%;
+}
