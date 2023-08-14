@@ -101,7 +101,7 @@ export function orderAuxiesByPrice(order) {
                 payload: order,
             })
         } catch (e) {
-            console.error(e.response.data)
+            console.error(e)
         }
     }
 }

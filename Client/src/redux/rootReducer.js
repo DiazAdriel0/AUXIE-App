@@ -21,7 +21,7 @@ let initialState = {
     filteredAuxies: [],
     loggedUser: {},
     services: [],
-    filter: [],
+    filter: '',
     menuLanding: false,
     currentPage: 1,
     nightMode: false,
@@ -43,55 +43,50 @@ function rootReducer(state = initialState, action) {
             return { ...state, services: action.payload }
         // filtra mi estado filteredAuxies dependiendo si el auxie tiene alguno de los servicios seleccionados
         case FILTER_AUXIES_BY_SERVICE:
-            if (action.payload.length === 0) {
+            if (action.payload === 'off') {
                 return {
                     ...state,
                     filteredAuxies: [...state.auxies],
                     filter: action.payload,
                 }
             } else {
-                const filteredAuxies = action.payload.map((filter) =>
+                const filteredAuxies = 
                     [...state.auxies].filter((aux) =>
-                        aux.services.some((serv) => serv.name === filter)
+                        aux.services.some((serv) => serv.name === action.payload)
                     )
-                )
-                const allFiltered = new Set(filteredAuxies.flat(1))
                 return {
                     ...state,
                     filter: action.payload,
-                    filteredAuxies: [...allFiltered],
+                    filteredAuxies: [...filteredAuxies],
                 }
             }
         // ordena el estado filteredAuxies por precio del servicio (solo se puede ordenar si todos los auxies de mi estado tienen un servicio en común)
         case ORDER_AUXIES_BY_PRICE:
-            if (state.filter.length === 1) {
-                let serviceFiltered = state.filter.toString()
                 if (action.payload === 'asc') {
                     let ascFilter = [...state.filteredAuxies].sort(
                         (prev, next) =>
                             prev.services.find(
-                                (obj) => obj.name === serviceFiltered
+                                (obj) => obj.name === state.filter
                             ).price -
                             next.services.find(
-                                (obj) => obj.name === serviceFiltered
+                                (obj) => obj.name === state.filter
                             ).price
                     )
                     return { ...state, filteredAuxies: [...ascFilter] }
-                } else {
+                } else if (action.payload === 'desc'){
                     let descFilter = [...state.filteredAuxies].sort(
                         (prev, next) =>
                             next.services.find(
-                                (obj) => obj.name === serviceFiltered
+                                (obj) => obj.name === state.filter
                             ).price -
                             prev.services.find(
-                                (obj) => obj.name === serviceFiltered
+                                (obj) => obj.name === state.filter
                             ).price
                     )
                     return { ...state, filteredAuxies: [...descFilter] }
+                } else {
+                    return {state, auxies: [...state.backupAuxies] }
                 }
-            } else {
-                return { ...state }
-            }
         //ordena el estado filteredAuxies por calificación independientemente del filtrado
         case ORDER_AUXIES_BY_RATING:
             if (action.payload === 'asc') {
@@ -129,7 +124,8 @@ function rootReducer(state = initialState, action) {
                     auxies: [...ascAuxies],
                 }
             } else {
-                return { ...state }
+                return { ...state,
+                auxies: [...state.backupAuxies] }
             }
         // switch para verificar si el usuario se encuentra en la pantalla de logIn o Register
         case MENU_OPEN:
