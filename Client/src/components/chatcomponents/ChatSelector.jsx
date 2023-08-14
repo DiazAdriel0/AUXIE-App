@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './chatselector.module.scss'
+import style from './chatSelector.module.scss'
 const ChatSelector = ({ inbox, handleUserSelection }) => {
   return (
     <div >
