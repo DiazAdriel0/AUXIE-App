@@ -21,11 +21,21 @@ import FeaturedAuxies from '../../components/featuredAuxies/FeaturedAuxies'
 const Landing = () => {
     //style tags
     const {
+        landing,
+        hiden,
         slogan,
         divSlogan,
         divSloganNight,
+        divSloganLight,
+        menuSearchAuxieNight,
         buttonSloganCont,
+        buttonSloganContLight,
         buttonSloganContNight,
+        searchAuxie,
+        menuSearchAuxie,
+        buttonMenu,
+        serviceCards,
+        sectionMenu,
     } = style
     //* First Intersection Observer
     const { ref: myRef, inView: firstObserver } = useInView()
@@ -119,7 +129,7 @@ const Landing = () => {
             />
 
             {/* main */}
-            <main className={!menuLanding ? style.landing : style.hiden}>
+            <main className={!menuLanding ? landing : hiden}>
                 {/* Section Menu Prinipal */}
                 <Animated
                     animationIn="fadeIn"
@@ -127,13 +137,19 @@ const Landing = () => {
                     animationInDuration={1000}
                     isVisible={true}
                 >
-                    <section className={style.sectionMenu}>
+                    <section className={sectionMenu}>
                         <div className={style.menuLogo}>
-                            <div className={style.menuMain}>
+                            <div
+                                className={
+                                    !nightMode
+                                        ? `${style.menuMainLight} ${style.menuMain}`
+                                        : `${style.menuMainNight} ${style.menuMain}`
+                                }
+                            >
                                 <div className={style.buttonsMenuMain}>
                                     <button
                                         onClick={handlerMenuSearchAuxie}
-                                        className={style.searchAuxie}
+                                        className={searchAuxie}
                                     >
                                         Busco un Auxie
                                     </button>
@@ -145,7 +161,13 @@ const Landing = () => {
                                     </button>
                                 </div>
                                 {menuChange === true ? (
-                                    <div className={style.menuSearchAuxie}>
+                                    <div
+                                        className={
+                                            !nightMode
+                                                ? menuSearchAuxie
+                                                : `${menuSearchAuxie} ${menuSearchAuxieNight}`
+                                        }
+                                    >
                                         <h3>
                                             Contrata a un Auxie que te ayude
                                         </h3>
@@ -168,7 +190,7 @@ const Landing = () => {
                                         <button
                                             onClick={handleClick}
                                             value={'toClientForm'}
-                                            className={style.buttonMenu}
+                                            className={buttonMenu}
                                         >
                                             Necesito un Auxie
                                         </button>
@@ -198,7 +220,7 @@ const Landing = () => {
                                         <button
                                             onClick={handleClick}
                                             value={'toAuxieForm'}
-                                            className={style.buttonMenu}
+                                            className={buttonMenu}
                                         >
                                             Convertirme en Auxie
                                         </button>
@@ -216,11 +238,11 @@ const Landing = () => {
                     animationInDuration={1000}
                     isVisible={true}
                 >
-                    <section className={style.slogan}>
+                    <section className={slogan}>
                         <div
                             className={
                                 !nightMode
-                                    ? divSlogan
+                                    ? `${divSlogan} ${divSloganLight}`
                                     : `${divSlogan} ${divSloganNight}`
                             }
                         >
@@ -239,8 +261,8 @@ const Landing = () => {
                         <div
                             className={
                                 !nightMode
-                                    ? buttonSloganCont
-                                    : `${buttonSloganCont} ${buttonSloganContNight}`
+                                    ? `${buttonSloganCont} ${buttonSloganContLight}  `
+                                    : `${buttonSloganCont} ${buttonSloganContNight}  `
                             }
                         >
                             <button
@@ -263,7 +285,7 @@ const Landing = () => {
                             animationInDuration={1000}
                             isVisible={true}
                         >
-                            <section ref={myRef} className={style.serviceCards}>
+                            <section ref={myRef} className={serviceCards}>
                                 <div className={style.serviceCardsTitle}></div>
                                 <h3 className={style.h3}>
                                     Nuestros servicios mas populares
@@ -273,7 +295,7 @@ const Landing = () => {
                         </Animated>
                     </div>
                 ) : (
-                    <section ref={myRef} className={style.serviceCards}>
+                    <section ref={myRef} className={serviceCards}>
                         <div className={style.serviceCardsTitle}></div>
                         <h3>Nuestros servicios mas populares</h3>
                         <CardsServices />
@@ -288,7 +310,13 @@ const Landing = () => {
                     >
                         {/* Section Slogan */}
                         <section ref={myRef2} className={slogan}>
-                            <div className={divSlogan}>
+                            <div
+                                className={
+                                    !nightMode
+                                        ? `${divSlogan} ${divSloganLight}`
+                                        : `${divSlogan} ${divSloganNight}`
+                                }
+                            >
                                 <h3>Trabaja con nosotros y genera ganancias</h3>
                                 <p>
                                     <span>
@@ -297,7 +325,13 @@ const Landing = () => {
                                     </span>
                                 </p>
                             </div>
-                            <div className={style.buttonSloganCont}>
+                            <div
+                                className={
+                                    !nightMode
+                                        ? `${buttonSloganCont} ${buttonSloganContLight}  `
+                                        : `${buttonSloganCont} ${buttonSloganContNight}  `
+                                }
+                            >
                                 <button
                                     className={style.buttonSlogan}
                                     onClick={handleClick}
