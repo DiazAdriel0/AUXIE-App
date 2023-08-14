@@ -6,7 +6,6 @@ import { getFirestore } from 'firebase/firestore'
 // https://firebase.google.com/docs/web/setup#available-libraries
 const firebaseConfig = import.meta.env.VITE_NEXT_PUBLIC_FIREBASE_CONFIG
 // Your web app's Firebase configuration .
-console.log(firebaseConfig)
 // Initialize Firebase
 const app = initializeApp(JSON.parse(firebaseConfig))
 export const auth = getAuth(app)

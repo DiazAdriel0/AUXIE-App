@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
 import { useNavigate } from 'react-router-dom'
 import ClientRequiredServices from '../../../components/clientRequiredServices/ClientRequiredServices'
-import style from  './ProfileConsumers.module.scss'
+import style from './ProfileConsumers.module.scss'
 
 const ProfileConsumers = () => {
     const consumer = useSelector((state) => state.loggedUser)
@@ -43,6 +43,15 @@ const ProfileConsumers = () => {
         )
     }
 
+    const favNames = consumer.favoritesProviders
+        .map((favorite) => favorite.firstName)
+        .join(' | ')
+
+    const requiredServicesNames = consumer.requiredServices
+        .map((service) => service.service)
+        .join(' | ')
+    const requiredServicesNamesSet = new Set(requiredServicesNames)
+
     return (
         <div className={style.profileContainer}>
             <div>
@@ -57,7 +66,7 @@ const ProfileConsumers = () => {
                     className={style.imageButton}
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
-                
+
                 <h4>
                     {consumer.isAdmin && (
                         <div>
@@ -67,24 +76,30 @@ const ProfileConsumers = () => {
                 </h4>
                 <h4>Genero: {consumer.gender}</h4>
                 <div className={style.emailpassword}>
-                <h3>
-                    
-                Email: {consumer.email}{' '}
-                <button onClick={()=>navigate('/resetpassword')}>Cambiar la contraseña</button>
-                    
-                </h3>
-               
+                    <h3>
+                        Email: {consumer.email}{' '}
+                        <button onClick={() => navigate('/resetpassword')}>
+                            Cambiar la contraseña
+                        </button>
+                    </h3>
                 </div>
                 <h6>Te uniste: {toDateMed}</h6>
                 <div>
-                    <h5>Auxies favoritos: {consumer.favoritesProviders}</h5>
-                    {/* <h5>Servicios contratados: {consumer.requiredServices}</h5> */}
-                    <h5>Servicios requeridos: {consumer.requiredServices.length && <ClientRequiredServices/>}</h5>
+                    <h5>Auxies favoritos: {favNames}</h5>
+                    <h5>Servicios contratados: {requiredServicesNamesSet}</h5>
+                    <h5>
+                        Servicios requeridos:
+                        {consumer.requiredServices.length && (
+                            <ClientRequiredServices />
+                        )}
+                    </h5>
                     <h5>Average Rating: {consumer.averageRating}</h5>
                     <h5>Ratings: {consumer.ratings}</h5>
                 </div>
                 <div className={style.savebutton}>
-                <button onClick={handleUpdateProfile}>Guardar Cambios</button>
+                    <button onClick={handleUpdateProfile}>
+                        Guardar Cambios
+                    </button>
                 </div>
             </div>
         </div>
