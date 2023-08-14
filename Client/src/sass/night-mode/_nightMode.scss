@@ -20,7 +20,7 @@
         border: none;
         cursor: pointer;
         padding: 8px 16px;
-        font-size: large;
+        font-size: 15px;
         text-decoration: none;
         text-align: center;
 
@@ -56,12 +56,12 @@
     }
 
     button {
-        color: var(--text-color-light);
+        color: #fcfcfc;
         background-color: var(--button-color-light);
         border: none;
         cursor: pointer;
         padding: 8px 16px;
-
+        font-size: 15px;
         text-decoration: none;
         text-align: center;
 
@@ -71,7 +71,6 @@
     }
     button:hover {
         background-color: var(--hover-color-light);
-
         transition: background-color 0.5s ease;
     }
 }

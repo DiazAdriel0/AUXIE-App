@@ -86,9 +86,9 @@
 
     .register:hover {
         all: unset;
+        cursor: pointer;
         font-size: large;
-        transition: background-color 0.5s ease;
-        border-bottom: 2px solid #f5b82e;
+        border-bottom: 2px solid var(--button-color-light);
     }
 }
 
@@ -124,23 +124,6 @@
                 background-color: var(--secondary--anchor--color-hover);
             }
         }
-
-        button {
-            background-color: var(--sixth--color-light);
-            width: 3%;
-            height: 3%;
-            margin-left: 95%;
-            border-radius: 5px;
-            border: none;
-            transition: background-color 0.5s ease;
-            font-size: 50%;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        button:hover {
-            background-color: #ff0000ab;
-        }
     }
 }
 .registerMenu {
@@ -169,22 +152,6 @@
             div:hover {
                 background-color: var(--secondary--anchor--color-hover);
             }
-        }
-        button {
-            background-color: var(--sixth--color-light);
-            width: 3%;
-            height: 3%;
-            margin-left: 95%;
-            border-radius: 5px;
-            border: none;
-            transition: background-color 0.5s ease;
-            font-size: 50%;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        button:hover {
-            background-color: #ff0000ab;
         }
     }
 }
