@@ -107,10 +107,10 @@ const JobRequestForm = ({ services }) => {
                                     }))
                                 }
                                 sx={{
+                                    color: 'primary.main',
                                     border: 2,
                                     borderRadius: 1.4,
                                     borderColor: 'primary.main',
-                                    
                                 }}
                             />
                         </div>

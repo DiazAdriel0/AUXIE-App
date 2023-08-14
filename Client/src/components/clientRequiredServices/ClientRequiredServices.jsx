@@ -27,9 +27,23 @@ const ClientRequiredServices = () => {
                                 <td>{service.id}</td>
                                 <td>{service.service}</td>
                                 <td>{service.description}</td>
-                                <td>{service.status}</td>
+                                <td>{service.status}
+                                {service.status === 'done' && (
+                                <tr className={style.reviewbutton}> 
+                                    {/* <td colSpan="6" */}
+                                        <Link to="/review">
+                                            <button>Valorar</button>
+                                        </Link>
+                                    {/* </td> */}
+                                </tr>
+                            )}
+                            </td>
                                 <td>{service.price}</td>
                                 <td>{service.jobDate}</td>
+                               
+                            {/* <tr className={style.separacion}>
+                                <td colSpan="6"></td>
+                            </tr> */}
                             </tr>
                             {service.status === 'approved' && (
                                 <tr>
@@ -42,18 +56,7 @@ const ClientRequiredServices = () => {
                                     </td>
                                 </tr>
                             )}
-                            {service.status === 'done' && (
-                                <tr>
-                                    <td colSpan="6" className={style.payButton}>
-                                        <Link to="/review">
-                                            <button>Valorar</button>
-                                        </Link>
-                                    </td>
-                                </tr>
-                            )}
-                            <tr className={style.separacion}>
-                                <td colSpan="6"></td>
-                            </tr>
+                           
                         </>
                     ))}
                 </tbody>

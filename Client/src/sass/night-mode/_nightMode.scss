@@ -2,6 +2,9 @@
     background-color: var(--background-dark);
     color: var(--text-color-dark);
     transition: var(--transition-color);
+    div{
+        border-color: var(--transition-color);
+    }
 
     a {
         color: var(--text-color-dark);

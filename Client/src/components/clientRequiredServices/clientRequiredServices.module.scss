@@ -2,8 +2,9 @@
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    font-size: 16px;
-
+    font-size: 12px;
+    overflow-x: auto;
+    display: block;
     th,
     td {
         border: 1px solid #ccc;
@@ -36,3 +37,4 @@
 .separacion {
     background-color: #555;
 }
+
