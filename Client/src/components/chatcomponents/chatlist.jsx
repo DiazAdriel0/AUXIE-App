@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import ChatSelector from './ChatSelector'; // Import the ChatSelector component
 import { doc, onSnapshot } from 'firebase/firestore';
 import { auth, db } from '../../config/firebase-config';
-import { Chat } from '../../views/Chat/chat';
+import { Chat } from '../../views/chat/Chat';
 import style from './chatlist.module.scss'
 const Chatlist = () => {
   const [selectedUser, setSelectedUser] = useState(null); // Store the selected sender
