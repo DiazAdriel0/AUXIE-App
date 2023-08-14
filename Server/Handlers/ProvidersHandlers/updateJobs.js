@@ -18,15 +18,12 @@ const updateJobs = async (req, res) => {
         const {
             id: idRequest,
             service: serviceName,
-            price,
             jobDate,
             paymentMethod,
         } = providerToAdd.jobs[providerToAdd.jobs.length - 1]
 
         const clientName = `${client.firstName} ${client.lastName}`
         const auxieName = `${providerToAdd.firstName} ${providerToAdd.lastName}`
-        const taxes = 0
-        const total = price + taxes
         const currency = 'ARS' // Cambiar a variable y agregarlo al formulario de solicitud y al controller que agrega el job
 
         const HTMLContent = order(
@@ -34,9 +31,6 @@ const updateJobs = async (req, res) => {
             jobDate,
             serviceName,
             auxieName,
-            price,
-            taxes,
-            total,
             clientName,
             paymentMethod,
             currency
