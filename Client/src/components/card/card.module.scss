@@ -48,18 +48,17 @@
     display: flex;
     flex-flow: column wrap;
     width: 100%;
-    border-top: 1px var(--accent--first--color-light) solid;
-    border-bottom: 1px var(--accent--first--color-light) solid;
+    border-top: 1px var(--button-yellow--color) solid;
+    border-bottom: 1px var(--button-yellow--color) solid;
 }
 
 .serviceDiv {
-    width: 100%;
     text-align: start;
     margin-left: 5%;
 }
 
 .serviceName {
-    color: var(--accent--first--color-light);
+    color: var(--button-yellow--color);
 }
 
 .rating {
@@ -69,32 +68,16 @@
 }
 
 .button {
-    background-color: var(--fourth--color-light);
-    color: #FFF;
+    background-color: var(--button-yellow--color);
     width: 8.5em;
     height: 2.9em;
-    border:  var(--fourth--color-light) 0.2em solid;
     border-radius: 7px;
-    text-align: right;
-    transition: all 0.6s ease;
 }
 
 .button:hover {
-    background-color: var(--primary--anchor--color--hover);
-    border:  var(--fourth--color-light) 0.2em solid;
+    background-color: var(--button-yellow--color);
+    border:  var(--button-yellow--color) 0.2em solid;
     cursor: pointer;
-}
-
-.button svg {
-    width: 1.6em;
-    margin: -0.2em 0.8em 1em;
-    position: absolute;
-    display: flex;
-    transition: all 0.6s ease;
-}
-
-.button:hover svg {
-    transform: translateX(5px);
 }
 
 .text {
