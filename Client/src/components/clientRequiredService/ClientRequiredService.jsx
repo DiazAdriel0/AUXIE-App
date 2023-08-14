@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
 
 const ClientRequiredService = (job) => {
@@ -11,7 +12,8 @@ const ClientRequiredService = (job) => {
         price,
         paymentMethod,
     } = job
-    const mercadoPago = paymentMethod === 'app' ? true : false
+    const mercadoPago = paymentMethod === 'app'
+    const completedJob = status === 'done'
     //  const approved = status === 'approved' ? true : false
     return (
         <div>
@@ -22,13 +24,18 @@ const ClientRequiredService = (job) => {
             {jobDate}
             {price}
             {status}
-            {mercadoPago ? (
+            {mercadoPago && (
                 <ButtonMercadoPago
                     price={price}
                     description={service}
                     quantity={1}
                 />
-            ) : null}
+            )}
+            {completedJob && (
+                <Link to="/review">
+                    <button>Valorar</button>
+                </Link>
+            )}
         </div>
     )
 }
