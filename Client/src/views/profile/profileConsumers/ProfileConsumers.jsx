@@ -81,7 +81,7 @@ const handleChange = (event) => {
     return (
         <>
         <div><NavGeneral /></div>
-        
+         <div className={style.fullProfileContainer}>
         <div className={style.profileContainer}>
             <div className={style.secondcontainer}>
                 <button type='button' className={style.edit} onClick={handleEdit}>Editar perfil</button>
@@ -151,7 +151,7 @@ const handleChange = (event) => {
                             Cambiar la contraseña
                         </button>}
                     </h3>
-
+                </div>
                 </div>
             </div>
             <div className={style.manage}>
