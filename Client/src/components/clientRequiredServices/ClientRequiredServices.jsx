@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import style from './clientRequiredServices.module.scss'
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
 
-// import ClientRequiredService from '../clientRequiredService/ClientRequiredService'
-
 const ClientRequiredServices = () => {
     const client = useSelector((state) => state.loggedUser)
     return (
@@ -12,12 +10,13 @@ const ClientRequiredServices = () => {
             <table className={style.servicesTable}>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <th>Número de pedido</th>
                         <th>Servicio</th>
                         <th>Descripción</th>
                         <th>Estado</th>
                         <th>Precio</th>
                         <th>Fecha</th>
+                        <th>Acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,39 +26,45 @@ const ClientRequiredServices = () => {
                                 <td>{service.id}</td>
                                 <td>{service.service}</td>
                                 <td>{service.description}</td>
-                                <td>{service.status}
-                                {service.status === 'done' && (
-                              
+                                <td>{service.status}</td>
+                                <td>{service.price}</td>
+                                <td>{service.jobDate}</td>
+                                <td>
+                                    {service.status === 'done' && (
                                         <Link to="/review">
                                             <button>Valorar</button>
                                         </Link>
-                                
-                            )}
-                            </td>
-                                <td>{service.price}</td>
-                                <td>{service.jobDate}</td>
-                               
-                            {/* <tr className={style.separacion}>
-                                <td colSpan="6"></td>
-                            </tr> */}
+                                    )}
+                                    {service.status === 'approved' && (
+                                        <tr>
+                                            <td
+                                                className={style.payButton}
+                                            >
+                                                <ButtonMercadoPago
+                                                    price={service.price}
+                                                    description={
+                                                        service.description
+                                                    }
+                                                    quantity={1}
+                                                />
+                                            </td>
+                                        </tr>
+                                    )}
+                                </td>
                             </tr>
-                            {service.status === 'approved' && (
-                                <tr>
-                                    <td colSpan="6" className={style.payButton}>
-                                        <ButtonMercadoPago
-                                            price={service.price}
-                                            description={service.description}
-                                            quantity={1}
-                                        />
-                                    </td>
-                                </tr>
-                            )}
-                           
                         </>
                     ))}
                 </tbody>
             </table>
-            {/* <div className={style.clientServices}>
+        </>
+    )
+}
+
+export default ClientRequiredServices
+
+
+// mappeo de servicios como cards, por si preferimos un diseño de presentación de servicios como cards en vez de una tabla
+/* <div className={style.clientServices}>
                 {client.requiredServices.length > 0 &&
                     client.requiredServices.map((service) => (
                         <ClientRequiredService
@@ -72,9 +77,4 @@ const ClientRequiredServices = () => {
                             paymentMethod={service.paymentMethod}
                         />
                     ))}
-            </div> */}
-        </>
-    )
-}
-
-export default ClientRequiredServices
+            </div> */
