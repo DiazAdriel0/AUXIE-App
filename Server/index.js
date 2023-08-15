@@ -8,6 +8,20 @@ const { MONGO_DB_CONNECTION, PORT } = process.env
 
 const httpServer = createServer(server)
 
+io.on('connection', (socket) => {
+    console.log('User connected')
+
+    socket.on('chatMessage', (message) => {
+        // Lógica para manejar el mensaje recibido desde el cliente
+        // Y luego puedes emitir eventos para enviar mensajes a todos los clientes conectados
+        io.emit('chatMessage', message)
+    })
+
+    socket.on('disconnect', () => {
+        console.log('A user disconnected')
+    })
+})
+
 const port = PORT || 3001
 
 const connectionString = `${MONGO_DB_CONNECTION}`
@@ -28,18 +42,4 @@ const io = new Server(httpServer, {
     cors: {
         origin: ['http://localhost:5173', 'https://auxie-app.vercel.app'],
     },
-})
-
-io.on('connection', (socket) => {
-    console.log('User connected')
-
-    socket.on('chatMessage', (message) => {
-        // Lógica para manejar el mensaje recibido desde el cliente
-        // Y luego puedes emitir eventos para enviar mensajes a todos los clientes conectados
-        io.emit('chatMessage', message)
-    })
-
-    socket.on('disconnect', () => {
-        console.log('A user disconnected')
-    })
 })
