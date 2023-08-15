@@ -1,6 +1,6 @@
 import style from './priceForm.module.scss'
 
-const PriceForm = () => {
+const PriceForm = ({ id }) => {
     return (
         <div>
             <input type="text"></input>

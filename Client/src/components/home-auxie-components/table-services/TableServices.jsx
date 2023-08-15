@@ -50,7 +50,7 @@ const TableServices = () => {
             {showForm && (
                 <div className={style.priceFormContainer}>
                     <div className={style.priceForm} ref={targetRef}>
-                        <PriceForm />
+                        <PriceForm id={serviceId} />
                     </div>
                 </div>
             )}
