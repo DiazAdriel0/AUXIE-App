@@ -1,0 +1,75 @@
+.card {
+    background-color: rgba(162, 155, 227, 0.515);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid var(--secondary--color-hover);
+    border-radius: 1.5%;
+    width: 300px;
+    height: 300px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+    transition: all 0.5s;
+}
+.card:hover {
+    border: 1px solid var(--secondary--color-hover);
+    transform: scale(1.03);
+}
+
+.contPersonal {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin: 5%;
+    gap: 1%;
+}
+
+.info {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    width: 50%;
+}
+
+.name {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.contServices {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: 100%;
+    border-top: 1px var(--button-color-light) solid;
+    border-bottom: 1px var(--button-color-light) solid;
+}
+
+.serviceDiv {
+    text-align: start;
+    margin-left: 5%;
+}
+
+.serviceName {
+    color: var(--button-color-light);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 2%;
+}
+
+.button {
+    width: 8.5em;
+    height: 2.9em;
+    border-radius: 7px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.text {
+    margin: 0 1em;
+}
