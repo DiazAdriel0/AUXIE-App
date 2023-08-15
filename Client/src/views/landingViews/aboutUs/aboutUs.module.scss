@@ -12,7 +12,7 @@
     margin-top: 1rem;
     justify-content: center;
     .card {
-        background-color: var(--secondary--color-light);
+        background-color: rgba(162, 155, 227, 0.515);
         margin: 4rem;
         width: 21rem;
         height: 25rem;
@@ -50,7 +50,7 @@
 }
 
 .aboutbox {
-    background-color: var(--secondary--color-light);
+    // background-color: var(--secondary--color-light);
     margin: 2rem;
     max-width: 21rem;
     height: 25rem;
@@ -58,6 +58,7 @@
     overflow: auto; /* Agregar esta propiedad para permitir el desplazamiento del contenido */
     perspective: 1000px;
     position: relative;
+    // background-color: rgba(162, 155, 227, 0.515);
     p {
         margin: 2rem;
         font-size: 0.8rem;
@@ -98,8 +99,8 @@
 .about {
     padding-top: 1%;
     padding-bottom: 1%;
-    background-color: var(--secondary--color-light);
-
+    // background-color: var(--secondary--color-light);
+    background-color: rgba(162, 155, 227, 0.515);
     padding-left: 5%;
     box-shadow: 0px 30px 52px -25px var(--secondary--color-hover);
 
@@ -138,6 +139,7 @@
     margin: 1rem;
     perspective: 1000px;
     position: relative;
+    background-color: rgba(162, 155, 227, 0.515);
 
     img {
         border-radius: 80%;
