@@ -8,7 +8,7 @@ const usePagination = (num, data) => {
 
     const cardsPerPage = num
     let currentPageData = []
-    const totalPages = Math.ceil(data.length / cardsPerPage)
+    const totalPages = Math.ceil(data?.length / cardsPerPage)
 
     const pages = Array.from(
         { length: totalPages },
@@ -18,7 +18,7 @@ const usePagination = (num, data) => {
     const firstIndex = cardsPerPage * (currentPage - 1)
     const lastIndex = cardsPerPage * currentPage - 1
 
-    if (data.length) {
+    if (data?.length) {
         currentPageData = data?.slice(firstIndex, lastIndex + 1)
     }
 
