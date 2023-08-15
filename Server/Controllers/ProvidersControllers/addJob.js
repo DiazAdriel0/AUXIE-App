@@ -20,7 +20,7 @@ const addJob = async (newPendingService, id) => {
 
         if (providerFound.jobs?.length > 0) {
             addedJob.id =
-                providerFound.jobs[providerFound.jobs.length - 1].id + 1
+                Number(providerFound.jobs[providerFound.jobs.length - 1].id) + 1
             providerFound.jobs.push(addedJob)
         } else {
             providerFound.jobs = [addedJob]
