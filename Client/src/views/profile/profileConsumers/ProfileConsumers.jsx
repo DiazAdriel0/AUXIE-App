@@ -170,6 +170,11 @@ const handleChange = (event) => {
                 </div>
                 <h5>Average Rating: {consumer.averageRating}</h5>
                 <h5>Ratings: {consumer.ratings}</h5>
+                <div className={style.savebutton}>
+                    <button onClick={handleUpdateProfile}>
+                        Guardar Cambios
+                    </button>
+                </div>
             </div>
             </div>
         </>
