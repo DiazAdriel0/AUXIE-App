@@ -31,11 +31,6 @@ const TableServices = () => {
         }
     }, [shouldCloseForm])
 
-    useEffect(() => {
-        console.log(showForm)
-        console.log(serviceId)
-    }, [showForm])
-
     const handleClick = (event) => {
         setServiceId(event.target.value)
         setShowForm(true)
