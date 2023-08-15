@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import style from './aboutUs.module.scss'
 import NavLanding from '../../../components/nav-landing/NavLanding'
+import Footer from '../../../components/footer/Footer.jsx'
 
 const AboutUs = () => {
     const user = useSelector((state) => state.loggedUser)
@@ -872,11 +873,12 @@ const AboutUs = () => {
                                         <path d="M16 16v-3a2 2 0 0 0 -4 0" />{' '}
                                     </svg>
                                 </a>
-                            </div>
+                            </div> 
                         </div>
-                    </center>
-                </div>
+                    </center> 
+                </div>             
             </div>
+            <Footer/>
         </>
     )
 }

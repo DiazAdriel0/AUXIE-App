@@ -1,0 +1,50 @@
+.landingFooter {
+    z-index: 6;
+    color: white;
+    background-color: #181818;
+    height: 70vh;
+     
+    .divFooterTitle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p{
+            margin-top:1%;
+        }
+        h4{
+            margin-top:1%;
+        }
+    }
+
+    .links{
+        display: flex;
+        margin-top:10%; 
+        width: 100%;
+        justify-content: center;
+        align-self: center;
+        p{
+           color: white !important;
+           border-right: 1px rgba(255, 255, 255, 0.4) solid;
+           border-left: 1px rgba(255, 255, 255, 0.5) solid;
+           padding-left: 1%;
+           padding-right: 1%;
+        }
+    }
+    .divFooterImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 30vh;
+        height: 30vh;
+    }
+    .divCopy { 
+        margin-top:2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 50%;
+    }
+}
+
