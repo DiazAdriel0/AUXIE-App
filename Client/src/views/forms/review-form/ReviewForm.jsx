@@ -104,13 +104,14 @@ const ReviewForm = () => {
                             value={review.providerId} // Cambio de 'auxie' a 'providerId'
                             onChange={handleAuxieChange} // Cambio de handleAuxieChange a handleProviderChange
                         >
-                            {auxies ? (
-                                auxies.map((auxie) => (
+                            {user.requiredServices ? (
+                                user.requiredServices.map((auxie) => (
+                                    
                                     <MenuItem
                                         key={auxie.id}
-                                        value={auxie.id} // Cambio de 'auxie' a 'providerId'
-                                    >
-                                        {auxie.firstName} {auxie.lastName}
+                                        value={auxie.providerId} // Cambio de 'auxie' a 'providerId'
+                                    > {console.log(auxie)}
+                                        {auxie.providerName}
                                     </MenuItem>
                                 ))
                             ) : (

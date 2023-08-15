@@ -15,12 +15,10 @@
 
     /* colors Light Mode */
     --background-light: #fcfcfc;
-    --div-color-light: #4e90e140;
     /* text light mode */
     --text-color-light: #000;
     --div-text-color-light: #fafafa;
 
-    --contrast-color-light: #111645;
     /* button light mode */
     --button-color-light: #30598c;
     /* Hover lightMode */
@@ -28,20 +26,17 @@
 
     /* Colors Dark Mode */
     --background-dark: #0b0b25;
-    --div-color-dark: #111645;
+    --div-border-color-dark: #111645;
 
-    --contrast-div-color-dark: #111645;
-    --button-color-dark: #174bab;
+    /* Buttons dark mode */
+    --button-color-dark: #ececec;
+    --button-text-color-dark: var(--background-dark);
 
     /* Hover darkMode */
-    --hover-color-dark: #3434c5d5;
+    --hover-color-dark: #d2cfcf;
 
     /* Text color dark */
     --text-color-dark: #fcfcfc;
-
-    /* Buttons Blue */
-    --button-blue--color: #1854c2;
-    --button-yellow--color: #f5b82e;
 
     /*Transition color  */
     --transition-background-color: background-color 0.1s ease-in-out;
