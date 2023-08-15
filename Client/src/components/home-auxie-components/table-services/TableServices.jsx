@@ -8,6 +8,7 @@ const TableServices = () => {
     const targetRef = useRef(null)
     const [showForm, setShowForm] = useState(false)
     const [shouldCloseForm, setShouldCloseForm] = useState(false)
+    const [serviceId, setServiceId] = useState('')
     const loggedUser = useSelector((state) => state.loggedUser)
     const { currentPageData } = usePagination(15, loggedUser.jobs)
 
@@ -19,6 +20,7 @@ const TableServices = () => {
         ) {
             setShowForm(false)
             setShouldCloseForm(false)
+            setServiceId('')
         }
     }
 
@@ -31,9 +33,11 @@ const TableServices = () => {
 
     useEffect(() => {
         console.log(showForm)
+        console.log(serviceId)
     }, [showForm])
 
-    const handleClick = () => {
+    const handleClick = (event) => {
+        setServiceId(event.target.value)
         setShowForm(true)
         setShouldCloseForm(false)
         setTimeout(() => {
@@ -69,7 +73,10 @@ const TableServices = () => {
                             <td>{service.status}</td>
                             {service.status === 'pending' && (
                                 <td>
-                                    <button onClick={handleClick}>
+                                    <button
+                                        onClick={handleClick}
+                                        value={service.id}
+                                    >
                                         Propuesta
                                     </button>
                                 </td>
