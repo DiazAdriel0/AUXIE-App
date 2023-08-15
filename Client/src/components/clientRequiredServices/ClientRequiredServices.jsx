@@ -24,18 +24,17 @@ const ClientRequiredServices = () => {
                     {client.requiredServices?.map((service) => (
                         <>
                             <tr key={service.id}>
+                              {  console.log(service.id)}
                                 <td>{service.id}</td>
                                 <td>{service.service}</td>
                                 <td>{service.description}</td>
                                 <td>{service.status}
                                 {service.status === 'done' && (
-                                <tr className={style.reviewbutton}> 
-                                    {/* <td colSpan="6" */}
+                              
                                         <Link to="/review">
                                             <button>Valorar</button>
                                         </Link>
-                                    {/* </td> */}
-                                </tr>
+                                
                             )}
                             </td>
                                 <td>{service.price}</td>
