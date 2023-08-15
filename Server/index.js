@@ -8,6 +8,12 @@ const { MONGO_DB_CONNECTION, PORT } = process.env
 
 const httpServer = createServer(server)
 
+const io = new Server(httpServer, {
+    cors: {
+        origin: ['http://localhost:5173', 'https://auxie-app.vercel.app'],
+    },
+})
+
 io.on('connection', (socket) => {
     console.log('User connected')
 
@@ -37,9 +43,3 @@ mongoose
     .catch((error) => {
         console.error(error)
     })
-
-const io = new Server(httpServer, {
-    cors: {
-        origin: ['http://localhost:5173', 'https://auxie-app.vercel.app'],
-    },
-})
