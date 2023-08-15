@@ -11,7 +11,7 @@ const FavoriteAuxiesCards = () => {
     return (
         <>
             <div className={style.cards}>
-                {Favorites.length > 0 ? (
+                {Favorites?.length > 0 ? (
                     Favorites.map((user) => (
                         <FavoriteAuxieCard
                             key={user.id}

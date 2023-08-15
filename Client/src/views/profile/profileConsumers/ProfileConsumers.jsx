@@ -49,9 +49,7 @@ const ProfileConsumers = () => {
     //     .map((favorite) => favorite.firstName)
     //     .join(' | ')
 
-    const requiredServicesNames = consumer.requiredServices
-        .map((service) => service.service)
-        .join(' | ')
+    const requiredServicesNames = consumer.requiredServices?.map((service) => service.service).join(' | ')
     const requiredServicesNamesSet = new Set(requiredServicesNames)
 
     return (
@@ -65,7 +63,7 @@ const ProfileConsumers = () => {
                     </h1>
                     <div className={style.imagecontainer}>
                         <img
-                            src={consumer.image.secure_url}
+                            src={consumer.image?.secure_url}
                             alt="imagen de perfil"
                         />
                     </div>
@@ -87,7 +85,7 @@ const ProfileConsumers = () => {
                     <h4>Genero: {consumer.gender}</h4>
                     <div className={style.emailpassword}>
                         <h3>
-                            Email: {consumer.email}{' '}
+                            Email: {consumer.email}
                             <button onClick={() => navigate('/resetpassword')}>
                                 Cambiar la contraseña
                             </button>
@@ -110,7 +108,7 @@ const ProfileConsumers = () => {
                 <div className={style.tablecontainer}>
                     <h5>
                         Servicios requeridos:
-                        {consumer.requiredServices.length && (
+                        {consumer.requiredServices?.length && (
                             <ClientRequiredServices />
                         )}
                     </h5>
