@@ -27,3 +27,17 @@
         cursor: pointer;
     }
 }
+
+.priceFormContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #33333369;
+}
+
+.priceForm {
+    width: 40%;
+    height: 40%;
+}
