@@ -1,10 +1,16 @@
 const Provider = require('./../../Models/provider')
+const Consumer = require('./../../Models/consumer')
 
 const addJob = async (newPendingService, id) => {
     const { service, description, clientId, jobDate, paymentMethod } =
         newPendingService
     try {
         const providerFound = await Provider.findById(id)
+        const consumerFound = await Consumer.findById(clientId)
+
+        const price = providerFound.services?.find(
+            (service) => service.service === service
+        )?.price
 
         const addedJob = {
             id: 1,
@@ -12,9 +18,13 @@ const addJob = async (newPendingService, id) => {
             description,
             service,
             clientId,
+            providerId: id,
+            providerName: `${providerFound.firstName} ${providerFound.lastName}`,
+            clientName: `${consumerFound.firstName} ${consumerFound.lastName}`,
             status: 'pending',
             requestDate: Date.now(),
             jobDate,
+            price,
             paymentMethod,
         }
 
