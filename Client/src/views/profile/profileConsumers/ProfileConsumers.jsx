@@ -16,8 +16,6 @@ const ProfileConsumers = () => {
     const [newImage, setNewImage] = useState(null)
     const [error, setError] = useState(null)
     const [profileData, setProfileData] = useState({
-       
-
     })
     const [edit,setEdit]= useState(false);
     const handleEdit = ()=>{
@@ -85,9 +83,12 @@ const handleChange = (event) => {
         <div className={style.profileContainer}>
             <div className={style.secondcontainer}>
                 <button type='button' className={style.edit} onClick={handleEdit}>Editar perfil</button>
+              
                 <h1 className={style.name}>
                     {consumer.firstName} {consumer.lastName}
+                    
                 </h1>
+                Te uniste: {toDateMed}
                 {edit && <TextField
                             className={style.picker}
                             id="outlined-basic"
