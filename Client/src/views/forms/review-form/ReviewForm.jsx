@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Box from '@mui/material/Box'
 import StarIcon from '@mui/icons-material/Star'
 import { useSelector } from 'react-redux'
-import { auth } from '../../../config/firebase-config'
+
 import style from './reviewform.module.scss'
 import SendIcon from '@mui/icons-material/Send'
 import Swal from 'sweetalert2'
@@ -13,7 +13,7 @@ const ReviewForm = () => {
     const navigate = useNavigate()
     const services = useSelector((state) => state.services)
     const user = useSelector((state) => state.loggedUser)
-    const auxies = useSelector((state) => state.auxies)
+
     const [review, setReview] = useState({
         consumerId: user.id,
         providerId: '',

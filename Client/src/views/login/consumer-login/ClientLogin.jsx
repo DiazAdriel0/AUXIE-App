@@ -13,7 +13,7 @@ import {
     signInWithEmailAndPassword,
 } from 'firebase/auth'
 import { auth } from '../../../config/firebase-config'
-
+import Swal from 'sweetalert2'
 const ClientLogin = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -56,6 +56,42 @@ const ClientLogin = () => {
     useEffect(() => {
         if (access === true) {
             navigate('/homeconsumer')
+            let welcome
+        switch (logged.gender) {
+            case 'Masculino':
+                welcome = 'Bienvenido'
+                break
+            case 'Femenino':
+                welcome = 'Bienvenida'
+                break
+            case 'Otro':
+                welcome = 'Bienvenide'
+                break
+            default:
+                welcome= 'Hola'
+                break
+        }
+        let timerInterval
+        Swal.fire({
+            title: `${welcome} ${logged.firstName}`,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading()
+                const b = Swal.getHtmlContainer().querySelector('b')
+                timerInterval = setInterval(() => {
+                    b.textContent = Swal.getTimerLeft()
+                }, 100)
+            },
+            willClose: () => {
+                clearInterval(timerInterval)
+            },
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log('I was closed by the timer')
+            }
+        })
             console.log(logged)
             // eslint-disable-next-line no-prototype-builtins
             if (logged.hasOwnProperty('firstName')) {

@@ -2,6 +2,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
+import { useLocation } from 'react-router-dom'
 
 // estilos
 import style from './homeConsumer.module.scss'
@@ -25,10 +27,18 @@ const HomeConsumer = () => {
     const isConsumer = Object.keys(user).includes('requiredServices')
     // const isOtro = !user.gender ? true : user.gender === 'Otro' ? true : false
 
+    const location = useLocation()
+    if (location.state) {
+        const from = location.state.from;
+        console.log('Redirigido desde:', from);
+      }
+    console.log('Current URL:', location.pathname)
+
     useEffect(() => {
         if (Object.keys(user).length === 0) return navigate('/clientlogin')
         if (Object.keys(user).includes('services'))
             return navigate('/homeAuxie')
+
         dispatch(resetAuxiesCatalog())
     }, [])
 
