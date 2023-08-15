@@ -25,7 +25,7 @@ const HomeConsumer = () => {
     const navigate = useNavigate()
     const user = useSelector((state) => state.loggedUser)
     const isConsumer = Object.keys(user).includes('requiredServices')
-    const isOtro = !user.gender ? true : user.gender === 'Otro' ? true : false
+    // const isOtro = !user.gender ? true : user.gender === 'Otro' ? true : false
 
     const location = useLocation()
     if (location.state) {
@@ -42,29 +42,14 @@ const HomeConsumer = () => {
         dispatch(resetAuxiesCatalog())
     }, [])
 
+
+
     return (
         <>
             {isConsumer ? (
                 <>
                     <NavGeneral />
                     <div className={style.contHome}>
-                        <div className={style.welcomeMessage}>
-                            {user.gender && user.gender === 'Masculino' ? (
-                                <h1 className={style.message}>
-                                    Bienvenido {user.firstName}
-                                </h1>
-                            ) : null}
-                            {user.gender && user.gender === 'Femenino' ? (
-                                <h1 className={style.message}>
-                                    Bienvenida {user.firstName}
-                                </h1>
-                            ) : null}
-                            {isOtro ? (
-                                <h1 className={style.message}>
-                                    Bienvenide {user.firstName}
-                                </h1>
-                            ) : null}
-                        </div>
                         <div className={style.catalogTitleCont}>
                             <h2 className={style.catalogTitle}>
                                 Contratar un Auxie
