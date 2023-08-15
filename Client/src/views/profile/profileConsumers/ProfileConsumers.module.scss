@@ -5,112 +5,115 @@
   justify-content: center;
   height: 100%;
   border: 2px solid black;
-  padding: 20px; /* Adjust padding as needed */
-  margin: 5% 15% 5% 15%;
+  padding: 20px;
+  margin: 5% auto; /* Center the container horizontally */
   border-radius: 2%;
-  box-sizing: border-box; /* Ensure padding doesn't increase the element's width */
+  max-width: 800px; /* Set a maximum width for the container */
+  width: 100%; /* Allow the container to take the full width if smaller than max-width */
 
-  img {
-      max-width: 100%; /* Set maximum width for the image */
-      height: auto; /* Allow image to maintain its aspect ratio */
-      border-radius: 50%;
-      margin-top: 20px; /* Adjust margin as needed */
-      margin-left: 15%;
-  }
-  
-    input[type="file"] {
-      margin-top: 10%;
-      // margin-left: 35%;
-     background-color: rgb(202, 202, 202);
-     max-width: 100%;
+    img {
+        // max-width: 100%; /* Set maximum width for the image */
+        height: auto; /* Allow image to maintain its aspect ratio */
+        border-radius: 50%;
+        margin-top: 20px; /* Adjust margin as needed */
+        margin-left: 15%;
+        max-width: 80%;
+        max-height: 80%;
     }
-  
-   
-  
+
+    input[type='file'] {
+        margin-top: 10%;
+        // margin-left: 35%;
+        background-color: rgb(202, 202, 202);
+        max-width: 100%;
+    }
+
     h4 {
-      display: flex;
-      align-items: center;
-      margin-top: 5px;
-      
-      /* Estilo para el caso de isAdmin */
-      &.isAdmin {
-        margin-left: auto;
-      }
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+
+        /* Estilo para el caso de isAdmin */
+        &.isAdmin {
+            margin-left: auto;
+        }
     }
-  
+
     h4:nth-child(3) {
-      text-align: center;
-      margin-top: 10px;
+        text-align: center;
+        margin-top: 10px;
     }
-  
+
     h3 {
-      // text-align: center;
-      margin-top: 10px;
-  
-      button {
-        // margin-left: 10px;
+        // text-align: center;
+        margin-top: 10px;
+
+        button {
+            // margin-left: 10px;
+            padding: 1%;
+            border-radius: 5px;
+            font-family: var(--font-poppins);
+        }
+    }
+
+    h6 {
+        text-align: left;
+        margin-top: -15%;
+    }
+
+    div {
+        margin-top: 20px;
+
+        h5 {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 5px 0;
+            list-style: square;
+            margin-bottom: 2%;
+        }
+    }
+
+    button {
+        margin-top: 20px;
+        margin-bottom: 5%;
         padding: 1%;
         border-radius: 5px;
         font-family: var(--font-poppins);
-      }
     }
-  
-    h6 {
-      text-align: left;
-      margin-top: -15%;
+}
 
-    }
-  
-    div {
-      margin-top: 20px;
-  
-      h5 {
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin: 5px 0;
-        list-style: square;
-        margin-bottom: 2%;
-        
-      }
-    }
-  
-    button {
-      margin-top: 20px;
-      margin-bottom: 5%;
-      padding: 1%;
-      border-radius: 5px;
-      font-family: var(--font-poppins);
-      
-    }
-  }
-  
-  .name {
-      height: 150px;
-      // margin-right: 40%;
-      // margin-left: -40%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 400%;
-      margin-top: 5%;
-      border-radius:10px;
-    }
+.name {
+    height: 150px;
+    // margin-right: 40%;
+    // margin-left: -40%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 400%;
+    margin-top: 5%;
+    border-radius: 10px;
+}
 
-    .imageButton{
-      padding: 1%;
-      border-radius: 5px;
-      font-family: var(--font-poppins);
-      
-    }
-    .emailpassword{
-      margin-top: 15%;
-      margin-bottom: 15%;
-      display: flex;
-      // justify-content: center;
-      // margin-left: -18%;
-    }
-    .savebutton{
-      display: flex;
-      justify-content: center;
-    }
+.imageButton {
+    padding: 1%;
+    border-radius: 5px;
+    font-family: var(--font-poppins);
+}
+.emailpassword {
+    margin-top: 15%;
+    margin-bottom: 15%;
+    display: flex;
+    // justify-content: center;
+    // margin-left: -18%;
+}
+.savebutton {
+    display: flex;
+    justify-content: center;
+    height: 7rem;
+    
+}
+.secondcontainer {
+    width: 100%;
+}
+

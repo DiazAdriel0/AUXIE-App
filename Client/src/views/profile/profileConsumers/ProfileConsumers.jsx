@@ -58,11 +58,13 @@ const ProfileConsumers = () => {
         <div><NavGeneral /></div>
         
         <div className={style.profileContainer}>
-            <div>
+            <div className={style.secondcontainer}>
                 <h1 className={style.name}>
                     {consumer.firstName} {consumer.lastName}
                 </h1>
+                <div className={style.imagecontainer}>
                 <img src={consumer.image.secure_url} alt="imagen de perfil" />
+                </div>
                 <input
                     type="file"
                     accept=".jpg, .png"
@@ -91,12 +93,14 @@ const ProfileConsumers = () => {
                 <div>
                     <h5>Auxies favoritos: {favNames}</h5>
                     <h5>Servicios contratados: {requiredServicesNamesSet}</h5>
+                    <div className={style.tablecontainer}>
                     <h5>
                         Servicios requeridos:
                         {consumer.requiredServices.length && (
                             <ClientRequiredServices />
                         )}
                     </h5>
+                    </div>
                     <h5>Average Rating: {consumer.averageRating}</h5>
                     <h5>Ratings: {consumer.ratings}</h5>
                 </div>
