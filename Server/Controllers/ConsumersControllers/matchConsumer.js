@@ -29,7 +29,7 @@ const matchConsumer = async (email, password) => {
                 let newConsumer = {
                     email,
                     googleId: password.googleId,
-                    isActive: true,   
+                    isActive: true,
                 }
 
                 if (password.name.indexOf(' ') !== -1) {
@@ -60,6 +60,7 @@ const matchConsumer = async (email, password) => {
                 isAdmin: false,
                 firstName: consumer.firstName,
                 lastName: consumer.lastName,
+                gender: consumer.gender,
                 age: consumer.age,
                 email: consumer.email,
                 username: consumer.username,
