@@ -9,6 +9,7 @@ import { auth } from '../../config/firebase-config'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useSelector } from 'react-redux'
+import Rating from '@mui/material/Rating'
 
 const Detail = () => {
     const user = useSelector((state) => state.loggedUser)
@@ -65,27 +66,7 @@ const Detail = () => {
                                         <p>{auxieDetails.lastName}</p>
                                     </div>
                                     <div className={style.rating}>
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            className={style.star}
-                                            width="25"
-                                            height="25"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="2"
-                                            stroke="#ffec00"
-                                            fill="#ffec00"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        >
-                                            <path
-                                                stroke="#000"
-                                                d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z"
-                                                fill="none"
-                                                strokeWidth="4px"
-                                            />
-                                            <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" />
-                                        </svg>
-                                        <p>{auxieDetails.averageRating}</p>
+                                    <Rating name="read-only" value={auxieDetails.averageRating} readOnly precision={0.5}/>
                                     </div>
                                     <p>
                                         ({auxieDetails.reviews.length} Reseñas)
