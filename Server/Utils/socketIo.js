@@ -8,16 +8,9 @@ const socketIoFunctions = (httpServer) => {
     })
 
     io.on('connection', (socket) => {
-        console.log('User connected')
-
-        socket.on('chatMessage', (message) => {
-            // Lógica para manejar el mensaje recibido desde el cliente
-            // Y luego puedes emitir eventos para enviar mensajes a todos los clientes conectados
-            io.emit('chatMessage', message)
-        })
-
+        io.emit('greeting','User connected')
+    
         socket.on('disconnect', () => {
-            console.log('A user disconnected')
         })
     })
 }
