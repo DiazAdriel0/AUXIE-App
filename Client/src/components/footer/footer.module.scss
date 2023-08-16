@@ -7,44 +7,69 @@
     .divFooterTitle {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        p{
-            margin-top:1%;
-        }
-        h4{
-            margin-top:1%;
-        }
+         align-items: flex-start;
+         justify-content: flex-start;
+         margin-left:5%;
+         color: rgba(255, 255, 255, 0.8);
+         font-family: var(--font-poppins);
+         width: 100%;
+
     }
 
     .links{
         display: flex;
-        margin-top:10%; 
+        margin-top:5%; 
         width: 100%;
         justify-content: center;
         align-self: center;
+        background-color:  #181818;
+       
+
         p{
-           color: white !important;
+           
            border-right: 1px rgba(255, 255, 255, 0.4) solid;
            border-left: 1px rgba(255, 255, 255, 0.5) solid;
            padding-left: 1%;
-           padding-right: 1%;
+           padding-right: 1%; 
+           font-family: var(--font-poppins);
         }
     }
-    .divFooterImg {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 10px;
-        width: 30vh;
-        height: 30vh;
-    }
+    
     .divCopy { 
-        margin-top:2%;
+        margin-top:1%;
         display: flex;
         justify-content: center;
         align-items: center;
-        opacity: 50%;
+        color:rgba(255, 255, 255, 0.493);
+        background-color:  #181818;
+        font-family: var(--font-poppins);
     }
 }
 
+.divFooterImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left:45%;
+        width: 30vh;
+        height: 30vh;
+    }
+
+.social{
+    display: flex;
+         flex-direction:row;
+         align-items: center;
+         gap: 50px;
+         img{
+            width: 6%;
+            margin-right: 2%;
+         }
+        
+}
+
+.section{
+    display: flex;
+    justify-content: space-around; /* Espacio entre los elementos */
+    align-items: stretch;
+    
+}
