@@ -26,7 +26,7 @@ const useNotify = (recipient) => {
         }
     }, [])
 
-    const sendNotification = (recipient, newMessage) => {
+    const sendNotification = (newMessage) => {
         const handleNotify = async () => {
             if (newMessage === '') return
 
