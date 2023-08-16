@@ -141,7 +141,7 @@ const SupportForm = () => {
                                     htmlFor="message"
                                     className={style.formlabel}
                                 >
-                                    Reclamo
+                                    Reclamo:
                                 </label>
                                 <textarea
                                     name="message"
@@ -160,7 +160,7 @@ const SupportForm = () => {
                                     htmlFor="providerUsername"
                                     className={style.formlabel}
                                 >
-                                    Nombre del Auxie
+                                    Nombre del Auxie:
                                 </label>
                                 <input
                                     type="text"
@@ -176,7 +176,7 @@ const SupportForm = () => {
                                 )}
                             </div>
                             <div>
-                                <label>Imagen</label>
+                                <label>Imagen:</label>
                                 <input
                                     type="file"
                                     accept=".jpg, .jpeg, .png"
@@ -190,7 +190,7 @@ const SupportForm = () => {
                                     htmlFor="reason"
                                     className={style.formlabel}
                                 >
-                                    Selección de Motivos
+                                    Selección de Motivos:
                                 </label>
                                 <div>
                                     <select

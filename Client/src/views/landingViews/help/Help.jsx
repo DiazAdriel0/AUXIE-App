@@ -21,7 +21,7 @@ const Help = () => {
                 <div className={style.helpers}>
                     <div className={style.square}>
                         <h1>
-                            ¡Te damos la bienvenida al soporte tecnico de AUXIE!
+                            ¡Te damos la bienvenida al soporte técnico de AUXIE!
                         </h1>
                         <p>¿Cómo te podemos ayudar hoy?</p>
                     </div>
@@ -32,10 +32,10 @@ const Help = () => {
                             </div>
                         </Link>
                         <Link to="/guarantee">
-                            <div>Garantia de felicidad</div>
+                            <div>Garantía de felicidad</div>
                         </Link>
                         <Link to="/support">
-                            <div>Soporte tecnico y reclamos</div>
+                            <div>Soporte técnico y reclamos</div>
                         </Link>
                     </section>
                 </div>

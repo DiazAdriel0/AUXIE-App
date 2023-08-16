@@ -42,6 +42,7 @@ import ResetPassword from './views/reset-password/ResetPassword'
 // Logins
 import ClientLogin from './views/login/consumer-login/ClientLogin'
 import AuxieLogin from './views/login/auxie-login/AuxieLogin'
+import Pruebas from './views/pruebas/Pruebas'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
@@ -59,6 +60,7 @@ axios.defaults.baseURL = urlApi
 
 import { io } from 'socket.io-client'
 import { Notifications } from './components/notifications/Notifications'
+
 const socket = io(urlApi)
 
 socket.on('disconnect', () => {
@@ -111,7 +113,7 @@ function App() {
                     <Route path="/auxieform" element={<Form />} />
                     <Route path="/clientform" element={<ClientForm />} />
                     {/* Register paths */}
-
+                    <Route path="/pruebas" element={<Pruebas />} />
                     {/* Login paths */}
                     <Route path="/clientlogin" element={<ClientLogin />} />
                     <Route path="/auxielogin" element={<AuxieLogin />} />

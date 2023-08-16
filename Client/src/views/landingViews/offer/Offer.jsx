@@ -41,7 +41,7 @@ const Offer = () => {
                                     style={{ width: '300px', height: '300px' }}
                                 />
                             </div>
-                            <h4>Pide un AUXIE cuando más lo necesites</h4>
+                            <h4>Pide un Auxie cuando más lo necesites</h4>
                         </div>
                         <div>
                             <h3>Genera ganancias</h3>
@@ -62,7 +62,7 @@ const Offer = () => {
                                 style={{ width: '300px', height: '300px' }}
                             />
                             <h4>
-                                Conecta con el AUXIE que mejor se adecue a vos.
+                                Conecta con el Auxie que mejor se adecúe a vos.
                             </h4>
                         </div>
                         <div>
@@ -72,7 +72,7 @@ const Offer = () => {
                                 alt="Services Icon"
                                 style={{ width: '300px', height: '300px' }}
                             />
-                            <h4>Conoce a nuestros AUXIE instantaneos</h4>
+                            <h4>Conoce a nuestros Auxies instantáneos</h4>
                         </div>
                         <div>
                             <h3>Trabaja cuando quieras</h3>
@@ -84,7 +84,7 @@ const Offer = () => {
                             <h4>Crea una clientela fiel a través de la app</h4>
                         </div>
                         <div>
-                            <h3>Garantia asegurada</h3>
+                            <h3>Garantía asegurada</h3>
                             <img
                                 src={GuaranteesIcon}
                                 alt="Garantees Icon"
@@ -99,12 +99,12 @@ const Offer = () => {
                         <div className={style.Register}>
                             {/* ACA VAN BOTONES A LOS FORMULARIOS */}
                             <Link to="/auxieform">
-                                <h1>Quiero ser un AUXIE</h1>
+                                <h1>Quiero ser un Auxie</h1>
                             </Link>
                         </div>
                         <div className={style.Register}>
                             <Link to="/clientform">
-                                <h1>Necesito un AUXIE</h1>
+                                <h1>Necesito un Auxie</h1>
                             </Link>
                         </div>
                     </section>

@@ -131,7 +131,7 @@ const handleChange = (event) => {
                         </div>
                     )}
                 </h4>
-                <h4>Genero: {consumer.gender}</h4>
+                <h4>Género: {consumer.gender}</h4>
                 
                { edit && <select
                         onChange={handleChange}
@@ -139,7 +139,7 @@ const handleChange = (event) => {
                         defaultValue={''}
                     >
                         <option disabled value="">
-                            Genero
+                            Género
                         </option>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
@@ -174,8 +174,8 @@ const handleChange = (event) => {
                         )}
                     </h5>
                 </div>
-                <h5>Average Rating: {consumer.averageRating}</h5>
-                <h5>Ratings: {consumer.ratings}</h5>
+                <h5>Calificación Promedio: {consumer.averageRating}</h5>
+                <h5>Calificaciones: {consumer.ratings}</h5>
                
             </div>
             </div>

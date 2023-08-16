@@ -11,7 +11,7 @@ const PageNotFound = () => {
             <div className={style.textContainer}>
                 <h2>Página no encontrada</h2>
                 <h4>
-                    La pagina que estas buscando no existe o esta fuera de uso
+                    La página que estás buscando no existe o está fuera de uso
                 </h4>
             </div>
             <Link to={'/'} className={style.link}>
