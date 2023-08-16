@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux'
 
 export const Chat = ({ recipient, auxiedetails }) => {
     const user = useSelector((state) => state.loggedUser)
-    const inbox =useSelector((state) => state.loggedUser.inbox)
+    const inbox = useSelector((state) => state.loggedUser.inbox)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
     const conversationsRef = collection(db, 'conversations') // Change: Use 'conversations' collection
@@ -33,7 +33,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
     const conversationId = ordered.join('_')
 
     const conversationData = { participants }
- 
+
     //ZpsbcXOZ7SSFon98N3REltncKZU2_dCsvWUrHtZhArwOzAYTzF5Y74Sf2
     useEffect(() => {
         // Fetch or create a conversation document
@@ -50,10 +50,9 @@ export const Chat = ({ recipient, auxiedetails }) => {
                 let messages = []
                 snapshot.forEach((doc) => {
                     messages.push({ ...doc.data(), id: doc.id })
-                   
                 })
+
                 setMessages(messages)
-                
             })
 
             return () => unsubscribe()
@@ -95,9 +94,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
 
     return (
         <div className="chat-app">
-            <div className="header">
-    
-            </div>
+            <div className="header"></div>
 
             <div className={style.messages}>
                 {messages.map((message) => (
@@ -112,18 +109,16 @@ export const Chat = ({ recipient, auxiedetails }) => {
                             {message.recipient === auth.currentUser.uid
                                 ? `${message.firstName} ${message.lastName} `
                                 : 'You'}
-                            
                         </span>
                         <div className={style.chatbubbles}>
-                        <div
-                            className={` ${
-                                message.recipient === auth.currentUser.uid
-                                    ? style.receiver
-                                    : style.sender
-                            }`}
-                        >
-                            
-                            {message.text}
+                            <div
+                                className={` ${
+                                    message.recipient === auth.currentUser.uid
+                                        ? style.receiver
+                                        : style.sender
+                                }`}
+                            >
+                                {message.text}
                             </div>
                         </div>
                     </div>

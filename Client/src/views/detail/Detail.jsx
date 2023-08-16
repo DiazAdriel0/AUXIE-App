@@ -18,7 +18,6 @@ const Detail = () => {
     const [auxieDetails, setAuxieDetails] = useState({})
     const photos = auxieDetails.gallery
 
-    console.log(auxieDetails)
     let { id } = useParams()
 
     useEffect(() => {
@@ -41,7 +40,6 @@ const Detail = () => {
         })
     }
 
-    console.log(auth.currentUser)
     return (
         <>
             <NavGeneral />
@@ -158,7 +156,10 @@ const Detail = () => {
                         </div>
                     ) : null}
                 </div>
-                <JobRequestForm services={auxieDetails.services} />
+                <JobRequestForm
+                    services={auxieDetails.services}
+                    recipient={auxieDetails?.userUid}
+                />
                 {isInChat ? (
                     <Chat
                         recipient={auxieDetails.userUid}

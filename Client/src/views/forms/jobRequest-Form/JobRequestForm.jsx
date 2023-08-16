@@ -8,8 +8,9 @@ import { useSelector } from 'react-redux'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import useNotify from '../../../hooks/useNotify'
 
-const JobRequestForm = ({ services }) => {
+const JobRequestForm = ({ services, recipient }) => {
     let { id } = useParams()
     const client = useSelector((state) => state.loggedUser)
     // const services = useSelector((state) => state.services)
@@ -22,6 +23,7 @@ const JobRequestForm = ({ services }) => {
         paymentMethod: '',
         // price:'',
     })
+    const notify = useNotify(recipient)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -63,6 +65,10 @@ const JobRequestForm = ({ services }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         handlePost()
+        notify.sendNotification(
+            recipient,
+            `${client.firstName} ${client.lastName} te ha solicitado un servicio de ${value.service}`
+        )
     }
     return (
         //pasar por param id de auxie y por body "service name" (mapeado de servicios) "description" "client id de logged user"
@@ -132,7 +138,6 @@ const JobRequestForm = ({ services }) => {
                                 name="service"
                                 value={value.service}
                                 onChange={handleServiceChange}
-                                
                             >
                                 {services ? (
                                     services.map((service) => (

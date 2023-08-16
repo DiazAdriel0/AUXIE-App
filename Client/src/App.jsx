@@ -57,14 +57,13 @@ const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
 axios.defaults.baseURL = urlApi
 
-
-import { io } from 'socket.io-client';
-const socket = io(urlApi);
+import { io } from 'socket.io-client'
+import { Notifications } from './components/notifications/Notifications'
+const socket = io(urlApi)
 
 socket.on('disconnect', () => {
-  console.log('Desconexión del servidor');
-});
-
+    console.log('Desconexión del servidor')
+})
 
 function App() {
     const dispatch = useDispatch()
@@ -72,7 +71,7 @@ function App() {
     useEffect(() => {
         dispatch(getAllAuxies())
         dispatch(getAllServices())
-        socket.on('greeting',(msj)=>{
+        socket.on('greeting', (msj) => {
             console.log(msj)
         })
     }, [])
@@ -119,8 +118,12 @@ function App() {
                     {/* Login paths */}
                     <Route path="/resetpassword" element={<ResetPassword />} />
                     <Route path="/chat" element={<ChatApp />} />
-                    <Route path="/requestedservices" element={<RequestedServices />} />
-                    <Route path="/review" element={<ReviewForm/>} />
+                    <Route
+                        path="/requestedservices"
+                        element={<RequestedServices />}
+                    />
+                    <Route path="/review" element={<ReviewForm />} />
+                    <Route path="/notifications" element={<Notifications />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </div>
