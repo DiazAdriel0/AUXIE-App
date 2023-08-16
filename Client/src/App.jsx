@@ -59,6 +59,8 @@ const urlApi = apiBackUrl || 'http://localhost:3001'
 axios.defaults.baseURL = urlApi
 
 import { io } from 'socket.io-client'
+import { Notifications } from './components/notifications/Notifications'
+
 const socket = io(urlApi)
 
 socket.on('disconnect', () => {
@@ -123,6 +125,7 @@ function App() {
                         element={<RequestedServices />}
                     />
                     <Route path="/review" element={<ReviewForm />} />
+                    <Route path="/notifications" element={<Notifications />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </div>
