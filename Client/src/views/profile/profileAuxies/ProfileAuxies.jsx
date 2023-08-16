@@ -158,7 +158,7 @@ console.log(formData.bio)
                     />
                     {error && <p style={{ color: 'red' }}>{error}</p>}
 
-                    <h4>Genero: {provider.gender}</h4>
+                    <h4>Género: {provider.gender}</h4>
                     <h3>
                         Email: {provider.email}{' '}
                         <button onClick={() => navigate('/resetpassword')}>
@@ -199,9 +199,9 @@ console.log(formData.bio)
                             ))}
                         </div>
                         <h5>Trabajos realizados: </h5>
-                        <h5>Rating: </h5>
-                        <h5>Average Rating: {provider.averageRating}</h5>
-                        <h5>Reviews:</h5>
+                        <h5>Calificaciones: </h5>
+                        <h5>Calificación Promedio: {provider.averageRating}</h5>
+                        <h5>Reseñas:</h5>
                     </div>
                     <div className="gallery-container">
                         <h5>Fotos de tus trabajos realizados:</h5>

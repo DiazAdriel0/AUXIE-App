@@ -46,7 +46,7 @@ const ReviewForm = () => {
         1: 'Pesimo',
         1.5: 'Muy Malo',
         2: 'Malo',
-        2.5: 'Medio',
+        2.5: 'Regular',
         3: 'Bueno',
         3.5: 'Muy Bueno',
         4: 'Buenisimo',
@@ -149,7 +149,7 @@ const ReviewForm = () => {
                             )}
                         </TextField>
                     </div>
-                    <label>Que calificación le das al auxie?</label>
+                    <label>¿Qué calificación le das al auxie?</label>
                     <Rating
                         className={style.picker}
                         name="score"
@@ -203,7 +203,7 @@ const ReviewForm = () => {
                         endIcon={<SendIcon />}
                         type="submit"
                     >
-                        Send
+                        Enviar
                     </Button>
                 </center>
             </form>

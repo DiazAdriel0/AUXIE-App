@@ -169,14 +169,14 @@ const Form = () => {
                     </div>
                 </div>
                 <div className={style.forminput}>
-                    <label>Genero: </label>
+                    <label>Género: </label>
                     <select
                         onChange={handleChange}
                         name="gender"
                         defaultValue={''}
                     >
                         <option disabled value="">
-                            Genero
+                            Género
                         </option>
                         <option value="Masculino">Masculino</option>
                         <option value="Femenino">Femenino</option>
@@ -214,7 +214,7 @@ const Form = () => {
                     </div>
                 </div>
                 <div className={style.forminput}>
-                    <label>Password: </label>
+                    <label>Contraseña: </label>
                     <input
                         name="password"
                         type="password"

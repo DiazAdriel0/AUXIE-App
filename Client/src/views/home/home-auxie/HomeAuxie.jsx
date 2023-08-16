@@ -44,13 +44,13 @@ const HomeAuxie = () => {
                         )}
                     </div>
                     <div className={style.inbox}>
-                        <p>Puntuacion de los ultimos servicios</p>
+                        <p>Calificación de los ultimos servicios</p>
                         <table className={style.servicesTable}>
                             <thead>
                                 <tr>
                                     <th>Servicio</th>
-                                    <th>Review</th>
-                                    <th>Puntaje</th>
+                                    <th>Reseña</th>
+                                    <th>Calificación</th>
                                     <th>Contratante</th>
                                 </tr>
                             </thead>
