@@ -45,7 +45,7 @@ import AuxieLogin from './views/login/auxie-login/AuxieLogin'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
-import ButtonMercadoPago from './components/buttonMercadoPago/ButtonMercadoPago'
+import RequestedServices from './views/requestedServices/RequestedServices'
 import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
 import ChatApp from './views/chat/App'
 
@@ -107,7 +107,7 @@ function App() {
                     {/* Login paths */}
                     <Route path="/resetpassword" element={<ResetPassword />} />
                     <Route path="/chat" element={<ChatApp />} />
-                    <Route path="/buy" element={<ButtonMercadoPago />} />
+                    <Route path="/requestedservices" element={<RequestedServices />} />
                     <Route path="/review" element={<ReviewForm/>} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>

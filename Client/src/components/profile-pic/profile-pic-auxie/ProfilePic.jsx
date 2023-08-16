@@ -37,6 +37,7 @@ const ProfilePicAuxie = () => {
     const handleRedirect = (e) => {
         if (e.target.innerText === 'Perfil') return navigate('/profile')
         if (e.target.innerText === 'Ayuda') return navigate('/help')
+        if (e.target.innerText === 'Servicios') return navigate('/requestedservices')
     }
 
     const handleLogOut = async () => {
@@ -166,6 +167,10 @@ const ProfilePicAuxie = () => {
                                     className={style.profileButtonTop}
                                 >
                                     Perfil
+                                </p>
+                                <p onClick={handleRedirect}
+                                    className={style.profileButtonMiddle}>
+                                    Servicios
                                 </p>
                                 <p
                                     onClick={handleRedirect}
