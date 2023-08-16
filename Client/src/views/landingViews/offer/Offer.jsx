@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import NavLanding from '../../../components/nav-landing/NavLanding'
+import Footer from '../../../components/footer/Footer.jsx'
 
 const Offer = () => {
     const menuLanding = useSelector((state) => state.menuLanding)
@@ -108,7 +109,7 @@ const Offer = () => {
                         </div>
                     </section>
                 </div>
-           
+           <Footer/>
         </>
     )
 }

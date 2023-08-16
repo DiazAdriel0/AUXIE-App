@@ -10,6 +10,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import NavLanding from '../../../components/nav-landing/NavLanding'
+import Footer from '../../../components/footer/Footer.jsx'
 
 const HowItWorks = () => {
     const user = useSelector((state) => state.loggedUser)
@@ -169,7 +170,7 @@ const HowItWorks = () => {
                         ))}
                     </div>
                 </div>
-            
+            <Footer/>
         </>
     )
 }

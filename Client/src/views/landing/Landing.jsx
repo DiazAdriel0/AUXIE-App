@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 
 //*Import Animations
 import { Animated } from 'react-animated-css'
-import CircleIconAuxie from '../../assets/logos/CircleIconAuxie.png'
+// import CircleIconAuxie from '../../assets/logos/CircleIconAuxie.png'
 
 //* Import icons
 
@@ -17,6 +17,7 @@ import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
 import ButtonUp from '../../components/buttons/buttonUp/ButtonUp'
 import FeaturedAuxies from '../../components/featuredAuxies/FeaturedAuxies'
+import Footer from '../../components/footer/Footer'
 
 const Landing = () => {
     //style tags
@@ -373,24 +374,11 @@ const Landing = () => {
                 )}
                 {/* Footer */}
                 {footerAnimated ? (
-                    <footer ref={myRef3} className={style.landingFooter}>
-                        <div className={style.divFooterTitle}>
-                            <img
-                                src={CircleIconAuxie}
-                                alt="circle icon"
-                                className={style.divFooterImg}
-                            />
-                            <h4>Creado con amor por el Auxie Team</h4>
-                        </div>
-                        <div className={style.divCopy}>
-                            <p>Copyright © 2023</p>
-                        </div>
-                    </footer>
+                    <Footer ref={myRef3}/>
                 ) : (
-                    <footer
-                        className={style.landingFooter}
+                    <Footer
                         ref={myRef3}
-                    ></footer>
+                    />
                 )}
             </main>
         </>

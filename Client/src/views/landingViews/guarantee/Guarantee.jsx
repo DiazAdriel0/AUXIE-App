@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import { useSelector } from 'react-redux'
 import NavLanding from '../../../components/nav-landing/NavLanding'
+import Footer from '../../../components/footer/Footer.jsx'
 
 const Guarantee = () => {
     const user = useSelector((state) => state.loggedUser)
@@ -78,7 +79,7 @@ const Guarantee = () => {
                 </div>
 
              </div>   
-
+        <Footer/>
         </>
     )
 }
