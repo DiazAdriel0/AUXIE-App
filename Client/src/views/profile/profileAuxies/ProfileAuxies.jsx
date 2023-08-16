@@ -5,12 +5,13 @@ import { updateProfile } from '../../../redux/actions/actions'
 import { useNavigate } from 'react-router-dom'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import style from './ProfileAuxies.module.scss'
-
+import axios from 'axios'
 const ProfileAuxies = () => {
     const provider = useSelector((state) => state.loggedUser)
     const allServices = useSelector((state) => state.services)
-
+    const [change,setChange] = useState(false)
     const [serviceUpdate, setServiceUpdate] = useState({
+        providerId:provider.id,
         services: [...provider.services],
     })
     const [newImage, setNewImage] = useState('')
@@ -36,6 +37,7 @@ const ProfileAuxies = () => {
         } else {
             setError('Por favor, selecciona un archivo PNG o JPG.')
         }
+        setChange(true)
     }
 
     function handleSelect(e) {
@@ -78,6 +80,7 @@ const ProfileAuxies = () => {
 
     const handleBioChange = (e) => {
         setNewBio(e.target.value)
+        setChange(true)
     }
 
     const handleAddPhoto = (event) => {
@@ -86,20 +89,41 @@ const ProfileAuxies = () => {
         if (newPhotos.length <= 5) {
             setGallery(newPhotos)
         }
+        setChange(true)
     }
 
     const handleRemovePhoto = (index) => {
         const newPhotos = gallery.filter((_, i) => i !== index)
         setGallery(newPhotos)
     }
+    const handlePut = async () => {
+        try {
+            const response = await axios.put(`/providers/services`, serviceUpdate)
+            if (response) {
+            
+                // Swal.fire('Gracias por tu opinion!')
+                navigate('/profile')
+            }
+        } catch (error) {
+            console.log(error + error.response)
 
+            // Swal.fire({
+            //     icon: 'error',
+            //     title: 'Oops...',
+            //     text: error.response,
+            //     footer: '<a href="">¿Por qué está pasando esto?</a>',
+            // })
+        }
+    }
     const handleUpdateProfile = () => {
+        handlePut()
         const formData = new FormData()
         formData.append('image', newImage)
         formData.append('bio', newBio)
         formData.append('gallery', gallery)
-
-        dispatch(
+console.log(formData.bio)
+       if(change){ dispatch(
+            
             updateProfile(
                 {
                     id: provider.id,
@@ -112,7 +136,7 @@ const ProfileAuxies = () => {
 
                 'providers'
             )
-        )
+        )}
     }
    
     return (
@@ -160,12 +184,16 @@ const ProfileAuxies = () => {
                                         onChange={(e) => handleSelect(e)}
                                     />
                                     {service.name}
-                                    <input
-                type='number'
-                placeholder='price'
-                value={getPriceForService(service.name)}
-                onChange={(e) => handlePriceChange(e, service.name)}
-            />
+                                    {serviceUpdate.services.some(
+                                            (selectedService) =>
+                                                selectedService.name ===
+                                                service.name
+                                        ) && <input
+                                        type='number'
+                                        placeholder='price'
+                                        value={getPriceForService(service.name)}
+                                        onChange={(e) => handlePriceChange(e, service.name)}
+                                    />} 
                                 </label>
                                 
                             ))}

@@ -19,7 +19,10 @@
     input[type='file'] {
         margin-top: 20px;
     }
-
+    input[type='number'] {
+        margin-left: 5%;
+        max-width: 25%;
+    }
     h1 {
         height: 150px;
         margin-right: 40%;
