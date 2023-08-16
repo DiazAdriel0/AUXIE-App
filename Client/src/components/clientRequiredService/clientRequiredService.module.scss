@@ -1,0 +1,19 @@
+.cardCont{
+    background-color: rgba(162, 155, 227, 0.515);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid var(--secondary--color-hover);
+    border-radius: 1.5%;
+    width: 19rem;
+    height: 25rem;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+    transition: all 0.5s;
+    overflow: scroll;
+}
+
+.cardCont:hover {
+    border: 1px solid var(--secondary--color-hover);
+    transform: scale(1.03);
+}

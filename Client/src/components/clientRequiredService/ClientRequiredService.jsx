@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
+import style from './clientRequiredService.module.scss'
 
 const ClientRequiredService = (job) => {
     const {
@@ -12,19 +13,27 @@ const ClientRequiredService = (job) => {
         price,
         paymentMethod,
     } = job
+
+    const translated = {
+        'approved': 'Aprobado',
+        'rejected': 'Rechazado',
+        'pending': 'Pendiente',
+        'done': 'Completado',
+    }
+    
     const mercadoPago = paymentMethod === 'app'
     const completedJob = status === 'done'
-    //  const approved = status === 'approved' ? true : false
+    const approved = status === 'approved'
     return (
-        <div>
+        <div className={style.cardCont}>
             {id}
             {requestDate}
             {description}
             {service}
             {jobDate}
             {price}
-            {status}
-            {mercadoPago && (
+            {translated[status]}
+            {approved && mercadoPago && (
                 <ButtonMercadoPago
                     price={price}
                     description={service}
