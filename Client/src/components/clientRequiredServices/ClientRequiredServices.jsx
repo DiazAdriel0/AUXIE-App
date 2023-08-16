@@ -33,12 +33,15 @@ const ClientRequiredServices = () => {
         <>
         <button onClick={handleSwitch}>Switch</button>
         {cards ? (<div className={style.clientServicesCards}>
-                {client.requiredServices.length > 0 &&
-                    client.requiredServices?.map((service) => (
+                { client.requiredServices?.map((service) => (
                         <ClientRequiredService
                             key={service.id}
+                            id={service.id}
+                            providerId={service.providerId}           
+                            providerName={service.providerName}
                             service={service.service}
                             requestDate={service.requestDate}
+                            jobDate={service.jobDate}
                             status={service.status}
                             description={service.description}
                             price={service.price}
@@ -49,11 +52,14 @@ const ClientRequiredServices = () => {
                 <thead>
                     <tr>
                         <th>Número de pedido</th>
+                        <th>Auxie</th>
                         <th>Servicio</th>
                         <th>Descripción</th>
                         <th>Estado</th>
                         <th>Precio</th>
-                        <th>Fecha</th>
+                        <th>Fecha de petición</th>
+                        <th>Fecha de realización</th>
+                        <th>Método de pago</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -61,11 +67,14 @@ const ClientRequiredServices = () => {
                     {client.requiredServices?.map((service) => (
                             <tr key={service.id}>
                                 <td>{service.id}</td>
+                                <td>{service.providerName}</td>
                                 <td>{service.service}</td>
                                 <td>{service.description}</td>
                                 <td>{translated[service.status]}</td>
                                 <td>{`$${service.price}`}</td>
+                                <td>{service.requestDate}</td>
                                 <td>{service.jobDate}</td>
+                                <td>{service.paymentMethod}</td>
                                 <td>
                                     {service.status === 'done' && (
                                             <button onClick={handleClick}>Valorar</button>

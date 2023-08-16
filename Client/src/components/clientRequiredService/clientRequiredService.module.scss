@@ -6,8 +6,9 @@
     align-items: center;
     border: 1px solid var(--secondary--color-hover);
     border-radius: 1.5%;
-    width: 300px;
+    min-width: 360px;
     height: auto;
+    padding: 2px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
     transition: all 0.5s;
 }
@@ -22,7 +23,7 @@
     flex-flow: column wrap;
     align-items: flex-start;
     margin: 5%;
-    gap: 1%;
+    width: 300px;
 }
 
 .statusButtonCont{
