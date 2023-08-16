@@ -374,11 +374,9 @@ const Landing = () => {
                 )}
                 {/* Footer */}
                 {footerAnimated ? (
-                    <Footer ref={myRef3}/>
+                    <Footer myRef3={myRef3} />
                 ) : (
-                    <Footer
-                        ref={myRef3}
-                    />
+                    <Footer myRef3={myRef3} />
                 )}
             </main>
         </>
