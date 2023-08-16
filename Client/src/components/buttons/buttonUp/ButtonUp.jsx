@@ -17,7 +17,7 @@ const ButtonUp = ({ observersLanding }) => {
         })
     }
 
-    const buttonColor = !nightMode ? '#333' : '#fff' // Cambia el color según el modo
+    const buttonColor = !nightMode ? '#fff' : '#333' // Cambia el color según el modo
 
     return (
         <>
