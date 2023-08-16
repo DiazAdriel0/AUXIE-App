@@ -1,10 +1,25 @@
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import style from './clientRequiredServices.module.scss'
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
+import Swal from 'sweetalert2'
 
 const ClientRequiredServices = () => {
     const client = useSelector((state) => state.loggedUser)
+    const navigate = useNavigate()
+    const translated = {
+        'approved': 'Aprobado',
+        'rejected': 'Rechazado',
+        'pending': 'Pendiente',
+        'done': 'Completado',
+    }
+
+    const handleClick = (e) => {
+        if (e.target.innerText === 'Valorar') return navigate('/reviews')
+        if (e.target.innerText === 'Efectivo') return Swal.fire('Pagar en efectivo')
+        if (e.target.innerText === 'Rechazado') return Swal.fire('El Auxie ha rechazado tu pedido')
+        if (e.target.innerText === 'Pendiente') return Swal.fire('Espera a que el Auxie apruebe tu pedido')
+    }
     return (
         <>
             <table className={style.servicesTable}>
@@ -26,16 +41,14 @@ const ClientRequiredServices = () => {
                                 <td>{service.id}</td>
                                 <td>{service.service}</td>
                                 <td>{service.description}</td>
-                                <td>{service.status}</td>
-                                <td>{service.price}</td>
+                                <td>{translated[service.status]}</td>
+                                <td>{`$${service.price}`}</td>
                                 <td>{service.jobDate}</td>
                                 <td>
                                     {service.status === 'done' && (
-                                        <Link to="/review">
-                                            <button>Valorar</button>
-                                        </Link>
+                                            <button onClick={handleClick}>Valorar</button>
                                     )}
-                                    {service.status === 'approved' && (
+                                    {service.status === 'approved' && service.paymentMethod === 'app' && (
                                         <tr>
                                             <td
                                                 className={style.payButton}
@@ -50,6 +63,17 @@ const ClientRequiredServices = () => {
                                             </td>
                                         </tr>
                                     )}
+                                    {service.status === 'approved' && service.paymentMethod === 'efectivo' && (
+                                        <tr>
+                                            <td
+                                                className={style.payButton}
+                                            >
+                                                <button onClick={handleClick}>Efectivo</button>
+                                            </td>
+                                        </tr>
+                                    )}
+                                    {service.status === 'rejected' && (<button onClick={handleClick}>Rechazado</button>)}
+                                    {service.status === 'pending' && (<button onClick={handleClick}>Pendiente</button>)}
                                 </td>
                             </tr>
                         </>
