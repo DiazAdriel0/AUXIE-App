@@ -18,7 +18,7 @@
 
 .menuMainNight {
     background-color: var(--background-dark);
-    border: 2px solid var(--background-dark);
+    box-shadow: 0px 0px 50px 0px #fff;
 }
 
 .menuSearchAuxieNight {
@@ -29,13 +29,12 @@
     background-color: var(--div-color-light);
 }
 .divSloganNight {
-    background-color: var(--contrast-div-color-dark);
 }
 .buttonSloganContLight {
-    background-color: var(--div-color-light);
+    box-shadow: 0px 9px 10px -3px rgb(182, 182, 182);
 }
 .buttonSloganContNight {
-    background-color: var(--contrast-div-color-dark);
+    box-shadow: 0px 9px 10px -3px rgb(255, 255, 255);
 }
 
 .logInMenu {
@@ -125,7 +124,6 @@
 
         .menuMain {
             border-radius: 10px;
-
             width: 40%;
             height: 40vh;
             margin-left: 15%;
@@ -200,6 +198,7 @@
     .sloganNone {
         height: 30vh;
     }
+
     .slogan {
         z-index: 3;
         display: flex;
@@ -308,37 +307,10 @@
         }
     }
 
-    /* Estilos para la sección 5 (landingFooter) */
-    .landingFooter {
-        z-index: 6;
-        color: white;
-        background-color: #181818;
-        height: 70vh;
-        .divFooterTitle {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            h3 {
-                font-size: 50px;
-            }
-            h4 {
-                font-size: 35px;
-            }
-        }
-        .divFooterImg {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            width: 30vh;
-            height: 30vh;
-        }
-        .divCopy {
-            margin: 2% 0 0 2%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .divCopy {
+        margin: 2% 0 0 2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
