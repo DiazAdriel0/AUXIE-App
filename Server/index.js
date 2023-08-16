@@ -1,32 +1,14 @@
 require('dotenv').config()
 const mongoose = require('mongoose')
 const server = require('./App/app')
-const { Server } = require('socket.io')
 const { createServer } = require('http')
+const socketIoFunctions = require('./Utils/socketIo')
 
 const { MONGO_DB_CONNECTION, PORT } = process.env
 
 const httpServer = createServer(server)
 
-const io = new Server(httpServer, {
-    cors: {
-        origin: ['http://localhost:5173', 'https://auxie-app.vercel.app'],
-    },
-})
-
-io.on('connection', (socket) => {
-    console.log('User connected')
-
-    socket.on('chatMessage', (message) => {
-        // Lógica para manejar el mensaje recibido desde el cliente
-        // Y luego puedes emitir eventos para enviar mensajes a todos los clientes conectados
-        io.emit('chatMessage', message)
-    })
-
-    socket.on('disconnect', () => {
-        console.log('A user disconnected')
-    })
-})
+socketIoFunctions(httpServer)
 
 const port = PORT || 3001
 
