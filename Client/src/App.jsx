@@ -57,15 +57,7 @@ import ReviewForm from './views/forms/review-form/ReviewForm'
 const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
 axios.defaults.baseURL = urlApi
-
-import { io } from 'socket.io-client'
 import { Notifications } from './components/notifications/Notifications'
-
-const socket = io(urlApi)
-
-socket.on('disconnect', () => {
-    console.log('Desconexión del servidor')
-})
 
 function App() {
     const dispatch = useDispatch()
@@ -73,9 +65,6 @@ function App() {
     useEffect(() => {
         dispatch(getAllAuxies())
         dispatch(getAllServices())
-        socket.on('greeting', (msj) => {
-            console.log(msj)
-        })
     }, [])
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
