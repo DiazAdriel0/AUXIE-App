@@ -34,7 +34,7 @@ const HowItWorks = () => {
         },
         {
             question: '¿Debo pagar para empezar a prestar mis servicios?  ',
-            answer: 'Por supuesto que no, debes tener las herramientas y habilidades necesarias para realizar aquellos servicios que ofreces, pero si tu no ganas nosostros tampoco.',
+            answer: 'Por supuesto que no, debes tener las herramientas y habilidades necesarias para realizar aquellos servicios que ofreces, pero si tú no ganas nosostros tampoco.',
         },
         // Agrega más preguntas y respuestas aquí
     ]
@@ -76,7 +76,7 @@ const HowItWorks = () => {
                             <h3>PASO 2</h3>
                             <h2>El usuario elige un servicio</h2>
                             <p>
-                                Navega entre todas nuestras categorias de
+                                Navega entre todas nuestras categorías de
                                 servicio y elegi el que más se adecua tus
                                 necesidades.
                             </p>
@@ -94,7 +94,7 @@ const HowItWorks = () => {
                             <p>
                                 Navega entre nuestros auxies dependiendo de su
                                 experiencia, tarifa o zona de trabajo. Tu auxie
-                                perfecto esta esperando.
+                                perfecto está esperando.
                             </p>
                         </div>
                         <div className={style.steps}>
@@ -109,7 +109,7 @@ const HowItWorks = () => {
                             <h2>El auxie realiza el servicio agendado</h2>
                             <p>
                                 Agenda el trabajo con confianza nuestros auxies
-                                son sumamente experimentados y sabran resolver
+                                son sumamente experimentados y sabrán resolver
                                 todo lo que les presentes.
                             </p>
                         </div>

@@ -20,14 +20,14 @@ const Guarantee = () => {
                 <div className={style.reset} lang="scss">
                     <div>
                         <div className={style.title} lang="scss">
-                            <h2>Garantias</h2>
+                            <h2>Garantías</h2>
                         </div>
                     </div>
                 </div>
                 <div className={style.square} lang="scss">
-                    <h1>La Garantia de felicidad AUXIE</h1>
+                    <h1>La Garantía de felicidad AUXIE</h1>
                     <p>
-                        Tu felicidad es nuestra meta. Si no estas feliz, es
+                        Tu felicidad es nuestra meta. Si no estás feliz, es
                         nuestro deber arreglarlo.
                     </p>
                 </div>

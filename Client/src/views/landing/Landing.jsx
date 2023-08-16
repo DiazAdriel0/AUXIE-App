@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 
 //*Import Animations
 import { Animated } from 'react-animated-css'
-// import CircleIconAuxie from '../../assets/logos/CircleIconAuxie.png'
+
 
 //* Import icons
 
@@ -208,7 +208,7 @@ const Landing = () => {
                                 ) : (
                                     <div className={style.menuTurnAuxie}>
                                         <h3>
-                                            Convertite en Auxie y genera
+                                            Conviértete en Auxie y genera
                                             ganancias
                                         </h3>
                                         {/* <select defaultValue="default">
@@ -307,7 +307,7 @@ const Landing = () => {
                 ) : (
                     <section ref={myRef} className={serviceCards}>
                         <div className={style.serviceCardsTitle}></div>
-                        <h3>Nuestros servicios mas populares</h3>
+                        <h3>Nuestros servicios más populares</h3>
                         <CardsServices />
                     </section>
                 )}
@@ -347,7 +347,7 @@ const Landing = () => {
                                     onClick={handleClick}
                                     value={'toHelp'}
                                 >
-                                    Mas informacion
+                                    Más información
                                 </button>
                             </div>
                         </section>

@@ -197,7 +197,7 @@ const JobRequestForm = ({ services }) => {
                             endIcon={<SendIcon />}
                             type="submit"
                         >
-                            Send
+                         Enviar
                         </Button>
                     </form>
                 </div>
