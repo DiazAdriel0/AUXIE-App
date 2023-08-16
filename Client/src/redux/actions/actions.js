@@ -12,8 +12,7 @@ import {
     SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG,
     LOGOUT,
-    /* SET_TOKEN,
-    RESET_TOKEN, */
+    SET_STATUS,
     UPDATE_PROFILE,
     ADD_FAVORITE,
     DELETE_FAVORITE,
@@ -249,6 +248,20 @@ export function turnLightNightMode(boolean) {
             })
         } catch (e) {
             console.error(e)
+        }
+    }
+}
+
+export function setServiceStatus (info){
+    return async function (dispatch) {
+        try {
+            const res = await axios.put('/providers/jobUpdate',info)
+            return dispatch({
+                type: SET_STATUS,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
         }
     }
 }
