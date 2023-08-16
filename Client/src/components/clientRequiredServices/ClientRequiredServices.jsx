@@ -15,7 +15,7 @@ const ClientRequiredServices = () => {
     }
 
     const handleClick = (e) => {
-        if (e.target.innerText === 'Valorar') return navigate('/reviews')
+        if (e.target.innerText === 'Valorar') return navigate('/review')
         if (e.target.innerText === 'Efectivo') return Swal.fire('Pagar en efectivo')
         if (e.target.innerText === 'Rechazado') return Swal.fire('El Auxie ha rechazado tu pedido')
         if (e.target.innerText === 'Pendiente') return Swal.fire('Espera a que el Auxie apruebe tu pedido')
