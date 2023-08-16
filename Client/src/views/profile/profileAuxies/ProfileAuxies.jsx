@@ -172,7 +172,7 @@ console.log(formData.bio)
                         <h5>Servicios que ofrece:</h5>
                         <div className={style.typechecks}>
                             {allServices.map((service) => (
-                                <label key={service.name}>
+                                <label key={service.name} className={style.servicelabel}>
                                     <input
                                         type="checkbox"
                                         value={service.name}
@@ -190,7 +190,7 @@ console.log(formData.bio)
                                                 service.name
                                         ) && <input
                                         type='number'
-                                        placeholder='price'
+                                        placeholder='Tarifa del servicio'
                                         value={getPriceForService(service.name)}
                                         onChange={(e) => handlePriceChange(e, service.name)}
                                     />} 
