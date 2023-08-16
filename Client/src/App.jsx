@@ -42,6 +42,7 @@ import ResetPassword from './views/reset-password/ResetPassword'
 // Logins
 import ClientLogin from './views/login/consumer-login/ClientLogin'
 import AuxieLogin from './views/login/auxie-login/AuxieLogin'
+import Pruebas from './views/pruebas/Pruebas'
 
 import Detail from './views/detail/Detail'
 import PageNotFound from './views/page-not-found/PageNotFound'
@@ -57,14 +58,12 @@ const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
 axios.defaults.baseURL = urlApi
 
-
-import { io } from 'socket.io-client';
-const socket = io(urlApi);
+import { io } from 'socket.io-client'
+const socket = io(urlApi)
 
 socket.on('disconnect', () => {
-  console.log('Desconexión del servidor');
-});
-
+    console.log('Desconexión del servidor')
+})
 
 function App() {
     const dispatch = useDispatch()
@@ -72,7 +71,7 @@ function App() {
     useEffect(() => {
         dispatch(getAllAuxies())
         dispatch(getAllServices())
-        socket.on('greeting',(msj)=>{
+        socket.on('greeting', (msj) => {
             console.log(msj)
         })
     }, [])
@@ -112,15 +111,18 @@ function App() {
                     <Route path="/auxieform" element={<Form />} />
                     <Route path="/clientform" element={<ClientForm />} />
                     {/* Register paths */}
-
+                    <Route path="/pruebas" element={<Pruebas />} />
                     {/* Login paths */}
                     <Route path="/clientlogin" element={<ClientLogin />} />
                     <Route path="/auxielogin" element={<AuxieLogin />} />
                     {/* Login paths */}
                     <Route path="/resetpassword" element={<ResetPassword />} />
                     <Route path="/chat" element={<ChatApp />} />
-                    <Route path="/requestedservices" element={<RequestedServices />} />
-                    <Route path="/review" element={<ReviewForm/>} />
+                    <Route
+                        path="/requestedservices"
+                        element={<RequestedServices />}
+                    />
+                    <Route path="/review" element={<ReviewForm />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </div>
