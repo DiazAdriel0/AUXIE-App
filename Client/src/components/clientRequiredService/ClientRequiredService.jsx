@@ -24,27 +24,33 @@ const ClientRequiredService = (job) => {
     const mercadoPago = paymentMethod === 'app'
     const completedJob = status === 'done'
     const approved = status === 'approved'
+
     return (
         <div className={style.cardCont}>
-            {id}
-            {requestDate}
-            {description}
-            {service}
-            {jobDate}
-            {price}
-            {translated[status]}
+            <div className={style.requestDetails}>
+            <p>Auxie: {id}</p>
+            <p>Fecha de petición: </p>{requestDate}
+            <p>Desripción: </p>{description}
+            <p>servicio: </p>{service}
+            <p>Fecha de realización: </p>{jobDate}
+            <p>Precio: </p>${price}
+            <p>Estado: </p>{translated[status]}
+            </div>
+            <div className={style.statusButtonCont}>
+
             {approved && mercadoPago && (
                 <ButtonMercadoPago
-                    price={price}
+                price={price}
                     description={service}
                     quantity={1}
-                />
-            )}
+                    />
+                    )}
             {completedJob && (
                 <Link to="/review">
                     <button>Valorar</button>
                 </Link>
             )}
+            </div>
         </div>
     )
 }
