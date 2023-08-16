@@ -11,11 +11,14 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useSelector } from 'react-redux'
 
 const Detail = () => {
-    const user = useSelector((state)=>state.loggedUser)
-    
+    const user = useSelector((state) => state.loggedUser)
+
     const [isInChat, setIsInChat] = useState(false)
 
     const [auxieDetails, setAuxieDetails] = useState({})
+    const photos = auxieDetails.gallery
+
+    console.log(auxieDetails)
     let { id } = useParams()
 
     useEffect(() => {
@@ -33,7 +36,7 @@ const Detail = () => {
             id,
             inbox: {
                 sender: auth.currentUser.uid,
-                name: `${user.firstName} ${user.lastName}`
+                name: `${user.firstName} ${user.lastName}`,
             },
         })
     }
@@ -92,23 +95,29 @@ const Detail = () => {
                                 </div>
                                 <div className={style.contServices}>
                                     {auxieDetails.services.length > 0 ? (
-                                        auxieDetails.services.map((service) => {
-                                            return (
-                                                <div
-                                                    className={style.serviceDiv}
-                                                    key={service.price}
-                                                >
-                                                    <p
+                                        auxieDetails.services.map(
+                                            (service, index) => {
+                                                return (
+                                                    <div
                                                         className={
-                                                            style.serviceName
+                                                            style.serviceDiv
                                                         }
+                                                        key={index}
                                                     >
-                                                        {service.name}
-                                                    </p>
-                                                    <p>${service.price}/hr.</p>
-                                                </div>
-                                            )
-                                        })
+                                                        <p
+                                                            className={
+                                                                style.serviceName
+                                                            }
+                                                        >
+                                                            {service.name}
+                                                        </p>
+                                                        <p>
+                                                            ${service.price}/hr.
+                                                        </p>
+                                                    </div>
+                                                )
+                                            }
+                                        )
                                     ) : (
                                         <div className={style.noServices}>
                                             <p className={style.serviceName}>
@@ -123,8 +132,27 @@ const Detail = () => {
                                 <p> {auxieDetails.bio}</p>
                             </div>
                             <div className={style.carousel}>
-                                <Carousel>
-                                 
+                                <Carousel
+                                    showThumbs={false} // Desactiva las miniaturas (thumbs) si no las necesitas
+                                    showIndicators={true} // Muestra los indicadores de las diapositivas
+                                    infiniteLoop={true} // Hace que el carousel sea infinito
+                                    autoPlay={true} // Activa la reproducción automática
+                                    interval={3000} // Intervalo de tiempo en milisegundos entre diapositivas
+                                    transitionTime={500}
+                                    showStatus={false}
+                                >
+                                    {photos &&
+                                        photos.map((photo) => (
+                                            <div
+                                                key={photo.public_id}
+                                                className={style.carouselItem}
+                                            >
+                                                <img
+                                                    src={photo.secure_url}
+                                                    alt={`Photo ${photo.public_id}`}
+                                                />
+                                            </div>
+                                        ))}
                                 </Carousel>
                             </div>
                         </div>
@@ -138,7 +166,7 @@ const Detail = () => {
                     />
                 ) : (
                     <div className={style.chatbutton}>
-                    <button onClick={handleClick}>Start Chat</button>
+                        <button onClick={handleClick}>Start Chat</button>
                     </div>
                 )}
             </div>
