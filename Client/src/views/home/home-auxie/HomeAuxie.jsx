@@ -1,20 +1,32 @@
 import style from './homeAuxie.module.scss'
 
+//Hooks
+import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
+
 //Import components
 // import CardServices from '../../../components/card-services/CardServices'
 import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 
-//Hooks
 
 const HomeAuxie = () => {
     const loggedUser = useSelector((state) => state.loggedUser)
     const lastJobs = loggedUser.reviews?.slice(0, 4)
+    const navigate = useNavigate()
+    const isAuxie = Object.keys(loggedUser).includes('services')
+
+    useEffect(() => {
+        if (Object.keys(loggedUser).length === 0) return navigate('/auxielogin')
+        if (Object.keys(loggedUser).includes('requiredServices'))
+            return navigate('/homeconsumer')
+    }, [])
 
     const { services } = loggedUser
     return (
-        <div className={style.home}>
+        <>
+        {isAuxie? (<div className={style.home}>
             {/* Header */}
             <header className={style.header}>
                 <NavGeneral />
@@ -73,7 +85,8 @@ const HomeAuxie = () => {
             </main>
             {/* Footer */}
             <footer className={style.footer}>Pie de página</footer>
-        </div>
+        </div>): null}
+        </>
     )
 }
 
