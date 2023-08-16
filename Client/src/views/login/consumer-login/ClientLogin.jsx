@@ -74,13 +74,17 @@ const ClientLogin = () => {
         let timerInterval
         Swal.fire({
             title: `${welcome} ${logged.firstName}`,
+            html: '<b></b>', // Set the HTML to be blank
             timer: 2000,
             timerProgressBar: true,
             didOpen: () => {
                 Swal.showLoading()
                 const b = Swal.getHtmlContainer().querySelector('b')
                 timerInterval = setInterval(() => {
-                    b.textContent = Swal.getTimerLeft()
+                    const remainingTime = Swal.getTimerLeft()
+                    if (b) { // Check if the 'b' element is available
+                        b.textContent = remainingTime
+                    }
                 }, 100)
             },
             willClose: () => {
