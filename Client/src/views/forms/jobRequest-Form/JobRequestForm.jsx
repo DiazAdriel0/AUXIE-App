@@ -23,7 +23,7 @@ const JobRequestForm = ({ services, recipient }) => {
         paymentMethod: '',
         // price:'',
     })
-    const notify = useNotify(recipient)
+    const { sendNotification } = useNotify(recipient)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -65,8 +65,7 @@ const JobRequestForm = ({ services, recipient }) => {
     const handleSubmit = (e) => {
         e.preventDefault()
         handlePost()
-        notify.sendNotification(
-            recipient,
+        sendNotification(
             `${client.firstName} ${client.lastName} te ha solicitado un servicio de ${value.service}`
         )
     }

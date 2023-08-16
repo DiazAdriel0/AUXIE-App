@@ -167,7 +167,7 @@ const Detail = () => {
                     />
                 ) : (
                     <div className={style.chatbutton}>
-                    <button onClick={handleClick}>Iniciar Chat</butto
+                        <button onClick={handleClick}>Iniciar Chat</button>
                     </div>
                 )}
             </div>
