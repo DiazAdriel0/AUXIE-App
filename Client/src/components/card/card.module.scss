@@ -1,15 +1,16 @@
 .card {
     background-color: rgba(162, 155, 227, 0.515);
     display: flex;
-    flex-flow: column wrap;
-    justify-content: space-evenly;
+    flex-direction: column;
+    // justify-content: space-around;
     align-items: center;
     border: 1px solid var(--secondary--color-hover);
     border-radius: 1.5%;
-    width: 300px;
-    height: 300px;
+    width: 19rem;
+    height: 25rem;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
     transition: all 0.5s;
+    overflow: scroll;
 }
 .card:hover {
     border: 1px solid var(--secondary--color-hover);
@@ -20,7 +21,9 @@
     display: flex;
     width: 90%;
     margin: 5%;
-    gap: 1%;
+    // gap: 1%;
+    // padding: 5%;
+ 
 }
 
 .info {
@@ -46,19 +49,41 @@
 
 .contServices {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     width: 100%;
-    border-top: 1px var(--contrast-color-light) solid;
-    border-bottom: 1px var(--contrast-color-light) solid;
+    border-top: 1px solid blue;
+    border-bottom: 1px solid blue;
+    overflow: scroll;
+    height: 40%;
+    word-wrap:normal;
+    justify-content: space-between;
+    margin-bottom: 10%;
+    
 }
 
 .serviceDiv {
     text-align: start;
-    margin-left: 5%;
+    white-space: pre-wrap;
+    overflow-y: scroll;
+    // text-overflow: ellipsis;
+    // width: 100%;
+    margin-left: 1%;
+    font-size: 1rem;
+    padding: 3%;
+    
+    
+   
+    
 }
 
 .serviceName {
     color: var(--contrast-color-light);
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-bottom: 3%;
+    margin-left: 3%;
+   
 }
 
 .rating {
@@ -77,6 +102,8 @@
     cursor: pointer;
 }
 
-.text {
-    margin: 0 1em;
+.noServices{
+    display: flex;
+    margin-left: 25%;
+    align-items: center;
 }
