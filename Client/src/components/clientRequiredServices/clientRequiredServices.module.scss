@@ -36,5 +36,8 @@
 
 .clientServicesCards{
     display: flex;
-    gap: 2px 2px;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin: 2%;
+    gap: 5px 5px;
 }
