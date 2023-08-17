@@ -7,14 +7,18 @@ import Checkbox from '@mui/material/Checkbox'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import Rating from '@mui/material/Rating'
+import useNotify from '../../hooks/useNotify'
 
 const Card = (user) => {
     const dispatch = useDispatch()
-    const { id, lastName, firstName, averageRating, services, image } = user
+    const { id, lastName, firstName, averageRating, services, image, userUid, googleId } = user
     const consumer = useSelector((state) => state.loggedUser)
     const navigate = useNavigate()
     const [isFav, setIsFav] = useState(false)
 
+    let recipient = userUid || googleId
+    const {sendNotification} = useNotify(recipient)
+    
     const handleFavorite = () => {
         const remover = {
             consumerId: consumer.id,
@@ -27,6 +31,7 @@ const Card = (user) => {
         if (!isFav) {
             dispatch(addFavorite({ ...user, consumerId: consumer.id }))
             setIsFav(true)
+            sendNotification('¡Has sido añadido a los Auxies favoritos de alguien!')
         }
     }
 
