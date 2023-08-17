@@ -4,6 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Caprasimo&display=swap');
 //Lilita
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+//Inter
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 :root {
     /* fonts */
     /* main font */
@@ -12,7 +14,7 @@
     /* secondary fonts */
     --font-caprasimo: 'Caprasimo', cursive;
     --font-lilita: 'Lilita One', cursive;
-
+    --font-inter: 'Inter', sans-serif;
     /* colors Light Mode */
     --background-light: #fcfcfc;
     /* text light mode */
