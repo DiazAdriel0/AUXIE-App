@@ -83,7 +83,15 @@ const handleChange = (event) => {
         <div className={style.profileContainer}>
             <div className={style.secondcontainer}>
                 <button type='button' className={style.edit} onClick={handleEdit}>Editar perfil</button>
-              
+                <div className={style.imagecontainer}>
+                <img src={consumer.image?.secure_url} alt="imagen de perfil" />
+                </div>
+               {edit && <input
+                    type="file"
+                    accept=".jpg, .png"
+                    onChange={handleImageChange}
+                    className={style.imageButton}
+                />}
                 <h1 className={style.name}>
                     {consumer.firstName} {consumer.lastName}
                     
@@ -113,15 +121,7 @@ const handleChange = (event) => {
                             value={profileData.lastName}
                             onChange={handleChange}
                         />}
-                <div className={style.imagecontainer}>
-                <img src={consumer.image?.secure_url} alt="imagen de perfil" />
-                </div>
-               {edit && <input
-                    type="file"
-                    accept=".jpg, .png"
-                    onChange={handleImageChange}
-                    className={style.imageButton}
-                />}
+                
                 {error && <p style={{ color: 'red' }}>{error}</p>}
 
                 <h4>
@@ -154,9 +154,9 @@ const handleChange = (event) => {
                     </h3>
                 </div>
                 <div className={style.savebutton}>
-                    <button onClick={handleUpdateProfile}>
+                  {edit &&  <button onClick={handleUpdateProfile}>
                         Guardar Cambios
-                    </button>
+                    </button>}
                 </div>
                 </div>
             </div>

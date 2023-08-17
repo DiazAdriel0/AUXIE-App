@@ -177,10 +177,7 @@ const ProfileAuxies = () => {
                             Editar perfil
                         </button>
                     <div>
-                        <h1>
-                            {provider.firstName} {provider.lastName}
-                        </h1>
-                        <img
+                    <img
                             src={provider.image.secure_url}
                             alt="imagen de perfil"
                         />
@@ -189,6 +186,10 @@ const ProfileAuxies = () => {
                             accept=".jpg, .png"
                             onChange={handleImageChange}
                         />}
+                        <h1>
+                            {provider.firstName} {provider.lastName}
+                        </h1>
+                     
                         {error && <p style={{ color: 'red' }}>{error}</p>}
 
                         <h4>Género: {provider.gender}</h4>
