@@ -2,7 +2,6 @@
     background-color: rgba(162, 155, 227, 0.515);
     display: flex;
     flex-direction: column;
-    // justify-content: space-around;
     align-items: center;
     border: 1px solid var(--secondary--color-hover);
     border-radius: 1.5%;
@@ -10,7 +9,7 @@
     height: 25rem;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
     transition: all 0.5s;
-    overflow: scroll;
+   
 }
 .card:hover {
     border: 1px solid var(--secondary--color-hover);
@@ -42,8 +41,10 @@
     display: flex;
     justify-content: flex-start;
     width: 50%;
+    
     img {
         object-fit: cover;
+        border-radius: 2%;
     }
 }
 
@@ -55,36 +56,46 @@
     border-bottom: 1px solid blue;
     overflow: scroll;
     height: 40%;
-    word-wrap:normal;
     justify-content: space-between;
     margin-bottom: 10%;
     
+    
+    
 }
+.contServices::-webkit-scrollbar{
+    display: none;
+  }
 
 .serviceDiv {
-    text-align: start;
-    white-space: pre-wrap;
-    overflow-y: scroll;
-    // text-overflow: ellipsis;
+ 
+    // white-space: pre-wrap;
+    // overflow-y: scroll;
+ 
     // width: 100%;
     margin-left: 1%;
-    font-size: 1rem;
+    font-size: 0.9rem;
     padding: 3%;
+    
+    
     
     
    
     
 }
+
 
 .serviceName {
     color: var(--contrast-color-light);
     // overflow: hidden;
     // text-overflow: ellipsis;
     white-space: nowrap;
-    margin-bottom: 3%;
-    margin-left: 3%;
+    // margin-bottom: 3%;
+    // margin-left: 3%;
    
 }
+.serviceName::-webkit-scrollbar{
+    display:none;
+  }
 
 .rating {
     display: flex;
