@@ -15,6 +15,7 @@
 }
 
 .nightswitch {
+    display: flex;
     margin-left: auto; /* Push to the rightmost position within .right */
     height: 50%;
     margin-right: 3%;

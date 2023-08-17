@@ -9,6 +9,7 @@ import LogoAuxie from '../logo/logoAuxie/LogoAuxie'
 import ProfilePic from '../profile-pic/profile-pic-auxie/ProfilePic'
 import LogoClient from '../logo/logoClient/LogoCLient'
 import ButtonLightNight from '../buttons/button-light-night/ButtonLightNight'
+import NotificationButton from '../notifications/NotificationButton'
 
 const NavGeneral = () => {
     const user = useSelector((state) => state.loggedUser)
@@ -20,8 +21,9 @@ const NavGeneral = () => {
                 <>
                     <LogoAuxie />
                     <div className={style.nightswitch}>
-                            <ButtonLightNight />
-                        </div>
+                    <NotificationButton />
+                     <ButtonLightNight />
+                    </div>
                     <div className={style.right}>
                         <ProfilePic />
                     </div>
@@ -29,7 +31,9 @@ const NavGeneral = () => {
             ) : (
                 <>
                     <LogoClient />
+                    <div className={style.notifications}></div>
                     <div className={style.nightswitch}>
+                        <NotificationButton />
                         <ButtonLightNight />
                     </div>
                     <div className={style.right}>
