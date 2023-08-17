@@ -50,6 +50,9 @@ import RequestedServices from './views/requestedServices/RequestedServices'
 import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
 import ChatApp from './views/chat/App'
 
+//Admin
+import Admin from './views/admin/Admin'
+
 //URL Back
 import axios from 'axios'
 import ReviewForm from './views/forms/review-form/ReviewForm'
@@ -116,6 +119,9 @@ function App() {
                     <Route path="/review" element={<ReviewForm />} />
                     <Route path="/notifications" element={<Notifications />} />
                     <Route path="*" element={<PageNotFound />} />
+
+                    {/* Admin */}
+                    <Route path="/admin" element={<Admin />} />
                 </Routes>
             </div>
         </LocalizationProvider>
