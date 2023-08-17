@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 const Provider = require('./../../Models/provider')
 const Consumer = require('./../../Models/consumer')
 
@@ -11,13 +12,15 @@ const addJob = async (newPendingService, id) => {
         const price = providerFound.services?.find(
             (service) => service.service === service
         )?.price
-
+        let clientUid= consumerFound.userUid || consumerFound.googleId
+    
         const addedJob = {
             id: 1,
             isActive: true,
             description,
             service,
             clientId,
+            clientUid: `${clientUid}`,
             providerId: id,
             providerName: `${providerFound.firstName} ${providerFound.lastName}`,
             clientName: `${consumerFound.firstName} ${consumerFound.lastName}`,
