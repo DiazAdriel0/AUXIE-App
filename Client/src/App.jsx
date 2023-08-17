@@ -119,7 +119,7 @@ function App() {
                     <Route path='*' element={<PageNotFound />} />
                     {/* Admin */}
 
-                    <Route path='/layout' element={<Layout />}>
+                    <Route path='/dashboard' element={<Layout />}>
                         <Route index={true} element={<Dashboard />} />
                         <Route path='products' element={<Products />} />
                     </Route>
