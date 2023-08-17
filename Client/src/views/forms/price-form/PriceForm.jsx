@@ -9,7 +9,7 @@ paymentMethod(pin):"efectivo" */
 
 const PriceForm = ({ id }) => {
     const loggedUser = useSelector((state) => state.loggedUser)
-    const serviceFound = loggedUser.jobs.find((job) => job.id === id)
+    const serviceFound = loggedUser.jobs.find((job) => job.id === Number(id))
     const [service, setService] = useState(serviceFound)
 
     useEffect(() => {
