@@ -4,9 +4,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useState, useRef, useEffect } from 'react'
 import PriceForm from '../../../views/forms/price-form/PriceForm'
 import {setServiceStatus} from '../../../redux/actions/actions'
+import useNotify from '../../../hooks/useNotify'
 
 const TableServices = () => {
     const dispatch = useDispatch()
+    const [consumerUid, setConsumerUid] = useState(null)
+    const [aux, setAux] = useState(false)
+    const [sent, setSent] = useState(false)
+    const [message, setMessage] = useState({
+        name:'',
+        status:''
+    })
 
     const targetRef = useRef(null)
     const [showForm, setShowForm] = useState(false)
@@ -26,6 +34,8 @@ const TableServices = () => {
             setServiceId('')
         }
     }
+    
+    const { sendNotification } = useNotify(consumerUid)
 
     useEffect(() => {
         document.addEventListener('click', handleClickOutside)
@@ -33,6 +43,13 @@ const TableServices = () => {
             document.removeEventListener('click', handleClickOutside)
         }
     }, [shouldCloseForm, loggedUser])
+    
+    useEffect(() => {
+            if(consumerUid !==null && sent){
+                sendNotification(`${loggedUser.firstName} ${loggedUser.lastName} ha ${message.status} el servicio de ${message.name} requerido.`)
+                setSent(false)
+            }
+    }, [aux]);
 
     const handleClick = (event) => {
         setServiceId(event.target.value)
@@ -43,14 +60,16 @@ const TableServices = () => {
         }, 100)
     }
 
-    const handleStatus= (e,id, clientId )=>{
+    const handleStatus= (e,service )=>{
         let data ={
             providerId: loggedUser.id,
             status: e.target.value,
-            id: id,
-            consumerId: clientId,
+            id: service.id,
+            consumerId: service.clientId,
         }
-        dispatch(setServiceStatus(data))
+        
+        /* dispatch(setServiceStatus(data)) */ //descomentar cuando se agregue lo de consumer a AddJobs
+
     }
 
     return (
@@ -88,13 +107,29 @@ const TableServices = () => {
                                         Propuesta
                                     </button>
                                     <button style={{backgroundColor:'green'}}
-                                        onClick={(e)=>{handleStatus(e,service.id, service.clientId)}}
+                                        onClick={(e) => {
+                                            e.preventDefault()
+                                            setMessage({name: service.service, status:e.target.value})
+                                            setConsumerUid(service.clientUid)
+                                            setAux(!aux)
+                                            setSent(true)
+                                            
+                                            handleStatus(e, service)
+                                            
+                                        }}
                                         value='aceptado'
                                     >
                                         Aceptar
                                     </button>
                                     <button style={{backgroundColor:'red'}}
-                                        onClick={(e)=>{handleStatus(e,service.id, service.clientId)}}
+                                        onClick={(e) => {
+                                            e.preventDefault()
+                                            setMessage({name: service.service, status:e.target.value})
+                                            setConsumerUid(service.clientUid)
+                                            setAux(!aux)
+                                            setSent(true)
+                                            handleStatus(e, service)
+                                        }}
                                         value='rechazado'
                                     >
                                         Rechazar
