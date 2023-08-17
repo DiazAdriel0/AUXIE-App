@@ -76,8 +76,89 @@ const ProfileConsumers = () => {
     console.log(profileData)
     return (
         <>
-            <div>
-                <NavGeneral />
+
+        <div><NavGeneral /></div>
+         <div className={style.fullProfileContainer}>
+        <div className={style.profileContainer}>
+            <div className={style.secondcontainer}>
+                <button type='button' className={style.edit} onClick={handleEdit}>Editar perfil</button>
+                <div className={style.imagecontainer}>
+                <img src={consumer.image?.secure_url} alt="imagen de perfil" />
+                </div>
+               {edit && <input
+                    type="file"
+                    accept=".jpg, .png"
+                    onChange={handleImageChange}
+                    className={style.imageButton}
+                />}
+                <h1 className={style.name}>
+                    {consumer.firstName} {consumer.lastName}
+                    
+                </h1>
+                Te uniste: {toDateMed}
+                {edit && <TextField
+                            className={style.picker}
+                            id="outlined-basic"
+                            label="Nombre"
+                            variant="outlined"
+                            required
+                            multiline
+                            color="primary"
+                            name="firstName"
+                            value={profileData.firstName}
+                            onChange={handleChange}
+                        />}
+                         {edit && <TextField
+                            className={style.picker}
+                            id="outlined-basic"
+                            label="Apellido"
+                            variant="outlined"
+                            required
+                            multiline
+                            color="primary"
+                            name="lastName"
+                            value={profileData.lastName}
+                            onChange={handleChange}
+                        />}
+                
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+
+                <h4>
+                    {consumer.isAdmin && (
+                        <div>
+                            <h4>Admin</h4>
+                        </div>
+                    )}
+                </h4>
+                <h4>Género: {consumer.gender}</h4>
+                
+               { edit && <select
+                        onChange={handleChange}
+                        name="gender"
+                        defaultValue={''}
+                    >
+                        <option disabled value="">
+                            Género
+                        </option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Otro">Otro</option>
+                    </select>}
+                <div className={style.emailpassword}>
+                    <h3>
+                        Email: {consumer.email}{' '}
+                       {edit && <button onClick={() => navigate('/resetpassword')}>
+                            Cambiar la contraseña
+                        </button>}
+                    </h3>
+                </div>
+                <div className={style.savebutton}>
+                  {edit &&  <button onClick={handleUpdateProfile}>
+                        Guardar Cambios
+                    </button>}
+                </div>
+                </div>
+
             </div>
             <div className={style.fullProfileContainer}>
                 <div className={style.profileContainer}>

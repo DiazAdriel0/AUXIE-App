@@ -175,22 +175,23 @@ const ProfileAuxies = () => {
                         >
                             Editar perfil
                         </button>
-                        <div>
-                            <h1>
-                                {provider.firstName} {provider.lastName}
-                            </h1>
-                            <img
-                                src={provider.image.secure_url}
-                                alt='imagen de perfil'
-                            />
-                            {edit && (
-                                <input
-                                    type='file'
-                                    accept='.jpg, .png'
-                                    onChange={handleImageChange}
-                                />
-                            )}
-                            {error && <p style={{ color: 'red' }}>{error}</p>}
+
+                    <div>
+                    <img
+                            src={provider.image.secure_url}
+                            alt="imagen de perfil"
+                        />
+                        {edit && <input
+                            type="file"
+                            accept=".jpg, .png"
+                            onChange={handleImageChange}
+                        />}
+                        <h1>
+                            {provider.firstName} {provider.lastName}
+                        </h1>
+                     
+                        {error && <p style={{ color: 'red' }}>{error}</p>}
+
 
                             <h4>Género: {provider.gender}</h4>
                             <h3>
