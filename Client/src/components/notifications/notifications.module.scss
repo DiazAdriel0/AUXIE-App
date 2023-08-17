@@ -1,0 +1,16 @@
+.title {
+    text-align: center;
+    border-bottom: 3px solid var(--button-color-light);
+    background-color: #567eacef;
+    // color: white;
+    border-radius: 1%;
+}
+.notificationcontainer {
+    background-color: #567eacef;
+    padding: 2%;
+    border-radius: 1%;
+}
+.message {
+    border-bottom: 1.5px solid var(--button-color-light);
+    border-radius: 1%;
+}
