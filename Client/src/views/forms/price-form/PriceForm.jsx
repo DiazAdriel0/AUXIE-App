@@ -39,29 +39,29 @@ const PriceForm = ({ id }) => {
 
     return (
         <form className={style.priceFormDiv} onSubmit={handleSubmit}>
-            <p>Servicio: {service.service}</p>
-            <p>Descripción: {service.description}</p>
-            <p>Cliente: {service.clientName}</p>
+            <p>Servicio: {service?.service}</p>
+            <p>Descripción: {service?.description}</p>
+            <p>Cliente: {service?.clientName}</p>
             <p>
                 Pago:
-                {service.paymentMethod === 'app'
+                {service?.paymentMethod === 'app'
                     ? 'A través de nuestra app'
                     : 'Efectivo en persona'}
             </p>
-            <p>Fecha: {service.jobDate}</p>
+            <p>Fecha: {service?.jobDate}</p>
 
             <label>Precio final</label>
             <input
                 type="number"
                 name="price"
-                value={service.price}
+                value={service?.price}
                 onChange={handleInputChange}
             ></input>
 
             <label>Estado</label>
             <select
                 type="text"
-                value={service.status}
+                value={service?.status}
                 name="status"
                 onChange={handleSelectChange}
             >
