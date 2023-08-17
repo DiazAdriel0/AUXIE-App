@@ -14,6 +14,8 @@ import {
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
     SET_STATUS,
+    UPDATE_CONSUMER,
+    UPDATE_PROVIDER,
 } from './actions/actionTypes'
 
 let initialState = {
@@ -185,6 +187,16 @@ function rootReducer(state = initialState, action) {
                     jobs: action.payload,
                 },
             }
+            case UPDATE_CONSUMER:
+                return {
+                    ...state,
+                    loggedUser: action.payload
+                }
+            case UPDATE_PROVIDER:
+                return {
+                    ...state,
+                    loggedUser: action.payload
+                }
         // caso por defecto si por alguna razón no recibe action.type
         default:
             return {
