@@ -51,7 +51,10 @@ import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
 import ChatApp from './views/chat/App'
 
 //Admin
-import Admin from './views/admin/Admin'
+
+import Layout from './views/admin/shared/layout'
+import Dashboard from './components/admin-components/Dashboard'
+import Products from './components/admin-components/Products'
 
 //URL Back
 import axios from 'axios'
@@ -70,58 +73,56 @@ function App() {
         dispatch(getAllServices())
     }, [])
     return (
-        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="en-gb">
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-gb'>
             <div>
                 <Routes>
-                    <Route path="/" element={<Landing />} />
+                    <Route path='/' element={<Landing />} />
                     {/* Landing Nav Views */}
-                    <Route path="/aboutUs" element={<AboutUs />} />
-                    <Route path="/guarantee" element={<Guarantee />} />
-                    <Route path="/offer" element={<Offer />} />
-                    <Route path="/howItWorks" element={<HowItWorks />} />
-                    <Route path="/support" element={<SupportForm />} />
-                    <Route path="/help" element={<Help />} />
-
+                    <Route path='/aboutUs' element={<AboutUs />} />
+                    <Route path='/guarantee' element={<Guarantee />} />
+                    <Route path='/offer' element={<Offer />} />
+                    <Route path='/howItWorks' element={<HowItWorks />} />
+                    <Route path='/support' element={<SupportForm />} />
+                    <Route path='/help' element={<Help />} />
                     {/* Home paths */}
-                    <Route path="/homeconsumer" element={<HomeConsumer />} />
-                    <Route path="/homeauxie" element={<HomeAuxie />} />
-
+                    <Route path='/homeconsumer' element={<HomeConsumer />} />
+                    <Route path='/homeauxie' element={<HomeAuxie />} />
                     {/* Home views paths */}
-                    <Route path="/auxieinbox" element={<AuxieInbox />} />
-                    <Route path="/auxieservices" element={<AuxieServices />} />
+                    <Route path='/auxieinbox' element={<AuxieInbox />} />
+                    <Route path='/auxieservices' element={<AuxieServices />} />
                     <Route
-                        path="/auxiestatistics"
+                        path='/auxiestatistics'
                         element={<AuxieStatistics />}
                     />
-                    <Route path="/jobrequest" element={<JobRequestForm />} />
-
+                    <Route path='/jobrequest' element={<JobRequestForm />} />
                     {/*Detail paths  */}
-                    <Route path="/detail/:id" element={<Detail />} />
-
+                    <Route path='/detail/:id' element={<Detail />} />
                     {/*Profile paths */}
-                    <Route path="/profile" element={<ProfilePage />} />
-
+                    <Route path='/profile' element={<ProfilePage />} />
                     {/* Register paths */}
-                    <Route path="/auxieform" element={<Form />} />
-                    <Route path="/clientform" element={<ClientForm />} />
+                    <Route path='/auxieform' element={<Form />} />
+                    <Route path='/clientform' element={<ClientForm />} />
                     {/* Register paths */}
-                    <Route path="/pruebas" element={<Pruebas />} />
+                    <Route path='/pruebas' element={<Pruebas />} />
                     {/* Login paths */}
-                    <Route path="/clientlogin" element={<ClientLogin />} />
-                    <Route path="/auxielogin" element={<AuxieLogin />} />
+                    <Route path='/clientlogin' element={<ClientLogin />} />
+                    <Route path='/auxielogin' element={<AuxieLogin />} />
                     {/* Login paths */}
-                    <Route path="/resetpassword" element={<ResetPassword />} />
-                    <Route path="/chat" element={<ChatApp />} />
+                    <Route path='/resetpassword' element={<ResetPassword />} />
+                    <Route path='/chat' element={<ChatApp />} />
                     <Route
-                        path="/requestedservices"
+                        path='/requestedservices'
                         element={<RequestedServices />}
                     />
-                    <Route path="/review" element={<ReviewForm />} />
-                    <Route path="/notifications" element={<Notifications />} />
-                    <Route path="*" element={<PageNotFound />} />
-
+                    <Route path='/review' element={<ReviewForm />} />
+                    <Route path='/notifications' element={<Notifications />} />
+                    <Route path='*' element={<PageNotFound />} />
                     {/* Admin */}
-                    <Route path="/admin" element={<Admin />} />
+
+                    <Route path='/layout' element={<Layout />}>
+                        <Route index={true} element={<Dashboard />} />
+                        <Route path='products' element={<Products />} />
+                    </Route>
                 </Routes>
             </div>
         </LocalizationProvider>

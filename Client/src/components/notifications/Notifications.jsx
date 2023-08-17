@@ -40,14 +40,16 @@ export const Notifications = () => {
             {loading ? (
                 <h1>LOADING...</h1>
             ) : (
-                <div >
+                <div>
                     <div className={style.title}>
-                   <h1>Notificaciones</h1>
-                   </div>
-                   <div className={style.notificationcontainer}>
-                    {notifications?.map((message) => (
-                        <div key={message.id} className={style.message}>{message.text}</div>
-                    ))}
+                        <h1>Notificaciones</h1>
+                    </div>
+                    <div className={style.notificationcontainer}>
+                        {notifications?.map((message) => (
+                            <div key={message.id} className={style.message}>
+                                {message.text}
+                            </div>
+                        ))}
                     </div>
                 </div>
             )}

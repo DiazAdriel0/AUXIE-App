@@ -72,7 +72,7 @@ const SupportForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        
+
         if (Object.values(errors).length > 0) {
             alert('Por favor completa todos los campos')
         } else {
@@ -109,26 +109,26 @@ const SupportForm = () => {
                 {isSubmitted ? (
                     <div>
                         <p>¡Tu reclamo ha sido enviado con éxito!</p>
-                        <Link to="/">Volver a la página principal</Link>
+                        <Link to='/'>Volver a la página principal</Link>
                     </div>
                 ) : (
                     <div>
                         <h1>Soporte técnico</h1>
-                        <form id="form" onSubmit={handleSubmit}>
+                        <form id='form' onSubmit={handleSubmit}>
                             <div>
                                 <label
-                                    htmlFor="consumerUsername"
+                                    htmlFor='consumerUsername'
                                     className={style.formlabel}
                                 >
                                     Nombre de Usuario:
                                 </label>
                                 <input
-                                    type="text"
-                                    name="consumerUsername"
+                                    type='text'
+                                    name='consumerUsername'
                                     className={style.formControl}
                                     value={input.consumerUsername}
                                     onChange={(e) => handleChange(e)}
-                                    placeholder="Nombre de usuario"
+                                    placeholder='Nombre de usuario'
                                 />
                                 {errors.consumerUsername && (
                                     <p className={style.error}>
@@ -138,16 +138,16 @@ const SupportForm = () => {
                             </div>
                             <div>
                                 <label
-                                    htmlFor="message"
+                                    htmlFor='message'
                                     className={style.formlabel}
                                 >
                                     Reclamo:
                                 </label>
                                 <textarea
-                                    name="message"
+                                    name='message'
                                     value={input.message}
                                     onChange={(e) => handleChange(e)}
-                                    placeholder="Escribe tu reclamo aquí"
+                                    placeholder='Escribe tu reclamo aquí'
                                 />
                                 {errors.message && (
                                     <p className={style.error}>
@@ -157,17 +157,17 @@ const SupportForm = () => {
                             </div>
                             <div>
                                 <label
-                                    htmlFor="providerUsername"
+                                    htmlFor='providerUsername'
                                     className={style.formlabel}
                                 >
                                     Nombre del Auxie:
                                 </label>
                                 <input
-                                    type="text"
-                                    name="providerUsername"
+                                    type='text'
+                                    name='providerUsername'
                                     value={input.providerUsername}
                                     onChange={(e) => handleChange(e)}
-                                    placeholder="Nombre del Auxie"
+                                    placeholder='Nombre del Auxie'
                                 />
                                 {errors.providerUsername && (
                                     <p className={style.error}>
@@ -178,37 +178,37 @@ const SupportForm = () => {
                             <div>
                                 <label>Imagen:</label>
                                 <input
-                                    type="file"
-                                    accept=".jpg, .jpeg, .png"
-                                    name="image"
+                                    type='file'
+                                    accept='.jpg, .jpeg, .png'
+                                    name='image'
                                     onChange={(e) => handleImageChange(e)}
                                 />
                                 {errors.image && <p>{errors.image}</p>}
                             </div>
                             <div>
                                 <label
-                                    htmlFor="reason"
+                                    htmlFor='reason'
                                     className={style.formlabel}
                                 >
                                     Selección de Motivos:
                                 </label>
                                 <div>
                                     <select
-                                        name="reason"
+                                        name='reason'
                                         value={input.reason}
                                         onChange={(e) => handleChange(e)}
                                     >
-                                        <option disabled value="">
+                                        <option disabled value=''>
                                             Motivos
                                         </option>
-                                        <option value="late">Retraso</option>
-                                        <option value="behavior">
+                                        <option value='late'>Retraso</option>
+                                        <option value='behavior'>
                                             Comportamiento inadecuado
                                         </option>
-                                        <option value="quality">
+                                        <option value='quality'>
                                             Calidad del servicio
                                         </option>
-                                        <option value="other">Otro</option>
+                                        <option value='other'>Otro</option>
                                     </select>
                                     {errors.reason && (
                                         <p className={style.error}>
@@ -219,13 +219,13 @@ const SupportForm = () => {
                             </div>
                             <div>
                                 <button
-                                    type="submit"
+                                    type='submit'
                                     className={style.claims}
                                     disabled={!isFormValid}
                                 >
                                     Enviar
                                 </button>
-                                <Link to="/">
+                                <Link to='/'>
                                     <button>Atrás</button>
                                 </Link>
                             </div>

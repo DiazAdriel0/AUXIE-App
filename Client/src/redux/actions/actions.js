@@ -252,10 +252,10 @@ export function turnLightNightMode(boolean) {
     }
 }
 
-export function setServiceStatus (info){
+export function setServiceStatus(info) {
     return async function (dispatch) {
         try {
-            const res = await axios.put('/providers/jobUpdate',info)
+            const res = await axios.put('/providers/jobUpdate', info)
             return dispatch({
                 type: SET_STATUS,
                 payload: res.data,

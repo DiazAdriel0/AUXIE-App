@@ -86,7 +86,7 @@ const ReviewForm = () => {
     }
     return (
         <div className={style.form}>
-            <form id="form" onSubmit={handleSubmit}>
+            <form id='form' onSubmit={handleSubmit}>
                 <h1>Califica a tu auxie</h1>
                 <div className={style.pickerContainer}>
                     <div>
@@ -95,22 +95,23 @@ const ReviewForm = () => {
                             className={style.picker}
                             required
                             fullWidth
-                            id="providerId" // Cambio de 'auxie' a 'providerId'
+                            id='providerId' // Cambio de 'auxie' a 'providerId'
                             select
-                            label="Auxie"
-                            helperText="Selecciona un Auxie"
-                            color="primary"
-                            name="providerId" // Cambio de 'auxie' a 'providerId'
+                            label='Auxie'
+                            helperText='Selecciona un Auxie'
+                            color='primary'
+                            name='providerId' // Cambio de 'auxie' a 'providerId'
                             value={review.providerId} // Cambio de 'auxie' a 'providerId'
                             onChange={handleAuxieChange} // Cambio de handleAuxieChange a handleProviderChange
                         >
                             {user.requiredServices ? (
                                 user.requiredServices.map((auxie) => (
-                                    
                                     <MenuItem
                                         key={auxie.id}
                                         value={auxie.providerId} // Cambio de 'auxie' a 'providerId'
-                                    > {console.log(auxie)}
+                                    >
+                                        {' '}
+                                        {console.log(auxie)}
                                         {auxie.providerName}
                                     </MenuItem>
                                 ))
@@ -125,12 +126,12 @@ const ReviewForm = () => {
                         <TextField
                             required
                             fullWidth
-                            id="serviceId"
+                            id='serviceId'
                             select
-                            label="Servicio"
-                            helperText="Selecciona un servicio"
-                            color="primary"
-                            name="serviceId"
+                            label='Servicio'
+                            helperText='Selecciona un servicio'
+                            color='primary'
+                            name='serviceId'
                             value={review.serviceId}
                             onChange={handleServiceChange}
                             className={style.picker}
@@ -152,7 +153,7 @@ const ReviewForm = () => {
                     <label>¿Qué calificación le das al auxie?</label>
                     <Rating
                         className={style.picker}
-                        name="score"
+                        name='score'
                         value={ratingValue}
                         precision={0.5}
                         getLabelText={getLabelText}
@@ -169,7 +170,7 @@ const ReviewForm = () => {
                         emptyIcon={
                             <StarIcon
                                 style={{ opacity: 0.55 }}
-                                fontSize="inherit"
+                                fontSize='inherit'
                             />
                         }
                     />
@@ -183,13 +184,13 @@ const ReviewForm = () => {
                         <TextField
                             className={style.picker}
                             fullWidth
-                            id="outlined-basic"
-                            label="Escribe tus comentarios"
-                            variant="outlined"
+                            id='outlined-basic'
+                            label='Escribe tus comentarios'
+                            variant='outlined'
                             required
                             multiline
-                            color="primary"
-                            name="review"
+                            color='primary'
+                            name='review'
                             value={review.review}
                             onChange={handleInputChange}
                         />
@@ -199,9 +200,9 @@ const ReviewForm = () => {
                 <center>
                     <Button
                         className={style.send}
-                        variant="contained"
+                        variant='contained'
                         endIcon={<SendIcon />}
-                        type="submit"
+                        type='submit'
                     >
                         Enviar
                     </Button>

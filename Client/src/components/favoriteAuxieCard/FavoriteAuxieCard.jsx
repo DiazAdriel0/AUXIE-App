@@ -51,7 +51,12 @@ const FavoriteAuxieCard = (user) => {
                         <p>{lastName}</p>
                     </div>
                     <div className={style.rating}>
-                    <Rating name="read-only" value={averageRating} readOnly precision={0.5}/>
+                        <Rating
+                            name='read-only'
+                            value={averageRating}
+                            readOnly
+                            precision={0.5}
+                        />
                     </div>
                 </div>
                 <div className={style.favorite}>

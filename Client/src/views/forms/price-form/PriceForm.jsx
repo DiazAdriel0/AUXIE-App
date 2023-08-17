@@ -52,29 +52,29 @@ const PriceForm = ({ id }) => {
 
             <label>Precio final</label>
             <input
-                type="number"
-                name="price"
+                type='number'
+                name='price'
                 value={service?.price}
                 onChange={handleInputChange}
             ></input>
 
             <label>Estado</label>
             <select
-                type="text"
+                type='text'
                 value={service?.status}
-                name="status"
+                name='status'
                 onChange={handleSelectChange}
             >
                 <option defaultValue disabled>
                     Estado
                 </option>
-                <option value="pending">Revisar</option>
-                <option value="approved">Aprobar presupuesto</option>
-                <option value="cancelled">Cancelar</option>
-                <option value="done">Terminado</option>
+                <option value='pending'>Revisar</option>
+                <option value='approved'>Aprobar presupuesto</option>
+                <option value='cancelled'>Cancelar</option>
+                <option value='done'>Terminado</option>
             </select>
 
-            <button type="submit">Enviar</button>
+            <button type='submit'>Enviar</button>
         </form>
     )
 }

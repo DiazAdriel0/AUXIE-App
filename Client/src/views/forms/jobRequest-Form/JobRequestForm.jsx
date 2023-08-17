@@ -74,7 +74,7 @@ const JobRequestForm = ({ services, recipient }) => {
         <div>
             <center>
                 <div className={style.form}>
-                    <form id="form" onSubmit={handleSubmit}>
+                    <form id='form' onSubmit={handleSubmit}>
                         <div>
                             <h1>Agenda cita</h1>
                         </div>
@@ -127,14 +127,14 @@ const JobRequestForm = ({ services, recipient }) => {
                             <TextField
                                 required
                                 className={style.picker}
-                                id="service"
+                                id='service'
                                 select
                                 fullWidth
-                                label="Servicio"
-                                helperText="Selecciona un servicio"
-                                color="primary"
+                                label='Servicio'
+                                helperText='Selecciona un servicio'
+                                color='primary'
                                 focused
-                                name="service"
+                                name='service'
                                 value={value.service}
                                 onChange={handleServiceChange}
                             >
@@ -158,14 +158,14 @@ const JobRequestForm = ({ services, recipient }) => {
                             <TextField
                                 className={style.picker}
                                 fullWidth
-                                id="outlined-basic"
-                                label="descripcion"
-                                variant="outlined"
+                                id='outlined-basic'
+                                label='descripcion'
+                                variant='outlined'
                                 required
                                 multiline
-                                color="primary"
+                                color='primary'
                                 focused
-                                name="description"
+                                name='description'
                                 value={value.description}
                                 onChange={handleInputChange}
                             />
@@ -175,21 +175,21 @@ const JobRequestForm = ({ services, recipient }) => {
                             <TextField
                                 required
                                 className={style.picker}
-                                id="payment"
+                                id='payment'
                                 select
                                 fullWidth
-                                label="Método de pago"
-                                helperText="Selecciona un método de pago"
-                                color="primary"
+                                label='Método de pago'
+                                helperText='Selecciona un método de pago'
+                                color='primary'
                                 focused
-                                name="payment"
+                                name='payment'
                                 value={value.paymentMethod}
                                 onChange={handlePaymentChange}
                             >
-                                <MenuItem value="efectivo">
+                                <MenuItem value='efectivo'>
                                     Efectivo en persona
                                 </MenuItem>
-                                <MenuItem value="app">
+                                <MenuItem value='app'>
                                     A través de nuestra app
                                 </MenuItem>
                             </TextField>
@@ -197,11 +197,11 @@ const JobRequestForm = ({ services, recipient }) => {
 
                         <Button
                             className={style.send}
-                            variant="contained"
+                            variant='contained'
                             endIcon={<SendIcon />}
-                            type="submit"
+                            type='submit'
                         >
-                         Enviar
+                            Enviar
                         </Button>
                     </form>
                 </div>

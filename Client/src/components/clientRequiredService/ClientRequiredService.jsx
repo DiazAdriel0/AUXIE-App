@@ -1,4 +1,4 @@
-import { Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
 import Swal from 'sweetalert2'
 import style from './clientRequiredService.module.scss'
@@ -27,9 +27,12 @@ const ClientRequiredService = (job) => {
 
     const handleClick = (e) => {
         if (e.target.innerText === 'Valorar') return navigate('/review')
-        if (e.target.innerText === 'Efectivo') return Swal.fire('Pagar en efectivo')
-        if (e.target.innerText === 'Rechazado') return Swal.fire('El Auxie ha rechazado tu pedido')
-        if (e.target.innerText === 'Pendiente') return Swal.fire('Espera a que el Auxie apruebe tu pedido')
+        if (e.target.innerText === 'Efectivo')
+            return Swal.fire('Pagar en efectivo')
+        if (e.target.innerText === 'Rechazado')
+            return Swal.fire('El Auxie ha rechazado tu pedido')
+        if (e.target.innerText === 'Pendiente')
+            return Swal.fire('Espera a que el Auxie apruebe tu pedido')
     }
 
     const mercadoPago = paymentMethod === 'app'
@@ -41,8 +44,10 @@ const ClientRequiredService = (job) => {
     return (
         <div className={style.cardCont}>
             <div className={style.requestDetails}>
-                <p>Número de solicitud: </p>{id}
-                <p>Auxie: </p><Link to={`/detail/${providerId}`}>{providerName}</Link>
+                <p>Número de solicitud: </p>
+                {id}
+                <p>Auxie: </p>
+                <Link to={`/detail/${providerId}`}>{providerName}</Link>
                 <p>Fecha de petición: </p>
                 {requestDate}
                 <p>Desripción: </p>
@@ -63,12 +68,12 @@ const ClientRequiredService = (job) => {
                         quantity={1}
                     />
                 )}
-                {approved && paymentMethod === 'efectivo' && (<button onClick={handleClick}>Efectivo</button>)}
-                {completedJob && (
-                        <button onClick={handleClick}>Valorar</button>
+                {approved && paymentMethod === 'efectivo' && (
+                    <button onClick={handleClick}>Efectivo</button>
                 )}
-                {rechazado && (<button onClick={handleClick}>Rechazado</button>)}
-                {pendiente && (<button onClick={handleClick}>Pendiente</button>)}
+                {completedJob && <button onClick={handleClick}>Valorar</button>}
+                {rechazado && <button onClick={handleClick}>Rechazado</button>}
+                {pendiente && <button onClick={handleClick}>Pendiente</button>}
             </div>
         </div>
     )

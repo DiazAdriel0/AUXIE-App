@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux'
 //*Import Animations
 import { Animated } from 'react-animated-css'
 
-
 //* Import icons
 
 //* Import components
@@ -136,8 +135,8 @@ const Landing = () => {
             <main className={!menuLanding ? landing : hiden}>
                 {/* Section Menu Prinipal */}
                 <Animated
-                    animationIn="fadeIn"
-                    animationOut="fadeOut"
+                    animationIn='fadeIn'
+                    animationOut='fadeOut'
                     animationInDuration={1000}
                     isVisible={true}
                 >
@@ -243,8 +242,8 @@ const Landing = () => {
 
                 {/* Section Slogan */}
                 <Animated
-                    animationIn="slideInUp"
-                    animationOut="fadeOut"
+                    animationIn='slideInUp'
+                    animationOut='fadeOut'
                     animationInDuration={1000}
                     isVisible={true}
                 >
@@ -290,8 +289,8 @@ const Landing = () => {
                 {cardsAnimated ? (
                     <div>
                         <Animated
-                            animationIn="slideInUp"
-                            animationOut="fadeOut"
+                            animationIn='slideInUp'
+                            animationOut='fadeOut'
                             animationInDuration={1000}
                             isVisible={true}
                         >
@@ -314,8 +313,8 @@ const Landing = () => {
 
                 {secondCardsAnimated ? (
                     <Animated
-                        animationIn="slideInUp"
-                        animationOut="fadeOut"
+                        animationIn='slideInUp'
+                        animationOut='fadeOut'
                         animationInDuration={1000}
                     >
                         {/* Section Slogan */}
