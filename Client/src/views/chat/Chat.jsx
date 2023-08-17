@@ -3,7 +3,6 @@ import { db, auth } from '../../config/firebase-config'
 import {
     collection,
     addDoc,
-    where,
     serverTimestamp,
     onSnapshot,
     query,
@@ -11,12 +10,13 @@ import {
 } from 'firebase/firestore'
 import style from './chat.module.scss'
 import { useSelector } from 'react-redux'
+import useNotify from './../../hooks/useNotify'
 
-export const Chat = ({ recipient, auxiedetails }) => {
+export const Chat = ({ recipient }) => {
     const user = useSelector((state) => state.loggedUser)
-    const inbox = useSelector((state) => state.loggedUser.inbox)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
+    const [sent, setSent] = useState(false)
     const conversationsRef = collection(db, 'conversations') // Change: Use 'conversations' collection
     const participants = [auth.currentUser.uid, recipient]
     const ordered = participants.sort((a, b) => {
@@ -28,13 +28,12 @@ export const Chat = ({ recipient, auxiedetails }) => {
             return 0
         }
     }) // Sort for consistent order
+    const { sendNotification } = useNotify(recipient)
 
-    console.log(ordered)
     const conversationId = ordered.join('_')
 
     const conversationData = { participants }
 
-    //ZpsbcXOZ7SSFon98N3REltncKZU2_dCsvWUrHtZhArwOzAYTzF5Y74Sf2
     useEffect(() => {
         // Fetch or create a conversation document
         const getOrCreateConversation = async () => {
@@ -61,7 +60,13 @@ export const Chat = ({ recipient, auxiedetails }) => {
         getOrCreateConversation()
     }, [recipient, conversationId])
 
-    console.log(messages)
+    useEffect(() => {
+        if (sent) {
+            sendNotification(
+                `${user.firstName} ${user.lastName} te ha enviado un mensaje`
+            )
+        }
+    }, [sent])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -90,6 +95,7 @@ export const Chat = ({ recipient, auxiedetails }) => {
         })
 
         setNewMessage('')
+        setSent(true)
     }
 
     return (
