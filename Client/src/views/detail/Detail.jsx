@@ -66,7 +66,12 @@ const Detail = () => {
                                         <p>{auxieDetails.lastName}</p>
                                     </div>
                                     <div className={style.rating}>
-                                    <Rating name="read-only" value={auxieDetails.averageRating} readOnly precision={0.5}/>
+                                        <Rating
+                                            name="read-only"
+                                            value={auxieDetails.averageRating}
+                                            readOnly
+                                            precision={0.5}
+                                        />
                                     </div>
                                     <p>
                                         ({auxieDetails.reviews.length} Reseñas)
@@ -142,10 +147,7 @@ const Detail = () => {
                     recipient={auxieDetails?.userUid}
                 />
                 {isInChat ? (
-                    <Chat
-                        recipient={auxieDetails.userUid}
-                        auxiedetails={auxieDetails}
-                    />
+                    <Chat recipient={auxieDetails.userUid} />
                 ) : (
                     <div className={style.chatbutton}>
                         <button onClick={handleClick}>Iniciar Chat</button>
