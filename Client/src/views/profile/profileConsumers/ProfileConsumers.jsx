@@ -75,8 +75,7 @@ const ProfileConsumers = () => {
     const requiredServicesNamesSet = new Set(requiredServicesNames)
     console.log(profileData)
     return (
-        <>
-
+        <div>
         <div><NavGeneral /></div>
          <div className={style.fullProfileContainer}>
         <div className={style.profileContainer}>
@@ -278,8 +277,9 @@ const ProfileConsumers = () => {
                     <h5>Calificaciones: {consumer.ratings}</h5>
                 </div>
             </div>
-        </>
+        </div>
+        </div> 
     )
-}
+}  
 
 export default ProfileConsumers
