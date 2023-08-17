@@ -11,7 +11,11 @@ const LogoAuxie = () => {
     return (
         <div className={style.logo}>
             <Link to={'/homeauxie'}>
-                <img src={!nightMode ? LogoLight : LogoNight} alt="Logo Auxie" className={style.img} />
+                <img
+                    src={!nightMode ? LogoLight : LogoNight}
+                    alt='Logo Auxie'
+                    className={style.img}
+                />
             </Link>
         </div>
     )

@@ -11,7 +11,11 @@ const LogoClient = () => {
     return (
         <div className={style.logo}>
             <Link to={'/homeconsumer'}>
-                <img src={!nightMode ? LogoLight : LogoNight} alt="Logo Auxie" className={style.img} />
+                <img
+                    src={!nightMode ? LogoLight : LogoNight}
+                    alt='Logo Auxie'
+                    className={style.img}
+                />
             </Link>
         </div>
     )

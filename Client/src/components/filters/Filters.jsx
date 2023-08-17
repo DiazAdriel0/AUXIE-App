@@ -62,9 +62,9 @@ const Filters = () => {
             <Select
                 className={style.filtersSelectCont}
                 classNamePrefix={style.filtersSelect}
-                placeholder="Elegir servicios"
+                placeholder='Elegir servicios'
                 onChange={(input) => filterByService(input)}
-                name="services"
+                name='services'
                 defaultValue={off}
                 options={options}
             />
@@ -73,7 +73,7 @@ const Filters = () => {
                     <span>Ordenar por calificación: </span>
                     <Select
                         onChange={(input) => orderByRating(input)}
-                        name="orderByRating"
+                        name='orderByRating'
                         options={order}
                         defaultValue={orderRating}
                         value={orderRating}
@@ -85,7 +85,7 @@ const Filters = () => {
                     <span>Ordenar por Precio: </span>
                     <Select
                         onChange={(input) => orderByPrice(input)}
-                        name="orderByPrice"
+                        name='orderByPrice'
                         options={order}
                         defaultValue={orderPrice}
                         value={orderPrice}

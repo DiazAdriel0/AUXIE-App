@@ -46,7 +46,7 @@ const ResetPassword = () => {
     return (
         <div className={style.resetPassword}>
             <h3>Ingrese su email</h3>
-            <input onChange={handleChange} type="text"></input>
+            <input onChange={handleChange} type='text'></input>
             <button onClick={handleReset}>Enviar</button>
         </div>
     )

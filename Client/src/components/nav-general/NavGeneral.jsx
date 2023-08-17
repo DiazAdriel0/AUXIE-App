@@ -21,8 +21,8 @@ const NavGeneral = () => {
                 <>
                     <LogoAuxie />
                     <div className={style.nightswitch}>
-                    <NotificationButton />
-                     <ButtonLightNight />
+                        <NotificationButton />
+                        <ButtonLightNight />
                     </div>
                     <div className={style.right}>
                         <ProfilePic />

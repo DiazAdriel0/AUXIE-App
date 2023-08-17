@@ -29,9 +29,9 @@ const HomeConsumer = () => {
 
     const location = useLocation()
     if (location.state) {
-        const from = location.state.from;
-        console.log('Redirigido desde:', from);
-      }
+        const from = location.state.from
+        console.log('Redirigido desde:', from)
+    }
     console.log('Current URL:', location.pathname)
 
     useEffect(() => {
@@ -41,8 +41,6 @@ const HomeConsumer = () => {
 
         dispatch(resetAuxiesCatalog())
     }, [])
-
-
 
     return (
         <>
@@ -95,7 +93,7 @@ const HomeConsumer = () => {
                         <div className={style.divFooterTitle}>
                             <img
                                 src={CircleIconAuxie}
-                                alt="circle icon"
+                                alt='circle icon'
                                 className={style.divFooterImg}
                             />
                             <h4>Creado con amor por el Auxie Team</h4>

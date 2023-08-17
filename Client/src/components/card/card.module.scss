@@ -9,7 +9,6 @@
     height: 25rem;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
     transition: all 0.5s;
-   
 }
 .card:hover {
     border: 1px solid var(--secondary--color-hover);
@@ -22,7 +21,6 @@
     margin: 5%;
     // gap: 1%;
     // padding: 5%;
- 
 }
 
 .info {
@@ -41,7 +39,7 @@
     display: flex;
     justify-content: flex-start;
     width: 50%;
-    
+
     img {
         object-fit: cover;
         border-radius: 2%;
@@ -58,31 +56,20 @@
     height: 40%;
     justify-content: space-between;
     margin-bottom: 10%;
-    
-    
-    
 }
-.contServices::-webkit-scrollbar{
+.contServices::-webkit-scrollbar {
     display: none;
-  }
+}
 
 .serviceDiv {
- 
     // white-space: pre-wrap;
     // overflow-y: scroll;
- 
+
     // width: 100%;
     margin-left: 1%;
     font-size: 0.9rem;
     padding: 3%;
-    
-    
-    
-    
-   
-    
 }
-
 
 .serviceName {
     color: var(--contrast-color-light);
@@ -91,11 +78,10 @@
     white-space: nowrap;
     // margin-bottom: 3%;
     // margin-left: 3%;
-   
 }
-.serviceName::-webkit-scrollbar{
-    display:none;
-  }
+.serviceName::-webkit-scrollbar {
+    display: none;
+}
 
 .rating {
     display: flex;
@@ -113,7 +99,7 @@
     cursor: pointer;
 }
 
-.noServices{
+.noServices {
     display: flex;
     margin-left: 25%;
     align-items: center;

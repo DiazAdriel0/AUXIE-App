@@ -44,7 +44,7 @@ const Detail = () => {
     return (
         <>
             <NavGeneral />
-            <Link to="/homeconsumer">
+            <Link to='/homeconsumer'>
                 <button>Volver</button>
             </Link>
             <div className={style.detailform}>
@@ -55,9 +55,9 @@ const Detail = () => {
                                 <div className={style.profilePic}>
                                     <img
                                         src={auxieDetails.image.secure_url}
-                                        alt="imagen de perfil"
-                                        height="100px"
-                                        width="100px"
+                                        alt='imagen de perfil'
+                                        height='100px'
+                                        width='100px'
                                     />
                                 </div>
                                 <div className={style.info}>
@@ -67,7 +67,7 @@ const Detail = () => {
                                     </div>
                                     <div className={style.rating}>
                                         <Rating
-                                            name="read-only"
+                                            name='read-only'
                                             value={auxieDetails.averageRating}
                                             readOnly
                                             precision={0.5}
