@@ -1,22 +1,37 @@
+.fullProfileContainer {
+    display: flex;
+    flex-flow: row wrap;
+}
 .profilecontainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%; /* Asegura que el contenido esté centrado verticalmente en la página */
-    border: 2px solid black;
-    padding: 20px; /* Adjust padding as needed */
-    margin: 5% 15% 5% 15%;
-    border-radius: 2%;
-    max-width: 90%;
-    min-width: 0%;
-
-
-    img {
-        width: 150px; /* Ajusta el tamaño de la foto de perfil */
+  flex-direction: column;
+//   align-items: center;
+  justify-content: center;
+  height: 100%;
+  border: 2px solid rgba(116, 116, 116, 0.506);
+  padding: 20px;
+  margin: 5% auto; /* Center the container horizontally */
+  border-radius: 2%;
+  max-width: 800px; /* Set a maximum width for the container */
+  width: 100%; /* Allow the container to take the full width if smaller than max-width */
+    .name {
         height: 150px;
+        // margin-right: 40%;
+        // margin-left: -40%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 400%;
+        margin-top: 5%;
+        border-radius: 10px;
+    }
+    img {
+        width: 400px; /* Ajusta el tamaño de la foto de perfil */
+        height: 400px;
         border-radius: 50%; /* Hace que la imagen sea redonda */
-        margin-top: 10%;
+        // margin-top: 10%;
+        margin-left: 25%;
     }
 
     input[type='file'] {
@@ -132,14 +147,16 @@
     grid-template-columns: auto 1fr;
     grid-column-gap: 0.5rem; /*  (X-axis) */
     grid-row-gap: 0.5rem; /*  (Y-axis) */
-    max-width: 90%;
+    max-width: max-content;
+    min-height: 80rem;
 }
 
 /* Update .typechecks label class */
 .typechecks label {
-    display: block; /* Use flexbox to align checkbox and label horizontally */
+    display: flex; /* Use flexbox to align checkbox and label horizontally */
+    flex-direction: column;
     align-items: center; /* Center items vertically within the flex container */
-    margin-left: 1%;
+    // margin-left:%;
     // padding: px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -149,4 +166,74 @@
 .typechecks label:hover {
     background-color: #a1a1a1;
 }
+.typechecks input[type='checkbox'] {
+    display: none;
+    width: 0;
+    height: 0;
+}
+.typechecks input[type='number'] {
+    width: 13rem;
+    height: max-content;
+    padding: 1%;
+    margin-bottom: 2%;
+    border-radius: 10%;
+    border: 1px solid#0974f1;
+}
+.typechecks input:checked {
+    box-shadow: 0 0 20px rgb(0, 119, 255);
+    border: 2px solid #0974f1;
+}
+.checkmark {
+    position: relative;
+    top: 0;
+    left: 0;
+    height: 1.3em;
+    width: 1.3em;
+    border: 2px solid #414141;
+    border-radius: 5px;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    margin: 5%;
+}
+.typechecks input:hover ~ .checkmark {
+    border: 2px solid #0974f1;
+}
 
+/* When the checkbox is checked */
+.typechecks input:checked ~ .checkmark {
+    box-shadow: 0 0 20px rgb(9, 117, 241);
+    border: 2px solid #0974f1;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.typechecks input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.typechecks .checkmark:after {
+    left: 0.35em;
+    top: 0.115em;
+    width: 0.25em;
+    height: 0.5em;
+    border: solid rgb(45, 221, 252);
+    border-width: 0 0.15em 0.15em 0;
+    transform: rotate(45deg);
+}
+.edit {
+    margin-top: 20px;
+    margin-bottom: 5%;
+    padding: 1%;
+    border-radius: 5px;
+    font-family: var(--font-poppins);
+}
+.offerlabel{
+    border-bottom: 1px solid black;
+    margin: 1%;
+}
