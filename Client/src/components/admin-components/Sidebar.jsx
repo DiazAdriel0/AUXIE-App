@@ -30,7 +30,7 @@ const Sidebar = () => {
                             : 'text-neutral-700 text-lg'
                     }
                 >
-                    Auxie
+                    Auxie Admin
                 </span>
             </div>
             <div className='flex-1 py-8 flex flex-col gap-0.5'>

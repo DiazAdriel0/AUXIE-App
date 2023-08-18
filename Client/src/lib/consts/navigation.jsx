@@ -17,47 +17,49 @@ export const DASHBOARD_SIDEBAR_LINKS = [
         icon: <HiOutlineViewGrid />,
     },
     {
-        key: 'products',
-        label: 'Products',
-        path: '/dashboard/products',
+        key: 'auxies',
+        label: 'Auxies',
+        path: '/dashboard/auxies',
         icon: <HiOutlineCube />,
     },
-    {
-        key: 'orders',
-        label: 'Orders',
-        path: '/orders',
-        icon: <HiOutlineShoppingCart />,
-    },
+
     {
         key: 'customers',
-        label: 'Customers',
-        path: '/customers',
+        label: 'Clientes',
+        path: '/dashboard/clientes',
         icon: <HiOutlineUsers />,
     },
     {
-        key: 'transactions',
-        label: 'Transactions',
-        path: '/transactions',
-        icon: <HiOutlineDocumentText />,
+        key: 'services',
+        label: 'Servicios',
+        path: '/dashboard/servicios',
+        icon: <HiOutlineShoppingCart />,
     },
     {
-        key: 'messages',
-        label: 'Messages',
-        path: '/messages',
+        key: 'transactions',
+        label: 'Transacciones',
+        path: '/dashboard/transacciones',
+        icon: <HiOutlineDocumentText />,
+    },
+
+    {
+        key: 'notificaciones',
+        label: 'notificaciones',
+        path: '/dashboard/notificaciones',
         icon: <HiOutlineAnnotation />,
     },
 ]
 
 export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [
     {
-        key: 'settings',
-        label: 'Settings',
-        path: '/settings',
+        key: 'configuración',
+        label: 'Configuración',
+        path: '/dashboard/configuracion',
         icon: <HiOutlineCog />,
     },
     {
-        key: 'support',
-        label: 'Help & Support',
+        key: 'ayuda',
+        label: 'Ayuda & Soporte',
         path: '/support',
         icon: <HiOutlineQuestionMarkCircle />,
     },
