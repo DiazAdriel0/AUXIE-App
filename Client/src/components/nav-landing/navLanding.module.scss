@@ -6,6 +6,10 @@
     align-items: center;
     z-index: 30;
 
+    a:hover {
+        border-bottom: 1px solid var(--hover-color-dark);
+        transition: ease-in 0.5s;
+    }
     .containerLeft {
         display: flex;
         align-items: center;

@@ -12,10 +12,6 @@
         border-bottom: none;
         border-color: var(--hover-color-dark);
     }
-    a:hover {
-        border-bottom: 1px solid var(--hover-color-dark);
-        transition: ease-in 0.5s;
-    }
 
     button {
         color: var(--button-text-color-dark);
@@ -50,10 +46,7 @@
         border-bottom: none;
         border-color: var(--button-color-light);
     }
-    a:hover {
-        border-bottom: 1px solid var(--button-color-light);
-        transition: ease-in 0.5s;
-    }
+
     label {
         color: var(--text-color-light);
         transition: var(--transition-color);
