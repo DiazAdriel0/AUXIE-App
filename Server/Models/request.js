@@ -37,7 +37,7 @@ const requestSchema = new Schema({
     status: {
         type: String,
         default: 'pending',
-        enum: ['pending', 'done', 'approved', 'declined', 'cancelled', 'proposal'],
+        enum: ['pending', 'done', 'approved', 'declined', 'cancelled', 'proposal', 'cancelledByAuxie'],
     },
     paymentMethod: {
         type: String,
