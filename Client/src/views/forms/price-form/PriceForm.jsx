@@ -77,9 +77,9 @@ const PriceForm = ({ id }) => {
                 <option defaultValue disabled>
                     Estado
                 </option>
-                <option value='pending'>Revisar</option>
+                <option value='proposal'>Revisar</option>
                 <option value='approved'>Aprobar presupuesto</option>
-                <option value='cancelled'>Cancelar</option>
+                <option value='declined'>Cancelar</option>
                 <option value='done'>Terminado</option>
             </select>
 
