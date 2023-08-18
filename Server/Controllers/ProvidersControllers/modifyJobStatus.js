@@ -4,6 +4,7 @@ const Request = require('./../../Models/request')
 
 const modifyJobStatus = async (req) => {
     const { id, consumerId, providerId, status } = req.body
+    console.log(status)
     try {
         const request = await Request.findById(id)
         const consumer = await Consumer.findById({ _id: consumerId })
