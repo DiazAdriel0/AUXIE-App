@@ -1,19 +1,21 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { DateTime } from 'luxon'
 import style from './clientRequiredServices.module.scss'
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
 import ClientRequiredService from '../clientRequiredService/ClientRequiredService'
+import ReviewForm from '../../views/forms/review-form/ReviewForm'
 import Swal from 'sweetalert2'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { updateConsumer, setServiceStatus } from '../../redux/actions/actions'
 
 const ClientRequiredServices = () => {
     const dispatch = useDispatch()
     const client = useSelector((state) => state.loggedUser)
-    const navigate = useNavigate()
     const [cards, setCards] = useState(false)
     const [updated, setUpdated] = useState(false)
+    const targetRef = useRef(null)
+    const [showForm, setShowForm] = useState(false)
+    const [shouldCloseForm, setShouldCloseForm] = useState(false)
     const translated = {
         approved: 'Aprobado',
         cancelled: 'Rechazado',
@@ -23,11 +25,21 @@ const ClientRequiredServices = () => {
         proposal: 'Propuesta',
     }
 
+    const handleClickOutside = (event) => {
+        if (
+            shouldCloseForm &&
+            targetRef.current &&
+            !targetRef.current.contains(event.target)
+        ) {
+            setShowForm(false)
+            setShouldCloseForm(false)
+        }
+    }
+
     const handleSwitch = () => {
         if (cards) return setCards(false)
         if (!cards) return setCards(true)
     }
-
 
     const handleProposal = (status, service, provider) => {
         const data = {
@@ -42,7 +54,12 @@ const ClientRequiredServices = () => {
     }
 
     const handleClick = (e) => {
-        if (e.target.innerText === 'Valorar') return navigate('/review')
+        if (e.target.innerText === 'Valorar') {setShowForm(true)
+            setShouldCloseForm(false)
+            setTimeout(() => {
+                setShouldCloseForm(true)
+            }, 100)}
+        
         if (e.target.innerText === 'Efectivo')
             return Swal.fire('Pagar en efectivo')
         if (e.target.innerText === 'Cancelado')
@@ -53,11 +70,26 @@ const ClientRequiredServices = () => {
             return Swal.fire('El auxie ha cancelado tu pedido')
     }
 
+    
+    useEffect(() => {
+        document.addEventListener('click', handleClickOutside)
+        return () => {
+            document.removeEventListener('click', handleClickOutside)
+        }
+    }, [shouldCloseForm, client])
+
     useEffect(() => {
         dispatch(updateConsumer(client.userUid))
     },[updated])
     return (
         <>
+            {showForm && (
+                <div className={style.reviewFormContainer}>
+                    <div className={style.reviewForm} ref={targetRef}>
+                        <ReviewForm />
+                    </div>
+                </div>
+            )}
             <button onClick={handleSwitch}>Switch</button>
             {cards ? (
                 <div className={style.clientServicesCards}>
@@ -105,7 +137,7 @@ const ClientRequiredServices = () => {
                                 <td>{DateTime.fromISO(service.requestDate)?.toLocaleString(DateTime.DATE_MED)}</td>
                                 <td>{service.jobDate}</td>
                                 <td>{service.paymentMethod}</td>
-                                <td>
+                                <td className={style.actionButton}>
                                     {service.status === 'done' && (
                                         <button onClick={handleClick}>
                                             Valorar
