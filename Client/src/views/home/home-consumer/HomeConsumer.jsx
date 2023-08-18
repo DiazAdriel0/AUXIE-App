@@ -2,7 +2,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import Swal from 'sweetalert2'
 import { useLocation } from 'react-router-dom'
 
 // estilos
@@ -12,7 +11,6 @@ import style from './homeConsumer.module.scss'
 import Cards from '../../../components/cards/Cards'
 import Filters from '../../../components/filters/Filters'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
-// import ClientRequiredServices from '../../../components/clientRequiredServices/ClientRequiredServices'
 
 //actions
 import { resetAuxiesCatalog } from '../../../redux/actions/actions'
@@ -25,7 +23,6 @@ const HomeConsumer = () => {
     const navigate = useNavigate()
     const user = useSelector((state) => state.loggedUser)
     const isConsumer = Object.keys(user).includes('requiredServices')
-    // const isOtro = !user.gender ? true : user.gender === 'Otro' ? true : false
 
     const location = useLocation()
     if (location.state) {
@@ -64,14 +61,6 @@ const HomeConsumer = () => {
                             </div>
                         </div>
                     </div>
-                    {/* <div className={style.servicesTitleCont}>
-                        <h2 className={style.servicesTitle}>
-                            Servicios contratados
-                        </h2>
-                    </div>
-                    <div className={style.services}>  
-                        { <ClientRequiredServices/> } // Componente que muestra los objectos de la propiedad requiredServices del usuario, falta agregarles servicios a los usuarios
-                    </div> */}
                     <footer className={style.footer}>
                         <div className={style.footerInfo}>
                             <Link to={'/aboutUs'}>
