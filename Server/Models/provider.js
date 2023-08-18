@@ -5,6 +5,10 @@ const providerSchema = new Schema({
         type: Boolean,
         default: true,
     },
+    firstLogin: {
+        type: Boolean,
+        default: true,
+    },
 
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },

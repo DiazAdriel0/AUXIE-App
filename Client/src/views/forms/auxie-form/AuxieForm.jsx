@@ -45,10 +45,24 @@ const Form = () => {
         try {
             const response = await axios.post('/providers/', input)
             if (response) {
+                let welcome
+                switch (response.data.gender) {
+                    case 'Masculino':
+                        welcome = 'Bienvenido'
+                        break
+                    case 'Femenino':
+                        welcome = 'Bienvenida'
+                        break
+                    case 'Otro':
+                        welcome = 'Bienvenide'
+                        break
+                    default:
+                        welcome = 'Bienvenidx'
+                }
                 setAccess(true)
                 const form = document.getElementById('form')
                 form.reset()
-                Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
+                Swal.fire(`Usuario creado con exito. ${welcome} a Auxie!`)
             }
         } catch (error) {
             let er = error.response.data.error

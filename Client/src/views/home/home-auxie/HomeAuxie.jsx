@@ -9,9 +9,11 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import { loggedUser } from '../../../redux/actions/actions'
 //Hooks
+import useNotify from './../../../hooks/useNotify'
 
 const HomeAuxie = () => {
     const logged = useSelector((state) => state.loggedUser)
+    const { sendNotification } = useNotify(logged.userUid)
     const lastJobs = logged.reviews?.slice(0, 4)
 
     const { services } = logged
@@ -26,7 +28,28 @@ const HomeAuxie = () => {
             console.log(error.message)
         }
     }
+
     useEffect(() => {
+        let welcome
+        switch (logged.gender) {
+            case 'Masculino':
+                welcome = 'Bienvenido'
+                break
+            case 'Femenino':
+                welcome = 'Bienvenida'
+                break
+            case 'Otro':
+                welcome = 'Bienvenide'
+                break
+            default:
+                welcome = 'Bienvenidx'
+        }
+        if (logged.firstLogin) {
+            sendNotification(
+                `${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu bio`
+            )
+            axios.put('/providers/firstLogin', { id: logged.id })
+        }
         handleRefresh()
     }, [])
     return (
