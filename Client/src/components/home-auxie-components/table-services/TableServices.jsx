@@ -70,7 +70,7 @@ const TableServices = () => {
             consumerId: service.clientId,
         }
 
-        /* dispatch(setServiceStatus(data)) */ //descomentar cuando se agregue lo de consumer a AddJobs
+        dispatch(setServiceStatus(data))
     }
 
     return (
