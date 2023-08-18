@@ -70,7 +70,7 @@ const TableServices = () => {
             consumerId: service.clientId,
         }
 
-        /* dispatch(setServiceStatus(data)) */ //descomentar cuando se agregue lo de consumer a AddJobs
+        // dispatch(setServiceStatus(data))
     }
 
     return (
@@ -121,7 +121,7 @@ const TableServices = () => {
 
                                             handleStatus(e, service)
                                         }}
-                                        value='aceptado'
+                                        value='approved'
                                     >
                                         Aceptar
                                     </button>
@@ -138,7 +138,7 @@ const TableServices = () => {
                                             setSent(true)
                                             handleStatus(e, service)
                                         }}
-                                        value='rechazado'
+                                        value='declined'
                                     >
                                         Rechazar
                                     </button>
