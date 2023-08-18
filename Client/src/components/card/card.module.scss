@@ -2,6 +2,7 @@
     background-color: rgba(162, 155, 227, 0.515);
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
     border: 1px solid var(--secondary--color-hover);
     border-radius: 1.5%;
@@ -18,9 +19,8 @@
 .contPersonal {
     display: flex;
     width: 90%;
+    height: 20%;
     margin: 5%;
-    // gap: 1%;
-    // padding: 5%;
 }
 
 .info {
@@ -39,7 +39,6 @@
     display: flex;
     justify-content: flex-start;
     width: 50%;
-
     img {
         object-fit: cover;
         border-radius: 2%;
@@ -54,19 +53,14 @@
     border-bottom: 1px solid blue;
     overflow: scroll;
     height: 40%;
-    justify-content: space-between;
-    margin-bottom: 10%;
+    justify-content: flex-start;
 }
 .contServices::-webkit-scrollbar {
     display: none;
 }
 
 .serviceDiv {
-    // white-space: pre-wrap;
-    // overflow-y: scroll;
-
-    // width: 100%;
-    margin-left: 1%;
+    width: 50%;
     font-size: 0.9rem;
     padding: 3%;
 }
@@ -90,6 +84,7 @@
 }
 
 .button {
+
     width: 8.5em;
     height: 2.9em;
     border-radius: 7px;
@@ -101,6 +96,6 @@
 
 .noServices {
     display: flex;
-    margin-left: 25%;
     align-items: center;
+    padding-left: 25%;
 }
