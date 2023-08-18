@@ -47,9 +47,15 @@ const JobRequestForm = ({ services, recipient }) => {
         try {
             const response = await axios.put(`/providers/addJob/${id}`, value)
             if (response) {
-                const form = document.getElementById('form')
-                form.reset()
                 Swal.fire('Cita solicitada!')
+                setValue({
+                    clientId: client.id,
+                    service: '',
+                    jobDate: '',
+                    jobTime: '',
+                    description: '',
+                    paymentMethod: '',
+                })
             }
         } catch (error) {
             console.log(error + error.response.data.error)
@@ -84,7 +90,7 @@ const JobRequestForm = ({ services, recipient }) => {
                             <DatePicker
                                 className={style.picker}
                                 disablePast
-                                value={value}
+                                value={value.jobDate}
                                 onChange={(date) =>
                                     setValue((previousvalue) => ({
                                         ...previousvalue,
@@ -104,7 +110,7 @@ const JobRequestForm = ({ services, recipient }) => {
                             <label>Elige horario</label>
                             <TimePicker
                                 className={style.picker}
-                                value={value}
+                                value={value.jobTime}
                                 onChange={(time) =>
                                     setValue((previousvalue) => ({
                                         ...previousvalue,
@@ -201,7 +207,7 @@ const JobRequestForm = ({ services, recipient }) => {
                             endIcon={<SendIcon />}
                             type="submit"
                         >
-                         Enviar
+                            Enviar
                         </Button>
                     </form>
                 </div>

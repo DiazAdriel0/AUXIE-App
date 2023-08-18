@@ -125,14 +125,14 @@ const ClientForm = () => {
                 <div className={style.formtitle}>
                     <h3>Bienvenido a Auxie! Completa tu registro ahora!</h3>
                 </div>
-                <form id="form" onSubmit={handleSubmit}>
+                <form id='form' onSubmit={handleSubmit}>
                     <div className={style.forminput}>
                         <label>Nombre: </label>
                         <input
-                            name="firstName"
-                            type="text"
+                            name='firstName'
+                            type='text'
                             className={style.textInput}
-                            placeholder="Nombre"
+                            placeholder='Nombre'
                             onChange={handleChange}
                         ></input>
                         <div className={style.errors}>
@@ -142,10 +142,10 @@ const ClientForm = () => {
                     <div className={style.forminput}>
                         <label>Apellido: </label>
                         <input
-                            name="lastName"
-                            type="text"
+                            name='lastName'
+                            type='text'
                             className={style.textInput}
-                            placeholder="Apellido"
+                            placeholder='Apellido'
                             onChange={handleChange}
                         ></input>
                         <div className={style.errors}>
@@ -155,10 +155,10 @@ const ClientForm = () => {
                     <div className={style.forminput}>
                         <label>Edad: </label>
                         <input
-                            name="age"
-                            type="number"
+                            name='age'
+                            type='number'
                             className={style.textInput}
-                            placeholder="Edad"
+                            placeholder='Edad'
                             onChange={handleChange}
                         ></input>
                         <div className={style.errors}>
@@ -169,15 +169,15 @@ const ClientForm = () => {
                         <label>Género: </label>
                         <select
                             onChange={handleChange}
-                            name="gender"
+                            name='gender'
                             defaultValue={''}
                         >
-                            <option disabled value="">
+                            <option disabled value=''>
                                 Género
                             </option>
-                            <option value="Masculino">Masculino</option>
-                            <option value="Femenino">Femenino</option>
-                            <option value="Otro">Otro</option>
+                            <option value='Masculino'>Masculino</option>
+                            <option value='Femenino'>Femenino</option>
+                            <option value='Otro'>Otro</option>
                         </select>
 
                         <div className={style.errors}>
@@ -187,10 +187,10 @@ const ClientForm = () => {
                     <div className={style.forminput}>
                         <label>Nombre de usuario: </label>
                         <input
-                            name="username"
-                            type="text"
+                            name='username'
+                            type='text'
                             className={style.textInput}
-                            placeholder="Username"
+                            placeholder='Username'
                             onChange={handleChange}
                         ></input>
                         <div className={style.errors}>
@@ -200,10 +200,10 @@ const ClientForm = () => {
                     <div className={style.forminput}>
                         <label>Email: </label>
                         <input
-                            name="email"
-                            type="email"
+                            name='email'
+                            type='email'
                             className={style.textInput}
-                            placeholder="Email"
+                            placeholder='Email'
                             onChange={handleChange}
                         ></input>
                         <div className={style.errors}>
@@ -213,10 +213,10 @@ const ClientForm = () => {
                     <div className={style.forminput}>
                         <label>Contraseña: </label>
                         <input
-                            name="password"
-                            type="password"
+                            name='password'
+                            type='password'
                             className={style.textInput}
-                            placeholder="Password"
+                            placeholder='Password'
                             onChange={handleChange}
                         ></input>
                         <div className={style.errors}>
@@ -226,7 +226,7 @@ const ClientForm = () => {
 
                     <div className={style.submitbutton}>
                         <input
-                            type="submit"
+                            type='submit'
                             disabled={buttonDisabled()}
                         ></input>
                     </div>

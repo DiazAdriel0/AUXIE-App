@@ -7,7 +7,7 @@ const Footer = ({ myRef3 }) => {
         <footer ref={myRef3} className={style.landingFooter}>
             <img
                 src={CircleIconAuxie}
-                alt="circle icon"
+                alt='circle icon'
                 className={style.divFooterImg}
             />
             <div className={style.section}>
@@ -35,7 +35,7 @@ const Footer = ({ myRef3 }) => {
             </div>
             <div className={style.links}>
                 <p>
-                    <Link to="/aboutUs">Auxie Team</Link>
+                    <Link to='/aboutUs'>Auxie Team</Link>
                 </p>
                 <p>
                     <Link>Políticas de Privacidad</Link>

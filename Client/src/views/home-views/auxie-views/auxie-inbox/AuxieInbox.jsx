@@ -2,10 +2,8 @@ import style from './auxieInbox.module.scss'
 import NavGeneral from '../../../../components/nav-general/NavGeneral'
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 
-
 import Chatlist from '../../../../components/chatcomponents/chatlist'
 const AuxieInbox = () => {
-
     return (
         <div className={style.auxieInbox}>
             {/* Header */}
@@ -17,12 +15,11 @@ const AuxieInbox = () => {
             {/* Main */}
             <main className={style.main}>
                 <div className={style.services}>
-                <Chatlist/>
+                    <Chatlist />
                     <div className={style.inProgress}>
                         {/* <span>In Progress...</span> */}
-                        
+
                         {/* <Chat auxiedetails={auth.currentUser.uid}recipient={user.inbox[0].sender}/> */}
-                        
                     </div>
                 </div>
                 <div className={style.payments}>

@@ -11,14 +11,23 @@ import useNotify from '../../hooks/useNotify'
 
 const Card = (user) => {
     const dispatch = useDispatch()
-    const { id, lastName, firstName, averageRating, services, image, userUid, googleId } = user
+    const {
+        id,
+        lastName,
+        firstName,
+        averageRating,
+        services,
+        image,
+        userUid,
+        googleId,
+    } = user
     const consumer = useSelector((state) => state.loggedUser)
     const navigate = useNavigate()
     const [isFav, setIsFav] = useState(false)
 
     let recipient = userUid || googleId
-    const {sendNotification} = useNotify(recipient)
-    
+    const { sendNotification } = useNotify(recipient)
+
     const handleFavorite = () => {
         const remover = {
             consumerId: consumer.id,
@@ -31,7 +40,9 @@ const Card = (user) => {
         if (!isFav) {
             dispatch(addFavorite({ ...user, consumerId: consumer.id }))
             setIsFav(true)
-            sendNotification('¡Has sido añadido a los Auxies favoritos de alguien!')
+            sendNotification(
+                '¡Has sido añadido a los Auxies favoritos de alguien!'
+            )
         }
     }
 
@@ -53,9 +64,9 @@ const Card = (user) => {
                 <div className={style.profilePic}>
                     <img
                         src={image}
-                        alt="imagen de perfil"
-                        height="100px"
-                        width="100px"
+                        alt='imagen de perfil'
+                        height='100px'
+                        width='100px'
                     />
                 </div>
                 <div className={style.info}>
@@ -64,7 +75,12 @@ const Card = (user) => {
                         <p>{lastName}</p>
                     </div>
                     <div className={style.rating}>
-                    <Rating name="read-only" value={averageRating} readOnly precision={0.5}/>
+                        <Rating
+                            name='read-only'
+                            value={averageRating}
+                            readOnly
+                            precision={0.5}
+                        />
                     </div>
                 </div>
                 <div className={style.favorite}>

@@ -14,6 +14,8 @@ import {
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
     SET_STATUS,
+    UPDATE_CONSUMER,
+    UPDATE_PROVIDER,
 } from './actions/actionTypes'
 
 let initialState = {
@@ -51,10 +53,9 @@ function rootReducer(state = initialState, action) {
                     filter: action.payload,
                 }
             } else {
-                const filteredAuxies = 
-                    [...state.auxies].filter((aux) =>
-                        aux.services.some((serv) => serv.name === action.payload)
-                    )
+                const filteredAuxies = [...state.auxies].filter((aux) =>
+                    aux.services.some((serv) => serv.name === action.payload)
+                )
                 return {
                     ...state,
                     filter: action.payload,
@@ -63,31 +64,27 @@ function rootReducer(state = initialState, action) {
             }
         // ordena el estado filteredAuxies por precio del servicio (solo se puede ordenar si todos los auxies de mi estado tienen un servicio en común)
         case ORDER_AUXIES_BY_PRICE:
-                if (action.payload === 'asc') {
-                    let ascFilter = [...state.filteredAuxies].sort(
-                        (prev, next) =>
-                            prev.services.find(
-                                (obj) => obj.name === state.filter
-                            ).price -
-                            next.services.find(
-                                (obj) => obj.name === state.filter
-                            ).price
-                    )
-                    return { ...state, filteredAuxies: [...ascFilter] }
-                } else if (action.payload === 'desc'){
-                    let descFilter = [...state.filteredAuxies].sort(
-                        (prev, next) =>
-                            next.services.find(
-                                (obj) => obj.name === state.filter
-                            ).price -
-                            prev.services.find(
-                                (obj) => obj.name === state.filter
-                            ).price
-                    )
-                    return { ...state, filteredAuxies: [...descFilter] }
-                } else {
-                    return {state, auxies: [...state.backupAuxies] }
-                }
+            if (action.payload === 'asc') {
+                let ascFilter = [...state.filteredAuxies].sort(
+                    (prev, next) =>
+                        prev.services.find((obj) => obj.name === state.filter)
+                            .price -
+                        next.services.find((obj) => obj.name === state.filter)
+                            .price
+                )
+                return { ...state, filteredAuxies: [...ascFilter] }
+            } else if (action.payload === 'desc') {
+                let descFilter = [...state.filteredAuxies].sort(
+                    (prev, next) =>
+                        next.services.find((obj) => obj.name === state.filter)
+                            .price -
+                        prev.services.find((obj) => obj.name === state.filter)
+                            .price
+                )
+                return { ...state, filteredAuxies: [...descFilter] }
+            } else {
+                return { state, auxies: [...state.backupAuxies] }
+            }
         //ordena el estado filteredAuxies por calificación independientemente del filtrado
         case ORDER_AUXIES_BY_RATING:
             if (action.payload === 'asc') {
@@ -125,8 +122,7 @@ function rootReducer(state = initialState, action) {
                     auxies: [...ascAuxies],
                 }
             } else {
-                return { ...state,
-                auxies: [...state.backupAuxies] }
+                return { ...state, auxies: [...state.backupAuxies] }
             }
         // switch para verificar si el usuario se encuentra en la pantalla de logIn o Register
         case MENU_OPEN:
@@ -184,14 +180,23 @@ function rootReducer(state = initialState, action) {
                 nightMode: action.payload,
             }
         case SET_STATUS:
-
             return {
                 ...state,
-                loggedUser:{
+                loggedUser: {
                     ...state.loggedUser,
-                    jobs:action.payload,
-                }
+                    jobs: action.payload,
+                },
             }
+            case UPDATE_CONSUMER:
+                return {
+                    ...state,
+                    loggedUser: action.payload
+                }
+            case UPDATE_PROVIDER:
+                return {
+                    ...state,
+                    loggedUser: action.payload
+                }
         // caso por defecto si por alguna razón no recibe action.type
         default:
             return {

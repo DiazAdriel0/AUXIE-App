@@ -166,21 +166,18 @@ const ProfileAuxies = () => {
         <>
             <NavGeneral />
             <div className={style.fullProfileContainer}>
-           
                 <div className={style.profilecontainer}>
-                <div className={style.secondcontainer}>
-                <button
-                            type="button"
+                    <div className={style.secondcontainer}>
+                        <button
+                            type='button'
                             className={style.edit}
                             onClick={handleEdit}
                         >
                             Editar perfil
                         </button>
+
                     <div>
-                        <h1>
-                            {provider.firstName} {provider.lastName}
-                        </h1>
-                        <img
+                    <img
                             src={provider.image.secure_url}
                             alt="imagen de perfil"
                         />
@@ -189,108 +186,143 @@ const ProfileAuxies = () => {
                             accept=".jpg, .png"
                             onChange={handleImageChange}
                         />}
+                        <h1>
+                            {provider.firstName} {provider.lastName}
+                        </h1>
+                     
                         {error && <p style={{ color: 'red' }}>{error}</p>}
 
-                        <h4>Género: {provider.gender}</h4>
-                        <h3>
-                            Email: {provider.email}{' '}
-                            {edit && <button onClick={() => navigate('/resetpassword')}>
-                                Cambiar contraseña
-                            </button>}
-                        </h3>
-                        <h3>Descripción:</h3>
-                        <textarea value={newBio} onChange={handleBioChange} />
-                        <h6>Te uniste: {toDateMed}</h6>
-                        <div> 
-                            <h5>Servicios que ofrece:{!edit && offer.map((service) => (
-                                 <label
-                                 key={service.name}
-                                 className={style.offerlabel}
-                             > {service.name} </label>
-                            ))} </h5>
-                            
-                            {edit &&<div className={style.typechecks}>
-                                {allServices.map((service) => (
-                                    <label
-                                        key={service.name}
-                                        className={style.servicelabel}
+
+                            <h4>Género: {provider.gender}</h4>
+                            <h3>
+                                Email: {provider.email}{' '}
+                                {edit && (
+                                    <button
+                                        onClick={() =>
+                                            navigate('/resetpassword')
+                                        }
                                     >
-                                        <input
-                                            type="checkbox"
-                                            value={service.name}
-                                            checked={serviceUpdate.services.some(
-                                                (selectedService) =>
-                                                    selectedService.name ===
-                                                    service.name
-                                            )}
-                                            onChange={(e) => handleSelect(e)}
-                                        />{' '}
-                                        <div className={style.checkmark}></div>
-                                        {service.name}
-                                        {serviceUpdate.services.some(
-                                            (selectedService) =>
-                                                selectedService.name ===
-                                                service.name
-                                        ) && (
-                                            <input
-                                                type="number"
-                                                placeholder="Tarifa del servicio"
-                                                value={getPriceForService(
-                                                    service.name
-                                                )}
-                                                onChange={(e) =>
-                                                    handlePriceChange(
-                                                        e,
+                                        Cambiar contraseña
+                                    </button>
+                                )}
+                            </h3>
+                            <h3>Descripción:</h3>
+                            <textarea
+                                value={newBio}
+                                onChange={handleBioChange}
+                            />
+                            <h6>Te uniste: {toDateMed}</h6>
+                            <div>
+                                <h5>
+                                    Servicios que ofrece:
+                                    {!edit &&
+                                        offer.map((service) => (
+                                            <label
+                                                key={service.name}
+                                                className={style.offerlabel}
+                                            >
+                                                {' '}
+                                                {service.name}{' '}
+                                            </label>
+                                        ))}{' '}
+                                </h5>
+
+                                {edit && (
+                                    <div className={style.typechecks}>
+                                        {allServices.map((service) => (
+                                            <label
+                                                key={service.name}
+                                                className={style.servicelabel}
+                                            >
+                                                <input
+                                                    type='checkbox'
+                                                    value={service.name}
+                                                    checked={serviceUpdate.services.some(
+                                                        (selectedService) =>
+                                                            selectedService.name ===
+                                                            service.name
+                                                    )}
+                                                    onChange={(e) =>
+                                                        handleSelect(e)
+                                                    }
+                                                />{' '}
+                                                <div
+                                                    className={style.checkmark}
+                                                ></div>
+                                                {service.name}
+                                                {serviceUpdate.services.some(
+                                                    (selectedService) =>
+                                                        selectedService.name ===
                                                         service.name
-                                                    )
-                                                }
-                                            />
-                                        )}
-                                    </label>
-                                ))}
-                            </div>}
-                            <h5>Trabajos realizados: </h5>
-                            <h5>Calificaciones: </h5>
-                            <h5>
-                                Calificación Promedio: {provider.averageRating}
-                            </h5>
-                            <h5>Reseñas:</h5>
-                        </div>
-                        <div className="gallery-container">
-                            <h5>Fotos de tus trabajos realizados:</h5>
-                            {edit &&<input
-                                type="file"
-                                accept=".jpg, .png"
-                                multiple
-                                onChange={handleAddPhoto}
-                            />}
-                            <ul>
-                                {gallery.map((photo, index) => (
-                                    <li className="gallery-item" key={index}>
-                                        <img
-                                            src={URL.createObjectURL(photo)}
-                                            alt={`Photo ${index}`}
-                                        />
-                                        <button
-                                            className="delete-button"
-                                            onClick={() =>
-                                                handleRemovePhoto(index)
-                                            }
+                                                ) && (
+                                                    <input
+                                                        type='number'
+                                                        placeholder='Tarifa del servicio'
+                                                        value={getPriceForService(
+                                                            service.name
+                                                        )}
+                                                        onChange={(e) =>
+                                                            handlePriceChange(
+                                                                e,
+                                                                service.name
+                                                            )
+                                                        }
+                                                    />
+                                                )}
+                                            </label>
+                                        ))}
+                                    </div>
+                                )}
+                                <h5>Trabajos realizados: </h5>
+                                <h5>Calificaciones: </h5>
+                                <h5>
+                                    Calificación Promedio:{' '}
+                                    {provider.averageRating}
+                                </h5>
+                                <h5>Reseñas:</h5>
+                            </div>
+                            <div className='gallery-container'>
+                                <h5>Fotos de tus trabajos realizados:</h5>
+                                {edit && (
+                                    <input
+                                        type='file'
+                                        accept='.jpg, .png'
+                                        multiple
+                                        onChange={handleAddPhoto}
+                                    />
+                                )}
+                                <ul>
+                                    {gallery.map((photo, index) => (
+                                        <li
+                                            className='gallery-item'
+                                            key={index}
                                         >
-                                            X
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
+                                            <img
+                                                src={URL.createObjectURL(photo)}
+                                                alt={`Photo ${index}`}
+                                            />
+                                            <button
+                                                className='delete-button'
+                                                onClick={() =>
+                                                    handleRemovePhoto(index)
+                                                }
+                                            >
+                                                X
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            {edit && (
+                                <button
+                                    className={style.updatebutton}
+                                    onClick={handleUpdateProfile}
+                                >
+                                    Guardar Cambios
+                                </button>
+                            )}
                         </div>
-                        {edit &&<button
-                            className={style.updatebutton}
-                            onClick={handleUpdateProfile}
-                        >
-                            Guardar Cambios
-                        </button>}
                     </div>
-                </div>
                 </div>
             </div>
         </>

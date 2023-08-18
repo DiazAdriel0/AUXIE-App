@@ -99,8 +99,8 @@ export const Chat = ({ recipient }) => {
     }
 
     return (
-        <div className="chat-app">
-            <div className="header"></div>
+        <div className='chat-app'>
+            <div className='header'></div>
 
             <div className={style.messages}>
                 {messages.map((message) => (
@@ -132,13 +132,13 @@ export const Chat = ({ recipient }) => {
             </div>
             <form onSubmit={handleSubmit} className={style.chatform}>
                 <input
-                    type="text"
+                    type='text'
                     value={newMessage}
                     onChange={(event) => setNewMessage(event.target.value)}
                     className={style.messageinput}
-                    placeholder="Type your message here..."
+                    placeholder='Type your message here...'
                 />
-                <button type="submit" className={style.send}>
+                <button type='submit' className={style.send}>
                     Send
                 </button>
             </form>

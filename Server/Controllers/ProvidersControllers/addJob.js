@@ -1,6 +1,7 @@
 /* eslint-disable no-prototype-builtins */
 const Provider = require('./../../Models/provider')
 const Consumer = require('./../../Models/consumer')
+const Request = require('./../../Models/request')
 
 const addJob = async (newPendingService, id) => {
     const { service, description, clientId, jobDate, paymentMethod } =
@@ -10,12 +11,12 @@ const addJob = async (newPendingService, id) => {
         const consumerFound = await Consumer.findById(clientId)
 
         const price = providerFound.services?.find(
-            (service) => service.service === service
+            (serviceOnArray) => serviceOnArray?.name === service
         )?.price
-        let clientUid= consumerFound.userUid || consumerFound.googleId
-    
+
+        let clientUid = consumerFound.userUid || consumerFound.googleId
+
         const addedJob = {
-            id: 1,
             isActive: true,
             description,
             service,
@@ -31,14 +32,23 @@ const addJob = async (newPendingService, id) => {
             paymentMethod,
         }
 
+        const request = await Request.create(addedJob)
+
+        addedJob.id = request._id.toString()
+
         if (providerFound.jobs?.length > 0) {
-            addedJob.id =
-                Number(providerFound.jobs[providerFound.jobs.length - 1].id) + 1
             providerFound.jobs.push(addedJob)
         } else {
             providerFound.jobs = [addedJob]
         }
 
+        if (consumerFound.requiredServices?.length > 0) {
+            consumerFound.requiredServices.push(addedJob)
+        } else {
+            consumerFound.requiredServices = [addedJob]
+        }
+
+        await consumerFound.save()
         await providerFound.save()
 
         return providerFound

@@ -1,9 +1,6 @@
 // clientLogin.module.scss
 
 .form {
-    
-   
-
     .formtitle {
         font-size: x-large;
     }
@@ -80,26 +77,29 @@
     border-radius: 8px;
     padding: 3rem; /* Ajusta el espacio alrededor del formulario */
     height: 45%;
-    button{
+    button {
         color: black;
         border-radius: 5px;
         border: 2px solid rgba(0, 0, 0, 0.418);
         padding: 0.5em;
         margin-top: 1rem;
-        
-          
     }
     button:hover {
-        background-image: linear-gradient(90deg, #53cbef 0%, #dcc66c 50%, #ffa3b6 75%, #53cbef 100%);
+        background-image: linear-gradient(
+            90deg,
+            #53cbef 0%,
+            #dcc66c 50%,
+            #ffa3b6 75%,
+            #53cbef 100%
+        );
         animation: slidernbw 5s linear infinite;
         color: white;
-
-       }
+    }
     @keyframes slidernbw {
         to {
-         background-position: 20vw;
+            background-position: 20vw;
         }
-       }
+    }
 }
 
 /* Estilos para el fondo solo en el path actual */

@@ -1,7 +1,7 @@
 import ProfileConsumers from '../profileConsumers/ProfileConsumers'
 import ProfileAuxies from '../profileAuxies/ProfileAuxies'
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'  // Link
+import { useNavigate } from 'react-router-dom' // Link
 import { useSelector } from 'react-redux'
 // import style from './ProfilePage.module.scss'
 
@@ -22,7 +22,6 @@ const ProfilePage = () => {
                         {/* <Link to="/homeauxie">
                             <button className={style.back}>Volver</button>
                         </Link> */}
-                        
                     </div>
                 ) : (
                     <div>
@@ -30,8 +29,6 @@ const ProfilePage = () => {
                             <button className={style.back}>Volver</button>
                         </Link> */}
                         <ProfileConsumers />
-                        
-                        
                     </div>
                 )}
             </div>

@@ -17,6 +17,8 @@ import {
     ADD_FAVORITE,
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
+    UPDATE_CONSUMER,
+    UPDATE_PROVIDER,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -252,13 +254,43 @@ export function turnLightNightMode(boolean) {
     }
 }
 
-export function setServiceStatus (info){
+export function setServiceStatus(info) {
     return async function (dispatch) {
         try {
-            const res = await axios.put('/providers/jobUpdate',info)
+            const res = await axios.put('/providers/jobUpdate', info)
             return dispatch({
                 type: SET_STATUS,
                 payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
+
+// action para actualizar la info del usuario loggeado, falta la ruta del back
+
+export function updateConsumer(id) {
+    return async function(dispatch){
+        try {
+            const res = await axios.get(`/consumers/${id}`)
+            return(dispatch)({
+                type: UPDATE_CONSUMER,
+                payload:res.data
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+export function updateProvider(id) {
+    return async function(dispatch){
+        try {
+            const res = await axios.get(`/providers/${id}`)
+            return(dispatch)({
+                type: UPDATE_PROVIDER,
+                payload:res.data
             })
         } catch (e) {
             console.error(e.response.data)

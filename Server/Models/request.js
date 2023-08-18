@@ -1,7 +1,11 @@
 const { Schema, model } = require('mongoose')
 
 const requestSchema = new Schema({
-    consumerId: {
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
+    clientId: {
         type: String,
         required: true,
     },
@@ -9,16 +13,39 @@ const requestSchema = new Schema({
         type: String,
         required: true,
     },
-    serviceName: {
+    providerName: {
         type: String,
+        required: true,
+    },
+    requestDate: {
+        type: Date,
+        default: Date.now(),
+        immutable: true,
+    },
+    jobDate: {
+        type: String,
+        required: true,
+    },
+    service: {
+        type: String,
+        required: true,
+    },
+    price: {
+        type: Number,
         required: true,
     },
     status: {
         type: String,
         default: 'pending',
-        enum: ['pending', 'completed', 'declined'],
+        enum: ['pending', 'done', 'approved', 'declined', 'cancelled'],
     },
-    description: String,
+    paymentMethod: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+    },
 })
 
 const Request = model('Request', requestSchema)
