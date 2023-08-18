@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 const useNotify = (recipient) => {
     const user = useSelector((state) => state.loggedUser)
-    console.log('prueba')
+
     const conversationsRef = collection(db, 'notifications') // Change: Use 'conversations' collection
     const participants = [auth.currentUser?.uid, recipient]
     const conversationData = { participants }
