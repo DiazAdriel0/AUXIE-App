@@ -3,10 +3,15 @@ import { db, auth } from '../../config/firebase-config'
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore'
 import style from './notifications.module.scss'
 import {useSelector} from 'react-redux'
+import { useNavigate } from 'react-router'
+
 export const Notifications = () => {
+    const navigate = useNavigate()
+
     const [notifications, setNotifications] = useState([])
     const [loading, setLoading] = useState(true)
     const night = useSelector((state)=>state.nightMode)
+
     // Change: Use 'conversations' collection
     useEffect(() => {
         // Fetch or create a conversation document
@@ -37,6 +42,16 @@ export const Notifications = () => {
         if (notifications.length) setLoading(false)
     }, [notifications])
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const handleRedirect = (texto)=>{ 
+        navigate('/requestedservices')
+       /*  if (texto.includes('reseña')) {
+            // esta bien y funka, pero... hay que reveer
+            //solo lo puedo redirigir a RequestedServicies
+            //xq todo esta ahí 
+        } */
+    }
+
     return (
         <>
             {loading ? (
@@ -48,7 +63,10 @@ export const Notifications = () => {
                     </div>
                     <div className={night ? style.notificationcontainer : style.daycontainer}>
                         {notifications?.map((message) => (
-                            <div key={message.id} className={style.message}>
+                            <div key={message.id} className={style.message} 
+                                onClick={()=>{
+                                    handleRedirect(message.text)
+                                }} >    
                                 {message.text}
                             </div>
                         ))}
