@@ -1,18 +1,34 @@
 import style from './homeAuxie.module.scss'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 //Import components
 // import CardServices from '../../../components/card-services/CardServices'
 import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
-
+import axios from 'axios'
+import { useEffect } from 'react'
+import { loggedUser } from '../../../redux/actions/actions'
 //Hooks
 
 const HomeAuxie = () => {
-    const loggedUser = useSelector((state) => state.loggedUser)
-    const lastJobs = loggedUser.reviews?.slice(0, 4)
+    const logged = useSelector((state) => state.loggedUser)
+    const lastJobs = logged.reviews?.slice(0, 4)
 
-    const { services } = loggedUser
+    const { services } = logged
+    const dispatch = useDispatch()
+    const handleRefresh = async () => {
+        try {
+            const response = await axios.get(`/providers/${logged.id}`)
+            if (response) {
+                dispatch(loggedUser(response.data))
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    useEffect(() => {
+        handleRefresh()
+    }, [])
     return (
         <div className={style.home}>
             {/* Header */}
