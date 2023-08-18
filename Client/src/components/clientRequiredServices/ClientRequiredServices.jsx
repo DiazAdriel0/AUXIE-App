@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { DateTime } from 'luxon'
 import style from './clientRequiredServices.module.scss'
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
 import ClientRequiredService from '../clientRequiredService/ClientRequiredService'
@@ -77,7 +78,7 @@ const ClientRequiredServices = () => {
                                 <td>{service.description}</td>
                                 <td>{translated[service.status]}</td>
                                 <td>{`$${service.price}`}</td>
-                                <td>{service.requestDate}</td>
+                                <td>{DateTime.fromISO(service.requestDate)?.toLocaleString(DateTime.DATE_MED)}</td>
                                 <td>{service.jobDate}</td>
                                 <td>{service.paymentMethod}</td>
                                 <td>

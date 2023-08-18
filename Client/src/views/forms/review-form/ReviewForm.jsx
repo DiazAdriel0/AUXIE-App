@@ -1,5 +1,5 @@
 import { Button, MenuItem, Rating, TextField } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import StarIcon from '@mui/icons-material/Star'
 import { useSelector } from 'react-redux'
@@ -9,6 +9,8 @@ import SendIcon from '@mui/icons-material/Send'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import useNotify from '../../../hooks/useNotify'
+
 const ReviewForm = () => {
     const navigate = useNavigate()
     const services = useSelector((state) => state.services)
@@ -16,12 +18,24 @@ const ReviewForm = () => {
 
     const [review, setReview] = useState({
         consumerId: user.id,
-        providerId: '',
+        providerId:'',
         serviceId: '',
         review: '',
         score: null,
     })
-    console.log(review)
+    
+    const [providerUid, setProviderUid] = useState('')
+    const [sent, setSent] = useState(false)
+    const { sendNotification } = useNotify(providerUid)
+    const [aux, setAux] = useState(false)
+    useEffect(()=>{
+        if(providerUid && sent){
+            console.log('te dieron reseña')
+            sendNotification(`${user.firstName} ${user.lastName} ha dejado una reseña sobre tu servicio.`)
+            setSent(false)
+        }
+    },[aux, providerUid])
+
     const handleInputChange = (event) => {
         const { name, value } = event.target
         setReview((previousValue) => ({ ...previousValue, [name]: value }))
@@ -80,8 +94,16 @@ const ReviewForm = () => {
             })
         }
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        
+        axios(`providers/${review.providerId}`).then(({data})=>{
+            if(data){
+                let uid= data.userUid || data.googleId
+            setProviderUid(uid)
+            }    
+        }).catch((error)=>{console.error(error.message)})
+ 
         handlePost()
     }
     return (
@@ -90,7 +112,7 @@ const ReviewForm = () => {
                 <h1>Califica a tu auxie</h1>
                 <div className={style.pickerContainer}>
                     <div>
-                        <label> Cual Auxie deseas calificar?</label>
+                        <label>¿A qué Auxie deseas calificar?</label>
                         <TextField
                             className={style.picker}
                             required
@@ -110,8 +132,6 @@ const ReviewForm = () => {
                                         key={auxie.id}
                                         value={auxie.providerId} // Cambio de 'auxie' a 'providerId'
                                     >
-                                        {' '}
-                                        {console.log(auxie)}
                                         {auxie.providerName}
                                     </MenuItem>
                                 ))
@@ -199,6 +219,12 @@ const ReviewForm = () => {
 
                 <center>
                     <Button
+                        onClick={
+                            ()=>{
+                            setAux(!aux)
+                            setSent(true)
+                            }
+                        }
                         className={style.send}
                         variant='contained'
                         endIcon={<SendIcon />}
