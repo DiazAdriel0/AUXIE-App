@@ -20,9 +20,11 @@ const ClientRequiredService = (job) => {
 
     const translated = {
         approved: 'Aprobado',
-        rejected: 'Rechazado',
+        cancelled: 'Rechazado',
         pending: 'Pendiente',
         done: 'Completado',
+        declined: 'Declinado',
+        proposal: 'Propuesta',
     }
 
     const handleClick = (e) => {
@@ -38,7 +40,7 @@ const ClientRequiredService = (job) => {
     const mercadoPago = paymentMethod === 'app'
     const completedJob = status === 'done'
     const approved = status === 'approved'
-    const rechazado = status === 'rejected'
+    const rechazado = status === 'cancelled'
     const pendiente = status === 'pending'
 
     return (
