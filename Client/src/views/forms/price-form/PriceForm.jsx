@@ -1,20 +1,15 @@
 import { useSelector } from 'react-redux'
 import style from './priceForm.module.scss'
-import { useEffect, useState } from 'react'
-
-/* 
-status(pin):"done"
-
-paymentMethod(pin):"efectivo" */
+import { useState } from 'react'
+import axios from 'axios'
+import useNotify from '../../../hooks/useNotify'
 
 const PriceForm = ({ id }) => {
     const loggedUser = useSelector((state) => state.loggedUser)
-    const serviceFound = loggedUser.jobs.find((job) => job.id === Number(id))
+    const serviceFound = loggedUser.jobs.find((job) => job.id === id)
     const [service, setService] = useState(serviceFound)
 
-    useEffect(() => {
-        console.log(service)
-    }, [service])
+    const { sendNotification } = useNotify(service.clientUid)
 
     const handleInputChange = (event) => {
         const { name, value } = event.target
@@ -32,9 +27,23 @@ const PriceForm = ({ id }) => {
         })
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        //Ejecutar ruta que modifica precio y estado de jobs (cliente y auxie)
+        try {
+            await axios.put('/providers/jobPriceUpdate', {
+                id: service.id,
+                consumerId: service.clientId,
+                providerId: loggedUser.id,
+                price: service.price,
+            })
+            sendNotification(
+                `El auxie ${loggedUser.firstName} ${loggedUser.lastName} ha enviado la propuesta a tu solicitud. Revisala para confirmar posibles cambios`
+            )
+            alert('Cambios realizados con exito')
+        } catch (error) {
+            console.error(error)
+            alert('No se han guardado los cambios')
+        }
     }
 
     return (

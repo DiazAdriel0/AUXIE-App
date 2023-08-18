@@ -2,14 +2,14 @@ const Provider = require('./../../Models/provider')
 const Consumer = require('./../../Models/consumer')
 const Request = require('./../../Models/request')
 
-const modifyJobStatus = async (req) => {
-    const { id, consumerId, providerId, status } = req.body
+const modifyJobPrice = async (req) => {
+    const { id, consumerId, providerId, price } = req.body
     try {
         const request = await Request.findById(id)
-        const consumer = await Consumer.findById({ _id: consumerId })
-        const provider = await Provider.findById({ _id: providerId })
+        const consumer = await Consumer.findById(consumerId)
+        const provider = await Provider.findById(providerId)
 
-        request.status = status
+        request.price = price
 
         await request.save()
 
@@ -17,7 +17,7 @@ const modifyJobStatus = async (req) => {
             if (job.id === id) {
                 let theJob = {
                     ...job,
-                    status: status,
+                    price,
                 }
                 return theJob
             } else {
@@ -28,7 +28,7 @@ const modifyJobStatus = async (req) => {
             if (service.id === id) {
                 let theService = {
                     ...service,
-                    status: status,
+                    price,
                 }
                 return theService
             } else {
@@ -51,4 +51,4 @@ const modifyJobStatus = async (req) => {
     }
 }
 
-module.exports = modifyJobStatus
+module.exports = modifyJobPrice
