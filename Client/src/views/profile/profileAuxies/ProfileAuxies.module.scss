@@ -12,7 +12,7 @@
     padding: 20px;
     margin: 5% auto; /* Center the container horizontally */
     border-radius: 2%;
-    max-width: 800px; /* Set a maximum width for the container */
+    max-width: 50%; /* Set a maximum width for the container */
     width: 100%; /* Allow the container to take the full width if smaller than max-width */
     .name {
         height: 150px;
@@ -84,7 +84,7 @@
     }
 
     div {
-        margin-top: 20px;
+        // margin-top: 20px;
 
         h5 {
             border: 1px solid #ccc;
@@ -144,23 +144,34 @@
 }
 .typechecks {
     display: grid;
-    grid-template-columns: auto 1fr;
-    grid-column-gap: 0.5rem; /*  (X-axis) */
-    grid-row-gap: 0.5rem; /*  (Y-axis) */
-    max-width: max-content;
-    min-height: 80rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 0.9rem;
+    grid-row-gap: 0.9rem;
+    height: 55rem;
+    width: 80%;
+    max-height: 55rem;
+    min-height: 55rem;
+    margin: 10%;
+    overflow-x:auto;
+   
+    
+   
 }
-
+.typechecksContainer{
+      max-width:99%;
+}
 /* Update .typechecks label class */
 .typechecks label {
-    display: flex; /* Use flexbox to align checkbox and label horizontally */
+    position: relative; /* Add relative positioning */
+    display: flex;
     flex-direction: column;
-    align-items: center; /* Center items vertically within the flex container */
-    // margin-left:%;
-    // padding: px;
+    align-items: center;
+    // width: 75%; /* Occupy full width of the grid cell */
     border: 1px solid #ccc;
     border-radius: 4px;
-    // background-color: rgba(247, 247, 247, 0.5);
+}
+.typechecks::-webkit-scrollbar {
+    // display: none;
 }
 
 .typechecks label:hover {
@@ -172,10 +183,10 @@
     height: 0;
 }
 .typechecks input[type='number'] {
-    width: 13rem;
+    width: 15rem;
     height: max-content;
-    padding: 1%;
-    margin-bottom: 2%;
+    // padding: 1%;
+    // margin-bottom: 2%;
     border-radius: 10%;
     border: 1px solid#0974f1;
 }
@@ -236,4 +247,10 @@
 .offerlabel {
     border-bottom: 1px solid black;
     margin: 1%;
+}
+.priceContainer{
+    height: 5rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }

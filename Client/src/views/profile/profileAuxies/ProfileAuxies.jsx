@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DateTime } from 'luxon'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import style from './ProfileAuxies.module.scss'
 import axios from 'axios'
+import { loggedUser } from '../../../redux/actions/actions'
 const ProfileAuxies = () => {
     const provider = useSelector((state) => state.loggedUser)
     const offer = useSelector((state) => state.loggedUser.services)
@@ -28,6 +29,20 @@ const ProfileAuxies = () => {
     const toDateMed = luxonDate.toLocaleString(DateTime.DATE_MED)
 
     console.log(serviceUpdate)
+
+    const handleRefresh = async () => {
+        try {
+            const response = await axios.get(`/providers/${provider.id}`)
+            if (response) {
+                dispatch(loggedUser(response.data))
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+    useEffect(() => {
+        handleRefresh()
+    }, [])
     const handleEdit = () => {
         setEdit(true)
         if (edit === true) {
@@ -176,22 +191,23 @@ const ProfileAuxies = () => {
                             Editar perfil
                         </button>
 
-                    <div>
-                    <img
-                            src={provider.image.secure_url}
-                            alt="imagen de perfil"
-                        />
-                        {edit && <input
-                            type="file"
-                            accept=".jpg, .png"
-                            onChange={handleImageChange}
-                        />}
-                        <h1>
-                            {provider.firstName} {provider.lastName}
-                        </h1>
-                     
-                        {error && <p style={{ color: 'red' }}>{error}</p>}
+                        <div>
+                            <img
+                                src={provider.image.secure_url}
+                                alt='imagen de perfil'
+                            />
+                            {edit && (
+                                <input
+                                    type='file'
+                                    accept='.jpg, .png'
+                                    onChange={handleImageChange}
+                                />
+                            )}
+                            <h1>
+                                {provider.firstName} {provider.lastName}
+                            </h1>
 
+                            {error && <p style={{ color: 'red' }}>{error}</p>}
 
                             <h4>Género: {provider.gender}</h4>
                             <h3>
@@ -228,6 +244,9 @@ const ProfileAuxies = () => {
                                 </h5>
 
                                 {edit && (
+                                        <center>
+                                    <div className={style.typechecksContainer}>
+                                    
                                     <div className={style.typechecks}>
                                         {allServices.map((service) => (
                                             <label
@@ -245,7 +264,7 @@ const ProfileAuxies = () => {
                                                     onChange={(e) =>
                                                         handleSelect(e)
                                                     }
-                                                />{' '}
+                                                />
                                                 <div
                                                     className={style.checkmark}
                                                 ></div>
@@ -254,24 +273,28 @@ const ProfileAuxies = () => {
                                                     (selectedService) =>
                                                         selectedService.name ===
                                                         service.name
-                                                ) && (
-                                                    <input
-                                                        type='number'
-                                                        placeholder='Tarifa del servicio'
-                                                        value={getPriceForService(
+                                                ) ? (
+                                                    <div className={style.priceContainer}> <input
+                                                    type='number'
+                                                    placeholder='Tarifa del servicio'
+                                                    value={getPriceForService(
+                                                        service.name
+                                                    )}
+                                                    onChange={(e) =>
+                                                        handlePriceChange(
+                                                            e,
                                                             service.name
-                                                        )}
-                                                        onChange={(e) =>
-                                                            handlePriceChange(
-                                                                e,
-                                                                service.name
-                                                            )
-                                                        }
-                                                    />
-                                                )}
+                                                        )
+                                                    }
+                                                /></div>
+                                                   
+                                                ):<div className={style.priceContainer}></div>}
                                             </label>
                                         ))}
                                     </div>
+                                  
+                                    </div>
+                                    </center>
                                 )}
                                 <h5>Trabajos realizados: </h5>
                                 <h5>Calificaciones: </h5>
