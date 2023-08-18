@@ -8,7 +8,7 @@ const PriceForm = ({ id }) => {
     const loggedUser = useSelector((state) => state.loggedUser)
     const serviceFound = loggedUser.jobs.find((job) => job.id === id)
     const [service, setService] = useState(serviceFound)
-    console.log(service)
+
     const { sendNotification } = useNotify(service.clientUid)
 
     const handleInputChange = (event) => {
