@@ -3,7 +3,6 @@ import { DateTime } from 'luxon'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
 import { useNavigate } from 'react-router-dom'
-import ClientRequiredServices from '../../../components/clientRequiredServices/ClientRequiredServices'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import FavoriteAuxiesCards from '../../../components/favoriteAuxiesCards/FavoriteAuxiesCards'
 import style from './ProfileConsumers.module.scss'
@@ -69,11 +68,11 @@ const ProfileConsumers = () => {
     //     .map((favorite) => favorite.firstName)
     //     .join(' | ')
 
-    const requiredServicesNames = consumer.requiredServices
-        ?.map((service) => service.service)
-        .join(' | ')
-    const requiredServicesNamesSet = new Set(requiredServicesNames)
-    console.log(profileData)
+    // const requiredServicesNames = consumer.requiredServices
+    //     ?.map((service) => service.service)
+    //     .join(' | ')
+    // const requiredServicesNamesSet = new Set(requiredServicesNames)
+    // console.log(profileData)
     return (
         <div>
         <div><NavGeneral /></div>
@@ -159,7 +158,7 @@ const ProfileConsumers = () => {
                 </div>
 
             </div>
-            <div className={style.fullProfileContainer}>
+            {/* <div className={style.fullProfileContainer}>
                 <div className={style.profileContainer}>
                     <div className={style.secondcontainer}>
                         <button
@@ -258,27 +257,18 @@ const ProfileConsumers = () => {
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 <div className={style.manage}>
                     <h3>Auxies favoritos:</h3>
                     <div className={style.favorites}>
                         {<FavoriteAuxiesCards />}
                     </div>
-                    <h5>Servicios contratados: {requiredServicesNamesSet}</h5>
-                    <div className={style.tablecontainer}>
-                        <h5>
-                            Servicios requeridos:
-                            {consumer.requiredServices?.length && (
-                                <ClientRequiredServices />
-                            )}
-                        </h5>
-                    </div>
+                    {/*
                     <h5>Calificación Promedio: {consumer.averageRating}</h5>
-                    <h5>Calificaciones: {consumer.ratings}</h5>
+                    <h5>Calificaciones: {consumer.ratings}</h5> */}
                 </div>
             </div>
         </div>
-        </div> 
     )
 }  
 
