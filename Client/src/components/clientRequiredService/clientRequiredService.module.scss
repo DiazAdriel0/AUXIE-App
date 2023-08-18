@@ -15,6 +15,7 @@
 .cardCont:hover {
     border: 1px solid var(--secondary--color-hover);
     transform: scale(1.03);
+    z-index: 1;
 }
 
 .requestDetails {
@@ -32,3 +33,41 @@
 p {
     font-weight: bold;
 }
+
+.reviewFormContainer{
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #33333399;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .reviewForm{
+        background-color: #f9f7e8; /* Color amarillo pastel */
+        border: 2px solid yellow;
+        border-radius: 1rem;
+        padding: 2rem;
+        height: max-content;
+        button {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+    
+    .pickerContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        // margin-bottom: 5rem;
+    }
+    
+    .picker {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+}
+
