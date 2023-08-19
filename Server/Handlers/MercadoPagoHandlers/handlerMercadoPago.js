@@ -14,8 +14,8 @@ const handlerMercadoPago = (req, res) => {
             },
         ],
         back_urls: {
-            success: 'http://localhost:5173/homeconsumer',
-            failure: 'http://localhost:5173/homeconsumer',
+            success: 'http://localhost:5173/paymentSucceeded',
+            failure: 'http://localhost:5173/paymentFailed',
             pending: '',
         },
         auto_return: 'approved',
