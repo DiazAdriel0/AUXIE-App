@@ -60,6 +60,10 @@ import Services from './components/admin-components/Services'
 import Transactions from './components/admin-components/Transactions'
 import Notifications from './components/admin-components/Notifications'
 
+//payment Views
+import PaymentSuccess from './components/payment/PaymentSuccess'
+import PaymentFailed from './components/payment/PaymentFailed'
+
 //URL Back
 import axios from 'axios'
 import ReviewForm from './views/forms/review-form/ReviewForm'
@@ -124,6 +128,9 @@ function App() {
                         <Route path='transacciones' element={<Transactions />} />
                         <Route path='notificaciones' element={<Notifications />} />
                     </Route>
+
+                    <Route path='paymentSucceeded' element={<PaymentSuccess/>} />
+                    <Route path='paymentFailed' element={<PaymentFailed/>} />
                 </Routes>
             </div>
         </LocalizationProvider>
