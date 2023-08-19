@@ -22,15 +22,11 @@ const TableServices = () => {
     const [showForm, setShowForm] = useState(false)
     const [shouldCloseForm, setShouldCloseForm] = useState(false)
     const [serviceId, setServiceId] = useState('')
-    const loggedUser = useSelector((state) => state.loggedUser)
+    const loggedUser = useSelector(state => state.loggedUser)
     const { currentPageData } = usePagination(15, loggedUser.jobs)
 
-    const handleClickOutside = (event) => {
-        if (
-            shouldCloseForm &&
-            targetRef.current &&
-            !targetRef.current.contains(event.target)
-        ) {
+    const handleClickOutside = event => {
+        if (shouldCloseForm && targetRef.current && !targetRef.current.contains(event.target)) {
             setShowForm(false)
             setShouldCloseForm(false)
             setServiceId('')
@@ -50,10 +46,11 @@ const TableServices = () => {
         if (consumerUid !== null) {
             if (sent) {
                 sendNotification(
-                `${loggedUser.firstName} ${loggedUser.lastName} ha ${message.status} el servicio de ${message.name} requerido.`)
+                    `${loggedUser.firstName} ${loggedUser.lastName} ha ${message.status} el servicio de ${message.name} requerido.`
+                )
                 setSent(false)
             }
-            
+
             if (done) {
                 sendNotification(
                     `${loggedUser.firstName} ${loggedUser.lastName} ha completado el servicio de ${message.name}. ¿Te gustaria dejarle una reseña?`
@@ -67,10 +64,9 @@ const TableServices = () => {
                 setCancelled(false)
             }
         }
-        
     }, [aux])
 
-    const handleClick = (event) => {
+    const handleClick = event => {
         setServiceId(event.target.value)
         setShowForm(true)
         setShouldCloseForm(false)
@@ -110,23 +106,20 @@ const TableServices = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {currentPageData.map((service) => (
+                    {currentPageData.map((service, index) => (
                         <tr key={service.id}>
-                            <td>{service.id}</td>
+                            <td>{index + 1}</td>
                             <td>{service.service}</td>
                             <td>{service.description}</td>
                             <td>{service.status}</td>
                             {service.status === 'pending' && (
                                 <td>
-                                    <button
-                                        onClick={handleClick}
-                                        value={service.id}
-                                    >
+                                    <button onClick={handleClick} value={service.id}>
                                         Propuesta
                                     </button>
                                     <button
                                         style={{ backgroundColor: 'green' }}
-                                        onClick={(e) => {
+                                        onClick={e => {
                                             e.preventDefault()
                                             setMessage({
                                                 name: service.service,
@@ -144,7 +137,7 @@ const TableServices = () => {
                                     </button>
                                     <button
                                         style={{ backgroundColor: 'red' }}
-                                        onClick={(e) => {
+                                        onClick={e => {
                                             e.preventDefault()
                                             setMessage({
                                                 name: service.service,
@@ -166,7 +159,7 @@ const TableServices = () => {
                                     <button
                                         style={{ backgroundColor: 'green' }}
                                         value='done'
-                                        onClick={(e) => {
+                                        onClick={e => {
                                             e.preventDefault()
                                             setMessage({
                                                 name: service.service,
@@ -178,12 +171,12 @@ const TableServices = () => {
                                             handleStatus(e, service)
                                         }}
                                     >
-                                Terminado
+                                        Terminado
                                     </button>
                                     <button
                                         style={{ backgroundColor: 'red' }}
                                         value='cancelledByAuxie'
-                                        onClick={(e) => {
+                                        onClick={e => {
                                             e.preventDefault()
                                             setMessage({
                                                 name: service.service,
@@ -195,13 +188,11 @@ const TableServices = () => {
                                             handleStatus(e, service)
                                         }}
                                     >
-                                Cancelado
+                                        Cancelado
                                     </button>
                                 </td>
                             )}
-                            {service.status === 'done' && (
-                                <td>{service.price}</td>
-                            )}
+                            {service.status === 'done' && <td>{service.price}</td>}
                         </tr>
                     ))}
                 </tbody>
