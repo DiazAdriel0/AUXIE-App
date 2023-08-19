@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom'
+import DashboardStatsGrid from './DashboardStatsGrid'
+import TransactionChart from './TransactionChart'
 function Dashboard() {
     return (
-        <div>
-            <p>this is a dashboard</p>
-            <Link className='underline ' to='auxies'>
-                Go to products
-            </Link>
+        <div className='px-2 flex flex-col gap-4'>
+            <DashboardStatsGrid />
+            <TransactionChart />
         </div>
     )
 }
