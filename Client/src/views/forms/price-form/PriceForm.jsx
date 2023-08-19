@@ -36,6 +36,7 @@ const PriceForm = ({ id }) => {
                     consumerId: service.clientId,
                     providerId: loggedUser.id,
                     status: 'proposal',
+
                 })
             )
             sendNotification(
