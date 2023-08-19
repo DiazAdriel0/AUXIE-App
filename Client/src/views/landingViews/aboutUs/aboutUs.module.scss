@@ -12,8 +12,8 @@
     margin-top: 1rem;
     justify-content: center;
     .card {
-        background-color: rgba(162, 155, 227, 0.515);
-        margin: 4rem;
+        background-color: rgba(74, 74, 74, 0.151);
+        margin: 3rem;
         width: 21rem;
         height: 25rem;
         overflow: hidden; /* Agregar esta propiedad para permitir el desplazamiento del contenido */
@@ -28,7 +28,7 @@
             }
         }
         p {
-            margin: 2rem;
+            margin: 1rem;
             font-size: 0.8rem;
         }
         img {
@@ -99,18 +99,13 @@
 .about {
     padding-top: 1%;
     padding-bottom: 1%;
-    // background-color: var(--secondary--color-light);
-    background-color: rgba(162, 155, 227, 0.515);
     padding-left: 5%;
-    box-shadow: 0px 30px 52px -25px var(--secondary--color-hover);
+    box-shadow: 0px 30px 52px -25px rgba(74, 74, 74, 0.362);;
+    background-color: rgba(74, 74, 74, 0.151);
 
     h2 {
         font-size: 150%;
     }
-    // h1 {
-    //     text-align: center;
-    //     color: var(--accent--primary--color-light);
-    // }
 }
 .about2 {
     padding-top: 1%;
@@ -131,15 +126,15 @@
     width: 14rem; //230px
     height: 21rem;
     border-radius: 2em;
-    padding: 10px;
-    background-color: var(--sixth--color-light);
-    box-shadow:
-        5px 5px 30px var(--sixth--color-light),
-        -5px -5px 30px var(--sixth--color-light);
+    // padding: 10px;
+    // background-color: var(--sixth--color-light);
+    // box-shadow:
+    //     5px 5px 30px var(--sixth--color-light),
+    //     -5px -5px 30px var(--sixth--color-light);
     margin: 1rem;
     perspective: 1000px;
     position: relative;
-    background-color: rgba(162, 155, 227, 0.515);
+    background-color: rgba(74, 74, 74, 0.151);
 
     img {
         border-radius: 80%;
@@ -168,8 +163,8 @@
             color: white;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
                 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            padding: 15px;
-            font-size: 1.25rem;
+            padding: 10px;
+            font-size: 1rem;
             margin-top: 1.02rem;
         }
 
@@ -189,8 +184,8 @@
                 color: white;
             }
             p {
-                font-size: 1rem;
-                font-weight: 600;
+                font-size: 0.8rem;
+                font-weight: 800;
             }
         }
     }
@@ -203,36 +198,63 @@
     /* Estilos para la cara frontal de la tarjeta */
     .cardfront,
     .cardback {
+        display: flex;
+        flex-direction: column;
         position: absolute;
         width: 100%;
         height: 100%;
         backface-visibility: hidden;
         transition: transform 0.6s;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        box-sizing: border-box;
+        border-radius: 2em;
+        // background-color: rgba(162, 155, 227, 0.515);
     }
-
+    .cardfront {
+        backface-visibility: hidden;
+        // overflow: hidden;
+    }
     /* Estilos para la cara trasera de la tarjeta */
     .cardback {
         transform: rotateY(180deg);
 
         .bio {
-            overflow: scroll;
-            height: fit-content;
             max-height: 50%;
-            min-height: 50%;
         }
-        p {
-            padding: 10%;
-            font-size: 0.8rem;
-            height: 20%;
+        .bio2 {
+            position: relative;
+            overflow-y: scroll; /* Use "auto" to add scrollbars only when needed */
+            // height: 50%;
+            max-height: 100%; /* Adjust this value as needed */
+            // padding: 10px; /* Add padding for better spacing */
+            // margin-top: 35%;
+            scrollbar-color: blue pink;
+            scrollbar-width: thin;
+        }
 
-            text-align: start;
+        p {
+            margin: 0; /* Reset default margin */
+            font-size: 0.7rem;
+            // line-height: 1.2; /* Adjust line height for better readability */
         }
+
         .socialbar {
-            margin-top: 2.3rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            width: 100%;
+            height: 16%;
+            margin-top: 19%;
+           a{
+            margin-bottom: 25%;
+            border: none !important;
+           }
         }
     }
 
-    /* Mostrar la cara trasera al hacer hover */
     &:hover .cardfront {
         transform: rotateY(180deg);
     }
@@ -263,8 +285,4 @@
     display: block;
     width: calc(100% + 1.3px);
     height: 140px;
-}
-
-.custom-shape-divider-top-1691195590 .shape-fill {
-    fill: #0fa3b1;
 }
