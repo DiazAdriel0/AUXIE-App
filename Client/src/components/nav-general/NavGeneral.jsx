@@ -31,9 +31,9 @@ const NavGeneral = () => {
             ) : (
                 <>
                     <LogoClient />
-                    <div className={style.notifications}></div>
+                    <div className={style.notifications}><NotificationButton /> </div>
                     <div className={style.nightswitch}>
-                        <NotificationButton />
+                        
                         <ButtonLightNight />
                     </div>
                     <div className={style.right}>

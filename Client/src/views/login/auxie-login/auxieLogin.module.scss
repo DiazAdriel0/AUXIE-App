@@ -72,17 +72,24 @@
     width: 100%;
     max-width: 500px;
     margin: 3% auto;
-    background-color: rgba(195, 201, 255, 0.5);
+    background-color:rgba(128, 128, 128, 0.294) !important;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     padding: 3rem; /* Ajusta el espacio alrededor del formulario */
     height: 45%;
     button {
+        display: flex;
         color: black;
         border-radius: 5px;
         border: 2px solid rgba(0, 0, 0, 0.418);
         padding: 0.5em;
         margin-top: 1rem;
+        width: 15rem;
+        p{
+            margin-left: 5%;
+            margin-top: 1%;
+        }
+        
     }
     button:hover {
         background-image: linear-gradient(
@@ -131,3 +138,4 @@
         flex-basis: 100%; /* Agrega esta línea para que el mensaje de error ocupe el 100% de su ancho */
     }
 }
+

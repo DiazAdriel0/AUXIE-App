@@ -65,8 +65,9 @@
     margin-top: 5%;
 }
 .contact {
-    background-color: var(--accent--first--color-light);
-    color: #030202;
+    background-color: rgba(128, 128, 128, 0.294) !important;
+    color: black !important;
+    
     padding: 1% 1%;
     border: none;
     border-radius: 10px;
@@ -88,5 +89,5 @@
 }
 
 .customShapeDividerTop1690916851 .shapeFill {
-    fill: var(--sixth--color-light);
+    fill: rgba(74, 74, 74, 0.151);
 }
