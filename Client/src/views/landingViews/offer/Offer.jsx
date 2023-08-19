@@ -11,6 +11,7 @@ import { useSelector } from 'react-redux'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import NavLanding from '../../../components/nav-landing/NavLanding'
 import Footer from '../../../components/footer/Footer.jsx'
+import { width } from '@mui/system'
 
 const Offer = () => {
     const menuLanding = useSelector((state) => state.menuLanding)
@@ -63,6 +64,7 @@ const Offer = () => {
                             style={{ width: '300px', height: '300px' }}
                         />
                         <h4>Conecta con el Auxie que mejor se adecúe a vos.</h4>
+
                     </div>
                     <div>
                         <h3>Servicios en el día</h3>

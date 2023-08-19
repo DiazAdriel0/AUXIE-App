@@ -8,13 +8,11 @@
     gap: 30px 30px;
     flex-wrap: wrap;
     flex-flow: column wrap;
-    align-items: last baseline;
+    align-items: center;
     justify-content: center;
     height: 100vh;
     position: relative;
-    div {
-        width: 25%;
-    }
+  
 
     h3 {
         font-size: 30px;
