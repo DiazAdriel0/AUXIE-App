@@ -21,14 +21,6 @@ const PriceForm = ({ id }) => {
         })
     }
 
-    const handleSelectChange = event => {
-        const { value } = event.target
-        setService({
-            ...service,
-            status: value,
-        })
-    }
-
     const handleSubmit = async event => {
         event.preventDefault()
         try {
@@ -43,7 +35,8 @@ const PriceForm = ({ id }) => {
                     id: service.id,
                     consumerId: service.clientId,
                     providerId: loggedUser.id,
-                    status: service.status,
+                    status: 'proposal',
+
                 })
             )
             sendNotification(
@@ -70,18 +63,7 @@ const PriceForm = ({ id }) => {
             <label>Precio final</label>
             <input type='number' name='price' value={service?.price} onChange={handleInputChange}></input>
 
-            <label>Estado</label>
-            <select type='text' value={service?.status} name='status' onChange={handleSelectChange}>
-                <option defaultValue disabled>
-                    Estado
-                </option>
-                <option value='proposal'>Revisar</option>
-                <option value='approved'>Aprobar presupuesto</option>
-                <option value='declined'>Cancelar</option>
-                <option value='done'>Terminado</option>
-            </select>
-
-            <button type='submit'>Enviar</button>
+            <button type='submit'>Enviar propuesta</button>
         </form>
     )
 }

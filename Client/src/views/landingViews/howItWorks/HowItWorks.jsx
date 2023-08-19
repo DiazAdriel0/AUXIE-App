@@ -126,6 +126,7 @@ const HowItWorks = () => {
                         </p>
                     </div>
                 </section>
+                <>
                 <div className={style.faqSection}>
                     <h2>Preguntas frecuentes</h2>
                     {faqs.map((faqItem, index) => (
@@ -163,6 +164,7 @@ const HowItWorks = () => {
                         </div>
                     ))}
                 </div>
+                </>
             </div>
             <Footer />
         </>
