@@ -1,25 +1,28 @@
 .hide {
     display: none;
 }
-
 .layout {
-    width: 100% auto;
-    height: 100% auto;
-    margin-bottom: 40%;
+    width: 100%;
+    height: 60%;
+    margin-bottom: 20%;
     display: grid;
     // object-fit: contain;
     grid-template-rows: repeat(4, 240px);
     grid-template-columns: repeat(2, 1fr);
     gap: 5% 0px;
 }
-
+@media (max-width: 900px) {
+    .layout {
+        gap: 240px 0px; 
+    }
+}
 .steps {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
-    // margin-top: 10%;
+    margin-top: 10%;
 
     img {
         background-color: var(--secondary--color-light);
@@ -62,15 +65,11 @@
 
 .faqSection {
     display: flex;
+    justify-content: center;
     flex-direction: column;
-    flex-wrap: wrap;
-    max-width: 100%;
-    max-height: calc(100vh - 400px); /* Adjust as needed */
-    // overflow-y: auto;
+    margin-bottom: 2em;
     h2 {
-        font-size: 3rem;
-        display: flex;
-        justify-content: center;
+        font-size: 250%;
         background-color: var(--secondary--color-light);
         padding: 2%;
         border: var(--secondary--color-hover) 3px solid;
