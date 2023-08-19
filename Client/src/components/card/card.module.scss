@@ -1,5 +1,5 @@
 .card {
-    background-color: rgba(162, 155, 227, 0.515);
+    background-color: rgba(128, 128, 128, 0.294) !important;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -67,11 +67,9 @@
 
 .serviceName {
     color: var(--contrast-color-light);
-    // overflow: hidden;
-    // text-overflow: ellipsis;
+ 
     white-space: nowrap;
-    // margin-bottom: 3%;
-    // margin-left: 3%;
+ 
 }
 .serviceName::-webkit-scrollbar {
     display: none;
