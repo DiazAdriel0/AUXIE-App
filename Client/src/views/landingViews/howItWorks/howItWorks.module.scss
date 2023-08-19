@@ -15,14 +15,9 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 5% 0px;
 }
-@media (max-width: 800px) {
-    .layout {
-        gap: 240px 0px; 
-    }
-}
 @media (max-width: 1300px) {
     .layout {
-        gap: 160px 0px; 
+        gap: 240px 0px; 
     }
 }
 .steps {
