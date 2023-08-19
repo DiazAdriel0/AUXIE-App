@@ -10,7 +10,7 @@ import { updateConsumer, setServiceStatus } from '../../redux/actions/actions'
 
 const ClientRequiredServices = () => {
     const dispatch = useDispatch()
-    const client = useSelector((state) => state.loggedUser)
+    const client = useSelector(state => state.loggedUser)
     const [cards, setCards] = useState(false)
     const [updated, setUpdated] = useState(false)
     const targetRef = useRef(null)
@@ -25,12 +25,8 @@ const ClientRequiredServices = () => {
         proposal: 'Propuesta',
     }
 
-    const handleClickOutside = (event) => {
-        if (
-            shouldCloseForm &&
-            targetRef.current &&
-            !targetRef.current.contains(event.target)
-        ) {
+    const handleClickOutside = event => {
+        if (shouldCloseForm && targetRef.current && !targetRef.current.contains(event.target)) {
             setShowForm(false)
             setShouldCloseForm(false)
         }
@@ -53,24 +49,21 @@ const ClientRequiredServices = () => {
         setUpdated(true)
     }
 
-    const handleClick = (e) => {
-        if (e.target.innerText === 'Valorar') {setShowForm(true)
+    const handleClick = e => {
+        if (e.target.innerText === 'Valorar') {
+            setShowForm(true)
             setShouldCloseForm(false)
             setTimeout(() => {
                 setShouldCloseForm(true)
-            }, 100)}
-        
-        if (e.target.innerText === 'Efectivo')
-            return Swal.fire('Pagar en efectivo')
-        if (e.target.innerText === 'Cancelado')
-            return Swal.fire('Has cancelado tu pedido')
-        if (e.target.innerText === 'Pendiente')
-            return Swal.fire('Espera a que el Auxie apruebe tu pedido')
-        if (e.target.innerText === 'Declinado')
-            return Swal.fire('El auxie ha cancelado tu pedido')
+            }, 100)
+        }
+
+        if (e.target.innerText === 'Efectivo') return Swal.fire('Pagar en efectivo')
+        if (e.target.innerText === 'Cancelado') return Swal.fire('Has cancelado tu pedido')
+        if (e.target.innerText === 'Pendiente') return Swal.fire('Espera a que el Auxie apruebe tu pedido')
+        if (e.target.innerText === 'Declinado') return Swal.fire('El auxie ha cancelado tu pedido')
     }
 
-    
     useEffect(() => {
         document.addEventListener('click', handleClickOutside)
         return () => {
@@ -80,7 +73,7 @@ const ClientRequiredServices = () => {
 
     useEffect(() => {
         dispatch(updateConsumer(client.userUid))
-    },[updated])
+    }, [updated])
     return (
         <>
             {showForm && (
@@ -93,7 +86,7 @@ const ClientRequiredServices = () => {
             <button onClick={handleSwitch}>Switch</button>
             {cards ? (
                 <div className={style.clientServicesCards}>
-                    {client.requiredServices?.map((service) => (
+                    {client.requiredServices?.map(service => (
                         <ClientRequiredService
                             key={service.id}
                             id={service.id}
@@ -126,9 +119,9 @@ const ClientRequiredServices = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {client.requiredServices?.map((service) => (
+                        {client.requiredServices?.map((service, index) => (
                             <tr key={service.id}>
-                                <td>{service.id}</td>
+                                <td>{index + 1}</td>
                                 <td>{service.providerName}</td>
                                 <td>{service.service}</td>
                                 <td>{service.description}</td>
@@ -138,64 +131,55 @@ const ClientRequiredServices = () => {
                                 <td>{service.jobDate}</td>
                                 <td>{service.paymentMethod}</td>
                                 <td className={style.actionButton}>
-                                    {service.status === 'done' && (
-                                        <button onClick={handleClick}>
-                                            Valorar
-                                        </button>
+                                    {service.status === 'done' && <button onClick={handleClick}>Valorar</button>}
+                                    {service.status === 'approved' && service.paymentMethod === 'app' && (
+                                        <tr>
+                                            <td className={style.payButton}>
+                                                <ButtonMercadoPago
+                                                    price={service.price}
+                                                    description={service.description}
+                                                    quantity={1}
+                                                />
+                                            </td>
+                                        </tr>
                                     )}
-                                    {service.status === 'approved' &&
-                                        service.paymentMethod === 'app' && (
-                                            <tr>
-                                                <td className={style.payButton}>
-                                                    <ButtonMercadoPago
-                                                        price={service.price}
-                                                        description={
-                                                            service.description
-                                                        }
-                                                        quantity={1}
-                                                    />
-                                                </td>
-                                            </tr>
-                                        )}
-                                    {service.status === 'approved' &&
-                                        service.paymentMethod ===
-                                            'efectivo' && (
-                                            <tr>
-                                                <td className={style.payButton}>
-                                                    <button
-                                                        onClick={handleClick}
-                                                    >
-                                                        Efectivo
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                        )}
-                                    {service.status === 'cancelled' && (
-                                        <button onClick={handleClick}>
-                                            Cancelado
-                                        </button>
+                                    {service.status === 'approved' && service.paymentMethod === 'efectivo' && (
+                                        <tr>
+                                            <td className={style.payButton}>
+                                                <button onClick={handleClick}>Efectivo</button>
+                                            </td>
+                                        </tr>
                                     )}
-                                    {service.status === 'declined' && (
-                                        <button onClick={handleClick}>
-                                            Declinado
-                                        </button>
+                                    {service.status === 'cancelled' && <button onClick={handleClick}>Cancelado</button>}
+                                    {service.status === 'declined' && <button onClick={handleClick}>Declinado</button>}
+                                    {service.status === 'pending' && (
+                                        <>
+                                            <button onClick={handleClick}>Pendiente</button>
+                                            <button
+                                                onClick={() =>
+                                                    handleProposal('cancelled', service.id, service.providerId)
+                                                }
+                                            >
+                                                Rechazar
+                                            </button>
+                                        </>
                                     )}
-                                    {service.status === 'pending' && (<>
-                                        <button onClick={handleClick}>
-                                            Pendiente
-                                        </button>
-                                        <button onClick={() => handleProposal('cancelled',service.id, service.providerId)}>
-                                        Rechazar
-                                    </button>
-                                    </>
-                                    )}
-                                    {service.status === 'proposal' && (<>
-                                        <button onClick={() => handleProposal('approved', service.id, service.providerId)}>
-                                            Aceptar
-                                        </button>
-                                        <button onClick={() => handleProposal('cancelled',service.id, service.providerId)}>
-                                            Rechazar
-                                        </button>
+                                    {service.status === 'proposal' && (
+                                        <>
+                                            <button
+                                                onClick={() =>
+                                                    handleProposal('approved', service.id, service.providerId)
+                                                }
+                                            >
+                                                Aceptar
+                                            </button>
+                                            <button
+                                                onClick={() =>
+                                                    handleProposal('cancelled', service.id, service.providerId)
+                                                }
+                                            >
+                                                Rechazar
+                                            </button>
                                         </>
                                     )}
                                 </td>
