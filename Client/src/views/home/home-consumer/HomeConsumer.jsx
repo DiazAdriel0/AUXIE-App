@@ -2,7 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
+import useNotify from './../../../hooks/useNotify'
 
 // estilos
 import style from './homeConsumer.module.scss'
@@ -18,23 +18,36 @@ import { resetAuxiesCatalog } from '../../../redux/actions/actions'
 //assets
 import CircleIconAuxie from '../../../assets/logos/CircleIconAuxie.png'
 
+import axios from 'axios'
+
 const HomeConsumer = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const user = useSelector((state) => state.loggedUser)
+    const user = useSelector(state => state.loggedUser)
     const isConsumer = Object.keys(user).includes('requiredServices')
-
-    const location = useLocation()
-    if (location.state) {
-        const from = location.state.from
-        console.log('Redirigido desde:', from)
-    }
-    console.log('Current URL:', location.pathname)
+    const { sendNotification } = useNotify(user.userUid)
 
     useEffect(() => {
         if (Object.keys(user).length === 0) return navigate('/clientlogin')
-        if (Object.keys(user).includes('services'))
-            return navigate('/homeAuxie')
+        if (Object.keys(user).includes('services')) return navigate('/homeAuxie')
+        let welcome
+        switch (user.gender) {
+            case 'Masculino':
+                welcome = 'Bienvenido'
+                break
+            case 'Femenino':
+                welcome = 'Bienvenida'
+                break
+            case 'Otro':
+                welcome = 'Bienvenide'
+                break
+            default:
+                welcome = 'Bienvenidx'
+        }
+        if (user.firstLogin) {
+            sendNotification(`${welcome} a Auxie ${user.firstName}, ingresa a tu perfil para modificar tu bio`)
+            axios.put('/providers/firstLogin', { id: user.id })
+        }
 
         dispatch(resetAuxiesCatalog())
     }, [])
@@ -46,9 +59,7 @@ const HomeConsumer = () => {
                     <NavGeneral />
                     <div className={style.contHome}>
                         <div className={style.catalogTitleCont}>
-                            <h2 className={style.catalogTitle}>
-                                Contratar un Auxie
-                            </h2>
+                            <h2 className={style.catalogTitle}>Contratar un Auxie</h2>
                         </div>
                         <div className={style.catalogCont}>
                             <div className={style.catalog}>
@@ -80,11 +91,7 @@ const HomeConsumer = () => {
                             </Link>
                         </div>
                         <div className={style.divFooterTitle}>
-                            <img
-                                src={CircleIconAuxie}
-                                alt='circle icon'
-                                className={style.divFooterImg}
-                            />
+                            <img src={CircleIconAuxie} alt='circle icon' className={style.divFooterImg} />
                             <h4>Creado con amor por el Auxie Team</h4>
                         </div>
                         <div className={style.divCopy}>
