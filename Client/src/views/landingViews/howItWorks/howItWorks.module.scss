@@ -15,7 +15,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 5% 0px;
 }
-@media (max-width: 1300px) {
+@media (max-width: 900px) {
     .layout {
         gap: 240px 0px; 
     }
