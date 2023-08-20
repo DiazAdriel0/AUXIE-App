@@ -36,14 +36,14 @@
 
 .contServices {
     display: flex;
-    flex-flow: column wrap;
-    margin-left: 10%;
+    flex-flow: row wrap;
+    width: 60%;
 }
 
 .serviceDiv {
-    width: 100%;
     text-align: start;
-    margin-left: 5%;
+    font-size: 80%;
+    margin-right: 5%;
 }
 
 .serviceName {
@@ -51,7 +51,13 @@
 }
 
 .carousel {
+    display: flex;
+    justify-content: center;
     background-color: var(--third--color-light);
+    .carouselItem{
+        width: 50%;
+        margin-left: 25%;
+    }
 }
 
 .bio {
@@ -59,9 +65,6 @@
     margin: 2%;
 }
 
-.detailall {
-    width: 80%;
-}
 .detailform {
     display: flex;
     flex-direction: row;
