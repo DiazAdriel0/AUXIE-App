@@ -68,6 +68,7 @@ const ClientForm = () => {
             // setAccess(true)
             // navigate('/home')
         } catch (error) {
+            setLoading(false)
             let er = error.response.data.error
             console.error(er)
             Swal.fire({
