@@ -1,3 +1,9 @@
+.servicesCont{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
 .servicesTable {
     width: 100%;
     border-collapse: collapse;
@@ -70,10 +76,18 @@
     
 }
 
-
 .separacion {
     background-color: #555;
 }
+
+.servicesTitleCont{
+    margin-left: 5%;
+
+    .servicesTitle{
+        color:#333;
+    }
+}
+
 
 .clientServicesCards {
     display: flex;
@@ -81,4 +95,9 @@
     justify-content: center;
     margin: 2%;
     gap: 10px 10px;
+}
+
+button {
+    border-radius: 3px;
+    margin: 2px;
 }

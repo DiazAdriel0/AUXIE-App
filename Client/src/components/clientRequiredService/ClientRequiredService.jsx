@@ -18,6 +18,7 @@ const ClientRequiredService = (job) => {
 
     const dispatch = useDispatch()
     const client = useSelector((state) => state.loggedUser)
+    const nightMode = useSelector((state) => state.nightMode)
 
     // local states para manejar el popup del form review
     const targetRef = useRef(null)
@@ -107,7 +108,7 @@ const ClientRequiredService = (job) => {
                 </div>
             </div>
         )}
-        <div className={style.cardCont}>
+        <div className={nightMode ? style.cardContNight : style.cardCont}>
             <div className={style.requestDetails}>
                 <p>Número de solicitud: </p>
                 {id}
