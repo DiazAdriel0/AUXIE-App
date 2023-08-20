@@ -17,7 +17,7 @@ import { auth } from '../../../config/firebase-config'
 const Form = () => {
     const { errors, validate } = useValidations()
     const [loading, setLoading] = useState(false)
-    const [access, setAccess] = useState(false) //eslint-disable-line
+    const [access, setAccess] = useState(false)
     const navigate = useNavigate()
     const [input, setInput] = useState({
         firstName: '',
