@@ -46,7 +46,7 @@ const HomeConsumer = () => {
         }
         if (user.firstLogin) {
             sendNotification(`${welcome} a Auxie ${user.firstName}, ingresa a tu perfil para modificar tu bio`)
-            axios.put('/providers/firstLogin', { id: user.id })
+            axios.put('/consumers/firstLogin', { id: user.id })
         }
 
         dispatch(resetAuxiesCatalog())
