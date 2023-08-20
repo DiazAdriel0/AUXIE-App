@@ -5,9 +5,10 @@ import { useSelector, useDispatch } from 'react-redux'
 // import CardServices from '../../../components/card-services/CardServices'
 import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
+import Footer from '../../../components/footer/Footer'
 import axios from 'axios'
 import { useEffect } from 'react'
-import { loggedUser, updateFirstLogin } from '../../../redux/actions/actions'
+import { loggedUser } from '../../../redux/actions/actions'
 //Hooks
 import useNotify from './../../../hooks/useNotify'
 
@@ -46,64 +47,70 @@ const HomeAuxie = () => {
         }
         if (logged.firstLogin) {
             sendNotification(`${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu bio`)
-            dispatch(updateFirstLogin('providers', logged.id))
+            axios.put('/providers/firstLogin', { id: logged.id })
         }
         handleRefresh()
     }, [])
     return (
-        <div className={style.home}>
+        <div>
             {/* Header */}
-            <header className={style.header}>
+            <header className='h-16'>
                 <NavGeneral />
             </header>
             {/* Aside */}
-            <AsideAuxie />
-            {/* Main */}
-            <main className={style.main}>
-                <div className={style.services}>
-                    <h3>Servicios</h3>
-                    <div className={style.userServices}>
-                        {services ? (
-                            services.map(service => (
-                                <div className={style.cardServices} key={service.name}>
-                                    <img src={service.image?.secure_url} alt={service.name} />
-                                    <h4>{service.name}</h4>
-                                </div>
-                            ))
-                        ) : (
-                            <p>No ofrece servicios</p>
-                        )}
+            <div className='grid grid-cols-3 '>
+                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900'>
+                    <AsideAuxie />
+                </aside>
+                {/* Main */}
+                <main className='bg-div-text-color-light text-color-light p-4 pl-8 pr-96 -ml-72 border-2 border-div-text-color-light-900 '>
+                    <h3 className='mb-4'>Servicios</h3>
+                    <div>
+                        <div className='grid grid-cols-2 grid-rows-2 gap-x-80 gap-y-0.5 px-4'>
+                            {services ? (
+                                services.map(service => (
+                                    <div className={style.cardServices} key={service.name}>
+                                        <img src={service.image?.secure_url} alt={service.name} />
+                                        <h4>{service.name}</h4>
+                                    </div>
+                                ))
+                            ) : (
+                                <p>No ofrece servicios</p>
+                            )}
+                        </div>
                     </div>
-                    <div className={style.inbox}>
-                        <p>Calificación de los ultimos servicios</p>
-                        <table className={style.servicesTable}>
-                            <thead>
-                                <tr>
-                                    <th>Servicio</th>
-                                    <th>Reseña</th>
-                                    <th>Calificación</th>
-                                    <th>Contratante</th>
+                </main>
+                <div className='bg-div-text-color-light p-4 border-t-2 border-b-2 border-r-2 border-div-text-color-light-900'>
+                    <h3 className='mb-4 text-color-light'>Pagos</h3>
+                </div>
+                <div className='p-4 '>
+                    <p className='mt-4 w-full ml-40'>Calificaciones de los últimos servicios</p>
+                    <table className='mx-auto border-collapse mt-2 ml-40'>
+                        <thead>
+                            <tr>
+                                <th className='py-2 px-14 border border-gray-300 bg-gray-100 '>Servicio</th>
+                                <th className='py-2 px-40 border border-gray-300 bg-gray-100 '>Reseña</th>
+                                <th className='py-2 px-14 border border-gray-300 bg-gray-100  '>Calificación</th>
+                                <th className='py-2 px-14 border border-gray-300 bg-gray-100  '>Contratante</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {lastJobs?.map((review, index) => (
+                                <tr key={index}>
+                                    <td className='py-2 px-14 border border-gray-300 bg-gray-100  '>
+                                        {review.service}
+                                    </td>
+                                    <td className='py-2 px-4 border border-gray-300 bg-gray-100 '>{review.review}</td>
+                                    <td className='py-2 px-14 border border-gray-300 bg-gray-100'>{review.score}</td>
+                                    <td className='py-2 px-14 border border-gray-300 bg-gray-100'>{review.username}</td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {lastJobs?.map((review, index) => (
-                                    <tr key={index}>
-                                        <td>{review.service}</td>
-                                        <td>{review.review}</td>
-                                        <td>{review.score}</td>
-                                        <td>{review.username}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
-                <div className={style.payments}>
-                    <h3>Pagos</h3>
-                </div>
-            </main>
+            </div>
             {/* Footer */}
-            <footer className={style.footer}>Pie de página</footer>
+            <Footer />
         </div>
     )
 }

@@ -1,12 +1,11 @@
 .aside {
-    grid-area: aside;
-
     display: flex;
     justify-content: center;
     align-items: center;
 
-    background-color: #666;
-
+    width:40%;
+    height: 100%;
+    padding-bottom: 120%;
     a {
         color: #fff;
     }
@@ -16,7 +15,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
-            gap: 20px;
+            gap: 40px;
         }
     }
 }
