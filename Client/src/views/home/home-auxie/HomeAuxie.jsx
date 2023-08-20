@@ -7,7 +7,7 @@ import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/As
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import axios from 'axios'
 import { useEffect } from 'react'
-import { loggedUser } from '../../../redux/actions/actions'
+import { loggedUser, updateFirstLogin } from '../../../redux/actions/actions'
 //Hooks
 import useNotify from './../../../hooks/useNotify'
 
@@ -46,7 +46,7 @@ const HomeAuxie = () => {
         }
         if (logged.firstLogin) {
             sendNotification(`${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu bio`)
-            axios.put('/providers/firstLogin', { id: logged.id })
+            dispatch(updateFirstLogin('providers', logged.id))
         }
         handleRefresh()
     }, [])
