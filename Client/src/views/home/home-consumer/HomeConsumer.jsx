@@ -22,6 +22,7 @@ const HomeConsumer = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector(state => state.loggedUser)
+    const nightMode = useSelector(state => state.nightMode)
     const isConsumer = Object.keys(user).includes('requiredServices')
     const { sendNotification } = useNotify(user.userUid)
 
@@ -56,7 +57,7 @@ const HomeConsumer = () => {
                 <>
                     <NavGeneral />
                     <div className={style.contHome}>
-                        <div className={style.catalogTitleCont}>
+                        <div className={nightMode ? style.catalogTitleContNight : style.catalogTitleCont}>
                             <h2 className={style.catalogTitle}>Contratar un Auxie</h2>
                         </div>
                         <div className={style.catalogCont}>
