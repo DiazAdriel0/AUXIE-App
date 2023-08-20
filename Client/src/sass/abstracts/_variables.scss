@@ -26,6 +26,9 @@
     /* Hover lightMode */
     --hover-color-light: #567eac;
 
+    /* cards background color light*/
+    --card-background-light: rgba(128, 128, 128, 0.294);
+
     /* Colors Dark Mode */
     --background-dark: #0b0b25;
     --div-border-color-dark: #111645;
@@ -39,6 +42,9 @@
 
     /* Text color dark */
     --text-color-dark: #fcfcfc;
+
+    /* cards background color dark*/
+    --card-background-dark: rgb(107, 107, 107);
 
     /*Transition color  */
     --transition-background-color: background-color 0.1s ease-in-out;
