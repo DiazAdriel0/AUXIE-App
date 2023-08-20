@@ -19,6 +19,7 @@ import {
     TURN_LIGHT_NIGHT_MODE,
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
+    FIRST_LOGIN,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -132,8 +133,8 @@ export function menuOpen(boolean) {
     }
 }
 
-export const setCurrentPage = (page) => {
-    return (dispatch) => {
+export const setCurrentPage = page => {
+    return dispatch => {
         return dispatch({
             type: SET_CURRENT_PAGE,
             payload: Number(page),
@@ -227,9 +228,7 @@ export function addFavorite(fav) {
 export function removeFavorite(fav) {
     return async function (dispatch) {
         try {
-            const res = await axios.delete(
-                `/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`
-            )
+            const res = await axios.delete(`/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`)
 
             return dispatch({
                 type: DELETE_FAVORITE,
@@ -268,16 +267,15 @@ export function setServiceStatus(info) {
     }
 }
 
-
 // action para actualizar la info del usuario loggeado, falta la ruta del back
 
 export function updateConsumer(id) {
-    return async function(dispatch){
+    return async function (dispatch) {
         try {
             const res = await axios.get(`/consumers/${id}`)
-            return(dispatch)({
+            return dispatch({
                 type: UPDATE_CONSUMER,
-                payload:res.data
+                payload: res.data,
             })
         } catch (e) {
             console.error(e.response.data)
@@ -285,15 +283,29 @@ export function updateConsumer(id) {
     }
 }
 export function updateProvider(id) {
-    return async function(dispatch){
+    return async function (dispatch) {
         try {
             const res = await axios.get(`/providers/${id}`)
-            return(dispatch)({
+            return dispatch({
                 type: UPDATE_PROVIDER,
-                payload:res.data
+                payload: res.data,
             })
         } catch (e) {
             console.error(e.response.data)
+        }
+    }
+}
+
+export function updateFirstLogin(typeUser, id) {
+    return async function (dispatch) {
+        try {
+            axios.put(`/${typeUser}/firstLogin`, { id })
+            return dispatch({
+                type: FIRST_LOGIN,
+                payload: false,
+            })
+        } catch (error) {
+            console.error(error)
         }
     }
 }

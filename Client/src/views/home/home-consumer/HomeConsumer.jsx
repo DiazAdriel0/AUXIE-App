@@ -13,12 +13,10 @@ import Filters from '../../../components/filters/Filters'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 
 //actions
-import { resetAuxiesCatalog } from '../../../redux/actions/actions'
+import { resetAuxiesCatalog, updateFirstLogin } from '../../../redux/actions/actions'
 
 //assets
 import CircleIconAuxie from '../../../assets/logos/CircleIconAuxie.png'
-
-import axios from 'axios'
 
 const HomeConsumer = () => {
     const dispatch = useDispatch()
@@ -46,7 +44,7 @@ const HomeConsumer = () => {
         }
         if (user.firstLogin) {
             sendNotification(`${welcome} a Auxie ${user.firstName}, ingresa a tu perfil para modificar tu bio`)
-            axios.put('/providers/firstLogin', { id: user.id })
+            dispatch(updateFirstLogin('consumers', user.id))
         }
 
         dispatch(resetAuxiesCatalog())

@@ -7,12 +7,12 @@ import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/As
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import axios from 'axios'
 import { useEffect } from 'react'
-import { loggedUser } from '../../../redux/actions/actions'
+import { loggedUser, updateFirstLogin } from '../../../redux/actions/actions'
 //Hooks
 import useNotify from './../../../hooks/useNotify'
 
 const HomeAuxie = () => {
-    const logged = useSelector((state) => state.loggedUser)
+    const logged = useSelector(state => state.loggedUser)
     const { sendNotification } = useNotify(logged.userUid)
     const lastJobs = logged.reviews?.slice(0, 4)
 
@@ -45,10 +45,8 @@ const HomeAuxie = () => {
                 welcome = 'Bienvenidx'
         }
         if (logged.firstLogin) {
-            sendNotification(
-                `${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu bio`
-            )
-            axios.put('/providers/firstLogin', { id: logged.id })
+            sendNotification(`${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu bio`)
+            dispatch(updateFirstLogin('providers', logged.id))
         }
         handleRefresh()
     }, [])
@@ -66,15 +64,9 @@ const HomeAuxie = () => {
                     <h3>Servicios</h3>
                     <div className={style.userServices}>
                         {services ? (
-                            services.map((service) => (
-                                <div
-                                    className={style.cardServices}
-                                    key={service.name}
-                                >
-                                    <img
-                                        src={service.image?.secure_url}
-                                        alt={service.name}
-                                    />
+                            services.map(service => (
+                                <div className={style.cardServices} key={service.name}>
+                                    <img src={service.image?.secure_url} alt={service.name} />
                                     <h4>{service.name}</h4>
                                 </div>
                             ))
