@@ -8,6 +8,7 @@ import FavoriteAuxiesCards from '../../../components/favoriteAuxiesCards/Favorit
 import style from './ProfileConsumers.module.scss'
 import Swal from 'sweetalert2'
 import { TextField } from '@mui/material'
+import ResetPassword from '../../reset-password/ResetPassword'
 
 const ProfileConsumers = () => {
     const consumer = useSelector((state) => state.loggedUser)
@@ -15,13 +16,19 @@ const ProfileConsumers = () => {
     const [error, setError] = useState(null)
     const [profileData, setProfileData] = useState({})
     const [edit, setEdit] = useState(false)
+    const [password, setPasswords] = useState(false)
     const handleEdit = () => {
         setEdit(true)
         if (edit === true) {
             setEdit(false)
         }
     }
-
+    const handlePassword = () => {
+        setPasswords(true)
+        if (password === true) {
+            setPasswords(false)
+        }
+    }
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -145,119 +152,24 @@ const ProfileConsumers = () => {
                 <div className={style.emailpassword}>
                     <h3>
                         Email: {consumer.email}{' '}
-                       {edit && <button onClick={() => navigate('/resetpassword')}>
+                       {edit && <button onClick={handlePassword}>
                             Cambiar la contraseña
-                        </button>}
+                        </button>
+                        }
+                        {password && <ResetPassword/>}
+                       
                     </h3>
                 </div>
                 <div className={style.savebutton}>
                   {edit &&  <button onClick={handleUpdateProfile}>
                         Guardar Cambios
                     </button>}
+                    
                 </div>
                 </div>
 
             </div>
-            {/* <div className={style.fullProfileContainer}>
-                <div className={style.profileContainer}>
-                    <div className={style.secondcontainer}>
-                        <button
-                            type='button'
-                            className={style.edit}
-                            onClick={handleEdit}
-                        >
-                            Editar perfil
-                        </button>
-                        <h1 className={style.name}>
-                            {consumer.firstName} {consumer.lastName}
-                        </h1>
-                        Te uniste: {toDateMed}
-                        {edit && (
-                            <TextField
-                                className={style.picker}
-                                id='outlined-basic'
-                                label='Nombre'
-                                variant='outlined'
-                                required
-                                multiline
-                                color='primary'
-                                name='firstName'
-                                value={profileData.firstName}
-                                onChange={handleChange}
-                            />
-                        )}
-                        {edit && (
-                            <TextField
-                                className={style.picker}
-                                id='outlined-basic'
-                                label='Apellido'
-                                variant='outlined'
-                                required
-                                multiline
-                                color='primary'
-                                name='lastName'
-                                value={profileData.lastName}
-                                onChange={handleChange}
-                            />
-                        )}
-                        <div className={style.imagecontainer}>
-                            <img
-                                src={consumer.image?.secure_url}
-                                alt='imagen de perfil'
-                            />
-                        </div>
-                        {edit && (
-                            <input
-                                type='file'
-                                accept='.jpg, .png'
-                                onChange={handleImageChange}
-                                className={style.imageButton}
-                            />
-                        )}
-                        {error && <p style={{ color: 'red' }}>{error}</p>}
-                        <h4>
-                            {consumer.isAdmin && (
-                                <div>
-                                    <h4>Admin</h4>
-                                </div>
-                            )}
-                        </h4>
-                        <h4>Género: {consumer.gender}</h4>
-                        {edit && (
-                            <select
-                                onChange={handleChange}
-                                name='gender'
-                                defaultValue={''}
-                            >
-                                <option disabled value=''>
-                                    Género
-                                </option>
-                                <option value='Masculino'>Masculino</option>
-                                <option value='Femenino'>Femenino</option>
-                                <option value='Otro'>Otro</option>
-                            </select>
-                        )}
-                        <div className={style.emailpassword}>
-                            <h3>
-                                Email: {consumer.email}{' '}
-                                {edit && (
-                                    <button
-                                        onClick={() =>
-                                            navigate('/resetpassword')
-                                        }
-                                    >
-                                        Cambiar la contraseña
-                                    </button>
-                                )}
-                            </h3>
-                        </div>
-                        <div className={style.savebutton}>
-                            <button onClick={handleUpdateProfile}>
-                                Guardar Cambios
-                            </button>
-                        </div>
-                    </div>
-                </div> */}
+      
                 <div className={style.manage}>
                     <h3>Auxies favoritos:</h3>
                     <div className={style.favorites}>
