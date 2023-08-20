@@ -114,7 +114,8 @@ const TableServices = () => {
                             <td>{service.status}</td>
                             {service.status === 'pending' && (
                                 <td>
-                                    <button onClick={handleClick} value={service.id}>
+                                    <div className={style.buttonContainer}>
+                                     <button onClick={handleClick} value={service.id}>
                                         Propuesta
                                     </button>
                                     <button
@@ -134,7 +135,7 @@ const TableServices = () => {
                                         value='approved'
                                     >
                                         Aceptar
-                                    </button>
+                                    </button>   
                                     <button
                                         style={{ backgroundColor: 'red' }}
                                         onClick={e => {
@@ -151,11 +152,13 @@ const TableServices = () => {
                                         value='declined'
                                     >
                                         Rechazar
-                                    </button>
+                                    </button> 
+                                    </div>
                                 </td>
                             )}
                             {service.status === 'approved' && (
                                 <td>
+                                    <div className={style.buttonContainer}>
                                     <button
                                         style={{ backgroundColor: 'green' }}
                                         value='done'
@@ -190,6 +193,7 @@ const TableServices = () => {
                                     >
                                         Cancelado
                                     </button>
+                                    </div>
                                 </td>
                             )}
                             {service.status === 'done' && <td>{service.price}</td>}

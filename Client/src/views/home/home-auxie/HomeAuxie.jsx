@@ -59,11 +59,11 @@ const HomeAuxie = () => {
             </header>
             {/* Aside */}
             <div className='grid grid-cols-3 '>
-                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900'>
+                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-2/3'>
                     <AsideAuxie />
                 </aside>
                 {/* Main */}
-                <main className='bg-div-text-color-light text-color-light p-4 pl-8 pr-96 -ml-72 border-2 border-div-text-color-light-900 '>
+                <main className='bg-div-text-color-light text-color-light p-4 pl-8 pr-96 -ml-60 border-2 border-div-text-color-light-900 '>
                     <h3 className='mb-4'>Servicios</h3>
                     <div>
                         <div className='grid grid-cols-2 grid-rows-2 gap-x-80 gap-y-0.5 px-4'>
