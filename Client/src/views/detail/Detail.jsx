@@ -98,7 +98,7 @@ const Detail = () => {
                                 </div>
                             </div>
                             <div className={style.bio}>
-                                <h1>Acerca de mí</h1>
+                                <h3>Acerca de mí</h3>
                                 <p> {auxieDetails.bio}</p>
                             </div>
                             <div className={style.carousel}>
@@ -120,7 +120,7 @@ const Detail = () => {
                                 </Carousel>
                             </div>
                             <div className={style.reviewscontainer}>
-                            <h1>Opiniones sobre: {auxieDetails.firstName} {auxieDetails.lastName}</h1>
+                            <h1>Reseñas: </h1>
                             </div>
                             <div className={style.reviewscontainer}>
                                 <AuxieReviews services={auxieDetails.reviews} />
