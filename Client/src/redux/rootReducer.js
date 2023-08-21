@@ -16,7 +16,6 @@ import {
     SET_STATUS,
 
     POST_CLAIM,
-    GET_ALL_CONSUMERS,
     GET_CLAIMS,
 
     UPDATE_CONSUMER,
@@ -49,18 +48,11 @@ function rootReducer(state = initialState, action) {
         case GET_ALL_AUXIES:
             return {
                 ...state,
-                consumers: action.payload,
-                filteredConsumers: [...action.payload],
-                backupConsumers: [...action.payload],
-            }
-        case GET_ALL_CONSUMERS:
-            return {
-                ...state,
                 auxies: action.payload,
                 filteredAuxies: [...action.payload],
                 backupAuxies: [...action.payload],
             }
-
+            
         case GET_CLAIMS:
             return {
                 ...state, 
