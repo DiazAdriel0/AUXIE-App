@@ -1,12 +1,13 @@
 const Claims = require('../../Models/claim')
 
-const getClaims = async (consumerUsername) => {
+const getClaims = async (email) => {
     try {
-        const claims = await Claims.find({consumerUsername})
+        const claims = await Claims.find({email})
         const arrClaim = []
         claims.forEach (claim => {
             if (claim.pending === true) {
                 const userClaim = {
+                    email: claim.email,
                     consumerUsername: claim.consumerUsername,
                     message: claim.message,
                     providerUsername: claim.providerUsername,
@@ -17,6 +18,7 @@ const getClaims = async (consumerUsername) => {
                 arrClaim.push(userClaim)
             } else {
                 const userClaim = {
+                    email: claim.email,
                     consumerUsername: claim.consumerUsername,
                     message: claim.message,
                     providerUsername: claim.providerUsername,

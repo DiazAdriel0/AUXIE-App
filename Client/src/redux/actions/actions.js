@@ -17,6 +17,9 @@ import {
     ADD_FAVORITE,
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
+    POST_CLAIM,
+    GET_ALL_CONSUMERS,
+    GET_CLAIMS,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -33,6 +36,34 @@ export function getAllAuxies() {
             console.error(e.response.data)
         }
     }
+}
+
+export function getAllConsumers() {
+    return async function (dispatch) {
+        try {
+            const res = await axios('/consumers')
+            return dispatch({
+                type: GET_ALL_CONSUMERS,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
+export function getClaims(email) {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get(`/claims?email=${email}`)
+            return dispatch({
+                type: GET_CLAIMS,
+                payload: res.data,
+            });
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    };
 }
 
 //action que pide todos los servicios del back (reemplazar URL)
@@ -252,10 +283,10 @@ export function turnLightNightMode(boolean) {
     }
 }
 
-export function setServiceStatus (info){
+export function setServiceStatus(info) {
     return async function (dispatch) {
         try {
-            const res = await axios.put('/providers/jobUpdate',info)
+            const res = await axios.put('/providers/jobUpdate', info)
             return dispatch({
                 type: SET_STATUS,
                 payload: res.data,
@@ -263,6 +294,16 @@ export function setServiceStatus (info){
         } catch (e) {
             console.error(e.response.data)
         }
+    }
+}
+
+export const postClaim = (input) => {
+    return async (dispatch) => {
+        const res = await axios.post('/claims', input)
+        return dispatch({
+            type: POST_CLAIM,
+            payload: res.data,
+        })
     }
 }
 

@@ -121,7 +121,7 @@ const ProfileAuxies = () => {
         formData.append('image', newImage)
         formData.append('bio', newBio)
         formData.append('gallery', gallery)
-console.log(formData.bio)
+        console.log(formData.bio)
        if(change){ dispatch(
             
             updateProfile(

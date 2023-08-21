@@ -19,19 +19,10 @@ const ProfilePage = () => {
                 {isAuxie ? (
                     <div>
                         <ProfileAuxies />
-                        {/* <Link to="/homeauxie">
-                            <button className={style.back}>Volver</button>
-                        </Link> */}
-                        
                     </div>
                 ) : (
                     <div>
-                        {/* <Link to="/homeconsumer">
-                            <button className={style.back}>Volver</button>
-                        </Link> */}
                         <ProfileConsumers />
-                        
-                        
                     </div>
                 )}
             </div>
