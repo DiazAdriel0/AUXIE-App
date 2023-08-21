@@ -17,6 +17,7 @@ import {
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
     FIRST_LOGIN,
+    SWITCH_FAVORITES,
 } from './actions/actionTypes'
 
 let initialState = {
@@ -196,6 +197,22 @@ function rootReducer(state = initialState, action) {
                     ...initialState.loggedUser,
                     firstLogin: action.payload,
                 },
+            }
+        case SWITCH_FAVORITES:
+            if (action.payload) {
+                const foundFavorite = [...state.loggedUser.favoritesProviders].map(aux => {
+                    const favorite = [...state.backupAuxies].find(fav => fav.id === aux.id)
+                    if (favorite) return favorite
+                })
+                return  {
+                    ...state,
+                    filteredAuxies: foundFavorite
+                }
+            } else {
+                return {
+                    ...state,
+                    filteredAuxies: [...state.backupAuxies]
+                }
             }
         // caso por defecto si por alguna razón no recibe action.type
         default:

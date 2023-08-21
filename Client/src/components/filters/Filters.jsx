@@ -2,7 +2,14 @@ import style from './filters.module.scss'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Select from 'react-select'
-import { filterAuxiesByService, orderAuxiesByPrice, orderAuxiesByRating } from '../../redux/actions/actions'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Switch from '@mui/material/Switch'
+import {
+    filterAuxiesByService,
+    orderAuxiesByPrice,
+    orderAuxiesByRating,
+    switchFavorites,
+} from '../../redux/actions/actions'
 
 const Filters = () => {
     const dispatch = useDispatch()
@@ -17,6 +24,18 @@ const Filters = () => {
         value: 'off',
         label: 'Ordenar',
     })
+    const [favSwitch, setFavSwitch] = useState(false)
+
+    const handleSwitch = () => {
+        if (favSwitch) {
+            setFavSwitch(false)
+            dispatch(switchFavorites(false))
+        }
+        if (!favSwitch) {
+            setFavSwitch(true)
+            dispatch(switchFavorites(true))
+        }
+    }
 
     const off = { value: 'off', label: 'Filtrar' }
 
@@ -109,6 +128,7 @@ const Filters = () => {
                     />
                 </>
             )}
+            <FormControlLabel control={<Switch onClick={handleSwitch} />} label='Favoritos' labelPlacement='start' />
         </div>
     )
 }

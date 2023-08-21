@@ -20,6 +20,7 @@ import {
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
     FIRST_LOGIN,
+    SWITCH_FAVORITES,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -307,6 +308,15 @@ export function updateFirstLogin(typeUser, id) {
         } catch (error) {
             console.error(error)
         }
+    }
+}
+
+export function switchFavorites(state) {
+    return async function (dispatch) {
+        return dispatch({
+            type:SWITCH_FAVORITES,
+            payload: state,
+        })
     }
 }
 
