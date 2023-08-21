@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router'
 export const Notifications = () => {
     const navigate = useNavigate()
 
+    const loggedUser = useSelector((state)=>{
+        return state.loggedUser
+    })
     const [notifications, setNotifications] = useState([])
     const [loading, setLoading] = useState(true)
     const night = useSelector((state)=>state.nightMode)
@@ -42,14 +45,25 @@ export const Notifications = () => {
         if (notifications.length) setLoading(false)
     }, [notifications])
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const handleRedirect = (texto)=>{ 
-        navigate('/requestedservices')
-       /*  if (texto.includes('reseña')) {
-            // esta bien y funka, pero... hay que reveer
-            //solo lo puedo redirigir a RequestedServicies
-            //xq todo esta ahí 
-        } */
+       
+        if (texto.includes('reseña')) {
+            return navigate('/review')
+        }
+        if (texto.includes('ha solicitado')) {
+            return navigate('/auxieservices')
+        }
+        if (texto.includes('ingresa a tu perfil')) {
+            return navigate('/profile')
+        }
+        if (texto.includes('requerido')||texto.includes('proposal')) {
+            return navigate('/requestedservices')
+        }
+        // eslint-disable-next-line no-prototype-builtins
+        if(texto.includes('mensaje') && loggedUser.hasOwnProperty('services')){
+            return navigate('/auxieinbox') //msj de consumer a definir
+        }
+
     }
 
     return (
