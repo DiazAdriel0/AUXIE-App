@@ -1,9 +1,9 @@
 .support-form-container {
     display: flex;
     flex-direction: column;
+    justify-content: end;
+    width: 100%;
     align-items: center;
-    justify-content: center;
-    height: 100vh; /* Esto asegura que el contenedor ocupe toda la altura de la pantalla */
 }
 
 .cards-container {
