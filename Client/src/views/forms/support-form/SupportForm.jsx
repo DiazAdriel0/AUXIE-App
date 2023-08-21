@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 // import { useValidations } from '../../../utils/validationutils'
 import axios from 'axios'
-
+import Swal from 'sweetalert2'
 const validate = (input) => {
     let errors = {}
     if (!input.consumerUsername || input.consumerUsername.trim() === '') {
@@ -74,7 +74,9 @@ const SupportForm = () => {
         e.preventDefault()
 
         if (Object.values(errors).length > 0) {
-            alert('Por favor completa todos los campos')
+        
+            Swal.fire('Por favor completa todos los campos')
+
         } else {
             try {
                 const formData = new FormData()
@@ -98,7 +100,9 @@ const SupportForm = () => {
                     setIsSubmitted(true)
                 }
             } catch (error) {
-                alert('Error al enviar la solicitud:' + error.message)
+            
+                Swal.fire('Error al enviar la solicitud:' + error.message)
+
             }
         }
     }

@@ -49,7 +49,8 @@ const ClientLogin = () => {
             }
         } catch (error) {
             console.error('error: ' + error.message)
-            alert(error.message)
+            Swal.fire(error.message)
+
         }
     }
 
@@ -126,7 +127,7 @@ const ClientLogin = () => {
             }
             form.reset()
         } catch (error) {
-            alert(error.message) //o como lo maneje el front sweet alert?
+            Swal.fire(error.message)
         }
     }
 
@@ -169,7 +170,7 @@ const ClientLogin = () => {
                 handleLogin(data)
             }
         } catch (error) {
-            alert(error.message) //o como lo maneje el front sweet alert?
+            Swal.fire( error.message)
         }
     }
 

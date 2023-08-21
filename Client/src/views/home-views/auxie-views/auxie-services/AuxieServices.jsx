@@ -2,7 +2,7 @@ import style from './auxieServices.module.scss'
 import axios from 'axios'
 //Hooks
 import { useEffect } from 'react'
-import {loggedUser} from '../../../../redux/actions/actions'
+import { loggedUser } from '../../../../redux/actions/actions'
 
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,12 +14,11 @@ import CardsJobs from '../../../../components/home-auxie-components/cards-jobs/C
 import Pagination from '../../../../components/pagination/Pagination'
 
 const AuxieServices = () => {
-    const logged = useSelector((state) => state.loggedUser)
+    const logged = useSelector(state => state.loggedUser)
     const [tableOrCard, setTableOrCard] = useState(true)
     const handleChange = () => {
         setTableOrCard(!tableOrCard)
     }
-
 
     const dispatch = useDispatch()
     const handleRefresh = async () => {
@@ -27,16 +26,14 @@ const AuxieServices = () => {
             const response = await axios.get(`/providers/${logged.id}`)
             if (response) {
                 dispatch(loggedUser(response.data))
-          
             }
         } catch (error) {
             console.log(error.message)
-          
         }
     }
-    useEffect(()=>{
+    useEffect(() => {
         handleRefresh()
-    },[])
+    }, [])
 
     return (
         <div className={style.services}>
@@ -47,10 +44,7 @@ const AuxieServices = () => {
             <AsideAuxie />
             {/* main */}
             <main className={style.main}>
-                <button onClick={handleChange}>
-                    {tableOrCard ? 'Change to cards' : 'change to table'}
-                </button>
-                {tableOrCard ? <TableServices /> : <CardsJobs />}
+                <TableServices />
             </main>
 
             {/* footer */}
