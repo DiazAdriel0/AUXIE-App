@@ -159,6 +159,7 @@ const ProfileAuxies = () => {
         formData.append('bio', newBio)
         formData.append('gallery', gallery)
 
+
         if (change) {
             dispatch(
                 updateProfile(
@@ -173,6 +174,7 @@ const ProfileAuxies = () => {
 
                     'providers'
                 )
+
             )
         }
     }

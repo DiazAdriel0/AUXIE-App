@@ -14,15 +14,24 @@ import {
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
     SET_STATUS,
+
+    POST_CLAIM,
+    GET_CLAIMS,
+
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
     FIRST_LOGIN,
+    SWITCH_FAVORITES,
+
 } from './actions/actionTypes'
 
 let initialState = {
     auxies: [],
+    consumers: [],
     backupAuxies: [],
+    backupConsumers: [],
     filteredAuxies: [],
+    filteredConsumers: [],
     loggedUser: {},
     services: [],
     filter: '',
@@ -30,6 +39,7 @@ let initialState = {
     currentPage: 1,
     nightMode: false,
     token: '',
+    claims: [],
 }
 
 function rootReducer(state = initialState, action) {
@@ -42,6 +52,13 @@ function rootReducer(state = initialState, action) {
                 filteredAuxies: [...action.payload],
                 backupAuxies: [...action.payload],
             }
+            
+        case GET_CLAIMS:
+            return {
+                ...state, 
+                claims: [...action.payload]
+            }
+
         // obtengo todos los servicios de mi back y los guardo en mi estado global
         case GET_ALL_SERVICES:
             return { ...state, services: action.payload }
@@ -54,8 +71,10 @@ function rootReducer(state = initialState, action) {
                     filter: action.payload,
                 }
             } else {
-                const filteredAuxies = [...state.auxies].filter(aux =>
-                    aux.services.some(serv => serv.name === action.payload)
+
+                const filteredAuxies = [...state.auxies].filter((aux) =>
+                    aux.services.some((serv) => serv.name === action.payload)
+
                 )
                 return {
                     ...state,
@@ -68,15 +87,23 @@ function rootReducer(state = initialState, action) {
             if (action.payload === 'asc') {
                 let ascFilter = [...state.filteredAuxies].sort(
                     (prev, next) =>
-                        prev.services.find(obj => obj.name === state.filter).price -
-                        next.services.find(obj => obj.name === state.filter).price
+
+                        prev.services.find((obj) => obj.name === state.filter)
+                            .price -
+                        next.services.find((obj) => obj.name === state.filter)
+                            .price
+
                 )
                 return { ...state, filteredAuxies: [...ascFilter] }
             } else if (action.payload === 'desc') {
                 let descFilter = [...state.filteredAuxies].sort(
                     (prev, next) =>
-                        next.services.find(obj => obj.name === state.filter).price -
-                        prev.services.find(obj => obj.name === state.filter).price
+
+                        next.services.find((obj) => obj.name === state.filter)
+                            .price -
+                        prev.services.find((obj) => obj.name === state.filter)
+                            .price
+
                 )
                 return { ...state, filteredAuxies: [...descFilter] }
             } else {
@@ -179,6 +206,16 @@ function rootReducer(state = initialState, action) {
                     jobs: action.payload,
                 },
             }
+
+        case POST_CLAIM:
+            return {
+                ...state,
+                loggedUser: {
+                    ...state.loggedUser,
+                    claims: [...initialState.claims, action.payload],
+                },
+            }
+
         case UPDATE_CONSUMER:
             return {
                 ...state,
@@ -196,6 +233,23 @@ function rootReducer(state = initialState, action) {
                     ...initialState.loggedUser,
                     firstLogin: action.payload,
                 },
+            }
+        case SWITCH_FAVORITES:
+            if (action.payload) {
+                const foundFavorite = [...state.loggedUser.favoritesProviders].map(aux => {
+                    const favorite = [...state.backupAuxies].find(fav => fav.id === aux.id)
+                    if (favorite) return favorite
+                })
+                return  {
+                    ...state,
+                    filteredAuxies: foundFavorite
+                }
+            } else {
+                return {
+                    ...state,
+                    filteredAuxies: [...state.backupAuxies]
+                }
+
             }
         // caso por defecto si por alguna razón no recibe action.type
         default:

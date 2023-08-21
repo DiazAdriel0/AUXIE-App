@@ -2,12 +2,12 @@ const getClaim = require('../../Controllers/ClaimsControllers/getClaim')
 
 const handlerGetClaim = async (req, res) => {
     try {
-        const { consumerUsername } = req.query
+        const { email } = req.query
 
-        if (!consumerUsername) {
-            throw new Error('Falta el nombre de usuario del consumidor')
+        if (!email) {
+            throw new Error('Falta el email')
         }
-        const claim = await getClaim(consumerUsername)
+        const claim = await getClaim(email)
         if (!claim.length) {
             throw new Error('No se encontraron reclamos')
         }

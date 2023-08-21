@@ -16,7 +16,6 @@
     flex-grow: auto;
     font-size: 1.2rem;
 }
-
 .profilePic {
     height: 25%;
     width: 25%;
@@ -28,7 +27,13 @@
 .name {
     display: flex;
     gap: 5%;
+
     font-size: 2rem;
+
+    h3{
+        font-weight: 700;
+    }
+
 }
 
 .rating {
@@ -40,22 +45,33 @@
 .contServices {
     display: flex;
     flex-flow: row wrap;
+
     width: 100%;
     // justify-content: space-between;
 margin-right: 50%;
+
 
 }
 
 .serviceDiv {
     text-align: start;
     font-size: 80%;
+
     margin: 1%;
     border-bottom: 0.5px solid grey;
     // border-radius: 5%;
     padding: 1%;
+
+    margin-top: 5%;
+    margin-right: 5%;
+    p{
+        font-weight: 300;
+    }
+
 }
 
 .serviceName {
+    font-weight: 500;
     color: var(--accent--first--color-light);
    
 }
@@ -73,13 +89,22 @@ margin-right: 50%;
 .bio {
     height: 20%;
     margin: 2%;
-    // font-size: large;
+
+ 
     h1{
         font-size: 2rem !important;
         border-bottom: 1px solid;
     }
     p{
         font-size: 1.1rem !important;
+      font-weight: 400;
+
+    h3{
+        font-weight: 500;
+        font-size: 1.25em;
+    }
+     
+
     }
 }
 
@@ -97,6 +122,7 @@ margin-right: 50%;
         border-radius: 5px;
     }
 }
+
 .detailall{
     width: 60%;
 }
@@ -110,4 +136,25 @@ overflow-y: scroll;
 h1{
     font-size: 1.5rem;
 }
+
+.chatT{
+    display: flex;
+    flex-direction: column;
+    
+}
+.iconCont{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+    .iconMin{
+        font-size: 2em; 
+        padding-bottom: 0.75rem;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+    }
+    .iconMin:hover{
+        background-color: rgba(108, 111, 121, 0.56)
+    }
+
 }

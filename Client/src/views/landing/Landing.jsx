@@ -258,11 +258,11 @@ const Landing = () => {
                             <h3>TU VIDA COTIDIANA AHORA ES MÁS FÁCIL</h3>
                             <p>
                                 <span>
-                                    Esta aplicación esta diseñada para tu
+                                    Esta aplicación está diseñada para tu
                                     comodidad, con
                                 </span>
                                 <span>
-                                    unos pocos clicks podras solucionar tus
+                                    unos pocos clics podrás solucionar tus
                                     problemas.
                                 </span>
                             </p>
@@ -295,10 +295,12 @@ const Landing = () => {
                             isVisible={true}
                         >
                             <section ref={myRef} className={serviceCards}>
-                                <div className={style.serviceCardsTitle}></div>
-                                <h3 className={style.h3}>
-                                    Nuestros servicios mas populares
-                                </h3>
+                                <div className={style.serviceCardsTitle}>
+                                    <h3>
+                                        Nuestros servicios más populares
+                                    </h3>
+                                </div>
+                               
                                 <CardsServices />
                             </section>
                         </Animated>

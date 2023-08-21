@@ -5,6 +5,10 @@ const consumerSchema = new Schema({
         type: Boolean,
         default: true,
     },
+    email: {
+        type: String,
+        required: true,
+    },
     consumerUsername: {
         type: String,
         required: true,
@@ -22,8 +26,8 @@ const consumerSchema = new Schema({
         required: true,
     },
     image: {
-        type: String,
-        required: false,
+        public_id: String, 
+        secure_url: String,
     },
     dateClaims: {
         type: Date,
