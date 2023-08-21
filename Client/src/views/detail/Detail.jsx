@@ -119,7 +119,9 @@ const Detail = () => {
                                 </Carousel>
                             </div>
                             <div className={style.reviewscontainer}>
-                                <h1>Opiniones sobre: {auxieDetails.firstName} {auxieDetails.lastName}</h1>
+                            <h1>Opiniones sobre: {auxieDetails.firstName} {auxieDetails.lastName}</h1>
+                            </div>
+                            <div className={style.reviewscontainer}>
                                 <AuxieReviews services={auxieDetails.reviews} />
                             </div>
                         </div>
