@@ -5,13 +5,14 @@
     // border-radius: 10px;
     width: 100%;
     height: 75vh;
-    overflow: scroll;
+    overflow: auto;
     // position: relative; /* Añadimos posicionamiento relativo */
     background-image: url('../../assets/chats-background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
     max-width: 100%;
+    box-sizing: border-box;
 }
 
 .sender {

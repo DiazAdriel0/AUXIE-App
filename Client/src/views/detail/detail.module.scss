@@ -15,7 +15,6 @@
     flex-grow: auto;
     font-size: 1.5rem;
 }
-
 .profilePic {
     height: 15%;
     img {
@@ -26,6 +25,9 @@
 .name {
     display: flex;
     gap: 5%;
+    h3{
+        font-weight: 700;
+    }
 }
 
 .rating {
@@ -37,16 +39,21 @@
 .contServices {
     display: flex;
     flex-flow: row wrap;
-    width: 60%;
+    width: 80%;
 }
 
 .serviceDiv {
     text-align: start;
     font-size: 80%;
+    margin-top: 5%;
     margin-right: 5%;
+    p{
+        font-weight: 300;
+    }
 }
 
 .serviceName {
+    font-weight: 500;
     color: var(--accent--first--color-light);
 }
 
@@ -63,6 +70,13 @@
 .bio {
     height: 20%;
     margin: 2%;
+    h3{
+        font-weight: 500;
+        font-size: 1.25em;
+    }
+    p{
+        font-weight: 400;
+    }
 }
 
 .detailform {
@@ -77,5 +91,25 @@
     width: 20%;
     button {
         border-radius: 5px;
+    }
+}
+.chatT{
+    display: flex;
+    flex-direction: column;
+    
+}
+.iconCont{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    align-items: center;
+    .iconMin{
+        font-size: 2em; 
+        padding-bottom: 0.75rem;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+    }
+    .iconMin:hover{
+        background-color: rgba(108, 111, 121, 0.56)
     }
 }
