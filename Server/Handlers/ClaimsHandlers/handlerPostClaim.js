@@ -3,17 +3,20 @@ const { uploadClaimImage } = require('./../../Utils/cloudinary')
 const fs = require('fs-extra')
 
 const handlerPostClaim = async (req, res) => {
+    console.log(req.body)
     try {
-        const { consumerUsername, message, providerUsername, reason } = req.body
+        const { email, consumerUsername, message, providerUsername, reason } = req.body
 
-        if (!consumerUsername || !message || !providerUsername || !reason) {
+        if (!email || !message || !providerUsername || !reason) {
             throw new Error('Faltan datos')
         } else {
             let image
             if (req.files?.image) {
+                console.log('Archivo de imagen recibido:', req.files.image)
                 const result = await uploadClaimImage(
                     req.files.image.tempFilePath
                 )
+                console.log('Respuesta de Cloudinary:', result)
                 image = {
                     public_id: result.public_id,
                     secure_url: result.secure_url,
@@ -23,11 +26,12 @@ const handlerPostClaim = async (req, res) => {
             }
 
             const newClaim = await postClaim(
+                email,
                 consumerUsername,
                 message,
                 providerUsername,
                 reason,
-                image
+                image,
             )
             res.status(200).json(newClaim)
         }

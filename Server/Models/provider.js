@@ -46,6 +46,9 @@ const providerSchema = new Schema({
     inbox: {
         type: Array,
     },
+    claims: {
+        type: Array,
+    },
 })
 
 providerSchema.set('toJSON', {

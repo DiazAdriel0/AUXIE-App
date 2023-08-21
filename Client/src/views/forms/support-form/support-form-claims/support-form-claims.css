@@ -1,0 +1,26 @@
+.support-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Esto asegura que el contenedor ocupe toda la altura de la pantalla */
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    padding: 16px;
+    margin: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.pagination {
+    margin-top: 16px;
+}

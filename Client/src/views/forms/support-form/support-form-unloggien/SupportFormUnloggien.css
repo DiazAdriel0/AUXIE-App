@@ -1,0 +1,16 @@
+.support-message {
+    font-size: 16px;
+    color: #333;
+    margin: 20px;
+    text-align: center;
+}
+
+.email-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.email-link:hover {
+    text-decoration: underline;
+}
