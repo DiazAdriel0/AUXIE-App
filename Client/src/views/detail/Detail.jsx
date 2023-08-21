@@ -76,7 +76,9 @@ const Detail = () => {
                                             precision={0.5}
                                         />
                                     </div>
+
                                     <p style={{ fontWeight: 400, fontSize:'1rem' }}>({auxieDetails.reviews.length} Reseñas)</p>
+
                                 </div>
                                 <div className={style.contServices}>
                                     {auxieDetails.services.length > 0 ? (
@@ -96,7 +98,7 @@ const Detail = () => {
                                 </div>
                             </div>
                             <div className={style.bio}>
-                                <h3>Acerca de mí</h3>
+                                <h1>Acerca de mí</h1>
                                 <p> {auxieDetails.bio}</p>
                             </div>
                             <div className={style.carousel}>
@@ -117,7 +119,10 @@ const Detail = () => {
                                         ))}
                                 </Carousel>
                             </div>
-                            <div>
+                            <div className={style.reviewscontainer}>
+                            <h1>Opiniones sobre: {auxieDetails.firstName} {auxieDetails.lastName}</h1>
+                            </div>
+                            <div className={style.reviewscontainer}>
                                 <AuxieReviews services={auxieDetails.reviews} />
                             </div>
                         </div>
