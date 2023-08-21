@@ -66,7 +66,7 @@ const HomeAuxie = () => {
                         {services ? (
                             services.map(service => (
                                 <div className={style.cardServices} key={service.name}>
-                                    <img src={service.image?.secure_url} alt={service.name} />
+                                    {/* <img src={service.image?.secure_url} alt={service.name} /> */}
                                     <h4>{service.name}</h4>
                                 </div>
                             ))

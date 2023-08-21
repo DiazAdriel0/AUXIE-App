@@ -99,7 +99,7 @@ export const Chat = ({ recipient }) => {
     }
 
     return (
-        <div className='chat-app'>
+        <div className={style.chatapp}>
             <div className='header'></div>
 
             <div className={style.messages}>

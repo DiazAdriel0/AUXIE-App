@@ -9,7 +9,7 @@ const ChatSelector = ({ inbox, handleUserSelection }) => {
                     key={index}
                     onClick={() => handleUserSelection(item.sender)}
                 >
-                    User: {item.name}
+                    {item.name}
                 </div>
             ))}
         </div>
