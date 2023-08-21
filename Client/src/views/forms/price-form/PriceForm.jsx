@@ -4,6 +4,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import useNotify from '../../../hooks/useNotify'
 import { setServiceStatus } from '../../../redux/actions/actions'
+import Swal from 'sweetalert2'
 
 const PriceForm = ({ id }) => {
     const loggedUser = useSelector(state => state.loggedUser)
@@ -42,11 +43,11 @@ const PriceForm = ({ id }) => {
             sendNotification(
                 `El auxie ${loggedUser.firstName} ${loggedUser.lastName} ha enviado la propuesta a tu solicitud. Revisala para confirmar posibles cambios`
             )
-           
+            
             Swal.fire('Cambios realizados con exito')
         } catch (error) {
             console.error(error)
-            alert('No se han guardado los cambios')
+            Swal.fire('No se han guardado los cambios')
         }
     }
 

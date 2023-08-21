@@ -50,7 +50,9 @@ const ClientLogin = () => {
             }
         } catch (error) {
             console.log(error.message)
-            alert(error.response.data.error)
+
+            Swal.fire(error.response.data.error)
+
         }
     }
 
@@ -122,7 +124,8 @@ const ClientLogin = () => {
             }
             form.reset()
         } catch (error) {
-            alert(error.message) //o como lo maneje el front sweet alert?
+            Swal.fire(error.message)
+
         }
         //navigate home / search auxies ///
     }
@@ -166,7 +169,7 @@ const ClientLogin = () => {
                 handleLogin(data)
             }
         } catch (error) {
-            alert(error.message) //o como lo maneje el front sweet alert?
+            Swal.fire(error.message)
         }
     }
 
