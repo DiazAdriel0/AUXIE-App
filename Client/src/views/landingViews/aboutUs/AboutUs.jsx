@@ -24,7 +24,7 @@ const AboutUs = () => {
                 <div className={style.card}>
                     <div className={style.cardfront}>
                         <center>
-                            <h2>Que es Auxie?</h2>
+                            <h2>¿Qué es Auxie?</h2>
                         </center>
 
                         <p>
@@ -56,7 +56,7 @@ const AboutUs = () => {
                 <div className={style.card}>
                     <div className={style.cardfront}>
                         <center>
-                            <h2>Por qué usar auxie?</h2>
+                            <h2>¿Por qué usar auxie?</h2>
                         </center>
                         <p>
                             En Auxie, valoramos la excelencia y la satisfacción
@@ -115,7 +115,7 @@ const AboutUs = () => {
             {/* ///cards/// */}
             <center>
                 <div className={style.about2}>
-                    <h2>Conoce al equipo Auxie!</h2>{' '}
+                    <h2>¡Conocé al equipo Auxie!</h2>{' '}
                 </div>
             </center>
 
