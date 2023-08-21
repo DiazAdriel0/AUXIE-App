@@ -1,5 +1,5 @@
 import { Button, MenuItem, Rating, TextField } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import StarIcon from '@mui/icons-material/Star'
 import { useSelector } from 'react-redux'
@@ -9,6 +9,8 @@ import SendIcon from '@mui/icons-material/Send'
 import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import useNotify from '../../../hooks/useNotify'
+
 const ReviewForm = () => {
     const navigate = useNavigate()
     const services = useSelector((state) => state.services)
@@ -16,12 +18,24 @@ const ReviewForm = () => {
 
     const [review, setReview] = useState({
         consumerId: user.id,
-        providerId: '',
+        providerId:'',
         serviceId: '',
         review: '',
         score: null,
     })
-    console.log(review)
+    
+    const [providerUid, setProviderUid] = useState('')
+    const [sent, setSent] = useState(false)
+    const { sendNotification } = useNotify(providerUid)
+    const [aux, setAux] = useState(false)
+    useEffect(()=>{
+        if(providerUid && sent){
+            console.log('te dieron reseña')
+            sendNotification(`${user.firstName} ${user.lastName} ha dejado una reseña sobre tu servicio.`)
+            setSent(false)
+        }
+    },[aux, providerUid])
+
     const handleInputChange = (event) => {
         const { name, value } = event.target
         setReview((previousValue) => ({ ...previousValue, [name]: value }))
@@ -80,37 +94,44 @@ const ReviewForm = () => {
             })
         }
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+        
+        axios(`providers/${review.providerId}`).then(({data})=>{
+            if(data){
+                let uid= data.userUid || data.googleId
+            setProviderUid(uid)
+            }    
+        }).catch((error)=>{console.error(error.message)})
+ 
         handlePost()
     }
     return (
         <div className={style.form}>
-            <form id="form" onSubmit={handleSubmit}>
+            <form id='form' onSubmit={handleSubmit}>
                 <h1>Califica a tu auxie</h1>
                 <div className={style.pickerContainer}>
                     <div>
-                        <label> Cual Auxie deseas calificar?</label>
+                        <label>¿A qué Auxie deseas calificar?</label>
                         <TextField
                             className={style.picker}
                             required
                             fullWidth
-                            id="providerId" // Cambio de 'auxie' a 'providerId'
+                            id='providerId' // Cambio de 'auxie' a 'providerId'
                             select
-                            label="Auxie"
-                            helperText="Selecciona un Auxie"
-                            color="primary"
-                            name="providerId" // Cambio de 'auxie' a 'providerId'
+                            label='Auxie'
+                            helperText='Selecciona un Auxie'
+                            color='primary'
+                            name='providerId' // Cambio de 'auxie' a 'providerId'
                             value={review.providerId} // Cambio de 'auxie' a 'providerId'
                             onChange={handleAuxieChange} // Cambio de handleAuxieChange a handleProviderChange
                         >
                             {user.requiredServices ? (
                                 user.requiredServices.map((auxie) => (
-                                    
                                     <MenuItem
                                         key={auxie.id}
                                         value={auxie.providerId} // Cambio de 'auxie' a 'providerId'
-                                    > {console.log(auxie)}
+                                    >
                                         {auxie.providerName}
                                     </MenuItem>
                                 ))
@@ -125,12 +146,12 @@ const ReviewForm = () => {
                         <TextField
                             required
                             fullWidth
-                            id="serviceId"
+                            id='serviceId'
                             select
-                            label="Servicio"
-                            helperText="Selecciona un servicio"
-                            color="primary"
-                            name="serviceId"
+                            label='Servicio'
+                            helperText='Selecciona un servicio'
+                            color='primary'
+                            name='serviceId'
                             value={review.serviceId}
                             onChange={handleServiceChange}
                             className={style.picker}
@@ -152,7 +173,7 @@ const ReviewForm = () => {
                     <label>¿Qué calificación le das al auxie?</label>
                     <Rating
                         className={style.picker}
-                        name="score"
+                        name='score'
                         value={ratingValue}
                         precision={0.5}
                         getLabelText={getLabelText}
@@ -169,7 +190,7 @@ const ReviewForm = () => {
                         emptyIcon={
                             <StarIcon
                                 style={{ opacity: 0.55 }}
-                                fontSize="inherit"
+                                fontSize='inherit'
                             />
                         }
                     />
@@ -183,13 +204,13 @@ const ReviewForm = () => {
                         <TextField
                             className={style.picker}
                             fullWidth
-                            id="outlined-basic"
-                            label="Escribe tus comentarios"
-                            variant="outlined"
+                            id='outlined-basic'
+                            label='Escribe tus comentarios'
+                            variant='outlined'
                             required
                             multiline
-                            color="primary"
-                            name="review"
+                            color='primary'
+                            name='review'
                             value={review.review}
                             onChange={handleInputChange}
                         />
@@ -198,10 +219,16 @@ const ReviewForm = () => {
 
                 <center>
                     <Button
+                        onClick={
+                            ()=>{
+                            setAux(!aux)
+                            setSent(true)
+                            }
+                        }
                         className={style.send}
-                        variant="contained"
+                        variant='contained'
                         endIcon={<SendIcon />}
-                        type="submit"
+                        type='submit'
                     >
                         Enviar
                     </Button>

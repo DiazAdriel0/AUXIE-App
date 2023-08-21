@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 const Onechat = ({ uid }) => {
     const [user, setUser] = useState({})
-    
+
     const token = useSelector((state) => state.token)
     useEffect(() => {
         getUser(token, uid)
@@ -30,8 +30,10 @@ const Onechat = ({ uid }) => {
         alt=""
     /> */}
             <div>
-              <a><span>{user.firstName + ' ' + user.lastName}</span></a>
-                
+                <a>
+                    <span>{user.firstName + ' ' + user.lastName}</span>
+                </a>
+
                 <p>Hello!</p>
             </div>
         </div>

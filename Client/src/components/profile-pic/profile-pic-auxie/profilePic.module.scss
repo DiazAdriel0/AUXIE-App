@@ -39,7 +39,7 @@
     }
 
     .profileButtonTop {
-        border-bottom: 1px var(--contrast-color-light) solid;
+        border-bottom: 1px var(--text-color-light) solid;
         height: 2rem;
         padding-top: 2%;
     }
@@ -48,7 +48,7 @@
         border-radius: 2px 2px 0px 0px;
     }
     .profileButtonMiddle {
-        border-bottom: 1px var(--contrast-color-light) solid;
+        border-bottom: 1px var(--text-color-light) solid;
         height: 2rem;
         padding-top: 2%;
     }
@@ -69,27 +69,30 @@
     border-radius: 2px;
     text-align: center;
     background-color: var(--button-color-dark);
+    color: var(--button-text-color-dark);
     width: 8rem;
     p:hover {
         cursor: pointer;
     }
 
     .profileButtonTop {
-        border-bottom: 1px var(--text-color-dark) solid;
+        border-bottom: 1px var(--background-dark) solid;
         height: 2rem;
         padding-top: 2%;
     }
     .profileButtonTop:hover {
         background-color: var(--hover-color-dark);
+        color: var(--text-color-light);
         border-radius: 2px 2px 0px 0px;
     }
     .profileButtonMiddle {
-        border-bottom: 1px var(--text-color-dark) solid;
+        border-bottom: 1px var(--background-dark) solid;
         height: 2rem;
         padding-top: 2%;
     }
     .profileButtonMiddle:hover {
         background-color: var(--hover-color-dark);
+        color: var(--text-color-light);
     }
     .profileButtonBottom {
         height: 2rem;
@@ -97,7 +100,7 @@
     }
     .profileButtonBottom:hover {
         background-color: var(--hover-color-dark);
+        color: var(--text-color-light);
         border-radius: 0px 0px 2px 2px;
     }
 }
-

@@ -4,17 +4,18 @@
 }
 
 .profileContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  border: 2px solid rgba(116, 116, 116, 0.506);
-  padding: 20px;
-  margin: 5% auto; /* Center the container horizontally */
-  border-radius: 2%;
-  max-width: 800px; /* Set a maximum width for the container */
-  width: 100%; /* Allow the container to take the full width if smaller than max-width */
+    display: flex;
+    background-color:  rgba(128, 128, 128, 0.294) !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.506);
+    padding: 20px;
+    margin: 5% auto; /* Center the container horizontally */
+    border-radius: 2%;
+    max-width: 800px; /* Set a maximum width for the container */
+    width: 100%; /* Allow the container to take the full width if smaller than max-width */
 
     img {
         // max-width: 100%; /* Set maximum width for the image */
@@ -116,26 +117,25 @@
     display: flex;
     justify-content: center;
     height: 7rem;
-    
 }
 .secondcontainer {
     width: 100%;
 }
 
-.manage{
+.manage {
     display: flex;
-  flex-direction: column;
-  height: 100%;
-  border: 2px solid black;
-  padding: 20px;
-  margin: 5% auto; /* Center the container horizontally */
-  border-radius: 2%;
-  max-width: 800px; /* Set a maximum width for the container */
-  width: 100%; /* Allow the container to take the full width if smaller than max-width */
-  .favorites {
-    display: flex;
-    justify-content: center;
-    background-color: #dadada;
-    border-radius: 10px;
-  }
+    flex-direction: column;
+    height: 100%;
+    border: 2px solid black;
+    padding: 20px;
+    margin: 5% auto; /* Center the container horizontally */
+    border-radius: 2%;
+    max-width: 800px; /* Set a maximum width for the container */
+    width: 100%; /* Allow the container to take the full width if smaller than max-width */
+    .favorites {
+        display: flex;
+        justify-content: center;
+        background-color: #dadada;
+        border-radius: 10px;
+    }
 }

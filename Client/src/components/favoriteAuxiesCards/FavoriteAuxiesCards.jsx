@@ -6,7 +6,9 @@ import FavoriteAuxieCard from '../favoriteAuxieCard/FavoriteAuxieCard'
 import { useSelector } from 'react-redux'
 
 const FavoriteAuxiesCards = () => {
-    const Favorites = useSelector((state) => state.loggedUser.favoritesProviders)
+    const Favorites = useSelector(
+        (state) => state.loggedUser.favoritesProviders
+    )
 
     return (
         <>
@@ -21,7 +23,10 @@ const FavoriteAuxiesCards = () => {
                             services={user.services}
                             averageRating={user.averageRating}
                         />
-                    ))): (<p>No tienes favoritos</p>)}
+                    ))
+                ) : (
+                    <p>No tienes favoritos</p>
+                )}
             </div>
         </>
     )

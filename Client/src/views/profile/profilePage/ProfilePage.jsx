@@ -1,7 +1,7 @@
 import ProfileConsumers from '../profileConsumers/ProfileConsumers'
 import ProfileAuxies from '../profileAuxies/ProfileAuxies'
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'  // Link
+import { useNavigate } from 'react-router-dom' // Link
 import { useSelector } from 'react-redux'
 // import style from './ProfilePage.module.scss'
 
@@ -19,6 +19,7 @@ const ProfilePage = () => {
                 {isAuxie ? (
                     <div>
                         <ProfileAuxies />
+
                     </div>
                 ) : (
                     <div>

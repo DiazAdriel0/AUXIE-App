@@ -1,7 +1,26 @@
-.card {
-    background-color: rgba(162, 155, 227, 0.515);
+.cardNight {
+    background-color: rgba(128, 128, 128, 0.294) !important;
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid var(--secondary--color-hover);
+    border-radius: 1.5%;
+    width: 19rem;
+    height: 25rem;
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.22);
+    transition: all 0.5s;
+}
+.cardNight:hover {
+    border: 1px solid var(--secondary--color-hover);
+    transform: scale(1.03);
+}
+
+.card {
+    background-color: rgba(128, 128, 128, 0.294) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     align-items: center;
     border: 1px solid var(--secondary--color-hover);
     border-radius: 1.5%;
@@ -9,7 +28,6 @@
     height: 25rem;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
     transition: all 0.5s;
-   
 }
 .card:hover {
     border: 1px solid var(--secondary--color-hover);
@@ -19,10 +37,8 @@
 .contPersonal {
     display: flex;
     width: 90%;
+    height: 20%;
     margin: 5%;
-    // gap: 1%;
-    // padding: 5%;
- 
 }
 
 .info {
@@ -41,7 +57,6 @@
     display: flex;
     justify-content: flex-start;
     width: 50%;
-    
     img {
         object-fit: cover;
         border-radius: 2%;
@@ -52,50 +67,31 @@
     display: flex;
     flex-flow: row wrap;
     width: 100%;
-    border-top: 1px solid blue;
-    border-bottom: 1px solid blue;
+    border-top: 2px solid rgba(4, 4, 48, 0.134);
+    border-bottom: 2px solid rgba(4, 4, 48, 0.134);
     overflow: scroll;
     height: 40%;
-    justify-content: space-between;
-    margin-bottom: 10%;
-    
-    
-    
+    justify-content: flex-start;
 }
-.contServices::-webkit-scrollbar{
+.contServices::-webkit-scrollbar {
     display: none;
-  }
+}
 
 .serviceDiv {
- 
-    // white-space: pre-wrap;
-    // overflow-y: scroll;
- 
-    // width: 100%;
-    margin-left: 1%;
+    width: 50%;
     font-size: 0.9rem;
     padding: 3%;
-    
-    
-    
-    
-   
-    
 }
-
 
 .serviceName {
     color: var(--contrast-color-light);
-    // overflow: hidden;
-    // text-overflow: ellipsis;
+ 
     white-space: nowrap;
-    // margin-bottom: 3%;
-    // margin-left: 3%;
-   
+ 
 }
-.serviceName::-webkit-scrollbar{
-    display:none;
-  }
+.serviceName::-webkit-scrollbar {
+    display: none;
+}
 
 .rating {
     display: flex;
@@ -104,6 +100,7 @@
 }
 
 .button {
+
     width: 8.5em;
     height: 2.9em;
     border-radius: 7px;
@@ -113,8 +110,8 @@
     cursor: pointer;
 }
 
-.noServices{
+.noServices {
     display: flex;
-    margin-left: 25%;
     align-items: center;
+    padding-left: 25%;
 }

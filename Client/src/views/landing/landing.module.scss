@@ -27,8 +27,20 @@
 
 .divSloganLight {
     background-color: var(--div-color-light);
+    h3{
+        font-weight: 500;
+    }
+    p{
+        font-weight: 350;
+    }
 }
 .divSloganNight {
+    h3{
+        font-weight: 500;
+    }
+    p{
+        font-weight: 350;
+    }
 }
 .buttonSloganContLight {
     box-shadow: 0px 9px 6px -3px rgb(182, 182, 182);
@@ -163,7 +175,9 @@
             align-items: center;
             font-size: large;
             margin-top: 8%;
-
+            button {
+                margin-top: 10%;
+            }
             select {
                 border-radius: 10px;
                 padding: 2%;
@@ -175,6 +189,8 @@
             width: 200px;
             height: 50px;
             border-radius: 4px;
+
+            margin-top: 10%;
         }
 
         .menuTurnAuxie {
@@ -276,10 +292,14 @@
         align-items: center;
         gap: 20%;
         padding: 8% 0 5% 0;
-
-        .h3 {
+        .serviceCardsTitle{
+            padding-bottom: 2em;
+           h3 {
             font-size: xx-large;
+            font-weight: 450;
+        } 
         }
+        
     }
     /* Estilos para la sección 4 Auxies */
     .auxies {

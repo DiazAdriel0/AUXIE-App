@@ -17,21 +17,21 @@ const BasicSelect = () => {
     return (
         <Box sx={{ minWidth: 120 }}>
             <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">Compañia</InputLabel>
+                <InputLabel id='demo-simple-select-label'>Compañia</InputLabel>
                 <Select
                     style={
                         nightMode
                             ? { backgroundColor: 'white', color: 'black' }
                             : null
                     }
-                    labelId="demo-simple-select-label"
-                    id="demo-simple-select"
-                    label="Compañia"
+                    labelId='demo-simple-select-label'
+                    id='demo-simple-select'
+                    label='Compañia'
                     onChange={handleChange}
                 >
-                    <MenuItem value="aboutUs">Quiénes Somos</MenuItem>
-                    <MenuItem value="offer">Que ofrecemos</MenuItem>
-                    <MenuItem value="howItWorks">Como funciona Auxie</MenuItem>
+                    <MenuItem value='aboutUs'>Quiénes Somos</MenuItem>
+                    <MenuItem value='offer'>Que ofrecemos</MenuItem>
+                    <MenuItem value='howItWorks'>Como funciona Auxie</MenuItem>
                 </Select>
             </FormControl>
         </Box>

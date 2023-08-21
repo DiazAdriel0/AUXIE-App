@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux'
 //*Import Animations
 import { Animated } from 'react-animated-css'
 
-
 //* Import icons
 
 //* Import components
@@ -136,8 +135,8 @@ const Landing = () => {
             <main className={!menuLanding ? landing : hiden}>
                 {/* Section Menu Prinipal */}
                 <Animated
-                    animationIn="fadeIn"
-                    animationOut="fadeOut"
+                    animationIn='fadeIn'
+                    animationOut='fadeOut'
                     animationInDuration={1000}
                     isVisible={true}
                 >
@@ -243,8 +242,8 @@ const Landing = () => {
 
                 {/* Section Slogan */}
                 <Animated
-                    animationIn="slideInUp"
-                    animationOut="fadeOut"
+                    animationIn='slideInUp'
+                    animationOut='fadeOut'
                     animationInDuration={1000}
                     isVisible={true}
                 >
@@ -259,11 +258,11 @@ const Landing = () => {
                             <h3>TU VIDA COTIDIANA AHORA ES MÁS FÁCIL</h3>
                             <p>
                                 <span>
-                                    Esta aplicación esta diseñada para tu
+                                    Esta aplicación está diseñada para tu
                                     comodidad, con
                                 </span>
                                 <span>
-                                    unos pocos clicks podras solucionar tus
+                                    unos pocos clics podrás solucionar tus
                                     problemas.
                                 </span>
                             </p>
@@ -290,16 +289,18 @@ const Landing = () => {
                 {cardsAnimated ? (
                     <div>
                         <Animated
-                            animationIn="slideInUp"
-                            animationOut="fadeOut"
+                            animationIn='slideInUp'
+                            animationOut='fadeOut'
                             animationInDuration={1000}
                             isVisible={true}
                         >
                             <section ref={myRef} className={serviceCards}>
-                                <div className={style.serviceCardsTitle}></div>
-                                <h3 className={style.h3}>
-                                    Nuestros servicios mas populares
-                                </h3>
+                                <div className={style.serviceCardsTitle}>
+                                    <h3>
+                                        Nuestros servicios más populares
+                                    </h3>
+                                </div>
+                               
                                 <CardsServices />
                             </section>
                         </Animated>
@@ -314,8 +315,8 @@ const Landing = () => {
 
                 {secondCardsAnimated ? (
                     <Animated
-                        animationIn="slideInUp"
-                        animationOut="fadeOut"
+                        animationIn='slideInUp'
+                        animationOut='fadeOut'
                         animationInDuration={1000}
                     >
                         {/* Section Slogan */}

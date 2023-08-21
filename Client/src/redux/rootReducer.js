@@ -14,9 +14,16 @@ import {
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
     SET_STATUS,
+
     POST_CLAIM,
     GET_ALL_CONSUMERS,
     GET_CLAIMS,
+
+    UPDATE_CONSUMER,
+    UPDATE_PROVIDER,
+    FIRST_LOGIN,
+    SWITCH_FAVORITES,
+
 } from './actions/actionTypes'
 
 let initialState = {
@@ -72,8 +79,10 @@ function rootReducer(state = initialState, action) {
                     filter: action.payload,
                 }
             } else {
+
                 const filteredAuxies = [...state.auxies].filter((aux) =>
                     aux.services.some((serv) => serv.name === action.payload)
+
                 )
                 return {
                     ...state,
@@ -86,19 +95,23 @@ function rootReducer(state = initialState, action) {
             if (action.payload === 'asc') {
                 let ascFilter = [...state.filteredAuxies].sort(
                     (prev, next) =>
+
                         prev.services.find((obj) => obj.name === state.filter)
                             .price -
                         next.services.find((obj) => obj.name === state.filter)
                             .price
+
                 )
                 return { ...state, filteredAuxies: [...ascFilter] }
             } else if (action.payload === 'desc') {
                 let descFilter = [...state.filteredAuxies].sort(
                     (prev, next) =>
+
                         next.services.find((obj) => obj.name === state.filter)
                             .price -
                         prev.services.find((obj) => obj.name === state.filter)
                             .price
+
                 )
                 return { ...state, filteredAuxies: [...descFilter] }
             } else {
@@ -123,13 +136,11 @@ function rootReducer(state = initialState, action) {
                     auxies: [...ascAuxies],
                 }
             } else if (action.payload === 'desc') {
-                let descFilter = [...state.filteredAuxies].sort(
-                    (prev, next) => {
-                        if (prev.averageRating > next.averageRating) return -1
-                        if (prev.averageRating < next.averageRating) return 1
-                        return 0
-                    }
-                )
+                let descFilter = [...state.filteredAuxies].sort((prev, next) => {
+                    if (prev.averageRating > next.averageRating) return -1
+                    if (prev.averageRating < next.averageRating) return 1
+                    return 0
+                })
                 let ascAuxies = [...state.auxies].sort((prev, next) => {
                     if (prev.averageRating > next.averageRating) return -1
                     if (prev.averageRating < next.averageRating) return 1
@@ -179,10 +190,7 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 loggedUser: {
                     ...state.loggedUser,
-                    favoritesProviders: [
-                        ...state.loggedUser.favoritesProviders,
-                        action.payload,
-                    ],
+                    favoritesProviders: [...state.loggedUser.favoritesProviders, action.payload],
                 },
             }
         case DELETE_FAVORITE:
@@ -206,6 +214,7 @@ function rootReducer(state = initialState, action) {
                     jobs: action.payload,
                 },
             }
+
         case POST_CLAIM:
             return {
                 ...state,
@@ -213,6 +222,41 @@ function rootReducer(state = initialState, action) {
                     ...state.loggedUser,
                     claims: [...initialState.claims, action.payload],
                 },
+
+        case UPDATE_CONSUMER:
+            return {
+                ...state,
+                loggedUser: action.payload,
+            }
+        case UPDATE_PROVIDER:
+            return {
+                ...state,
+                loggedUser: action.payload,
+            }
+        case FIRST_LOGIN:
+            return {
+                ...state,
+                loggedUser: {
+                    ...initialState.loggedUser,
+                    firstLogin: action.payload,
+                },
+            }
+        case SWITCH_FAVORITES:
+            if (action.payload) {
+                const foundFavorite = [...state.loggedUser.favoritesProviders].map(aux => {
+                    const favorite = [...state.backupAuxies].find(fav => fav.id === aux.id)
+                    if (favorite) return favorite
+                })
+                return  {
+                    ...state,
+                    filteredAuxies: foundFavorite
+                }
+            } else {
+                return {
+                    ...state,
+                    filteredAuxies: [...state.backupAuxies]
+                }
+
             }
         // caso por defecto si por alguna razón no recibe action.type
         default:

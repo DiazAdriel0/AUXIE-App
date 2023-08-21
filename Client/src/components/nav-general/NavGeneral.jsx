@@ -12,7 +12,7 @@ import ButtonLightNight from '../buttons/button-light-night/ButtonLightNight'
 import NotificationButton from '../notifications/NotificationButton'
 
 const NavGeneral = () => {
-    const user = useSelector((state) => state.loggedUser)
+    const user = useSelector(state => state.loggedUser)
     const isAuxie = Object.keys(user).includes('services') ? true : false
 
     return (
@@ -20,9 +20,11 @@ const NavGeneral = () => {
             {isAuxie ? (
                 <>
                     <LogoAuxie />
+                    <div className={style.notifications}>
+                        <NotificationButton />
+                    </div>
                     <div className={style.nightswitch}>
-                    <NotificationButton />
-                     <ButtonLightNight />
+                        <ButtonLightNight />
                     </div>
                     <div className={style.right}>
                         <ProfilePic />
@@ -31,9 +33,10 @@ const NavGeneral = () => {
             ) : (
                 <>
                     <LogoClient />
-                    <div className={style.notifications}></div>
-                    <div className={style.nightswitch}>
+                    <div className={style.notifications}>
                         <NotificationButton />
+                    </div>
+                    <div className={style.nightswitch}>
                         <ButtonLightNight />
                     </div>
                     <div className={style.right}>

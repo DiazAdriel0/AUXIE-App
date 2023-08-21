@@ -5,13 +5,14 @@
     // border-radius: 10px;
     width: 100%;
     height: 75vh;
-    overflow: scroll;
+    overflow: auto;
     // position: relative; /* Añadimos posicionamiento relativo */
-    background-image:url('../../assets/chats-background.png') ; 
+    background-image: url('../../assets/chats-background.png');
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center center; 
+    background-position: center center;
     max-width: 100%;
+    box-sizing: border-box;
 }
 
 .sender {
@@ -29,7 +30,6 @@
     position: relative; /* Añadimos posicionamiento relativo */
     display: block; /* Para que el ancho sea automático */
     float: inline-end;
-    
 }
 
 .receiver {
@@ -45,7 +45,6 @@
     margin-top: 10px; /* Add more margin here */
 }
 
-
 .sendername {
     align-content: end;
     white-space: pre-line;
@@ -58,11 +57,11 @@
     font-weight: bold;
 }
 .receivername {
-  font-weight: bold;
+    font-weight: bold;
     color: black;
 }
 
-.messageinput{
+.messageinput {
     flex: 1;
     // border: none;
     outline: none;
@@ -75,14 +74,17 @@
     height: 3rem;
     border: 1px solid black;
 }
-.chatbubbles{
+.chatbubbles {
     margin-bottom: 10%;
-    
 }
-.send{
+.send {
     height: 3rem;
     width: 5rem;
     border: none;
     background-color: blue;
     color: white;
+}
+.chatapp{
+    margin-left: 5%;
+    margin-top: 1%;
 }

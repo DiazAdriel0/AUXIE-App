@@ -5,7 +5,7 @@ const PageNotFound = () => {
     return (
         <div className={style.pageNotFound}>
             <div className={style.imgContainer}>
-                <img className={style.logo} src={logo} alt="logo pagina 404" />
+                <img className={style.logo} src={logo} alt='logo pagina 404' />
             </div>
 
             <div className={style.textContainer}>

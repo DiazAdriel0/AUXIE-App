@@ -1,18 +1,55 @@
 import style from './homeAuxie.module.scss'
 
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 //Import components
 // import CardServices from '../../../components/card-services/CardServices'
 import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
-
+import axios from 'axios'
+import { useEffect } from 'react'
+import { loggedUser, updateFirstLogin } from '../../../redux/actions/actions'
 //Hooks
+import useNotify from './../../../hooks/useNotify'
 
 const HomeAuxie = () => {
-    const loggedUser = useSelector((state) => state.loggedUser)
-    const lastJobs = loggedUser.reviews?.slice(0, 4)
+    const logged = useSelector(state => state.loggedUser)
+    const { sendNotification } = useNotify(logged.userUid)
+    const lastJobs = logged.reviews?.slice(0, 4)
 
-    const { services } = loggedUser
+    const { services } = logged
+    const dispatch = useDispatch()
+    const handleRefresh = async () => {
+        try {
+            const response = await axios.get(`/providers/${logged.id}`)
+            if (response) {
+                dispatch(loggedUser(response.data))
+            }
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
+    useEffect(() => {
+        let welcome
+        switch (logged.gender) {
+            case 'Masculino':
+                welcome = 'Bienvenido'
+                break
+            case 'Femenino':
+                welcome = 'Bienvenida'
+                break
+            case 'Otro':
+                welcome = 'Bienvenide'
+                break
+            default:
+                welcome = 'Bienvenidx'
+        }
+        if (logged.firstLogin) {
+            sendNotification(`${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu bio`)
+            dispatch(updateFirstLogin('providers', logged.id))
+        }
+        handleRefresh()
+    }, [])
     return (
         <div className={style.home}>
             {/* Header */}
@@ -27,15 +64,9 @@ const HomeAuxie = () => {
                     <h3>Servicios</h3>
                     <div className={style.userServices}>
                         {services ? (
-                            services.map((service) => (
-                                <div
-                                    className={style.cardServices}
-                                    key={service.name}
-                                >
-                                    <img
-                                        src={service.image?.secure_url}
-                                        alt={service.name}
-                                    />
+                            services.map(service => (
+                                <div className={style.cardServices} key={service.name}>
+                                    {/* <img src={service.image?.secure_url} alt={service.name} /> */}
                                     <h4>{service.name}</h4>
                                 </div>
                             ))

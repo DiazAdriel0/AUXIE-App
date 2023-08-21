@@ -24,18 +24,18 @@ function LoginRegister() {
             <SignUpContainer signingIn={signIn}>
                 <Form>
                     <Title>Create Account</Title>
-                    <Input type="text" placeholder="Name" />
-                    <Input type="email" placeholder="Email" />
-                    <Input type="password" placeholder="Password" />
+                    <Input type='text' placeholder='Name' />
+                    <Input type='email' placeholder='Email' />
+                    <Input type='password' placeholder='Password' />
                     <Button>Sign Up</Button>
                 </Form>
             </SignUpContainer>
             <SignInContainer signingIn={signIn}>
                 <Form>
                     <Title>Sign in</Title>
-                    <Input type="email" placeholder="Email" />
-                    <Input type="password" placeholder="Password" />
-                    <Anchor href="#">Forgot your password?</Anchor>
+                    <Input type='email' placeholder='Email' />
+                    <Input type='password' placeholder='Password' />
+                    <Anchor href='#'>Forgot your password?</Anchor>
                     <Button>Sign In</Button>
                 </Form>
             </SignInContainer>

@@ -2,18 +2,21 @@
     display: none;
 }
 .layout {
-    width: 100%;
+  /*   width: 100%; */
     display: flex;
-    flex-direction: row;
-    gap: 30px 30px;
+    margin: 1.5em 0;
+    /* flex-direction: row; */
+    /* gap: 30px 30px; */
     flex-wrap: wrap;
-    flex-flow: column wrap;
-    align-items: last baseline;
-    justify-content: center;
-    height: 100vh;
+    /* flex-flow: column wrap; */
+    align-items: center;
+    justify-content: space-evenly;
+    /* height: 100vh; */
     position: relative;
-    div {
-        width: 25%;
+    
+    .layoutCard{
+        width: 27%;
+        padding: 1em 0.75em;
     }
 
     h3 {
@@ -42,14 +45,15 @@
 }
 
 .offers {
-    padding-top: 1%;
-    padding-bottom: 1%;
-    background-color: var(--secondary--color-light);
+    padding: 1.5em 0;
     padding-left: 5%;
+    background-color: var(--secondary--color-light);
+    
     box-shadow: 0px 30px 52px -25px var(--secondary--color-hover);
 
-    h2 {
-        font-size: 150%;
+    h1 {
+        font-size: 2.5em;
+        font-weight: 550;
     }
 }
 
@@ -81,7 +85,11 @@
     border-color: var(--secondary--color-hover);
     border-radius: 1em;
     margin: 2em 0 4em 0;
-    h1 {
-        font-size: 150%;
+    h3 {
+        font-size: 1.25em;
+        background-color: var(--button-color-light);
+        padding: 0.75em;
+        border-radius: 20px;
+        font-weight: 500;
     }
 }

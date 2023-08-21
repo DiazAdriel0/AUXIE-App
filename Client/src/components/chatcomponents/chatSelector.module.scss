@@ -1,10 +1,13 @@
-.chatlist{
-    border: 1px solid black;
+.chatlist {
+    border-bottom: 1px solid black;
     padding: 10%;
-    margin-right: 10%;
+    margin-top: 10%;
+    margin-left: 10%;
     overflow: scroll;
-    
-    &:hover{
+    width: 12rem;
+    font-weight: 700;
+
+    &:hover {
         background-color: darkgrey;
     }
 }

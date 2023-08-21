@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+
 import { useSelector } from 'react-redux'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 import NavLanding from '../../../components/nav-landing/NavLanding'
@@ -12,11 +13,13 @@ const ProfilePage = () => {
     const isAuxie = Object.keys(user).includes('services')
     const isConsumer = Object.keys(user).includes('isAdmin')
 
+
     return (
         <div>
             <div>
                 {!user.id ? (
                     <div>
+
                         <NavLanding />
                         <SuportFormUnloggien />
                     </div>
@@ -26,6 +29,7 @@ const ProfilePage = () => {
                         {isAuxie && <SupportFormProvider />}
                         {isConsumer && !user.isAdmin && <SupportFormConsumer />}
                         {isConsumer && user.isAdmin && <SupportFormAdmin />}
+
                     </div>
                 )}
             </div>

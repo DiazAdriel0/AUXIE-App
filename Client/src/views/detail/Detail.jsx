@@ -10,9 +10,11 @@ import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useSelector } from 'react-redux'
 import Rating from '@mui/material/Rating'
+import AuxieReviews from '../../components/auxieReviews/AuxieReviews'
+import MinimizeRoundedIcon from '@mui/icons-material/MinimizeRounded';
 
 const Detail = () => {
-    const user = useSelector((state) => state.loggedUser)
+    const user = useSelector(state => state.loggedUser)
 
     const [isInChat, setIsInChat] = useState(false)
 
@@ -24,6 +26,7 @@ const Detail = () => {
     useEffect(() => {
         const getDetails = async function () {
             const res = await axios.get(`/providers/${id}`)
+            console.log(res.data)
 
             setAuxieDetails(res.data)
         }
@@ -44,7 +47,7 @@ const Detail = () => {
     return (
         <>
             <NavGeneral />
-            <Link to="/homeconsumer">
+            <Link to='/homeconsumer'>
                 <button>Volver</button>
             </Link>
             <div className={style.detailform}>
@@ -55,53 +58,39 @@ const Detail = () => {
                                 <div className={style.profilePic}>
                                     <img
                                         src={auxieDetails.image.secure_url}
-                                        alt="imagen de perfil"
-                                        height="100px"
-                                        width="100px"
+                                        alt='imagen de perfil'
+                                        height='100px'
+                                        width='100px'
                                     />
                                 </div>
                                 <div className={style.info}>
                                     <div className={style.name}>
-                                        <p>{auxieDetails.firstName}</p>
-                                        <p>{auxieDetails.lastName}</p>
+                                        <h3>{auxieDetails.firstName}</h3>
+                                        <h3>{auxieDetails.lastName}</h3>
                                     </div>
                                     <div className={style.rating}>
-                                    <Rating name="read-only" value={auxieDetails.averageRating} readOnly precision={0.5}/>
+                                        <Rating
+                                            name='read-only'
+                                            value={auxieDetails.averageRating}
+                                            readOnly
+                                            precision={0.5}
+                                        />
                                     </div>
-                                    <p>
-                                        ({auxieDetails.reviews.length} Reseñas)
-                                    </p>
+                                    <p style={{ fontWeight: 400, fontSize:'1rem' }}>({auxieDetails.reviews.length} Reseñas)</p>
                                 </div>
                                 <div className={style.contServices}>
                                     {auxieDetails.services.length > 0 ? (
-                                        auxieDetails.services.map(
-                                            (service, index) => {
-                                                return (
-                                                    <div
-                                                        className={
-                                                            style.serviceDiv
-                                                        }
-                                                        key={index}
-                                                    >
-                                                        <p
-                                                            className={
-                                                                style.serviceName
-                                                            }
-                                                        >
-                                                            {service.name}
-                                                        </p>
-                                                        <p>
-                                                            ${service.price}/hr.
-                                                        </p>
-                                                    </div>
-                                                )
-                                            }
-                                        )
+                                        auxieDetails.services.map((service, index) => {
+                                            return (
+                                                <div className={style.serviceDiv} key={index}>
+                                                    <h4 className={style.serviceName}>{service.name}</h4>
+                                                    <p>${service.price}/hr.</p>
+                                                </div>
+                                            )
+                                        })
                                     ) : (
                                         <div className={style.noServices}>
-                                            <p className={style.serviceName}>
-                                                No ofrece servicios
-                                            </p>
+                                            <p className={style.serviceName}>No ofrece servicios</p>
                                         </div>
                                     )}
                                 </div>
@@ -121,31 +110,32 @@ const Detail = () => {
                                     showStatus={false}
                                 >
                                     {photos &&
-                                        photos.map((photo) => (
-                                            <div
-                                                key={photo.public_id}
-                                                className={style.carouselItem}
-                                            >
-                                                <img
-                                                    src={photo.secure_url}
-                                                    alt={`Photo ${photo.public_id}`}
-                                                />
+                                        photos.map(photo => (
+                                            <div key={photo.public_id} className={style.carouselItem}>
+                                                <img src={photo.secure_url} alt={`Photo ${photo.public_id}`} />
                                             </div>
                                         ))}
                                 </Carousel>
                             </div>
+                            <div>
+                                <AuxieReviews services={auxieDetails.reviews} />
+                            </div>
                         </div>
                     ) : null}
                 </div>
-                <JobRequestForm
-                    services={auxieDetails.services}
-                    recipient={auxieDetails?.userUid}
-                />
+                <JobRequestForm services={auxieDetails.services} recipient={auxieDetails?.userUid} />
                 {isInChat ? (
-                    <Chat
-                        recipient={auxieDetails.userUid}
-                        auxiedetails={auxieDetails}
-                    />
+                    <div className={style.chatT}>
+                        <div className={style.iconCont}><MinimizeRoundedIcon className={style.iconMin} onClick={
+                            ()=>{
+                                setIsInChat(false)
+                            }
+                        }/></div>
+                        
+                        <Chat recipient={auxieDetails.userUid} />
+                        
+                    </div>
+                    
                 ) : (
                     <div className={style.chatbutton}>
                         <button onClick={handleClick}>Iniciar Chat</button>

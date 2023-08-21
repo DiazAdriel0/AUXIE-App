@@ -15,7 +15,6 @@
     flex-grow: auto;
     font-size: 1.5rem;
 }
-
 .profilePic {
     height: 15%;
     img {
@@ -26,6 +25,9 @@
 .name {
     display: flex;
     gap: 5%;
+    h3{
+        font-weight: 700;
+    }
 }
 
 .rating {
@@ -36,43 +38,78 @@
 
 .contServices {
     display: flex;
-    flex-flow: column wrap;
-    margin-left: 10%;
+    flex-flow: row wrap;
+    width: 80%;
 }
 
 .serviceDiv {
-    width: 100%;
     text-align: start;
-    margin-left: 5%;
+    font-size: 80%;
+    margin-top: 5%;
+    margin-right: 5%;
+    p{
+        font-weight: 300;
+    }
 }
 
 .serviceName {
+    font-weight: 500;
     color: var(--accent--first--color-light);
 }
 
 .carousel {
-    background-color:var(--third--color-light);
+    display: flex;
+    justify-content: center;
+    background-color: var(--third--color-light);
+    .carouselItem{
+        width: 50%;
+        margin-left: 25%;
+    }
 }
 
 .bio {
     height: 20%;
     margin: 2%;
+    h3{
+        font-weight: 500;
+        font-size: 1.25em;
+    }
+    p{
+        font-weight: 400;
+    }
 }
 
-.detailall {
-    width: 80%;
-}
 .detailform {
     display: flex;
     flex-direction: row;
     margin: 2%;
     padding: 1rem;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+    background-color:  rgba(128, 128, 128, 0.294) !important;
 }
-.chatbutton{
+.chatbutton {
     width: 20%;
-    button{
+    button {
         border-radius: 5px;
     }
-   
+}
+.chatT{
+    display: flex;
+    flex-direction: column;
+    
+}
+.iconCont{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    align-items: center;
+    .iconMin{
+        font-size: 2em; 
+        padding-bottom: 0.75rem;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+    }
+    .iconMin:hover{
+        background-color: rgba(108, 111, 121, 0.56)
+    }
 }

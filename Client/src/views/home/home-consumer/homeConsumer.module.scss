@@ -8,14 +8,22 @@
 
 //----- Contenedor de titulo del catalogo de auxies
 .catalogTitleCont {
-    background-color: var(--div-color-light);
+    background-color: var(--div-border-color-dark);
+    color: var(--button-color-dark);
     width: 100%;
     .catalogTitle {
         margin: 1% 2%;
     }
 }
 
-
+.catalogTitleContNight {
+    background-color: var(--background-light);
+    color: var(--text-color-light);
+    width: 100%;
+    .catalogTitle {
+        margin: 1% 2%;
+    }
+}
 //----- Contenedor de componentes Filters y Cards (catalogo de auxies)
 .catalogCont {
     display: flex;

@@ -1,35 +1,55 @@
-const Provider = require('./../../Models/provider')/* 
-const Consumer = require('./../../Models/consumer') */
+const Provider = require('./../../Models/provider')
+const Consumer = require('./../../Models/consumer')
+const Request = require('./../../Models/request')
 
-const modifyJobStatus = async (req)=>{
-
-    const {id, /* consumerId */ providerId, status} = req.body
-    console.log('aqui')
+const modifyJobStatus = async (req) => {
+    const { id, consumerId, providerId, status } = req.body
+    console.log(status)
     try {
-        /*  const consumer = await Consumer.findById({_id:consumerId}) */ //tecnicamente tendria que updatear tambein al consumer
-        const provider = await Provider.findById({_id:providerId})
+        const request = await Request.findById(id)
+        const consumer = await Consumer.findById({ _id: consumerId })
+        const provider = await Provider.findById({ _id: providerId })
 
-        const newJobs = provider.jobs.map((job)=>{
-            if(job.id === id){
+        request.status = status
+
+        await request.save()
+
+        const newJobs = provider.jobs.map((job) => {
+            if (job.id === id) {
                 let theJob = {
                     ...job,
                     status: status,
                 }
                 return theJob
-            }else{
+            } else {
                 return job
             }
         })
-        const update = await Provider.updateOne({_id:providerId},{jobs: newJobs})
-
-        if(!update.modifiedCount)return false
+        const newReqServices = consumer.requiredServices.map((service) => {
+            if (service.id === id) {
+                let theService = {
+                    ...service,
+                    status: status,
+                }
+                return theService
+            } else {
+                return service
+            }
+        })
+        const update = await Provider.updateOne(
+            { _id: providerId },
+            { jobs: newJobs }
+        )
+        const update2 = await Consumer.updateOne(
+            { _id: consumerId },
+            { requiredServices: newReqServices }
+        )
+        if (!update.modifiedCount || !update2.modifiedCount) return false
 
         return newJobs
- 
     } catch (error) {
         return false
     }
-    
 }
 
 module.exports = modifyJobStatus

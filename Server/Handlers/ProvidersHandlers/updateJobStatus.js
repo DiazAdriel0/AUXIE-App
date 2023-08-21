@@ -3,7 +3,6 @@ const modifyJobStatus = require('../../Controllers/ProvidersControllers/modifyJo
 const updateJobStatus = async(req, res)=>{
 
     try {
-        console.log('llega')
         const update = await modifyJobStatus(req)
 
         if(!update) throw new Error('No se pudo actualizar estado')

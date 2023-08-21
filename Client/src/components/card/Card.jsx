@@ -7,13 +7,27 @@ import Checkbox from '@mui/material/Checkbox'
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder'
 import Favorite from '@mui/icons-material/Favorite'
 import Rating from '@mui/material/Rating'
+import useNotify from '../../hooks/useNotify'
 
 const Card = (user) => {
     const dispatch = useDispatch()
-    const { id, lastName, firstName, averageRating, services, image } = user
+    const {
+        id,
+        lastName,
+        firstName,
+        averageRating,
+        services,
+        image,
+        userUid,
+        googleId,
+    } = user
     const consumer = useSelector((state) => state.loggedUser)
+    const nightMode = useSelector((state) => state.nightMode)
     const navigate = useNavigate()
     const [isFav, setIsFav] = useState(false)
+
+    let recipient = userUid || googleId
+    const { sendNotification } = useNotify(recipient)
 
     const handleFavorite = () => {
         const remover = {
@@ -27,6 +41,9 @@ const Card = (user) => {
         if (!isFav) {
             dispatch(addFavorite({ ...user, consumerId: consumer.id }))
             setIsFav(true)
+            sendNotification(
+                '¡Has sido añadido a los Auxies favoritos de alguien!'
+            )
         }
     }
 
@@ -43,14 +60,14 @@ const Card = (user) => {
     }, [])
 
     return (
-        <div className={style.card}>
+        <div className={nightMode ? style.cardNight : style.card}>
             <div className={style.contPersonal}>
                 <div className={style.profilePic}>
                     <img
                         src={image}
-                        alt="imagen de perfil"
-                        height="100px"
-                        width="100px"
+                        alt='imagen de perfil'
+                        height='100px'
+                        width='100px'
                     />
                 </div>
                 <div className={style.info}>
@@ -59,7 +76,12 @@ const Card = (user) => {
                         <p>{lastName}</p>
                     </div>
                     <div className={style.rating}>
-                    <Rating name="read-only" value={averageRating} readOnly precision={0.5}/>
+                        <Rating
+                            name='read-only'
+                            value={averageRating}
+                            readOnly
+                            precision={0.5}
+                        />
                     </div>
                 </div>
                 <div className={style.favorite}>

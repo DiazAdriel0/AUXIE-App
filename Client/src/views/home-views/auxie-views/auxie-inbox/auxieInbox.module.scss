@@ -6,12 +6,11 @@
         'footer footer';
     grid-template-columns: 14% 85%;
     grid-template-rows: 9% 84% 5%;
-    gap: 1%;
+    // gap: 1%;
     height: 100vh;
-
     /* Colores to change */
-    background-color: #1f1f1f;
-    color: white;
+    // background-color: #1f1f1f;
+    // color: white;
     /* End of colors  */
 
     .header {
@@ -19,18 +18,21 @@
     }
 
     .main {
-        display: grid;
-        grid-area: main;
-        grid-template-areas: 'services payments';
-        grid-template-columns: 69% 30%;
-        grid-template-rows: 100%;
-        gap: 1%;
+        // display: grid;
+        // grid-area: main;
+        // grid-template-areas: 'services payments';
+        // grid-template-columns: 69% 30%;
+        // grid-template-rows: 100%;
+        // gap: 1%;
         .services {
-            grid-area: services;
-            background-color: #a7a1a1;
+            // grid-area: services;
+            background-color: #a7a1a16b;
             display: flex;
             flex-direction: column;
             gap: 5%;
+            height: 100%;
+            // border: 2px solid;
+
             .userServices {
                 display: flex;
                 justify-content: center;
@@ -56,4 +58,3 @@
         margin-top: 50%;
     }
 }
-

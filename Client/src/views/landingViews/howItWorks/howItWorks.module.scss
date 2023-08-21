@@ -1,86 +1,109 @@
-
 .hide {
     display: none;
 }
-
 .layout {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 40%;
-
+    width: 80%;
+    height: 60%;
+    margin-bottom: 20%;
     display: grid;
+    // object-fit: contain;
     grid-template-rows: repeat(4, 240px);
     grid-template-columns: repeat(2, 1fr);
-    gap: 10% 0px;
+    gap: 5% 0px;
 }
-
+@media (max-width: 900px) {
+    .layout {
+        gap: 240px 0px; 
+    }
+}
 .steps {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100%;
-    margin-top: 10%;
+    padding: 0 1em 0 2em;
 
     img {
         background-color: var(--secondary--color-light);
         width: 100%;
         height: 100%;
-        padding: 20px;
+        // padding: 20px;
         border-radius: 10%;
     }
 }
 
 .howItWorks {
-    padding-top: 1%;
-    padding-bottom: 1%;
-    background-color: var(--secondary--color-light);
+    padding: 1.5em 0;
     padding-left: 5%;
-    box-shadow: 0px 30px 52px -25px var(--secondary--color-hover);
+    margin-bottom: 2em;
+    background-color: var(--secondary--color-light);
 
     h2 {
-        font-size: 200%;
+        font-size: 2.5em;
+        font-weight: 550;
     }
 }
 
 .step {
-    padding-left: 5%;
-    margin-top: 10%;
-    position: relative;
-    height: 80%;
+    display: block;
+    padding: 0 0 5% 5%;
+    margin-top: 1.5em;
+    height: 80% auto;
+    max-height: 80%;
     border: black 1px solid;
     border-width: 0 0 0 4px;
-    width: 60%;
+    width: 80%;
+    
     h3 {
-
         color: var(--accent--first--color-light);
-
+        font-weight: 400;
+        font-size: 1.25em;
+    }
+    h2{
+        font-weight: 500;
+        font-size: 1.5em;
+        padding: 0.5em 0;
     }
     p {
-        font-size: 120%;
+        font-size: 100%;
+        font-weight: 300;
     }
 }
 
 .faqSection {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    margin: 2em auto 3em auto;
+    padding-top: 4em;
     h2 {
-        font-size: 250%;
-        display: flex;
-        justify-content: center;
+        font-size: 2em;
         background-color: var(--secondary--color-light);
         padding: 2%;
-        border: var(--secondary--color-hover) 3px solid;
+        border-bottom: rgba(0, 0, 0, 0.071) 2px solid;
     }
 }
 
 .faqItem {
-    margin-top: 1%;
-    padding: 2%;
-    font-size: 170%;
-    border-bottom: var(--accent--first--color-light) 3px solid;
+    padding: 2% 10% 2% 2%;
+    font-size: 1.25rem;
+    font-weight: 400;
+    border-bottom: rgba(0, 0, 0, 0.071) 2px solid;
+    position: relative;     
+    
+    img{
+        position: absolute;
+        top: 40%;
+        right: 5%;
+    }
+    
 }
 
 .faqAnswer {
-    font-size: 100%;
+    font-size: 90%;
+    font-weight: 300;
     background-color: var(--secondary--color-light);
     width: 100%;
     height: 100%;

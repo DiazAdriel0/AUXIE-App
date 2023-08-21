@@ -19,6 +19,8 @@ const Cards = () => {
                         <Card
                             key={user.id}
                             id={user.id}
+                            googleId={user.googleId}
+                            userUid={user.userUid}
                             firstName={user.firstName}
                             lastName={user.lastName}
                             services={user.services}
