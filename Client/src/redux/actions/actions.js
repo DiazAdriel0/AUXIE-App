@@ -42,19 +42,7 @@ export function getAllAuxies() {
     }
 }
 
-export function getAllConsumers() {
-    return async function (dispatch) {
-        try {
-            const res = await axios('/consumers')
-            return dispatch({
-                type: GET_ALL_CONSUMERS,
-                payload: res.data,
-            })
-        } catch (e) {
-            console.error(e.response.data)
-        }
-    }
-}
+
 
 export function getClaims(email) {
     return async function (dispatch) {
