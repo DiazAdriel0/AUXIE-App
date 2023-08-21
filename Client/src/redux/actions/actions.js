@@ -17,16 +17,13 @@ import {
     ADD_FAVORITE,
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
-
     POST_CLAIM,
     GET_ALL_CONSUMERS,
     GET_CLAIMS,
-
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
     FIRST_LOGIN,
     SWITCH_FAVORITES,
-
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -66,11 +63,11 @@ export function getClaims(email) {
             return dispatch({
                 type: GET_CLAIMS,
                 payload: res.data,
-            });
+            })
         } catch (e) {
             console.error(e.response.data)
         }
-    };
+    }
 }
 
 //action que pide todos los servicios del back (reemplazar URL)
@@ -302,13 +299,15 @@ export function setServiceStatus(info) {
     }
 }
 
-
-export const postClaim = (input) => {
-    return async (dispatch) => {
+export const postClaim = input => {
+    return async dispatch => {
         const res = await axios.post('/claims', input)
         return dispatch({
             type: POST_CLAIM,
             payload: res.data,
+        })
+    }
+}
 
 // action para actualizar la info del usuario loggeado, falta la ruta del back
 
@@ -356,9 +355,8 @@ export function updateFirstLogin(typeUser, id) {
 export function switchFavorites(state) {
     return async function (dispatch) {
         return dispatch({
-            type:SWITCH_FAVORITES,
+            type: SWITCH_FAVORITES,
             payload: state,
-
         })
     }
 }
