@@ -11,6 +11,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useSelector } from 'react-redux'
 import Rating from '@mui/material/Rating'
 import AuxieReviews from '../../components/auxieReviews/AuxieReviews'
+import MinimizeRoundedIcon from '@mui/icons-material/MinimizeRounded';
 
 const Detail = () => {
     const user = useSelector(state => state.loggedUser)
@@ -64,8 +65,8 @@ const Detail = () => {
                                 </div>
                                 <div className={style.info}>
                                     <div className={style.name}>
-                                        <p>{auxieDetails.firstName}</p>
-                                        <p>{auxieDetails.lastName}</p>
+                                        <h3>{auxieDetails.firstName}</h3>
+                                        <h3>{auxieDetails.lastName}</h3>
                                     </div>
                                     <div className={style.rating}>
                                         <Rating
@@ -75,14 +76,14 @@ const Detail = () => {
                                             precision={0.5}
                                         />
                                     </div>
-                                    <p>({auxieDetails.reviews.length} Reseñas)</p>
+                                    <p style={{ fontWeight: 400, fontSize:'1rem' }}>({auxieDetails.reviews.length} Reseñas)</p>
                                 </div>
                                 <div className={style.contServices}>
                                     {auxieDetails.services.length > 0 ? (
                                         auxieDetails.services.map((service, index) => {
                                             return (
                                                 <div className={style.serviceDiv} key={index}>
-                                                    <p className={style.serviceName}>{service.name}</p>
+                                                    <h4 className={style.serviceName}>{service.name}</h4>
                                                     <p>${service.price}/hr.</p>
                                                 </div>
                                             )
@@ -124,7 +125,17 @@ const Detail = () => {
                 </div>
                 <JobRequestForm services={auxieDetails.services} recipient={auxieDetails?.userUid} />
                 {isInChat ? (
-                    <Chat recipient={auxieDetails.userUid} />
+                    <div className={style.chatT}>
+                        <div className={style.iconCont}><MinimizeRoundedIcon className={style.iconMin} onClick={
+                            ()=>{
+                                setIsInChat(false)
+                            }
+                        }/></div>
+                        
+                        <Chat recipient={auxieDetails.userUid} />
+                        
+                    </div>
+                    
                 ) : (
                     <div className={style.chatbutton}>
                         <button onClick={handleClick}>Iniciar Chat</button>
