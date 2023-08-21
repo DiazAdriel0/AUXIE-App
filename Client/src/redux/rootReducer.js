@@ -222,6 +222,7 @@ function rootReducer(state = initialState, action) {
                     ...state.loggedUser,
                     claims: [...initialState.claims, action.payload],
                 },
+            }
 
         case UPDATE_CONSUMER:
             return {
