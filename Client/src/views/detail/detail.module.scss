@@ -4,20 +4,22 @@
     justify-content: flex-start;
     background-color: var(--third--color-light);
     border-radius: 1rem;
+    width: 70%;
 }
 
 .infoCont {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
-    margin: 2%;
+    // margin: 2%;
     gap: 2%;
     flex-grow: auto;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .profilePic {
-    height: 15%;
+    height: 25%;
+    width: 25%;
     img {
         object-fit: cover;
     }
@@ -26,6 +28,7 @@
 .name {
     display: flex;
     gap: 5%;
+    font-size: 2rem;
 }
 
 .rating {
@@ -37,17 +40,24 @@
 .contServices {
     display: flex;
     flex-flow: row wrap;
-    width: 60%;
+    width: 100%;
+    // justify-content: space-between;
+margin-right: 50%;
+
 }
 
 .serviceDiv {
     text-align: start;
     font-size: 80%;
-    margin-right: 5%;
+    margin: 1%;
+    border-bottom: 0.5px solid grey;
+    // border-radius: 5%;
+    padding: 1%;
 }
 
 .serviceName {
     color: var(--accent--first--color-light);
+   
 }
 
 .carousel {
@@ -55,7 +65,7 @@
     justify-content: center;
     background-color: var(--third--color-light);
     .carouselItem{
-        width: 50%;
+        width: 60%;
         margin-left: 25%;
     }
 }
@@ -63,6 +73,14 @@
 .bio {
     height: 20%;
     margin: 2%;
+    // font-size: large;
+    h1{
+        font-size: 2rem !important;
+        border-bottom: 1px solid;
+    }
+    p{
+        font-size: 1.1rem !important;
+    }
 }
 
 .detailform {
@@ -78,4 +96,18 @@
     button {
         border-radius: 5px;
     }
+}
+.detailall{
+    width: 60%;
+}
+.reviews{
+    font-size: 1rem;
+}
+.reviewscontainer{
+margin: 2%;
+max-height: 30rem;
+overflow-y: scroll;
+h1{
+    font-size: 1.5rem;
+}
 }
