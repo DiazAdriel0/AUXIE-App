@@ -40,7 +40,9 @@ const SupportFormClaims = () => {
             <NavGeneral />
             <div className="support-form-container">
                 <div className="cards-container">
-                    {currentClaims
+                    {claims.length === 0 ? (
+                        <p>No tiene ningún reclamo realizado.</p>
+                    ) : (currentClaims
                         .sort(
                             (a, b) =>
                                 new Date(b.dateClaims) - new Date(a.dateClaims)
@@ -66,6 +68,7 @@ const SupportFormClaims = () => {
                                     </p>
                                 </div>
                             </Link>
+                        )
                         ))}
                 </div>
                 <div className="pagination">
