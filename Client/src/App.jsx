@@ -54,7 +54,15 @@ import ChatApp from './views/chat/App'
 
 import Layout from './views/admin/shared/layout'
 import Dashboard from './components/admin-components/Dashboard'
-import Products from './components/admin-components/Products'
+import Auxies from './components/admin-components/Auxies'
+import Customers from './components/admin-components/Customers'
+import Services from './components/admin-components/Services'
+import Transactions from './components/admin-components/Transactions'
+import Notifications from './components/admin-components/Notifications'
+
+//payment Views
+import PaymentSuccess from './components/payment/PaymentSuccess'
+import PaymentFailed from './components/payment/PaymentFailed'
 
 //URL Back
 import axios from 'axios'
@@ -63,7 +71,6 @@ import ReviewForm from './views/forms/review-form/ReviewForm'
 const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
 axios.defaults.baseURL = urlApi
-import { Notifications } from './components/notifications/Notifications'
 
 function App() {
     const dispatch = useDispatch()
@@ -90,10 +97,7 @@ function App() {
                     {/* Home views paths */}
                     <Route path='/auxieinbox' element={<AuxieInbox />} />
                     <Route path='/auxieservices' element={<AuxieServices />} />
-                    <Route
-                        path='/auxiestatistics'
-                        element={<AuxieStatistics />}
-                    />
+                    <Route path='/auxiestatistics' element={<AuxieStatistics />} />
                     <Route path='/jobrequest' element={<JobRequestForm />} />
                     {/*Detail paths  */}
                     <Route path='/detail/:id' element={<Detail />} />
@@ -110,10 +114,7 @@ function App() {
                     {/* Login paths */}
                     <Route path='/resetpassword' element={<ResetPassword />} />
                     <Route path='/chat' element={<ChatApp />} />
-                    <Route
-                        path='/requestedservices'
-                        element={<RequestedServices />}
-                    />
+                    <Route path='/requestedservices' element={<RequestedServices />} />
                     <Route path='/review' element={<ReviewForm />} />
                     <Route path='/notifications' element={<Notifications />} />
                     <Route path='*' element={<PageNotFound />} />
@@ -121,8 +122,15 @@ function App() {
 
                     <Route path='/dashboard' element={<Layout />}>
                         <Route index={true} element={<Dashboard />} />
-                        <Route path='products' element={<Products />} />
+                        <Route path='auxies' element={<Auxies />} />
+                        <Route path='clientes' element={<Customers />} />
+                        <Route path='servicios' element={<Services />} />
+                        <Route path='transacciones' element={<Transactions />} />
+                        <Route path='notificaciones' element={<Notifications />} />
                     </Route>
+
+                    <Route path='paymentSucceeded' element={<PaymentSuccess/>} />
+                    <Route path='paymentFailed' element={<PaymentFailed/>} />
                 </Routes>
             </div>
         </LocalizationProvider>

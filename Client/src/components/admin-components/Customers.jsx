@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
-const Products = () => {
+
+const Customers = () => {
     return (
         <div>
-            <p>this is a products page</p>
+            <p>Customers</p>
             <Link className='underline' to='/dashboard'>
                 Go to home
             </Link>
@@ -10,4 +11,4 @@ const Products = () => {
     )
 }
 
-export default Products
+export default Customers

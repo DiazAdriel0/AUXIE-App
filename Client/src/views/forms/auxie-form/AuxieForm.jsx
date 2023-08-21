@@ -1,6 +1,7 @@
 import style from './auxieform.module.scss'
 
 import NavLanding from '../../../components/nav-landing/NavLanding'
+import CircularProgress from '@mui/material/CircularProgress'
 
 // Hooks
 import { useEffect, useState } from 'react'
@@ -15,7 +16,8 @@ import { auth } from '../../../config/firebase-config'
 
 const Form = () => {
     const { errors, validate } = useValidations()
-    const [access, setAccess] = useState(false) //eslint-disable-line
+    const [loading, setLoading] = useState(false)
+    const [access, setAccess] = useState(false)
     const navigate = useNavigate()
     const [input, setInput] = useState({
         firstName: '',
@@ -28,7 +30,7 @@ const Form = () => {
         userUid: '',
     })
 
-    const handleChange = (event) => {
+    const handleChange = event => {
         setInput({
             ...input,
             [event.target.name]: event.target.value,
@@ -41,14 +43,29 @@ const Form = () => {
             event.target.name
         )
     }
-    const handlePost = async (input) => {
+    const handlePost = async input => {
         try {
             const response = await axios.post('/providers/', input)
             if (response) {
+                setLoading(false)
+                let welcome
+                switch (response.data.gender) {
+                    case 'Masculino':
+                        welcome = 'Bienvenido'
+                        break
+                    case 'Femenino':
+                        welcome = 'Bienvenida'
+                        break
+                    case 'Otro':
+                        welcome = 'Bienvenide'
+                        break
+                    default:
+                        welcome = 'Bienvenidx'
+                }
                 setAccess(true)
                 const form = document.getElementById('form')
                 form.reset()
-                Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
+                Swal.fire(`Usuario creado con exito. ${welcome} a Auxie!`)
             }
         } catch (error) {
             let er = error.response.data.error
@@ -67,14 +84,11 @@ const Form = () => {
         }
     }, [access])
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault()
+        setLoading(true)
         try {
-            const credential = await createUserWithEmailAndPassword(
-                auth,
-                input.email,
-                input.password
-            )
+            const credential = await createUserWithEmailAndPassword(auth, input.email, input.password)
             const user = credential.user
             const uid = user.uid
             let data = {}
@@ -86,6 +100,7 @@ const Form = () => {
             }
             handlePost(data)
         } catch (error) {
+            setLoading(false)
             console.error(error.message)
             Swal.fire({
                 icon: 'error',
@@ -169,11 +184,7 @@ const Form = () => {
                     </div>
                     <div className={style.forminput}>
                         <label>Género: </label>
-                        <select
-                            onChange={handleChange}
-                            name='gender'
-                            defaultValue={''}
-                        >
+                        <select onChange={handleChange} name='gender' defaultValue={''}>
                             <option disabled value=''>
                                 Género
                             </option>
@@ -226,12 +237,13 @@ const Form = () => {
                         </div>
                     </div>
 
-                    <div className={style.submitbutton}>
-                        <input
-                            type='submit'
-                            disabled={buttonDisabled()}
-                        ></input>
-                    </div>
+                    {loading ? (
+                        <CircularProgress />
+                    ) : (
+                        <div className={style.submitbutton}>
+                            <input type='submit' disabled={buttonDisabled()}></input>
+                        </div>
+                    )}
                 </form>
             </div>
         </>

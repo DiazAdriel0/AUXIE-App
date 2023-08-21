@@ -6,6 +6,10 @@ const consumerSchema = new Schema({
         required: true,
         default: false,
     },
+    firstLogin: {
+        type: Boolean,
+        default: true,
+    },
     isAdmin: {
         type: Boolean,
         required: true,
@@ -16,11 +20,9 @@ const consumerSchema = new Schema({
     },
     lastName: {
         type: String,
-
     },
     gender: {
         type: String,
-
     },
     age: {
         type: Number,
@@ -59,7 +61,6 @@ const consumerSchema = new Schema({
     userUid: {
         type: String,
     },
-
 })
 
 consumerSchema.set('toJSON', {

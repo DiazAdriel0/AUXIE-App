@@ -9,10 +9,12 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import useNotify from '../../../hooks/useNotify'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const JobRequestForm = ({ services, recipient }) => {
     let { id } = useParams()
-    const client = useSelector((state) => state.loggedUser)
+    const client = useSelector(state => state.loggedUser)
+    const [loading, setLoading] = useState(false)
     // const services = useSelector((state) => state.services)
     const [value, setValue] = useState({
         clientId: client.id,
@@ -25,20 +27,20 @@ const JobRequestForm = ({ services, recipient }) => {
     })
     const { sendNotification } = useNotify(recipient)
 
-    const handleInputChange = (event) => {
+    const handleInputChange = event => {
         const { name, value } = event.target
-        setValue((previousvalue) => ({ ...previousvalue, [name]: value }))
+        setValue(previousvalue => ({ ...previousvalue, [name]: value }))
     }
-    const handleServiceChange = (event) => {
+    const handleServiceChange = event => {
         const { value } = event.target // Obtenemos el valor seleccionado del campo de selección
-        setValue((previousvalue) => ({
+        setValue(previousvalue => ({
             ...previousvalue,
             service: value, // Actualizamos solo el campo 'service'
         }))
     }
-    const handlePaymentChange = (event) => {
+    const handlePaymentChange = event => {
         const { value } = event.target
-        setValue((previousvalue) => ({
+        setValue(previousvalue => ({
             ...previousvalue,
             paymentMethod: value,
         }))
@@ -47,6 +49,7 @@ const JobRequestForm = ({ services, recipient }) => {
         try {
             const response = await axios.put(`/providers/addJob/${id}`, value)
             if (response) {
+                setLoading(false)
                 Swal.fire('Cita solicitada!')
                 setValue({
                     clientId: client.id,
@@ -58,6 +61,7 @@ const JobRequestForm = ({ services, recipient }) => {
                 })
             }
         } catch (error) {
+            setLoading(false)
             console.log(error + error.response.data.error)
 
             Swal.fire({
@@ -68,19 +72,18 @@ const JobRequestForm = ({ services, recipient }) => {
             })
         }
     }
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault()
+        setLoading(true)
         handlePost()
-        sendNotification(
-            `${client.firstName} ${client.lastName} te ha solicitado un servicio de ${value.service}`
-        )
+        sendNotification(`${client.firstName} ${client.lastName} te ha solicitado un servicio de ${value.service}`)
     }
     return (
         //pasar por param id de auxie y por body "service name" (mapeado de servicios) "description" "client id de logged user"
         <div>
             <center>
                 <div className={style.form}>
-                    <form id="form" onSubmit={handleSubmit}>
+                    <form id='form' onSubmit={handleSubmit}>
                         <div>
                             <h1>Agenda cita</h1>
                         </div>
@@ -91,8 +94,8 @@ const JobRequestForm = ({ services, recipient }) => {
                                 className={style.picker}
                                 disablePast
                                 value={value.jobDate}
-                                onChange={(date) =>
-                                    setValue((previousvalue) => ({
+                                onChange={date =>
+                                    setValue(previousvalue => ({
                                         ...previousvalue,
                                         jobDate: date,
                                     }))
@@ -111,8 +114,8 @@ const JobRequestForm = ({ services, recipient }) => {
                             <TimePicker
                                 className={style.picker}
                                 value={value.jobTime}
-                                onChange={(time) =>
-                                    setValue((previousvalue) => ({
+                                onChange={time =>
+                                    setValue(previousvalue => ({
                                         ...previousvalue,
                                         jobTime: time,
                                     }))
@@ -126,30 +129,25 @@ const JobRequestForm = ({ services, recipient }) => {
                             />
                         </div>
                         <div>
-                            <label>
-                                Selecciona el servicio que deseas contratar
-                            </label>
+                            <label>Selecciona el servicio que deseas contratar</label>
 
                             <TextField
                                 required
                                 className={style.picker}
-                                id="service"
+                                id='service'
                                 select
                                 fullWidth
-                                label="Servicio"
-                                helperText="Selecciona un servicio"
-                                color="primary"
+                                label='Servicio'
+                                helperText='Selecciona un servicio'
+                                color='primary'
                                 focused
-                                name="service"
+                                name='service'
                                 value={value.service}
                                 onChange={handleServiceChange}
                             >
                                 {services ? (
-                                    services.map((service) => (
-                                        <MenuItem
-                                            key={service.name}
-                                            value={service.name}
-                                        >
+                                    services.map(service => (
+                                        <MenuItem key={service.name} value={service.name}>
                                             {service.name}
                                         </MenuItem>
                                     ))
@@ -164,14 +162,14 @@ const JobRequestForm = ({ services, recipient }) => {
                             <TextField
                                 className={style.picker}
                                 fullWidth
-                                id="outlined-basic"
-                                label="descripcion"
-                                variant="outlined"
+                                id='outlined-basic'
+                                label='descripcion'
+                                variant='outlined'
                                 required
                                 multiline
-                                color="primary"
+                                color='primary'
                                 focused
-                                name="description"
+                                name='description'
                                 value={value.description}
                                 onChange={handleInputChange}
                             />
@@ -181,34 +179,29 @@ const JobRequestForm = ({ services, recipient }) => {
                             <TextField
                                 required
                                 className={style.picker}
-                                id="payment"
+                                id='payment'
                                 select
                                 fullWidth
-                                label="Método de pago"
-                                helperText="Selecciona un método de pago"
-                                color="primary"
+                                label='Método de pago'
+                                helperText='Selecciona un método de pago'
+                                color='primary'
                                 focused
-                                name="payment"
+                                name='payment'
                                 value={value.paymentMethod}
                                 onChange={handlePaymentChange}
                             >
-                                <MenuItem value="efectivo">
-                                    Efectivo en persona
-                                </MenuItem>
-                                <MenuItem value="app">
-                                    A través de nuestra app
-                                </MenuItem>
+                                <MenuItem value='efectivo'>Efectivo en persona</MenuItem>
+                                <MenuItem value='app'>A través de nuestra app</MenuItem>
                             </TextField>
                         </div>
 
-                        <Button
-                            className={style.send}
-                            variant="contained"
-                            endIcon={<SendIcon />}
-                            type="submit"
-                        >
-                            Enviar
-                        </Button>
+                        {loading ? (
+                            <CircularProgress />
+                        ) : (
+                            <Button className={style.send} variant='contained' endIcon={<SendIcon />} type='submit'>
+                                Enviar
+                            </Button>
+                        )}
                     </form>
                 </div>
             </center>

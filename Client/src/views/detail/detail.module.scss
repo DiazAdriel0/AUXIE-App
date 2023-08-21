@@ -36,14 +36,14 @@
 
 .contServices {
     display: flex;
-    flex-flow: column wrap;
-    margin-left: 10%;
+    flex-flow: row wrap;
+    width: 60%;
 }
 
 .serviceDiv {
-    width: 100%;
     text-align: start;
-    margin-left: 5%;
+    font-size: 80%;
+    margin-right: 5%;
 }
 
 .serviceName {
@@ -51,7 +51,13 @@
 }
 
 .carousel {
+    display: flex;
+    justify-content: center;
     background-color: var(--third--color-light);
+    .carouselItem{
+        width: 50%;
+        margin-left: 25%;
+    }
 }
 
 .bio {
@@ -59,15 +65,13 @@
     margin: 2%;
 }
 
-.detailall {
-    width: 80%;
-}
 .detailform {
     display: flex;
     flex-direction: row;
     margin: 2%;
     padding: 1rem;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+    background-color:  rgba(128, 128, 128, 0.294) !important;
 }
 .chatbutton {
     width: 20%;

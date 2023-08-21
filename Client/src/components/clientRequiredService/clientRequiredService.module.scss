@@ -1,5 +1,5 @@
 .cardCont {
-    background-color: rgba(162, 155, 227, 0.515);
+    background-color: var(--card-background-light);
     display: flex;
     flex-flow: column wrap;
     justify-content: space-evenly;
@@ -13,6 +13,26 @@
     transition: all 0.5s;
 }
 .cardCont:hover {
+    border: 1px solid var(--secondary--color-hover);
+    transform: scale(1.03);
+    z-index: 1;
+}
+
+.cardContNight {
+    background-color: var(--card-background-dark);
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid var(--secondary--color-hover);
+    border-radius: 1.5%;
+    min-width: 360px;
+    height: auto;
+    padding: 2px;
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.22);
+    transition: all 0.5s;
+}
+.cardContNight:hover {
     border: 1px solid var(--secondary--color-hover);
     transform: scale(1.03);
     z-index: 1;
@@ -70,4 +90,3 @@ p {
     }
     
 }
-
