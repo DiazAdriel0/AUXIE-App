@@ -3,15 +3,25 @@ import { useEffect, useState } from 'react'
 import { getClaims } from '../../redux/actions/actions'
 import { Link } from 'react-router-dom'
 import { DateTime } from 'luxon'
+import { useNavigate } from 'react-router-dom'
+
 import NavGeneral from '../nav-general/NavGeneral'
 
 const SupportFormAdmin = () => {
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const [actualPage, setActualPage] = useState(1)
     const claimsPage = 5
     const claims = useSelector(state => state.claims)
-
+    const loggedUser = useSelector(state => state.loggedUser)
     useEffect(() => {
+        if (!loggedUser.isAdmin) {
+            if (loggedUser.isAuxie) {
+                navigate('/homeauxie')
+            } else {
+                navigate('/homeconsumer')
+            }
+        }
         if (claims.length === 0) {
             dispatch(getClaims())
         }
