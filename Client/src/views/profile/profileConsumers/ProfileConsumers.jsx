@@ -141,6 +141,7 @@ const ProfileConsumers = () => {
                                 value={profileData.firstName}
                                 onChange={handleChange}
                                 sx={{margin:9}}
+                                focused
                             />
                         )}
                         {edit && (
@@ -155,6 +156,7 @@ const ProfileConsumers = () => {
                                 name='lastName'
                                 value={profileData.lastName}
                                 onChange={handleChange}
+                                focused
                             />
                         )}
                         {error && <p style={{ color: 'red' }}>{error}</p>}

@@ -119,7 +119,7 @@ const Detail = () => {
                                         ))}
                                 </Carousel>
                             </div>
-                            <div className={style.reviewscontainer}>
+                            <div className={style.reviewscontainer2}>
                             <h1>Reseñas: </h1>
                             </div>
                             <div className={style.reviewscontainer}>
