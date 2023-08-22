@@ -1,6 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { getAllClients } from '../../redux/actions/actions'
+
 import { useEffect } from 'react'
 
 import BuyerProfileChart from './BuyerProfileChart'
@@ -11,7 +11,7 @@ import PopularServices from './PopularServices'
 
 function Dashboard() {
     const navigate = useNavigate()
-    const dispatch = useDispatch()
+
     const loggedUser = useSelector(state => state.loggedUser)
     useEffect(() => {
         if (!loggedUser.isAdmin) {
@@ -21,7 +21,6 @@ function Dashboard() {
                 navigate('/homeconsumer')
             }
         }
-        dispatch(getAllClients())
     }, [])
     return (
         <>
