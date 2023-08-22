@@ -7,7 +7,10 @@ import NavGeneral from '../../../components/nav-general/NavGeneral'
 import style from './ProfileAuxies.module.scss'
 import axios from 'axios'
 import { loggedUser } from '../../../redux/actions/actions'
+
+import ResetPassword from '../../reset-password/ResetPassword'
 import { TextField } from '@mui/material'
+
 const ProfileAuxies = () => {
     const provider = useSelector((state) => state.loggedUser)
     const offer = useSelector((state) => state.loggedUser.services)
@@ -23,13 +26,15 @@ const ProfileAuxies = () => {
     const [country, setCountry] = useState('')
     const [fullAddress, setFullAddress] = useState('')
     const [newImage, setNewImage] = useState('')
+    const [newlastName, setNewlastName] = useState('')
+    const [newfirstName, setNewfirstName] = useState('')
     const [newBio, setNewBio] = useState(provider.bio)
     const [error, setError] = useState(null)
     const [gallery, setGallery] = useState([])
     const [edit, setEdit] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-
+    const [password, setPasswords] = useState(false)
     const registerDate = provider.registerDate
     const luxonDate = DateTime.fromISO(registerDate)
     const toDateMed = luxonDate.toLocaleString(DateTime.DATE_MED)
@@ -53,6 +58,12 @@ const ProfileAuxies = () => {
         setEdit(true)
         if (edit === true) {
             setEdit(false)
+        }
+    }
+    const handlePassword = () => {
+        setPasswords(true)
+        if (password === true) {
+            setPasswords(false)
         }
     }
     const handleImageChange = (event) => {
@@ -143,7 +154,14 @@ const ProfileAuxies = () => {
         setNewBio(e.target.value)
         setChange(true)
     }
-
+    const handlefirstname = (e) => {
+        setNewfirstName(e.target.value)
+        setChange(true)
+    }
+    const handleLastname = (e) => {
+        setNewlastName(e.target.value)
+        setChange(true)
+    }
     const handleAddPhoto = (event) => {
         console.log(event.target.files)
         const newPhotos = [...gallery, event.target.files[0]]
@@ -195,6 +213,8 @@ const ProfileAuxies = () => {
                         image: newImage,
                         bio: newBio,
                         gallery: gallery,
+                        firstName: newfirstName,
+                        lastName: newlastName,
                         ...serviceUpdate,
                         address:fullAddress
                     },
@@ -219,7 +239,7 @@ const ProfileAuxies = () => {
                         >
                             Editar perfil
                         </button>
-
+                        <h6>Te uniste: {toDateMed}</h6>
                         <div>
                             <img
                                 src={provider.image.secure_url}
@@ -235,28 +255,49 @@ const ProfileAuxies = () => {
                             <h1>
                                 {provider.firstName} {provider.lastName}
                             </h1>
-
+                            {edit && (
+                            <TextField
+                                className={style.picker}
+                                id='outlined-basic'
+                                label='Nombre'
+                                variant='outlined'
+                                required
+                                multiline
+                                color='primary'
+                                name='firstName'
+                                value={newfirstName}
+                                onChange={handlefirstname}
+                                sx={{marginRight:8}}
+                            />
+                        )}
+                        {edit && (
+                            <TextField
+                                className={style.picker}
+                                id='outlined-basic'
+                                label='Apellido'
+                                variant='outlined'
+                                required
+                                multiline
+                                color='primary'
+                                name='lastName'
+                                value={newlastName}
+                                onChange={handleLastname}
+                            />
+                        )}
                             {error && <p style={{ color: 'red' }}>{error}</p>}
 
                             <h4>Género: {provider.gender}</h4>
                             <h3>
                                 Email: {provider.email}{' '}
-                                {edit && (
-                                    <button
-                                        onClick={() =>
-                                            navigate('/resetpassword')
-                                        }
-                                    >
-                                        Cambiar contraseña
-                                    </button>
-                                )}
+                                {edit && <button onClick={handlePassword}>Cambiar la contraseña</button>}
+                                {password && <ResetPassword />}
                             </h3>
                             <h3>Descripción:</h3>
                             <textarea
                                 value={newBio}
                                 onChange={handleBioChange}
                             />
-                            <h6>Te uniste: {toDateMed}</h6>
+                            
                             <div>
                                 <h5>
                                     Servicios que ofrece:

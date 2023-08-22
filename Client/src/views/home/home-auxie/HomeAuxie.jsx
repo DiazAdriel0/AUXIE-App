@@ -5,9 +5,10 @@ import { useSelector, useDispatch } from 'react-redux'
 // import CardServices from '../../../components/card-services/CardServices'
 import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
+import Footer from '../../../components/footer/Footer'
 import axios from 'axios'
 import { useEffect } from 'react'
-import { loggedUser, updateFirstLogin } from '../../../redux/actions/actions'
+import { loggedUser } from '../../../redux/actions/actions'
 //Hooks
 import useNotify from './../../../hooks/useNotify'
 
@@ -46,14 +47,14 @@ const HomeAuxie = () => {
         }
         if (logged.firstLogin) {
             sendNotification(`${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu bio`)
-            dispatch(updateFirstLogin('providers', logged.id))
+            axios.put('/providers/firstLogin', { id: logged.id })
         }
         handleRefresh()
     }, [])
     return (
-        <div className={style.home}>
+        <div>
             {/* Header */}
-            <header className={style.header}>
+            <header className='h-16'>
                 <NavGeneral />
             </header>
             {/* Aside */}
@@ -97,13 +98,38 @@ const HomeAuxie = () => {
                             </tbody>
                         </table>
                     </div>
+                </main>
+                <div className='bg-div-text-color-light p-4 border-t-2 border-b-2 border-r-2 border-div-text-color-light-900'>
+                    <h3 className='mb-4 text-color-light'>Pagos</h3>
                 </div>
-                <div className={style.payments}>
-                    <h3>Pagos</h3>
+                <div className='p-4 '>
+                    <p className='mt-4 w-full ml-40'>Calificaciones de los últimos servicios</p>
+                    <table className='mx-auto border-collapse mt-2 ml-40'>
+                        <thead>
+                            <tr>
+                                <th className='py-2 px-14 border border-gray-300 bg-gray-100 '>Servicio</th>
+                                <th className='py-2 px-40 border border-gray-300 bg-gray-100 '>Reseña</th>
+                                <th className='py-2 px-14 border border-gray-300 bg-gray-100  '>Calificación</th>
+                                <th className='py-2 px-14 border border-gray-300 bg-gray-100  '>Contratante</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {lastJobs?.map((review, index) => (
+                                <tr key={index}>
+                                    <td className='py-2 px-14 border border-gray-300 bg-gray-100  '>
+                                        {review.service}
+                                    </td>
+                                    <td className='py-2 px-4 border border-gray-300 bg-gray-100 '>{review.review}</td>
+                                    <td className='py-2 px-14 border border-gray-300 bg-gray-100'>{review.score}</td>
+                                    <td className='py-2 px-14 border border-gray-300 bg-gray-100'>{review.username}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
-            </main>
+            </div>
             {/* Footer */}
-            <footer className={style.footer}>Pie de página</footer>
+            <Footer />
         </div>
     )
 }

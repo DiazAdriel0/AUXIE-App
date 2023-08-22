@@ -145,11 +145,11 @@ export const Chat = ({ recipient }) => {
                     value={newMessage}
                     onChange={(event) => setNewMessage(event.target.value)}
                     className={style.messageinput}
-                    placeholder='Type your message here...'
+                    placeholder='Escribe tu mensaje...'
                 />
                 
                 <button type='submit' className={style.send}>
-                    Send
+                    Enviar
                 </button>
             </form>
             <div ref={smtRef}></div>
