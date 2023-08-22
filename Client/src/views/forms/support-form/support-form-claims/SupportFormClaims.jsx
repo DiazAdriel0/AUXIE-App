@@ -45,8 +45,8 @@ const SupportFormClaims = () => {
                     ) : (
                         currentClaims
                             .sort((a, b) => new Date(b.dateClaims) - new Date(a.dateClaims))
-                            .map(claim => (
-                                <Link to={`/support/claims/${claim.id}`} key={claim.dateClaims}>
+                            .map((claim, index) => (
+                                <Link to={`/support/claims/${claim.id}`} key={index}>
                                     <div className='card'>
                                         <p>Motivo: {claim.reason}</p>
                                         <p>
