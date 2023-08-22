@@ -60,7 +60,10 @@ import Auxies from './components/admin-components/Auxies'
 import Customers from './components/admin-components/Customers'
 import Services from './components/admin-components/Services'
 import Transactions from './components/admin-components/Transactions'
+
+import Notifications from './components/admin-components/Notifications'
 import SupportFormAdmin from './components/admin-components/SupportFormAdmin'
+import SupportFormAdminId from './components/admin-components/SupportFormAdminId'
 
 //payment Views
 import PaymentSuccess from './components/payment/PaymentSuccess'
@@ -133,6 +136,7 @@ function App() {
                         <Route path='servicios' element={<Services />} />
                         <Route path='transacciones' element={<Transactions />} />
                         <Route path='claims' element={<SupportFormAdmin />} />
+                        <Route path='claims/:id' element={<SupportFormAdminId />} />
                     </Route>
 
                     <Route path='paymentSucceeded' element={<PaymentSuccess />} />
