@@ -1,61 +1,79 @@
-import style from './footer.module.scss'
 import CircleIconAuxie from '../../assets/logos/CircleIconAuxie.png'
-import pinLocation from '../../assets/icons/pin-location.svg'
 import { Link } from 'react-router-dom'
 import { Typography } from '@material-tailwind/react'
-
-export function Footer() {
+import { Place } from '@mui/icons-material'
+import { useSelector } from 'react-redux'
+const Footer = ({ myRef3 }) => {
+    const nightMode = useSelector(state => state.nightMode)
     return (
-        <footer className='w-full bg-white p-8'>
-            <div className='flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between'>
-                <img src='/img/logo-ct-dark.png' alt='logo-ct' className='w-10' />
-                <ul className='flex flex-wrap items-center gap-y-2 gap-x-8'>
-                    <li>
-                        <Typography
-                            as='a'
-                            href='#'
-                            color='blue-gray'
-                            className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'
-                        >
-                            About Us
-                        </Typography>
-                    </li>
-                    <li>
-                        <Typography
-                            as='a'
-                            href='#'
-                            color='blue-gray'
-                            className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'
-                        >
-                            License
-                        </Typography>
-                    </li>
-                    <li>
-                        <Typography
-                            as='a'
-                            href='#'
-                            color='blue-gray'
-                            className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'
-                        >
-                            Contribute
-                        </Typography>
-                    </li>
-                    <li>
-                        <Typography
-                            as='a'
-                            href='#'
-                            color='blue-gray'
-                            className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'
-                        >
-                            Contact Us
-                        </Typography>
-                    </li>
-                </ul>
-            </div>
+        <footer ref={myRef3} className={nightMode ? 'w-full bg-rgb(10,11,37) p-8' : 'w-full bg-white p-8'}>
             <hr className='my-8 border-blue-gray-50' />
-            <Typography color='blue-gray' className='text-center font-normal'>
-                &copy; 2023 Material Tailwind
-            </Typography>
+            <div
+                className={
+                    nightMode
+                        ? 'flex items-center justify-between gap-y-6 gap-x-12 bg-rgb(10,11,37) text-center '
+                        : 'flex items-center justify-between gap-y-6 gap-x-12 bg-white text-center '
+                }
+            >
+                <img src={CircleIconAuxie} alt='logo-ct' className='w-[150px]' />
+                <ul className='flex items-center gap-y-2 gap-x-8'>
+                    <Link to={'/aboutUs'}>
+                        <li>
+                            <Typography
+                                color='blue-gray'
+                                className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'
+                            >
+                                Sobre Nosotros
+                            </Typography>
+                        </li>
+                    </Link>
+                    <Link to={'/guarantee'}>
+                        <li>
+                            <Typography
+                                color='blue-gray'
+                                className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'
+                            >
+                                Garantias
+                            </Typography>
+                        </li>
+                    </Link>
+                    <Link to='/help'>
+                        <li>
+                            <Typography
+                                color='blue-gray'
+                                className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'
+                            >
+                                Como funciona
+                            </Typography>
+                        </li>
+                    </Link>
+                    <Link to='/support'>
+                        <li>
+                            <Typography
+                                color='blue-gray'
+                                className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'
+                            >
+                                Contacto
+                            </Typography>
+                        </li>
+                    </Link>
+                </ul>
+                <div className='flex flex-column justify-center text-center font-normal'>
+                    <Place />
+                    <label>Argentina</label>
+
+                    <Place />
+                    <label>México</label>
+                </div>
+            </div>
+
+            <div className='flex items-center justify-center'>
+                <Typography color='blue-gray' className='text-center font-normal '>
+                    &copy; 2023 Auxie
+                </Typography>
+            </div>
         </footer>
     )
 }
+
+export default Footer

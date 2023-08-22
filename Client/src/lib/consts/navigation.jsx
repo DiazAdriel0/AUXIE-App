@@ -4,9 +4,9 @@ import {
     HiOutlineShoppingCart,
     HiOutlineUsers,
     HiOutlineDocumentText,
-    HiOutlineAnnotation,
     HiOutlineQuestionMarkCircle,
     HiOutlineCog,
+    HiOutlineAnnotation,
 } from 'react-icons/hi'
 
 export const DASHBOARD_SIDEBAR_LINKS = [
