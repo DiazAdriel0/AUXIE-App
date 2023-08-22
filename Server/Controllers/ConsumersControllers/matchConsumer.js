@@ -60,7 +60,7 @@ const matchConsumer = async (email, password) => {
             )
             const consumerWithout = {
                 isActive: true,
-                isAdmin: false,
+                isAdmin: consumer.isAdmin,
                 firstName: consumer.firstName,
                 lastName: consumer.lastName,
                 gender: consumer.gender,
