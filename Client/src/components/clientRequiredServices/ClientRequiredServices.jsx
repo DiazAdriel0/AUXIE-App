@@ -137,20 +137,15 @@ const ClientRequiredServices = () => {
                                     <td className={style.actionButton}>
                                         {service.status === 'done' && <button onClick={handleClick}>Valorar</button>}
                                         {service.status === 'approved' && service.paymentMethod === 'app' && (
-                                           
-                                              
-                                                    <ButtonMercadoPago
-                                                        price={service.price}
-                                                        description={service.description}
-                                                        quantity={1}
-                                                    />
-                                              
+                                            <ButtonMercadoPago
+                                                price={service.price}
+                                                description={service.description}
+                                                quantity={1}
+                                            />
                                         )}
                                         {service.status === 'approved' && service.paymentMethod === 'efectivo' && (
                                             <tr>
-                                              
-                                                    <button onClick={handleClick}>Efectivo</button>
-                                               
+                                                <button onClick={handleClick}>Efectivo</button>
                                             </tr>
                                         )}
                                         {service.status === 'cancelled' && (
