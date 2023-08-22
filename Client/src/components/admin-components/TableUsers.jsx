@@ -13,7 +13,7 @@ const TableUsers = ({ data }) => {
 
     return (
         <div className='w-full h-11/12 pt-8 flex items-center justify-center'>
-            <Card className={nightMode ? 'text-white bg-neutral-800 w-11/12 h-[45rem]' : 'w-11/12 h-[45rem]'}>
+            <Card className={nightMode ? 'text-white bg-neutral-800 w-[99%] h-[45rem]' : 'w-[99%] h-[45rem]'}>
                 <table
                     className={
                         nightMode
@@ -29,7 +29,7 @@ const TableUsers = ({ data }) => {
                                     className={
                                         nightMode
                                             ? 'border-b border-blue-gray-100 bg-blue-gray-50 p-4 min-w-[5rem] max-w-[5rem]'
-                                            : 'border-b border-blue-gray-800 bg-blue-gray-800 p-4 min-w-[5rem] max-w-[5rem]'
+                                            : ' border-b border-blue-gray-800 bg-blue-gray-800 p-4 min-w-[5rem] max-w-[5rem]'
                                     }
                                 >
                                     <Typography
