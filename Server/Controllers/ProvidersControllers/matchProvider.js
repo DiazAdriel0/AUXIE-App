@@ -25,7 +25,8 @@ const matchProvider = async (email, password) => {
                     inbox: provider.inbox,
                     gallery: provider.gallery,
                     firstLogin: provider.firstLogin,
-                    address:provider.address,
+                    address: provider.address,
+                    isAuxie: provider.isAuxie,
                 }
                 return providerWithout
             } else {
@@ -76,6 +77,7 @@ const matchProvider = async (email, password) => {
                 gallery: provider.gallery,
                 firstLogin: provider.firstLogin,
                 address: provider.address,
+                isAuxie: provider.isAuxie,
             }
             return passwordMatch ? providerWithout : new Error('wrongPassword')
         } else {

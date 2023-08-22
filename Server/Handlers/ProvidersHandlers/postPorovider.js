@@ -35,6 +35,7 @@ const postProvider = async (req, res) => {
             },
             isActive: true,
             userUid,
+            isAuxie: true,
         }
 
         const createdProvider = await createProvider(newProvider)
