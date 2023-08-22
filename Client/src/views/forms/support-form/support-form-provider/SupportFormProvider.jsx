@@ -29,16 +29,12 @@ const SupportFormProvider = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        console.log('Valores de input antes de enviar:', input)
-
         if (!input.consumerUsername || !input.reason || !input.message) {
             setError('Campo obligatorio')
             return
         }
 
         setError('')
-
-        console.log(input)
 
         try {
             const formData = new FormData()
@@ -53,16 +49,11 @@ const SupportFormProvider = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             })
+            setSubmissionMessage(response.data)
 
-            console.log('Respuesta del servidor:', response.data)
-
-            setSubmissionMessage('El reclamo se ha enviado con éxito.')
         } catch (error) {
-            console.error('Error al enviar el formulario:', error)
-            setSubmissionMessage('Hubo un error al enviar el reclamo.')
+            setSubmissionMessage(error)
         }
-
-        console.log('Valores de input después de enviar:', input)
 
         dispatch(postClaim(input))
 

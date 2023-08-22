@@ -11,7 +11,19 @@ const SupportFormClaimsId = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
     const claim = useSelector(state => state.id)
-    console.log(claim)
+    const isAdmin = useSelector(state => state.loggedUser.isAdmin)
+
+    const consumer = useSelector(state => state.loggedUser)
+
+    const setAuxiesNames = Array.from(new Set(consumer.requiredServices.map(auxie => auxie.providerId)))
+
+    const provaiderName = setAuxiesNames.map(providerId => {
+        const auxie = consumer.requiredServices.find(auxie => auxie.providerId === providerId)
+        return auxie
+    })
+
+    const foundProvider = provaiderName.find(provider => provider.providerId === claim.providerUsername)
+    
 
     useEffect(() => {
         dispatch(getClaimId(id))
@@ -28,9 +40,16 @@ const SupportFormClaimsId = () => {
                             <p>
                                 <strong>Email:</strong> {claim.email}
                             </p>
-                            <p>
-                                <strong>Proveedor:</strong> {claim.providerUsername}
-                            </p>
+
+                            {isAdmin === false ? (
+                                <p>
+                                    <strong>Proveedor de la queja:</strong> {foundProvider ? foundProvider.providerName : "Proveedor no encontrado"}
+                                </p>
+                            ) : (
+                                <p>
+                                    <strong>Consumer de la queja:</strong> {claim.consumerUsername}
+                                </p>
+                            )}
                             <p>
                                 <strong>Motivo:</strong> {claim.reason}
                             </p>

@@ -26,6 +26,7 @@ const SupportFormConsumer = () => {
     const setAuxiesNames = Array.from(
         new Set(consumer.requiredServices.map((auxie) => auxie.providerId))
     )
+    
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -48,15 +49,13 @@ const SupportFormConsumer = () => {
         try {
             const response = await axios.post('/claims', formData, {
                 headers: {
-                    'Content-Type': 'multipart/form-data', // Important for FormData
+                    'Content-Type': 'multipart/form-data',
                 },
             })
-            console.log('Respuesta del servidor:', response.data)
+            setSubmissionMessage(response.data)
 
-            setSubmissionMessage('El reclamo se ha enviado con éxito.')
         } catch (error) {
-            console.error('Error al enviar el formulario:', error)
-            setSubmissionMessage('Hubo un error al enviar el reclamo.')
+            setSubmissionMessage(error)
         }
 
         dispatch(postClaim(input))
