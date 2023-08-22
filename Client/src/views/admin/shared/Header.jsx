@@ -68,7 +68,7 @@ const Header = () => {
                             >
                                 <Popover.Panel className='absolute right-0 z-10 mt-2.5 w-80'>
                                     <div className='bg-white rounded-sm shadow-md ring-1 ring-black ring-opacity-5 px-2 py-2.5'>
-                                        <strong className='text-gray-700 font-medium'>Messages</strong>
+                                        <strong className='text-gray-700 font-medium'>Mensajes</strong>
                                         <div className='mt-2 py-1 text-sm'>Este es el panel de mensajes</div>
                                     </div>
                                 </Popover.Panel>

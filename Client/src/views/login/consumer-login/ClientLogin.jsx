@@ -48,7 +48,7 @@ const ClientLogin = () => {
             Swal.fire(error.message)
         }
     }
-    console.log(logged)
+
     useEffect(() => {
         if (access === true) {
             if (logged?.isAdmin) {

@@ -1,7 +1,7 @@
 import { format } from 'date-fns'
 import { getOrderStatus } from '../../lib/helpers/index'
 import { recentOrderData } from '../../lib/data/rechartData'
-import { Link } from 'react-router-dom'
+
 export default function RecentOrders() {
     return (
         <div className='bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
@@ -22,15 +22,9 @@ export default function RecentOrders() {
                     <tbody>
                         {recentOrderData.map(order => (
                             <tr key={order.id}>
-                                <td>
-                                    <Link to={`/order/${order.id}`}>#{order.id}</Link>
-                                </td>
-                                <td>
-                                    <Link to={`/product/${order.product_id}`}>#{order.product_id}</Link>
-                                </td>
-                                <td>
-                                    <Link to={`/customer/${order.customer_id}`}>{order.customer_name}</Link>
-                                </td>
+                                <td>#{order.id}</td>
+                                <td>#{order.product_id}</td>
+                                <td>{order.customer_name}</td>
                                 <td>{format(new Date(order.order_date), 'dd MMM yyyy')}</td>
                                 <td>{order.order_total}</td>
                                 <td>{order.shipment_address}</td>
