@@ -99,10 +99,12 @@
     }
 }
 .about {
-    padding: 1.5em 0;
+    padding-top: 1%;
+    padding-bottom: 1%;
     padding-left: 5%;
     background-color: rgba(74, 74, 74, 0.151);
-    margin-bottom: 2em;
+
+    box-shadow: 0px 30px 52px -25px var(--secondary--color-hover);
     h2 {
         font-size: 2.5em;
         font-weight: 550;
@@ -234,7 +236,7 @@
             max-height: 100%; /* Adjust this value as needed */
             // padding: 10px; /* Add padding for better spacing */
             // margin-top: 35%;
-            scrollbar-color: blue pink;
+            scrollbar-color: rgba(36, 40, 255, 0.273) rgba(127, 255, 212, 0.159);
             scrollbar-width: thin;
         }
 
