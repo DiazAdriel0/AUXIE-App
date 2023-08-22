@@ -9,11 +9,18 @@
         border: 1px solid #ccc;
         padding: 8px;
         text-align: left;
+        button{
+            display: flex;
+            flex-direction:column;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
     }
 
     th {
         background-color: #f2f2f2;
         color: #333;
+        
     }
 
     tr:nth-child(even) {
@@ -48,4 +55,11 @@
     border-radius: 1rem;
     border: 1px solid #000000;
     box-shadow: 0px 0px 19px 5px rgba(250, 250, 250, 0.1);
+}
+
+.buttonContainer{
+    display: flex;
+    align-items: center; 
+    gap:10px;
+    padding-right: 100%;
 }

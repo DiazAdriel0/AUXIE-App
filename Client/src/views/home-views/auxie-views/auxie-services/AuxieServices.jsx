@@ -12,6 +12,7 @@ import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie
 import TableServices from '../../../../components/home-auxie-components/table-services/TableServices'
 import CardsJobs from '../../../../components/home-auxie-components/cards-jobs/CardsJobs'
 import Pagination from '../../../../components/pagination/Pagination'
+import Footer from '../../../../components/footer/Footer'
 
 const AuxieServices = () => {
     const logged = useSelector(state => state.loggedUser)
@@ -36,25 +37,38 @@ const AuxieServices = () => {
     }, [])
 
     return (
-        <div className={style.services}>
-            <header className={style.header}>
+        <div>
+            <header className='h-16 '>
                 <NavGeneral />
             </header>
             {/* aside */}
-            <AsideAuxie />
+<div className='grid grid-cols-2 mb-4 mr-52'>
+                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-52  pl-14 pb-2'>
+                    <AsideAuxie />
+                </aside>
+          
             {/* main */}
             <main className={style.main}>
                 <TableServices />
             </main>
 
+                {/* main */}
+                <main className='-ml-96 px-16 pt-2 bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-max'> 
+                    <button onClick={handleChange} className='px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white'>
+                        {tableOrCard ? 'Cambiar a cards' : 'Cambiar a tabla'}
+                    </button>
+                    {tableOrCard ? <div className='ml-7'><TableServices /></div>: <div className='mr-24 pl-0.5'><CardsJobs /></div>}
+                    <div> 
+                        {tableOrCard ? (
+                            <Pagination data={loggedUser.jobs} num={15} />
+                        ) : (
+                            <Pagination data={loggedUser.jobs} num={8} />
+                        )}
+                    </div>
+                </main>
+            </div>
             {/* footer */}
-            <footer className={style.footer}>
-                {tableOrCard ? (
-                    <Pagination data={loggedUser.jobs} num={15} />
-                ) : (
-                    <Pagination data={loggedUser.jobs} num={8} />
-                )}
-            </footer>
+            <Footer />
         </div>
     )
 }
