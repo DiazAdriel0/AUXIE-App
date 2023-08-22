@@ -46,6 +46,7 @@ const postConsumer = async (req, res) => {
             },
             isActive: true,
             userUid,
+            isAuxie: false,
         }
 
         const createdConsumer = await createConsumer(newConsumer)
