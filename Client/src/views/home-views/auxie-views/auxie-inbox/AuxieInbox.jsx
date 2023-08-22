@@ -1,7 +1,6 @@
 // import style from './auxieInbox.module.scss'
 import NavGeneral from '../../../../components/nav-general/NavGeneral'
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
-import Footer from '../../../../components/footer/Footer'
 
 import Chatlist from '../../../../components/chatcomponents/chatlist'
 import { useDispatch, useSelector } from 'react-redux'
@@ -45,8 +44,6 @@ const AuxieInbox = () => {
                     {/* <Chat auxiedetails={auth.currentUser.uid}recipient={user.inbox[0].sender}/>  */}
                 </div>
             </div>
-            {/* Footer */}
-            <Footer />
         </div>
     )
 }
