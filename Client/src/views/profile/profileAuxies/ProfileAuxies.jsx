@@ -235,9 +235,8 @@ const ProfileAuxies = () => {
                                     name='firstName'
                                     value={newfirstName}
                                     onChange={handlefirstname}
-                                    sx={{marginLeft:22 }}
+                                    sx={{ marginLeft: 22, backgroundColor: ' #6d6c6c5d' }}
                                     focused
-                                    
                                 />
                             )}
                             {edit && (
@@ -253,7 +252,7 @@ const ProfileAuxies = () => {
                                     value={newlastName}
                                     onChange={handleLastname}
                                     focused
-                                    sx={{marginLeft:5 }}
+                                    sx={{ marginLeft: 5, backgroundColor: ' #6d6c6c5d' }}
                                 />
                             )}
                             {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -265,7 +264,10 @@ const ProfileAuxies = () => {
                                 {password && <ResetPassword />}
                             </h3>
                             <h3>Descripción:</h3>
-                            <textarea value={newBio} onChange={handleBioChange} />
+                            <div className={style.description}>
+                                {' '}
+                                <textarea value={newBio} onChange={handleBioChange} />
+                            </div>
 
                             <div>
                                 <h5>
@@ -350,7 +352,7 @@ const ProfileAuxies = () => {
                                         name='street'
                                         value={address}
                                         onChange={handleAddressChange}
-                                        sx={{width:150,margin:1}}
+                                        sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                         focused
                                     />
                                 )}
@@ -364,7 +366,7 @@ const ProfileAuxies = () => {
                                         name='city'
                                         value={city}
                                         onChange={handleAddressChange}
-                                        sx={{width:150,margin:1,}}
+                                        sx={{ width: 150, margin: 1 }}
                                         focused
                                     />
                                 )}
@@ -378,7 +380,7 @@ const ProfileAuxies = () => {
                                         name='province'
                                         value={provinces}
                                         onChange={handleAddressChange}
-                                        sx={{width:150,margin:1}}
+                                        sx={{ width: 150, margin: 1 }}
                                         focused
                                     />
                                 )}
@@ -393,7 +395,7 @@ const ProfileAuxies = () => {
                                         name='country'
                                         value={country}
                                         onChange={handleAddressChange}
-                                        sx={{width:150,margin:1}}
+                                        sx={{ width: 150, margin: 1 }}
                                         focused
                                     />
                                 )}
