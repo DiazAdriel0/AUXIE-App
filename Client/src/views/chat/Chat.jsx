@@ -84,8 +84,10 @@ export const Chat = ({ recipient }) => {
         // Fetch or create a conversation document
         const participants = [auth.currentUser.uid, recipient]
         participants.sort() // Sort for consistent order
+
         const conversationId = ordered.join('_')
         const conversationData = { participants }
+        
         await addDoc(conversationsRef, conversationData) // Create the conversation if it doesn't exist
 
         // Store the message with the conversation ID
@@ -107,6 +109,7 @@ export const Chat = ({ recipient }) => {
     }
 
     return (
+
         <div className={style.chatapp}>
             <div className='header'></div>
 
@@ -131,7 +134,6 @@ export const Chat = ({ recipient }) => {
                                         ? style.receiver
                                         : style.sender
                                 }`}
-                            >
                                 {message.text}
                             </div>
                         </div>
@@ -139,6 +141,7 @@ export const Chat = ({ recipient }) => {
                 ))}
                 <div ref={messageRefEnd}/>
             </div>
+
             <form onSubmit={handleSubmit} className={style.chatform}>
                 <input
                     type='text'
