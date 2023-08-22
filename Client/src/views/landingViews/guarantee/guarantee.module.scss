@@ -17,10 +17,16 @@
     width: 100%;
     padding-top: 1%;
     padding-bottom: 1%;
-    background-color: var(--secondary--color-light);
+    // background-color: var(--secondary--color-light);
     padding-left: 5%;
     margin-bottom: 5%;
+    background-color: rgba(74, 74, 74, 0.151);
+
     box-shadow: 0px 30px 52px -25px var(--secondary--color-hover);
+    h2 {
+        font-size: 2.5em;
+        font-weight: 550;
+    }
 }
 .square {
     margin-top: 1%;
@@ -28,7 +34,7 @@
     height: 20%;
     background-color: var(--secondary--color-light);
     padding: 3%;
-    border: 2px solid var(--secondary--color-hover);
+    border-bottom: 2px ridge ;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -46,9 +52,10 @@
 
 .anotherSection {
     margin-top: 5%;
-    padding-top: 5%;
-    background-color: var(--secondary--color-light);
+    padding: 5%;
+    // background-color: var(--secondary--color-light);
     text-align: center;
+ 
 
     h2 {
         font-size: 250%;
@@ -62,16 +69,18 @@
 
 .section1 {
     background-color: var(--primary--color-light);
-    margin-top: 5%;
+    margin-top: 15%;
+    
 }
 .contact {
     background-color: rgba(128, 128, 128, 0.294) !important;
     color: black !important;
-    
+    width: 13rem;
+    height: 5rem;
     padding: 1% 1%;
     border: none;
     border-radius: 10px;
-    font-size: 180%;
+    font-size: 1.3rem !important;
     cursor: pointer;
     font-weight: bold;
     margin: 5%;
