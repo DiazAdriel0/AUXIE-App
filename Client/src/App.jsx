@@ -53,9 +53,8 @@ import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
 import ChatApp from './views/chat/App'
 
 //Admin
-
 import Notifications from './components/admin-components/Notifications'
-import Layout from './views/admin/shared/layout'
+import Layout from './views/admin/shared/Layout'
 import Dashboard from './components/admin-components/Dashboard'
 import Auxies from './components/admin-components/Auxies'
 import Customers from './components/admin-components/Customers'
