@@ -116,25 +116,27 @@ const ClientRequiredService = (job) => {
         <div className={nightMode ? style.cardContNight : style.cardCont}>
             <div className={style.requestDetails}>
                 <div className={style.requestInfo}>
-                <p>Auxie: </p><span className={style.auxieLink} onClick={handleRedirect}>{providerName}</span>
-                </div>
-                <div className={style.requestInfo}>
-                <p>Fecha de petición: </p>
-                {requestDate}
-                <p>Fecha de realización: </p>
-                {jobDate}
-                </div>
-                <div className={style.requestInfo}>
-                <p>servicio: </p>
-                {service}
-                <p>Desripción: </p>
-                {description}
-                </div>
-                <div className={style.requestInfo}>
-                <p>Precio: </p>${price}
-                <p>Estado: </p>
-                {translated[status]}
-                </div>
+                    <span className={style.auxieLink} onClick={handleRedirect}>{providerName}</span><p>| Auxie |</p>
+                    </div>
+                <div className={style.col1}>
+                 
+                    <div className={style.requestDesc}>
+                    <p className={style.pService}>Servicio: <span> {service}</span></p>
+                    <p>Desripción: </p>
+                    {description}
+                    </div>
+                
+                    <div className={style.requestDate}>
+                    <p>Fecha de petición: </p>
+                    {requestDate}
+                    <p>Fecha de realización: </p>
+                    {jobDate}
+                    </div>
+                    <div className={style.requestPyS}>
+                    <p>Precio: <span>${price}</span> </p>
+                    <p>Estado: <span>{translated[status]}</span></p>
+                    </div>
+                </div>  
             </div>
             <div className={style.statusButtonCont}>
             {status === 'done' && (
