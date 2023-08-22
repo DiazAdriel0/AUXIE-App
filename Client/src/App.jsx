@@ -61,7 +61,6 @@ import Customers from './components/admin-components/Customers'
 import Services from './components/admin-components/Services'
 import Transactions from './components/admin-components/Transactions'
 
-import Notifications from './components/admin-components/Notifications'
 import SupportFormAdmin from './components/admin-components/SupportFormAdmin'
 import SupportFormAdminId from './components/admin-components/SupportFormAdminId'
 
