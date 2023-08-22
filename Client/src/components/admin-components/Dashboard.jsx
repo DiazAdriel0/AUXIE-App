@@ -13,7 +13,7 @@ function Dashboard() {
                     <TransactionChart />
                     <BuyerProfileChart />
                 </div>
-                <div className='flex flex-row gap-4 w-full mb-4'>
+                <div className='flex flex-row gap-4 w-full mb-4 '>
                     <RecentOrders />
                     <PopularServices />
                 </div>
