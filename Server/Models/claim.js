@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const consumerSchema = new Schema({
+const claimSchema = new Schema({
     pending: {
         type: Boolean,
         default: true,
@@ -44,6 +44,14 @@ const consumerSchema = new Schema({
     },
 })
 
-const Claims = model('Claims', consumerSchema)
+claimSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id
+        delete returnedObject._id
+        delete returnedObject.__v
+    },
+})
+
+const Claims = model('Claims', claimSchema)
 
 module.exports = Claims

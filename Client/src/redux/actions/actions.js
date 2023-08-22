@@ -18,7 +18,7 @@ import {
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
     POST_CLAIM,
-    GET_ALL_CONSUMERS,
+    GET_CLAIM_ID,
     GET_CLAIMS,
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
@@ -41,8 +41,6 @@ export function getAllAuxies() {
         }
     }
 }
-
-
 
 export function getClaims(email) {
     return async function (dispatch) {
@@ -345,6 +343,16 @@ export function switchFavorites(state) {
         return dispatch({
             type: SWITCH_FAVORITES,
             payload: state,
+        })
+    }
+}
+
+export const getClaimId = id => {
+    return async dispatch => {
+        const { data } = await axios.get(`/claims/${id}`)
+        dispatch({
+            type: GET_CLAIM_ID,
+            payload: data,
         })
     }
 }

@@ -7,6 +7,7 @@ const getClaims = async (email) => {
         claims.forEach (claim => {
             if (claim.pending === true) {
                 const userClaim = {
+                    id: claim._id.toString(),
                     email: claim.email,
                     consumerUsername: claim.consumerUsername,
                     message: claim.message,
@@ -18,6 +19,7 @@ const getClaims = async (email) => {
                 arrClaim.push(userClaim)
             } else {
                 const userClaim = {
+                    id: claim._id.toString(),
                     email: claim.email,
                     consumerUsername: claim.consumerUsername,
                     message: claim.message,
