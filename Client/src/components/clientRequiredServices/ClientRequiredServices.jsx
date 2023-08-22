@@ -12,16 +12,15 @@ const ClientRequiredServices = () => {
     const dispatch = useDispatch()
     const client = useSelector(state => state.loggedUser)
     const [cards, setCards] = useState(true)
-    const [updated, setUpdated] = useState(false)
     const targetRef = useRef(null)
     const [showForm, setShowForm] = useState(false)
     const [shouldCloseForm, setShouldCloseForm] = useState(false)
     const translated = {
         approved: 'Aprobado',
-        cancelled: 'Rechazado',
+        cancelled: 'Cancelado',
         pending: 'Pendiente',
         done: 'Completado',
-        declined: 'Declinado',
+        declined: 'Rechazado',
         proposal: 'Propuesta',
     }
 
@@ -46,7 +45,6 @@ const ClientRequiredServices = () => {
         }
         if (status === 'approved') dispatch(setServiceStatus(data))
         else dispatch(setServiceStatus(data))
-        setUpdated(true)
     }
 
     const handleClick = e => {
@@ -61,7 +59,7 @@ const ClientRequiredServices = () => {
         if (e.target.innerText === 'Efectivo') return Swal.fire('Pagar en efectivo')
         if (e.target.innerText === 'Cancelado') return Swal.fire('Has cancelado tu pedido')
         if (e.target.innerText === 'Pendiente') return Swal.fire('Espera a que el Auxie apruebe tu pedido')
-        if (e.target.innerText === 'Declinado') return Swal.fire('El auxie ha cancelado tu pedido')
+        if (e.target.innerText === 'Rechazado') return Swal.fire('El auxie ha rechazado tu pedido')
     }
 
     useEffect(() => {
@@ -73,7 +71,7 @@ const ClientRequiredServices = () => {
 
     useEffect(() => {
         dispatch(updateConsumer(client.userUid))
-    }, [updated])
+    }, [client])
     return (
         <>
             {showForm && (
@@ -152,7 +150,7 @@ const ClientRequiredServices = () => {
                                             <button onClick={handleClick}>Cancelado</button>
                                         )}
                                         {service.status === 'declined' && (
-                                            <button onClick={handleClick}>Declinado</button>
+                                            <button onClick={handleClick}>Rechazado</button>
                                         )}
                                         {service.status === 'pending' && (
                                             <>
