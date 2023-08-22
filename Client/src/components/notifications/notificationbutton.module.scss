@@ -1,0 +1,66 @@
+.button {
+    width: 6rem;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 30px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+    overflow: hidden; /* Ensure the content doesn't overflow */
+}
+
+.bell {
+    width: 22px;
+    height: 22px;
+}
+
+.bell path {
+    fill: rgb(153, 152, 152);
+}
+
+.button:active {
+    transform: scale(0.97);
+    transition-duration: 0.2s;
+}
+
+.button:hover .bell {
+    animation: bellRing 0.9s both;
+}
+
+/* bell ringing animation keyframes*/
+@keyframes bellRing {
+    0%,
+    100% {
+        transform-origin: top;
+    }
+
+    15% {
+        transform: rotateZ(10deg);
+    }
+
+    30% {
+        transform: rotateZ(-10deg);
+    }
+
+    45% {
+        transform: rotateZ(5deg);
+    }
+
+    60% {
+        transform: rotateZ(-5deg);
+    }
+
+    75% {
+        transform: rotateZ(2deg);
+    }
+}
+.fullcontainer{
+
+}

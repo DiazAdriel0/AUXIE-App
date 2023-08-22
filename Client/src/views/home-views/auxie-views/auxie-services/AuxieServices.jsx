@@ -1,8 +1,11 @@
-import style from './auxieServices.module.scss'
-
+// import style from './auxieServices.module.scss'
+import axios from 'axios'
 //Hooks
+import { useEffect } from 'react'
+import { loggedUser } from '../../../../redux/actions/actions'
+
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 //Components
 import NavGeneral from '../../../../components/nav-general/NavGeneral'
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
@@ -11,34 +14,60 @@ import CardsJobs from '../../../../components/home-auxie-components/cards-jobs/C
 import Pagination from '../../../../components/pagination/Pagination'
 
 const AuxieServices = () => {
-    const loggedUser = useSelector((state) => state.loggedUser)
+    const logged = useSelector(state => state.loggedUser)
     const [tableOrCard, setTableOrCard] = useState(true)
     const handleChange = () => {
         setTableOrCard(!tableOrCard)
     }
+
+    const dispatch = useDispatch()
+    const handleRefresh = async () => {
+        try {
+            const response = await axios.get(`/providers/${logged.id}`)
+            if (response) {
+                dispatch(loggedUser(response.data))
+            }
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
+    useEffect(() => {
+        handleRefresh()
+    }, [])
+
     return (
-        <div className={style.services}>
-            <header className={style.header}>
+        <div>
+            <header className='h-16 '>
                 <NavGeneral />
             </header>
             {/* aside */}
-            <AsideAuxie />
-            {/* main */}
-            <main className={style.main}>
-                <button onClick={handleChange}>
-                    {tableOrCard ? 'Change to cards' : 'change to table'}
-                </button>
-                {tableOrCard ? <TableServices /> : <CardsJobs />}
-            </main>
-
-            {/* footer */}
-            <footer className={style.footer}>
-                {tableOrCard ? (
-                    <Pagination data={loggedUser.jobs} num={15} />
-                ) : (
-                    <Pagination data={loggedUser.jobs} num={8} />
-                )}
-            </footer>
+            <div className='grid grid-cols-2 mb-4 mr-52'>
+                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-52  pl-14 pb-2'>
+                    <AsideAuxie />
+                </aside>
+                {/* main */}
+                <main className='-ml-96 px-16 pt-2 bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-max'>
+                    <button onClick={handleChange} className='px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white'>
+                        {tableOrCard ? 'Cambiar a cards' : 'Cambiar a tabla'}
+                    </button>
+                    {tableOrCard ? (
+                        <div className='ml-7'>
+                            <TableServices />
+                        </div>
+                    ) : (
+                        <div className='mr-24 pl-0.5'>
+                            <CardsJobs />
+                        </div>
+                    )}
+                    <div>
+                        {tableOrCard ? (
+                            <Pagination data={loggedUser.jobs} num={15} />
+                        ) : (
+                            <Pagination data={loggedUser.jobs} num={8} />
+                        )}
+                    </div>
+                </main>
+            </div>
         </div>
     )
 }

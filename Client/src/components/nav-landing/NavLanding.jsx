@@ -1,6 +1,6 @@
 import style from './navLanding.module.scss'
 
-import LogoLight from '../../assets/logos/1.png'
+import LogoLight from '../../assets/logos/2.png'
 import LogoNight from '../../assets/logos/logoLight.png'
 // Hooks
 import useMenuStates from '../../hooks/useMenuStates'
@@ -38,7 +38,7 @@ const NavLanding = () => {
                                         : null
                                 }
                                 src={!nightMode ? LogoLight : LogoNight}
-                                alt="Logo Auxie"
+                                alt='Logo Auxie'
                                 className={style.logo}
                             />
                         </Link>
@@ -81,8 +81,8 @@ const NavLanding = () => {
             </nav>
             {logInMenu && (
                 <Animated
-                    animationIn="zoomIn"
-                    animationOut="zoomDown"
+                    animationIn='zoomIn'
+                    animationOut='zoomDown'
                     animationInDuration={!menuLanding ? 200 : 0}
                 >
                     <div className={style.logInMenu}>
@@ -110,8 +110,8 @@ const NavLanding = () => {
 
             {registerMenu && (
                 <Animated
-                    animationIn="zoomIn"
-                    animationOut="zoomDown"
+                    animationIn='zoomIn'
+                    animationOut='zoomDown'
                     animationInDuration={!menuLanding ? 200 : 0}
                     isVisible={true}
                 >

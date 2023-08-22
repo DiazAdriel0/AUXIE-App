@@ -17,7 +17,8 @@
 }
 
 .menuMainNight {
-    background-color: var(--div-color-dark);
+    background-color: var(--background-dark);
+    box-shadow: 0px 0px 50px 0px #fff;
 }
 
 .menuSearchAuxieNight {
@@ -26,15 +27,26 @@
 
 .divSloganLight {
     background-color: var(--div-color-light);
+    h3{
+        font-weight: 500;
+    }
+    p{
+        font-weight: 350;
+    }
 }
 .divSloganNight {
-    background-color: var(--contrast-div-color-dark);
+    h3{
+        font-weight: 500;
+    }
+    p{
+        font-weight: 350;
+    }
 }
 .buttonSloganContLight {
-    background-color: var(--div-color-light);
+    box-shadow: 0px 9px 6px -3px rgb(182, 182, 182);
 }
 .buttonSloganContNight {
-    background-color: var(--contrast-div-color-dark);
+    box-shadow: 0px 4px 5px -3px rgba(197, 195, 195, 0.625);
 }
 
 .logInMenu {
@@ -124,7 +136,6 @@
 
         .menuMain {
             border-radius: 10px;
-
             width: 40%;
             height: 40vh;
             margin-left: 15%;
@@ -141,6 +152,7 @@
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
+                border-top-left-radius: 10px;
             }
 
             .turnAuxie {
@@ -150,6 +162,8 @@
                 width: 50%;
                 height: 100%;
                 font-size: 150%;
+                border-top-right-radius: 10px;
+                border-left: 1px solid var(--background-dark);
             }
         }
         .menuSearchAuxie {
@@ -161,7 +175,9 @@
             align-items: center;
             font-size: large;
             margin-top: 8%;
-
+            button {
+                margin-top: 10%;
+            }
             select {
                 border-radius: 10px;
                 padding: 2%;
@@ -173,6 +189,8 @@
             width: 200px;
             height: 50px;
             border-radius: 4px;
+
+            margin-top: 10%;
         }
 
         .menuTurnAuxie {
@@ -196,6 +214,7 @@
     .sloganNone {
         height: 30vh;
     }
+
     .slogan {
         z-index: 3;
         display: flex;
@@ -229,8 +248,8 @@
         }
 
         .buttonSlogan {
-            width: 150px;
-            height: 60px;
+            width: 190px;
+            height: 80px;
             margin: 2% 0 0 10%;
             font-size: 120%;
             text-align: center;
@@ -272,11 +291,15 @@
         justify-content: flex-start;
         align-items: center;
         gap: 20%;
-        padding: 2% 0 5% 0;
-
-        .h3 {
+        padding: 8% 0 5% 0;
+        .serviceCardsTitle{
+            padding-bottom: 2em;
+           h3 {
             font-size: xx-large;
+            font-weight: 450;
+        } 
         }
+        
     }
     /* Estilos para la sección 4 Auxies */
     .auxies {
@@ -304,37 +327,10 @@
         }
     }
 
-    /* Estilos para la sección 5 (landingFooter) */
-    .landingFooter {
-        z-index: 6;
-        color: white;
-        background-color: #181818;
-        height: 70vh;
-        .divFooterTitle {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            h3 {
-                font-size: 50px;
-            }
-            h4 {
-                font-size: 35px;
-            }
-        }
-        .divFooterImg {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            width: 30vh;
-            height: 30vh;
-        }
-        .divCopy {
-            margin: 2% 0 0 2%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .divCopy {
+        margin: 2% 0 0 2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }

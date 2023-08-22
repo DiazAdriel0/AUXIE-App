@@ -17,14 +17,16 @@ import axios from 'axios'
 
 import { logOut } from '../../../redux/actions/actions'
 
-
 //Material UI
+import Swal from 'sweetalert2'
+
 import { Popper, Box } from '@mui/material'
 import ClickAwayListener from '@mui/base/ClickAwayListener'
 const ProfilePicAuxie = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector((state) => state.loggedUser)
+    const nightMode = useSelector((state) => state.nightMode)
     const [profileMenu, setProfileMenu] = useState(null)
 
     const isAuxie = Object.keys(user).includes('services') ? true : false
@@ -36,19 +38,31 @@ const ProfilePicAuxie = () => {
     const handleRedirect = (e) => {
         if (e.target.innerText === 'Perfil') return navigate('/profile')
         if (e.target.innerText === 'Ayuda') return navigate('/help')
+        if (e.target.innerText === 'Servicios')
+            return navigate('/requestedservices')
     }
 
     const handleLogOut = async () => {
         try {
             if (user.googleId) {
-                const response = await axios.post(
-                    '/consumers/logout',
-                    { googleId: `${user.googleId}` }
-                )
-                if (response) {
-                    await signOut(auth)
-                    dispatch(logOut({}))
-                    return navigate('/')
+                if (isAuxie) {
+                    const response = await axios.post('/providers/logout', {
+                        googleId: `${user.googleId}`,
+                    })
+                    if (response) {
+                        await signOut(auth)
+                        dispatch(logOut({}))
+                        return navigate('/')
+                    }
+                } else {
+                    const response = await axios.post('/consumers/logout', {
+                        googleId: `${user.googleId}`,
+                    })
+                    if (response) {
+                        await signOut(auth)
+                        dispatch(logOut({}))
+                        return navigate('/')
+                    }
                 }
             }
             dispatch(logOut({}))
@@ -56,7 +70,8 @@ const ProfilePicAuxie = () => {
             navigate('/')
         } catch (error) {
             console.error('error: ' + error.message)
-            alert(error.message)
+            Swal.fire(error.message)
+           
         }
     }
     const handleClickAway = () => {
@@ -77,14 +92,14 @@ const ProfilePicAuxie = () => {
                 <img
                     className={style.img}
                     src={user.image?.secure_url}
-                    alt="imagen de perfil"
+                    alt='imagen de perfil'
                 />
             </button>
             <Popper
                 id={id}
                 open={open}
                 anchorEl={profileMenu}
-                placement="bottom"
+                placement='bottom'
                 disablePortal={false}
                 modifiers={[
                     {
@@ -111,7 +126,7 @@ const ProfilePicAuxie = () => {
                         name: 'arrow',
                         enabled: true,
                         options: {
-                            element: 'profileMenu',
+                            element: profileMenu,
                         },
                     },
                 ]}
@@ -146,12 +161,24 @@ const ProfilePicAuxie = () => {
                     <>
                         {/*Botones para el perfil consumer*/}
                         <ClickAwayListener onClickAway={handleClickAway}>
-                            <Box className={style.profileMenu}>
+                            <Box
+                                className={
+                                    nightMode
+                                        ? style.profileMenuNight
+                                        : style.profileMenu
+                                }
+                            >
                                 <p
                                     onClick={handleRedirect}
                                     className={style.profileButtonTop}
                                 >
                                     Perfil
+                                </p>
+                                <p
+                                    onClick={handleRedirect}
+                                    className={style.profileButtonMiddle}
+                                >
+                                    Servicios
                                 </p>
                                 <p
                                     onClick={handleRedirect}

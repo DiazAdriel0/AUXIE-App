@@ -6,10 +6,13 @@ import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../config/firebase-config'
+import NavLanding from '../../../components/nav-landing/NavLanding'
+import CircularProgress from '@mui/material/CircularProgress'
 
 const ClientForm = () => {
     const { errors, validate } = useValidations()
-    const [access, setAccess] = useState(false) //eslint-disable-line
+    const [access, setAccess] = useState(false)
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
     const [input, setInput] = useState({
@@ -20,10 +23,10 @@ const ClientForm = () => {
         email: '',
         password: '',
         gender: '',
-        userUid:''
+        userUid: '',
     })
 
-    const handleChange = (event) => {
+    const handleChange = event => {
         setInput({
             ...input,
             [event.target.name]: event.target.value,
@@ -37,19 +40,35 @@ const ClientForm = () => {
         )
     }
 
-    const handlePost = async (input) => {
+    const handlePost = async input => {
         try {
             const response = await axios.post('/consumers/', input)
             if (response) {
+                setLoading(false)
+                let welcome
+                switch (response.data.gender) {
+                    case 'Masculino':
+                        welcome = 'Bienvenido'
+                        break
+                    case 'Femenino':
+                        welcome = 'Bienvenida'
+                        break
+                    case 'Otro':
+                        welcome = 'Bienvenide'
+                        break
+                    default:
+                        welcome = 'Bienvenidx'
+                }
                 setAccess(true)
                 // Reset the form only on successful response (2xx)
                 const form = document.getElementById('form')
                 form.reset()
-                Swal.fire('Usuario creado con exito. Bienvenido a Auxie!')
+                Swal.fire(`Usuario creado con exito. ${welcome} a Auxie!`)
             }
             // setAccess(true)
             // navigate('/home')
         } catch (error) {
+            setLoading(false)
             let er = error.response.data.error
             console.error(er)
             Swal.fire({
@@ -65,17 +84,14 @@ const ClientForm = () => {
             navigate('/clientlogin')
         }
     }, [access])
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault()
+        setLoading(true)
         try {
-            const credential = await createUserWithEmailAndPassword(
-                auth,
-                input.email,
-                input.password
-            )
+            const credential = await createUserWithEmailAndPassword(auth, input.email, input.password)
             const uid = credential.user.uid
             let data = {}
-            if(credential){
+            if (credential) {
                 data = {
                     ...input,
                     userUid: uid,
@@ -83,6 +99,7 @@ const ClientForm = () => {
             }
             handlePost(data)
         } catch (error) {
+            setLoading(false)
             console.error(error.message)
             Swal.fire({
                 icon: 'error',
@@ -118,115 +135,117 @@ const ClientForm = () => {
     }
 
     return (
-        <div className={style.form}>
-            <div className={style.formtitle}>
-                <h3>Bienvenido a Auxie! Completa tu registro ahora!</h3>
+        <>
+            <NavLanding />
+            <div className={style.form}>
+                <div className={style.formtitle}>
+                    <h3>Bienvenido a Auxie! Completa tu registro ahora!</h3>
+                </div>
+                <form id='form' onSubmit={handleSubmit}>
+                    <div className={style.forminput}>
+                        <label>Nombre: </label>
+                        <input
+                            name='firstName'
+                            type='text'
+                            className={style.textInput}
+                            placeholder='Nombre'
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.firstName}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Apellido: </label>
+                        <input
+                            name='lastName'
+                            type='text'
+                            className={style.textInput}
+                            placeholder='Apellido'
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.lastName}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Edad: </label>
+                        <input
+                            name='age'
+                            type='number'
+                            className={style.textInput}
+                            placeholder='Edad'
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.age}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Género: </label>
+                        <select onChange={handleChange} name='gender' defaultValue={''}>
+                            <option disabled value=''>
+                                Género
+                            </option>
+                            <option value='Masculino'>Masculino</option>
+                            <option value='Femenino'>Femenino</option>
+                            <option value='Otro'>Otro</option>
+                        </select>
+
+                        <div className={style.errors}>
+                            <p>{errors.gender}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Nombre de usuario: </label>
+                        <input
+                            name='username'
+                            type='text'
+                            className={style.textInput}
+                            placeholder='Username'
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.username}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Email: </label>
+                        <input
+                            name='email'
+                            type='email'
+                            className={style.textInput}
+                            placeholder='Email'
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.email}</p>
+                        </div>
+                    </div>
+                    <div className={style.forminput}>
+                        <label>Contraseña: </label>
+                        <input
+                            name='password'
+                            type='password'
+                            className={style.textInput}
+                            placeholder='Password'
+                            onChange={handleChange}
+                        ></input>
+                        <div className={style.errors}>
+                            <p>{errors.password}</p>
+                        </div>
+                    </div>
+
+                    {loading ? (
+                        <CircularProgress />
+                    ) : (
+                        <div className={style.submitbutton}>
+                            <input type='submit' disabled={buttonDisabled()}></input>
+                        </div>
+                    )}
+                </form>
             </div>
-            <form id="form" onSubmit={handleSubmit}>
-                <div className={style.forminput}>
-                    <label>Nombre: </label>
-                    <input
-                        name="firstName"
-                        type="text"
-                        className={style.textInput}
-                        placeholder="Nombre"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        
-                        <p>{errors.firstName}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Apellido: </label>
-                    <input
-                        name="lastName"
-                        type="text"
-                        className={style.textInput}
-                        placeholder="Apellido"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        <p>{errors.lastName}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Edad: </label>
-                    <input
-                        name="age"
-                        type="number"
-                        className={style.textInput}
-                        placeholder="Edad"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        <p>{errors.age}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Genero: </label>
-                    <select
-                        onChange={handleChange}
-                        name="gender"
-                        defaultValue={''}
-                    >
-                        <option disabled value="">
-                            Genero
-                        </option>
-                        <option value="Masculino">Masculino</option>
-                        <option value="Femenino">Femenino</option>
-                        <option value="Otro">Otro</option>
-                    </select>
-
-                    <div className={style.errors}>
-                        <p>{errors.gender}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Nombre de usuario: </label>
-                    <input
-                        name="username"
-                        type="text"
-                        className={style.textInput}
-                        placeholder="Username"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        <p>{errors.username}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Email: </label>
-                    <input
-                        name="email"
-                        type="email"
-                        className={style.textInput}
-                        placeholder="Email"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        <p>{errors.email}</p>
-                    </div>
-                </div>
-                <div className={style.forminput}>
-                    <label>Password: </label>
-                    <input
-                        name="password"
-                        type="password"
-                        className={style.textInput}
-                        placeholder="Password"
-                        onChange={handleChange}
-                    ></input>
-                    <div className={style.errors}>
-                        <p>{errors.password}</p>
-                    </div>
-                </div>
-
-                <div className={style.submitbutton}>
-                    <input type="submit" disabled={buttonDisabled()}></input>
-                </div>
-            </form>
-        </div>
+        </>
     )
 }
 

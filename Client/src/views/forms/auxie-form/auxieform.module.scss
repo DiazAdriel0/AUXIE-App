@@ -6,7 +6,7 @@
     width: 100%;
     max-width: 60%;
     margin: 3% auto;
-    background-color: rgba(195, 201, 255, 0.5);
+    background-color: rgba(128, 128, 128, 0.294) !important;
     border: 2px solid #e0e0e0;
     border-radius: 8px;
     padding: 3rem; /* Ajusta el espacio alrededor del formulario */
@@ -30,7 +30,6 @@
         align-items: center;
         margin-bottom: 2rem;
         width: 100%;
-       
 
         label {
             flex: 1;
@@ -59,7 +58,6 @@
         font-size: 14px;
         color: red;
         margin-left: 10px;
-        
     }
 
     .submitbutton {
@@ -90,9 +88,7 @@
     h4 {
         margin-bottom: 2rem;
     }
- 
-    }
-
+}
 
 /* Estilos para el fondo solo en el path actual */
 .forminput {
@@ -101,7 +97,13 @@
     margin-bottom: 7rem; /* Ajusta el espacio vertical entre los div */
     width: 100%;
     // flex-wrap: wrap; /* Agrega esta línea para permitir que los elementos se envuelvan en la siguiente línea */
-
+    select{
+        background-color: rgba(169, 169, 169, 0.296) !important;
+    option{
+        background-color: rgba(169, 169, 169, 0.296) !important;
+    
+    }
+    }
     label {
         flex: 1;
         font-size: 18px;
@@ -118,6 +120,8 @@
         border-radius: 4px;
         box-sizing: border-box;
         font-size: 14px;
+        background-color: rgba(169, 169, 169, 0.296) !important;
+
     }
     .errors {
         flex-basis: 100%; /* Agrega esta línea para que el mensaje de error ocupe el 100% de su ancho */

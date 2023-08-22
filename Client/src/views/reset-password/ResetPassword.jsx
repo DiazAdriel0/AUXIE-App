@@ -7,9 +7,8 @@ import { useNavigate } from 'react-router-dom'
 const ResetPassword = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('')
-    console.log(email)
 
-    const handleChange = (event) => {
+    const handleChange = event => {
         event.preventDefault()
         setEmail(event.target.value)
     }
@@ -33,7 +32,7 @@ const ResetPassword = () => {
                     clearInterval(timerInterval)
                     navigate('/')
                 },
-            }).then((result) => {
+            }).then(result => {
                 /* Read more about handling dismissals below */
                 if (result.dismiss === Swal.DismissReason.timer) {
                     console.log('I was closed by the timer')
@@ -45,9 +44,16 @@ const ResetPassword = () => {
     }
     return (
         <div className={style.resetPassword}>
-            <h3>Ingrese su email</h3>
-            <input onChange={handleChange} type="text"></input>
-            <button onClick={handleReset}>Enviar</button>
+            <h3>Ingrese su email para solicitar el cambio de contraseña</h3>
+            <input
+                onChange={handleChange}
+                type='text'
+                className={style.input}
+                placeholder='Ingrese su correo electronico'
+            ></input>
+            <button onClick={handleReset} className={style.send}>
+                Enviar
+            </button>
         </div>
     )
 }

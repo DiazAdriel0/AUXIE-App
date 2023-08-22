@@ -5,6 +5,13 @@ const providerSchema = new Schema({
         type: Boolean,
         default: true,
     },
+    isAuxie: {
+        type: Boolean,
+    },
+    firstLogin: {
+        type: Boolean,
+        default: true,
+    },
 
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
@@ -40,6 +47,9 @@ const providerSchema = new Schema({
         default: '',
     },
     inbox: {
+        type: Array,
+    },
+    claims: {
         type: Array,
     },
 })

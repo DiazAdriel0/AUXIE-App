@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {
+    GET_ALL_CLIENTS,
     GET_ALL_AUXIES,
     GET_ALL_SERVICES,
     FILTER_AUXIES_BY_SERVICE,
@@ -12,12 +13,18 @@ import {
     SET_CURRENT_PAGE,
     RESET_AUXIES_CATALOG,
     LOGOUT,
-    /* SET_TOKEN,
-    RESET_TOKEN, */
+    SET_STATUS,
     UPDATE_PROFILE,
     ADD_FAVORITE,
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
+    POST_CLAIM,
+    GET_CLAIM_ID,
+    GET_CLAIMS,
+    UPDATE_CONSUMER,
+    UPDATE_PROVIDER,
+    FIRST_LOGIN,
+    SWITCH_FAVORITES,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -28,6 +35,20 @@ export function getAllAuxies() {
             const res = await axios('/providers')
             return dispatch({
                 type: GET_ALL_AUXIES,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
+export function getClaims(email) {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get(`/claims?email=${email}`)
+            return dispatch({
+                type: GET_CLAIMS,
                 payload: res.data,
             })
         } catch (e) {
@@ -101,7 +122,7 @@ export function orderAuxiesByPrice(order) {
                 payload: order,
             })
         } catch (e) {
-            console.error(e.response.data)
+            console.error(e)
         }
     }
 }
@@ -131,8 +152,8 @@ export function menuOpen(boolean) {
     }
 }
 
-export const setCurrentPage = (page) => {
-    return (dispatch) => {
+export const setCurrentPage = page => {
+    return dispatch => {
         return dispatch({
             type: SET_CURRENT_PAGE,
             payload: Number(page),
@@ -186,8 +207,8 @@ export function resetToken() {
     return {
         type: RESET_TOKEN,
     }
+    UPDATE_PROFILE
 } */
-UPDATE_PROFILE
 
 export function updateProfile(input, user) {
     return async function (dispatch) {
@@ -226,9 +247,7 @@ export function addFavorite(fav) {
 export function removeFavorite(fav) {
     return async function (dispatch) {
         try {
-            const res = await axios.delete(
-                `/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`
-            )
+            const res = await axios.delete(`/consumers/delete/fav?consumerId=${fav.consumerId}&id=${fav.id}`)
 
             return dispatch({
                 type: DELETE_FAVORITE,
@@ -253,6 +272,106 @@ export function turnLightNightMode(boolean) {
     }
 }
 
+export function setServiceStatus(info) {
+    return async function (dispatch) {
+        try {
+            const res = await axios.put('/providers/jobUpdate', info)
+            return dispatch({
+                type: SET_STATUS,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
+export const postClaim = input => {
+    return async dispatch => {
+        const res = await axios.post('/claims', input)
+        return dispatch({
+            type: POST_CLAIM,
+            payload: res.data,
+        })
+    }
+}
+
+// action para actualizar la info del usuario loggeado, falta la ruta del back
+
+export function updateConsumer(id) {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get(`/consumers/${id}`)
+            return dispatch({
+                type: UPDATE_CONSUMER,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+export function updateProvider(id) {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get(`/providers/${id}`)
+            return dispatch({
+                type: UPDATE_PROVIDER,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
+export function updateFirstLogin(typeUser, id) {
+    return async function (dispatch) {
+        try {
+            axios.put(`/${typeUser}/firstLogin`, { id })
+            return dispatch({
+                type: FIRST_LOGIN,
+                payload: false,
+            })
+        } catch (error) {
+            console.error(error)
+        }
+    }
+}
+
+export function getAllClients() {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get('/consumers')
+            return dispatch({
+                type: GET_ALL_CLIENTS,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
+export function switchFavorites(state) {
+    return async function (dispatch) {
+        return dispatch({
+            type: SWITCH_FAVORITES,
+            payload: state,
+        })
+    }
+}
+
+export const getClaimId = id => {
+    return async dispatch => {
+        const { data } = await axios.get(`/claims/${id}`)
+        dispatch({
+            type: GET_CLAIM_ID,
+            payload: data,
+        })
+    }
+}
+
 // action que me guarda los datos de un auxie que me devuelve el back por id (innecesario guardarme esta info en el global state por ahora)
 
 // export function getDetails(id) {
@@ -266,7 +385,7 @@ export function turnLightNightMode(boolean) {
 //                 payload: res.data,
 //             })
 //         } catch (e) {
-//             console.log(e.response.data)
+//             console.error(e.response.data)
 //         }
 //     }
 // }

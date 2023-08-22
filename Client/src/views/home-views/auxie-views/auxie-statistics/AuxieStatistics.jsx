@@ -1,8 +1,26 @@
 import style from './auxieStatistics.module.scss'
 import NavGeneral from '../../../../components/nav-general/NavGeneral'
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
-
+import axios from 'axios'
+import { useEffect } from 'react'
+import { loggedUser } from '../../../../redux/actions/actions'
+import { useSelector, useDispatch } from 'react-redux'
 const AuxieStatistics = () => {
+    const logged = useSelector(state => state.loggedUser)
+    const dispatch = useDispatch()
+    const handleRefresh = async () => {
+        try {
+            const response = await axios.get(`/providers/${logged.id}`)
+            if (response) {
+                dispatch(loggedUser(response.data))
+            }
+        } catch (error) {
+            console.error(error.message)
+        }
+    }
+    useEffect(() => {
+        handleRefresh()
+    }, [])
     return (
         <div className={style.auxieStatistics}>
             {/* Header */}

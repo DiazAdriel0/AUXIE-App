@@ -5,31 +5,30 @@ const modifyProviderServices = async (services, providerId) => {
     try {
         const providerFound = await Provider.findById(providerId)
 
-        let updatedServices = [...providerFound.services]
+        let updatedServices = []
 
         // A updatedServices no se pushean servicios que ya esten entre los que el provider ofrece
         for (const service of services) {
             const serviceFound = await Service.findById(service.id)
-            if (providerFound.services.length) {
-                const found = providerFound.services.find(
-                    (service) => serviceFound._id.toString() === service.id
-                )
-                if (!found) {
-                    updatedServices.push({
-                        id: serviceFound._id.toString(),
-                        price: service.price,
-                        //provisorio
-                        name: serviceFound.name,
-                    })
-                }
-            } else {
-                updatedServices.push({
-                    id: serviceFound._id.toString(),
-                    price: service.price,
-                    //provisorio
-                    name: serviceFound.name,
-                })
-            }
+            // if (providerFound.services.length) {
+            //     const found = providerFound.services.find(
+            //         (service) => serviceFound._id.toString() === service.id
+            //     )
+            //     if (!found) {
+            //         updatedServices.push({
+            //             id: serviceFound._id.toString(),
+            //             price: service.price,
+            //             //provisorio
+            //             name: serviceFound.name,
+            //         })
+            //     }
+            // } else {
+            updatedServices.push({
+                id: serviceFound._id.toString(),
+                price: service.price,
+                name: serviceFound.name,
+            })
+            // }
             //Si el provider no estaba suscrito al servicio se agrega al array providers de la coleccion services
             if (serviceFound.providers.length) {
                 const isSuscribed = serviceFound.providers.find(

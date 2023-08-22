@@ -9,7 +9,7 @@ const matchConsumer = async (email, password) => {
             if (consumer) {
                 const consumerWithout = {
                     isActive: true,
-                    isAdmin: false,
+                    isAdmin: consumer.isAdmin,
                     firstName: consumer.firstName,
                     lastName: consumer.lastName,
                     gender: consumer.gender,
@@ -23,13 +23,16 @@ const matchConsumer = async (email, password) => {
                     id: consumer._id,
                     image: consumer.image,
                     googleId: consumer.googleId,
+                    firstLogin: consumer.firstLogin,
+                    address: consumer.address,
+                    isAuxie: consumer.isAuxie,
                 }
                 return consumerWithout
             } else {
                 let newConsumer = {
                     email,
                     googleId: password.googleId,
-                    isActive: true,   
+                    isActive: true,
                 }
 
                 if (password.name.indexOf(' ') !== -1) {
@@ -60,6 +63,7 @@ const matchConsumer = async (email, password) => {
                 isAdmin: false,
                 firstName: consumer.firstName,
                 lastName: consumer.lastName,
+                gender: consumer.gender,
                 age: consumer.age,
                 email: consumer.email,
                 username: consumer.username,
@@ -70,6 +74,9 @@ const matchConsumer = async (email, password) => {
                 id: consumer._id,
                 image: consumer.image,
                 userUid: consumer.userUid,
+                firstLogin: consumer.firstLogin,
+                address: consumer.address,
+                isAuxie: consumer.isAuxie,
             }
 
             return passwordMatch ? consumerWithout : new Error('wrongPassword')

@@ -58,8 +58,10 @@
     margin-bottom: 1rem;
 }
 
-.error{
-    background-color: brown;
-    font-size: xx-large;
+.error {
+    font-size: 100%;
+    color: red;
+    background-color: var(--primary--color-light);
+    padding: 1%;
+    border-radius: 10px;
 }
-

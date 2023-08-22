@@ -6,13 +6,21 @@
     align-items: center;
     z-index: 30;
 
+    a:hover {
+        border-bottom: 1px solid var(--hover-color-dark);
+        transition: ease-in 0.5s;
+    }
     .containerLeft {
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
 
         .logoDiv {
-            width: 15%;
+            width: 10%;
+            margin-right: 5%;
+            a {
+                border-bottom: none;
+            }
             .logo {
                 width: 100%;
             }
@@ -67,6 +75,7 @@
         display: flex;
         padding: 10px;
         gap: 10%;
+        margin-right: 8%;
     }
     .login {
         all: unset;

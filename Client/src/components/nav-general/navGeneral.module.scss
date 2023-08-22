@@ -4,19 +4,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 30;
 }
 
 .right {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10%;
+    margin-right: 2%;
     width: auto; /* Allow the content to determine width */
 }
 
 .nightswitch {
-    margin-left: auto; /* Push to the rightmost position within .right */
+    display: flex;
+    // margin-left: auto; /* Push to the rightmost position within .right */
     height: 50%;
     margin-right: 3%;
+}
+.notifications{
+   margin-left: auto;
+   margin-right: 2%;
 }

@@ -1,0 +1,29 @@
+.priceFormDiv {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: #fdfdfd;
+    margin: 1.5rem;
+    p {
+        margin-bottom: 1.5rem;
+    }
+    label {
+        display: block;
+    }
+    input {
+        display: block;
+        width: fit-content;
+        margin-bottom: 1.5rem;
+        color: black;
+    }
+    select {
+        display: block;
+        width: fit-content;
+        margin-bottom: 1.5rem;
+        color: black;
+    }
+    button {
+        display: flex;
+        justify-content: center;
+    }
+}

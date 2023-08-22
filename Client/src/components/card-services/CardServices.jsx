@@ -9,7 +9,7 @@ const CardServices = (services) => {
     return (
         <article className={!nightMode ? cardServices : cardServicesNight}>
             <header id={image} className={cardHeader}>
-                <img className={cardImg} src={image} alt="" />
+                <img className={cardImg} src={image} alt='' />
             </header>
             <div className={cardBody}>
                 <h4>{name}</h4>

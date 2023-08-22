@@ -1,9 +1,16 @@
+.servicesCont{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
 .servicesTable {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    font-size: 16px;
-
+    font-size: 12px;
+    overflow-x: auto;
+    display: block;
     th,
     td {
         border: 1px solid #ccc;
@@ -28,11 +35,69 @@
     }
 }
 
-.payButton {
-    height: 180px;
-    min-height: 180px;
+.actionButton{
+    display: flex;
+    justify-content: center;
+}
+
+.reviewFormContainer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #33333399;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .reviewForm{
+        background-color: #f9f7e8; /* Color amarillo pastel */
+        border: 2px solid yellow;
+        border-radius: 1rem;
+        padding: 2rem;
+        height: max-content;
+        button {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+    
+    .pickerContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        // margin-bottom: 5rem;
+    }
+    
+    .picker {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    
 }
 
 .separacion {
     background-color: #555;
+}
+
+.servicesTitleCont{
+    margin-left: 5%;
+
+    .servicesTitle{
+        color:#333;
+    }
+}
+
+
+.clientServicesCards {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin: 2%;
+    gap: 10px;
+}
+
+button {
+    border-radius: 3px;
+    margin: 2px;
 }

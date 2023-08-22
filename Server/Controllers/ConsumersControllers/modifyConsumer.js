@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 const { uploadProfileImageToConsumer } = require('../../Utils/cloudinary')
 
 const modifyConsumer = async (req) => {
-    const { firstName, lastName, address, image, username, userUid, id } =
+    const { firstName, lastName, gender, address, image, username, userUid, id } =
         req.body
 
     try {
@@ -15,7 +15,7 @@ const modifyConsumer = async (req) => {
             address,
             username,
             usernameLower: username?.toLowerCase(),
-
+            gender,
             image,
         }
 

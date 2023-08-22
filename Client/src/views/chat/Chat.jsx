@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { db, auth } from '../../config/firebase-config'
 import {
     collection,
@@ -10,12 +10,15 @@ import {
 } from 'firebase/firestore'
 import style from './chat.module.scss'
 import { useSelector } from 'react-redux'
+import useNotify from './../../hooks/useNotify'
 
-export const Chat = ({ recipient, auxiedetails }) => {
+export const Chat = ({ recipient }) => {
+    const messageRefEnd = useRef(null)
+    const smtRef = useRef(null)
     const user = useSelector((state) => state.loggedUser)
-    const inbox =useSelector((state) => state.loggedUser.inbox)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
+    const [sent, setSent] = useState(false)
     const conversationsRef = collection(db, 'conversations') // Change: Use 'conversations' collection
     const participants = [auth.currentUser.uid, recipient]
     const ordered = participants.sort((a, b) => {
@@ -27,6 +30,9 @@ export const Chat = ({ recipient, auxiedetails }) => {
             return 0
         }
     }) // Sort for consistent order
+
+    const { sendNotification } = useNotify(recipient)
+
     const conversationId = ordered.join('_')
 
     const conversationData = { participants }
@@ -45,8 +51,9 @@ export const Chat = ({ recipient, auxiedetails }) => {
             const unsubscribe = onSnapshot(queryMessages, (snapshot) => {
                 let messages = []
                 snapshot.forEach((doc) => {
-                    messages.push({ ...doc.data(), id: doc.id })  
+                    messages.push({ ...doc.data(), id: doc.id })
                 })
+
                 setMessages(messages)
             })
 
@@ -55,6 +62,19 @@ export const Chat = ({ recipient, auxiedetails }) => {
 
         getOrCreateConversation()
     }, [recipient, conversationId])
+
+    useEffect(() => {
+        if (sent) {
+            sendNotification(
+                `${user.firstName} ${user.lastName} te ha enviado un mensaje`
+            )
+        }
+    }, [sent])
+
+    useEffect(()=>{
+        messageRefEnd.current?.scrollIntoView({behavior: 'instant', block:'end'})
+        smtRef.current?.scrollIntoView({behavior: 'instant', block:'end'})
+    },[messages])
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -85,13 +105,13 @@ export const Chat = ({ recipient, auxiedetails }) => {
         })
 
         setNewMessage('')
+        setSent(true)
     }
 
     return (
-        <div className="chat-app">
-            <div className="header">
-                <h1>Conversación con {auxiedetails.firstName}</h1>
-            </div>
+
+        <div className={style.chatapp}>
+            <div className='header'></div>
 
             <div className={style.messages}>
                 {messages.map((message) => (
@@ -106,7 +126,6 @@ export const Chat = ({ recipient, auxiedetails }) => {
                             {message.recipient === auth.currentUser.uid
                                 ? `${message.firstName} ${message.lastName} `
                                 : 'You'}
-                            
                         </span>
                         <div className={style.chatbubbles}>
                             <div
@@ -115,26 +134,28 @@ export const Chat = ({ recipient, auxiedetails }) => {
                                         ? style.receiver
                                         : style.sender
                                 }`}
-                            >         
                                 {message.text}
                             </div>
                         </div>
                     </div>
                 ))}
+                <div ref={messageRefEnd}/>
             </div>
 
             <form onSubmit={handleSubmit} className={style.chatform}>
                 <input
-                    type="text"
+                    type='text'
                     value={newMessage}
                     onChange={(event) => setNewMessage(event.target.value)}
                     className={style.messageinput}
-                    placeholder="Type your message here..."
+                    placeholder='Escribe tu mensaje...'
                 />
-                <button type="submit" className={style.send}>
-                    Send
+                
+                <button type='submit' className={style.send}>
+                    Enviar
                 </button>
             </form>
+            <div ref={smtRef}></div>
         </div>
     )
 }

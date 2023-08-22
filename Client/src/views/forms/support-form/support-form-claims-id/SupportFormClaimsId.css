@@ -1,0 +1,35 @@
+.support-form-claims-id-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .support-form-claims-id-header {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .support-form-claims-id-content {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .support-form-claims-id-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  .support-form-claims-id-answer {
+    background-color: #f0f8ff;
+    padding: 10px;
+    border: 1px solid #87cefa;
+    border-radius: 8px;
+    margin-top: 10px;
+  }

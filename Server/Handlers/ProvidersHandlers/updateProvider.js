@@ -30,37 +30,42 @@ const updateProvider = async (req, res) => {
         userUid,
     }
 
-    if (req.files?.image) {
-        const result = await uploadProfileImageToProvider(
-            req.files.image.tempFilePath
-        )
-        recibedProperties.image = {
-            public_id: result.public_id,
-            secure_url: result.secure_url,
+    if (req.files) {
+        if (req.files?.image) {
+            const result = await uploadProfileImageToProvider(
+                req.files.image.tempFilePath
+            )
+            recibedProperties.image = {
+                public_id: result.public_id,
+                secure_url: result.secure_url,
+            }
+
+            await fs.unlink(req.files.image.tempFilePath)
         }
 
-        await fs.unlink(req.files.image.tempFilePath)
-    }
+        if (req.files['gallery[]']) {
+            try {
+                const newPhotos = []
+                for (const photo of req.files['gallery[]']) {
+                    const result = await uploadGalleryOfJobs(
+                        photo.tempFilePath,
+                        id
+                    )
+                    newPhotos.push({
+                        public_id: result.public_id,
+                        secure_url: result.secure_url,
+                    })
 
-    if (req.files['gallery[]']) {
-        try {
-            const newPhotos = []
-            for (const photo of req.files['gallery[]']) {
-                const result = await uploadGalleryOfJobs(photo.tempFilePath, id)
-                newPhotos.push({
-                    public_id: result.public_id,
-                    secure_url: result.secure_url,
-                })
-
-                await fs.unlink(photo.tempFilePath)
+                    await fs.unlink(photo.tempFilePath)
+                }
+                const addImages = await updateGallery(newPhotos, id)
+                if (!addImages)
+                    throw new Error(
+                        'No se pudieron agregar las imagenes a la galería'
+                    )
+            } catch (error) {
+                console.error(error)
             }
-            const addImages = await updateGallery(newPhotos, id)
-            if (!addImages)
-                throw new Error(
-                    'No se pudieron agregar las imagenes a la galería'
-                )
-        } catch (error) {
-            console.error(error)
         }
     }
 
@@ -91,6 +96,7 @@ const updateProvider = async (req, res) => {
 
         res.status(200).json(update)
     } catch (error) {
+       
         res.status(400).json({ error: error.message })
     }
 }

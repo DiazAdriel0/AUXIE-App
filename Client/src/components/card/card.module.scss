@@ -1,13 +1,31 @@
-.card {
-    background-color: rgba(162, 155, 227, 0.515);
+.cardNight {
+    background-color: rgba(128, 128, 128, 0.294) !important;
     display: flex;
-    flex-flow: column wrap;
+    flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     border: 1px solid var(--secondary--color-hover);
     border-radius: 1.5%;
-    width: 300px;
-    height: 300px;
+    width: 19rem;
+    height: 25rem;
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.22);
+    transition: all 0.5s;
+}
+.cardNight:hover {
+    border: 1px solid var(--secondary--color-hover);
+    transform: scale(1.03);
+}
+
+.card {
+    background-color: rgba(128, 128, 128, 0.294) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid var(--secondary--color-hover);
+    border-radius: 1.5%;
+    width: 19rem;
+    height: 25rem;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
     transition: all 0.5s;
 }
@@ -19,8 +37,8 @@
 .contPersonal {
     display: flex;
     width: 90%;
+    height: 20%;
     margin: 5%;
-    gap: 1%;
 }
 
 .info {
@@ -41,24 +59,38 @@
     width: 50%;
     img {
         object-fit: cover;
+        border-radius: 2%;
     }
 }
 
 .contServices {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
     width: 100%;
-    border-top: 1px var(--contrast-color-light) solid;
-    border-bottom: 1px var(--contrast-color-light) solid;
+    border-top: 2px solid rgba(4, 4, 48, 0.134);
+    border-bottom: 2px solid rgba(4, 4, 48, 0.134);
+    overflow: scroll;
+    height: 40%;
+    justify-content: flex-start;
+}
+.contServices::-webkit-scrollbar {
+    display: none;
 }
 
 .serviceDiv {
-    text-align: start;
-    margin-left: 5%;
+    width: 50%;
+    font-size: 0.9rem;
+    padding: 3%;
 }
 
 .serviceName {
     color: var(--contrast-color-light);
+ 
+    white-space: nowrap;
+ 
+}
+.serviceName::-webkit-scrollbar {
+    display: none;
 }
 
 .rating {
@@ -68,6 +100,7 @@
 }
 
 .button {
+
     width: 8.5em;
     height: 2.9em;
     border-radius: 7px;
@@ -77,6 +110,8 @@
     cursor: pointer;
 }
 
-.text {
-    margin: 0 1em;
+.noServices {
+    display: flex;
+    align-items: center;
+    padding-left: 25%;
 }

@@ -1,9 +1,13 @@
 const { Schema, model } = require('mongoose')
 
-const consumerSchema = new Schema({
+const claimSchema = new Schema({
     pending: {
         type: Boolean,
         default: true,
+    },
+    email: {
+        type: String,
+        required: true,
     },
     consumerUsername: {
         type: String,
@@ -22,8 +26,8 @@ const consumerSchema = new Schema({
         required: true,
     },
     image: {
-        type: String,
-        required: false,
+        public_id: String, 
+        secure_url: String,
     },
     dateClaims: {
         type: Date,
@@ -40,6 +44,14 @@ const consumerSchema = new Schema({
     },
 })
 
-const Claims = model('Claims', consumerSchema)
+claimSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id
+        delete returnedObject._id
+        delete returnedObject.__v
+    },
+})
+
+const Claims = model('Claims', claimSchema)
 
 module.exports = Claims
