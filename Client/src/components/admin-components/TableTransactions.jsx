@@ -4,7 +4,7 @@ import { getOrderStatus } from '../../lib/helpers/index'
 
 const TableTransactions = () => {
     return (
-        <div className='bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
+        <div className='mt-16 bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
             <strong className='text-gray-700 font-medium'>Ultimos Pagos</strong>
             <div className='border-x border-gray-200 rounded-sm mt-3'>
                 <table className='w-full text-gray-700'>
