@@ -1,12 +1,10 @@
-import { Link } from 'react-router-dom'
-
+import TableTransactions from './TableTransactions'
+import TransactionChart from './TransactionChart'
 const Transactions = () => {
     return (
-        <div>
-            <p>Transactions</p>
-            <Link className='underline' to='/dashboard'>
-                Go to home
-            </Link>
+        <div className=''>
+            <TransactionChart />
+            <TableTransactions />
         </div>
     )
 }
