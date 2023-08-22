@@ -11,7 +11,7 @@ const SupportFormClaimsId = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
     const claim = useSelector(state => state.id)
-    const isAdmin = useSelector(state => state.loggedUser.isAdmin)
+    const isAuxie = useSelector(state => state.loggedUser.isAuxie)
 
     const consumer = useSelector(state => state.loggedUser)
 
@@ -41,7 +41,7 @@ const SupportFormClaimsId = () => {
                                 <strong>Email:</strong> {claim.email}
                             </p>
 
-                            {isAdmin === false ? (
+                            {isAuxie === false ? (
                                 <p>
                                     <strong>Proveedor de la queja:</strong> {foundProvider ? foundProvider.providerName : "Proveedor no encontrado"}
                                 </p>
