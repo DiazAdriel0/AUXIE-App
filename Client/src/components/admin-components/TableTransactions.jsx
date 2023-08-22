@@ -8,8 +8,8 @@ const TableTransactions = () => {
         <div
             className={
                 nightMode
-                    ? 'bg-neutral-900 mt-16  px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'
-                    : 'bg-white mt-16  px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'
+                    ? 'bg-neutral-900 mt-4  px-4 pb-4 rounded-sm border border-gray-200 flex-1'
+                    : 'bg-white mt-4  px-4 pb-4 rounded-sm border border-gray-200 flex-1'
             }
         >
             <strong className={nightMode ? 'text-gray-200 font-medium' : 'text-gray-700 font-medium'}>
