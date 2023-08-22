@@ -1,3 +1,7 @@
+import { useDispatch } from 'react-redux'
+import { getAllClients } from '../../redux/actions/actions'
+import { useEffect } from 'react'
+
 import BuyerProfileChart from './BuyerProfileChart'
 import DashboardStatsGrid from './DashboardStatsGrid'
 import RecentOrders from './RecentOrders'
@@ -5,6 +9,10 @@ import TransactionChart from './TransactionChart'
 import PopularServices from './PopularServices'
 
 function Dashboard() {
+    const dispatch = useDispatch()
+    useEffect(() => {
+        dispatch(getAllClients())
+    }, [])
     return (
         <>
             <div className='px-2 flex flex-col gap-4 overflow-hidden'>
