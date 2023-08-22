@@ -81,6 +81,34 @@ export const data03 = [
     { name: 'D2', value: 50 },
 ]
 
+export const data04 = [
+    {
+        name: 'Gasista',
+        expense: 2500,
+        income: 5500,
+    },
+    {
+        name: 'Plomero',
+        expense: 2700,
+        income: 5200,
+    },
+    {
+        name: 'Chofer',
+        expense: 2800,
+        income: 5100,
+    },
+    {
+        name: 'Limpieza',
+        expense: 2600,
+        income: 5300,
+    },
+    {
+        name: 'NIñera',
+        expense: 2900,
+        income: 5000,
+    },
+]
+
 export const recentOrderData = [
     {
         id: '1',
@@ -90,6 +118,7 @@ export const recentOrderData = [
         order_date: '2023-08-17T03:24:00',
         order_total: '$4351',
         current_order_status: 'TERMINADO',
+        current_payment_status: 'COBRADO',
         shipment_address: 'General Pacheco',
     },
     {
@@ -100,6 +129,7 @@ export const recentOrderData = [
         order_date: '2023-08-17T03:24:00',
         order_total: '$61250',
         current_order_status: 'TERMINADO',
+        current_payment_status: 'COBRADO',
         shipment_address: 'Caseros',
     },
     {
@@ -110,6 +140,7 @@ export const recentOrderData = [
         order_date: '2023-08-17T03:24:00',
         order_total: '$15000',
         current_order_status: 'TERMINADO',
+        current_payment_status: 'COBRADO',
         shipment_address: 'Caseros',
     },
     {
@@ -120,6 +151,7 @@ export const recentOrderData = [
         order_date: '2023-08-14T05:24:00',
         order_total: '$9600',
         current_order_status: 'CANCELADO',
+        current_payment_status: 'DEVUELTO',
         shipment_address: 'Tigre',
     },
     {
@@ -130,6 +162,7 @@ export const recentOrderData = [
         order_date: '2023-08-17T07:14:00',
         order_total: '$8300',
         current_order_status: 'CANCELADO',
+        current_payment_status: 'DEVUELTO',
         shipment_address: 'Capital Federal',
     },
     {
@@ -140,6 +173,7 @@ export const recentOrderData = [
         order_date: '2023-08-17T07:14:00',
         order_total: '$8350',
         current_order_status: 'EN_ESPERA',
+        current_payment_status: 'COBRADO',
         shipment_address: 'Capital Federal',
     },
     {
@@ -150,6 +184,7 @@ export const recentOrderData = [
         order_date: '2023-08-17T07:14:00',
         order_total: '$8370',
         current_order_status: 'TERMINADO',
+        current_payment_status: 'COBRADO',
         shipment_address: 'Rosario',
     },
     {
@@ -160,6 +195,7 @@ export const recentOrderData = [
         order_date: '2023-08-16T12:40:00',
         order_total: '$17620',
         current_order_status: 'EN_PROGRESO',
+        current_payment_status: 'COBRADO',
         shipment_address: 'Mataderos',
     },
 ]

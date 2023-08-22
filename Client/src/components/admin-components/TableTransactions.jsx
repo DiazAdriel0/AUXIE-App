@@ -1,11 +1,11 @@
+import { recentOrderData } from '../../lib/data/rechartData'
 import { format } from 'date-fns'
 import { getOrderStatus } from '../../lib/helpers/index'
-import { recentOrderData } from '../../lib/data/rechartData'
 
-export default function RecentOrders() {
+const TableTransactions = () => {
     return (
-        <div className='bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
-            <strong className='text-gray-700 font-medium'>Ordenes Recientes</strong>
+        <div className='mt-16 bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
+            <strong className='text-gray-700 font-medium'>Ultimos Pagos</strong>
             <div className='border-x border-gray-200 rounded-sm mt-3'>
                 <table className='w-full text-gray-700'>
                     <thead>
@@ -28,7 +28,7 @@ export default function RecentOrders() {
                                 <td>{format(new Date(order.order_date), 'dd MMM yyyy')}</td>
                                 <td>{order.order_total}</td>
                                 <td>{order.shipment_address}</td>
-                                <td>{getOrderStatus(order.current_order_status)}</td>
+                                <td>{getOrderStatus(order.current_payment_status)}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -37,3 +37,5 @@ export default function RecentOrders() {
         </div>
     )
 }
+
+export default TableTransactions
