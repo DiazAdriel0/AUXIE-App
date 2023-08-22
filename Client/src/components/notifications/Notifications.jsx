@@ -40,8 +40,8 @@ export const Notifications = () => {
         if (notifications.length) setLoading(false)
     }, [notifications])
 
-    const handleRedirect = (texto)=>{ 
-  
+    const handleRedirect = (texto, msj)=>{ 
+        console.log(msj);
         if (texto.includes('reseña')) {
             return navigate('/review')
         }
@@ -79,7 +79,7 @@ export const Notifications = () => {
                         {notifications?.map((message) => (
                             <div key={message.id} className={style.message} 
                                 onClick={()=>{
-                                    handleRedirect(message.text)
+                                    handleRedirect(message.text, message)
                                 }} >    
                                 {message.text}
                             </div>

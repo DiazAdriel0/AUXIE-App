@@ -21,7 +21,7 @@
     border: 1px solid var(--secondary--color-hover);
     border-radius: 5px;
     width: 80%;
-    height: 8em;
+    height:fit-content;
     padding: 2px;
     box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.22);
 }
@@ -29,15 +29,16 @@
 .requestDetails {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-direction: row;
-    width: 90%;
+    width: 70%;
 /*     gap: 0px 20px; */
     .requestInfo{
             display: flex;
             flex-direction: row;
-            width: 90%;
+            width: 70%;
             align-items: center;
+            justify-content: flex-start;
                 span{
                     padding-right: 1em;
                     font-size: 1.5em;
