@@ -9,7 +9,7 @@ const Auxies = () => {
     return (
         <>
             <TableUsers data={currentPageData} />
-            <Pagination num={10} data={auxies} />
+            <Pagination num={12} data={auxies} />
         </>
     )
 }

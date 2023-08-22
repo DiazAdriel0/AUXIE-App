@@ -207,8 +207,8 @@ export function resetToken() {
     return {
         type: RESET_TOKEN,
     }
+    UPDATE_PROFILE
 } */
-UPDATE_PROFILE
 
 export function updateProfile(input, user) {
     return async function (dispatch) {

@@ -1,4 +1,3 @@
-import { TERipple } from 'tw-elements-react'
 import { useSelector } from 'react-redux'
 const Card = ({ data }) => {
     const nightMode = useSelector(state => state.nightMode)
@@ -11,9 +10,9 @@ const Card = ({ data }) => {
                     : 'flex block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] '
             }
         >
-            <TERipple>
+            <div>
                 <img src={image.secure_url} alt='service image' className='w-80 h-full' />
-            </TERipple>
+            </div>
             <div className='p-6 flex flex-col gap-5 items-center justify-center'>
                 <h5
                     className={

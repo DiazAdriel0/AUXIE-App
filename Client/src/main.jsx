@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
+import Dashboard from './components/admin-components/Dashboard'
 import './config/firebase-config.js'
 import './index.scss'
 import { BrowserRouter } from 'react-router-dom'
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>
                 <App />
+                <Dashboard />
             </PersistGate>
         </Provider>
     </BrowserRouter>

@@ -48,7 +48,6 @@
         "styled-components": "^6.0.7",
         "svelte-preprocess": "^5.0.4",
         "sweetalert2": "^11.7.20",
-        "tw-elements-react": "^1.0.0-alpha1",
         "universal-cookie": "^4.0.4"
     },
     "devDependencies": {

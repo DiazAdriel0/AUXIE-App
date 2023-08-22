@@ -4,7 +4,7 @@ const TableUsers = ({ data }) => {
         'Nombre de usuario',
         'Nombre',
         'Apellido',
-        data[0].services ? 'Servicio' : 'Edad',
+        data[0].isAuxie ? 'Servicio' : 'Edad',
         'Fecha de Inicio',
         '',
     ]
@@ -15,9 +15,9 @@ const TableUsers = ({ data }) => {
                 <table className='w-full min-w-max table-auto text-left'>
                     <thead>
                         <tr>
-                            {TABLE_HEAD.map(head => (
+                            {TABLE_HEAD.map((head, index) => (
                                 <th
-                                    key={head}
+                                    key={index}
                                     className='border-b border-blue-gray-100 bg-blue-gray-50 p-4 min-w-[5rem] max-w-[5rem]'
                                 >
                                     <Typography
@@ -32,8 +32,8 @@ const TableUsers = ({ data }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map(({ username, firstName, lastName, services, registerDate, age }) => (
-                            <tr key={username} className=' even:bg-blue-gray-50/50'>
+                        {data.map(({ username, firstName, lastName, services, registerDate, age, id }) => (
+                            <tr key={id} className=' even:bg-blue-gray-50/50'>
                                 <td className='p-4 max-w-[5rem]'>
                                     <Typography variant='small' color='blue-gray' className='flex font-normal'>
                                         {username}
