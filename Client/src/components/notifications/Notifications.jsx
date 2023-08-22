@@ -41,7 +41,7 @@ export const Notifications = () => {
     }, [notifications])
 
     const handleRedirect = (texto)=>{ 
-       
+  
         if (texto.includes('reseña')) {
             return navigate('/review')
         }
@@ -65,7 +65,10 @@ export const Notifications = () => {
         <>
             {loading ? (
                 <div className={night ? style.notificationcontainer : style.daycontainer}>
-                    <CircularProgress />
+                    <div className={style.loader}>
+                        <CircularProgress/>
+                    </div>
+                    
                 </div>
             ) : (
                 <div>
