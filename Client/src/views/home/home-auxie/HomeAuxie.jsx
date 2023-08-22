@@ -53,6 +53,7 @@ const HomeAuxie = () => {
     }, [])
     return (
         <div>
+            <div>
             {/* Header */}
             <header className='h-16'>
                 <NavGeneral />
@@ -75,6 +76,7 @@ const HomeAuxie = () => {
                             <p>No ofrece servicios</p>
                         )}
                     </div>
+                    </div></main>
                     <div className={style.inbox}>
                         <p>Calificación de los ultimos servicios</p>
                         <table className={style.servicesTable}>
@@ -98,7 +100,7 @@ const HomeAuxie = () => {
                             </tbody>
                         </table>
                     </div>
-                </main>
+                
                 <div className='bg-div-text-color-light p-4 border-t-2 border-b-2 border-r-2 border-div-text-color-light-900'>
                     <h3 className='mb-4 text-color-light'>Pagos</h3>
                 </div>
@@ -135,3 +137,4 @@ const HomeAuxie = () => {
 }
 
 export default HomeAuxie
+
