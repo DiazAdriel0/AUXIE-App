@@ -24,6 +24,7 @@ const matchConsumer = async (email, password) => {
                     image: consumer.image,
                     googleId: consumer.googleId,
                     firstLogin: consumer.firstLogin,
+                    address:consumer.address,
                 }
                 return consumerWithout
             } else {
@@ -73,6 +74,7 @@ const matchConsumer = async (email, password) => {
                 image: consumer.image,
                 userUid: consumer.userUid,
                 firstLogin: consumer.firstLogin,
+                address:consumer.address,
             }
 
             return passwordMatch ? consumerWithout : new Error('wrongPassword')
