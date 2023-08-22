@@ -4,14 +4,14 @@ const TableUsers = ({ data }) => {
         'Nombre de usuario',
         'Nombre',
         'Apellido',
-        data[0].isAuxie ? 'Servicio' : 'Edad',
+        data[0]?.isAuxie ? 'Servicio' : 'Edad',
         'Fecha de Inicio',
         '',
     ]
 
     return (
         <>
-            <Card className='w-full h-[50rem]'>
+            <Card className='w-full h-[45rem]'>
                 <table className='w-full min-w-max table-auto text-left'>
                     <thead>
                         <tr>

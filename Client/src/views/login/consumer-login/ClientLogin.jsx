@@ -7,11 +7,7 @@ import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loggedUser, updateProfile } from '../../../redux/actions/actions'
-import {
-    signInWithPopup,
-    GoogleAuthProvider,
-    signInWithEmailAndPassword,
-} from 'firebase/auth'
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../config/firebase-config'
 import Swal from 'sweetalert2'
 const ClientLogin = () => {
@@ -24,8 +20,8 @@ const ClientLogin = () => {
         email: '',
         password: '',
     })
-    const logged = useSelector((state) => state.loggedUser)
-    const handleChange = (event) => {
+    const logged = useSelector(state => state.loggedUser)
+    const handleChange = event => {
         setInput({
             ...input,
             [event.target.name]: event.target.value,
@@ -40,7 +36,7 @@ const ClientLogin = () => {
         )
         ///validations ///
     }
-    const handleLogin = async (input) => {
+    const handleLogin = async input => {
         try {
             const response = await axios.post('/consumers/login', input)
             if (response) {
@@ -50,78 +46,70 @@ const ClientLogin = () => {
         } catch (error) {
             console.error('error: ' + error.message)
             Swal.fire(error.message)
-
         }
     }
 
     useEffect(() => {
         if (access === true) {
-            navigate('/homeconsumer')
-            let welcome
-            switch (logged.gender) {
-                case 'Masculino':
-                    welcome = 'Bienvenido'
-                    break
-                case 'Femenino':
-                    welcome = 'Bienvenida'
-                    break
-                case 'Otro':
-                    welcome = 'Bienvenide'
-                    break
-                default:
-                    welcome = 'Hola'
-                    break
-            }
-            let timerInterval
-            Swal.fire({
-                title: `${welcome} ${logged.firstName}`,
-                html: '<b></b>', // Set the HTML to be blank
-                timer: 1000,
-                timerProgressBar: true,
-                didOpen: () => {
-                    Swal.showLoading()
-                    const b = Swal.getHtmlContainer().querySelector('b')
-                    timerInterval = setInterval(() => {
-                    
-                        
-                    }, 100)
-                },
-                willClose: () => {
-                    clearInterval(timerInterval)
-                },
-            }).then((result) => {
-                /* Read more about handling dismissals below */
-                if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('I was closed by the timer')
+            if (logged?.isAdmin) {
+                navigate('/dashboard')
+            } else {
+                navigate('/homeconsumer')
+                let welcome
+                switch (logged.gender) {
+                    case 'Masculino':
+                        welcome = 'Bienvenido'
+                        break
+                    case 'Femenino':
+                        welcome = 'Bienvenida'
+                        break
+                    case 'Otro':
+                        welcome = 'Bienvenide'
+                        break
+                    default:
+                        welcome = 'Hola'
+                        break
                 }
-            })
-            console.log(logged)
-            // eslint-disable-next-line no-prototype-builtins
-            if (logged.hasOwnProperty('firstName')) {
-                if (!logged?.userUid) {
-                    dispatch(
-                        updateProfile(
-                            { userUid: auth.currentUser.uid, id: logged.id },
-                            'consumers'
-                        )
-                    )
+                let timerInterval
+                Swal.fire({
+                    title: `${welcome} ${logged.firstName}`,
+                    html: '<b></b>', // Set the HTML to be blank
+                    timer: 1000,
+                    timerProgressBar: true,
+                    didOpen: () => {
+                        Swal.showLoading()
+                        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+                        const b = Swal.getHtmlContainer().querySelector('b')
+                        timerInterval = setInterval(() => {}, 100)
+                    },
+                    willClose: () => {
+                        clearInterval(timerInterval)
+                    },
+                }).then(result => {
+                    /* Read more about handling dismissals below */
+                    if (result.dismiss === Swal.DismissReason.timer) {
+                        console.log('I was closed by the timer')
+                    }
+                })
+                console.log(logged)
+                // eslint-disable-next-line no-prototype-builtins
+                if (logged.hasOwnProperty('firstName')) {
+                    if (!logged?.userUid) {
+                        dispatch(updateProfile({ userUid: auth.currentUser.uid, id: logged.id }, 'consumers'))
+                    }
                 }
             }
         }
     }, [access])
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault()
 
         const form = document.getElementById('form')
         const email = form.email.value
         const password = form.password.value
         try {
-            const credential = await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            )
+            const credential = await signInWithEmailAndPassword(auth, email, password)
             if (credential) {
                 handleLogin(input)
             }
@@ -133,10 +121,7 @@ const ClientLogin = () => {
 
     //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
-        if (
-            input.password.trim().length === 0 ||
-            input.email.trim().length === 0
-        ) {
+        if (input.password.trim().length === 0 || input.email.trim().length === 0) {
             return true
         }
 
@@ -170,7 +155,7 @@ const ClientLogin = () => {
                 handleLogin(data)
             }
         } catch (error) {
-            Swal.fire( error.message)
+            Swal.fire(error.message)
         }
     }
 
@@ -213,15 +198,10 @@ const ClientLogin = () => {
                             </div>
                         </div>
                         <Link to={'/resetpassword'}>
-                            <p style={{ textAlign: 'start', color: '#4C6C95' }}>
-                                ¿Olvidaste tu contraseña?
-                            </p>
+                            <p style={{ textAlign: 'start', color: '#4C6C95' }}>¿Olvidaste tu contraseña?</p>
                         </Link>
                         <div className={style.submitbutton}>
-                            <input
-                                type='submit'
-                                disabled={buttonDisabled()}
-                            ></input>
+                            <input type='submit' disabled={buttonDisabled()}></input>
                         </div>
                         <center>
                             {' '}
@@ -230,7 +210,7 @@ const ClientLogin = () => {
                     </div>
                 </form>
                 <center>
-                <button className={style.googlebutton} onClick={signInGoogle}>
+                    <button className={style.googlebutton} onClick={signInGoogle}>
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             preserveAspectRatio='xMidYMid'
@@ -255,7 +235,8 @@ const ClientLogin = () => {
                                 d='M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251'
                             ></path>
                         </svg>
-                        {''}<p>Continúa con Google</p> 
+                        {''}
+                        <p>Continúa con Google</p>
                     </button>
                 </center>
             </div>
