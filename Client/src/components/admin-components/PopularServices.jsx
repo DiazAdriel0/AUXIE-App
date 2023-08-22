@@ -1,10 +1,19 @@
 import { popularServices } from '../../lib/data/rechartData'
 import classNames from 'classnames'
-
+import { useSelector } from 'react-redux'
 const PopularServices = () => {
+    const nightMode = useSelector(state => state.nightMode)
     return (
-        <div className='w-[20rem] bg-white p-4 rounded-sm border border-gray-200'>
-            <strong className='text-gray-700 font-medium'>Servicios Populares</strong>
+        <div
+            className={
+                nightMode
+                    ? 'w-[20rem] bg-neutral-900 p-4 rounded-sm border border-gray-200'
+                    : 'w-[20rem] bg-white p-4 rounded-sm border border-gray-200'
+            }
+        >
+            <strong className={nightMode ? 'text-gray-200 font-medium' : 'text-gray-700 font-medium'}>
+                Servicios Populares
+            </strong>
             <div className='mt-4 flex flex-col gap-3'>
                 {popularServices.map(product => (
                     <div key={product.id} className='flex items-start hover:no-underline'>
@@ -16,7 +25,9 @@ const PopularServices = () => {
                             />
                         </div>
                         <div className='ml-4 flex-1'>
-                            <p className='text-sm text-gray-500'>{product.product_name}</p>
+                            <p className={nightMode ? 'text-gray-200' : 'text-sm text-gray-500'}>
+                                {product.product_name}
+                            </p>
                             <span
                                 className={classNames(
                                     product.product_stock === 0
@@ -30,7 +41,9 @@ const PopularServices = () => {
                                 {product.product_stock === 0 ? 'Sin Ordenes' : product.product_stock + ' Ordenes'}
                             </span>
                         </div>
-                        <div className='text-xs text-gray-400 pl-1.5'>{product.product_price}</div>
+                        <div className={nightMode ? 'text-xs text-gray-300 pl-1.5' : 'text-xs text-gray-400 pl-1.5'}>
+                            {product.product_price}
+                        </div>
                     </div>
                 ))}
             </div>

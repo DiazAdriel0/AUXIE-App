@@ -15,7 +15,7 @@ export const data01 = [
         income: 5100,
     },
     {
-        name: 'MaAbrr',
+        name: 'Abr',
         expense: 2600,
         income: 5300,
     },
@@ -176,17 +176,7 @@ export const recentOrderData = [
         current_payment_status: 'COBRADO',
         shipment_address: 'Capital Federal',
     },
-    {
-        id: '23',
-        product_id: '5434',
-        customer_id: '65345',
-        customer_name: 'Luz Andrea Figaro',
-        order_date: '2023-08-17T07:14:00',
-        order_total: '$8370',
-        current_order_status: 'TERMINADO',
-        current_payment_status: 'COBRADO',
-        shipment_address: 'Rosario',
-    },
+
     {
         id: '5',
         product_id: '9854',

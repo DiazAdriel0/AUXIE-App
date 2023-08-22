@@ -1,13 +1,22 @@
 import { recentOrderData } from '../../lib/data/rechartData'
 import { format } from 'date-fns'
 import { getOrderStatus } from '../../lib/helpers/index'
-
+import { useSelector } from 'react-redux'
 const TableTransactions = () => {
+    const nightMode = useSelector(state => state.nightMode)
     return (
-        <div className='mt-16 bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
-            <strong className='text-gray-700 font-medium'>Ultimos Pagos</strong>
+        <div
+            className={
+                nightMode
+                    ? 'bg-neutral-900 mt-16  px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'
+                    : 'bg-white mt-16  px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'
+            }
+        >
+            <strong className={nightMode ? 'text-gray-200 font-medium' : 'text-gray-700 font-medium'}>
+                Ultimos Pagos
+            </strong>
             <div className='border-x border-gray-200 rounded-sm mt-3'>
-                <table className='w-full text-gray-700'>
+                <table className={nightMode ? 'w-full text-gray-200' : 'w-full text-gray-700'}>
                     <thead>
                         <tr>
                             <th className='text-left'>ID</th>
@@ -21,8 +30,8 @@ const TableTransactions = () => {
                     </thead>
                     <tbody>
                         {recentOrderData.map(order => (
-                            <tr key={order.id}>
-                                <td>#{order.id}</td>
+                            <tr className={nightMode ? 'text-gray-200 ' : 'text-gray-700 '} key={order.id}>
+                                <td className='p-2'>#{order.id}</td>
                                 <td>#{order.product_id}</td>
                                 <td>{order.customer_name}</td>
                                 <td>{format(new Date(order.order_date), 'dd MMM yyyy')}</td>
