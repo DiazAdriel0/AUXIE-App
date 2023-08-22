@@ -1,3 +1,21 @@
+.cardNight {
+    background-color: rgba(128, 128, 128, 0.294) !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid var(--secondary--color-hover);
+    border-radius: 1.5%;
+    width: 19rem;
+    height: 25rem;
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.22);
+    transition: all 0.5s;
+}
+.cardNight:hover {
+    border: 1px solid var(--secondary--color-hover);
+    transform: scale(1.03);
+}
+
 .card {
     background-color: rgba(128, 128, 128, 0.294) !important;
     display: flex;
@@ -49,8 +67,8 @@
     display: flex;
     flex-flow: row wrap;
     width: 100%;
-    border-top: 1px solid blue;
-    border-bottom: 1px solid blue;
+    border-top: 2px solid rgba(4, 4, 48, 0.134);
+    border-bottom: 2px solid rgba(4, 4, 48, 0.134);
     overflow: scroll;
     height: 40%;
     justify-content: flex-start;

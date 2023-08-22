@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { db, auth } from '../../config/firebase-config'
 import {
     collection,
@@ -13,6 +13,8 @@ import { useSelector } from 'react-redux'
 import useNotify from './../../hooks/useNotify'
 
 export const Chat = ({ recipient }) => {
+    const messageRefEnd = useRef(null)
+    const smtRef = useRef(null)
     const user = useSelector((state) => state.loggedUser)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
@@ -28,6 +30,7 @@ export const Chat = ({ recipient }) => {
             return 0
         }
     }) // Sort for consistent order
+
     const { sendNotification } = useNotify(recipient)
 
     const conversationId = ordered.join('_')
@@ -68,6 +71,11 @@ export const Chat = ({ recipient }) => {
         }
     }, [sent])
 
+    useEffect(()=>{
+        messageRefEnd.current?.scrollIntoView({behavior: 'instant', block:'end'})
+        smtRef.current?.scrollIntoView({behavior: 'instant', block:'end'})
+    },[messages])
+
     const handleSubmit = async (event) => {
         event.preventDefault()
 
@@ -99,7 +107,7 @@ export const Chat = ({ recipient }) => {
     }
 
     return (
-        <div className='chat-app'>
+        <div className={style.chatapp}>
             <div className='header'></div>
 
             <div className={style.messages}>
@@ -129,6 +137,7 @@ export const Chat = ({ recipient }) => {
                         </div>
                     </div>
                 ))}
+                <div ref={messageRefEnd}/>
             </div>
             <form onSubmit={handleSubmit} className={style.chatform}>
                 <input
@@ -136,12 +145,14 @@ export const Chat = ({ recipient }) => {
                     value={newMessage}
                     onChange={(event) => setNewMessage(event.target.value)}
                     className={style.messageinput}
-                    placeholder='Type your message here...'
+                    placeholder='Escribe tu mensaje...'
                 />
+                
                 <button type='submit' className={style.send}>
-                    Send
+                    Enviar
                 </button>
             </form>
+            <div ref={smtRef}></div>
         </div>
     )
 }

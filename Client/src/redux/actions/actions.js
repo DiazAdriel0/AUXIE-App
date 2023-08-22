@@ -18,9 +18,13 @@ import {
     ADD_FAVORITE,
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
+    POST_CLAIM,
+    GET_CLAIM_ID,
+    GET_CLAIMS,
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
     FIRST_LOGIN,
+    SWITCH_FAVORITES,
 } from './actionTypes'
 
 //action que pide todos los auxies del back (reemplazar URL)
@@ -31,6 +35,20 @@ export function getAllAuxies() {
             const res = await axios('/providers')
             return dispatch({
                 type: GET_ALL_AUXIES,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
+export function getClaims(email) {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get(`/claims?email=${email}`)
+            return dispatch({
+                type: GET_CLAIMS,
                 payload: res.data,
             })
         } catch (e) {
@@ -268,6 +286,16 @@ export function setServiceStatus(info) {
     }
 }
 
+export const postClaim = input => {
+    return async dispatch => {
+        const res = await axios.post('/claims', input)
+        return dispatch({
+            type: POST_CLAIM,
+            payload: res.data,
+        })
+    }
+}
+
 // action para actualizar la info del usuario loggeado, falta la ruta del back
 
 export function updateConsumer(id) {
@@ -311,6 +339,7 @@ export function updateFirstLogin(typeUser, id) {
     }
 }
 
+
 export function getAllClients() {
     return async function (dispatch) {
         try {
@@ -322,6 +351,24 @@ export function getAllClients() {
         } catch (e) {
             console.error(e.response.data)
         }
+
+export function switchFavorites(state) {
+    return async function (dispatch) {
+        return dispatch({
+            type: SWITCH_FAVORITES,
+            payload: state,
+        })
+    }
+}
+
+export const getClaimId = id => {
+    return async dispatch => {
+        const { data } = await axios.get(`/claims/${id}`)
+        dispatch({
+            type: GET_CLAIM_ID,
+            payload: data,
+        })
+
     }
 }
 

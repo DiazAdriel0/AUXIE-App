@@ -14,17 +14,24 @@ import {
     DELETE_FAVORITE,
     TURN_LIGHT_NIGHT_MODE,
     SET_STATUS,
+    POST_CLAIM,
+    GET_CLAIMS,
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
     FIRST_LOGIN,
     GET_ALL_CLIENTS,
+    SWITCH_FAVORITES,
+    GET_CLAIM_ID,
 } from './actions/actionTypes'
 
 let initialState = {
     clients: [],
     auxies: [],
+    consumers: [],
     backupAuxies: [],
+    backupConsumers: [],
     filteredAuxies: [],
+    filteredConsumers: [],
     loggedUser: {},
     services: [],
     filter: '',
@@ -32,6 +39,8 @@ let initialState = {
     currentPage: 1,
     nightMode: false,
     token: '',
+    claims: [],
+    id: [],
 }
 
 function rootReducer(state = initialState, action) {
@@ -49,6 +58,19 @@ function rootReducer(state = initialState, action) {
                 filteredAuxies: [...action.payload],
                 backupAuxies: [...action.payload],
             }
+
+        case GET_CLAIMS:
+            return {
+                ...state,
+                claims: [...action.payload],
+            }
+
+        case GET_CLAIM_ID:
+            return {
+                ...state,
+                id: action.payload,
+            }
+
         // obtengo todos los servicios de mi back y los guardo en mi estado global
         case GET_ALL_SERVICES:
             return { ...state, services: action.payload }
@@ -57,7 +79,7 @@ function rootReducer(state = initialState, action) {
             if (action.payload === 'off') {
                 return {
                     ...state,
-                    filteredAuxies: [...state.auxies],
+                    filteredAuxies: [...state.backupAuxies],
                     filter: action.payload,
                 }
             } else {
@@ -87,7 +109,7 @@ function rootReducer(state = initialState, action) {
                 )
                 return { ...state, filteredAuxies: [...descFilter] }
             } else {
-                return { state, auxies: [...state.backupAuxies] }
+                return { ...state, auxies: [...state.backupAuxies] }
             }
         //ordena el estado filteredAuxies por calificación independientemente del filtrado
         case ORDER_AUXIES_BY_RATING:
@@ -186,6 +208,16 @@ function rootReducer(state = initialState, action) {
                     jobs: action.payload,
                 },
             }
+
+        case POST_CLAIM:
+            return {
+                ...state,
+                loggedUser: {
+                    ...state.loggedUser,
+                    claims: [...initialState.claims, action.payload],
+                },
+            }
+
         case UPDATE_CONSUMER:
             return {
                 ...state,
@@ -203,6 +235,22 @@ function rootReducer(state = initialState, action) {
                     ...initialState.loggedUser,
                     firstLogin: action.payload,
                 },
+            }
+        case SWITCH_FAVORITES:
+            if (action.payload) {
+                const foundFavorite = [...state.loggedUser.favoritesProviders].map(aux => {
+                    const favorite = [...state.backupAuxies].find(fav => fav.id === aux.id)
+                    if (favorite) return favorite
+                })
+                return {
+                    ...state,
+                    filteredAuxies: foundFavorite,
+                }
+            } else {
+                return {
+                    ...state,
+                    filteredAuxies: [...state.backupAuxies],
+                }
             }
         // caso por defecto si por alguna razón no recibe action.type
         default:

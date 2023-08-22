@@ -1,6 +1,33 @@
 .chatselector {
-    background-color: rgb(110, 110, 110);
-    border: 2px solid black;
+
+    // background-color: rgb(110, 110, 110);
+    // border: 2px solid black;
     display: flex;
     word-wrap: break-word;
+    height: 100%;
+    margin-left: 2%;
+    margin-right: 2%;
+    cursor: pointer;
+}
+
+
+.iconCont{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-items: center;
+    .iconMin{
+        font-size: 2em; 
+        padding-bottom: 0.75rem;
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
+        cursor: pointer;
+    }
+    .iconMin:hover{
+        background-color: rgba(108, 111, 121, 0.56);
+    }
+
+}
+.chatT{
+    margin-left: 5em ;
 }

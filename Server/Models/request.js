@@ -13,6 +13,8 @@ const requestSchema = new Schema({
         type: String,
         required: true,
     },
+    clientUid:String,
+    providerUid: String,
     providerName: {
         type: String,
         required: true,

@@ -1,14 +1,16 @@
 const Claims = require('../../Models/claim')
 
 const postClaim = async (
+    email,
     consumerUsername,
     message,
     providerUsername,
     reason,
-    image
+    image,
 ) => {
     try {
         await Claims.create({
+            email,
             consumerUsername,
             message,
             providerUsername,

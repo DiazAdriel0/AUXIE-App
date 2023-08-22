@@ -18,6 +18,8 @@ import axios from 'axios'
 import { logOut } from '../../../redux/actions/actions'
 
 //Material UI
+import Swal from 'sweetalert2'
+
 import { Popper, Box } from '@mui/material'
 import ClickAwayListener from '@mui/base/ClickAwayListener'
 const ProfilePicAuxie = () => {
@@ -68,7 +70,8 @@ const ProfilePicAuxie = () => {
             navigate('/')
         } catch (error) {
             console.error('error: ' + error.message)
-            alert(error.message)
+            Swal.fire(error.message)
+           
         }
     }
     const handleClickAway = () => {

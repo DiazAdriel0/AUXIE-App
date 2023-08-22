@@ -22,6 +22,7 @@ const Card = (user) => {
         googleId,
     } = user
     const consumer = useSelector((state) => state.loggedUser)
+    const nightMode = useSelector((state) => state.nightMode)
     const navigate = useNavigate()
     const [isFav, setIsFav] = useState(false)
 
@@ -59,7 +60,7 @@ const Card = (user) => {
     }, [])
 
     return (
-        <div className={style.card}>
+        <div className={nightMode ? style.cardNight : style.card}>
             <div className={style.contPersonal}>
                 <div className={style.profilePic}>
                     <img

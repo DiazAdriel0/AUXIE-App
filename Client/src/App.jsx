@@ -37,6 +37,8 @@ import './config/firebase-config'
 import Form from './views/forms/auxie-form/AuxieForm'
 import ClientForm from './views/forms/client-form/ClientForm'
 import SupportForm from '../src/views/forms/support-form/SupportForm'
+import SupportFormClaims from './views/forms/support-form/support-form-claims/SupportFormClaims'
+import SupportFormClaimsId from './views/forms/support-form/support-form-claims-id/SupportFormClaimsId'
 import ResetPassword from './views/reset-password/ResetPassword'
 
 // Logins
@@ -85,12 +87,16 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Landing />} />
                     {/* Landing Nav Views */}
-                    <Route path='/aboutUs' element={<AboutUs />} />
-                    <Route path='/guarantee' element={<Guarantee />} />
-                    <Route path='/offer' element={<Offer />} />
-                    <Route path='/howItWorks' element={<HowItWorks />} />
-                    <Route path='/support' element={<SupportForm />} />
-                    <Route path='/help' element={<Help />} />
+
+                    <Route path="/aboutUs" element={<AboutUs />} />
+                    <Route path="/guarantee" element={<Guarantee />} />
+                    <Route path="/offer" element={<Offer />} />
+                    <Route path="/howItWorks" element={<HowItWorks />} />
+                    <Route path="/support" element={<SupportForm />} />
+                    <Route path="/support/claims" element={<SupportFormClaims />} />
+                    <Route path='/support/claims/:id' element={<SupportFormClaimsId />} />
+                    <Route path="/help" element={<Help />} />
+
                     {/* Home paths */}
                     <Route path='/homeconsumer' element={<HomeConsumer />} />
                     <Route path='/homeauxie' element={<HomeAuxie />} />

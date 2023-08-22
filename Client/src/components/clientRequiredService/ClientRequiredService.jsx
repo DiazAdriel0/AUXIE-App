@@ -1,5 +1,5 @@
 // hooks
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -17,7 +17,9 @@ import style from './clientRequiredService.module.scss'
 const ClientRequiredService = (job) => {
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const client = useSelector((state) => state.loggedUser)
+    const nightMode = useSelector((state) => state.nightMode)
 
     // local states para manejar el popup del form review
     const targetRef = useRef(null)
@@ -72,6 +74,10 @@ const ClientRequiredService = (job) => {
         else dispatch(setServiceStatus(data))
     }
 
+    const handleRedirect = () => {
+        return navigate(`/detail/${providerId}`)
+    }
+
 
     // función que maneja la acción que va a realizar el botón que se renderiza dependiendo del estado
     const handleClick = (e) => {
@@ -107,23 +113,30 @@ const ClientRequiredService = (job) => {
                 </div>
             </div>
         )}
-        <div className={style.cardCont}>
+        <div className={nightMode ? style.cardContNight : style.cardCont}>
             <div className={style.requestDetails}>
-                <p>Número de solicitud: </p>
-                {id}
-                <p>Auxie: </p>
-                <Link to={`/detail/${providerId}`}>{providerName}</Link>
-                <p>Fecha de petición: </p>
-                {requestDate}
-                <p>Desripción: </p>
-                {description}
-                <p>servicio: </p>
-                {service}
-                <p>Fecha de realización: </p>
-                {jobDate}
-                <p>Precio: </p>${price}
-                <p>Estado: </p>
-                {translated[status]}
+                <div className={style.requestInfo}>
+                    <span className={style.auxieLink} onClick={handleRedirect}>{providerName}</span><p>| Auxie |</p>
+                    </div>
+                <div className={style.col1}>
+                 
+                    <div className={style.requestDesc}>
+                    <p className={style.pService}>Servicio: <span> {service}</span></p>
+                    <p>Desripción: </p>
+                    {description}
+                    </div>
+                
+                    <div className={style.requestDate}>
+                    <p>Fecha de petición: </p>
+                    {requestDate}
+                    <p>Fecha de realización: </p>
+                    {jobDate}
+                    </div>
+                    <div className={style.requestPyS}>
+                    <p>Precio: <span>${price}</span> </p>
+                    <p>Estado: <span>{translated[status]}</span></p>
+                    </div>
+                </div>  
             </div>
             <div className={style.statusButtonCont}>
             {status === 'done' && (
