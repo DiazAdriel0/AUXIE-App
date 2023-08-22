@@ -39,6 +39,25 @@ const ClientRequiredService = job => {
         proposal: 'Propuesta',
     }
 
+    
+    function formatDateFromMilliseconds(milliseconds) {
+        const date = new Date(milliseconds);
+        const options = { year: 'numeric', month: 'long', day: 'numeric'};
+        return date.toLocaleDateString(undefined, options);
+      }
+    const formattedDate = formatDateFromMilliseconds(requestDate);
+    console.log(formattedDate);
+    function formatISOStringToReadable(isoString) {
+        const date = new Date(isoString);
+        const year = date.getFullYear();
+        const month = date.toLocaleString('default', { month: 'long' });
+        const day = date.getDate();
+      
+        const formattedDate = `${day} de ${month} de ${year}`;
+        return formattedDate;
+      }
+      const formattedDate2 = formatISOStringToReadable(jobDate)
+
     // función que hace desaparecer el popup
     const handleClickOutside = event => {
         if (shouldCloseForm && targetRef.current && !targetRef.current.contains(event.target)) {
@@ -118,9 +137,9 @@ const ClientRequiredService = job => {
 
                         <div className={style.requestDate}>
                             <p>Fecha de petición: </p>
-                            {requestDate}
+                            {formattedDate}
                             <p>Fecha de realización: </p>
-                            {jobDate}
+                            {formattedDate2}
                         </div>
                         <div className={style.requestPyS}>
                             <p>
