@@ -25,7 +25,7 @@
     box-shadow: 0px 30px 52px -25px var(--secondary--color-hover);
     h2 {
         font-size: 2.5em;
-        font-weight: 550;
+        font-weight: 450;
     }
 }
 .square {
@@ -34,7 +34,7 @@
     height: 20%;
     background-color: var(--secondary--color-light);
     padding: 3%;
-    border-bottom: 2px ridge ;
+    // border-bottom: 2px ridge ;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -47,29 +47,36 @@
 
     p {
         font-size: 200%;
+        font-weight: 300;
     }
 }
 
 .anotherSection {
-    margin-top: 5%;
+    // margin-top: 10%;
+    // margin-bottom: 30%;
     padding: 5%;
     // background-color: var(--secondary--color-light);
-    text-align: center;
+    // text-align: center;
  
 
     h2 {
         font-size: 250%;
         font-weight: bold;
+        //
     }
 
     p {
         font-size: 150%;
+        font-weight: 300;
+        padding-right: 5%;
+        // padding-left: 5%;
     }
 }
 
 .section1 {
     background-color: var(--primary--color-light);
-    margin-top: 15%;
+    margin-top: 6%;
+    text-align: center;
     
 }
 .contact {
