@@ -12,8 +12,8 @@ const TableUsers = ({ data }) => {
     ]
 
     return (
-        <>
-            <Card className={nightMode ? 'text-white bg-neutral-800 w-full h-[45rem]' : 'w-full h-[45rem]'}>
+        <div className='w-full h-11/12 pt-8 flex items-center justify-center'>
+            <Card className={nightMode ? 'text-white bg-neutral-800 w-11/12 h-[45rem]' : 'w-11/12 h-[45rem]'}>
                 <table
                     className={
                         nightMode
@@ -87,8 +87,8 @@ const TableUsers = ({ data }) => {
                         ))}
                     </tbody>
                 </table>
-            </Card>{' '}
-        </>
+            </Card>
+        </div>
     )
 }
 
