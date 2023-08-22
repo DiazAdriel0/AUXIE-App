@@ -11,7 +11,7 @@ const Header = () => {
     const userImage = user.image.secure_url
 
     return (
-        <div className=' h-16 px-4 flex justify-between items-center border-b border-gray-200'>
+        <div className=' h-16 flex justify-between items-center border-b border-gray-200 w-full'>
             <div className='relative'>
                 <HiOutlineSearch
                     fontSize={20}
