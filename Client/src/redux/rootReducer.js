@@ -17,9 +17,11 @@ import {
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
     FIRST_LOGIN,
+    GET_ALL_CLIENTS,
 } from './actions/actionTypes'
 
 let initialState = {
+    clients: [],
     auxies: [],
     backupAuxies: [],
     filteredAuxies: [],
@@ -35,6 +37,11 @@ let initialState = {
 function rootReducer(state = initialState, action) {
     switch (action.type) {
         // obtengo todos los auxies de mi back y los guardo en 3 estados diferentes
+        case GET_ALL_CLIENTS:
+            return {
+                ...state,
+                clients: action.payload,
+            }
         case GET_ALL_AUXIES:
             return {
                 ...state,
