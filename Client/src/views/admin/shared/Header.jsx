@@ -38,7 +38,7 @@ const Header = () => {
         }
     }
     return (
-        <div className=' h-16 flex justify-between items-center border-b border-gray-200 w-full'>
+        <div className=' h-16 flex justify-between items-center  w-full'>
             <div className='relative'>
                 <HiOutlineSearch
                     fontSize={20}
