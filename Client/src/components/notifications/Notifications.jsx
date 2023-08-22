@@ -2,19 +2,19 @@ import { useState, useEffect } from 'react'
 import { db, auth } from '../../config/firebase-config'
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore'
 import style from './notifications.module.scss'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
 import CircularProgress from '@mui/material/CircularProgress'
 
 export const Notifications = () => {
     const navigate = useNavigate()
 
-    const loggedUser = useSelector((state)=>{
+    const loggedUser = useSelector(state => {
         return state.loggedUser
     })
     const [notifications, setNotifications] = useState([])
     const [loading, setLoading] = useState(true)
-    const night = useSelector((state)=>state.nightMode)
+    const night = useSelector(state => state.nightMode)
 
     // Change: Use 'conversations' collection
     useEffect(() => {
@@ -40,8 +40,7 @@ export const Notifications = () => {
         if (notifications.length) setLoading(false)
     }, [notifications])
 
-    const handleRedirect = (texto, msj)=>{ 
-        console.log(msj);
+    const handleRedirect = (texto, msj) => {
         if (texto.includes('reseña')) {
             return navigate('/review')
         }
@@ -51,14 +50,13 @@ export const Notifications = () => {
         if (texto.includes('ingresa a tu perfil')) {
             return navigate('/profile')
         }
-        if (texto.includes('requerido')||texto.includes('proposal')) {
+        if (texto.includes('requerido') || texto.includes('proposal')) {
             return navigate('/requestedservices')
         }
         // eslint-disable-next-line no-prototype-builtins
-        if(texto.includes('mensaje') && loggedUser.hasOwnProperty('services')){
+        if (texto.includes('mensaje') && loggedUser.hasOwnProperty('services')) {
             return navigate('/auxieinbox') //msj de consumer a definir
         }
-
     }
 
     return (
@@ -66,9 +64,8 @@ export const Notifications = () => {
             {loading ? (
                 <div className={night ? style.notificationcontainer : style.daycontainer}>
                     <div className={style.loader}>
-                        <CircularProgress/>
+                        <CircularProgress />
                     </div>
-                    
                 </div>
             ) : (
                 <div>
@@ -76,11 +73,14 @@ export const Notifications = () => {
                         <h1>Notificaciones</h1>
                     </div>
                     <div className={night ? style.notificationcontainer : style.daycontainer}>
-                        {notifications?.map((message) => (
-                            <div key={message.id} className={style.message} 
-                                onClick={()=>{
+                        {notifications?.map(message => (
+                            <div
+                                key={message.id}
+                                className={style.message}
+                                onClick={() => {
                                     handleRedirect(message.text, message)
-                                }} >    
+                                }}
+                            >
                                 {message.text}
                             </div>
                         ))}

@@ -62,7 +62,7 @@ const JobRequestForm = ({ services, recipient }) => {
             }
         } catch (error) {
             setLoading(false)
-            console.log(error + error.response.data.error)
+            console.error(error + error.response.data.error)
 
             Swal.fire({
                 icon: 'error',

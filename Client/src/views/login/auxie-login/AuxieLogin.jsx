@@ -8,11 +8,7 @@ import { useValidations } from '../../../utils/validationutils'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loggedUser, updateProfile } from '../../../redux/actions/actions'
-import {
-    signInWithPopup,
-    GoogleAuthProvider,
-    signInWithEmailAndPassword,
-} from 'firebase/auth'
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../config/firebase-config'
 import Swal from 'sweetalert2'
 const ClientLogin = () => {
@@ -24,8 +20,8 @@ const ClientLogin = () => {
         password: '',
     })
     const [access, setAccess] = useState(false) //eslint-disable-line
-    const logged = useSelector((state) => state.loggedUser)
-    const handleChange = (event) => {
+    const logged = useSelector(state => state.loggedUser)
+    const handleChange = event => {
         setInput({
             ...input,
             [event.target.name]: event.target.value,
@@ -41,7 +37,7 @@ const ClientLogin = () => {
         ///validations ///
     }
 
-    const handleLogin = async (input) => {
+    const handleLogin = async input => {
         try {
             const { data } = await axios.post('/providers/login', input)
             if (data) {
@@ -49,10 +45,9 @@ const ClientLogin = () => {
                 setAccess(true)
             }
         } catch (error) {
-            console.log(error.message)
+            console.error(error.message)
 
             Swal.fire(error.response.data.error)
-
         }
     }
 
@@ -84,29 +79,23 @@ const ClientLogin = () => {
                     const b = Swal.getHtmlContainer().querySelector('b')
                     timerInterval = setInterval(() => {
                         const remainingTime = Swal.getTimerLeft()
-                      
                     }, 100)
                 },
                 willClose: () => {
                     clearInterval(timerInterval)
                 },
-            }).then((result) => {
+            }).then(result => {
                 /* Read more about handling dismissals below */
                 if (result.dismiss === Swal.DismissReason.timer) {
-                    console.log('I was closed by the timer')
+                    console.error('I was closed by the timer')
                 }
             })
             if (!logged?.userUid) {
-                dispatch(
-                    updateProfile(
-                        { userUid: auth.currentUser.uid, id: logged.id },
-                        'providers'
-                    )
-                )
+                dispatch(updateProfile({ userUid: auth.currentUser.uid, id: logged.id }, 'providers'))
             }
         }
     }, [access])
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault()
 
         // algun get en la base de datos que busque si el usuario y contrasena coinciden
@@ -114,18 +103,13 @@ const ClientLogin = () => {
         const email = form.email.value
         const password = form.password.value
         try {
-            const credential = await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            )
+            const credential = await signInWithEmailAndPassword(auth, email, password)
             if (credential) {
                 handleLogin(input)
             }
             form.reset()
         } catch (error) {
             Swal.fire(error.message)
-
         }
         //navigate home / search auxies ///
     }
@@ -133,10 +117,7 @@ const ClientLogin = () => {
     //para desabilitar el boton si no esta lleno el formulario
     const buttonDisabled = () => {
         // Check if the "types" field is empty
-        if (
-            input.password.trim().length === 0 ||
-            input.email.trim().length === 0
-        ) {
+        if (input.password.trim().length === 0 || input.email.trim().length === 0) {
             return true
         }
 
@@ -180,9 +161,7 @@ const ClientLogin = () => {
                 <form id='form' onSubmit={handleSubmit} className={style.form}>
                     <div>
                         <div>
-                            <h1>
-                                Bienvenido Auxie! Inicia sesión para continuar.
-                            </h1>
+                            <h1>Bienvenido Auxie! Inicia sesión para continuar.</h1>
                         </div>
                         <div className={style.logininput}>
                             <label>Email: </label>
@@ -212,15 +191,10 @@ const ClientLogin = () => {
                             </div>
                         </div>
                         <Link to={'/resetpassword'}>
-                            <p style={{ textAlign: 'start', color: '#4C6C95' }}>
-                                ¿Olvidaste tu contraseña?
-                            </p>
+                            <p style={{ textAlign: 'start', color: '#4C6C95' }}>¿Olvidaste tu contraseña?</p>
                         </Link>
                         <div className={style.submitbutton}>
-                            <input
-                                type='submit'
-                                disabled={buttonDisabled()}
-                            ></input>
+                            <input type='submit' disabled={buttonDisabled()}></input>
                         </div>
                         <center>
                             {' '}
@@ -255,7 +229,8 @@ const ClientLogin = () => {
                                 d='M130.55 50.479c24.514 0 41.05 10.589 50.479 19.438l36.844-35.974C195.245 12.91 165.798 0 130.55 0 79.49 0 35.393 29.301 13.925 71.947l42.211 32.783c10.59-31.477 39.891-54.251 74.414-54.251'
                             ></path>
                         </svg>
-                        {''}<p>Continúa con Google</p> 
+                        {''}
+                        <p>Continúa con Google</p>
                     </button>
                 </center>
             </div>
