@@ -54,7 +54,7 @@ import ChatApp from './views/chat/App'
 
 //Admin
 
-import Layout from './views/admin/shared/layout'
+import Layout from './views/admin/shared/Layout'
 import Dashboard from './components/admin-components/Dashboard'
 import Auxies from './components/admin-components/Auxies'
 import Customers from './components/admin-components/Customers'
