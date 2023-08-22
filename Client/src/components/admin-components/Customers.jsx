@@ -8,7 +8,7 @@ const Customers = () => {
     return (
         <>
             <TableUsers data={currentPageData} />
-            <Pagination num={10} data={clients} />
+            <Pagination num={12} data={clients} />
         </>
     )
 }
