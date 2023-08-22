@@ -64,7 +64,7 @@ function BoxWrapper({ children }) {
         <div
             className={
                 nightMode
-                    ? 'bg-neutral-900 rounded-sm p-4 flex-1 border border-gray-200 flex items-center'
+                    ? 'bg-neutral-900 rounded-sm p-4 flex-1  flex items-center'
                     : 'bg-white rounded-sm p-4 flex-1 border border-gray-200 flex items-center'
             }
         >

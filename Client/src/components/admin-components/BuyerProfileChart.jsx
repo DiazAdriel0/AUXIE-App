@@ -28,7 +28,7 @@ export default function BuyerProfilePieChart() {
         <div
             className={
                 nightMode
-                    ? 'w-[20rem] h-[22rem] bg-neutral-900 p-4 rounded-sm border border-gray-200 flex flex-col'
+                    ? 'w-[20rem] h-[22rem] bg-neutral-900 p-4 rounded-sm  flex flex-col'
                     : 'w-[20rem] h-[22rem] bg-white p-4 rounded-sm border border-gray-200 flex flex-col'
             }
         >

@@ -7,7 +7,7 @@ const PopularServices = () => {
         <div
             className={
                 nightMode
-                    ? 'w-[20rem] bg-neutral-900 p-4 rounded-sm border border-gray-200'
+                    ? 'w-[20rem] bg-neutral-900 p-4 rounded-sm '
                     : 'w-[20rem] bg-white p-4 rounded-sm border border-gray-200'
             }
         >

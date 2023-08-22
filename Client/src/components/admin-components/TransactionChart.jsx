@@ -8,7 +8,7 @@ const TransactionChart = () => {
         <div
             className={
                 nightMode
-                    ? ' w-full h-[22rem] bg-neutral-900 p-4 rounded-sm border border-gray-200 flex flex-col flex-1'
+                    ? ' w-full h-[22rem] bg-neutral-900 p-4 rounded-sm  flex flex-col flex-1'
                     : 'w-full h-[22rem] bg-white p-4 rounded-sm border border-gray-200 flex flex-col flex-1'
             }
         >
