@@ -16,7 +16,16 @@
     border-radius: 2%;
     max-width: 800px; /* Set a maximum width for the container */
     width: 100%; /* Allow the container to take the full width if smaller than max-width */
+    select{
+        border: 2px solid rgba(255, 255, 255, 0.506);
+        color: black !important;
+        option{
+            border: 2px solid rgba(255, 255, 255, 0.506);
+            color: black !important;
+        }
 
+    }
+   
     img {
         // max-width: 100%; /* Set maximum width for the image */
         height: auto; /* Allow image to maintain its aspect ratio */
@@ -140,16 +149,7 @@
     }
 }
 .gender{
-    select{
-        border: 2px solid rgba(255, 255, 255, 0.506);
-        color: black !important;
-
-
-    }
-    option{
-        border: 2px solid rgba(255, 255, 255, 0.506);
-        color: black !important;
-    }
+   
     
 
 }

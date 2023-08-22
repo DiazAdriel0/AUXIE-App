@@ -235,7 +235,9 @@ const ProfileAuxies = () => {
                                     name='firstName'
                                     value={newfirstName}
                                     onChange={handlefirstname}
-                                    sx={{ marginRight: 8 }}
+                                    sx={{marginLeft:22 }}
+                                    focused
+                                    
                                 />
                             )}
                             {edit && (
@@ -250,6 +252,8 @@ const ProfileAuxies = () => {
                                     name='lastName'
                                     value={newlastName}
                                     onChange={handleLastname}
+                                    focused
+                                    sx={{marginLeft:5 }}
                                 />
                             )}
                             {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -333,6 +337,7 @@ const ProfileAuxies = () => {
                             </div>
                             <div className={style.address}>
                                 <h3>Tu Direccion</h3>
+                                {!edit && <p>{provider.address}</p>}
                                 {edit && (
                                     <TextField
                                         className={style.picker}
@@ -345,6 +350,8 @@ const ProfileAuxies = () => {
                                         name='street'
                                         value={address}
                                         onChange={handleAddressChange}
+                                        sx={{width:150,margin:1}}
+                                        focused
                                     />
                                 )}
                                 {edit && (
@@ -357,6 +364,8 @@ const ProfileAuxies = () => {
                                         name='city'
                                         value={city}
                                         onChange={handleAddressChange}
+                                        sx={{width:150,margin:1,}}
+                                        focused
                                     />
                                 )}
                                 {edit && (
@@ -369,6 +378,8 @@ const ProfileAuxies = () => {
                                         name='province'
                                         value={provinces}
                                         onChange={handleAddressChange}
+                                        sx={{width:150,margin:1}}
+                                        focused
                                     />
                                 )}
 
@@ -382,6 +393,8 @@ const ProfileAuxies = () => {
                                         name='country'
                                         value={country}
                                         onChange={handleAddressChange}
+                                        sx={{width:150,margin:1}}
+                                        focused
                                     />
                                 )}
                             </div>
