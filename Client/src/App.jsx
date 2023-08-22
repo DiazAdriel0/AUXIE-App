@@ -69,6 +69,7 @@ import PaymentFailed from './components/payment/PaymentFailed'
 //URL Back
 import axios from 'axios'
 import ReviewForm from './views/forms/review-form/ReviewForm'
+import SupportFormAdmin from './components/admin-components/SupportFormAdmin'
 
 const apiBackUrl = import.meta.env.VITE_API_BACK_URL
 const urlApi = apiBackUrl || 'http://localhost:3001'
@@ -133,6 +134,7 @@ function App() {
                         <Route path='servicios' element={<Services />} />
                         <Route path='transacciones' element={<Transactions />} />
                         <Route path='notificaciones' element={<Notifications />} />
+                        <Route path='claims' element={<SupportFormAdmin />} />
                     </Route>
 
                     <Route path='paymentSucceeded' element={<PaymentSuccess />} />

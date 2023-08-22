@@ -6,7 +6,7 @@ import NavLanding from '../../../components/nav-landing/NavLanding'
 import SupportFormConsumer from './support-form-consumer/SupportFormConsumer'
 import SupportFormProvider from './support-form-provider/SupportFormProvider'
 import SuportFormUnloggien from './support-form-unloggien/SupportFormUnloggien'
-import SupportFormAdmin from './support-form-admin/SupportFormAdmin'
+import SupportFormAdmin from '../../../components/admin-components/SupportFormAdmin'
 
 const ProfilePage = () => {
     const user = useSelector((state) => state.loggedUser)
@@ -19,7 +19,6 @@ const ProfilePage = () => {
             <div>
                 {!user.id ? (
                     <div>
-
                         <NavLanding />
                         <SuportFormUnloggien />
                     </div>
