@@ -1,6 +1,14 @@
-const TABLE_HEAD = ['Nombre', 'Apellido', 'Servicio', 'Fecha de Inicio', '']
 import { Card, Typography } from '@material-tailwind/react'
 const TableUsers = ({ data }) => {
+    const TABLE_HEAD = [
+        'Nombre de usuario',
+        'Nombre',
+        'Apellido',
+        data[0].services ? 'Servicio' : 'Edad',
+        'Fecha de Inicio',
+        '',
+    ]
+
     return (
         <>
             <Card className='w-full h-[50rem]'>
@@ -8,7 +16,10 @@ const TableUsers = ({ data }) => {
                     <thead>
                         <tr>
                             {TABLE_HEAD.map(head => (
-                                <th key={head} className='border-b border-blue-gray-100 bg-blue-gray-50 p-4'>
+                                <th
+                                    key={head}
+                                    className='border-b border-blue-gray-100 bg-blue-gray-50 p-4 min-w-[5rem] max-w-[5rem]'
+                                >
                                     <Typography
                                         variant='small'
                                         color='blue-gray'
@@ -21,10 +32,10 @@ const TableUsers = ({ data }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map(({ username, firstName, lastName, services, registerDate }) => (
-                            <tr key={username} className='even:bg-blue-gray-50/50'>
+                        {data.map(({ username, firstName, lastName, services, registerDate, age }) => (
+                            <tr key={username} className=' even:bg-blue-gray-50/50'>
                                 <td className='p-4 max-w-[5rem]'>
-                                    <Typography variant='small' color='blue-gray' className='font-normal'>
+                                    <Typography variant='small' color='blue-gray' className='flex font-normal'>
                                         {username}
                                     </Typography>
                                 </td>
@@ -40,9 +51,11 @@ const TableUsers = ({ data }) => {
                                 </td>
                                 <td className='p-4 max-w-[5rem]'>
                                     <Typography variant='small' color='blue-gray' className='font-normal'>
-                                        {services.length === 0
-                                            ? 'Sin Servicios'
-                                            : services.map(service => service.name).join(', ')}
+                                        {services
+                                            ? services.length === 0
+                                                ? 'Sin Servicios'
+                                                : services.map(service => service.name).join(', ')
+                                            : age}
                                     </Typography>
                                 </td>
                                 <td className='p-4 max-w-[5rem]'>

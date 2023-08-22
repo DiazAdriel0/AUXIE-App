@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {
+    GET_ALL_CLIENTS,
     GET_ALL_AUXIES,
     GET_ALL_SERVICES,
     FILTER_AUXIES_BY_SERVICE,
@@ -338,6 +339,19 @@ export function updateFirstLogin(typeUser, id) {
     }
 }
 
+
+export function getAllClients() {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get('/consumers')
+            return dispatch({
+                type: GET_ALL_CLIENTS,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+
 export function switchFavorites(state) {
     return async function (dispatch) {
         return dispatch({
@@ -354,6 +368,7 @@ export const getClaimId = id => {
             type: GET_CLAIM_ID,
             payload: data,
         })
+
     }
 }
 
