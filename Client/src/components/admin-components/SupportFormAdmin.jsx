@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { getClaims } from '../../redux/actions/actions'
 import { Link } from 'react-router-dom'
 import { DateTime } from 'luxon'
-import NavGeneral from '../nav-general/NavGeneral'
 
 const SupportFormAdmin = () => {
     const dispatch = useDispatch()
@@ -35,7 +34,6 @@ const SupportFormAdmin = () => {
     }
     return (
         <div>
-            <NavGeneral />
             <div className='support-form-container'>
                 <div className='cards-container'>
                     {claims.length === 0 ? (
@@ -66,9 +64,6 @@ const SupportFormAdmin = () => {
                     </button>
                 </div>
             </div>
-            <Link to='/support'>
-                <button>Volver</button>
-            </Link>
         </div>
     )
 }
