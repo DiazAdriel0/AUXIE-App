@@ -15,7 +15,7 @@ export const data01 = [
         income: 5100,
     },
     {
-        name: 'MaAbrr',
+        name: 'Abr',
         expense: 2600,
         income: 5300,
     },
@@ -81,6 +81,35 @@ export const data03 = [
     { name: 'D2', value: 50 },
 ]
 
+export const data04 = [
+    {
+        name: 'Gasista',
+        expense: 2500,
+        income: 5500,
+    },
+    {
+        name: 'Plomero',
+        expense: 2700,
+        income: 5200,
+    },
+    {
+        name: 'Chofer',
+        expense: 2800,
+        income: 5100,
+    },
+    {
+        name: 'Limpieza',
+        expense: 2600,
+        income: 5300,
+    },
+    {
+        name: 'NIñera',
+        expense: 2900,
+        income: 5000,
+
+    },
+]
+
 export const data06 = [
     {
         name: 'Ene',
@@ -142,7 +171,7 @@ export const data06 = [
         Visitas: 5000,
         Reservas: 2900,
     },
-]
+  ]
 
 export const recentOrderData = [
     {
@@ -153,6 +182,7 @@ export const recentOrderData = [
         order_date: '2023-08-17T03:24:00',
         order_total: '$4351',
         current_order_status: 'TERMINADO',
+        current_payment_status: 'COBRADO',
         shipment_address: 'General Pacheco',
     },
     {
@@ -163,6 +193,7 @@ export const recentOrderData = [
         order_date: '2023-08-17T03:24:00',
         order_total: '$61250',
         current_order_status: 'TERMINADO',
+        current_payment_status: 'COBRADO',
         shipment_address: 'Caseros',
     },
     {
@@ -173,6 +204,7 @@ export const recentOrderData = [
         order_date: '2023-08-17T03:24:00',
         order_total: '$15000',
         current_order_status: 'TERMINADO',
+        current_payment_status: 'COBRADO',
         shipment_address: 'Caseros',
     },
     {
@@ -183,16 +215,18 @@ export const recentOrderData = [
         order_date: '2023-08-14T05:24:00',
         order_total: '$9600',
         current_order_status: 'CANCELADO',
+        current_payment_status: 'DEVUELTO',
         shipment_address: 'Tigre',
     },
     {
-        id: '2',
+        id: '4',
         product_id: '5434',
         customer_id: '65345',
         customer_name: 'Florencia Garcia',
         order_date: '2023-08-17T07:14:00',
         order_total: '$8300',
         current_order_status: 'CANCELADO',
+        current_payment_status: 'DEVUELTO',
         shipment_address: 'Capital Federal',
     },
     {
@@ -203,47 +237,40 @@ export const recentOrderData = [
         order_date: '2023-08-17T07:14:00',
         order_total: '$8350',
         current_order_status: 'EN_ESPERA',
+        current_payment_status: 'COBRADO',
         shipment_address: 'Capital Federal',
     },
+
     {
-        id: '23',
-        product_id: '5434',
-        customer_id: '65345',
-        customer_name: 'Luz Andrea Figaro',
-        order_date: '2023-08-17T07:14:00',
-        order_total: '$8370',
-        current_order_status: 'TERMINADO',
-        shipment_address: 'Rosario',
-    },
-    {
-        id: '3',
+        id: '5',
         product_id: '9854',
         customer_id: '87832',
         customer_name: 'Luke Skywalker',
         order_date: '2023-08-16T12:40:00',
         order_total: '$17620',
         current_order_status: 'EN_PROGRESO',
+        current_payment_status: 'COBRADO',
         shipment_address: 'Mataderos',
     },
 ]
 
 export const popularServices = [
     {
-        id: '7',
+        id: '8',
         product_name: 'Plomero',
         product_thumbnail: 'https://source.unsplash.com/100x100?plomer',
         product_price: '$3900.00',
         product_stock: 234,
     },
     {
-        id: '1',
+        id: '19',
         product_name: 'Gasista',
         product_thumbnail: 'https://source.unsplash.com/100x100?worker',
         product_price: '$2999.00',
         product_stock: 156,
     },
     {
-        id: '3',
+        id: '32',
         product_name: 'Limpieza',
         product_thumbnail: 'https://source.unsplash.com/100x100?cleaning',
         product_price: '$2199.99',
@@ -257,7 +284,7 @@ export const popularServices = [
         product_stock: 0,
     },
     {
-        id: '4314',
+        id: '4315',
         product_name: 'Niñera',
         product_thumbnail: 'https://source.unsplash.com/100x100?driver',
         product_price: '$699.00',

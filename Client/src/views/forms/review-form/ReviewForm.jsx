@@ -13,44 +13,43 @@ import useNotify from '../../../hooks/useNotify'
 
 const ReviewForm = () => {
     const navigate = useNavigate()
-    const services = useSelector((state) => state.services)
-    const user = useSelector((state) => state.loggedUser)
+    const services = useSelector(state => state.services)
+    const user = useSelector(state => state.loggedUser)
 
     const [review, setReview] = useState({
         consumerId: user.id,
-        providerId:'',
+        providerId: '',
         serviceId: '',
         review: '',
         score: null,
     })
-    
+
     const [providerUid, setProviderUid] = useState('')
     const [sent, setSent] = useState(false)
     const { sendNotification } = useNotify(providerUid)
     const [aux, setAux] = useState(false)
-    useEffect(()=>{
-        if(providerUid && sent){
-            console.log('te dieron reseña')
+    useEffect(() => {
+        if (providerUid && sent) {
             sendNotification(`${user.firstName} ${user.lastName} ha dejado una reseña sobre tu servicio.`)
             setSent(false)
         }
-    },[aux, providerUid])
+    }, [aux, providerUid])
 
-    const handleInputChange = (event) => {
+    const handleInputChange = event => {
         const { name, value } = event.target
-        setReview((previousValue) => ({ ...previousValue, [name]: value }))
+        setReview(previousValue => ({ ...previousValue, [name]: value }))
     }
 
-    const handleServiceChange = (event) => {
+    const handleServiceChange = event => {
         const { value } = event.target
-        setReview((previousValue) => ({
+        setReview(previousValue => ({
             ...previousValue,
             serviceId: value,
         }))
     }
-    const handleAuxieChange = (event) => {
+    const handleAuxieChange = event => {
         const { value } = event.target
-        setReview((previousValue) => ({
+        setReview(previousValue => ({
             ...previousValue,
             providerId: value,
         }))
@@ -84,7 +83,7 @@ const ReviewForm = () => {
                 navigate('/profile')
             }
         } catch (error) {
-            console.log(error + error.response)
+            console.error(error + error.response)
 
             Swal.fire({
                 icon: 'error',
@@ -94,16 +93,20 @@ const ReviewForm = () => {
             })
         }
     }
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault()
-        
-        axios(`providers/${review.providerId}`).then(({data})=>{
-            if(data){
-                let uid= data.userUid || data.googleId
-            setProviderUid(uid)
-            }    
-        }).catch((error)=>{console.error(error.message)})
- 
+
+        axios(`providers/${review.providerId}`)
+            .then(({ data }) => {
+                if (data) {
+                    let uid = data.userUid || data.googleId
+                    setProviderUid(uid)
+                }
+            })
+            .catch(error => {
+                console.error(error.message)
+            })
+
         handlePost()
     }
     return (
@@ -127,7 +130,7 @@ const ReviewForm = () => {
                             onChange={handleAuxieChange} // Cambio de handleAuxieChange a handleProviderChange
                         >
                             {user.requiredServices ? (
-                                user.requiredServices.map((auxie) => (
+                                user.requiredServices.map(auxie => (
                                     <MenuItem
                                         key={auxie.id}
                                         value={auxie.providerId} // Cambio de 'auxie' a 'providerId'
@@ -157,11 +160,8 @@ const ReviewForm = () => {
                             className={style.picker}
                         >
                             {services ? (
-                                services.map((service) => (
-                                    <MenuItem
-                                        key={service._id}
-                                        value={service._id}
-                                    >
+                                services.map(service => (
+                                    <MenuItem key={service._id} value={service._id}>
                                         {service.name}
                                     </MenuItem>
                                 ))
@@ -179,7 +179,7 @@ const ReviewForm = () => {
                         getLabelText={getLabelText}
                         onChange={(event, newValue) => {
                             setRatingValue(newValue)
-                            setReview((previousValue) => ({
+                            setReview(previousValue => ({
                                 ...previousValue,
                                 score: newValue,
                             }))
@@ -187,18 +187,9 @@ const ReviewForm = () => {
                         onChangeActive={(event, newHover) => {
                             setHover(newHover)
                         }}
-                        emptyIcon={
-                            <StarIcon
-                                style={{ opacity: 0.55 }}
-                                fontSize='inherit'
-                            />
-                        }
+                        emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize='inherit' />}
                     />
-                    {ratingValue !== null && (
-                        <Box sx={{ ml: 2 }}>
-                            {labels[hover !== -1 ? hover : ratingValue]}
-                        </Box>
-                    )}
+                    {ratingValue !== null && <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : ratingValue]}</Box>}
                     <div>
                         <label>Escribe tu reseña:</label>
                         <TextField
@@ -219,12 +210,10 @@ const ReviewForm = () => {
 
                 <center>
                     <Button
-                        onClick={
-                            ()=>{
+                        onClick={() => {
                             setAux(!aux)
                             setSent(true)
-                            }
-                        }
+                        }}
                         className={style.send}
                         variant='contained'
                         endIcon={<SendIcon />}

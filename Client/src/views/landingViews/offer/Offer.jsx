@@ -24,7 +24,7 @@ const Offer = () => {
             ></div>
             <div className={style.offer}>
                 <div className={style.offers}>
-                    <h1>Las ofertas de AUXIE</h1>
+                    <h2>Las ofertas de AUXIE</h2>
                     {/* <h3>Cambiamos la forma en la que recibis ayuda en casa</h3>
                     <Link to="/">
                         <button className={style.button}>Explora la app</button>

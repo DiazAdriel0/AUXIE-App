@@ -4,7 +4,7 @@ const Consumer = require('./../../Models/consumer')
 const Request = require('./../../Models/request')
 
 const addJob = async (newPendingService, id) => {
-    const { service, description, clientId, jobDate, paymentMethod } =
+    const { service, description, clientId, jobDate, jobTime, paymentMethod } =
         newPendingService
     try {
         const providerFound = await Provider.findById(id)
@@ -15,6 +15,9 @@ const addJob = async (newPendingService, id) => {
         )?.price
 
         let clientUid = consumerFound.userUid || consumerFound.googleId
+
+        const date = jobDate.split('T')[0]
+        const time = jobTime.split('T')[1]
 
         const addedJob = {
             isActive: true,
@@ -27,7 +30,7 @@ const addJob = async (newPendingService, id) => {
             clientName: `${consumerFound.firstName} ${consumerFound.lastName}`,
             status: 'pending',
             requestDate: Date.now(),
-            jobDate,
+            jobDate: `${date}T${time}`,
             price,
             paymentMethod,
         }

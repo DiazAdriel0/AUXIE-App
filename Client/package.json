@@ -13,6 +13,8 @@
         "@emotion/react": "^11.11.1",
         "@emotion/styled": "^11.11.0",
         "@headlessui/react": "^1.7.17",
+        "@heroicons/react": "^2.0.18",
+        "@material-tailwind/react": "^2.1.0",
         "@mercadopago/sdk-react": "^0.0.13",
         "@mui/icons-material": "^5.14.3",
         "@mui/material": "^5.14.3",

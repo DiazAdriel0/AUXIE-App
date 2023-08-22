@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getClaimId } from '../../../../redux/actions/actions'
+import { getClaimId } from '../../redux/actions/actions'
 import { DateTime } from 'luxon'
-import NavGeneral from '../../../../components/nav-general/NavGeneral'
 import { Link } from 'react-router-dom'
-import './SupportFormClaimsId.css'
 
 const SupportFormClaimsId = () => {
     const dispatch = useDispatch()
@@ -31,7 +29,6 @@ const SupportFormClaimsId = () => {
 
     return (
         <div>
-            <NavGeneral />
             <div className='support-form-claims-id-container'>
                 {claim && (
                     <div>
@@ -82,7 +79,7 @@ const SupportFormClaimsId = () => {
                     </div>
                 )}
             </div>
-            <Link to='/support/claims'>
+            <Link to='/dashboard/claims'>
                 <button>Volver</button>
             </Link>
         </div>

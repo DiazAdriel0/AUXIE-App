@@ -11,7 +11,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useSelector } from 'react-redux'
 import Rating from '@mui/material/Rating'
 import AuxieReviews from '../../components/auxieReviews/AuxieReviews'
-import MinimizeRoundedIcon from '@mui/icons-material/MinimizeRounded';
+import MinimizeRoundedIcon from '@mui/icons-material/MinimizeRounded'
 
 const Detail = () => {
     const user = useSelector(state => state.loggedUser)
@@ -26,7 +26,6 @@ const Detail = () => {
     useEffect(() => {
         const getDetails = async function () {
             const res = await axios.get(`/providers/${id}`)
-            console.log(res.data)
 
             setAuxieDetails(res.data)
         }
@@ -77,8 +76,9 @@ const Detail = () => {
                                         />
                                     </div>
 
-                                    <p style={{ fontWeight: 400, fontSize:'1rem' }}>({auxieDetails.reviews.length} Reseñas)</p>
-
+                                    <p style={{ fontWeight: 400, fontSize: '1rem' }}>
+                                        ({auxieDetails.reviews.length} Reseñas)
+                                    </p>
                                 </div>
                                 <div className={style.contServices}>
                                     {auxieDetails.services.length > 0 ? (
@@ -119,8 +119,8 @@ const Detail = () => {
                                         ))}
                                 </Carousel>
                             </div>
-                            <div className={style.reviewscontainer}>
-                            <h1>Reseñas: </h1>
+                            <div className={style.reviewscontainer2}>
+                                <h1>Reseñas: </h1>
                             </div>
                             <div className={style.reviewscontainer}>
                                 <AuxieReviews services={auxieDetails.reviews} />
@@ -131,16 +131,17 @@ const Detail = () => {
                 <JobRequestForm services={auxieDetails.services} recipient={auxieDetails?.userUid} />
                 {isInChat ? (
                     <div className={style.chatT}>
-                        <div className={style.iconCont}><MinimizeRoundedIcon className={style.iconMin} onClick={
-                            ()=>{
-                                setIsInChat(false)
-                            }
-                        }/></div>
-                        
+                        <div className={style.iconCont}>
+                            <MinimizeRoundedIcon
+                                className={style.iconMin}
+                                onClick={() => {
+                                    setIsInChat(false)
+                                }}
+                            />
+                        </div>
+
                         <Chat recipient={auxieDetails.userUid} />
-                        
                     </div>
-                    
                 ) : (
                     <div className={style.chatbutton}>
                         <button onClick={handleClick}>Iniciar Chat</button>

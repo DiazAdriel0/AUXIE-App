@@ -53,14 +53,16 @@ import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
 import ChatApp from './views/chat/App'
 
 //Admin
-
-import Layout from './views/admin/shared/layout'
+import Notifications from './components/admin-components/Notifications'
+import Layout from './views/admin/shared/Layout'
 import Dashboard from './components/admin-components/Dashboard'
 import Auxies from './components/admin-components/Auxies'
 import Customers from './components/admin-components/Customers'
 import Services from './components/admin-components/Services'
 import Transactions from './components/admin-components/Transactions'
-import Notifications from './components/admin-components/Notifications'
+
+import SupportFormAdmin from './components/admin-components/SupportFormAdmin'
+import SupportFormAdminId from './components/admin-components/SupportFormAdminId'
 
 //payment Views
 import PaymentSuccess from './components/payment/PaymentSuccess'
@@ -88,14 +90,14 @@ function App() {
                     <Route path='/' element={<Landing />} />
                     {/* Landing Nav Views */}
 
-                    <Route path="/aboutUs" element={<AboutUs />} />
-                    <Route path="/guarantee" element={<Guarantee />} />
-                    <Route path="/offer" element={<Offer />} />
-                    <Route path="/howItWorks" element={<HowItWorks />} />
-                    <Route path="/support" element={<SupportForm />} />
-                    <Route path="/support/claims" element={<SupportFormClaims />} />
+                    <Route path='/aboutUs' element={<AboutUs />} />
+                    <Route path='/guarantee' element={<Guarantee />} />
+                    <Route path='/offer' element={<Offer />} />
+                    <Route path='/howItWorks' element={<HowItWorks />} />
+                    <Route path='/support' element={<SupportForm />} />
+                    <Route path='/support/claims' element={<SupportFormClaims />} />
                     <Route path='/support/claims/:id' element={<SupportFormClaimsId />} />
-                    <Route path="/help" element={<Help />} />
+                    <Route path='/help' element={<Help />} />
 
                     {/* Home paths */}
                     <Route path='/homeconsumer' element={<HomeConsumer />} />
@@ -124,19 +126,20 @@ function App() {
                     <Route path='/review' element={<ReviewForm />} />
                     <Route path='/notifications' element={<Notifications />} />
                     <Route path='*' element={<PageNotFound />} />
-                    {/* Admin */}
 
+                    {/* Admin */}
                     <Route path='/dashboard' element={<Layout />}>
                         <Route index={true} element={<Dashboard />} />
                         <Route path='auxies' element={<Auxies />} />
                         <Route path='clientes' element={<Customers />} />
                         <Route path='servicios' element={<Services />} />
                         <Route path='transacciones' element={<Transactions />} />
-                        <Route path='notificaciones' element={<Notifications />} />
+                        <Route path='claims' element={<SupportFormAdmin />} />
+                        <Route path='claims/:id' element={<SupportFormAdminId />} />
                     </Route>
 
-                    <Route path='paymentSucceeded' element={<PaymentSuccess/>} />
-                    <Route path='paymentFailed' element={<PaymentFailed/>} />
+                    <Route path='paymentSucceeded' element={<PaymentSuccess />} />
+                    <Route path='paymentFailed' element={<PaymentFailed />} />
                 </Routes>
             </div>
         </LocalizationProvider>

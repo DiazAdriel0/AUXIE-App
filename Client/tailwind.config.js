@@ -3,7 +3,7 @@ export default {
     content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
     theme: {
         extend: {
-            colors:{
+            colors: {
                 // light mode
                 'background-light': '#fcfcfc',
                 'text-color-light': '#000',
@@ -18,14 +18,30 @@ export default {
                 'hover-color-dark': '#d2cfcf',
                 'text-color-dark': '#fcfcfc',
             },
-            fontFamily:{
+            fontFamily: {
                 // main font
-                'poppins':['Poppins', 'sans-serif'],
+                poppins: ['Poppins', 'sans-serif'],
                 // secondary fonts
-                'caprasimo':['Caprasimo', 'cursive'],
-                'lilita':['Lilita One', 'cursive'],
-                'inter':['Inter', 'sans-serif'],
-            }
+                caprasimo: ['Caprasimo', 'cursive'],
+                lilita: ['Lilita One', 'cursive'],
+                inter: ['Inter', 'sans-serif'],
+            },
+            screens: {
+                sm: '640px',
+                // => @media (min-width: 640px) { ... }
+
+                md: '768px',
+                // => @media (min-width: 768px) { ... }
+
+                lg: '1024px',
+                // => @media (min-width: 1024px) { ... }
+
+                xl: '1280px',
+                // => @media (min-width: 1280px) { ... }
+
+                '2xl': '1536px',
+                // => @media (min-width: 1536px) { ... }
+            },
         },
     },
     plugins: [],

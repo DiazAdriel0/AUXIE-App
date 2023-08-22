@@ -124,7 +124,9 @@
 }
 .reviews{
     font-size: 1rem;
+
 }
+
 .reviewscontainer{
 margin: 2%;
 max-height: 30rem;
@@ -133,7 +135,14 @@ h1{
     font-size: 1.5rem;
 }
 }
+.reviewscontainer2{
+    margin: 2%;
+    max-height: 30rem;
 
+    h1{
+        font-size: 1.5rem;
+    }
+    }
 .chatT{
     display: flex;
     flex-direction: column;

@@ -3,7 +3,7 @@ import Sidebar from '../../../components/admin-components/Sidebar'
 import Header from './Header'
 const Layout = () => {
     return (
-        <div className='flex flex-row h-screen w-screen '>
+        <div className='flex flex-row h-screen'>
             <Sidebar />
             <div className=' w-full'>
                 <Header />

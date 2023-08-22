@@ -1,17 +1,44 @@
 import { Fragment } from 'react'
 import classNames from 'classnames'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { HiOutlineBell, HiOutlineChatAlt, HiOutlineSearch } from 'react-icons/hi'
 import { Menu, Popover, Transition } from '@headlessui/react'
+//firebase
+import { auth } from '../../../config/firebase-config'
+import { signOut } from 'firebase/auth'
+//actions
+import { logOut } from '../../../redux/actions/actions'
 
+import Swal from 'sweetalert2'
+import axios from 'axios'
 const Header = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector(state => state.loggedUser)
     const userImage = user.image.secure_url
-
+    const handleLogOut = async () => {
+        try {
+            if (user.googleId) {
+                const response = await axios.post('/consumers/logout', {
+                    googleId: `${user.googleId}`,
+                })
+                if (response) {
+                    await signOut(auth)
+                    dispatch(logOut({}))
+                    return navigate('/')
+                }
+            }
+            dispatch(logOut({}))
+            await signOut(auth)
+            navigate('/')
+        } catch (error) {
+            console.error('error: ' + error.message)
+            Swal.fire(error.message)
+        }
+    }
     return (
-        <div className=' h-16 px-4 flex justify-between items-center border-b border-gray-200'>
+        <div className=' h-16 flex justify-between items-center  w-full'>
             <div className='relative'>
                 <HiOutlineSearch
                     fontSize={20}
@@ -41,7 +68,7 @@ const Header = () => {
                             >
                                 <Popover.Panel className='absolute right-0 z-10 mt-2.5 w-80'>
                                     <div className='bg-white rounded-sm shadow-md ring-1 ring-black ring-opacity-5 px-2 py-2.5'>
-                                        <strong className='text-gray-700 font-medium'>Messages</strong>
+                                        <strong className='text-gray-700 font-medium'>Mensajes</strong>
                                         <div className='mt-2 py-1 text-sm'>Este es el panel de mensajes</div>
                                     </div>
                                 </Popover.Panel>
@@ -127,7 +154,7 @@ const Header = () => {
                                                     active && 'bg-gray-700',
                                                     'hover:bg-gray-100   text-gray-700 focus:bg-gray-800 cursor-pointer round-sm px-4 py-2'
                                                 )}
-                                                onClick={() => navigate('/configuracion')}
+                                                onClick={() => handleLogOut()}
                                             >
                                                 Desconectarse
                                             </div>

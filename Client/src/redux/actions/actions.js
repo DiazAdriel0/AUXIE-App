@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {
+    GET_ALL_CLIENTS,
     GET_ALL_AUXIES,
     GET_ALL_SERVICES,
     FILTER_AUXIES_BY_SERVICE,
@@ -20,6 +21,7 @@ import {
     POST_CLAIM,
     GET_CLAIM_ID,
     GET_CLAIMS,
+    GET_ALL_CLAIMS,
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
     FIRST_LOGIN,
@@ -48,6 +50,20 @@ export function getClaims(email) {
             const res = await axios.get(`/claims?email=${email}`)
             return dispatch({
                 type: GET_CLAIMS,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
+export function getAllClaims() {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get('/claims')
+            return dispatch({
+                type: GET_ALL_CLAIMS,
                 payload: res.data,
             })
         } catch (e) {
@@ -206,8 +222,8 @@ export function resetToken() {
     return {
         type: RESET_TOKEN,
     }
+    UPDATE_PROFILE
 } */
-UPDATE_PROFILE
 
 export function updateProfile(input, user) {
     return async function (dispatch) {
@@ -338,6 +354,20 @@ export function updateFirstLogin(typeUser, id) {
     }
 }
 
+export function getAllClients() {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get('/consumers')
+            return dispatch({
+                type: GET_ALL_CLIENTS,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
 export function switchFavorites(state) {
     return async function (dispatch) {
         return dispatch({
@@ -370,7 +400,7 @@ export const getClaimId = id => {
 //                 payload: res.data,
 //             })
 //         } catch (e) {
-//             console.log(e.response.data)
+//             console.error(e.response.data)
 //         }
 //     }
 // }

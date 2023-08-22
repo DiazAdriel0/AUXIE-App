@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Chat } from '../Chat/chat'
+import { Chat } from '../chat/Chat'
 // import { Auth } from "../Chat/Auth";
-import { AppWrapper } from '../Chat/AppWrapper'
+import { AppWrapper } from '../chat/AppWrapper'
 import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()
@@ -12,21 +12,11 @@ function ChatApp({ recipient }) {
     const [isInChat, setIsInChat] = useState(false)
 
     if (!isAuth) {
-        return (
-            <AppWrapper
-                isAuth={isAuth}
-                setIsAuth={setIsAuth}
-                setIsInChat={setIsInChat}
-            ></AppWrapper>
-        )
+        return <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}></AppWrapper>
     }
 
     return (
-        <AppWrapper
-            isAuth={isAuth}
-            setIsAuth={setIsAuth}
-            setIsInChat={setIsInChat}
-        >
+        <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
             {!isInChat ? (
                 <div className='room'>
                     <button
@@ -38,9 +28,7 @@ function ChatApp({ recipient }) {
                     </button>
                 </div>
             ) : (
-                <Chat
-                    recipient={recipient}
-                /> /* Change: Pass 'recipient' prop */
+                <Chat recipient={recipient} /> /* Change: Pass 'recipient' prop */
             )}
         </AppWrapper>
     )

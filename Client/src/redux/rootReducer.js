@@ -19,11 +19,14 @@ import {
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
     FIRST_LOGIN,
+    GET_ALL_CLIENTS,
     SWITCH_FAVORITES,
-    GET_CLAIM_ID
+    GET_CLAIM_ID,
+    GET_ALL_CLAIMS,
 } from './actions/actionTypes'
 
 let initialState = {
+    clients: [],
     auxies: [],
     consumers: [],
     backupAuxies: [],
@@ -39,11 +42,17 @@ let initialState = {
     token: '',
     claims: [],
     id: [],
+    allClaims: [],
 }
 
 function rootReducer(state = initialState, action) {
     switch (action.type) {
         // obtengo todos los auxies de mi back y los guardo en 3 estados diferentes
+        case GET_ALL_CLIENTS:
+            return {
+                ...state,
+                clients: action.payload,
+            }
         case GET_ALL_AUXIES:
             return {
                 ...state,
@@ -64,6 +73,13 @@ function rootReducer(state = initialState, action) {
                 id: action.payload,
             }
 
+        case GET_ALL_CLAIMS:
+            return{
+                ...state,
+                allClaims: [...action.payload],
+
+            }
+
         // obtengo todos los servicios de mi back y los guardo en mi estado global
         case GET_ALL_SERVICES:
             return { ...state, services: action.payload }
@@ -72,7 +88,7 @@ function rootReducer(state = initialState, action) {
             if (action.payload === 'off') {
                 return {
                     ...state,
-                    filteredAuxies: [...state.auxies],
+                    filteredAuxies: [...state.backupAuxies],
                     filter: action.payload,
                 }
             } else {
@@ -102,7 +118,7 @@ function rootReducer(state = initialState, action) {
                 )
                 return { ...state, filteredAuxies: [...descFilter] }
             } else {
-                return { state, auxies: [...state.backupAuxies] }
+                return { ...state, auxies: [...state.backupAuxies] }
             }
         //ordena el estado filteredAuxies por calificación independientemente del filtrado
         case ORDER_AUXIES_BY_RATING:
@@ -207,7 +223,7 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 loggedUser: {
                     ...state.loggedUser,
-                    claims: [...initialState.claims, action.payload],
+                    claims: [...state.claims, action.payload],
                 },
             }
 
@@ -225,7 +241,7 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 loggedUser: {
-                    ...initialState.loggedUser,
+                    ...state.loggedUser,
                     firstLogin: action.payload,
                 },
             }

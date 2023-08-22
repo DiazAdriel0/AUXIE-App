@@ -1,5 +1,17 @@
 export function getOrderStatus(status) {
     switch (status) {
+        case 'COBRADO':
+            return (
+                <span className='capitalize py-1 px-2 rounded-md text-xs text-gray-500 bg-green-200'>
+                    {status.replaceAll('_', ' ').toLowerCase()}
+                </span>
+            )
+        case 'DEVUELTO':
+            return (
+                <span className='capitalize py-1 px-2 rounded-md text-xs text-gray-500 bg-orange-200'>
+                    {status.replaceAll('_', ' ').toLowerCase()}
+                </span>
+            )
         case 'TERMINADO':
             return (
                 <span className='capitalize py-1 px-2 rounded-md text-xs text-sky-600 bg-sky-100'>

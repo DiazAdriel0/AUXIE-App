@@ -6,6 +6,9 @@ const consumerSchema = new Schema({
         required: true,
         default: false,
     },
+    isAuxie: {
+        type: Boolean,
+    },
     firstLogin: {
         type: Boolean,
         default: true,
@@ -65,7 +68,6 @@ const consumerSchema = new Schema({
     claims: {
         type: Array,
     },
-
 })
 
 consumerSchema.set('toJSON', {
