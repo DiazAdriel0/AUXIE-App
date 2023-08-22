@@ -9,6 +9,7 @@ import {
     orderAuxiesByPrice,
     orderAuxiesByRating,
     switchFavorites,
+    resetAuxiesCatalog,
 } from '../../redux/actions/actions'
 
 const Filters = () => {
@@ -73,6 +74,7 @@ const Filters = () => {
     }
 
     const handleClick = () => {
+        dispatch(resetAuxiesCatalog())
         dispatch(filterAuxiesByService('off'))
         setSelectedFilter(null)
         setpriceOn(false)
@@ -103,6 +105,16 @@ const Filters = () => {
 
     return (
         <div className={style.contFilters}>
+            <div className={style.favorites}>
+                <FormControlLabel
+                    control={<Switch onClick={handleSwitch} />}
+                    label='Favoritos'
+                    labelPlacement='start'
+                    sx={{
+                        marginLeft: 0,
+                    }}
+                />
+            </div>
             <span>Filtrar por Servicios: </span>
             <Select
                 placeholder='Elegir servicios'
@@ -138,7 +150,6 @@ const Filters = () => {
                     />
                 </>
             )}
-            <FormControlLabel control={<Switch onClick={handleSwitch} />} label='Favoritos' labelPlacement='start' />
             <button onClick={handleClick}>Limpiar filtros</button>
         </div>
     )
