@@ -48,6 +48,12 @@ export const DASHBOARD_SIDEBAR_LINKS = [
         path: '/dashboard/notificaciones',
         icon: <HiOutlineAnnotation />,
     },
+    {
+        key: 'reclamos',
+        label: 'reclamos',
+        path: '/dashboard/claims',
+        icon: <HiOutlineAnnotation />,
+    },
 ]
 
 export const DASHBOARD_SIDEBAR_BOTTOM_LINKS = [
