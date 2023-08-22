@@ -59,7 +59,7 @@ const HomeAuxie = () => {
             </header>
             {/* Aside */}
             <div className='grid grid-cols-3 '>
-                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-2/3'>
+                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 pb-36'>
                     <AsideAuxie />
                 </aside>
                 {/* Main */}

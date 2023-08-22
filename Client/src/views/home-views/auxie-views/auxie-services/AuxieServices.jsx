@@ -44,7 +44,7 @@ const AuxieServices = () => {
             {/* aside */}
 
             <div className='grid grid-cols-2 mb-4 mr-52'>
-                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-1/3'>
+                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-52  pl-14 pb-2'>
                     <AsideAuxie />
                 </aside>
 
