@@ -20,7 +20,7 @@ import {
     UPDATE_PROVIDER,
     FIRST_LOGIN,
     SWITCH_FAVORITES,
-    GET_CLAIM_ID
+    GET_CLAIM_ID,
 } from './actions/actionTypes'
 
 let initialState = {
@@ -72,7 +72,7 @@ function rootReducer(state = initialState, action) {
             if (action.payload === 'off') {
                 return {
                     ...state,
-                    filteredAuxies: [...state.auxies],
+                    filteredAuxies: [...state.backupAuxies],
                     filter: action.payload,
                 }
             } else {
@@ -102,7 +102,7 @@ function rootReducer(state = initialState, action) {
                 )
                 return { ...state, filteredAuxies: [...descFilter] }
             } else {
-                return { state, auxies: [...state.backupAuxies] }
+                return { ...state, auxies: [...state.backupAuxies] }
             }
         //ordena el estado filteredAuxies por calificación independientemente del filtrado
         case ORDER_AUXIES_BY_RATING:

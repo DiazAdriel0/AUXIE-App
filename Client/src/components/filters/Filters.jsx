@@ -25,6 +25,7 @@ const Filters = () => {
         label: 'Ordenar',
     })
     const [favSwitch, setFavSwitch] = useState(false)
+    const [selectedFilter, setSelectedFilter] = useState(null)
 
     const handleSwitch = () => {
         if (favSwitch) {
@@ -53,6 +54,7 @@ const Filters = () => {
 
     const filterByService = input => {
         const filterService = input.value
+        setSelectedFilter(input)
         dispatch(filterAuxiesByService(filterService))
         if (filterService === 'off') setpriceOn(false)
         else setpriceOn(true)
@@ -68,6 +70,14 @@ const Filters = () => {
         dispatch(orderAuxiesByPrice(input.value))
         setOrderPrice(input)
         if (orderRating.value !== 'off') setOrderRating({ value: 'off', label: 'Ordenar' })
+    }
+
+    const handleClick = () => {
+        dispatch(filterAuxiesByService('off'))
+        setSelectedFilter(null)
+        setpriceOn(false)
+        setOrderPrice({ value: 'off', label: 'Ordenar' })
+        setOrderRating({ value: 'off', label: 'Ordenar' })
     }
 
     const nightStyles = {
@@ -98,7 +108,7 @@ const Filters = () => {
                 placeholder='Elegir servicios'
                 onChange={input => filterByService(input)}
                 name='services'
-                defaultValue={off}
+                value={selectedFilter}
                 options={options}
                 styles={nightStyles}
             />
@@ -129,6 +139,7 @@ const Filters = () => {
                 </>
             )}
             <FormControlLabel control={<Switch onClick={handleSwitch} />} label='Favoritos' labelPlacement='start' />
+            <button onClick={handleClick}>Limpiar filtros</button>
         </div>
     )
 }
