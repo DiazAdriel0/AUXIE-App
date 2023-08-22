@@ -1,15 +1,42 @@
 import { Fragment } from 'react'
 import classNames from 'classnames'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { HiOutlineBell, HiOutlineChatAlt, HiOutlineSearch } from 'react-icons/hi'
 import { Menu, Popover, Transition } from '@headlessui/react'
+//firebase
+import { auth } from '../../../config/firebase-config'
+import { signOut } from 'firebase/auth'
+//actions
+import { logOut } from '../../../redux/actions/actions'
 
+import Swal from 'sweetalert2'
+import axios from 'axios'
 const Header = () => {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector(state => state.loggedUser)
     const userImage = user.image.secure_url
-
+    const handleLogOut = async () => {
+        try {
+            if (user.googleId) {
+                const response = await axios.post('/consumers/logout', {
+                    googleId: `${user.googleId}`,
+                })
+                if (response) {
+                    await signOut(auth)
+                    dispatch(logOut({}))
+                    return navigate('/')
+                }
+            }
+            dispatch(logOut({}))
+            await signOut(auth)
+            navigate('/')
+        } catch (error) {
+            console.error('error: ' + error.message)
+            Swal.fire(error.message)
+        }
+    }
     return (
         <div className=' h-16 flex justify-between items-center border-b border-gray-200 w-full'>
             <div className='relative'>
@@ -127,7 +154,7 @@ const Header = () => {
                                                     active && 'bg-gray-700',
                                                     'hover:bg-gray-100   text-gray-700 focus:bg-gray-800 cursor-pointer round-sm px-4 py-2'
                                                 )}
-                                                onClick={() => navigate('/configuracion')}
+                                                onClick={() => handleLogOut()}
                                             >
                                                 Desconectarse
                                             </div>
