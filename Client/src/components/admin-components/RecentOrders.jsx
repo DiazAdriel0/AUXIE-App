@@ -8,7 +8,7 @@ export default function RecentOrders() {
         <div
             className={
                 nightMode
-                    ? 'bg-neutral-900 px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'
+                    ? 'bg-neutral-900 px-4 pt-3 pb-4 rounded-sm  flex-1'
                     : 'bg-white px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'
             }
         >

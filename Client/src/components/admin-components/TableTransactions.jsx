@@ -8,14 +8,14 @@ const TableTransactions = () => {
         <div
             className={
                 nightMode
-                    ? 'bg-neutral-900 mt-4  px-4 pb-4 rounded-sm border border-gray-200 flex-1'
+                    ? 'bg-neutral-900 mt-4  p-4  rounded-sm flex-1'
                     : 'bg-white mt-4  px-4 pb-4 rounded-sm border border-gray-200 flex-1'
             }
         >
             <strong className={nightMode ? 'text-gray-200 font-medium' : 'text-gray-700 font-medium'}>
                 Ultimos Pagos
             </strong>
-            <div className='border-x border-gray-200 rounded-sm mt-3'>
+            <div className=' rounded-sm mt-3'>
                 <table className={nightMode ? 'w-full text-gray-200' : 'w-full text-gray-700'}>
                     <thead>
                         <tr>
