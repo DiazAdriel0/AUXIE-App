@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DateTime } from 'luxon'
 import { useSelector, useDispatch } from 'react-redux'
 import { updateProfile } from '../../../redux/actions/actions'
@@ -15,6 +15,11 @@ const ProfileConsumers = () => {
     const [profileData, setProfileData] = useState({})
     const [edit, setEdit] = useState(false)
     const [password, setPasswords] = useState(false)
+    const [address, setAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [provinces, setProvinces] = useState('')
+    const [country, setCountry] = useState('')
+    const [fullAddress, setFullAddress] = useState('')
     const handleEdit = () => {
         setEdit(true)
         if (edit === true) {
@@ -47,7 +52,26 @@ const ProfileConsumers = () => {
         const { name, value } = event.target
         setProfileData(previousValue => ({ ...previousValue, [name]: value }))
     }
-
+    const handleAddressChange = event => {
+        const { name, value } = event.target
+        if (name === 'street') {
+            setAddress(value)
+        } else if (name === 'province') {
+            setProvinces(value)
+        } else if (name === 'country') {
+            setCountry(value)
+        } else if (name === 'city') {
+            setCity(value)
+        }
+    }
+    useEffect(() => {
+        // Concatenate the address, province, and country
+        const newFullAddress = `${address},${city}, ${provinces}, ${country}`
+        setFullAddress(newFullAddress)
+    }, [address, provinces, country])
+    useEffect(() => {
+        console.log(fullAddress)
+    }, [fullAddress])
     ///put de datos ///
     const handleUpdateProfile = () => {
         setEdit(false)
@@ -56,7 +80,7 @@ const ProfileConsumers = () => {
 
         dispatch(
             updateProfile(
-                { id: consumer.id, image: newImage, ...profileData },
+                { id: consumer.id, image: newImage, ...profileData, address:fullAddress, },
 
                 'consumers'
             )
@@ -153,6 +177,60 @@ const ProfileConsumers = () => {
                                 {edit && <button onClick={handlePassword}>Cambiar la contraseña</button>}
                                 {password && <ResetPassword />}
                             </h3>
+                        </div>
+                        <div className={style.address}>
+                            <h3>Tu Direccion</h3>
+                            {edit && (
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='Calle y numero'
+                                    variant='outlined'
+                                    required
+                                    multiline
+                                    color='primary'
+                                    name='street'
+                                    value={address}
+                                    onChange={handleAddressChange}
+                                />
+                            )}
+                             {edit && (
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='ciudad'
+                                    variant='outlined'
+                                    color='primary'
+                                    name='city'
+                                    value={city}
+                                    onChange={handleAddressChange}
+                                />
+                            )}
+                            {edit && (
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='Provincia'
+                                    variant='outlined'
+                                    color='primary'
+                                    name='province'
+                                    value={provinces}
+                                    onChange={handleAddressChange}
+                                />
+                            )}
+                           
+                            {edit && (
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='pais'
+                                    variant='outlined'
+                                    color='primary'
+                                    name='country'
+                                    value={country}
+                                    onChange={handleAddressChange}
+                                />
+                            )}
                         </div>
                         <div className={style.savebutton}>
                             {edit && <button onClick={handleUpdateProfile}>Guardar Cambios</button>}

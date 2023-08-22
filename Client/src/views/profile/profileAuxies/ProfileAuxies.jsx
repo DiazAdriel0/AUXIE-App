@@ -7,6 +7,7 @@ import NavGeneral from '../../../components/nav-general/NavGeneral'
 import style from './ProfileAuxies.module.scss'
 import axios from 'axios'
 import { loggedUser } from '../../../redux/actions/actions'
+import { TextField } from '@mui/material'
 const ProfileAuxies = () => {
     const provider = useSelector((state) => state.loggedUser)
     const offer = useSelector((state) => state.loggedUser.services)
@@ -16,6 +17,11 @@ const ProfileAuxies = () => {
         providerId: provider.id,
         services: [...provider.services],
     })
+    const [address, setAddress] = useState('')
+    const [city, setCity] = useState('')
+    const [provinces, setProvinces] = useState('')
+    const [country, setCountry] = useState('')
+    const [fullAddress, setFullAddress] = useState('')
     const [newImage, setNewImage] = useState('')
     const [newBio, setNewBio] = useState(provider.bio)
     const [error, setError] = useState(null)
@@ -92,7 +98,27 @@ const ProfileAuxies = () => {
             }))
         }
     }
-
+    const handleAddressChange = event => {
+        const { name, value } = event.target
+        if (name === 'street') {
+            setAddress(value)
+        } else if (name === 'province') {
+            setProvinces(value)
+        } else if (name === 'country') {
+            setCountry(value)
+        } else if (name === 'city') {
+            setCity(value)
+        }
+        setChange(true)
+    }
+    useEffect(() => {
+        // Concatenate the address, province, and country
+        const newFullAddress = `${address},${city}, ${provinces}, ${country}`
+        setFullAddress(newFullAddress)
+    }, [address, provinces, country])
+    useEffect(() => {
+        console.log(fullAddress)
+    }, [fullAddress])
     function handlePriceChange(e, serviceName) {
         const newPrice = parseFloat(e.target.value)
 
@@ -170,6 +196,7 @@ const ProfileAuxies = () => {
                         bio: newBio,
                         gallery: gallery,
                         ...serviceUpdate,
+                        address:fullAddress
                     },
 
                     'providers'
@@ -338,6 +365,60 @@ const ProfileAuxies = () => {
                                     ))}
                                 </ul>
                             </div>
+                            <div className={style.address}>
+                            <h3>Tu Direccion</h3>
+                            {edit && (
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='Calle y numero'
+                                    variant='outlined'
+                                    required
+                                    multiline
+                                    color='primary'
+                                    name='street'
+                                    value={address}
+                                    onChange={handleAddressChange}
+                                />
+                            )}
+                             {edit && (
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='ciudad'
+                                    variant='outlined'
+                                    color='primary'
+                                    name='city'
+                                    value={city}
+                                    onChange={handleAddressChange}
+                                />
+                            )}
+                            {edit && (
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='Provincia'
+                                    variant='outlined'
+                                    color='primary'
+                                    name='province'
+                                    value={provinces}
+                                    onChange={handleAddressChange}
+                                />
+                            )}
+                           
+                            {edit && (
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='pais'
+                                    variant='outlined'
+                                    color='primary'
+                                    name='country'
+                                    value={country}
+                                    onChange={handleAddressChange}
+                                />
+                            )}
+                        </div>
                             {edit && (
                                 <button
                                     className={style.updatebutton}
