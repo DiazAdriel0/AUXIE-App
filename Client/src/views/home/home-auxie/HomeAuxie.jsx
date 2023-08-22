@@ -55,7 +55,7 @@ const HomeAuxie = () => {
 
     return (
         <div>  
-           <header className='h-16 w-96'>
+           <header className='h-16 '>
                     <NavGeneral />
                 </header>
         <div className='flex'>
