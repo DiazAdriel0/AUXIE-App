@@ -1,7 +1,7 @@
 import style from './navLanding.module.scss'
 
-import LogoLight from '../../assets/logos/2.png'
-import LogoNight from '../../assets/logos/logoLight.png'
+import LogoLight from '../../assets/logos/7.png'
+import LogoNight from '../../assets/logos/7.png'
 // Hooks
 import useMenuStates from '../../hooks/useMenuStates'
 import { Animated } from 'react-animated-css'
@@ -14,16 +14,9 @@ import { useSelector } from 'react-redux'
 import BasicSelect from '../selects/Select'
 import ButtonLightNight from '../buttons/button-light-night/ButtonLightNight'
 const NavLanding = () => {
-    const menuLanding = useSelector((state) => state.menuLanding)
-    const nightMode = useSelector((state) => state.nightMode)
-    const {
-        handlerLogIn,
-        handlerRegister,
-        logInMenu,
-        registerMenu,
-        setLogInMenu,
-        setRegisterMenu,
-    } = useMenuStates()
+    const menuLanding = useSelector(state => state.menuLanding)
+    const nightMode = useSelector(state => state.nightMode)
+    const { handlerLogIn, handlerRegister, logInMenu, registerMenu, setLogInMenu, setRegisterMenu } = useMenuStates()
 
     return (
         <>
@@ -32,11 +25,7 @@ const NavLanding = () => {
                     <div className={style.logoDiv}>
                         <Link to={'/'}>
                             <img
-                                style={
-                                    nightMode
-                                        ? { filter: 'invert(100%)' }
-                                        : null
-                                }
+                                style={nightMode ? { filter: 'invert(100%)' } : null}
                                 src={!nightMode ? LogoLight : LogoNight}
                                 alt='Logo Auxie'
                                 className={style.logo}
@@ -59,19 +48,13 @@ const NavLanding = () => {
                 <div className={style.logInOrRegister}>
                     <ul>
                         <li>
-                            <button
-                                onClick={handlerLogIn}
-                                className={style.login}
-                            >
+                            <button onClick={handlerLogIn} className={style.login}>
                                 Ingresar
                             </button>
                         </li>
 
                         <li>
-                            <button
-                                onClick={() => handlerRegister()}
-                                className={style.register}
-                            >
+                            <button onClick={() => handlerRegister()} className={style.register}>
                                 Regístrarse
                             </button>
                         </li>
@@ -80,17 +63,10 @@ const NavLanding = () => {
                 </div>
             </nav>
             {logInMenu && (
-                <Animated
-                    animationIn='zoomIn'
-                    animationOut='zoomDown'
-                    animationInDuration={!menuLanding ? 200 : 0}
-                >
+                <Animated animationIn='zoomIn' animationOut='zoomDown' animationInDuration={!menuLanding ? 200 : 0}>
                     <div className={style.logInMenu}>
                         <div className={style.container}>
-                            <button
-                                className={style.closeButton}
-                                onClick={() => setLogInMenu(false)}
-                            >
+                            <button className={style.closeButton} onClick={() => setLogInMenu(false)}>
                                 X
                             </button>
                             <div>
@@ -117,9 +93,7 @@ const NavLanding = () => {
                 >
                     <div className={style.registerMenu}>
                         <div className={style.container}>
-                            <button onClick={() => setRegisterMenu(false)}>
-                                X
-                            </button>
+                            <button onClick={() => setRegisterMenu(false)}>X</button>
                             <div>
                                 <ul>
                                     <Link to={'/clientform'}>

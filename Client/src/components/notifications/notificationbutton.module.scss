@@ -1,18 +1,18 @@
 .button {
     width: 6rem;
-    height: 45px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    border-radius: 30px;
+    border-radius: 2px;
     color: rgb(255, 255, 255);
     font-weight: 600;
     border: none;
     position: relative;
     cursor: pointer;
     transition-duration: 0.2s;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+
     overflow: hidden; /* Ensure the content doesn't overflow */
 }
 
@@ -61,6 +61,5 @@
         transform: rotateZ(2deg);
     }
 }
-.fullcontainer{
-
+.fullcontainer {
 }
