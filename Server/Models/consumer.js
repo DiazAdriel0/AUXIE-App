@@ -61,6 +61,11 @@ const consumerSchema = new Schema({
     userUid: {
         type: String,
     },
+
+    claims: {
+        type: Array,
+    },
+
 })
 
 consumerSchema.set('toJSON', {

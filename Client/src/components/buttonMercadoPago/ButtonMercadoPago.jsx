@@ -2,17 +2,21 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+import CircularProgress from '@mui/material/CircularProgress'
 
-const ButtonMercadoPago = (props) => {
+const ButtonMercadoPago = props => {
     const [preferenceId, setPreferenceId] = useState(null)
     const [description, setDescription] = useState(props.description)
     const [price, setPrice] = useState(props.price)
     const [quantity, setQuantity] = useState(props.quantity)
     const [showPayButton, setShowPayButton] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     initMercadoPago('TEST-4f16f016-a822-4c4d-bb35-e48447a441d6')
 
     const createPreference = async () => {
+        setShowPayButton(true)
+        setLoading(true)
         try {
             const response = await axios.post('/buy', {
                 description,
@@ -22,7 +26,7 @@ const ButtonMercadoPago = (props) => {
             })
 
             const { id } = response.data
-            setShowPayButton(true)
+            setLoading(false)
             return id
         } catch (error) {
             console.log(error)
@@ -38,32 +42,12 @@ const ButtonMercadoPago = (props) => {
 
     return (
         <div>
-            {/*  <img src="" alt="" />
-            <h3>Boton de Pago</h3>
-            <input
-                type="text"
-                placeholder={description}
-                value={description}
-                readOnly
-                // onChange={(elem) => setDescription(elem.target.value)}
-            />
-            <input
-                type="text"
-                placeholder={price}
-                value={price}
-                readOnly
-                // onChange={(elem) => setPrice(elem.target.value)}
-            />
-            <input
-                type="number"
-                placeholder={quantity}
-                value={quantity}
-                readOnly
-                // onChange={(elem) => setQuantity(elem.target.value)}
-            />*/}
-
             {!showPayButton && <button onClick={handleBuy}>Pagar</button>}
-            {showPayButton && <Wallet initialization={{ preferenceId }} />}
+            {loading ? (
+                <CircularProgress />
+            ) : (
+                <div>{showPayButton && <Wallet initialization={{ preferenceId }} />}</div>
+            )}
         </div>
     )
 }

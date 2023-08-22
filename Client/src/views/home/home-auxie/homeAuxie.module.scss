@@ -85,19 +85,19 @@
 .cardServices {
     display: flex;
     flex-direction: column;
-    background-color: white;
-    border-radius: 10px;
-    height: 300px;
-    width: 300px;
-    margin-bottom: 80px;
+    // background-color: white;
+  
+    height: 5rem;
+    width: 11rem;
+    // margin-bottom: 80px;
     color: rgba(0, 0, 0, 0.8);
 
-    box-shadow:
-        0 4px 6px rgba(0, 0, 0, 0.1),
-        0 5px 15px rgba(0, 0, 0, 0.08);
-    transition:
-        transform 0.3s ease-in-out,
-        box-shadow 0.3s ease-in-out;
+    // box-shadow:
+    //     0 4px 6px rgba(0, 0, 0, 0.1),
+    //     0 5px 15px rgba(0, 0, 0, 0.08);
+    // transition:
+    //     transform 0.3s ease-in-out,
+    //     box-shadow 0.3s ease-in-out;
 
     img {
         width: 100%;
@@ -107,16 +107,18 @@
     }
     h4 {
         background-color: white;
-        padding: 20px;
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
     }
 }
 
-.cardServices:hover {
-    transform: translateY(-5px);
-    box-shadow:
-        0 6px 8px rgba(0, 0, 0, 0.15),
-        0 8px 20px rgba(0, 0, 0, 0.12);
-}
+// .cardServices:hover {
+//     transform: translateY(-5px);
+//     box-shadow:
+//         0 6px 8px rgba(0, 0, 0, 0.15),
+//         0 8px 20px rgba(0, 0, 0, 0.12);
+// }
 
 //Night Mode
 .cardServicesNight {

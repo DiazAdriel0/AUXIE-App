@@ -23,6 +23,7 @@ const FeaturedAuxies = () => {
                         services={aux.services}
                         averageRating={aux.averageRating}
                         image={aux.image.secure_url}
+                        bio={aux.bio}
                     />
                 ))}
         </div>

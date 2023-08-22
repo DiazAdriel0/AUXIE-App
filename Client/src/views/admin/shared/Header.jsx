@@ -25,14 +25,9 @@ const Header = () => {
             </div>
             <div className='flex items-center gap-2 mr-2'>
                 <Popover className='relative'>
-                    {({ open }) => (
+                    {() => (
                         <>
-                            <Popover.Button
-                                className={classNames(
-                                    open && 'bg-gray-100',
-                                    'p1.5 rounded-sm inline-flex items-center text-gray-700 hover:text-opacity-100 focus:outline-none active:bg-gray-100'
-                                )}
-                            >
+                            <Popover.Button style={{ all: 'unset', cursor: 'pointer' }}>
                                 <HiOutlineChatAlt fontSize={24} />
                             </Popover.Button>
                             <Transition
@@ -55,14 +50,9 @@ const Header = () => {
                     )}
                 </Popover>
                 <Popover className='relative'>
-                    {({ open }) => (
+                    {() => (
                         <>
-                            <Popover.Button
-                                className={classNames(
-                                    open && 'bg-gray-100',
-                                    'p1.5 rounded-sm inline-flex items-center text-gray-700 hover:text-opacity-100 focus:outline-none active:bg-gray-100'
-                                )}
-                            >
+                            <Popover.Button style={{ all: 'unset', cursor: 'pointer' }}>
                                 <HiOutlineBell fontSize={24} />
                             </Popover.Button>
                             <Transition
@@ -86,7 +76,7 @@ const Header = () => {
                 </Popover>
                 <Menu as='div' className='relative '>
                     <div>
-                        <Menu.Button className='ml-2 inline-flex rounded-full focus:outline-none focus:ring-2 focus:ring-neutral-400 '>
+                        <Menu.Button style={{ all: 'unset', cursor: 'pointer' }}>
                             <span className='sr-only'>Open user menu</span>
                             <div
                                 className='h-10 w-10  rounded-full bg-sky-500 bg-cover bg-no-repeat bg-center'

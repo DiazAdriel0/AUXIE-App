@@ -1,37 +1,52 @@
 .cardCont {
-    background-color: rgba(162, 155, 227, 0.515);
+    background-color: var(--card-background-light);
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--secondary--color-hover);
+    border-radius: 5px;
+    width: 100%;
+    height: auto;
+    padding: 1em 2em 1em 2em;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.cardContNight {
+    background-color: var(--card-background-dark);
+    display: flex;
+    flex-flow: row wrap;
     justify-content: space-evenly;
     align-items: center;
     border: 1px solid var(--secondary--color-hover);
-    border-radius: 1.5%;
-    min-width: 360px;
-    height: auto;
+    border-radius: 5px;
+    width: 80%;
+    height: 8em;
     padding: 2px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.22);
-    transition: all 0.5s;
-}
-.cardCont:hover {
-    border: 1px solid var(--secondary--color-hover);
-    transform: scale(1.03);
-    z-index: 1;
+    box-shadow: 5px 5px 5px rgba(255, 255, 255, 0.22);
 }
 
 .requestDetails {
     display: flex;
-    flex-flow: column wrap;
-    align-items: flex-start;
-    margin: 5%;
-    width: 300px;
-}
-
-.statusButtonCont {
-    margin: 5%;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    width: 70%;
+    gap: 0px 20px;
+    .requestInfo{
+        display: flex;
+        flex-flow: column wrap;
+        max-width: 20%;
+        flex-grow: 1;
+    }
 }
 
 p {
     font-weight: bold;
+}
+
+.auxieLink:hover{
+    cursor: pointer;
+    color: var(--button-color-light);
 }
 
 .reviewFormContainer{
@@ -70,4 +85,3 @@ p {
     }
     
 }
-

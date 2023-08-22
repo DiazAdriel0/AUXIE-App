@@ -1,4 +1,4 @@
-const data = [
+export const data01 = [
     {
         name: 'Ene',
         expense: 2500,
@@ -61,4 +61,143 @@ const data = [
     },
 ]
 
-export default data
+export const data02 = [
+    { name: 'Group A', value: 400 },
+    { name: 'Group B', value: 300 },
+    { name: 'Group C', value: 300 },
+    { name: 'Group D', value: 200 },
+]
+export const data03 = [
+    { name: 'A1', value: 100 },
+    { name: 'A2', value: 300 },
+    { name: 'B1', value: 100 },
+    { name: 'B2', value: 80 },
+    { name: 'B3', value: 40 },
+    { name: 'B4', value: 30 },
+    { name: 'B5', value: 50 },
+    { name: 'C1', value: 100 },
+    { name: 'C2', value: 200 },
+    { name: 'D1', value: 150 },
+    { name: 'D2', value: 50 },
+]
+
+export const recentOrderData = [
+    {
+        id: '1',
+        product_id: '4324',
+        customer_id: '23143',
+        customer_name: 'Genaro Lopez',
+        order_date: '2023-08-17T03:24:00',
+        order_total: '$4351',
+        current_order_status: 'TERMINADO',
+        shipment_address: 'General Pacheco',
+    },
+    {
+        id: '2',
+        product_id: '4324',
+        customer_id: '23143',
+        customer_name: 'Fancisco Junoy',
+        order_date: '2023-08-17T03:24:00',
+        order_total: '$61250',
+        current_order_status: 'TERMINADO',
+        shipment_address: 'Caseros',
+    },
+    {
+        id: '3',
+        product_id: '4324',
+        customer_id: '23143',
+        customer_name: 'Rodrigo Merck',
+        order_date: '2023-08-17T03:24:00',
+        order_total: '$15000',
+        current_order_status: 'TERMINADO',
+        shipment_address: 'Caseros',
+    },
+    {
+        id: '7',
+        product_id: '7453',
+        customer_id: '96453',
+        customer_name: 'Daniel Scioli',
+        order_date: '2023-08-14T05:24:00',
+        order_total: '$9600',
+        current_order_status: 'CANCELADO',
+        shipment_address: 'Tigre',
+    },
+    {
+        id: '2',
+        product_id: '5434',
+        customer_id: '65345',
+        customer_name: 'Florencia Garcia',
+        order_date: '2023-08-17T07:14:00',
+        order_total: '$8300',
+        current_order_status: 'CANCELADO',
+        shipment_address: 'Capital Federal',
+    },
+    {
+        id: '21',
+        product_id: '5434',
+        customer_id: '65345',
+        customer_name: 'Miguel Angel Lopez',
+        order_date: '2023-08-17T07:14:00',
+        order_total: '$8350',
+        current_order_status: 'EN_ESPERA',
+        shipment_address: 'Capital Federal',
+    },
+    {
+        id: '23',
+        product_id: '5434',
+        customer_id: '65345',
+        customer_name: 'Luz Andrea Figaro',
+        order_date: '2023-08-17T07:14:00',
+        order_total: '$8370',
+        current_order_status: 'TERMINADO',
+        shipment_address: 'Rosario',
+    },
+    {
+        id: '3',
+        product_id: '9854',
+        customer_id: '87832',
+        customer_name: 'Luke Skywalker',
+        order_date: '2023-08-16T12:40:00',
+        order_total: '$17620',
+        current_order_status: 'EN_PROGRESO',
+        shipment_address: 'Mataderos',
+    },
+]
+
+export const popularServices = [
+    {
+        id: '7',
+        product_name: 'Plomero',
+        product_thumbnail: 'https://source.unsplash.com/100x100?plomer',
+        product_price: '$3900.00',
+        product_stock: 234,
+    },
+    {
+        id: '1',
+        product_name: 'Gasista',
+        product_thumbnail: 'https://source.unsplash.com/100x100?worker',
+        product_price: '$2999.00',
+        product_stock: 156,
+    },
+    {
+        id: '3',
+        product_name: 'Limpieza',
+        product_thumbnail: 'https://source.unsplash.com/100x100?cleaning',
+        product_price: '$2199.99',
+        product_stock: 98,
+    },
+    {
+        id: '4314',
+        product_name: 'Chofer',
+        product_thumbnail: 'https://source.unsplash.com/100x100?driver',
+        product_price: '$699.00',
+        product_stock: 0,
+    },
+    {
+        id: '4314',
+        product_name: 'Niñera',
+        product_thumbnail: 'https://source.unsplash.com/100x100?driver',
+        product_price: '$699.00',
+        product_stock: 0,
+    },
+]

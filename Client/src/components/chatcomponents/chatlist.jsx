@@ -5,8 +5,12 @@ import { doc, onSnapshot } from 'firebase/firestore'
 import { auth, db } from '../../config/firebase-config'
 import { Chat } from '../../views/chat/Chat'
 import style from './chatlist.module.scss'
+import MinimizeRoundedIcon from '@mui/icons-material/MinimizeRounded';
+
+
 const Chatlist = () => {
     const [selectedUser, setSelectedUser] = useState(null) // Store the selected sender
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [chats, setChats] = useState([])
     const handleUserSelection = (sender) => {
         setSelectedUser(sender)
@@ -43,11 +47,19 @@ const Chatlist = () => {
 
             {/* Only display the chat component if a user is selected */}
             {selectedUser && (
-                <Chat
-                    auxiedetails={auth.currentUser.uid}
-                    recipient={selectedUser}
-                />
-            )}
+                <div className={style.chatT} >
+                    <div className={style.iconCont}>
+                        <MinimizeRoundedIcon className={style.iconMin} onClick={
+                                ()=>{
+                                    setSelectedUser(null)
+                                }
+                            }></MinimizeRoundedIcon>
+                    </div>
+                    <Chat
+                        auxiedetails={auth.currentUser.uid}
+                        recipient={selectedUser}
+                    />
+                </div>)}
         </div>
     )
 }

@@ -1,4 +1,4 @@
-// import style from './auxieServices.module.scss'
+import style from './auxieServices.module.scss'
 import axios from 'axios'
 //Hooks
 import { useEffect } from 'react'
@@ -42,11 +42,15 @@ const AuxieServices = () => {
                 <NavGeneral />
             </header>
             {/* aside */}
-
-            <div className='grid grid-cols-2 mb-4 mr-52'>
+<div className='grid grid-cols-2 mb-4 mr-52'>
                 <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-52  pl-14 pb-2'>
                     <AsideAuxie />
                 </aside>
+          
+            {/* main */}
+            <main className={style.main}>
+                <TableServices />
+            </main>
 
                 {/* main */}
                 <main className='-ml-96 px-16 pt-2 bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-max'> 

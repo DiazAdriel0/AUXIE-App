@@ -58,26 +58,45 @@ const HomeAuxie = () => {
                 <NavGeneral />
             </header>
             {/* Aside */}
-            <div className='grid grid-cols-3 '>
-                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 pb-36'>
-                    <AsideAuxie />
-                </aside>
-                {/* Main */}
-                <main className='bg-div-text-color-light text-color-light p-4 pl-8 pr-96 -ml-60 border-2 border-div-text-color-light-900 '>
-                    <h3 className='mb-4'>Servicios</h3>
-                    <div>
-                        <div className='grid grid-cols-2 grid-rows-2 gap-x-80 gap-y-0.5 px-4'>
-                            {services ? (
-                                services.map(service => (
-                                    <div className={style.cardServices} key={service.name}>
-                                        <img src={service.image?.secure_url} alt={service.name} />
-                                        <h4>{service.name}</h4>
-                                    </div>
-                                ))
-                            ) : (
-                                <p>No ofrece servicios</p>
-                            )}
-                        </div>
+            <AsideAuxie />
+            {/* Main */}
+            <main className={style.main}>
+                <div className={style.services}>
+                    <h3>Servicios</h3>
+                    <div className={style.userServices}>
+                        {services ? (
+                            services.map(service => (
+                                <div className={style.cardServices} key={service.name}>
+                                    {/* <img src={service.image?.secure_url} alt={service.name} /> */}
+                                    <h4>{service.name}</h4>
+                                </div>
+                            ))
+                        ) : (
+                            <p>No ofrece servicios</p>
+                        )}
+                    </div>
+                    <div className={style.inbox}>
+                        <p>Calificación de los ultimos servicios</p>
+                        <table className={style.servicesTable}>
+                            <thead>
+                                <tr>
+                                    <th>Servicio</th>
+                                    <th>Reseña</th>
+                                    <th>Calificación</th>
+                                    <th>Contratante</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {lastJobs?.map((review, index) => (
+                                    <tr key={index}>
+                                        <td>{review.service}</td>
+                                        <td>{review.review}</td>
+                                        <td>{review.score}</td>
+                                        <td>{review.username}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
                 </main>
                 <div className='bg-div-text-color-light p-4 border-t-2 border-b-2 border-r-2 border-div-text-color-light-900'>
