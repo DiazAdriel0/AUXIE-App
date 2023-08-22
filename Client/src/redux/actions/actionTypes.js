@@ -22,6 +22,7 @@ export const POST_CLAIM = 'POST_CLAIM'
 export const GET_ALL_CONSUMERS = 'GET_ALL_CONSUMERS'
 export const GET_CLAIMS = 'GET_CLAIMS'
 export const GET_CLAIM_ID = 'GET_CLAIM_ID'
+export const GET_ALL_CLAIMS = 'GET_ALL_CLAIMS'
 
 export const UPDATE_CONSUMER = 'UPDATE_CONSUMER'
 export const UPDATE_PROVIDER = 'UPDATE_PROVIDER'

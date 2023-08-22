@@ -1,18 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
-import { getClaims } from '../../redux/actions/actions'
+import { getAllClaims } from '../../redux/actions/actions'
 import { Link } from 'react-router-dom'
 import { DateTime } from 'luxon'
 
 const SupportFormAdmin = () => {
+    const claims = useSelector(state => state.allClaims)
     const dispatch = useDispatch()
     const [actualPage, setActualPage] = useState(1)
     const claimsPage = 5
-    const claims = useSelector(state => state.claims)
 
     useEffect(() => {
         if (claims.length === 0) {
-            dispatch(getClaims())
+            dispatch(getAllClaims())
         }
     }, [dispatch, claims.length])
 
@@ -42,7 +42,7 @@ const SupportFormAdmin = () => {
                         currentClaims
                             .sort((a, b) => new Date(b.dateClaims) - new Date(a.dateClaims))
                             .map((claim, index) => (
-                                <Link to={`/support/claims/${claim.id}`} key={index}>
+                                <Link to={`/dashboard/claims/${claim.id}`} key={index}>
                                     <div className='card'>
                                         <p>Usuario: {claim.email}</p>
                                         <p>

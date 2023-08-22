@@ -22,6 +22,7 @@ import {
     GET_ALL_CLIENTS,
     SWITCH_FAVORITES,
     GET_CLAIM_ID,
+    GET_ALL_CLAIMS,
 } from './actions/actionTypes'
 
 let initialState = {
@@ -41,6 +42,7 @@ let initialState = {
     token: '',
     claims: [],
     id: [],
+    allClaims: [],
 }
 
 function rootReducer(state = initialState, action) {
@@ -69,6 +71,13 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 id: action.payload,
+            }
+
+        case GET_ALL_CLAIMS:
+            return{
+                ...state,
+                allClaims: [...action.payload],
+
             }
 
         // obtengo todos los servicios de mi back y los guardo en mi estado global
