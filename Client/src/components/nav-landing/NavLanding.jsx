@@ -72,7 +72,7 @@ const NavLanding = () => {
                                 onClick={() => handlerRegister()}
                                 className={style.register}
                             >
-                                Regístrarse
+                                Registrarse
                             </button>
                         </li>
                     </ul>
@@ -96,10 +96,10 @@ const NavLanding = () => {
                             <div>
                                 <ul>
                                     <Link to={'/clientLogin'}>
-                                        <div>Iniciar Sesion Como Cliente</div>
+                                        <div>Iniciar Sesión Como Cliente</div>
                                     </Link>
                                     <Link to={'/auxieLogin'}>
-                                        <div>Iniciar Sesion Como Auxie</div>
+                                        <div>Iniciar Sesión Como Auxie</div>
                                     </Link>
                                 </ul>
                             </div>
