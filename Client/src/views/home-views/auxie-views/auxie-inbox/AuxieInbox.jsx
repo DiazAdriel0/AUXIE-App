@@ -18,7 +18,7 @@ const AuxieInbox = () => {
                 dispatch(loggedUser(response.data))
             }
         } catch (error) {
-            console.log(error.message)
+            console.error(error.message)
         }
     }
     useEffect(() => {
@@ -32,20 +32,18 @@ const AuxieInbox = () => {
                 <NavGeneral />
             </header>
             <div className='grid grid-cols-3 mb-2'>
-                <aside className="bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-52 pt-32 pl-14">
+                <aside className='bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-52 pt-32 pl-14'>
                     {/* Aside */}
                     <AsideAuxie />
                 </aside>
                 {/* Main */}
                 <main className='-ml-64 pr-40 pt-2 bg-div-text-color-light  text-color-light border-2 border-div-text-color-light-900 w-max'>
-               
-                        <Chatlist />
-                   
+                    <Chatlist />
                 </main>
-                <div className=" bg-div-text-color-light  border-2 border-div-text-color-light-900"> 
-                    <h3 className="m-2">Futuros Trabajos</h3>
-                 {/* <Chat auxiedetails={auth.currentUser.uid}recipient={user.inbox[0].sender}/>  */}
-                    </div> 
+                <div className=' bg-div-text-color-light  border-2 border-div-text-color-light-900'>
+                    <h3 className='m-2'>Futuros Trabajos</h3>
+                    {/* <Chat auxiedetails={auth.currentUser.uid}recipient={user.inbox[0].sender}/>  */}
+                </div>
             </div>
             {/* Footer */}
             <Footer />

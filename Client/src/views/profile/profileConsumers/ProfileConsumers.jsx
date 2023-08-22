@@ -80,7 +80,7 @@ const ProfileConsumers = () => {
 
         dispatch(
             updateProfile(
-                { id: consumer.id, image: newImage, ...profileData, address:fullAddress, },
+                { id: consumer.id, image: newImage, ...profileData, address: fullAddress },
 
                 'consumers'
             )
@@ -97,7 +97,7 @@ const ProfileConsumers = () => {
     //     ?.map((service) => service.service)
     //     .join(' | ')
     // const requiredServicesNamesSet = new Set(requiredServicesNames)
-    // console.log(profileData)
+
     return (
         <div>
             <div>
@@ -108,10 +108,9 @@ const ProfileConsumers = () => {
                     <div className={style.secondcontainer}>
                         <button type='button' className={style.edit} onClick={handleEdit}>
                             Editar perfil
-                            
                         </button>
-                        <div className={style.datejoined}>  Te uniste: {toDateMed}</div>
-                      
+                        <div className={style.datejoined}> Te uniste: {toDateMed}</div>
+
                         <div className={style.imagecontainer}>
                             <img src={consumer.image?.secure_url} alt='imagen de perfil' />
                         </div>
@@ -123,11 +122,11 @@ const ProfileConsumers = () => {
                                 className={style.imageButton}
                             />
                         )}
-                     
+
                         <h1 className={style.name}>
                             {consumer.firstName} {consumer.lastName}
                         </h1>
-                        
+
                         {edit && (
                             <TextField
                                 className={style.picker}
@@ -140,7 +139,7 @@ const ProfileConsumers = () => {
                                 name='firstName'
                                 value={profileData.firstName}
                                 onChange={handleChange}
-                                sx={{margin:9}}
+                                sx={{ margin: 9 }}
                                 focused
                             />
                         )}
@@ -201,7 +200,7 @@ const ProfileConsumers = () => {
                                     onChange={handleAddressChange}
                                 />
                             )}
-                             {edit && (
+                            {edit && (
                                 <TextField
                                     className={style.picker}
                                     id='outlined-basic'
@@ -225,7 +224,7 @@ const ProfileConsumers = () => {
                                     onChange={handleAddressChange}
                                 />
                             )}
-                           
+
                             {edit && (
                                 <TextField
                                     className={style.picker}

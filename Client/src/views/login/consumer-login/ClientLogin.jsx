@@ -91,7 +91,7 @@ const ClientLogin = () => {
                         console.log('I was closed by the timer')
                     }
                 })
-                console.log(logged)
+
                 // eslint-disable-next-line no-prototype-builtins
                 if (logged.hasOwnProperty('firstName')) {
                     if (!logged?.userUid) {

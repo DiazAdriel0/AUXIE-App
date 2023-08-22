@@ -385,7 +385,7 @@ export const getClaimId = id => {
 //                 payload: res.data,
 //             })
 //         } catch (e) {
-//             console.log(e.response.data)
+//             console.error(e.response.data)
 //         }
 //     }
 // }
