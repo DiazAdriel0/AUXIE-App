@@ -9,6 +9,7 @@ import { TextField } from '@mui/material'
 import ResetPassword from '../../reset-password/ResetPassword'
 
 const ProfileConsumers = () => {
+    const user = useSelector((state) =>state.loggedUser)
     const consumer = useSelector(state => state.loggedUser)
     const [newImage, setNewImage] = useState(null)
     const [error, setError] = useState(null)
@@ -139,7 +140,7 @@ const ProfileConsumers = () => {
                                 name='firstName'
                                 value={profileData.firstName}
                                 onChange={handleChange}
-                                sx={{ margin: 9 }}
+                                sx={{ margin: 9,marginLeft:22 }}
                                 focused
                             />
                         )}
@@ -186,6 +187,7 @@ const ProfileConsumers = () => {
                         </div>
                         <div className={style.address}>
                             <h3>Tu Direccion</h3>
+                            {!edit && <p>{user.address}</p>}
                             {edit && (
                                 <TextField
                                     className={style.picker}
@@ -198,6 +200,8 @@ const ProfileConsumers = () => {
                                     name='street'
                                     value={address}
                                     onChange={handleAddressChange}
+                                    focused
+                                    sx={{width:150,margin:1}}
                                 />
                             )}
                             {edit && (
@@ -210,6 +214,8 @@ const ProfileConsumers = () => {
                                     name='city'
                                     value={city}
                                     onChange={handleAddressChange}
+                                    focused
+                                    sx={{width:150,margin:1}}
                                 />
                             )}
                             {edit && (
@@ -222,6 +228,8 @@ const ProfileConsumers = () => {
                                     name='province'
                                     value={provinces}
                                     onChange={handleAddressChange}
+                                    focused
+                                    sx={{width:150,margin:1}}
                                 />
                             )}
 
@@ -235,6 +243,8 @@ const ProfileConsumers = () => {
                                     name='country'
                                     value={country}
                                     onChange={handleAddressChange}
+                                    focused
+                                    sx={{width:150,margin:1}}
                                 />
                             )}
                         </div>
