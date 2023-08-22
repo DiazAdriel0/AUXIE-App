@@ -5,6 +5,9 @@ const providerSchema = new Schema({
         type: Boolean,
         default: true,
     },
+    isAuxie: {
+        type: Boolean,
+    },
     firstLogin: {
         type: Boolean,
         default: true,

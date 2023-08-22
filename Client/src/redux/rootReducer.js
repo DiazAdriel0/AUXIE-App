@@ -207,7 +207,7 @@ function rootReducer(state = initialState, action) {
                 ...state,
                 loggedUser: {
                     ...state.loggedUser,
-                    claims: [...initialState.claims, action.payload],
+                    claims: [...state.claims, action.payload],
                 },
             }
 
@@ -225,7 +225,7 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 loggedUser: {
-                    ...initialState.loggedUser,
+                    ...state.loggedUser,
                     firstLogin: action.payload,
                 },
             }
