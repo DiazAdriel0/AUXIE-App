@@ -48,7 +48,7 @@
 
     width: 100%;
     // justify-content: space-between;
-margin-right: 50%;
+// margin-right: 50%;
 
 
 }
@@ -89,24 +89,20 @@ margin-right: 50%;
 .bio {
     height: 20%;
     margin: 2%;
-
+    padding-top: 5%;
  
-    h1{
-        font-size: 2rem !important;
-        border-bottom: 1px solid;
-    }
-    p{
-        font-size: 1.1rem !important;
-      font-weight: 400;
-
     h3{
         font-weight: 500;
         font-size: 1.25em;
+        border-bottom: 0.5px solid grey;
+    }
+    p{
+        font-weight: 400;
     }
      
 
-    }
 }
+
 
 .detailform {
     display: flex;
@@ -136,13 +132,13 @@ overflow-y: scroll;
 h1{
     font-size: 1.5rem;
 }
+}
 
 .chatT{
     display: flex;
     flex-direction: column;
-    
-}
-.iconCont{
+    width: 30.5%;
+    .iconCont{
     display: flex;
     justify-content: flex-end;
     width: 100%;
@@ -156,5 +152,5 @@ h1{
     .iconMin:hover{
         background-color: rgba(108, 111, 121, 0.56)
     }
-
-}}
+}
+}
