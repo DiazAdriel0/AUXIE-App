@@ -339,7 +339,6 @@ export function updateFirstLogin(typeUser, id) {
     }
 }
 
-
 export function getAllClients() {
     return async function (dispatch) {
         try {
@@ -351,6 +350,8 @@ export function getAllClients() {
         } catch (e) {
             console.error(e.response.data)
         }
+    }
+}
 
 export function switchFavorites(state) {
     return async function (dispatch) {
@@ -368,7 +369,6 @@ export const getClaimId = id => {
             type: GET_CLAIM_ID,
             payload: data,
         })
-
     }
 }
 
