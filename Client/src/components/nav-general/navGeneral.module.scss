@@ -11,6 +11,24 @@
     justify-content: flex-end;
     width: auto; /* Allow the content to determine width */
 }
+.containerLeft {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    .logoDiv {
+        width: 33%;
+        // margin-left: 1%;
+        margin-top: 1%;
+
+        a {
+            border-bottom: none;
+        }
+        .logo {
+            width: 100%;
+        }
+    }
+}
 
 .nightswitch {
     display: flex;
