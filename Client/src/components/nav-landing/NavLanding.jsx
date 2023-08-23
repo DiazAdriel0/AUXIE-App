@@ -53,14 +53,7 @@ const NavLanding = () => {
                             </button>
                         </li>
 
-                        <li>
-
-                            
-                            <button onClick={() => handlerRegister()} className={style.register}>
-                                Registrarse
-
-                            </button>
-                        </li>
+             
                     </ul>
                     <div className='flex items-center'>
                         <ButtonLightNight />
