@@ -17,7 +17,7 @@
             width: 100%;
             border-radius: 50%;
             clip-path: circle();
-            object-fit: cover;
+            object-fit:contain;
         }
 
         height: 10vh;
