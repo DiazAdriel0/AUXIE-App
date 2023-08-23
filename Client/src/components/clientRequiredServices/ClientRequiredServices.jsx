@@ -100,9 +100,6 @@ const ClientRequiredServices = () => {
                     </div>
                 </div>
             )}
-            <div className={style.servicesTitleCont}>
-                <h2 className={style.servicesTitle}>Servicios contratados</h2>
-            </div>
             <div className={style.servicesCont}>
                 <button onClick={handleSwitch}>{cards ? 'Cambiar a tabla' : 'Cambiar a cartas'}</button>
                 {cards ? (

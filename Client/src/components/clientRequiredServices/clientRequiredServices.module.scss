@@ -3,11 +3,10 @@
     flex-flow: row wrap;
     justify-content: center;
 }
-
 .servicesTable {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin: 2%;
     font-size: 12px;
     overflow-x: auto;
     display: block;
@@ -78,14 +77,6 @@
 
 .separacion {
     background-color: #555;
-}
-
-.servicesTitleCont{
-    margin-left: 5%;
-
-    .servicesTitle{
-        color:#333;
-    }
 }
 
 
