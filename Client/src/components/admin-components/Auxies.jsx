@@ -8,7 +8,7 @@ const Auxies = () => {
     const navigate = useNavigate()
     const auxies = useSelector(state => state.filteredAuxies)
     const loggedUser = useSelector(state => state.loggedUser)
-    const { currentPageData } = usePagination(12, auxies)
+    const { currentPageData } = usePagination(9, auxies)
     useEffect(() => {
         if (!loggedUser.isAdmin) {
             if (loggedUser.isAuxie) {
@@ -22,7 +22,7 @@ const Auxies = () => {
         <>
             <TableUsers data={currentPageData} />
             <div className='mt-[4rem]'>
-                <Pagination num={12} data={auxies} />
+                <Pagination num={9} data={auxies} />
             </div>
         </>
     )
