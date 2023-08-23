@@ -40,7 +40,7 @@ function LoginRegisterAuxie() {
         email: '',
         password: '',
     })
-    console.log(input)
+    
     const logged = useSelector(state => state.loggedUser)
     const handleChange = event => {
         setInput({
@@ -106,11 +106,6 @@ function LoginRegisterAuxie() {
                     willClose: () => {
                         clearInterval(timerInterval)
                     },
-                }).then(result => {
-                    /* Read more about handling dismissals below */
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        console.log('I was closed by the timer')
-                    }
                 })
 
                 // eslint-disable-next-line no-prototype-builtins
@@ -129,7 +124,7 @@ function LoginRegisterAuxie() {
         const form = document.getElementById('form')
         const email = input.email
         const password = input.password
-        console.log(email, password)
+    
         try {
             const credential = await signInWithEmailAndPassword(auth, email, password)
             if (credential) {
@@ -192,7 +187,7 @@ function LoginRegisterAuxie() {
         gender: '',
         userUid: '',
     })
-    console.log(signUp)
+   
     const handleSignUpChange = event => {
         setSignUp({
             ...signUp,
@@ -207,7 +202,7 @@ function LoginRegisterAuxie() {
         )
     }
     const handlePost = async signUp => {
-        console.log(signUp)
+      
         try {
             const response = await axios.post('/providers/', signUp)
             if (response) {
@@ -226,7 +221,7 @@ function LoginRegisterAuxie() {
                     default:
                         welcome = 'Bienvenidx'
                 }
-                console.log(response)
+                 
                 // Reset the form only on successful response (2xx)
                 const form = document.getElementById('form')
                 Swal.fire(`Usuario creado con exito. ${welcome} a Auxie! Inicia sesión para continuar.`)
