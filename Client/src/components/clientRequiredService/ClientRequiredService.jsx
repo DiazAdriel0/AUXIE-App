@@ -105,9 +105,9 @@ const ClientRequiredService = job => {
         }
     }, [shouldCloseForm])
 
-    useEffect(() => {
-        updateConsumer(client.id)
-    },[client])
+    // useEffect(() => {
+    //     updateConsumer(client.id)
+    // },[client])
 
     return (
         <>

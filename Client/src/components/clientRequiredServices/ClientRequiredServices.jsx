@@ -69,9 +69,9 @@ const ClientRequiredServices = () => {
         }
     }, [shouldCloseForm, client])
 
-    useEffect(() => {
-        dispatch(updateConsumer(client.userUid))
-    }, [client])
+    // useEffect(() => {
+    //     dispatch(updateConsumer(client.userUid))
+    // }, [client])
     return (
         <>
             {showForm && (
