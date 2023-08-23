@@ -76,6 +76,9 @@
 .contServices::-webkit-scrollbar {
     display: none;
 }
+.contServices::-moz-scrollbar {
+    display: none;
+}
 
 .serviceDiv {
     width: 50%;
