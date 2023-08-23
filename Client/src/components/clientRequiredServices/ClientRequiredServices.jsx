@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { DateTime } from 'luxon'
 import style from './clientRequiredServices.module.scss'
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
 import ClientRequiredService from '../clientRequiredService/ClientRequiredService'
@@ -12,6 +11,7 @@ const ClientRequiredServices = () => {
     const dispatch = useDispatch()
     const client = useSelector(state => state.loggedUser)
     const [cards, setCards] = useState(true)
+    const [update, setUpdate] = useState(false)
     const targetRef = useRef(null)
     const [showForm, setShowForm] = useState(false)
     const [shouldCloseForm, setShouldCloseForm] = useState(false)
@@ -23,6 +23,24 @@ const ClientRequiredServices = () => {
         declined: 'Rechazado',
         proposal: 'Propuesta',
     }
+
+    function formatDateFromMilliseconds(milliseconds) {
+        const date = new Date(milliseconds);
+        const options = { year: 'numeric', month: 'long', day: 'numeric'};
+        return date.toLocaleDateString(undefined, options);
+      }
+    // const formattedDate = formatDateFromMilliseconds(requestDate);
+
+    function formatISOStringToReadable(isoString) {
+        const date = new Date(isoString);
+        const year = date.getFullYear();
+        const month = date.toLocaleString('default', { month: 'long' });
+        const day = date.getDate();
+      
+        const formattedDate = `${day} de ${month} de ${year}`;
+        return formattedDate;
+      }
+    //   const formattedDate2 = formatISOStringToReadable(jobDate)
 
     const handleClickOutside = event => {
         if (shouldCloseForm && targetRef.current && !targetRef.current.contains(event.target)) {
@@ -60,6 +78,7 @@ const ClientRequiredServices = () => {
         if (e.target.innerText === 'Cancelado') return Swal.fire('Has cancelado tu pedido')
         if (e.target.innerText === 'Pendiente') return Swal.fire('Espera a que el Auxie apruebe tu pedido')
         if (e.target.innerText === 'Rechazado') return Swal.fire('El auxie ha rechazado tu pedido')
+        setUpdate(true)
     }
 
     useEffect(() => {
@@ -69,13 +88,13 @@ const ClientRequiredServices = () => {
         }
     }, [shouldCloseForm, client])
 
-    // useEffect(() => {
-    //     dispatch(updateConsumer(client.userUid))
-    // }, [client])
+    useEffect(() => {
+        dispatch(updateConsumer(client.userUid))
+    }, [update])
     return (
         <>
             {showForm && (
-                <div className={style.reviewFormContainer}>
+                <div className={style.reviewFormContainer} >
                     <div className={style.reviewForm} ref={targetRef}>
                         <ReviewForm />
                     </div>
@@ -88,7 +107,7 @@ const ClientRequiredServices = () => {
                 <button onClick={handleSwitch}>{cards ? 'Cambiar a tabla' : 'Cambiar a cartas'}</button>
                 {cards ? (
                     <div className={style.clientServicesCards}>
-                        {client.requiredServices?.map(service => (
+                        {client.requiredServices?.reverse().map(service => (
                             <ClientRequiredService
                                 key={service.id}
                                 id={service.id}
@@ -121,7 +140,7 @@ const ClientRequiredServices = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {client.requiredServices?.map((service, index) => (
+                            {client.requiredServices?.reverse().map((service, index) => (
                                 <tr key={service.id}>
                                     <td>{index + 1}</td>
                                     <td>{service.providerName}</td>
@@ -129,8 +148,8 @@ const ClientRequiredServices = () => {
                                     <td>{service.description}</td>
                                     <td>{translated[service.status]}</td>
                                     <td>{`$${service.price}`}</td>
-                                    <td>{DateTime.fromISO(service.requestDate)?.toLocaleString(DateTime.DATE_MED)}</td>
-                                    <td>{service.jobDate}</td>
+                                    <td>{formatDateFromMilliseconds(service.requestDate)}</td>
+                                    <td>{formatISOStringToReadable(service.jobDate)}</td>
                                     <td>{service.paymentMethod}</td>
                                     <td className={style.actionButton}>
                                         {service.status === 'done' && <button onClick={handleClick}>Valorar</button>}
