@@ -1,31 +1,39 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getClaimId } from '../../redux/actions/actions'
 import { DateTime } from 'luxon'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import TextField from '@mui/material/TextField'
+import Swal from 'sweetalert2'
 
 const SupportFormClaimsId = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
     const claim = useSelector(state => state.id)
-    const isAuxie = useSelector(state => state.loggedUser.isAuxie)
-
-    const consumer = useSelector(state => state.loggedUser)
-
-    const setAuxiesNames = Array.from(new Set(consumer.requiredServices.map(auxie => auxie.providerId)))
-
-    const provaiderName = setAuxiesNames.map(providerId => {
-        const auxie = consumer.requiredServices.find(auxie => auxie.providerId === providerId)
-        return auxie
-    })
-
-    const foundProvider = provaiderName.find(provider => provider.providerId === claim.providerUsername)
-    
+    const isConsumer = useSelector(state => state.id.consumer)
+    const [answer, setAnswer] = useState('')
+    const [submissionMessage, setSubmissionMessage] = useState('')
 
     useEffect(() => {
         dispatch(getClaimId(id))
     }, [id])
+
+    const handleAnswerChange = event => {
+        setAnswer(event.target.value)
+    }
+
+    const handleFormSubmit = async event => {
+        event.preventDefault()
+
+        try {
+            await axios.put(`/claims/${id}`, { answer })
+            Swal.fire('Se realizo tu reaclamo')
+        } catch (error) {
+            setSubmissionMessage(error)
+        }
+    }
 
     return (
         <div>
@@ -38,13 +46,14 @@ const SupportFormClaimsId = () => {
                                 <strong>Email:</strong> {claim.email}
                             </p>
 
-                            {isAuxie === false ? (
+                            {isConsumer === false ? (
                                 <p>
-                                    <strong>Proveedor de la queja:</strong> {foundProvider ? foundProvider.providerName : "Proveedor no encontrado"}
+                                    <strong>Proveedor de la queja:</strong>
+                                    {id.providerUsername}
                                 </p>
                             ) : (
                                 <p>
-                                    <strong>Consumer de la queja:</strong> {claim.consumerUsername}
+                                    <strong>Consumer de la queja:</strong> {id.consumerUsername}
                                 </p>
                             )}
                             <p>
@@ -64,17 +73,32 @@ const SupportFormClaimsId = () => {
                                 <strong>Fecha de reclamo:</strong>{' '}
                                 {DateTime.fromISO(claim.dateClaims).toLocaleString(DateTime.DATE_MED)}
                             </p>
-                            {claim.answer && (
-                                <div className='support-form-claims-id-answer'>
-                                    <p>
-                                        <strong>Respuesta:</strong> {claim.answer}
-                                    </p>
-                                    <p>
-                                        <strong>Fecha de respuesta:</strong>{' '}
-                                        {DateTime.fromISO(claim.dateClaims).toLocaleString(DateTime.DATE_MED)}
-                                    </p>
-                                </div>
+                            <p>
+                                <strong>Respuesta:</strong> {claim.answer}
+                            </p>
+                            {claim.pending && (
+                                <form onSubmit={handleFormSubmit}>
+                                    <div className='input-group'></div>
+                                    <TextField
+                                        multiline
+                                        fullWidth
+                                        rows={6}
+                                        value={answer}
+                                        onChange={handleAnswerChange}
+                                        required
+                                    />
+                                    <button type='submit' color='primary'>
+                                        Enviar Respuesta
+                                    </button>
+                                    {submissionMessage && (
+                                        <p className='submission-message'>{submissionMessage.message}</p>
+                                    )}
+                                </form>
                             )}
+                            <p>
+                                <strong>Fecha de respuesta:</strong>{' '}
+                                {DateTime.fromISO(claim.dateAnswer).toLocaleString(DateTime.DATE_MED)}
+                            </p>
                         </div>
                     </div>
                 )}

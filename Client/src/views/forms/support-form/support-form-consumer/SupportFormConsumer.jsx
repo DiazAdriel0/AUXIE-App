@@ -1,34 +1,33 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { postClaim } from '../../../../redux/actions/actions'
-import { useDispatch, useSelector } from 'react-redux'
+import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
-import Button from '@mui/material/Button'
 import './SupportFormConsumer.css'
 import { Link } from 'react-router-dom'
 
 const SupportFormConsumer = () => {
-    const consumer = useSelector(state => state.loggedUser)
+    const consumers = useSelector(state => state.loggedUser)
     const [error, setError] = useState('')
     const [submissionMessage, setSubmissionMessage] = useState('')
-    const dispatch = useDispatch()
 
     const [input, setInput] = useState({
-        email: consumer.email,
-        consumerUsername: consumer.username,
+        email: consumers.email,
+        consumerUsername: consumers.username,
         providerUsername: '',
         reason: '',
         image: '',
         message: '',
+        isConsumer: true,
     })
 
-    const setAuxiesNames = Array.from(new Set(consumer.requiredServices.map(auxie => auxie.providerId)))
+    const setAuxiesNames = Array.from(new Set(consumers.requiredServices.map(auxie => auxie.providerId)))
 
     const handleSubmit = async event => {
         event.preventDefault()
 
-        if (!input.message || !input.providerUsername || !input.reason) {
+        if (!input.providerUsername || !input.reason || !input.message) {
             setError('Campo obligatorio')
             return
         }
@@ -42,28 +41,29 @@ const SupportFormConsumer = () => {
         formData.append('reason', input.reason)
         formData.append('image', input.image)
         formData.append('message', input.message)
+        formData.append('isConsumer', input.isConsumer)
 
         try {
-            const response = await axios.post('/claims', formData, {
+            await axios.post('/claims', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             })
-            setSubmissionMessage(response.data)
+            Swal.fire('Se realizo tu reaclamo')
         } catch (error) {
             setSubmissionMessage(error)
         }
 
-        dispatch(postClaim(input))
-
         setInput({
-            email: consumer.email,
-            consumerUsername: consumer.username,
+            email: consumers.email,
+            consumerUsername: consumers.username,
             message: '',
             providerUsername: '',
             reason: '',
             image: '',
+            isConsumer: true,
         })
+
     }
 
     const handleAuxieChange = event => {
@@ -94,9 +94,9 @@ const SupportFormConsumer = () => {
                             value={input.providerUsername}
                             onChange={handleAuxieChange}
                         >
-                            {consumer.requiredServices && consumer.requiredServices.length > 0 ? (
+                            {consumers.requiredServices && consumers.requiredServices.length > 0 ? (
                                 setAuxiesNames.map(providerId => {
-                                    const auxie = consumer.requiredServices.find(
+                                    const auxie = consumers.requiredServices.find(
                                         auxie => auxie.providerId === providerId
                                     )
                                     return (
@@ -173,12 +173,12 @@ const SupportFormConsumer = () => {
                         />
                     </div>
                     <div className='center-button'>
-                        <Button type='submit' variant='contained' color='primary'>
+                        <button type='submit' color='primary'>
                             Enviar
-                        </Button>
+                        </button>
                     </div>
                     {error && <p className='error-message'>{error}</p>}
-                    {submissionMessage && <p className='submission-message'>{submissionMessage}</p>}
+                    {submissionMessage && <p className='submission-message'>{submissionMessage.message}</p>}
                 </form>
             </div>
             <Link to='/support/claims'>

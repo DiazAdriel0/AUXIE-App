@@ -4,29 +4,18 @@ import { getAllClaims } from '../../redux/actions/actions'
 import { Link } from 'react-router-dom'
 import { DateTime } from 'luxon'
 
-import { useNavigate } from 'react-router-dom'
-import NavGeneral from '../nav-general/NavGeneral'
-
-
 const SupportFormAdmin = () => {
-
+    const admin = useSelector(state => state.loggedUser)
     const claims = useSelector(state => state.allClaims)
     const dispatch = useDispatch()
     const [actualPage, setActualPage] = useState(1)
     const claimsPage = 5
     
     useEffect(() => {
-        if (!loggedUser.isAdmin) {
-            if (loggedUser.isAuxie) {
-                navigate('/homeauxie')
-            } else {
-                navigate('/homeconsumer')
-            }
-        }
         if (claims.length === 0) {
-            dispatch(getAllClaims())
+            dispatch(getAllClaims(admin))
         }
-    }, [dispatch, claims.length])
+    }, [dispatch, claims.length, admin])
 
     const startPage = (actualPage - 1) * claimsPage
     const endPage = startPage + claimsPage
