@@ -1,3 +1,41 @@
 .review {
-    border: white solid 2px;
+    margin-top: 1em;
+    padding: 1em 1em 1em 1.5em;
+    border-radius: 20px;
+    box-shadow: 0em 0em 0.25em 0.1em rgba(134, 132, 132, 0.319);
+    span{
+        font-weight: 300;
+    }
+    .service{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0.5em;
+        .sername{
+            font-weight: 350;
+            font-size: 1.1rem;
+        }
+        .datos{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            p{
+                padding-right: 0.5em;
+            }
+        }
+    }
+    .nyv{
+        
+        .name{
+            font-size: 1.25rem;
+        }
+    }
+    .desc{
+        margin: 0.5em 0;
+        .campo{
+            font-weight: 500;
+            margin-right: 0.5em;
+        }
+    }
 }
