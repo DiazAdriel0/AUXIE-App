@@ -30,7 +30,7 @@ const AuxieStatistics = () => {
                 </header>
         <div className='flex'>
             {/* Aside */}
-            <aside className='text-color-light border-2 border-div-text-color-light-900 w-52 pl-20'>
+            <aside className='text-color-light border-2 border-div-text-color-light-900 w-[12.5rem] pl-12'>
                 <div className=' h-screen flex flex-col justify-between'>
                     <AsideAuxie />
                 </div>
