@@ -39,10 +39,6 @@ const AuxieInbox = () => {
                 <main className='-ml-64 pr-40 pt-2 bg-div-text-color-light  text-color-light border-2 border-div-text-color-light-900 w-max'>
                     <Chatlist />
                 </main>
-                <div className=' bg-div-text-color-light  border-2 border-div-text-color-light-900'>
-                    <h3 className='m-2'>Futuros Trabajos</h3>
-                    {/* <Chat auxiedetails={auth.currentUser.uid}recipient={user.inbox[0].sender}/>  */}
-                </div>
             </div>
         </div>
     )
