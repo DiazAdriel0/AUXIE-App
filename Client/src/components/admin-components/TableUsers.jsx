@@ -1,5 +1,7 @@
 import { Card, Typography } from '@material-tailwind/react'
 import { useSelector } from 'react-redux'
+import axios from 'axios'
+
 const TableUsers = ({ data }) => {
     const nightMode = useSelector(state => state.nightMode)
     const TABLE_HEAD = [
@@ -10,6 +12,24 @@ const TableUsers = ({ data }) => {
         'Fecha de Inicio',
         '',
     ]
+
+    const handleDelete = async (isAuxie, id) => {
+        try {
+            isAuxie ? await axios.delete(`/providers/${id}`) : await axios.delete(`/consumers/${id}`)
+            alert('Usuario eliminado')
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    const handleRestore = async (isAuxie, id) => {
+        try {
+            isAuxie ? await axios.put(`/providers/restore/${id}`) : await axios.put(`/consumers/restore/${id}`)
+            alert('Usuario restaurado')
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     return (
         <div className='w-full h-11/12 pt-8 flex items-center justify-center'>
@@ -44,47 +64,51 @@ const TableUsers = ({ data }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map(({ username, firstName, lastName, services, registerDate, age, id }) => (
-                            <tr key={id} className=' even:bg-blue-gray-50/50'>
-                                <td className='p-4 max-w-[5rem]'>
-                                    <Typography variant='small' color='blue-gray' className='flex font-normal'>
-                                        {username ? username : 'Sin Usuario'}
-                                    </Typography>
-                                </td>
-                                <td className='p-4 max-w-[5rem]'>
-                                    <Typography variant='small' color='blue-gray' className='font-normal'>
-                                        {firstName}
-                                    </Typography>
-                                </td>
-                                <td className='p-4 max-w-[5rem]'>
-                                    <Typography variant='small' color='blue-gray' className='font-normal'>
-                                        {lastName}
-                                    </Typography>
-                                </td>
-                                <td className='p-4 max-w-[5rem]'>
-                                    <Typography variant='small' color='blue-gray' className='font-normal'>
-                                        {services
-                                            ? services.length === 0
-                                                ? 'Sin Servicios'
-                                                : services.map(service => service.name).join(', ')
-                                            : age
-                                            ? age
-                                            : 'Sin Edad'}
-                                    </Typography>
-                                </td>
-                                <td className='p-4 max-w-[5rem]'>
-                                    <Typography variant='small' color='blue-gray' className='font-normal'>
-                                        {registerDate}
-                                    </Typography>
-                                </td>
+                        {data.map(
+                            ({ username, firstName, lastName, services, registerDate, age, id, isAuxie, isActive }) => (
+                                <tr key={id} className=' even:bg-blue-gray-50/50'>
+                                    <td className='p-4 max-w-[5rem]'>
+                                        <Typography variant='small' color='blue-gray' className='flex font-normal'>
+                                            {username ? username : 'Sin Usuario'}
+                                        </Typography>
+                                    </td>
+                                    <td className='p-4 max-w-[5rem]'>
+                                        <Typography variant='small' color='blue-gray' className='font-normal'>
+                                            {firstName}
+                                        </Typography>
+                                    </td>
+                                    <td className='p-4 max-w-[5rem]'>
+                                        <Typography variant='small' color='blue-gray' className='font-normal'>
+                                            {lastName}
+                                        </Typography>
+                                    </td>
+                                    <td className='p-4 max-w-[5rem]'>
+                                        <Typography variant='small' color='blue-gray' className='font-normal'>
+                                            {services
+                                                ? services.length === 0
+                                                    ? 'Sin Servicios'
+                                                    : services.map(service => service.name).join(', ')
+                                                : age
+                                                ? age
+                                                : 'Sin Edad'}
+                                        </Typography>
+                                    </td>
+                                    <td className='p-4 max-w-[5rem]'>
+                                        <Typography variant='small' color='blue-gray' className='font-normal'>
+                                            {registerDate}
+                                        </Typography>
+                                    </td>
 
-                                <td className='p-4 max-w-[5rem]'>
-                                    <Typography variant='small' color='blue-gray' className='font-medium'>
-                                        Eliminar
-                                    </Typography>
-                                </td>
-                            </tr>
-                        ))}
+                                    <td className='p-4 max-w-[5rem]'>
+                                        {isActive ? (
+                                            <button onClick={() => handleDelete(isAuxie, id)}>Eliminar</button>
+                                        ) : (
+                                            <button onClick={() => handleRestore(isAuxie, id)}>Restaurar</button>
+                                        )}
+                                    </td>
+                                </tr>
+                            )
+                        )}
                     </tbody>
                 </table>
             </Card>

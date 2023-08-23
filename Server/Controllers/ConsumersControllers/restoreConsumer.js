@@ -1,14 +1,14 @@
 const Consumer = require('../../Models/consumer')
 
-const deleteConsumer = async (id) => {
+const restoreConsumer = async (id) => {
     try {
         const consumerUser = await Consumer.findById(id)
 
         if (!consumerUser) return false
 
-        consumerUser.isActive = false
+        consumerUser.isActive = true
 
-        consumerUser.save()
+        await consumerUser.save()
 
         return true
     } catch (error) {
@@ -16,4 +16,4 @@ const deleteConsumer = async (id) => {
     }
 }
 
-module.exports = deleteConsumer
+module.exports = restoreConsumer
