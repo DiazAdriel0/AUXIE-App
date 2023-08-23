@@ -19,6 +19,7 @@ const ClientRequiredService = job => {
     const navigate = useNavigate()
     const client = useSelector(state => state.loggedUser)
     const nightMode = useSelector(state => state.nightMode)
+    const [update, setUpdate] = useState(false)
 
     // local states para manejar el popup del form review
     const targetRef = useRef(null)
@@ -95,6 +96,7 @@ const ClientRequiredService = job => {
         if (e.target.innerText === 'Cancelado') return Swal.fire('Has cancelado tu pedido')
         if (e.target.innerText === 'Pendiente') return Swal.fire('Espera a que el Auxie apruebe tu pedido')
         if (e.target.innerText === 'Rechazado') return Swal.fire('El auxie ha rechazado tu pedido')
+        setUpdate(true)
     }
 
     // hook que escucha si se hace click fuera del form review
@@ -105,9 +107,9 @@ const ClientRequiredService = job => {
         }
     }, [shouldCloseForm])
 
-    // useEffect(() => {
-    //     updateConsumer(client.id)
-    // },[client])
+    useEffect(() => {
+        dispatch(updateConsumer(client.userUid))
+    }, [update])
 
     return (
         <>
