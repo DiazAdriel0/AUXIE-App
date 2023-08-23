@@ -53,7 +53,7 @@ export const Notifications = () => {
         if (texto.includes('requerido')){
             return navigate('/requestedservices')
         } 
-        if(texto.includes('proposal')) {
+        if(texto.includes('propuesta')) {
             return navigate('/requestedservices')
         }
         // eslint-disable-next-line no-prototype-builtins
