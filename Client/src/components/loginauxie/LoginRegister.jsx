@@ -284,22 +284,22 @@ function LoginRegisterAuxie() {
                         </div>
                         <Input type='text' placeholder='Apellido' name='lastName' onChange={handleSignUpChange} />
                         <div className={style.errors}>
-                                <p>{errors.lastName}</p>
-                            </div>
+                            <p>{errors.lastName}</p>
+                        </div>
                         <Input type='number' placeholder='Edad' name='age' onChange={handleSignUpChange} />
                         <div className={style.errors}>
-                                <p>{errors.age}</p>
-                            </div>
+                            <p>{errors.age}</p>
+                        </div>
                         <Input type='text' placeholder='Usuario' name='username' onChange={handleSignUpChange} />
-                      
+                        <div className={style.errors}></div>
                         <Input type='email' placeholder='Email' name='email' onChange={handleSignUpChange} />
                         <div className={style.errors}>
-                                <p>{errors.email}</p>
-                            </div>
+                            <p>{errors.email}</p>
+                        </div>
                         <Input type='password' placeholder='contraseña' name='password' onChange={handleSignUpChange} />
                         <div className={style.errors}>
-                                <p>{errors.password}</p>
-                            </div>
+                            <p>{errors.password}</p>
+                        </div>
                         <select onChange={handleSignUpChange} name='gender' defaultValue={''}>
                             <option disabled value=''>
                                 Género
@@ -315,8 +315,11 @@ function LoginRegisterAuxie() {
                     <Form onSubmit={handleSubmit} id='form'>
                         <Title>Iniciar Sesión</Title>
                         <Input type='email' placeholder='Email' name='email' onChange={handleChange} />
-                        <p>{errors.email}</p>
+                        <div className={style.errors}>
+                            <p>{errors.email}</p>
+                        </div>
                         <Input type='password' placeholder='Password' name='password' onChange={handleChange} />
+                        <div className={style.errors}></div>
                         <Anchor href='#'>Forgot your password?</Anchor>
                         <Button>Inicia Sesión</Button>
                     </Form>
