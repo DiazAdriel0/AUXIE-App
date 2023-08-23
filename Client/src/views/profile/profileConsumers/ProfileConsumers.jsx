@@ -9,7 +9,7 @@ import { TextField } from '@mui/material'
 import ResetPassword from '../../reset-password/ResetPassword'
 
 const ProfileConsumers = () => {
-    const user = useSelector((state) =>state.loggedUser)
+    const user = useSelector(state => state.loggedUser)
     const consumer = useSelector(state => state.loggedUser)
     const [newImage, setNewImage] = useState(null)
     const [error, setError] = useState(null)
@@ -129,33 +129,33 @@ const ProfileConsumers = () => {
                         </h1>
 
                         {edit && (
-                                <TextField
-                                    className={style.picker}
-                                    id='outlined-basic'
-                                    label='Nombre'
-                                    variant='outlined'
-                                    color='primary'
-                                    name='firstName'
-                                    value={profileData.firstName}
-                                    onChange={handleChange}
-                                    sx={{ marginLeft: 22, backgroundColor: ' #6d6c6c5d' }}
-                                    focused
-                                />
-                            )}
-                            {edit && (
-                                <TextField
-                                    className={style.picker}
-                                    id='outlined-basic'
-                                    label='Apellido'
-                                    variant='outlined'
-                                    color='primary'
-                                    name='lastName'
-                                    value={profileData.lastName}
-                                    onChange={handleChange}
-                                    focused
-                                    sx={{ marginLeft: 5, backgroundColor: ' #6d6c6c5d' }}
-                                />
-                            )}
+                            <TextField
+                                className={style.picker}
+                                id='outlined-basic'
+                                label='Nombre'
+                                variant='outlined'
+                                color='primary'
+                                name='firstName'
+                                value={profileData.firstName}
+                                onChange={handleChange}
+                                sx={{ marginLeft: 22, backgroundColor: ' #6d6c6c5d' }}
+                                focused
+                            />
+                        )}
+                        {edit && (
+                            <TextField
+                                className={style.picker}
+                                id='outlined-basic'
+                                label='Apellido'
+                                variant='outlined'
+                                color='primary'
+                                name='lastName'
+                                value={profileData.lastName}
+                                onChange={handleChange}
+                                focused
+                                sx={{ marginLeft: 5, backgroundColor: ' #6d6c6c5d' }}
+                            />
+                        )}
                         {error && <p style={{ color: 'red' }}>{error}</p>}
                         <h4>
                             {consumer.isAdmin && (
@@ -198,7 +198,7 @@ const ProfileConsumers = () => {
                                     value={address}
                                     onChange={handleAddressChange}
                                     focused
-                                    sx={{width:150,margin:1,backgroundColor: ' #6d6c6c5d' }}
+                                    sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
                             )}
                             {edit && (
@@ -212,7 +212,7 @@ const ProfileConsumers = () => {
                                     value={city}
                                     onChange={handleAddressChange}
                                     focused
-                                    sx={{width:150,margin:1,backgroundColor: ' #6d6c6c5d', }}
+                                    sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
                             )}
                             {edit && (
@@ -226,7 +226,7 @@ const ProfileConsumers = () => {
                                     value={provinces}
                                     onChange={handleAddressChange}
                                     focused
-                                    sx={{width:150,margin:1,backgroundColor: ' #6d6c6c5d' }}
+                                    sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
                             )}
 
@@ -241,7 +241,7 @@ const ProfileConsumers = () => {
                                     value={country}
                                     onChange={handleAddressChange}
                                     focused
-                                    sx={{width:150,margin:1,backgroundColor: ' #6d6c6c5d' }}
+                                    sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
                             )}
                         </div>

@@ -1,13 +1,13 @@
-import ProfileConsumers from '../profileConsumers/ProfileConsumers'
+// import ProfileConsumers from '../profileConsumers/ProfileConsumers'
+import NewProfileConsumers from '../new-profile-consumers/NewProfileConsumers'
 import ProfileAuxies from '../profileAuxies/ProfileAuxies'
 import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom' // Link
+import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-// import style from './ProfilePage.module.scss'
 
 const ProfilePage = () => {
     const navigate = useNavigate()
-    const user = useSelector((state) => state.loggedUser)
+    const user = useSelector(state => state.loggedUser)
     const isAuxie = Object.keys(user).includes('services')
     useEffect(() => {
         if (Object.keys(user).length === 0) return navigate('/')
@@ -19,11 +19,11 @@ const ProfilePage = () => {
                 {isAuxie ? (
                     <div>
                         <ProfileAuxies />
-
                     </div>
                 ) : (
                     <div>
-                        <ProfileConsumers />
+                        <NewProfileConsumers />
+                        {/*  <ProfileConsumers /> */}
                     </div>
                 )}
             </div>
