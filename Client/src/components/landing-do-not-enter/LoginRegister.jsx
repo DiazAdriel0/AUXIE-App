@@ -40,6 +40,7 @@ function LoginRegister() {
         email: '',
         password: '',
     })
+
     const logged = useSelector(state => state.loggedUser)
     const handleChange = event => {
         setInput({
@@ -113,11 +114,6 @@ function LoginRegister() {
                     willClose: () => {
                         clearInterval(timerInterval)
                     },
-                }).then(result => {
-                    /* Read more about handling dismissals below */
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        console.log('I was closed by the timer')
-                    }
                 })
 
                 // eslint-disable-next-line no-prototype-builtins
@@ -136,6 +132,7 @@ function LoginRegister() {
         const form = document.getElementById('form')
         const email = input.email
         const password = input.password
+        
         try {
             const credential = await signInWithEmailAndPassword(auth, email, password)
             if (credential) {
@@ -198,6 +195,7 @@ function LoginRegister() {
         gender: '',
         userUid: '',
     })
+
     const handleSignUpChange = event => {
         setSignUp({
             ...signUp,
@@ -212,6 +210,7 @@ function LoginRegister() {
         )
     }
     const handlePost = async signUp => {
+
         try {
             const response = await axios.post('/consumers/', signUp)
             if (response) {
@@ -230,6 +229,7 @@ function LoginRegister() {
                     default:
                         welcome = 'Bienvenidx'
                 }
+
                 // Reset the form only on successful response (2xx)
                 const form = document.getElementById('form')
                 Swal.fire(`Usuario creado con exito. ¡${welcome} a Auxie! Inicia sesión para continuar.`)

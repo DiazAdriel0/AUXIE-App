@@ -31,6 +31,8 @@ import AuxieServices from './views/home-views/auxie-views/auxie-services/AuxieSe
 import AuxieStatistics from './views/home-views/auxie-views/auxie-statistics/AuxieStatistics'
 
 import ProfilePage from './views/profile/profilePage/ProfilePage'
+import EditConsumerProfile from './views/profile/editProfile/editConsumerProfile/EditConsumerProfile'
+import EditAuxieProfile from './views/profile/editProfile/editAuxieProfile/EditAuxieProfile'
 import './config/firebase-config'
 
 //Forms
@@ -111,6 +113,8 @@ function App() {
                     <Route path='/detail/:id' element={<Detail />} />
                     {/*Profile paths */}
                     <Route path='/profile' element={<ProfilePage />} />
+                    <Route path='/editconsumerprofile' element={<EditConsumerProfile />}/>
+                    <Route path='/editauxieprofile' element={<EditAuxieProfile />}/>
                     {/* Register paths */}
                     <Route path='/auxieform' element={<Form />} />
                     <Route path='/clientform' element={<ClientForm />} />

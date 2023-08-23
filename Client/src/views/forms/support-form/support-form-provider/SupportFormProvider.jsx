@@ -65,7 +65,7 @@ const SupportFormProvider = () => {
         }
         setInput(updatedInput)
     }
-    console.log(image);
+    
 
     return (
         <div>

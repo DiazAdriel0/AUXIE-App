@@ -1,43 +1,37 @@
 import { useEffect, useState } from 'react'
-import { DateTime } from 'luxon'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateProfile } from '../../../redux/actions/actions'
+import { updateProfile } from '../../../../redux/actions/actions'
 import { useNavigate } from 'react-router-dom'
-import NavGeneral from '../../../components/nav-general/NavGeneral'
-import style from './ProfileAuxies.module.scss'
+import NavGeneral from '../../../../components/nav-general/NavGeneral'
+import style from './editAuxieProfile.module.scss'
 import axios from 'axios'
-import { loggedUser } from '../../../redux/actions/actions'
+import { loggedUser } from '../../../../redux/actions/actions'
 
-import ResetPassword from '../../reset-password/ResetPassword'
+import ResetPassword from '../../../reset-password/ResetPassword'
 import { TextField } from '@mui/material'
 
-const ProfileAuxies = () => {
+const EditAuxieProfile = () => {
     const provider = useSelector(state => state.loggedUser)
-    const offer = useSelector(state => state.loggedUser.services)
     const allServices = useSelector(state => state.services)
     const [change, setChange] = useState(false)
     const [serviceUpdate, setServiceUpdate] = useState({
         providerId: provider.id,
         services: [...provider.services],
     })
-    const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [provinces, setProvinces] = useState('')
-    const [country, setCountry] = useState('')
-    const [fullAddress, setFullAddress] = useState('')
+    const [address, setAddress] = useState(provider?.address.split(',')[0])
+    const [city, setCity] = useState(provider?.address.split(',')[1])
+    const [provinces, setProvinces] = useState(provider?.address.split(',')[2])
+    const [country, setCountry] = useState(provider?.address.split(',')[3])
+    const [fullAddress, setFullAddress] = useState(provider?.address)
     const [newImage, setNewImage] = useState('')
-    const [newlastName, setNewlastName] = useState('')
-    const [newfirstName, setNewfirstName] = useState('')
-    const [newBio, setNewBio] = useState(provider.bio)
+    const [newlastName, setNewlastName] = useState(provider?.lastName)
+    const [newfirstName, setNewfirstName] = useState(provider?.firstName)
+    const [newBio, setNewBio] = useState(provider?.bio)
     const [error, setError] = useState(null)
     const [gallery, setGallery] = useState([])
-    const [edit, setEdit] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const [password, setPasswords] = useState(false)
-    const registerDate = provider.registerDate
-    const luxonDate = DateTime.fromISO(registerDate)
-    const toDateMed = luxonDate.toLocaleString(DateTime.DATE_MED)
 
     const handleRefresh = async () => {
         try {
@@ -52,12 +46,7 @@ const ProfileAuxies = () => {
     useEffect(() => {
         handleRefresh()
     }, [])
-    const handleEdit = () => {
-        setEdit(true)
-        if (edit === true) {
-            setEdit(false)
-        }
-    }
+
     const handlePassword = () => {
         setPasswords(true)
         if (password === true) {
@@ -115,10 +104,11 @@ const ProfileAuxies = () => {
     }
     useEffect(() => {
         // Concatenate the address, province, and country
-        const newFullAddress = `${address} ${city} ${provinces} ${country}`
+        const newFullAddress = `${address},${city}, ${provinces}, ${country}`
         setFullAddress(newFullAddress)
     }, [address, provinces, country])
-  
+    useEffect(() => {
+    }, [fullAddress])
     function handlePriceChange(e, serviceName) {
         const newPrice = parseFloat(e.target.value)
 
@@ -203,25 +193,36 @@ const ProfileAuxies = () => {
                 )
             )
         }
+        navigate('/profile')
     }
+
+    useEffect(()=> {
+        if (!provider.isAuxie) return navigate('/editconsumerProfile')
+    },[])
 
     return (
         <>
             <NavGeneral />
             <div className={style.fullProfileContainer}>
-                <div className={style.profilecontainer}>
-                    <div className={style.secondcontainer}>
-                        <button type='button' className={style.edit} onClick={handleEdit}>
-                            Editar perfil
-                        </button>
-                        <h6>Te uniste: {toDateMed}</h6>
-                        <div>
-                            <img src={provider.image.secure_url} alt='imagen de perfil' />
-                            {edit && <input type='file' accept='.jpg, .png' onChange={handleImageChange} />}
-                            <h1>
-                                {provider.firstName} {provider.lastName}
-                            </h1>
-                            {edit && (
+                <div className={style.profileContainer}>
+                    <div className={style.title}>
+                        <h1>Editar perfil</h1>
+                    </div>
+                    <div className={style.secondContainer}>
+                    <div className={style.editImageContainer}>
+                            <div className={style.imageContainer}>
+                                <img src={provider.image?.secure_url} alt='imagen de perfil' />
+                            </div>
+                            <div className={style.imageInput}>
+                                <input
+                                    type='file'
+                                    accept='.jpg, .png'
+                                    onChange={handleImageChange}
+                                    className={style.imageButton}
+                                />
+                            </div>
+                        </div>
+                        <div className={style.inputs}>
                                 <TextField
                                     className={style.picker}
                                     id='outlined-basic'
@@ -233,11 +234,9 @@ const ProfileAuxies = () => {
                                     name='firstName'
                                     value={newfirstName}
                                     onChange={handlefirstname}
-                                    sx={{ marginLeft: 22, backgroundColor: ' #6d6c6c5d' }}
+                                    sx={{ backgroundColor: ' #6d6c6c5d' }}
                                     focused
                                 />
-                            )}
-                            {edit && (
                                 <TextField
                                     className={style.picker}
                                     id='outlined-basic'
@@ -250,41 +249,25 @@ const ProfileAuxies = () => {
                                     value={newlastName}
                                     onChange={handleLastname}
                                     focused
-                                    sx={{ marginLeft: 5, backgroundColor: ' #6d6c6c5d' }}
+                                    sx={{ backgroundColor: ' #6d6c6c5d' }}
                                 />
-                            )}
                             {error && <p style={{ color: 'red' }}>{error}</p>}
 
                             <h4>Género: {provider.gender}</h4>
                             <h3>
-                                Email: {provider.email}{' '}
-                                {edit && <button onClick={handlePassword}>Cambiar la contraseña</button>}
+                                Email: {provider.email}
+                                <button onClick={handlePassword}>Cambiar la contraseña</button>
                                 {password && <ResetPassword />}
                             </h3>
                             <h3>Descripción:</h3>
                             <div className={style.description}>
-                                {' '}
-                                <textarea value={newBio} onChange={handleBioChange} />
+                                <textarea value={newBio} onChange={handleBioChange} cols='80'/>
                             </div>
-
-                            <div>
-                                <h5>
-                                    Servicios que ofrece:
-                                    {!edit &&
-                                        offer.map(service => (
-                                            <label key={service.name} className={style.offerlabel}>
-                                                {' '}
-                                                {service.name}{' '}
-                                            </label>
-                                        ))}{' '}
-                                </h5>
-
-                                {edit && (
                                     <center>
                                         <div className={style.typechecksContainer}>
                                             <div className={style.typechecks}>
                                                 {allServices.map(service => (
-                                                    <label key={service.name} className={style.servicelabel}>
+                                                    <label key={service.name} className={style.serviceLabel}>
                                                         <input
                                                             type='checkbox'
                                                             value={service.name}
@@ -315,15 +298,9 @@ const ProfileAuxies = () => {
                                             </div>
                                         </div>
                                     </center>
-                                )}
-                                <h5>Trabajos realizados: </h5>
-                                <h5>Calificaciones: </h5>
-                                <h5>Calificación Promedio: {provider.averageRating}</h5>
-                                <h5>Reseñas:</h5>
-                            </div>
                             <div className='gallery-container'>
                                 <h5>Fotos de tus trabajos realizados:</h5>
-                                {edit && <input type='file' accept='.jpg, .png' multiple onChange={handleAddPhoto} />}
+                                <input type='file' accept='.jpg, .png' multiple onChange={handleAddPhoto} />
                                 <ul>
                                     {gallery.map((photo, index) => (
                                         <li className='gallery-item' key={index}>
@@ -337,8 +314,6 @@ const ProfileAuxies = () => {
                             </div>
                             <div className={style.address}>
                                 <h3>Tu Direccion</h3>
-                                {!edit && <p>{provider.address}</p>}
-                                {edit && (
                                     <TextField
                                         className={style.picker}
                                         id='outlined-basic'
@@ -353,8 +328,6 @@ const ProfileAuxies = () => {
                                         sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                         focused
                                     />
-                                )}
-                                {edit && (
                                     <TextField
                                         className={style.picker}
                                         id='outlined-basic'
@@ -367,8 +340,6 @@ const ProfileAuxies = () => {
                                         sx={{ width: 150, margin: 1 }}
                                         focused
                                     />
-                                )}
-                                {edit && (
                                     <TextField
                                         className={style.picker}
                                         id='outlined-basic'
@@ -381,9 +352,7 @@ const ProfileAuxies = () => {
                                         sx={{ width: 150, margin: 1 }}
                                         focused
                                     />
-                                )}
 
-                                {edit && (
                                     <TextField
                                         className={style.picker}
                                         id='outlined-basic'
@@ -396,19 +365,17 @@ const ProfileAuxies = () => {
                                         sx={{ width: 150, margin: 1 }}
                                         focused
                                     />
-                                )}
                             </div>
-                            {edit && (
+
                                 <button className={style.updatebutton} onClick={handleUpdateProfile}>
                                     Guardar Cambios
                                 </button>
-                            )}
+                        </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </>
     )
 }
 
-export default ProfileAuxies
+export default EditAuxieProfile

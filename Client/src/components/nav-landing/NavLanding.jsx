@@ -49,7 +49,7 @@ const NavLanding = () => {
                     <ul>
                         <li>
                             <button onClick={handlerLogIn} className={style.login}>
-                                Ingresar
+                                Acceder
                             </button>
                         </li>
 
@@ -67,15 +67,19 @@ const NavLanding = () => {
                             <button className={style.closeButton} onClick={() => setLogInMenu(false)}>
                                 X
                             </button>
-                            <div>
-                                <ul>
+                            <div className={style.logcontainer}>
+                            <center>
+                         <h3>Acceder como</h3>  
+                        
+                                <div className={style.logbuttons}>
                                     <Link to={'/clientLogin'}>
-                                        <div>Iniciar Sesión Como Cliente</div>
+                                        <button>Cliente</button>
                                     </Link>
                                     <Link to={'/auxieLogin'}>
-                                        <div>Iniciar Sesión Como Auxie</div>
+                                        <button> Auxie</button>
                                     </Link>
-                                </ul>
+                                    </div>
+                                    </center>
                             </div>
                         </div>
                     </div>
