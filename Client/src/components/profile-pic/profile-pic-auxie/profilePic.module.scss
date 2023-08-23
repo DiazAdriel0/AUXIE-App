@@ -2,15 +2,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    width: 40%;
     p {
         font-size: 2rem;
     }
 
     .buttonPic {
         all: unset;
-        width: 50%;
-        height: 50%;
+        width: 40%;
+        height: 40%;
         clip-path: circle();
         img {
             height: 100%;
