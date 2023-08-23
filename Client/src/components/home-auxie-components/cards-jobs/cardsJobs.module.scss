@@ -2,9 +2,9 @@
     display: grid;
     justify-content: center;
     align-items: center;
+    grid-template-columns: repeat(3, minmax(300px, 1fr)); /* Cambio en esta línea */
     margin-top: 2%;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
     gap: 16px;
     max-width: 90vw;
-    margin-left: 5%;
+
 }
