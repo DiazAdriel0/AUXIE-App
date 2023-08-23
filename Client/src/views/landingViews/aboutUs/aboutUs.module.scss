@@ -129,7 +129,7 @@
 /* Estilos generales */
 .card {
     width: 14rem; //230px
-    height: 21rem;
+    height: 19rem;
     border-radius: 2em;
     // padding: 10px;
     // background-color: var(--sixth--color-light);
@@ -142,11 +142,12 @@
     background-color: rgba(74, 74, 74, 0.151);
 
     img {
-        border-radius: 80%;
+        border-radius: 100%;
         height: 7rem;
-        width: 7rem;
+        width: 8rem;
         align-items: center;
         justify-content: center;
+        object-fit: cover;
     }
 
     center {
@@ -159,18 +160,18 @@
             background-color: transparent;
             border: none;
             margin-top: 20px;
-            border-radius: 5em;
-            width: 100px;
+            // border-radius: 5em;
+            width: 115px;
             height: 100px;
         }
 
         .Name {
-            color: white;
             font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
                 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
             padding: 10px;
             font-size: 1rem;
             margin-top: 1.02rem;
+ 
         }
 
         .socialbar {
@@ -236,7 +237,7 @@
             max-height: 100%; /* Adjust this value as needed */
             // padding: 10px; /* Add padding for better spacing */
             // margin-top: 35%;
-            scrollbar-color: rgba(36, 40, 255, 0.273) rgba(127, 255, 212, 0.159);
+            // scrollbar-color: rgba(36, 40, 255, 0.273) rgba(127, 255, 212, 0.159);
             scrollbar-width: thin;
         }
 
@@ -251,10 +252,10 @@
             flex-direction: row;
             justify-content: space-evenly;
             width: 100%;
-            height: 16%;
-            margin-top: 19%;
+            height: 18%;
+            margin-top: 30%;
            a{
-            margin-bottom: 25%;
+            margin-bottom: 30%;
             border: none !important;
            }
         }
