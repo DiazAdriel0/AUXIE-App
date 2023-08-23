@@ -20,26 +20,29 @@ const NavGeneral = () => {
             {isAuxie ? (
                 <>
                     <LogoAuxie />
-                    <div className={style.notifications}>
-                        <NotificationButton />
-                    </div>
-                    <div className={style.nightswitch}>
-                        <ButtonLightNight />
-                    </div>
+
                     <div className={style.right}>
+                        <div className={style.notifications}>
+                            <NotificationButton />
+                        </div>
+                        <div className={style.nightswitch}>
+                            <ButtonLightNight />
+                        </div>
                         <ProfilePic />
                     </div>
                 </>
             ) : (
                 <>
                     <LogoClient />
-                    <div className={style.notifications}>
-                        <NotificationButton />
-                    </div>
-                    <div className={style.nightswitch}>
-                        <ButtonLightNight />
-                    </div>
+
                     <div className={style.right}>
+                        <div className={style.notifications}>
+                            <NotificationButton />
+                        </div>
+                        <div className={style.nightswitch}>
+                            <ButtonLightNight />
+                        </div>
+
                         <ProfilePic />
                     </div>
                 </>

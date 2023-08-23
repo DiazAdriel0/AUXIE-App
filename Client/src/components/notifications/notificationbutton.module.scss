@@ -1,19 +1,10 @@
 .button {
     width: 6rem;
-    height: 34px;
+    height: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    border-radius: 2px;
-    color: rgb(255, 255, 255);
-    font-weight: 600;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    transition-duration: 0.2s;
-
-    overflow: hidden; /* Ensure the content doesn't overflow */
 }
 
 .bell {
