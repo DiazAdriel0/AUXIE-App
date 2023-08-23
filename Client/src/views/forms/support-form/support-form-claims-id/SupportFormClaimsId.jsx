@@ -64,7 +64,7 @@ const SupportFormClaimsId = () => {
                             {claim.image && (
                                 <img
                                     className='support-form-claims-id-image'
-                                    src={claim.image}
+                                    src={claim.image?.secure_url}
                                     alt='Imagen del reclamo'
                                 />
                             )}
