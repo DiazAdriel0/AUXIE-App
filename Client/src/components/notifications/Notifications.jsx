@@ -40,7 +40,7 @@ export const Notifications = () => {
         if (notifications.length) setLoading(false)
     }, [notifications])
 
-    const handleRedirect = (texto, msj) => {
+    const handleRedirect = (texto) => {
         if (texto.includes('reseña')) {
             return navigate('/review')
         }
@@ -50,7 +50,10 @@ export const Notifications = () => {
         if (texto.includes('ingresa a tu perfil')) {
             return navigate('/profile')
         }
-        if (texto.includes('requerido') || texto.includes('proposal')) {
+        if (texto.includes('requerido')){
+            return navigate('/requestedservices')
+        } 
+        if(texto.includes('propuesta')) {
             return navigate('/requestedservices')
         }
         // eslint-disable-next-line no-prototype-builtins
