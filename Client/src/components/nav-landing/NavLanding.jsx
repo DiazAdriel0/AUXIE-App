@@ -62,7 +62,9 @@ const NavLanding = () => {
                             </button>
                         </li>
                     </ul>
-                    <ButtonLightNight />
+                    <div className='flex items-center'>
+                        <ButtonLightNight />
+                    </div>
                 </div>
             </nav>
             {logInMenu && (
