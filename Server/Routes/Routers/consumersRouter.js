@@ -9,6 +9,7 @@ const deleteFavoriteProv = require('../../Handlers/ConsumersHandlers/deleteFavor
 const favoriteProviders = require('../../Handlers/ConsumersHandlers/favoriteProviders')
 const revokeTokens = require('../../Handlers/ConsumersHandlers/revokeTokens')
 const updateFirstLogin = require('./../../Handlers/ConsumersHandlers/updateFirstLogin')
+const restoreConsumerById = require('../../Handlers/ConsumersHandlers/restoreConsumerById')
 const consumersRouter = Router()
 
 consumersRouter.get('/', getAllConsumers)
@@ -17,6 +18,7 @@ consumersRouter.get('/:id', getConsumerById)
 consumersRouter.put('/profile', updateConsumer)
 consumersRouter.put('/fav', favoriteProviders)
 consumersRouter.put('/firstLogin', updateFirstLogin)
+consumersRouter.put('/restore/:id', restoreConsumerById)
 
 consumersRouter.post('/login', loginConsumer)
 consumersRouter.post('/', postConsumer)
