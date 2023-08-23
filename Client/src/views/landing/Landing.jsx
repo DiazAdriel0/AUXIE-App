@@ -112,6 +112,10 @@ const Landing = () => {
                 break
             case 'toHelp':
                 navigate('/help')
+                break
+            default:
+                navigate('/clientlogin')
+                break
         }
     }
 
