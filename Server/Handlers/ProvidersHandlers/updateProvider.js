@@ -7,6 +7,7 @@ const {
 } = require('./../../Utils/cloudinary')
 
 const updateProvider = async (req, res) => {
+    console.log(req.files)
     const {
         id,
         firstName,

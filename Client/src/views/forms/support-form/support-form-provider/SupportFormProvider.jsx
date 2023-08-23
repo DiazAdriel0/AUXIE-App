@@ -18,9 +18,9 @@ const SupportFormProvider = () => {
         providerUsername: provider.username,
         consumerUsername: '',
         reason: '',
-        image: '',
         message: '',
     })
+    const [image, setImage] = useState('')
 
     const setClientNames = Array.from(new Set(provider.jobs.map(job => job.clientId)))
 
@@ -38,10 +38,10 @@ const SupportFormProvider = () => {
         formData.append('email', input.email)
         formData.append('providerUsername', input.providerUsername)
         formData.append('consumerUsername', input.consumerUsername)
-        formData.append('image', input.image)
+        formData.append('image', image)
         formData.append('message', input.message)
         try {
-            dispatch(postClaim(input))
+            dispatch(postClaim(input, image))
             const form = document.getElementById('form')
             form.reset()
             Swal.fire('Se realizo tu reaclamo')
@@ -55,7 +55,6 @@ const SupportFormProvider = () => {
             message: '',
             consumerUsername: '',
             reason: '',
-            image: '',
         })
     }
 
@@ -66,6 +65,7 @@ const SupportFormProvider = () => {
         }
         setInput(updatedInput)
     }
+    console.log(image);
 
     return (
         <div>
@@ -139,8 +139,8 @@ const SupportFormProvider = () => {
                             accept='.jpg, .png'
                             name='image'
                             onChange={event => {
-                                const file = event.target.files[0]
-                                setInput({ ...input, image: file })
+                                const fileImage = event.target.files[0]
+                                setImage({image: fileImage })
                             }}
                         />
                     </div>

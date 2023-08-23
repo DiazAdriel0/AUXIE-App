@@ -19,7 +19,7 @@ const SupportFormAdmin = () => {
 
     const startPage = (actualPage - 1) * claimsPage
     const endPage = startPage + claimsPage
-    const currentClaims = claims.slice(startPage, endPage)
+    const currentClaims = claims.sort((a, b) => new Date(b.dateClaims) - new Date(a.dateClaims)).slice(startPage, endPage)
 
     const PreviousPage = () => {
         if (actualPage > 1) {
@@ -41,7 +41,6 @@ const SupportFormAdmin = () => {
                         <p>No hay ningun reclamo</p>
                     ) : (
                         currentClaims
-                            .sort((a, b) => new Date(b.dateClaims) - new Date(a.dateClaims))
                             .map((claim, index) => (
                                 <Link to={`/dashboard/claims/${claim.id}`} key={index}>
                                     <div className='card'>

@@ -301,9 +301,17 @@ export function setServiceStatus(info) {
     }
 }
 
-export const postClaim = input => {
+export const postClaim = (input, image) => {
     return async dispatch => {
-        const res = await axios.post('/claims', input)
+        const res = await axios.post(
+            '/claims',
+            { ...input, image },
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            }
+        )
         return dispatch({
             type: POST_CLAIM,
             payload: res.data,
