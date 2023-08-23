@@ -115,12 +115,10 @@ const ProfileAuxies = () => {
     }
     useEffect(() => {
         // Concatenate the address, province, and country
-        const newFullAddress = `${address},${city}, ${provinces}, ${country}`
+        const newFullAddress = `${address} ${city} ${provinces} ${country}`
         setFullAddress(newFullAddress)
     }, [address, provinces, country])
-    useEffect(() => {
-        console.log(fullAddress)
-    }, [fullAddress])
+  
     function handlePriceChange(e, serviceName) {
         const newPrice = parseFloat(e.target.value)
 

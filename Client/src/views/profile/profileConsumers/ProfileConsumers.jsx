@@ -67,12 +67,10 @@ const ProfileConsumers = () => {
     }
     useEffect(() => {
         // Concatenate the address, province, and country
-        const newFullAddress = `${address},${city}, ${provinces}, ${country}`
+        const newFullAddress = `${address} ${city} ${provinces} ${country}`
         setFullAddress(newFullAddress)
     }, [address, provinces, country])
-    useEffect(() => {
-        console.log(fullAddress)
-    }, [fullAddress])
+  
     ///put de datos ///
     const handleUpdateProfile = () => {
         setEdit(false)
