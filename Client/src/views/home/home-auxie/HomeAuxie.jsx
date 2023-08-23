@@ -56,18 +56,18 @@ const HomeAuxie = () => {
 
     return (
         <div>
-            <header className='h-16'>    
+            <header className='h-16'>     
                 <NavGeneral />
             </header>
-            <div className='flex mt-2'>
+            <div className='flex'>
                 {/* Aside */}
-                <aside className={ nightMode ?' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-80 pl-20': 'text-color-light border-2 border-div-text-color-light-900 w-80 pl-20'}>
+                <aside className={ nightMode ?' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-[12.5rem] pl-12': 'text-color-light border-2 border-div-text-color-light-900 w-[12.5rem] pl-12'}>
                     <div className=' h-screen flex flex-col justify-between'>
                         <AsideAuxie />
                     </div>
                 </aside>
                 {/* Main Content */}
-                <div className='grid grid-cols-2 mt-4'>
+                <div className='grid grid-cols-2 '>
                     {/* Main */}
                     <main className={nightMode ? 'lg:bg-div-color-dark text-color-dark p-4 pl-8 w-fit border-2 border-div-text-color-light-900 xl:bg-div-color-dark text-color-dark p-4 pl-8 w-fit border-2 border-div-text-color-light-900':'lg:bg-div-text-color-light text-color-light py-4 pl-8 w-fit border-2 border-div-text-color-light-900 xl:bg-div-text-color-light text-color-light p-4 pl-8 w-fit h-max border-2 border-div-text-color-light-900 '}>
                         <div>
