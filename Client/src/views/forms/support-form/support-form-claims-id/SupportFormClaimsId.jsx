@@ -15,16 +15,6 @@ const SupportFormClaimsId = () => {
 
     const consumer = useSelector(state => state.loggedUser)
 
-    const setAuxiesNames = Array.from(new Set(consumer.requiredServices.map(auxie => auxie.providerId)))
-
-    const provaiderName = setAuxiesNames.map(providerId => {
-        const auxie = consumer.requiredServices.find(auxie => auxie.providerId === providerId)
-        return auxie
-    })
-
-    const foundProvider = provaiderName.find(provider => provider.providerId === claim.providerUsername)
-    
-
     useEffect(() => {
         dispatch(getClaimId(id))
     }, [id])
@@ -43,7 +33,25 @@ const SupportFormClaimsId = () => {
 
                             {isAuxie === false ? (
                                 <p>
-                                    <strong>Proveedor de la queja:</strong> {foundProvider ? foundProvider.providerName : "Proveedor no encontrado"}
+                                    <strong>Proveedor de la queja:</strong>{' '}
+                                    {Array.from(new Set(consumer.requiredServices.map(auxie => auxie.providerId)))
+                                        .map(providerId => {
+                                            const auxie = consumer.requiredServices.find(
+                                                auxie => auxie.providerId === providerId
+                                            )
+                                            return auxie
+                                        })
+                                        .find(provider => provider.providerId === claim.providerUsername)
+                                        ? Array.from(new Set(consumer.requiredServices.map(auxie => auxie.providerId)))
+                                              .map(providerId => {
+                                                  const auxie = consumer.requiredServices.find(
+                                                      auxie => auxie.providerId === providerId
+                                                  )
+                                                  return auxie
+                                              })
+                                              .find(provider => provider.providerId === claim.providerUsername)
+                                              .providerName
+                                        : 'Proveedor no encontrado'}
                                 </p>
                             ) : (
                                 <p>
@@ -74,7 +82,7 @@ const SupportFormClaimsId = () => {
                                     </p>
                                     <p>
                                         <strong>Fecha de respuesta:</strong>{' '}
-                                        {DateTime.fromISO(claim.dateClaims).toLocaleString(DateTime.DATE_MED)}
+                                        {DateTime.fromISO(claim.dateAnswer).toLocaleString(DateTime.DATE_MED)}
                                     </p>
                                 </div>
                             )}

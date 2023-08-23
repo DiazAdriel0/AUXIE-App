@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import { postClaim } from '../../../../redux/actions/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
 import './SupportFormProvider.css'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const SupportFormProvider = () => {
     const provider = useSelector(state => state.loggedUser)
@@ -18,7 +18,7 @@ const SupportFormProvider = () => {
         providerUsername: provider.username,
         consumerUsername: '',
         reason: '',
-        image: null,
+        image: '',
         message: '',
     })
 
@@ -34,25 +34,20 @@ const SupportFormProvider = () => {
 
         setError('')
 
+        const formData = new FormData()
+        formData.append('email', input.email)
+        formData.append('providerUsername', input.providerUsername)
+        formData.append('consumerUsername', input.consumerUsername)
+        formData.append('image', input.image)
+        formData.append('message', input.message)
         try {
-            const formData = new FormData()
-            formData.append('email', input.email)
-            formData.append('providerUsername', input.providerUsername)
-            formData.append('consumerUsername', input.consumerUsername)
-            formData.append('image', input.image)
-            formData.append('message', input.message)
-
-            const response = await axios.post('/claims', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            })
-            setSubmissionMessage(response.data)
+            dispatch(postClaim(input))
+            const form = document.getElementById('form')
+            form.reset()
+            Swal.fire('Se realizo tu reaclamo')
         } catch (error) {
             setSubmissionMessage(error)
         }
-
-        dispatch(postClaim(input))
 
         setInput({
             email: provider.email,
@@ -60,7 +55,7 @@ const SupportFormProvider = () => {
             message: '',
             consumerUsername: '',
             reason: '',
-            image: null,
+            image: '',
         })
     }
 
@@ -75,7 +70,7 @@ const SupportFormProvider = () => {
     return (
         <div>
             <div className='support-form'>
-                <form onSubmit={handleSubmit} className='form-container' encType='multipart/form-data'>
+                <form id='form' onSubmit={handleSubmit} className='form-container' encType='multipart/form-data'>
                     <div className='input-group'>
                         <TextField value={input.email} readOnly fullWidth />
                     </div>
@@ -166,12 +161,12 @@ const SupportFormProvider = () => {
                         />
                     </div>
                     <div className='center-button'>
-                        <button type='submit' color='primary' onClick={handleSubmit}>
+                        <button type='submit' color='primary'>
                             Enviar
                         </button>
                     </div>
                     {error && <p className='error-message'>{error}</p>}
-                    {submissionMessage && <p className='submission-message'>{submissionMessage}</p>}
+                    {submissionMessage && <p className='submission-message'>{submissionMessage.message}</p>}
                 </form>
             </div>
             <Link to='/support/claims'>

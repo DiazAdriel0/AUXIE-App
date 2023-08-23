@@ -4,7 +4,7 @@ const fs = require('fs-extra')
 
 const handlerPostClaim = async (req, res) => {
     try {
-        const { email, consumerUsername, message, providerUsername, reason } =
+        const { email, consumerUsername, message, providerUsername, reason, isConsumer } =
             req.body
 
         if (!email || !message || !providerUsername || !reason) {
@@ -31,7 +31,8 @@ const handlerPostClaim = async (req, res) => {
                 message,
                 providerUsername,
                 reason,
-                image
+                image,
+                isConsumer
             )
             res.status(200).json(newClaim)
         }
