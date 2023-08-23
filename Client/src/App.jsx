@@ -138,7 +138,7 @@ function App() {
                         <Route path='claims/:id' element={<SupportFormAdminId />} />
                     </Route>
 
-                    <Route path='paymentSucceeded' element={<PaymentSuccess />} />
+                    <Route path='/paymentSucceeded/:id' element={<PaymentSuccess />} />
                     <Route path='paymentFailed' element={<PaymentFailed />} />
                 </Routes>
             </div>
