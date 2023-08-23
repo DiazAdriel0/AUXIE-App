@@ -46,7 +46,7 @@ const ClientRequiredService = job => {
         return date.toLocaleDateString(undefined, options);
       }
     const formattedDate = formatDateFromMilliseconds(requestDate);
-    console.log(formattedDate);
+
     function formatISOStringToReadable(isoString) {
         const date = new Date(isoString);
         const year = date.getFullYear();
@@ -154,7 +154,7 @@ const ClientRequiredService = job => {
                 <div className={style.statusButtonCont}>
                     {status === 'done' && <button onClick={handleClick}>Valorar</button>}
                     {status === 'approved' && paymentMethod === 'app' && (
-                        <ButtonMercadoPago price={price} description={description} quantity={1} />
+                        <ButtonMercadoPago providerId={providerId} price={price} description={description} quantity={1} />
                     )}
                     {status === 'approved' && paymentMethod === 'efectivo' && (
                         <button onClick={handleClick}>Efectivo</button>
