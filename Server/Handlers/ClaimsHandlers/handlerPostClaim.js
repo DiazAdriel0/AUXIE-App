@@ -3,40 +3,58 @@ const { uploadClaimImage } = require('./../../Utils/cloudinary')
 const fs = require('fs-extra')
 
 const handlerPostClaim = async (req, res) => {
-
     try {
-        const { email, consumerUsername, message, providerUsername, reason, isConsumer } =
-            req.body
+        const {
+            email,
+            consumerUsername,
+            message,
+            providerUsername,
+            reason,
+            isConsumer,
+        } = req.body
 
         if (!email || !message || !providerUsername || !reason) {
             throw new Error('Faltan datos')
         } else {
-            let image
-            if (req.files['image[image]']) {
-                const result = await uploadClaimImage(
-                    req.files['image[image]'].tempFilePath
-                )
-                image = {
-                    public_id: result.public_id,
-                    secure_url: result.secure_url,
+            if (req.files) {
+                let image
+                if (req.files['image[image]']) {
+                    const result = await uploadClaimImage(
+                        req.files['image[image]'].tempFilePath
+                    )
+                    image = {
+                        public_id: result.public_id,
+                        secure_url: result.secure_url,
+                    }
+
+                    await fs.unlink(req.files['image[image]'].tempFilePath)
                 }
 
-                await fs.unlink(req.files['image[image]'].tempFilePath)
+                const newClaim = await postClaim(
+                    email,
+                    consumerUsername,
+                    message,
+                    providerUsername,
+                    reason,
+                    image,
+                    isConsumer
+                )
+                res.status(200).json(newClaim)
             }
-
             const newClaim = await postClaim(
                 email,
                 consumerUsername,
                 message,
                 providerUsername,
                 reason,
-                image,
+                null,
                 isConsumer
             )
             res.status(200).json(newClaim)
         }
     } catch (error) {
         res.status(400).json({ error: error.message })
+        console.log(error)
     }
 }
 

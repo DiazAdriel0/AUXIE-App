@@ -20,6 +20,8 @@ const SupportFormClaimsId = () => {
 
     useEffect(() => {
         dispatch(getClaimId(id))
+
+        getClaimId
     }, [id])
 
     const handleAnswerChange = event => {
@@ -31,7 +33,7 @@ const SupportFormClaimsId = () => {
 
         try {
             await axios.put(`/claims/${id}`, { answer })
-            Swal.fire('Se realizo tu reaclamo')
+            Swal.fire('Se respondio el reaclamo')
         } catch (error) {
             setSubmissionMessage(error)
         }

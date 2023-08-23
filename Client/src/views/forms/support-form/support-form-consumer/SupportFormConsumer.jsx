@@ -20,7 +20,7 @@ const SupportFormConsumer = () => {
         message: '',
         isConsumer: true,
     })
-    const [image, setImage] = useState('')
+    const [image, setImage] = useState(null)
 
     const setAuxiesNames = Array.from(new Set(consumers.requiredServices.map(auxie => auxie.providerId)))
 
@@ -63,6 +63,10 @@ const SupportFormConsumer = () => {
             providerUsername: '',
             reason: '',
             isConsumer: true,
+        })
+
+        setImage({
+            image: ''
         })
 
     }
