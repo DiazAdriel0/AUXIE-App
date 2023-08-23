@@ -1,7 +1,7 @@
 // hooks
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import useNotify from './../../../hooks/useNotify'
 
 // estilos
@@ -16,14 +16,15 @@ import NavGeneral from '../../../components/nav-general/NavGeneral'
 import { resetAuxiesCatalog, updateFirstLogin } from '../../../redux/actions/actions'
 
 //assets
-import CircleIconAuxie from '../../../assets/logos/CircleIconAuxie.png'
+
+import Footer from '../../../components/footer/Footer'
 
 const HomeConsumer = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector(state => state.loggedUser)
     const nightMode = useSelector(state => state.nightMode)
-    const isConsumer = Object.keys(user).includes('requiredServices')
+
     const { sendNotification } = useNotify(user.userUid)
 
     useEffect(() => {
@@ -53,52 +54,25 @@ const HomeConsumer = () => {
 
     return (
         <>
-            {isConsumer ? (
-                <>
-                    <NavGeneral />
-                    <div className={style.contHome}>
-                        <div className={nightMode ? style.catalogTitleContNight : style.catalogTitleCont}>
-                            <h2 className={style.catalogTitle}>Contratar un Auxie</h2>
-                        </div>
-                        <div className={style.catalogCont}>
-                            <div className={style.catalog}>
-                                <div className={style.filters}>
-                                    <Filters />
-                                </div>
-                                <div className={style.cards}>
-                                    <Cards />
-                                </div>
+            <>
+                <NavGeneral />
+                <div className={style.contHome}>
+                    <div className={nightMode ? style.catalogTitleContNight : style.catalogTitleCont}>
+                        <h2 className={style.catalogTitle}>Contratar un Auxie</h2>
+                    </div>
+                    <div className={style.catalogCont}>
+                        <div className={style.catalog}>
+                            <div className={style.filters}>
+                                <Filters />
+                            </div>
+                            <div className={style.cards}>
+                                <Cards />
                             </div>
                         </div>
                     </div>
-                    <footer className={style.footer}>
-                        <div className={style.footerInfo}>
-                            <Link to={'/aboutUs'}>
-                                <p>Quiénes Somos</p>
-                            </Link>
-                            <Link to={'/offer'}>
-                                <p>Que ofrecemos</p>
-                            </Link>
-                            <Link to={'/howItWorks'}>
-                                <p>Como funciona Auxie</p>
-                            </Link>
-                            <Link to={'/guarantee'}>
-                                <p>Garantías</p>{' '}
-                            </Link>
-                            <Link to={'/help'}>
-                                <p>Ayuda</p>
-                            </Link>
-                        </div>
-                        <div className={style.divFooterTitle}>
-                            <img src={CircleIconAuxie} alt='circle icon' className={style.divFooterImg} />
-                            <h4>Creado con amor por el Auxie Team</h4>
-                        </div>
-                        <div className={style.divCopy}>
-                            <p>Copyright © 2023</p>
-                        </div>
-                    </footer>
-                </>
-            ) : null}
+                </div>
+                <Footer />
+            </>
         </>
     )
 }

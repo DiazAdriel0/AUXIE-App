@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { HiOutlineBell, HiOutlineChatAlt, HiOutlineSearch } from 'react-icons/hi'
 import { Menu, Popover, Transition } from '@headlessui/react'
+
 //firebase
 import { auth } from '../../../config/firebase-config'
 import { signOut } from 'firebase/auth'

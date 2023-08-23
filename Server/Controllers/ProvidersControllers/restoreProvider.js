@@ -1,14 +1,14 @@
 const Provider = require('../../Models/provider')
 
-const deleteProvider = async (id) => {
+const restoreProvider = async (id) => {
     try {
         const provUser = await Provider.findById(id)
 
         if (!provUser) return false
 
-        provUser.isActive = false
+        provUser.isActive = true
 
-        provUser.save()
+        await provUser.save()
 
         return true
     } catch (error) {
@@ -16,4 +16,4 @@ const deleteProvider = async (id) => {
     }
 }
 
-module.exports = deleteProvider
+module.exports = restoreProvider

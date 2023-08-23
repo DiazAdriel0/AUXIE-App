@@ -25,21 +25,20 @@ import ClickAwayListener from '@mui/base/ClickAwayListener'
 const ProfilePicAuxie = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const user = useSelector((state) => state.loggedUser)
-    const nightMode = useSelector((state) => state.nightMode)
+    const user = useSelector(state => state.loggedUser)
+    const nightMode = useSelector(state => state.nightMode)
     const [profileMenu, setProfileMenu] = useState(null)
 
     const isAuxie = Object.keys(user).includes('services') ? true : false
 
-    const handleClick = (event) => {
+    const handleClick = event => {
         setProfileMenu(profileMenu ? null : event.currentTarget)
     }
 
-    const handleRedirect = (e) => {
+    const handleRedirect = e => {
         if (e.target.innerText === 'Perfil') return navigate('/profile')
         if (e.target.innerText === 'Ayuda') return navigate('/help')
-        if (e.target.innerText === 'Servicios')
-            return navigate('/requestedservices')
+        if (e.target.innerText === 'Servicios') return navigate('/requestedservices')
     }
 
     const handleLogOut = async () => {
@@ -71,7 +70,6 @@ const ProfilePicAuxie = () => {
         } catch (error) {
             console.error('error: ' + error.message)
             Swal.fire(error.message)
-           
         }
     }
     const handleClickAway = () => {
@@ -84,16 +82,8 @@ const ProfilePicAuxie = () => {
     return (
         <div className={style.profile}>
             {/* Botón para desplegar menu con opciones del perfil*/}
-            <button
-                onClick={handleClick}
-                aria-describedby={id}
-                className={style.buttonPic}
-            >
-                <img
-                    className={style.img}
-                    src={user.image?.secure_url}
-                    alt='imagen de perfil'
-                />
+            <button onClick={handleClick} aria-describedby={id} className={style.buttonPic}>
+                <img className={style.img} src={user.image?.secure_url} alt='imagen de perfil' />
             </button>
             <Popper
                 id={id}
@@ -136,22 +126,13 @@ const ProfilePicAuxie = () => {
                         {/*Botones para el perfil auxie*/}
                         <ClickAwayListener onClickAway={handleClickAway}>
                             <Box className={style.profileMenu}>
-                                <p
-                                    onClick={handleRedirect}
-                                    className={style.profileButtonTop}
-                                >
+                                <p onClick={handleRedirect} className={style.profileButtonTop}>
                                     Perfil
                                 </p>
-                                <p
-                                    onClick={handleRedirect}
-                                    className={style.profileButtonMiddle}
-                                >
+                                <p onClick={handleRedirect} className={style.profileButtonMiddle}>
                                     Ayuda
                                 </p>
-                                <p
-                                    onClick={handleLogOut}
-                                    className={style.profileButtonBottom}
-                                >
+                                <p onClick={handleLogOut} className={style.profileButtonBottom}>
                                     Cerrar sesión
                                 </p>
                             </Box>
@@ -161,35 +142,17 @@ const ProfilePicAuxie = () => {
                     <>
                         {/*Botones para el perfil consumer*/}
                         <ClickAwayListener onClickAway={handleClickAway}>
-                            <Box
-                                className={
-                                    nightMode
-                                        ? style.profileMenuNight
-                                        : style.profileMenu
-                                }
-                            >
-                                <p
-                                    onClick={handleRedirect}
-                                    className={style.profileButtonTop}
-                                >
+                            <Box className={nightMode ? style.profileMenuNight : style.profileMenu}>
+                                <p onClick={handleRedirect} className={style.profileButtonTop}>
                                     Perfil
                                 </p>
-                                <p
-                                    onClick={handleRedirect}
-                                    className={style.profileButtonMiddle}
-                                >
+                                <p onClick={handleRedirect} className={style.profileButtonMiddle}>
                                     Servicios
                                 </p>
-                                <p
-                                    onClick={handleRedirect}
-                                    className={style.profileButtonMiddle}
-                                >
+                                <p onClick={handleRedirect} className={style.profileButtonMiddle}>
                                     Ayuda
                                 </p>
-                                <p
-                                    onClick={handleLogOut}
-                                    className={style.profileButtonBottom}
-                                >
+                                <p onClick={handleLogOut} className={style.profileButtonBottom}>
                                     Cerrar sesión
                                 </p>
                             </Box>
