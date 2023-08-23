@@ -40,13 +40,13 @@ const addJob = async (newPendingService, id) => {
         addedJob.id = request._id.toString()
 
         if (providerFound.jobs?.length > 0) {
-            providerFound.jobs.push(addedJob)
+            providerFound.jobs.unshift(addedJob)
         } else {
             providerFound.jobs = [addedJob]
         }
 
         if (consumerFound.requiredServices?.length > 0) {
-            consumerFound.requiredServices.push(addedJob)
+            consumerFound.requiredServices.unshift(addedJob)
         } else {
             consumerFound.requiredServices = [addedJob]
         }
