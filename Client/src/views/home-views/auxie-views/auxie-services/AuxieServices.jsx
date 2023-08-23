@@ -54,7 +54,7 @@ const AuxieServices = () => {
                     {tableOrCard ? (
                         <div >
                             <TableServices />
-                        </div>
+                        </div> 
                     ) : (
                         <div className='mr-24 pl-0.5'>
                             <CardsJobs />
