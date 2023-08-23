@@ -23,12 +23,12 @@ const Customers = () => {
         dispatch(getAllClients())
     }, [])
     const clients = useSelector(state => state.clients)
-    const { currentPageData } = usePagination(12, clients)
+    const { currentPageData } = usePagination(9, clients)
     return (
         <>
             <TableUsers data={currentPageData} />
             <div className='mt-[4rem]'>
-                <Pagination num={12} data={clients} />
+                <Pagination num={9} data={clients} />
             </div>
         </>
     )
