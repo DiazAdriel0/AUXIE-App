@@ -41,7 +41,7 @@ export const Notifications = () => {
         if (notifications.length) setLoading(false)
     }, [notifications])
 
-    const handleRedirect = (texto) => {
+    const handleRedirect = texto => {
         if (texto.includes('reseña')) {
             return navigate('/review')
         }
@@ -51,10 +51,10 @@ export const Notifications = () => {
         if (texto.includes('ingresa a tu perfil')) {
             return navigate('/profile')
         }
-        if (texto.includes('requerido')){
+        if (texto.includes('requerido')) {
             return navigate('/requestedservices')
-        } 
-        if(texto.includes('propuesta')) {
+        }
+        if (texto.includes('propuesta')) {
             return navigate('/requestedservices')
         }
         if (texto.includes('mensaje') && loggedUser.hasOwnProperty('services')) {
