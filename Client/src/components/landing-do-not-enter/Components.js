@@ -8,9 +8,9 @@ export const Container = styled.div`
         0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
-    width: 678px;
+    width: 1000px;
     max-width: 100%;
-    min-height: 400px;
+    min-height: 700px;
 `
 
 export const SignUpContainer = styled.div`
@@ -23,7 +23,7 @@ export const SignUpContainer = styled.div`
     opacity: 0;
     z-index: 1;
     ${(props) =>
-        props.signingIn !== true
+        props.signingin !== true
             ? `
   transform: translateX(100%);
 	opacity: 1;
@@ -41,7 +41,7 @@ export const SignInContainer = styled.div`
     width: 50%;
     z-index: 2;
     ${(props) =>
-        props.signingIn !== true ? `transform: translateX(100%);` : null}
+        props.signingin !== true ? `transform: translateX(100%);` : null}
 `
 
 export const Form = styled.form`
@@ -109,13 +109,13 @@ export const OverlayContainer = styled.div`
     transition: transform 0.6s ease-in-out;
     z-index: 100;
     ${(props) =>
-        props.signingIn !== true ? `transform: translateX(-100%);` : null}
+        props.signingin !== true ? `transform: translateX(-100%);` : null}
 `
 
 export const Overlay = styled.div`
     background: #ff416c;
-    background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-    background: linear-gradient(to right, #ff4b2b, #ff416c);
+    background: -webkit-linear-gradient(to right, #30598c, #0b0b25,);
+    background: linear-gradient(to right, #30598c, #0b0b25);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 0 0;
@@ -127,7 +127,7 @@ export const Overlay = styled.div`
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
     ${(props) =>
-        props.signingIn !== true ? `transform: translateX(50%);` : null}
+        props.signingin !== true ? `transform: translateX(50%);` : null}
 `
 
 export const OverlayPanel = styled.div`
@@ -148,14 +148,14 @@ export const OverlayPanel = styled.div`
 export const LeftOverlayPanel = styled(OverlayPanel)`
     transform: translateX(-20%);
     ${(props) =>
-        props.signingIn !== true ? `transform: translateX(0);` : null}
+        props.signingin !== true ? `transform: translateX(0);` : null}
 `
 
 export const RightOverlayPanel = styled(OverlayPanel)`
     right: 0;
     transform: translateX(0);
     ${(props) =>
-        props.signingIn !== true ? `transform: translateX(20%);` : null}
+        props.signingin !== true ? `transform: translateX(20%);` : null}
 `
 export const Paragraph = styled.p`
     font-size: 14px;

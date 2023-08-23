@@ -10,6 +10,7 @@ import { loggedUser, updateProfile } from '../../../redux/actions/actions'
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../config/firebase-config'
 import Swal from 'sweetalert2'
+import Pruebas from '../../pruebas/Pruebas'
 const ClientLogin = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -163,8 +164,12 @@ const ClientLogin = () => {
 
     return (
         <>
-            <NavLanding />
+       
             <div className={style.login}>
+            <Pruebas />
+            </div>
+            {/* <div className={style.login}>
+          
                 <form id='form' onSubmit={handleSubmit} className={style.form}>
                     <div>
                         <div>
@@ -239,7 +244,7 @@ const ClientLogin = () => {
                         <p>Continúa con Google</p>
                     </button>
                 </center>
-            </div>
+            </div> */}
         </>
     )
 }
