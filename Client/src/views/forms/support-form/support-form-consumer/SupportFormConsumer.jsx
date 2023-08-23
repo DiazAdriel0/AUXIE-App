@@ -17,10 +17,10 @@ const SupportFormConsumer = () => {
         consumerUsername: consumers.username,
         providerUsername: '',
         reason: '',
-        image: '',
         message: '',
         isConsumer: true,
     })
+    const [image, setImage] = useState('')
 
     const setAuxiesNames = Array.from(new Set(consumers.requiredServices.map(auxie => auxie.providerId)))
 
@@ -39,12 +39,14 @@ const SupportFormConsumer = () => {
         formData.append('consumerUsername', input.consumerUsername)
         formData.append('providerUsername', input.providerUsername)
         formData.append('reason', input.reason)
-        formData.append('image', input.image)
+        formData.append('image', image)
         formData.append('message', input.message)
         formData.append('isConsumer', input.isConsumer)
 
         try {
-            await axios.post('/claims', formData, {
+            await axios.post('/claims', 
+            { ...input, image },
+            {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -60,7 +62,6 @@ const SupportFormConsumer = () => {
             message: '',
             providerUsername: '',
             reason: '',
-            image: '',
             isConsumer: true,
         })
 
@@ -152,7 +153,7 @@ const SupportFormConsumer = () => {
                             name='image'
                             onChange={event => {
                                 const file = event.target.files[0]
-                                setInput({ ...input, image: file })
+                                setImage({ image: file })
                             }}
                         />
                     </div>

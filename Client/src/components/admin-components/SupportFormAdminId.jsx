@@ -12,9 +12,11 @@ const SupportFormClaimsId = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
     const claim = useSelector(state => state.id)
-    const isConsumer = useSelector(state => state.id.consumer)
+    const auxies = useSelector(state => state.auxies)
     const [answer, setAnswer] = useState('')
     const [submissionMessage, setSubmissionMessage] = useState('')
+
+    const auxie = auxies.find((provider) => provider.id === claim.providerUsername)
 
     useEffect(() => {
         dispatch(getClaimId(id))
@@ -35,6 +37,7 @@ const SupportFormClaimsId = () => {
         }
     }
 
+
     return (
         <div>
             <div className='support-form-claims-id-container'>
@@ -43,21 +46,21 @@ const SupportFormClaimsId = () => {
                         <h2 className='support-form-claims-id-header'>Detalles del reclamo</h2>
                         <div className='support-form-claims-id-content'>
                             <p>
-                                <strong>Email:</strong> {claim.email}
+                                <strong>Email: </strong> {claim.email}
                             </p>
 
-                            {isConsumer === false ? (
+                            {claim.isConsumer ? (
                                 <p>
-                                    <strong>Proveedor de la queja:</strong>
-                                    {id.providerUsername}
+                                    <strong>Proveedor de la queja: </strong>
+                                    {auxie.username}
                                 </p>
                             ) : (
                                 <p>
-                                    <strong>Consumer de la queja:</strong> {id.consumerUsername}
+                                    <strong>Cliente de la queja: </strong> {claim.consumerUsername}
                                 </p>
                             )}
                             <p>
-                                <strong>Motivo:</strong> {claim.reason}
+                                <strong>Motivo: </strong> {claim.reason}
                             </p>
                             {claim.image && (
                                 <img
@@ -67,14 +70,14 @@ const SupportFormClaimsId = () => {
                                 />
                             )}
                             <p>
-                                <strong>Mensaje:</strong> {claim.message}
+                                <strong>Mensaje: </strong> {claim.message}
                             </p>
                             <p>
-                                <strong>Fecha de reclamo:</strong>{' '}
+                                <strong>Fecha de reclamo: </strong>{' '}
                                 {DateTime.fromISO(claim.dateClaims).toLocaleString(DateTime.DATE_MED)}
                             </p>
                             <p>
-                                <strong>Respuesta:</strong> {claim.answer}
+                                <strong>Respuesta: </strong> {claim.answer}
                             </p>
                             {claim.pending && (
                                 <form onSubmit={handleFormSubmit}>
