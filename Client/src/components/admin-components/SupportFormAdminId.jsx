@@ -16,7 +16,7 @@ const SupportFormClaimsId = () => {
     const [answer, setAnswer] = useState('')
     const [submissionMessage, setSubmissionMessage] = useState('')
 
-    const auxie = auxies.find((provider) => provider.id === claim.providerUsername)
+    const auxie = auxies.find(provider => provider.id === claim.providerUsername)
 
     useEffect(() => {
         dispatch(getClaimId(id))
@@ -36,7 +36,6 @@ const SupportFormClaimsId = () => {
             setSubmissionMessage(error)
         }
     }
-
 
     return (
         <div>
@@ -62,13 +61,15 @@ const SupportFormClaimsId = () => {
                             <p>
                                 <strong>Motivo: </strong> {claim.reason}
                             </p>
+
                             {claim.image && (
                                 <img
                                     className='support-form-claims-id-image'
-                                    src={claim.image}
+                                    src={claim.image?.secure_url}
                                     alt='Imagen del reclamo'
                                 />
                             )}
+
                             <p>
                                 <strong>Mensaje: </strong> {claim.message}
                             </p>
