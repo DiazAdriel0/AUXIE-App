@@ -11,9 +11,9 @@ const ButtonMercadoPago = props => {
     const [quantity, setQuantity] = useState(props.quantity)
     const [showPayButton, setShowPayButton] = useState(false)
     const [loading, setLoading] = useState(false)
-
+    let prov = props.providerId
     initMercadoPago('TEST-4f16f016-a822-4c4d-bb35-e48447a441d6')
-
+    
     const createPreference = async () => {
         setShowPayButton(true)
         setLoading(true)
@@ -23,6 +23,7 @@ const ButtonMercadoPago = props => {
                 price: parseFloat(price),
                 quantity: parseInt(quantity),
                 currency_id: 'ARS',
+                provider:prov,
             })
 
             const { id } = response.data

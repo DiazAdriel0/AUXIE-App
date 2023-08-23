@@ -14,10 +14,12 @@ const updateJobStatus = require('../../Handlers/ProvidersHandlers/updateJobStatu
 const updateJobPrice = require('../../Handlers/ProvidersHandlers/updateJobPrice')
 const updateFirstLogin = require('./../../Handlers/ProvidersHandlers/updateFirstLogin')
 const restoreProviderById = require('./../../Handlers/ProvidersHandlers/restoreProviderById')
+const getProvUid = require('../../Handlers/ProvidersHandlers/getProvUid')
 const providersRouter = Router()
 
 providersRouter.get('/', getProviders)
 providersRouter.get('/:id', getProviderById)
+providersRouter.get('/uid/:uid', getProvUid)
 
 providersRouter.put('/profile', updateProvider)
 providersRouter.put('/services', updateOfferedServices)

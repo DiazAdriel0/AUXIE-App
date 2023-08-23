@@ -1,11 +1,39 @@
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom'
+import useNotify from '../../hooks/useNotify'
+import { useSelector } from 'react-redux';
+import axios from 'axios';
+
 const PaymentSuccess = ()=>{
+
     const navigate = useNavigate()
-const handleRedirect = (e)=>{
-    e.preventDefault()
-    navigate('/homeConsumer')
-}
+    const handleRedirect = (e)=>{
+        e.preventDefault()
+        navigate('/homeConsumer')
+    }
+    const user = useSelector(state=>{
+        return state.loggedUser
+    })
+    const {id} = useParams()
+    const { sendNotification } = useNotify(id)
+
+useEffect(()=>{
+    axios(`/providers/uid/${id}`).then(({data})=>{
+        const hay = user.requiredServices.slice().filter(trabajo=>trabajo.providerId === data.id )
+        if(hay.length){
+            sendNotification(`${user.firstName} ${user.lastName} ha acreditado el pago.`)
+        }else{
+            return navigate('/homeConsumer')
+        }
+    }).catch((error)=>{
+        console.error(error);
+        navigate('/homeConsumer')
+    })
+
+
+},[])
 
 return (
     <main>
