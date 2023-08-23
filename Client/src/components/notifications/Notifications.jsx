@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import { useState, useEffect } from 'react'
 import { db, auth } from '../../config/firebase-config'
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore'
@@ -56,9 +57,11 @@ export const Notifications = () => {
         if(texto.includes('proposal')) {
             return navigate('/requestedservices')
         }
-        // eslint-disable-next-line no-prototype-builtins
         if (texto.includes('mensaje') && loggedUser.hasOwnProperty('services')) {
             return navigate('/auxieinbox') //msj de consumer a definir
+        }
+        if (texto.includes('acreditado el pago') && loggedUser.hasOwnProperty('services')) {
+            return navigate('/auxieservices')
         }
     }
 
