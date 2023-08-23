@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateProfile } from '../../../redux/actions/actions'
-import NavGeneral from '../../../components/nav-general/NavGeneral'
-import style from './editProfile.module.scss'
+import { updateProfile } from '../../../../redux/actions/actions'
+import NavGeneral from '../../../../components/nav-general/NavGeneral'
+import style from './editConsumerProfile.module.scss'
 import { TextField } from '@mui/material'
-import ResetPassword from '../../reset-password/ResetPassword'
+import ResetPassword from '../../../reset-password/ResetPassword'
 import { useNavigate } from 'react-router-dom'
 
-const EditProfile = () => {
+const EditConsumerProfile = () => {
     const consumer = useSelector(state => state.loggedUser)
     const navigate = useNavigate()
     const [newImage, setNewImage] = useState(null)
@@ -70,6 +70,9 @@ const EditProfile = () => {
         dispatch(updateProfile({ id: consumer.id, image: newImage, ...profileData, address: fullAddress }, 'consumers'))
         navigate('/profile')
     }
+    useEffect(()=> {
+        if (consumer.isAuxie) return navigate('/editauxieprofile')
+    },[])
     return (
         <div>
             <div>
@@ -212,4 +215,4 @@ const EditProfile = () => {
     )
 }
 
-export default EditProfile
+export default EditConsumerProfile
