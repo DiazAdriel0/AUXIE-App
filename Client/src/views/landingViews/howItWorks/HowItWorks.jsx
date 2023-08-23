@@ -130,10 +130,10 @@ const HowItWorks = () => {
                 <div className={style.faqSection}>
                     <h2>Preguntas frecuentes</h2>
                     {faqs.map((faqItem, index) => (
-                        <div className={style.faqItem} key={index}>
+                        <div className={style.faqItem} key={index} onClick={() => handleFaqClick(index)}>
                             <div
                                 className={style.faqQuestion}
-                                onClick={() => handleFaqClick(index)}
+                                
                             >
                                 {faqItem.question}
                                 {faq === index ? (
