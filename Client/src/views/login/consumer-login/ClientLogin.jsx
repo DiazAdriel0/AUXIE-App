@@ -14,7 +14,7 @@ import Pruebas from '../../pruebas/Pruebas'
 const ClientLogin = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { errors, validate } = useValidations()
+ 
     const [access, setAccess] = useState(false) //eslint-disable-line
 
     const [input, setInput] = useState({
