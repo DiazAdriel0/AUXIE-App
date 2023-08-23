@@ -2,7 +2,6 @@ import * as Components from './Components'
 import React, { useEffect, useState } from 'react'
 import { useValidations } from '../../utils/validationutils'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -36,12 +35,12 @@ function LoginRegister() {
     const dispatch = useDispatch()
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
-
+    const correo = 'auxieapp@gmail.com'
     const [input, setInput] = useState({
         email: '',
         password: '',
     })
-    
+
     const logged = useSelector(state => state.loggedUser)
     const handleChange = event => {
         setInput({
@@ -60,10 +59,18 @@ function LoginRegister() {
     }
     const handleLogin = async input => {
         try {
-            const response = await axios.post('/consumers/login', input)
-            if (response) {
-                setAccess(true)
-                dispatch(loggedUser(response.data))
+            const {data} = await axios.post('/consumers/login', input)
+            if(data){
+                if (data.isActive) {
+                  setAccess(true)
+                  dispatch(loggedUser(data))
+              }else{
+                  return Swal.fire({
+                      icon: 'error',
+                      title: 'Tu cuenta ha sido suspendida.',
+                      html: `<p>Para más información, contactate con <a style="color: black;" href="mailto:${correo}">${correo}</a>.</p>`,
+                    })
+              }  
             }
         } catch (error) {
             console.error('error: ' + error.message)
@@ -125,7 +132,7 @@ function LoginRegister() {
         const form = document.getElementById('form')
         const email = input.email
         const password = input.password
-       
+        
         try {
             const credential = await signInWithEmailAndPassword(auth, email, password)
             if (credential) {
@@ -188,7 +195,7 @@ function LoginRegister() {
         gender: '',
         userUid: '',
     })
-   
+
     const handleSignUpChange = event => {
         setSignUp({
             ...signUp,
@@ -203,7 +210,7 @@ function LoginRegister() {
         )
     }
     const handlePost = async signUp => {
-      
+
         try {
             const response = await axios.post('/consumers/', signUp)
             if (response) {
@@ -222,10 +229,10 @@ function LoginRegister() {
                     default:
                         welcome = 'Bienvenidx'
                 }
-             
+
                 // Reset the form only on successful response (2xx)
                 const form = document.getElementById('form')
-                Swal.fire(`Usuario creado con exito. ${welcome} a Auxie! Inicia sesión para continuar.`)
+                Swal.fire(`Usuario creado con exito. ¡${welcome} a Auxie! Inicia sesión para continuar.`)
                 form.reset()
             }
 
