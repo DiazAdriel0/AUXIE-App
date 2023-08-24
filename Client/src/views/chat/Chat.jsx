@@ -34,10 +34,7 @@ export const Chat = ({ recipient }) => {
         const getOrCreateConversation = async () => {
             await addDoc(conversationsRef, conversationData)
 
-            const messagesRef = collection(
-                db,
-                `conversations/${conversationId}/messages`
-            )
+            const messagesRef = collection(db, `conversations/${conversationId}/messages`)
 
             const queryMessages = query(messagesRef, orderBy('createdAt'))
             const unsubscribe = onSnapshot(queryMessages, snapshot => {
@@ -78,10 +75,7 @@ export const Chat = ({ recipient }) => {
         const conversationData = { participants }
         await addDoc(conversationsRef, conversationData)
 
-        const messagesRef = collection(
-            db,
-            `conversations/${conversationId}/messages`
-        )
+        const messagesRef = collection(db, `conversations/${conversationId}/messages`)
 
         await addDoc(messagesRef, {
             text: newMessage,
@@ -113,9 +107,11 @@ export const Chat = ({ recipient }) => {
                                 : 'You'}
                         </span>
                         <div className={style.chatbubbles}>
-                            <div>
-                                className=
-                                {` ${message.recipient === auth.currentUser.uid ? style.receiver : style.sender}`}
+                            <div
+                                className={` ${
+                                    message.recipient === auth.currentUser.uid ? style.receiver : style.sender
+                                }`}
+                            >
                                 {message.text}
                             </div>
                         </div>
