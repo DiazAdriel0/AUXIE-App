@@ -17,7 +17,14 @@ const TableServices = () => {
         name: '',
         status: '',
     })
-
+    const translated = {
+        approved: 'Aprobado',
+        cancelled: 'Cancelado',
+        pending: 'Pendiente',
+        done: 'Completado',
+        declined: 'Rechazado',
+        proposal: 'Propuesta',
+    }
     const targetRef = useRef(null)
     const [showForm, setShowForm] = useState(false)
     const [shouldCloseForm, setShouldCloseForm] = useState(false)
@@ -111,7 +118,7 @@ const TableServices = () => {
                             <td>{index + 1}</td>
                             <td>{service.service}</td>
                             <td>{service.description}</td>
-                            <td>{service.status}</td>
+                            <td>{translated[service.status]}</td>
                             {service.status === 'pending' && (
                                 <td>
                                     <div className={style.buttonContainer}>
