@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useValidations } from '../../utils/validationutils'
 import axios from 'axios'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loggedUser, updateProfile } from '../../redux/actions/actions'
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 'firebase/auth'
@@ -326,7 +326,9 @@ function LoginRegisterAuxie() {
                         </div>
                         <Input type='password' placeholder='Password' name='password' onChange={handleChange} />
                         <div className={style.errors}></div>
-                        <Anchor href='#'>Forgot your password?</Anchor>
+                        <Link to={('/resetpassword')}>
+                        <Anchor href='#'>¿Olvidaste tu contraseña?</Anchor>
+                        </Link>
                         <Button className={style.sendbutton}>Inicia Sesión</Button>
                     </Form>
                 </SignInContainer>
