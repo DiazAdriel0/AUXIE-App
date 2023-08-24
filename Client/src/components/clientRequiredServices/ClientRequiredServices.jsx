@@ -39,7 +39,6 @@ const ClientRequiredServices = () => {
         const formattedDate = `${day} de ${month} de ${year}`
         return formattedDate;
       }
-
     const handleClickOutside = event => {
         if (shouldCloseForm && targetRef.current && !targetRef.current.contains(event.target)) {
             setShowForm(false)
@@ -92,7 +91,7 @@ const ClientRequiredServices = () => {
     return (
         <>
             {showForm && (
-                <div className={style.reviewFormContainer} >
+                <div className={style.reviewFormContainer}>
                     <div className={style.reviewForm} ref={targetRef}>
                         <ReviewForm />
                     </div>
