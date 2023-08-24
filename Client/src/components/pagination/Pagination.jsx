@@ -15,7 +15,7 @@ const Pagination = ({ num, data }) => {
                 }
                 onClick={pagination.handleClickPrev}
             >
-                Prev
+                Anterior
             </button>
 
             {pagination.pages.map((page) => (
@@ -42,7 +42,7 @@ const Pagination = ({ num, data }) => {
                 }
                 onClick={pagination.handleClickNext}
             >
-                Next
+                Siguiente
             </button>
         </div>
     )

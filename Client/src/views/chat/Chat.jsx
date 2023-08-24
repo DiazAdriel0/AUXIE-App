@@ -12,7 +12,7 @@ export const Chat = ({ recipient }) => {
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
     const [sent, setSent] = useState(false)
-    const conversationsRef = collection(db, 'conversations') // Change: Use 'conversations' collection
+    const conversationsRef = collection(db, 'conversations')
     const participants = [auth.currentUser.uid, recipient]
     const ordered = participants.sort((a, b) => {
         if (a.toLowerCase() > b.toLowerCase()) {
@@ -22,7 +22,7 @@ export const Chat = ({ recipient }) => {
         } else {
             return 0
         }
-    }) // Sort for consistent order
+    })
 
     const { sendNotification } = useNotify(recipient)
 
@@ -31,12 +31,14 @@ export const Chat = ({ recipient }) => {
     const conversationData = { participants }
 
     useEffect(() => {
-        // Fetch or create a conversation document
         const getOrCreateConversation = async () => {
-            await addDoc(conversationsRef, conversationData) // Create the conversation if it doesn't exist
+            await addDoc(conversationsRef, conversationData)
 
-            // Fetch messages for the conversation
-            const messagesRef = collection(db, `conversations/${conversationId}/messages`)
+            const messagesRef = collection(
+                db,
+                `conversations/${conversationId}/messages`
+            )
+
             const queryMessages = query(messagesRef, orderBy('createdAt'))
             const unsubscribe = onSnapshot(queryMessages, snapshot => {
                 let messages = []
@@ -69,17 +71,18 @@ export const Chat = ({ recipient }) => {
 
         if (newMessage === '') return
 
-        // Fetch or create a conversation document
         const participants = [auth.currentUser.uid, recipient]
-        participants.sort() // Sort for consistent order
 
+        participants.sort()
         const conversationId = ordered.join('_')
         const conversationData = { participants }
+        await addDoc(conversationsRef, conversationData)
 
-        await addDoc(conversationsRef, conversationData) // Create the conversation if it doesn't exist
+        const messagesRef = collection(
+            db,
+            `conversations/${conversationId}/messages`
+        )
 
-        // Store the message with the conversation ID
-        const messagesRef = collection(db, `conversations/${conversationId}/messages`)
         await addDoc(messagesRef, {
             text: newMessage,
             createdAt: serverTimestamp(),

@@ -15,7 +15,8 @@ const getClaims = async (email) => {
                     reason: claim.reason,
                     image: claim.image,
                     dateClaims: claim.dateClaims,
-                    pending: claim.pending
+                    pending: claim.pending,
+                    isConsumer: claim.isConsumer,
                 }
                 arrClaim.push(userClaim)
             } else {
@@ -30,7 +31,8 @@ const getClaims = async (email) => {
                     dateClaims: claim.dateClaims,
                     answer: claim.answer,
                     dateAnswer: claim.dateAnswer,
-                    pending: claim.pending
+                    pending: claim.pending,
+                    isConsumer: claim.isConsumer,
                 }
                 arrClaim.push(userClaim)
             }

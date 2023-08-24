@@ -10,10 +10,11 @@ import { loggedUser, updateProfile } from '../../../redux/actions/actions'
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../../config/firebase-config'
 import Swal from 'sweetalert2'
+import Pruebas from '../../pruebas/Pruebas'
 const ClientLogin = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { errors, validate } = useValidations()
+ 
     const [access, setAccess] = useState(false) //eslint-disable-line
 
     const [input, setInput] = useState({
@@ -85,11 +86,6 @@ const ClientLogin = () => {
                     willClose: () => {
                         clearInterval(timerInterval)
                     },
-                }).then(result => {
-                    /* Read more about handling dismissals below */
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        console.log('I was closed by the timer')
-                    }
                 })
 
                 // eslint-disable-next-line no-prototype-builtins
@@ -163,8 +159,12 @@ const ClientLogin = () => {
 
     return (
         <>
-            <NavLanding />
+       
             <div className={style.login}>
+            <Pruebas />
+            </div>
+            {/* <div className={style.login}>
+          
                 <form id='form' onSubmit={handleSubmit} className={style.form}>
                     <div>
                         <div>
@@ -239,7 +239,7 @@ const ClientLogin = () => {
                         <p>Continúa con Google</p>
                     </button>
                 </center>
-            </div>
+            </div> */}
         </>
     )
 }

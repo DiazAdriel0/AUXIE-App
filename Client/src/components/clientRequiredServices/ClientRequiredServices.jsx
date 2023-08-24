@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { DateTime } from 'luxon'
 import style from './clientRequiredServices.module.scss'
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
 import ClientRequiredService from '../clientRequiredService/ClientRequiredService'
@@ -12,6 +11,7 @@ const ClientRequiredServices = () => {
     const dispatch = useDispatch()
     const client = useSelector(state => state.loggedUser)
     const [cards, setCards] = useState(true)
+    const [update, setUpdate] = useState(false)
     const targetRef = useRef(null)
     const [showForm, setShowForm] = useState(false)
     const [shouldCloseForm, setShouldCloseForm] = useState(false)
@@ -24,6 +24,21 @@ const ClientRequiredServices = () => {
         proposal: 'Propuesta',
     }
 
+    function formatDateFromMilliseconds(milliseconds) {
+        const date = new Date(milliseconds)
+        const options = { year: 'numeric', month: 'long', day: 'numeric'}
+        return date.toLocaleDateString(undefined, options)
+      }
+
+    function formatISOStringToReadable(isoString) {
+        const date = new Date(isoString);
+        const year = date.getFullYear();
+        const month = date.toLocaleString('default', { month: 'long' })
+        const day = date.getDate()
+      
+        const formattedDate = `${day} de ${month} de ${year}`
+        return formattedDate;
+      }
     const handleClickOutside = event => {
         if (shouldCloseForm && targetRef.current && !targetRef.current.contains(event.target)) {
             setShowForm(false)
@@ -60,6 +75,7 @@ const ClientRequiredServices = () => {
         if (e.target.innerText === 'Cancelado') return Swal.fire('Has cancelado tu pedido')
         if (e.target.innerText === 'Pendiente') return Swal.fire('Espera a que el Auxie apruebe tu pedido')
         if (e.target.innerText === 'Rechazado') return Swal.fire('El auxie ha rechazado tu pedido')
+        setUpdate(true)
     }
 
     useEffect(() => {
@@ -71,7 +87,7 @@ const ClientRequiredServices = () => {
 
     useEffect(() => {
         dispatch(updateConsumer(client.userUid))
-    }, [client])
+    }, [update])
     return (
         <>
             {showForm && (
@@ -81,9 +97,6 @@ const ClientRequiredServices = () => {
                     </div>
                 </div>
             )}
-            <div className={style.servicesTitleCont}>
-                <h2 className={style.servicesTitle}>Servicios contratados</h2>
-            </div>
             <div className={style.servicesCont}>
                 <button onClick={handleSwitch}>{cards ? 'Cambiar a tabla' : 'Cambiar a cartas'}</button>
                 {cards ? (
@@ -129,8 +142,8 @@ const ClientRequiredServices = () => {
                                     <td>{service.description}</td>
                                     <td>{translated[service.status]}</td>
                                     <td>{`$${service.price}`}</td>
-                                    <td>{DateTime.fromISO(service.requestDate)?.toLocaleString(DateTime.DATE_MED)}</td>
-                                    <td>{service.jobDate}</td>
+                                    <td>{formatDateFromMilliseconds(service.requestDate)}</td>
+                                    <td>{formatISOStringToReadable(service.jobDate)}</td>
                                     <td>{service.paymentMethod}</td>
                                     <td className={style.actionButton}>
                                         {service.status === 'done' && <button onClick={handleClick}>Valorar</button>}

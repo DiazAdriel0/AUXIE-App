@@ -6,7 +6,8 @@ import NavLanding from '../../../components/nav-landing/NavLanding'
 import SupportFormConsumer from './support-form-consumer/SupportFormConsumer'
 import SupportFormProvider from './support-form-provider/SupportFormProvider'
 import SuportFormUnloggien from './support-form-unloggien/SupportFormUnloggien'
-import SupportFormAdmin from './support-form-admin/SupportFormAdmin'
+import SupportFormAdmin from '../../../components/admin-components/SupportFormAdmin'
+import style from './SupportForm.module.scss'
 
 const ProfilePage = () => {
     const user = useSelector((state) => state.loggedUser)
@@ -19,7 +20,6 @@ const ProfilePage = () => {
             <div>
                 {!user.id ? (
                     <div>
-
                         <NavLanding />
                         <SuportFormUnloggien />
                     </div>
@@ -33,9 +33,11 @@ const ProfilePage = () => {
                     </div>
                 )}
             </div>
-            <Link to="/help">
+            <div className={style.backClaims}>
+              <Link to="/help">
                 <button>Volver</button>
-            </Link>
+            </Link>   
+            </div>
         </div>
     )
 }

@@ -1,5 +1,9 @@
 import { IoBagHandle, IoPieChart, IoCart, IoPeople } from 'react-icons/io5'
+import { useSelector } from 'react-redux'
+import { spanStyle, spanStyleNight, strongStyle, strongStyleNight } from '../../lib/consts/styles'
 const DashboardStatsGrid = () => {
+    const nightMode = useSelector(state => state.nightMode)
+
     return (
         <div className=' flex gap-4 w-full'>
             <BoxWrapper>
@@ -7,9 +11,9 @@ const DashboardStatsGrid = () => {
                     <IoBagHandle className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className='text-sm text-gray-500 font-light'>Ventas del Dia</span>
+                    <span className={nightMode ? spanStyleNight : spanStyle}>Ventas del día</span>
                     <div className='flex items-center'>
-                        <strong className='text-xl text-gray-700 font-semibold'>$5132.21</strong>
+                        <strong className={nightMode ? strongStyleNight : strongStyle}>$5132.21</strong>
                         <span className='text-sm text-green-500 pl-2'>+1123</span>
                     </div>
                 </div>
@@ -19,9 +23,9 @@ const DashboardStatsGrid = () => {
                     <IoPieChart className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className='text-sm text-gray-500 font-light'>Auxies Nuevos</span>
+                    <span className={nightMode ? spanStyleNight : spanStyle}>Auxies nuevos</span>
                     <div className='flex items-center'>
-                        <strong className='text-xl text-gray-700 font-semibold'>1532</strong>
+                        <strong className={nightMode ? strongStyleNight : strongStyle}>1532</strong>
                         <span className='text-sm text-green-500 pl-2'>+254</span>
                     </div>
                 </div>
@@ -31,9 +35,9 @@ const DashboardStatsGrid = () => {
                     <IoPeople className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className='text-sm text-gray-500 font-light'> Usuarios Nuevos</span>
+                    <span className={nightMode ? spanStyleNight : spanStyle}> Usuarios nuevos</span>
                     <div className='flex items-center'>
-                        <strong className='text-xl text-gray-700 font-semibold'>15320</strong>
+                        <strong className={nightMode ? strongStyleNight : strongStyle}>15320</strong>
                         <span className='text-sm text-green-500 pl-2'>+1543</span>
                     </div>
                 </div>
@@ -43,9 +47,9 @@ const DashboardStatsGrid = () => {
                     <IoCart className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className='text-sm text-gray-500 font-light'>Ventas Totales</span>
+                    <span className={nightMode ? spanStyleNight : spanStyle}>Ventas totales</span>
                     <div className='flex items-center'>
-                        <strong className='text-xl text-gray-700 font-semibold'>$312,521.12</strong>
+                        <strong className={nightMode ? strongStyleNight : strongStyle}>$312,521.12</strong>
                         <span className='text-sm text-red-500 pl-2'>-2544</span>
                     </div>
                 </div>
@@ -55,7 +59,18 @@ const DashboardStatsGrid = () => {
 }
 
 function BoxWrapper({ children }) {
-    return <div className='bg-white rounded-sm p-4 flex-1 border border-gray-200 flex items-center'>{children}</div>
+    const nightMode = useSelector(state => state.nightMode)
+    return (
+        <div
+            className={
+                nightMode
+                    ? 'bg-neutral-900 rounded-sm p-4 flex-1  flex items-center'
+                    : 'bg-white rounded-sm p-4 flex-1 border border-gray-200 flex items-center'
+            }
+        >
+            {children}
+        </div>
+    )
 }
 
 export default DashboardStatsGrid

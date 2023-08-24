@@ -1,17 +1,9 @@
 import style from './landing.module.scss'
-
-//* Import Hooks
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
-//*Import Animations
 import { Animated } from 'react-animated-css'
-
-//* Import icons
-
-//* Import components
 import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
 import ButtonUp from '../../components/buttons/buttonUp/ButtonUp'
@@ -19,7 +11,6 @@ import FeaturedAuxies from '../../components/featuredAuxies/FeaturedAuxies'
 import Footer from '../../components/footer/Footer'
 
 const Landing = () => {
-    //style tags
     const {
         landing,
         hiden,
@@ -40,13 +31,10 @@ const Landing = () => {
         serviceCards,
         sectionMenu,
     } = style
-    //* First Intersection Observer
     const { ref: myRef, inView: firstObserver } = useInView()
 
-    //* Second Intersection Observer
     const { ref: myRef2, inView: secondObserver } = useInView()
 
-    //* Third Intersection Observer
     const { ref: myRef3, inView: thirdObserver } = useInView()
 
     const [animationObserver, setAnimationObserver] = useState({
@@ -54,11 +42,9 @@ const Landing = () => {
         secondCardsAnimated: false,
         footerAnimated: false,
     })
-    //* Global State
-    const nightMode = useSelector((state) => state.nightMode)
-    const user = useSelector((state) => state.loggedUser)
-    const menuLanding = useSelector((state) => state.menuLanding)
-    //* state for changes
+    const nightMode = useSelector(state => state.nightMode)
+    const user = useSelector(state => state.loggedUser)
+    const menuLanding = useSelector(state => state.menuLanding)
     const [menuChange, setMenuChange] = useState(true)
 
     const navigate = useNavigate()
@@ -72,23 +58,22 @@ const Landing = () => {
         }
     }, [])
 
-    //* useEffect animations
     useEffect(() => {
         if (firstObserver) {
-            setAnimationObserver((prevAnimationObserver) => ({
+            setAnimationObserver(prevAnimationObserver => ({
                 ...prevAnimationObserver,
                 cardsAnimated: true,
             }))
         }
         if (secondObserver) {
-            setAnimationObserver((prevAnimationObserver) => ({
+            setAnimationObserver(prevAnimationObserver => ({
                 ...prevAnimationObserver,
                 secondCardsAnimated: true,
             }))
         }
 
         if (thirdObserver) {
-            setAnimationObserver((prevAnimationObserver) => ({
+            setAnimationObserver(prevAnimationObserver => ({
                 ...prevAnimationObserver,
                 footerAnimated: true,
             }))
@@ -102,27 +87,29 @@ const Landing = () => {
         setMenuChange(false)
     }
 
-    const handleClick = (event) => {
+    const handleClick = event => {
         switch (event.target.value) {
             case 'toAuxieForm':
-                navigate('/auxieform')
+                navigate('/auxielogin')
                 break
             case 'toClientForm':
-                navigate('/clientform')
+                navigate('/clientlogin')
                 break
             case 'toHelp':
                 navigate('/help')
+                break
+            default:
+                navigate('/clientlogin')
+                break
         }
     }
 
-    const { cardsAnimated, secondCardsAnimated, footerAnimated } =
-        animationObserver
+    const { cardsAnimated, secondCardsAnimated, footerAnimated } = animationObserver
 
     return (
         <>
             <NavLanding />
 
-            {/* Button to go up */}
             <ButtonUp
                 observersLanding={{
                     firstObserver,
@@ -131,23 +118,10 @@ const Landing = () => {
                 }}
             />
 
-            {/* main */}
             <main className={!menuLanding ? landing : hiden}>
-                {/* Section Menu Prinipal */}
-                <Animated
-                    animationIn='fadeIn'
-                    animationOut='fadeOut'
-                    animationInDuration={1000}
-                    isVisible={true}
-                >
+                <Animated animationIn='fadeIn' animationOut='fadeOut' animationInDuration={1000} isVisible={true}>
                     <section className={sectionMenu}>
-                        <div
-                            className={
-                                !nightMode
-                                    ? `${menuLogo} ${menuLogoLight}`
-                                    : `${menuLogo} ${menuLogoNight}`
-                            }
-                        >
+                        <div className={!nightMode ? `${menuLogo} ${menuLogoLight}` : `${menuLogo} ${menuLogoNight}`}>
                             <div
                                 className={
                                     !nightMode
@@ -156,81 +130,30 @@ const Landing = () => {
                                 }
                             >
                                 <div className={style.buttonsMenuMain}>
-                                    <button
-                                        onClick={handlerMenuSearchAuxie}
-                                        className={searchAuxie}
-                                    >
+                                    <button onClick={handlerMenuSearchAuxie} className={searchAuxie}>
                                         Busco un Auxie
                                     </button>
-                                    <button
-                                        onClick={handlerMenuBeAuxie}
-                                        className={style.turnAuxie}
-                                    >
+                                    <button onClick={handlerMenuBeAuxie} className={style.turnAuxie}>
                                         Convertirme en Auxie
                                     </button>
                                 </div>
                                 {menuChange === true ? (
                                     <div
                                         className={
-                                            !nightMode
-                                                ? menuSearchAuxie
-                                                : `${menuSearchAuxie} ${menuSearchAuxieNight}`
+                                            !nightMode ? menuSearchAuxie : `${menuSearchAuxie} ${menuSearchAuxieNight}`
                                         }
                                     >
-                                        <h3>
-                                            Contrata a un Auxie que te ayude
-                                        </h3>
-                                        {/*  <select defaultValue="default">
-                                            <option disabled value="default">
-                                                Servicios Mas Solicitados
-                                            </option>
-                                            {services &&
-                                                services.map((service) => {
-                                                    return (
-                                                        <option
-                                                            key={service.name}
-                                                            value={service.name}
-                                                        >
-                                                            {service.name}
-                                                        </option>
-                                                    )
-                                                })}
-                                        </select> */}
-                                        <button
-                                            onClick={handleClick}
-                                            value={'toClientForm'}
-                                            className={buttonMenu}
-                                        >
+                                        <h3>Contrata a un Auxie que te ayude</h3>
+                                        
+                                        <button onClick={handleClick} value={'toClientlogin'} className={buttonMenu}>
                                             Necesito un Auxie
                                         </button>
                                     </div>
                                 ) : (
                                     <div className={style.menuTurnAuxie}>
-                                        <h3>
-                                            Conviértete en Auxie y genera
-                                            ganancias
-                                        </h3>
-                                        {/* <select defaultValue="default">
-                                            <option disabled value="default">
-                                                Servicios a los que Aplicar
-                                            </option>
-                                            {services &&
-                                                services.map((service) => {
-                                                    return (
-                                                        <option
-                                                            key={service.name}
-                                                            value={service.name}
-                                                        >
-                                                            {service.name}
-                                                        </option>
-                                                    )
-                                                })}
-                                        </select> */}
-                                        <button
-                                            onClick={handleClick}
-                                            value={'toAuxieForm'}
-                                            className={buttonMenu}
-                                        >
+                                        <h3>Conviértete en Auxie y genera ganancias</h3>
+                                        
+                                        <button onClick={handleClick} value={'toAuxieForm'} className={buttonMenu}>
                                             Convertirme en Auxie
                                         </button>
                                     </div>
@@ -241,30 +164,15 @@ const Landing = () => {
                 </Animated>
 
                 {/* Section Slogan */}
-                <Animated
-                    animationIn='slideInUp'
-                    animationOut='fadeOut'
-                    animationInDuration={1000}
-                    isVisible={true}
-                >
+                <Animated animationIn='slideInUp' animationOut='fadeOut' animationInDuration={1000} isVisible={true}>
                     <section className={slogan}>
                         <div
-                            className={
-                                !nightMode
-                                    ? `${divSlogan} ${divSloganLight}`
-                                    : `${divSlogan} ${divSloganNight}`
-                            }
+                            className={!nightMode ? `${divSlogan} ${divSloganLight}` : `${divSlogan} ${divSloganNight}`}
                         >
                             <h3>TU VIDA COTIDIANA AHORA ES MÁS FÁCIL</h3>
                             <p>
-                                <span>
-                                    Esta aplicación está diseñada para tu
-                                    comodidad, con
-                                </span>
-                                <span>
-                                    unos pocos clics podrás solucionar tus
-                                    problemas.
-                                </span>
+                                <span>Esta aplicación está diseñada para tu comodidad, con</span>
+                                <span>unos pocos clics podrás solucionar tus problemas.</span>
                             </p>
                         </div>
                         <div
@@ -274,11 +182,7 @@ const Landing = () => {
                                     : `${buttonSloganCont} ${buttonSloganContNight}  `
                             }
                         >
-                            <button
-                                className={style.buttonSlogan}
-                                onClick={handleClick}
-                                value={'toClientForm'}
-                            >
+                            <button className={style.buttonSlogan} onClick={handleClick} value={'toClientForm'}>
                                 Contratar
                             </button>
                         </div>
@@ -296,11 +200,9 @@ const Landing = () => {
                         >
                             <section ref={myRef} className={serviceCards}>
                                 <div className={style.serviceCardsTitle}>
-                                    <h3>
-                                        Nuestros servicios más populares
-                                    </h3>
+                                    <h3>Nuestros servicios más populares</h3>
                                 </div>
-                               
+
                                 <CardsServices />
                             </section>
                         </Animated>
@@ -314,26 +216,17 @@ const Landing = () => {
                 )}
 
                 {secondCardsAnimated ? (
-                    <Animated
-                        animationIn='slideInUp'
-                        animationOut='fadeOut'
-                        animationInDuration={1000}
-                    >
+                    <Animated animationIn='slideInUp' animationOut='fadeOut' animationInDuration={1000}>
                         {/* Section Slogan */}
                         <section ref={myRef2} className={slogan}>
                             <div
                                 className={
-                                    !nightMode
-                                        ? `${divSlogan} ${divSloganLight}`
-                                        : `${divSlogan} ${divSloganNight}`
+                                    !nightMode ? `${divSlogan} ${divSloganLight}` : `${divSlogan} ${divSloganNight}`
                                 }
                             >
                                 <h3>Trabaja con nosotros y genera ganancias</h3>
                                 <p>
-                                    <span>
-                                        Somos la mejor herramienta para
-                                        potenciar tu independencia laboral
-                                    </span>
+                                    <span>Somos la mejor herramienta para potenciar tu independencia laboral</span>
                                 </p>
                             </div>
                             <div
@@ -343,11 +236,7 @@ const Landing = () => {
                                         : `${buttonSloganCont} ${buttonSloganContNight}  `
                                 }
                             >
-                                <button
-                                    className={style.buttonSlogan}
-                                    onClick={handleClick}
-                                    value={'toHelp'}
-                                >
+                                <button className={style.buttonSlogan} onClick={handleClick} value={'toHelp'}>
                                     Más información
                                 </button>
                             </div>
@@ -355,7 +244,7 @@ const Landing = () => {
 
                         {/* Section Auxies */}
                         <section className={style.auxies}>
-                            <h3>Auxies Destacados</h3>
+                            <h3>Auxies destacados</h3>
                             <div className={style.featuredAuxiesCont}>
                                 <FeaturedAuxies />
                             </div>
@@ -363,22 +252,12 @@ const Landing = () => {
                     </Animated>
                 ) : (
                     <>
-                        <section
-                            className={style.sloganNone}
-                            ref={myRef2}
-                        ></section>
-                        <section
-                            className={style.auxies}
-                            ref={myRef2}
-                        ></section>
+                        <section className={style.sloganNone} ref={myRef2}></section>
+                        <section className={style.auxies} ref={myRef2}></section>
                     </>
                 )}
                 {/* Footer */}
-                {footerAnimated ? (
-                    <Footer myRef3={myRef3} />
-                ) : (
-                    <Footer myRef3={myRef3} />
-                )}
+                {footerAnimated ? <Footer myRef3={myRef3} /> : <Footer myRef3={myRef3} />}
             </main>
         </>
     )

@@ -7,6 +7,8 @@ const postClaim = async (
     providerUsername,
     reason,
     image,
+    isConsumer,
+    
 ) => {
     try {
         await Claims.create({
@@ -16,6 +18,7 @@ const postClaim = async (
             providerUsername,
             reason,
             image,
+            isConsumer,
         })
 
         return {

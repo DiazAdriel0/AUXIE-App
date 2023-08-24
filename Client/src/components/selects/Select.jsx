@@ -7,31 +7,30 @@ import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 
 const BasicSelect = () => {
-    const nightMode = useSelector((state) => state.nightMode)
+    const nightMode = useSelector(state => state.nightMode)
     const navigate = useNavigate()
-    const handleChange = (event) => {
+    const handleChange = event => {
         const { value } = event.target
         navigate('/' + value)
     }
 
     return (
         <Box sx={{ minWidth: 120 }}>
-            <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-label'>Compañia</InputLabel>
+            <FormControl className='w-full h-6 '>
+                <InputLabel size='small' id='demo-simple-select-label'>
+                    Compañía
+                </InputLabel>
                 <Select
-                    style={
-                        nightMode
-                            ? { backgroundColor: 'white', color: 'black' }
-                            : null
-                    }
+                    className='w-full h-10'
+                    style={nightMode ? { backgroundColor: 'white', color: 'black' } : null}
                     labelId='demo-simple-select-label'
                     id='demo-simple-select'
                     label='Compañia'
                     onChange={handleChange}
                 >
-                    <MenuItem value='aboutUs'>Quiénes Somos</MenuItem>
-                    <MenuItem value='offer'>Que ofrecemos</MenuItem>
-                    <MenuItem value='howItWorks'>Como funciona Auxie</MenuItem>
+                    <MenuItem value='aboutUs'>¿Quiénes somos?</MenuItem>
+                    <MenuItem value='offer'>¿Qué ofrecemos?</MenuItem>
+                    <MenuItem value='howItWorks'>¿Cómo funciona Auxie?</MenuItem>
                 </Select>
             </FormControl>
         </Box>

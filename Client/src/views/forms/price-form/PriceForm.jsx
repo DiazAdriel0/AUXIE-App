@@ -41,10 +41,10 @@ const PriceForm = ({ id }) => {
                 })
             )
             sendNotification(
-                `El auxie ${loggedUser.firstName} ${loggedUser.lastName} ha enviado la propuesta a tu solicitud. Revisala para confirmar posibles cambios`
+                `El auxie ${loggedUser.firstName} ${loggedUser.lastName} ha enviado la propuesta a tu solicitud. Revísala para confirmar posibles cambios`
             )
             
-            Swal.fire('Cambios realizados con exito')
+            Swal.fire('Cambios realizados con éxito')
         } catch (error) {
             console.error(error)
             Swal.fire('No se han guardado los cambios')

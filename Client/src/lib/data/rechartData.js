@@ -15,7 +15,7 @@ export const data01 = [
         income: 5100,
     },
     {
-        name: 'MaAbrr',
+        name: 'Abr',
         expense: 2600,
         income: 5300,
     },
@@ -106,8 +106,72 @@ export const data04 = [
         name: 'NIñera',
         expense: 2900,
         income: 5000,
+
     },
 ]
+
+export const data06 = [
+    {
+        name: 'Ene',
+        Visitas: 5500,
+        Reservas: 3500,
+    },
+    {
+        name: 'Feb',
+        Visitas: 4700,
+        Reservas: 2200,
+    },
+    {
+        name: 'Mar',
+        Visitas: 4800,
+        Reservas: 2100,
+    },
+    {
+        name: 'Abr',
+        Visitas: 2600,
+        Reservas: 1300,
+    },
+    {
+        name: 'May', 
+        Visitas:5000,
+        Reservas:2900 ,
+    },
+    {
+        name: 'Jun',
+        Visitas:5500 ,
+        Reservas:2500 ,
+    },
+    {
+        name: 'Jul',
+        Visitas:5200 ,
+        Reservas:2700 ,
+    },
+    {
+        name: 'Ago',
+        Visitas:4900 ,
+        Reservas:3000 ,
+    },
+    {
+        name: 'Sep',
+        Visitas:5700 ,
+        Reservas:2400 ,
+    },
+    {
+        name: 'Oct',
+        Visitas:5100 ,
+        Reservas: 2800,
+    },
+    {
+        name: 'Nov',
+        Visitas:5300, 
+        Reservas:2600,
+    },
+    {
+        name: 'Dec',
+        Visitas: 5000,
+        Reservas: 2900,
+    },
+  ]
 
 export const recentOrderData = [
     {
@@ -176,17 +240,7 @@ export const recentOrderData = [
         current_payment_status: 'COBRADO',
         shipment_address: 'Capital Federal',
     },
-    {
-        id: '23',
-        product_id: '5434',
-        customer_id: '65345',
-        customer_name: 'Luz Andrea Figaro',
-        order_date: '2023-08-17T07:14:00',
-        order_total: '$8370',
-        current_order_status: 'TERMINADO',
-        current_payment_status: 'COBRADO',
-        shipment_address: 'Rosario',
-    },
+
     {
         id: '5',
         product_id: '9854',

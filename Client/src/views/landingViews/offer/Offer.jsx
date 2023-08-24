@@ -25,10 +25,6 @@ const Offer = () => {
             <div className={style.offer}>
                 <div className={style.offers}>
                     <h2>Las ofertas de AUXIE</h2>
-                    {/* <h3>Cambiamos la forma en la que recibis ayuda en casa</h3>
-                    <Link to="/">
-                        <button className={style.button}>Explora la app</button>
-                    </Link> */}
                 </div>
             </div>
             <div>
@@ -97,7 +93,6 @@ const Offer = () => {
             <div>
                 <section className={style.Footer}>
                     <div className={style.Register}>
-                        {/* ACA VAN BOTONES A LOS FORMULARIOS */}
                         <Link to='/auxieform'>
                             <h3>Quiero ser un Auxie</h3>
                         </Link>

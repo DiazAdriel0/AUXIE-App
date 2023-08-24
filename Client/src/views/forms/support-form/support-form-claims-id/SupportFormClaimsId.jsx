@@ -11,19 +11,9 @@ const SupportFormClaimsId = () => {
     const dispatch = useDispatch()
     const { id } = useParams()
     const claim = useSelector(state => state.id)
-    const isAdmin = useSelector(state => state.loggedUser.isAdmin)
+    const isAuxie = useSelector(state => state.loggedUser.isAuxie)
 
     const consumer = useSelector(state => state.loggedUser)
-
-    const setAuxiesNames = Array.from(new Set(consumer.requiredServices.map(auxie => auxie.providerId)))
-
-    const provaiderName = setAuxiesNames.map(providerId => {
-        const auxie = consumer.requiredServices.find(auxie => auxie.providerId === providerId)
-        return auxie
-    })
-
-    const foundProvider = provaiderName.find(provider => provider.providerId === claim.providerUsername)
-    
 
     useEffect(() => {
         dispatch(getClaimId(id))
@@ -41,9 +31,27 @@ const SupportFormClaimsId = () => {
                                 <strong>Email:</strong> {claim.email}
                             </p>
 
-                            {isAdmin === false ? (
+                            {isAuxie === false ? (
                                 <p>
-                                    <strong>Proveedor de la queja:</strong> {foundProvider ? foundProvider.providerName : "Proveedor no encontrado"}
+                                    <strong>Proveedor de la queja:</strong>{' '}
+                                    {Array.from(new Set(consumer.requiredServices.map(auxie => auxie.providerId)))
+                                        .map(providerId => {
+                                            const auxie = consumer.requiredServices.find(
+                                                auxie => auxie.providerId === providerId
+                                            )
+                                            return auxie
+                                        })
+                                        .find(provider => provider.providerId === claim.providerUsername)
+                                        ? Array.from(new Set(consumer.requiredServices.map(auxie => auxie.providerId)))
+                                              .map(providerId => {
+                                                  const auxie = consumer.requiredServices.find(
+                                                      auxie => auxie.providerId === providerId
+                                                  )
+                                                  return auxie
+                                              })
+                                              .find(provider => provider.providerId === claim.providerUsername)
+                                              .providerName
+                                        : 'Proveedor no encontrado'}
                                 </p>
                             ) : (
                                 <p>
@@ -56,7 +64,7 @@ const SupportFormClaimsId = () => {
                             {claim.image && (
                                 <img
                                     className='support-form-claims-id-image'
-                                    src={claim.image}
+                                    src={claim.image?.secure_url}
                                     alt='Imagen del reclamo'
                                 />
                             )}
@@ -74,7 +82,7 @@ const SupportFormClaimsId = () => {
                                     </p>
                                     <p>
                                         <strong>Fecha de respuesta:</strong>{' '}
-                                        {DateTime.fromISO(claim.dateClaims).toLocaleString(DateTime.DATE_MED)}
+                                        {DateTime.fromISO(claim.dateAnswer).toLocaleString(DateTime.DATE_MED)}
                                     </p>
                                 </div>
                             )}
@@ -82,9 +90,11 @@ const SupportFormClaimsId = () => {
                     </div>
                 )}
             </div>
-            <Link to='/support/claims'>
+            <div className="back-button-container">
+             <Link to='/support/claims'>
                 <button>Volver</button>
-            </Link>
+            </Link>   
+            </div>
         </div>
     )
 }

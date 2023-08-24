@@ -1,7 +1,7 @@
 .support-form-container {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     width: 100%;
     align-items: center;
 }
@@ -23,4 +23,9 @@
 
 .pagination {
     margin-top: 16px;
+}
+
+.back-button{
+    display: flex;
+    justify-content: center;
 }

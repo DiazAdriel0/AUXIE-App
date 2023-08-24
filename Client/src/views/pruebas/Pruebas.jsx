@@ -8,6 +8,6 @@ const Pruebas = () => {
             <LoginRegister />
         </div>
     )
-}
+}    
 
 export default Pruebas

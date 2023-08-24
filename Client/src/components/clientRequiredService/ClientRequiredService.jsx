@@ -1,17 +1,13 @@
-// hooks
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-// actions
 import { setServiceStatus, updateConsumer } from '../../redux/actions/actions'
 
-// components
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
 import ReviewForm from '../../views/forms/review-form/ReviewForm'
 import Swal from 'sweetalert2'
 
-// style
 import style from './clientRequiredService.module.scss'
 
 const ClientRequiredService = job => {
@@ -19,17 +15,15 @@ const ClientRequiredService = job => {
     const navigate = useNavigate()
     const client = useSelector(state => state.loggedUser)
     const nightMode = useSelector(state => state.nightMode)
+    const [update, setUpdate] = useState(false)
 
-    // local states para manejar el popup del form review
     const targetRef = useRef(null)
     const [showForm, setShowForm] = useState(false)
     const [shouldCloseForm, setShouldCloseForm] = useState(false)
 
-    // props
     const { id, providerId, providerName, service, requestDate, jobDate, status, description, price, paymentMethod } =
         job
 
-    // objecto para traducir mi estado a español
     const translated = {
         approved: 'Aprobado',
         cancelled: 'Cancelado',
@@ -39,7 +33,24 @@ const ClientRequiredService = job => {
         proposal: 'Propuesta',
     }
 
-    // función que hace desaparecer el popup
+    function formatDateFromMilliseconds(milliseconds) {
+        const date = new Date(milliseconds)
+        const options = { year: 'numeric', month: 'long', day: 'numeric' }
+        return date.toLocaleDateString(undefined, options)
+    }
+    const formattedDate = formatDateFromMilliseconds(requestDate)
+
+    function formatISOStringToReadable(isoString) {
+        const date = new Date(isoString)
+        const year = date.getFullYear()
+        const month = date.toLocaleString('default', { month: 'long' })
+        const day = date.getDate()
+
+        const formattedDate = `${day} de ${month} de ${year}`
+        return formattedDate
+    }
+    const formattedDate2 = formatISOStringToReadable(jobDate)
+
     const handleClickOutside = event => {
         if (shouldCloseForm && targetRef.current && !targetRef.current.contains(event.target)) {
             setShowForm(false)
@@ -47,7 +58,6 @@ const ClientRequiredService = job => {
         }
     }
 
-    // función que acepta o rechaza una propuesta del auxie
     const handleProposal = status => {
         const data = {
             providerId: providerId,
@@ -63,7 +73,6 @@ const ClientRequiredService = job => {
         return navigate(`/detail/${providerId}`)
     }
 
-    // función que maneja la acción que va a realizar el botón que se renderiza dependiendo del estado
     const handleClick = e => {
         if (e.target.innerText === 'Valorar') {
             setShowForm(true)
@@ -75,10 +84,10 @@ const ClientRequiredService = job => {
         if (e.target.innerText === 'Efectivo') return Swal.fire('Pagar en efectivo')
         if (e.target.innerText === 'Cancelado') return Swal.fire('Has cancelado tu pedido')
         if (e.target.innerText === 'Pendiente') return Swal.fire('Espera a que el Auxie apruebe tu pedido')
-        if (e.target.innerText === 'Rechazado') return Swal.fire('El auxie ha rechazado tu pedido')
+        if (e.target.innerText === 'Rechazado') return Swal.fire('El Auxie ha rechazado tu pedido')
+        setUpdate(true)
     }
 
-    // hook que escucha si se hace click fuera del form review
     useEffect(() => {
         document.addEventListener('click', handleClickOutside)
         return () => {
@@ -87,15 +96,20 @@ const ClientRequiredService = job => {
     }, [shouldCloseForm])
 
     useEffect(() => {
-        updateConsumer(client.id)
-    },[client])
+        dispatch(updateConsumer(client.userUid))
+    }, [update])
 
     return (
         <>
             {showForm && (
                 <div className={style.reviewFormContainer}>
                     <div className={style.reviewForm} ref={targetRef}>
-                        <ReviewForm />
+                        <ReviewForm
+                            serviceName={service}
+                            providerName={providerName}
+                            serviceId={id}
+                            providerId={providerId}
+                        />
                     </div>
                 </div>
             )}
@@ -118,9 +132,9 @@ const ClientRequiredService = job => {
 
                         <div className={style.requestDate}>
                             <p>Fecha de petición: </p>
-                            {requestDate}
+                            {formattedDate}
                             <p>Fecha de realización: </p>
-                            {jobDate}
+                            {formattedDate2}
                         </div>
                         <div className={style.requestPyS}>
                             <p>
@@ -135,7 +149,12 @@ const ClientRequiredService = job => {
                 <div className={style.statusButtonCont}>
                     {status === 'done' && <button onClick={handleClick}>Valorar</button>}
                     {status === 'approved' && paymentMethod === 'app' && (
-                        <ButtonMercadoPago price={price} description={description} quantity={1} />
+                        <ButtonMercadoPago
+                            providerId={providerId}
+                            price={price}
+                            description={description}
+                            quantity={1}
+                        />
                     )}
                     {status === 'approved' && paymentMethod === 'efectivo' && (
                         <button onClick={handleClick}>Efectivo</button>

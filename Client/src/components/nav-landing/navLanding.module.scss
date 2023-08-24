@@ -1,6 +1,6 @@
 .navLanding {
     width: 100%;
-    height: 10vh;
+    height: 8vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,7 +16,7 @@
         justify-content: flex-start;
 
         .logoDiv {
-            width: 10%;
+            width: 20%;
             margin-right: 5%;
             a {
                 border-bottom: none;
@@ -116,19 +116,39 @@
     .container {
         font-size: 200%;
 
-        div {
-            width: 90%;
+        .logcontainer {
+            width: 80%;
             height: 50%;
-            display: flexbox;
-            margin-top: 5%;
-            div {
-                background-color: var(--sixth--color-light);
-                margin-left: 10%;
-                padding-left: 30%;
-                padding: 5%;
-                border-radius: 10px;
-                transition: background-color 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            
+            justify-content: center;
+            margin: 10% auto auto auto;
+           h3{
+            font-size: 1.5rem;
+           }
+            .logbuttons {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 5%;
+            
+                button {
+                    height: 5rem;
+                    width: 15rem;
+                    padding-left: 30%;
+                    padding: 5%;
+                    border-radius: 10px;
+                    transition: background-color 0.5s ease;
+                    // background-color: violet;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 2rem;
+                    margin: 0 3rem;
+                }
             }
+
             div:hover {
                 background-color: var(--secondary--anchor--color-hover);
             }

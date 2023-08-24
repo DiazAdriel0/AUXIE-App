@@ -31,6 +31,8 @@ import AuxieServices from './views/home-views/auxie-views/auxie-services/AuxieSe
 import AuxieStatistics from './views/home-views/auxie-views/auxie-statistics/AuxieStatistics'
 
 import ProfilePage from './views/profile/profilePage/ProfilePage'
+import EditConsumerProfile from './views/profile/editProfile/editConsumerProfile/EditConsumerProfile'
+import EditAuxieProfile from './views/profile/editProfile/editAuxieProfile/EditAuxieProfile'
 import './config/firebase-config'
 
 //Forms
@@ -53,14 +55,16 @@ import JobRequestForm from './views/forms/jobRequest-Form/JobRequestForm'
 import ChatApp from './views/chat/App'
 
 //Admin
-
+import Notifications from './components/admin-components/Notifications'
 import Layout from './views/admin/shared/Layout'
 import Dashboard from './components/admin-components/Dashboard'
 import Auxies from './components/admin-components/Auxies'
 import Customers from './components/admin-components/Customers'
 import Services from './components/admin-components/Services'
 import Transactions from './components/admin-components/Transactions'
-import Notifications from './components/admin-components/Notifications'
+
+import SupportFormAdmin from './components/admin-components/SupportFormAdmin'
+import SupportFormAdminId from './components/admin-components/SupportFormAdminId'
 
 //payment Views
 import PaymentSuccess from './components/payment/PaymentSuccess'
@@ -109,6 +113,8 @@ function App() {
                     <Route path='/detail/:id' element={<Detail />} />
                     {/*Profile paths */}
                     <Route path='/profile' element={<ProfilePage />} />
+                    <Route path='/editconsumerprofile' element={<EditConsumerProfile />}/>
+                    <Route path='/editauxieprofile' element={<EditAuxieProfile />}/>
                     {/* Register paths */}
                     <Route path='/auxieform' element={<Form />} />
                     <Route path='/clientform' element={<ClientForm />} />
@@ -132,10 +138,11 @@ function App() {
                         <Route path='clientes' element={<Customers />} />
                         <Route path='servicios' element={<Services />} />
                         <Route path='transacciones' element={<Transactions />} />
-                        <Route path='notificaciones' element={<Notifications />} />
+                        <Route path='claims' element={<SupportFormAdmin />} />
+                        <Route path='claims/:id' element={<SupportFormAdminId />} />
                     </Route>
 
-                    <Route path='paymentSucceeded' element={<PaymentSuccess />} />
+                    <Route path='/paymentSucceeded/:id' element={<PaymentSuccess />} />
                     <Route path='paymentFailed' element={<PaymentFailed />} />
                 </Routes>
             </div>

@@ -8,7 +8,7 @@ const deleteProviderById = async (req, res) => {
 
         if (!deleted) return res.status(400).json({ error: 'Id invalido' })
 
-        res.status(200)
+        res.status(200).send('Usuario eliminado con éxito')
     } catch (error) {
         res.status(500).json({ error: error.message })
     }
