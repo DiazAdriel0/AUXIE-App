@@ -12,6 +12,7 @@ import Swal from 'sweetalert2'
 import style from './loginregister.module.scss'
 
 function LoginRegisterAuxie() {
+    const correo = 'auxieapp@gmail.com'
     const [signIn, toggle] = useState(true)
     const {
         Container,
@@ -40,7 +41,7 @@ function LoginRegisterAuxie() {
         email: '',
         password: '',
     })
-    console.log(input)
+
     const logged = useSelector(state => state.loggedUser)
     const handleChange = event => {
         setInput({
@@ -59,11 +60,20 @@ function LoginRegisterAuxie() {
     }
     const handleLogin = async input => {
         try {
-            const response = await axios.post('/providers/login', input)
-            if (response) {
-                setAccess(true)
-                dispatch(loggedUser(response.data))
+            const {data} = await axios.post('/providers/login', input)
+            if(data){
+                if (data.isActive) {
+                    setAccess(true)
+                    dispatch(loggedUser(data))
+                }else{
+                    return Swal.fire({
+                        icon: 'error',
+                        title: 'Tu cuenta ha sido suspendida.',
+                        html: `<p>Para más información, contactate con <a style="color: black;" href="mailto:${correo}">${correo}</a>.</p>`,
+                      })
+                }  
             }
+            
         } catch (error) {
             console.error('error: ' + error.message)
             Swal.fire(error.message)
@@ -106,11 +116,6 @@ function LoginRegisterAuxie() {
                     willClose: () => {
                         clearInterval(timerInterval)
                     },
-                }).then(result => {
-                    /* Read more about handling dismissals below */
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        console.log('I was closed by the timer')
-                    }
                 })
 
                 // eslint-disable-next-line no-prototype-builtins
@@ -129,7 +134,7 @@ function LoginRegisterAuxie() {
         const form = document.getElementById('form')
         const email = input.email
         const password = input.password
-        console.log(email, password)
+
         try {
             const credential = await signInWithEmailAndPassword(auth, email, password)
             if (credential) {
@@ -192,7 +197,7 @@ function LoginRegisterAuxie() {
         gender: '',
         userUid: '',
     })
-    console.log(signUp)
+
     const handleSignUpChange = event => {
         setSignUp({
             ...signUp,
@@ -207,7 +212,7 @@ function LoginRegisterAuxie() {
         )
     }
     const handlePost = async signUp => {
-        console.log(signUp)
+
         try {
             const response = await axios.post('/providers/', signUp)
             if (response) {
@@ -226,7 +231,7 @@ function LoginRegisterAuxie() {
                     default:
                         welcome = 'Bienvenidx'
                 }
-                console.log(response)
+
                 // Reset the form only on successful response (2xx)
                 const form = document.getElementById('form')
                 Swal.fire(`Usuario creado con exito. ${welcome} a Auxie! Inicia sesión para continuar.`)

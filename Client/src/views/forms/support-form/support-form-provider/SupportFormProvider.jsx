@@ -65,7 +65,7 @@ const SupportFormProvider = () => {
         }
         setInput(updatedInput)
     }
-    console.log(image);
+    
 
     return (
         <div>
@@ -169,9 +169,11 @@ const SupportFormProvider = () => {
                     {submissionMessage && <p className='submission-message'>{submissionMessage.message}</p>}
                 </form>
             </div>
-            <Link to='/support/claims'>
+            <div className='claims-done'> 
+             <Link to='/support/claims'>
                 <button>Reclamos realizados</button>
-            </Link>
+            </Link>   
+            </div>
         </div>
     )
 }

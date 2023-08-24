@@ -3,8 +3,7 @@ const { Schema, model } = require('mongoose')
 const consumerSchema = new Schema({
     isActive: {
         type: Boolean,
-        required: true,
-        default: false,
+        default: true,
     },
     isAuxie: {
         type: Boolean,

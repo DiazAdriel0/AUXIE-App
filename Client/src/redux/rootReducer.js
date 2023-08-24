@@ -164,7 +164,7 @@ function rootReducer(state = initialState, action) {
                 return {
                     ...state,
                     showFavorites: false,
-                    shownAuxies: [...state.favoriteAuxies],
+                    shownAuxies: [...state.auxies],
                 }
             }
         // ordena el estado filteredAuxies por precio del servicio (solo se puede ordenar si todos los auxies de mi estado tienen un servicio en común)

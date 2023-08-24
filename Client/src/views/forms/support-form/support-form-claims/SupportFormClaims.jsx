@@ -67,9 +67,11 @@ const SupportFormClaims = () => {
                     </button>
                 </div>
             </div>
-            <Link to='/support'>
+            <div className='back-button'> 
+             <Link to='/support'>
                 <button>Volver</button>
-            </Link>
+            </Link>   
+            </div>
         </div>
     )
 }

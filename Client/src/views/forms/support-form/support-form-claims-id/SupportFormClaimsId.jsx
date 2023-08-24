@@ -90,9 +90,11 @@ const SupportFormClaimsId = () => {
                     </div>
                 )}
             </div>
-            <Link to='/support/claims'>
+            <div className="back-button-container">
+             <Link to='/support/claims'>
                 <button>Volver</button>
-            </Link>
+            </Link>   
+            </div>
         </div>
     )
 }
