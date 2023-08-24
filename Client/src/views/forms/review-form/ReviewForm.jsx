@@ -1,4 +1,4 @@
-import { Button, MenuItem, Rating, TextField } from '@mui/material'
+import { Button, Rating, TextField } from '@mui/material'
 import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import StarIcon from '@mui/icons-material/Star'
@@ -11,23 +11,21 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import useNotify from '../../../hooks/useNotify'
 
-const ReviewForm = () => {
+const ReviewForm = ({ serviceName, providerName, providerId }) => {
     const navigate = useNavigate()
-    const services = useSelector(state => state.services)
     const user = useSelector(state => state.loggedUser)
-
     const [review, setReview] = useState({
         consumerId: user.id,
-        providerId: '',
-        serviceId: '',
+        providerId,
+        serviceName,
         review: '',
         score: null,
     })
-
     const [providerUid, setProviderUid] = useState('')
     const [sent, setSent] = useState(false)
     const { sendNotification } = useNotify(providerUid)
     const [aux, setAux] = useState(false)
+
     useEffect(() => {
         if (providerUid && sent) {
             sendNotification(`${user.firstName} ${user.lastName} ha dejado una reseña sobre tu servicio.`)
@@ -40,20 +38,6 @@ const ReviewForm = () => {
         setReview(previousValue => ({ ...previousValue, [name]: value }))
     }
 
-    const handleServiceChange = event => {
-        const { value } = event.target
-        setReview(previousValue => ({
-            ...previousValue,
-            serviceId: value,
-        }))
-    }
-    const handleAuxieChange = event => {
-        const { value } = event.target
-        setReview(previousValue => ({
-            ...previousValue,
-            providerId: value,
-        }))
-    }
     const labels = {
         0.5: 'Horrible',
         1: 'Pesimo',
@@ -115,61 +99,14 @@ const ReviewForm = () => {
                 <h1>Califica a tu auxie</h1>
                 <div className={style.pickerContainer}>
                     <div>
-                        <label>¿A qué Auxie deseas calificar?</label>
-                        <TextField
-                            className={style.picker}
-                            required
-                            fullWidth
-                            id='providerId' // Cambio de 'auxie' a 'providerId'
-                            select
-                            label='Auxie'
-                            helperText='Selecciona un Auxie'
-                            color='primary'
-                            name='providerId' // Cambio de 'auxie' a 'providerId'
-                            value={review.providerId} // Cambio de 'auxie' a 'providerId'
-                            onChange={handleAuxieChange} // Cambio de handleAuxieChange a handleProviderChange
-                        >
-                            {user.requiredServices ? (
-                                user.requiredServices.map(auxie => (
-                                    <MenuItem
-                                        key={auxie.id}
-                                        value={auxie.providerId} // Cambio de 'auxie' a 'providerId'
-                                    >
-                                        {auxie.providerName}
-                                    </MenuItem>
-                                ))
-                            ) : (
-                                <div></div>
-                            )}
-                        </TextField>
+                        <label>Auxie que vas a calificar</label>
+                        <p>{providerName}</p>
                     </div>
                     <div>
-                        <label>Selecciona el servicio que se realizó</label>
-
-                        <TextField
-                            required
-                            fullWidth
-                            id='serviceId'
-                            select
-                            label='Servicio'
-                            helperText='Selecciona un servicio'
-                            color='primary'
-                            name='serviceId'
-                            value={review.serviceId}
-                            onChange={handleServiceChange}
-                            className={style.picker}
-                        >
-                            {services ? (
-                                services.map(service => (
-                                    <MenuItem key={service._id} value={service._id}>
-                                        {service.name}
-                                    </MenuItem>
-                                ))
-                            ) : (
-                                <div></div>
-                            )}
-                        </TextField>
+                        <label>Servicio que realizó</label>
+                        <p>{serviceName}</p>
                     </div>
+
                     <label>¿Qué calificación le das al auxie?</label>
                     <Rating
                         className={style.picker}

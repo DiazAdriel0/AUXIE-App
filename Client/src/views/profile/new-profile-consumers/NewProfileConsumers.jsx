@@ -15,9 +15,6 @@ const NewProfileConsumers = () => {
     const logged = useSelector(state => state.loggedUser)
     const { firstName, lastName, image, requiredServices, email, registerDate, favoritesProviders } = logged
 
-    console.log(logged)
-    console.log(image.secure_url)
-
     const totalServices = requiredServices.length
     const favorites = favoritesProviders.length
     const fechaTransformada = formatISOStringToReadable(registerDate)

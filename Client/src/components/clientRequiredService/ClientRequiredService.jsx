@@ -40,24 +40,23 @@ const ClientRequiredService = job => {
         proposal: 'Propuesta',
     }
 
-    
     function formatDateFromMilliseconds(milliseconds) {
-        const date = new Date(milliseconds);
-        const options = { year: 'numeric', month: 'long', day: 'numeric'};
-        return date.toLocaleDateString(undefined, options);
-      }
-    const formattedDate = formatDateFromMilliseconds(requestDate);
+        const date = new Date(milliseconds)
+        const options = { year: 'numeric', month: 'long', day: 'numeric' }
+        return date.toLocaleDateString(undefined, options)
+    }
+    const formattedDate = formatDateFromMilliseconds(requestDate)
 
     function formatISOStringToReadable(isoString) {
-        const date = new Date(isoString);
-        const year = date.getFullYear();
-        const month = date.toLocaleString('default', { month: 'long' });
-        const day = date.getDate();
-      
-        const formattedDate = `${day} de ${month} de ${year}`;
-        return formattedDate;
-      }
-      const formattedDate2 = formatISOStringToReadable(jobDate)
+        const date = new Date(isoString)
+        const year = date.getFullYear()
+        const month = date.toLocaleString('default', { month: 'long' })
+        const day = date.getDate()
+
+        const formattedDate = `${day} de ${month} de ${year}`
+        return formattedDate
+    }
+    const formattedDate2 = formatISOStringToReadable(jobDate)
 
     // función que hace desaparecer el popup
     const handleClickOutside = event => {
@@ -116,7 +115,12 @@ const ClientRequiredService = job => {
             {showForm && (
                 <div className={style.reviewFormContainer}>
                     <div className={style.reviewForm} ref={targetRef}>
-                        <ReviewForm />
+                        <ReviewForm
+                            serviceName={service}
+                            providerName={providerName}
+                            serviceId={id}
+                            providerId={providerId}
+                        />
                     </div>
                 </div>
             )}
@@ -156,7 +160,12 @@ const ClientRequiredService = job => {
                 <div className={style.statusButtonCont}>
                     {status === 'done' && <button onClick={handleClick}>Valorar</button>}
                     {status === 'approved' && paymentMethod === 'app' && (
-                        <ButtonMercadoPago providerId={providerId} price={price} description={description} quantity={1} />
+                        <ButtonMercadoPago
+                            providerId={providerId}
+                            price={price}
+                            description={description}
+                            quantity={1}
+                        />
                     )}
                     {status === 'approved' && paymentMethod === 'efectivo' && (
                         <button onClick={handleClick}>Efectivo</button>
