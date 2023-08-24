@@ -25,21 +25,21 @@ const ClientRequiredServices = () => {
     }
 
     function formatDateFromMilliseconds(milliseconds) {
-        const date = new Date(milliseconds);
-        const options = { year: 'numeric', month: 'long', day: 'numeric'};
-        return date.toLocaleDateString(undefined, options);
-      }
+        const date = new Date(milliseconds)
+        const options = { year: 'numeric', month: 'long', day: 'numeric' }
+        return date.toLocaleDateString(undefined, options)
+    }
     // const formattedDate = formatDateFromMilliseconds(requestDate);
 
     function formatISOStringToReadable(isoString) {
-        const date = new Date(isoString);
-        const year = date.getFullYear();
-        const month = date.toLocaleString('default', { month: 'long' });
-        const day = date.getDate();
-      
-        const formattedDate = `${day} de ${month} de ${year}`;
-        return formattedDate;
-      }
+        const date = new Date(isoString)
+        const year = date.getFullYear()
+        const month = date.toLocaleString('default', { month: 'long' })
+        const day = date.getDate()
+
+        const formattedDate = `${day} de ${month} de ${year}`
+        return formattedDate
+    }
     //   const formattedDate2 = formatISOStringToReadable(jobDate)
 
     const handleClickOutside = event => {
@@ -94,7 +94,7 @@ const ClientRequiredServices = () => {
     return (
         <>
             {showForm && (
-                <div className={style.reviewFormContainer} >
+                <div className={style.reviewFormContainer}>
                     <div className={style.reviewForm} ref={targetRef}>
                         <ReviewForm />
                     </div>
