@@ -64,6 +64,8 @@ function LoginRegister() {
                 if (data.isActive) {
                   setAccess(true)
                   dispatch(loggedUser(data))
+                  const form = document.getElementById('form')
+                  form.reset()
               }else{
                   return Swal.fire({
                       icon: 'error',
@@ -129,7 +131,7 @@ function LoginRegister() {
     const handleSubmit = async e => {
         e.preventDefault()
 
-        const form = document.getElementById('form')
+       
         const email = input.email
         const password = input.password
         
@@ -138,6 +140,7 @@ function LoginRegister() {
             if (credential) {
                 handleLogin(input)
             }
+            const form = document.getElementById('form')
             form.reset()
         } catch (error) {
             Swal.fire(error.message)
@@ -278,7 +281,7 @@ function LoginRegister() {
         <div>
             <Container className={style.container}>
                 <SignUpContainer signingin={signIn}>
-                    <Form>
+                    <Form id='form'>
                         <Title>Registrarse</Title>
                         <Input type='text' placeholder='Nombre' name='firstName' onChange={handleSignUpChange} />
 

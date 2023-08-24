@@ -131,7 +131,7 @@ function LoginRegisterAuxie() {
     const handleSubmit = async e => {
         e.preventDefault()
 
-        const form = document.getElementById('form')
+       
         const email = input.email
         const password = input.password
 
@@ -139,7 +139,8 @@ function LoginRegisterAuxie() {
             const credential = await signInWithEmailAndPassword(auth, email, password)
             if (credential) {
                 handleLogin(input)
-            }
+            } 
+            const form = document.getElementById('form')
             form.reset()
         } catch (error) {
             Swal.fire(error.message)
@@ -280,7 +281,7 @@ function LoginRegisterAuxie() {
         <div>
             <Container className={style.container}>
                 <SignUpContainer signingin={signIn}>
-                    <Form>
+                    <Form id='form'>
                         <Title>Registrarse</Title>
                         <Input type='text' placeholder='Nombre' name='firstName' onChange={handleSignUpChange} />
 
