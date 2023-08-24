@@ -24,3 +24,8 @@
 .pagination {
     margin-top: 16px;
 }
+
+.back-button{
+    display: flex;
+    justify-content: center;
+}

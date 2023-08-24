@@ -98,14 +98,11 @@ const ClientRequiredServices = () => {
                     </div>
                 </div>
             )}
-            <div className={style.servicesTitleCont}>
-                <h2 className={style.servicesTitle}>Servicios contratados</h2>
-            </div>
             <div className={style.servicesCont}>
                 <button onClick={handleSwitch}>{cards ? 'Cambiar a tabla' : 'Cambiar a cartas'}</button>
                 {cards ? (
                     <div className={style.clientServicesCards}>
-                        {client.requiredServices?.reverse().map(service => (
+                        {client.requiredServices?.map(service => (
                             <ClientRequiredService
                                 key={service.id}
                                 id={service.id}
@@ -138,7 +135,7 @@ const ClientRequiredServices = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {client.requiredServices?.reverse().map((service, index) => (
+                            {client.requiredServices?.map((service, index) => (
                                 <tr key={service.id}>
                                     <td>{index + 1}</td>
                                     <td>{service.providerName}</td>

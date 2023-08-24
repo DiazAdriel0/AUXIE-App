@@ -186,9 +186,11 @@ const SupportFormConsumer = () => {
                     {submissionMessage && <p className='submission-message'>{submissionMessage.message}</p>}
                 </form>
             </div>
-            <Link to='/support/claims'>
+            <div className="claims-button">
+             <Link to='/support/claims'>
                 <button>Reclamos realizados</button>
-            </Link>
+            </Link>   
+            </div>
         </div>
     )
 }

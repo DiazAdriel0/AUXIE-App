@@ -33,3 +33,8 @@
     border-radius: 8px;
     margin-top: 10px;
   }
+
+  .back-button-container{
+    display: flex;
+    justify-content: center;
+  }
