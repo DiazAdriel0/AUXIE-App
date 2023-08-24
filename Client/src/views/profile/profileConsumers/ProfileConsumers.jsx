@@ -9,6 +9,7 @@ import { TextField } from '@mui/material'
 import ResetPassword from '../../reset-password/ResetPassword'
 
 const ProfileConsumers = () => {
+    const user = useSelector(state => state.loggedUser)
     const consumer = useSelector(state => state.loggedUser)
     const [newImage, setNewImage] = useState(null)
     const [error, setError] = useState(null)
@@ -66,12 +67,10 @@ const ProfileConsumers = () => {
     }
     useEffect(() => {
         // Concatenate the address, province, and country
-        const newFullAddress = `${address},${city}, ${provinces}, ${country}`
+        const newFullAddress = `${address} ${city} ${provinces} ${country}`
         setFullAddress(newFullAddress)
     }, [address, provinces, country])
-    useEffect(() => {
-        console.log(fullAddress)
-    }, [fullAddress])
+  
     ///put de datos ///
     const handleUpdateProfile = () => {
         setEdit(false)
@@ -133,13 +132,11 @@ const ProfileConsumers = () => {
                                 id='outlined-basic'
                                 label='Nombre'
                                 variant='outlined'
-                                required
-                                multiline
                                 color='primary'
                                 name='firstName'
                                 value={profileData.firstName}
                                 onChange={handleChange}
-                                sx={{ margin: 9 }}
+                                sx={{ marginLeft: 22, backgroundColor: ' #6d6c6c5d' }}
                                 focused
                             />
                         )}
@@ -149,13 +146,12 @@ const ProfileConsumers = () => {
                                 id='outlined-basic'
                                 label='Apellido'
                                 variant='outlined'
-                                required
-                                multiline
                                 color='primary'
                                 name='lastName'
                                 value={profileData.lastName}
                                 onChange={handleChange}
                                 focused
+                                sx={{ marginLeft: 5, backgroundColor: ' #6d6c6c5d' }}
                             />
                         )}
                         {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -186,6 +182,7 @@ const ProfileConsumers = () => {
                         </div>
                         <div className={style.address}>
                             <h3>Tu Direccion</h3>
+                            {!edit && <p>{user.address}</p>}
                             {edit && (
                                 <TextField
                                     className={style.picker}
@@ -198,6 +195,8 @@ const ProfileConsumers = () => {
                                     name='street'
                                     value={address}
                                     onChange={handleAddressChange}
+                                    focused
+                                    sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
                             )}
                             {edit && (
@@ -210,6 +209,8 @@ const ProfileConsumers = () => {
                                     name='city'
                                     value={city}
                                     onChange={handleAddressChange}
+                                    focused
+                                    sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
                             )}
                             {edit && (
@@ -222,6 +223,8 @@ const ProfileConsumers = () => {
                                     name='province'
                                     value={provinces}
                                     onChange={handleAddressChange}
+                                    focused
+                                    sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
                             )}
 
@@ -235,6 +238,8 @@ const ProfileConsumers = () => {
                                     name='country'
                                     value={country}
                                     onChange={handleAddressChange}
+                                    focused
+                                    sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
                             )}
                         </div>

@@ -60,13 +60,11 @@ const ClientForm = () => {
                         welcome = 'Bienvenidx'
                 }
                 setAccess(true)
-                // Reset the form only on successful response (2xx)
                 const form = document.getElementById('form')
                 form.reset()
-                Swal.fire(`Usuario creado con exito. ${welcome} a Auxie!`)
+                Swal.fire(`Usuario creado con éxito. ${welcome} a Auxie!`)
             }
-            // setAccess(true)
-            // navigate('/home')
+
         } catch (error) {
             setLoading(false)
             let er = error.response.data.error
@@ -109,9 +107,7 @@ const ClientForm = () => {
         }
     }
 
-    //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
-        //check if empty
         if (
             input.password.trim().length === 0 ||
             input.email.trim().length === 0 ||
@@ -124,7 +120,6 @@ const ClientForm = () => {
             return true
         }
 
-        // Check if any error message is not empty for other fields
         for (let error in errors) {
             if (errors[error] !== '') {
                 return true

@@ -25,7 +25,7 @@ const Guarantee = () => {
                     </div>
                 </div>
                 <div className={style.square} lang='scss'>
-                    <h1>La Garantía de felicidad AUXIE</h1>
+                    <h1>La garantía de felicidad AUXIE</h1>
                     <p>
                         Tu felicidad es nuestra meta. Si no estás feliz, es
                         nuestro deber arreglarlo.

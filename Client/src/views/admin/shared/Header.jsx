@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { HiOutlineBell, HiOutlineChatAlt, HiOutlineSearch } from 'react-icons/hi'
 import { Menu, Popover, Transition } from '@headlessui/react'
+
 //firebase
 import { auth } from '../../../config/firebase-config'
 import { signOut } from 'firebase/auth'
@@ -38,7 +39,7 @@ const Header = () => {
         }
     }
     return (
-        <div className=' h-16 flex justify-between items-center border-b border-gray-200 w-full'>
+        <div className=' h-16 flex justify-between items-center  w-full'>
             <div className='relative'>
                 <HiOutlineSearch
                     fontSize={20}

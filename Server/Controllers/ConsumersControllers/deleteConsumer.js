@@ -6,7 +6,9 @@ const deleteConsumer = async (id) => {
 
         if (!consumerUser) return false
 
-        await Consumer.updateOne({ id }, { isActive: false })
+        consumerUser.isActive = false
+
+        consumerUser.save()
 
         return true
     } catch (error) {

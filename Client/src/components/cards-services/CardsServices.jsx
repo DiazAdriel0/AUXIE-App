@@ -1,9 +1,6 @@
 import style from './cardsServices.module.scss'
 
-//*Components
 import CardServices from '../card-services/CardServices'
-
-//* Hooks
 
 import { useSelector } from 'react-redux'
 

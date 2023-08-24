@@ -115,12 +115,10 @@ const ProfileAuxies = () => {
     }
     useEffect(() => {
         // Concatenate the address, province, and country
-        const newFullAddress = `${address},${city}, ${provinces}, ${country}`
+        const newFullAddress = `${address} ${city} ${provinces} ${country}`
         setFullAddress(newFullAddress)
     }, [address, provinces, country])
-    useEffect(() => {
-        console.log(fullAddress)
-    }, [fullAddress])
+  
     function handlePriceChange(e, serviceName) {
         const newPrice = parseFloat(e.target.value)
 
@@ -235,7 +233,8 @@ const ProfileAuxies = () => {
                                     name='firstName'
                                     value={newfirstName}
                                     onChange={handlefirstname}
-                                    sx={{ marginRight: 8 }}
+                                    sx={{ marginLeft: 22, backgroundColor: ' #6d6c6c5d' }}
+                                    focused
                                 />
                             )}
                             {edit && (
@@ -250,6 +249,8 @@ const ProfileAuxies = () => {
                                     name='lastName'
                                     value={newlastName}
                                     onChange={handleLastname}
+                                    focused
+                                    sx={{ marginLeft: 5, backgroundColor: ' #6d6c6c5d' }}
                                 />
                             )}
                             {error && <p style={{ color: 'red' }}>{error}</p>}
@@ -261,7 +262,10 @@ const ProfileAuxies = () => {
                                 {password && <ResetPassword />}
                             </h3>
                             <h3>Descripción:</h3>
-                            <textarea value={newBio} onChange={handleBioChange} />
+                            <div className={style.description}>
+                                {' '}
+                                <textarea value={newBio} onChange={handleBioChange} />
+                            </div>
 
                             <div>
                                 <h5>
@@ -333,6 +337,7 @@ const ProfileAuxies = () => {
                             </div>
                             <div className={style.address}>
                                 <h3>Tu Direccion</h3>
+                                {!edit && <p>{provider.address}</p>}
                                 {edit && (
                                     <TextField
                                         className={style.picker}
@@ -345,6 +350,8 @@ const ProfileAuxies = () => {
                                         name='street'
                                         value={address}
                                         onChange={handleAddressChange}
+                                        sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
+                                        focused
                                     />
                                 )}
                                 {edit && (
@@ -357,6 +364,8 @@ const ProfileAuxies = () => {
                                         name='city'
                                         value={city}
                                         onChange={handleAddressChange}
+                                        sx={{ width: 150, margin: 1 }}
+                                        focused
                                     />
                                 )}
                                 {edit && (
@@ -369,6 +378,8 @@ const ProfileAuxies = () => {
                                         name='province'
                                         value={provinces}
                                         onChange={handleAddressChange}
+                                        sx={{ width: 150, margin: 1 }}
+                                        focused
                                     />
                                 )}
 
@@ -382,6 +393,8 @@ const ProfileAuxies = () => {
                                         name='country'
                                         value={country}
                                         onChange={handleAddressChange}
+                                        sx={{ width: 150, margin: 1 }}
+                                        focused
                                     />
                                 )}
                             </div>

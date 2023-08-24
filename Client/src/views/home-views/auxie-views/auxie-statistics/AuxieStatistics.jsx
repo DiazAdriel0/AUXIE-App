@@ -1,6 +1,7 @@
-import style from './auxieStatistics.module.scss'
 import NavGeneral from '../../../../components/nav-general/NavGeneral'
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
+import VisitsChart from '../../../../components/home-auxie-components/statistics-auxie/VisitsChart'
+import StatsGrid from '../../../../components/home-auxie-components/statistics-auxie/StatsGrid'
 import axios from 'axios'
 import { useEffect } from 'react'
 import { loggedUser } from '../../../../redux/actions/actions'
@@ -22,26 +23,23 @@ const AuxieStatistics = () => {
         handleRefresh()
     }, [])
     return (
-        <div className={style.auxieStatistics}>
-            {/* Header */}
-            <header className={style.header}>
-                <NavGeneral />
-            </header>
-            {/* Aside */}
-            <AsideAuxie />
-            {/* Main */}
-            <main className={style.main}>
-                <div className={style.services}>
-                    <div className={style.inProgress}>
-                        <span>In Progress...</span>
-                    </div>
+        <div>  
+           <header className='h-16'>
+                    <NavGeneral />
+                </header>
+        <div className='flex'>
+            <aside className='text-color-light border-2 border-div-text-color-light-900 w-[12.5rem] pl-12'>
+                <div className=' h-screen flex flex-col justify-between'>
+                    <AsideAuxie />
                 </div>
-                <div className={style.payments}>
-                    <h3></h3>
-                </div>
-            </main>
-            {/* Footer */}
-            <footer className={style.footer}>Pie de página</footer>
+            </aside>
+            <div className='ml-8 h-16 w-96'>
+              <StatsGrid/>  
+            </div>
+            <div className='mt-32 -mx-96 w-2/3'> 
+                <VisitsChart/>
+            </div>
+        </div>  
         </div>
     )
 }

@@ -1,29 +1,16 @@
 import style from './navLanding.module.scss'
-
-import LogoLight from '../../assets/logos/2.png'
-import LogoNight from '../../assets/logos/logoLight.png'
-// Hooks
+import LogoLight from '../../assets/logos/7.png'
+import LogoNight from '../../assets/logos/7.png'
 import useMenuStates from '../../hooks/useMenuStates'
 import { Animated } from 'react-animated-css'
-
-// Actions
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
-//Components
 import BasicSelect from '../selects/Select'
 import ButtonLightNight from '../buttons/button-light-night/ButtonLightNight'
 const NavLanding = () => {
-    const menuLanding = useSelector((state) => state.menuLanding)
-    const nightMode = useSelector((state) => state.nightMode)
-    const {
-        handlerLogIn,
-        handlerRegister,
-        logInMenu,
-        registerMenu,
-        setLogInMenu,
-        setRegisterMenu,
-    } = useMenuStates()
+    const menuLanding = useSelector(state => state.menuLanding)
+    const nightMode = useSelector(state => state.nightMode)
+    const { handlerLogIn, logInMenu, registerMenu, setLogInMenu, setRegisterMenu } = useMenuStates()
 
     return (
         <>
@@ -32,11 +19,7 @@ const NavLanding = () => {
                     <div className={style.logoDiv}>
                         <Link to={'/'}>
                             <img
-                                style={
-                                    nightMode
-                                        ? { filter: 'invert(100%)' }
-                                        : null
-                                }
+                                style={nightMode ? { filter: 'invert(100%)' } : null}
                                 src={!nightMode ? LogoLight : LogoNight}
                                 alt='Logo Auxie'
                                 className={style.logo}
@@ -59,49 +42,38 @@ const NavLanding = () => {
                 <div className={style.logInOrRegister}>
                     <ul>
                         <li>
-                            <button
-                                onClick={handlerLogIn}
-                                className={style.login}
-                            >
-                                Ingresar
+                            <button onClick={handlerLogIn} className={style.login}>
+                                Acceder
                             </button>
                         </li>
 
-                        <li>
-                            <button
-                                onClick={() => handlerRegister()}
-                                className={style.register}
-                            >
-                                Regístrarse
-                            </button>
-                        </li>
+             
                     </ul>
-                    <ButtonLightNight />
+                    <div className='flex items-center'>
+                        <ButtonLightNight />
+                    </div>
                 </div>
             </nav>
             {logInMenu && (
-                <Animated
-                    animationIn='zoomIn'
-                    animationOut='zoomDown'
-                    animationInDuration={!menuLanding ? 200 : 0}
-                >
+                <Animated animationIn='zoomIn' animationOut='zoomDown' animationInDuration={!menuLanding ? 200 : 0}>
                     <div className={style.logInMenu}>
                         <div className={style.container}>
-                            <button
-                                className={style.closeButton}
-                                onClick={() => setLogInMenu(false)}
-                            >
+                            <button className={style.closeButton} onClick={() => setLogInMenu(false)}>
                                 X
                             </button>
-                            <div>
-                                <ul>
+                            <div className={style.logcontainer}>
+                            <center>
+                         <h3>Acceder como</h3>  
+                        
+                                <div className={style.logbuttons}>
                                     <Link to={'/clientLogin'}>
-                                        <div>Iniciar Sesion Como Cliente</div>
+                                        <button>Cliente</button>
                                     </Link>
                                     <Link to={'/auxieLogin'}>
-                                        <div>Iniciar Sesion Como Auxie</div>
+                                        <button> Auxie</button>
                                     </Link>
-                                </ul>
+                                    </div>
+                                    </center>
                             </div>
                         </div>
                     </div>
@@ -117,9 +89,7 @@ const NavLanding = () => {
                 >
                     <div className={style.registerMenu}>
                         <div className={style.container}>
-                            <button onClick={() => setRegisterMenu(false)}>
-                                X
-                            </button>
+                            <button onClick={() => setRegisterMenu(false)}>X</button>
                             <div>
                                 <ul>
                                     <Link to={'/clientform'}>

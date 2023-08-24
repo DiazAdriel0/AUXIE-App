@@ -1,40 +1,45 @@
 .title {
     text-align: center;
 
-    background-color: #567eacef;
-    // color: white;
-    border-radius: 10px 10px 0px 0px;
-    border: 1px solid black;
+    background-color: #e2e2e2;
+    color: black !important;
+    // border-radius: 10px 10px 0px 0px;
+    // border: 1px solid black;
+    // width: 450px;
+    // position: absolute;
+    border-bottom: 0.1px solid;
+    
+   
 }
 .daycontainer {
-    min-width: 450px;
+    // min-width: 450px;
     background-color: var(--background-light);
     padding: 5%;
-    border-radius: 1%;
+    // border-radius: 1%;
     max-height: 500%;
     overflow-y: scroll;
-    scrollbar-color: blue pink;
     scrollbar-width: thin;
 }
 .notificationcontainer {
-    min-width: 450px;
-    background-color: var(--background-dark);
+    // width: 400px;
+    background-color: #e2e2e2;
     padding: 5%;
-    border-radius: 1%;
+    // border-radius: 1%;
     max-height: 500%;
     overflow-y: scroll;
     color: var(--text-color-dark);
-    scrollbar-color: blue pink;
     scrollbar-width: thin;
+    // margin-top: 15%;
 }
 .message {
     border-bottom: 1.5px solid var(--button-color-light);
     border-radius: 1%;
     padding: 0.75em;
-    margin-left: 2%;
+    // margin-left: 2%;
+    color: black !important;
 }
 .message:hover {
-    background-color: #6fa3dfef;
+    background-color: #d5d5d5;
 }
 .loader {
     text-align: center;

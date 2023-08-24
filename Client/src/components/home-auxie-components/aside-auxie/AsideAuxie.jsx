@@ -18,11 +18,11 @@ const AsideAuxie = () => {
                     </li>
 
                     <li>
-                        <Link to={'/auxiestatistics'}>Estadisticas</Link>
+                        <Link to={'/auxiestatistics'}>Estadísticas</Link>
                     </li>
 
                     <li>
-                        <Link to={'/auxieinbox'}>inbox</Link>
+                        <Link to={'/auxieinbox'}>Inbox</Link>
                     </li>
                 </ul>
             </div>

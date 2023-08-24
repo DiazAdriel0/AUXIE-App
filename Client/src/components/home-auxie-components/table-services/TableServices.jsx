@@ -53,7 +53,7 @@ const TableServices = () => {
 
             if (done) {
                 sendNotification(
-                    `${loggedUser.firstName} ${loggedUser.lastName} ha completado el servicio de ${message.name}. ¿Te gustaria dejarle una reseña?`
+                    `${loggedUser.firstName} ${loggedUser.lastName} ha completado el servicio de ${message.name}. ¿Te gustaría dejarle una reseña?`
                 )
                 setDone(false)
             }

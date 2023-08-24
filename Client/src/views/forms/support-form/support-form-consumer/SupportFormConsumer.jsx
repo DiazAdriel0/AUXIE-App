@@ -1,37 +1,33 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import { postClaim } from '../../../../redux/actions/actions'
-import { useDispatch, useSelector } from 'react-redux'
+import Swal from 'sweetalert2'
+import { useSelector } from 'react-redux'
 import TextField from '@mui/material/TextField'
 import MenuItem from '@mui/material/MenuItem'
-import Button from '@mui/material/Button'
 import './SupportFormConsumer.css'
 import { Link } from 'react-router-dom'
 
 const SupportFormConsumer = () => {
-    const consumer = useSelector((state) => state.loggedUser)
+    const consumers = useSelector(state => state.loggedUser)
     const [error, setError] = useState('')
     const [submissionMessage, setSubmissionMessage] = useState('')
-    const dispatch = useDispatch()
 
     const [input, setInput] = useState({
-        email: consumer.email,
-        consumerUsername: consumer.username,
+        email: consumers.email,
+        consumerUsername: consumers.username,
         providerUsername: '',
         reason: '',
-        image: '',
         message: '',
+        isConsumer: true,
     })
+    const [image, setImage] = useState(null)
 
-    const setAuxiesNames = Array.from(
-        new Set(consumer.requiredServices.map((auxie) => auxie.providerId))
-    )
-    
+    const setAuxiesNames = Array.from(new Set(consumers.requiredServices.map(auxie => auxie.providerId)))
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async event => {
         event.preventDefault()
 
-        if (!input.message || !input.providerUsername || !input.reason) {
+        if (!input.providerUsername || !input.reason || !input.message) {
             setError('Campo obligatorio')
             return
         }
@@ -43,34 +39,39 @@ const SupportFormConsumer = () => {
         formData.append('consumerUsername', input.consumerUsername)
         formData.append('providerUsername', input.providerUsername)
         formData.append('reason', input.reason)
-        formData.append('image', input.image)
+        formData.append('image', image)
         formData.append('message', input.message)
+        formData.append('isConsumer', input.isConsumer)
 
         try {
-            const response = await axios.post('/claims', formData, {
+            await axios.post('/claims', 
+            { ...input, image },
+            {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             })
-            setSubmissionMessage(response.data)
-
+            Swal.fire('Se realizo tu reaclamo')
         } catch (error) {
             setSubmissionMessage(error)
         }
 
-        dispatch(postClaim(input))
-
         setInput({
-            email: consumer.email,
-            consumerUsername: consumer.username,
+            email: consumers.email,
+            consumerUsername: consumers.username,
             message: '',
             providerUsername: '',
             reason: '',
-            image: '',
+            isConsumer: true,
         })
+
+        setImage({
+            image: ''
+        })
+
     }
 
-    const handleAuxieChange = (event) => {
+    const handleAuxieChange = event => {
         const updatedInput = {
             ...input,
             providerUsername: event.target.value,
@@ -80,100 +81,95 @@ const SupportFormConsumer = () => {
 
     return (
         <div>
-            <div className="support-form">
-                <form onSubmit={handleSubmit} className="form-container">
-                    <div className="input-group">
+            <div className='support-form'>
+                <form onSubmit={handleSubmit} className='form-container'>
+                    <div className='input-group'>
                         <TextField value={input.email} readOnly fullWidth />
                     </div>
 
-                    <div className="input-group">
+                    <div className='input-group'>
                         <TextField
                             required
                             fullWidth
                             select
-                            label="Elige al Auxie"
-                            helperText="Selecciona un Auxie"
-                            color="primary"
-                            name="providerId"
+                            label='Elige al Auxie'
+                            helperText='Selecciona un Auxie'
+                            color='primary'
+                            name='providerId'
                             value={input.providerUsername}
                             onChange={handleAuxieChange}
                         >
-                            {consumer.requiredServices &&
-                            consumer.requiredServices.length > 0 ? (
-                                setAuxiesNames.map((providerId) => {
-                                    const auxie =
-                                        consumer.requiredServices.find(
-                                            (auxie) =>
-                                                auxie.providerId === providerId
-                                        )
+                            {consumers.requiredServices && consumers.requiredServices.length > 0 ? (
+                                setAuxiesNames.map(providerId => {
+                                    const auxie = consumers.requiredServices.find(
+                                        auxie => auxie.providerId === providerId
+                                    )
                                     return (
-                                        <MenuItem
-                                            key={auxie.id}
-                                            value={auxie.providerId}
-                                        >
+                                        <MenuItem key={auxie.id} value={auxie.providerId}>
                                             {auxie.providerName}
                                         </MenuItem>
                                     )
                                 })
                             ) : (
-                                <MenuItem disabled>
-                                    No hay Auxies disponibles
-                                </MenuItem>
+                                <MenuItem disabled>No hay Auxies disponibles</MenuItem>
                             )}
                         </TextField>
                     </div>
 
-                    <div className="input-group">
+                    <div className='input-group'>
                         <TextField
                             select
-                            label="Selección de Motivos"
+                            label='Selección de Motivos'
                             fullWidth
                             required
                             value={input.reason}
-                            onChange={(event) =>
+                            onChange={event =>
                                 setInput({
                                     ...input,
                                     reason: event.target.value,
                                 })
                             }
                         >
-                            <MenuItem disabled value="">
+                            <MenuItem disabled value=''>
                                 Motivos
                             </MenuItem>
-                            <MenuItem value="late">Retraso</MenuItem>
-                            <MenuItem value="behavior">
-                                Comportamiento inadecuado
+                            <MenuItem value='Tiempos de espera prolongados'>Tiempos de espera prolongados</MenuItem>
+                            <MenuItem value='Fallos en el servicio'>Fallos en el servicio</MenuItem>
+                            <MenuItem value='Falta de Respeto o trato inapropiado'>
+                                Falta de respeto o trato inapropiado
                             </MenuItem>
-                            <MenuItem value="quality">
-                                Calidad del servicio
+                            <MenuItem value='Cambio de términos y condiciones'>
+                                Cambio de términos y condiciones
                             </MenuItem>
-                            <MenuItem value="other">Otro</MenuItem>
+                            <MenuItem value='Falta de personal capacitado'>Falta de personal capacitado</MenuItem>
+                            <MenuItem value='Mala atención al cliente'>Mala atención al cliente</MenuItem>
+                            <MenuItem value='Incumplimiento de acuerdos'>Incumplimiento de acuerdos</MenuItem>
+                            <MenuItem value='Calidad del servicio'>Calidad del servicio</MenuItem>
+                            <MenuItem value='Otro'>Otro</MenuItem>
                         </TextField>
                     </div>
 
-                    <div className="input-group">
-                        <p className="small-text">
-                            {'Puede agregar una foto de su queja si lo desea'}
-                        </p>
+                    <div className='input-group'>
+                        <p className='small-text'>{'Puede agregar una foto de su queja si lo desea'}</p>
                         <input
-                            type="file"
-                            accept=".jpg, .png"
-                            name="image"
-                            onChange={(event) => {
+                            type='file'
+                            accept='.jpg, .png'
+                            name='image'
+                            onChange={event => {
                                 const file = event.target.files[0]
-                                setInput({ ...input, image: file })
+                                setImage({ image: file })
                             }}
                         />
                     </div>
 
-                    <div className="input-group">
+                    <div className='input-group'>
                         <TextField
-                            label="Mensaje"
+                            label='Mensaje'
                             multiline
                             fullWidth
                             rows={6}
                             value={input.message}
-                            onChange={(event) =>
+                            onChange={event =>
                                 setInput({
                                     ...input,
                                     message: event.target.value,
@@ -181,26 +177,20 @@ const SupportFormConsumer = () => {
                             }
                         />
                     </div>
-                    <div className="center-button">
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                        >
+                    <div className='center-button'>
+                        <button type='submit' color='primary'>
                             Enviar
-                        </Button>
+                        </button>
                     </div>
-                    {error && <p className="error-message">{error}</p>}
-                    {submissionMessage && (
-                        <p className="submission-message">
-                            {submissionMessage}
-                        </p>
-                    )}
+                    {error && <p className='error-message'>{error}</p>}
+                    {submissionMessage && <p className='submission-message'>{submissionMessage.message}</p>}
                 </form>
             </div>
-            <Link to="/support/claims">
+            <div className="claims-button">
+             <Link to='/support/claims'>
                 <button>Reclamos realizados</button>
-            </Link>
+            </Link>   
+            </div>
         </div>
     )
 }

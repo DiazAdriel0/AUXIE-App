@@ -11,21 +11,11 @@ function ChatApp({ recipient }) {
     const [isInChat, setIsInChat] = useState(false)
 
     if (!isAuth) {
-        return (
-            <AppWrapper
-                isAuth={isAuth}
-                setIsAuth={setIsAuth}
-                setIsInChat={setIsInChat}
-            ></AppWrapper>
-        )
+        return <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}></AppWrapper>
     }
 
     return (
-        <AppWrapper
-            isAuth={isAuth}
-            setIsAuth={setIsAuth}
-            setIsInChat={setIsInChat}
-        >
+        <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
             {!isInChat ? (
                 <div className='room'>
                     <button
@@ -33,13 +23,11 @@ function ChatApp({ recipient }) {
                             setIsInChat(true)
                         }}
                     >
-                        Start Conversation
+                        Iniciar conversación
                     </button>
                 </div>
             ) : (
-                <Chat
-                    recipient={recipient}
-                /> /* Change: Pass 'recipient' prop */
+                <Chat recipient={recipient} />
             )}
         </AppWrapper>
     )

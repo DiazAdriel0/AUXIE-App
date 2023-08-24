@@ -21,6 +21,7 @@ import {
     POST_CLAIM,
     GET_CLAIM_ID,
     GET_CLAIMS,
+    GET_ALL_CLAIMS,
     UPDATE_CONSUMER,
     UPDATE_PROVIDER,
     FIRST_LOGIN,
@@ -49,6 +50,20 @@ export function getClaims(email) {
             const res = await axios.get(`/claims?email=${email}`)
             return dispatch({
                 type: GET_CLAIMS,
+                payload: res.data,
+            })
+        } catch (e) {
+            console.error(e.response.data)
+        }
+    }
+}
+
+export function getAllClaims() {
+    return async function (dispatch) {
+        try {
+            const res = await axios.get('/claims')
+            return dispatch({
+                type: GET_ALL_CLAIMS,
                 payload: res.data,
             })
         } catch (e) {
@@ -286,9 +301,17 @@ export function setServiceStatus(info) {
     }
 }
 
-export const postClaim = input => {
+export const postClaim = (input, image) => {
     return async dispatch => {
-        const res = await axios.post('/claims', input)
+        const res = await axios.post(
+            '/claims',
+            { ...input, image },
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            }
+        )
         return dispatch({
             type: POST_CLAIM,
             payload: res.data,

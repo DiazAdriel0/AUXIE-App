@@ -15,7 +15,7 @@ const PaymentFailed = ()=>{
             <h1 className="py-6 font-bold text-3xl">
                 Hubo un problema con el pago
             </h1>
-            <button className=" font-semibold py-4 px-4 rounded-md" onClick={handleRedirect} >Volver a Intentarlo </button>
+            <button className=" font-semibold py-4 px-4 rounded-md" onClick={handleRedirect} >Volver a intentarlo </button>
             <Link to='/homeConsumer' className="py-4 underline">No, regresar a Home</Link>
         </section>
         

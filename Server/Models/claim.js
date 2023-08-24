@@ -42,6 +42,9 @@ const claimSchema = new Schema({
         type: Date,
         default: Date.now(),
     },
+    isConsumer:{
+        type: Boolean,
+    }
 })
 
 claimSchema.set('toJSON', {

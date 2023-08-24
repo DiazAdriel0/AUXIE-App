@@ -1,9 +1,8 @@
 const Provider = require('./../../Models/provider')
 const Consumer = require('./../../Models/consumer')
-const Service = require('./../../Models/service')
 
 const modifyProviderReviews = async (recibedReview) => {
-    const { consumerId, providerId, score, review, serviceId } = recibedReview
+    const { consumerId, providerId, score, review, serviceName } = recibedReview
 
     try {
         const providerFound = await Provider.findById(providerId)
@@ -13,10 +12,6 @@ const modifyProviderReviews = async (recibedReview) => {
         const consumerFound = await Consumer.findById(consumerId)
 
         if (!consumerFound) throw new Error('consumer inexistente')
-
-        const serviceFound = await Service.findById(serviceId)
-
-        if (!serviceFound) throw new Error('service inexistente')
 
         const ratings = [...providerFound.ratings, Number(score)]
         const averageRating =
@@ -33,7 +28,7 @@ const modifyProviderReviews = async (recibedReview) => {
                         username: consumerFound.username,
                         score: Number(score),
                         review,
-                        service: serviceFound.name,
+                        service: serviceName,
                     },
                 ],
                 ratings,

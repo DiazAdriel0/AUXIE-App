@@ -4,9 +4,9 @@ import {
     HiOutlineShoppingCart,
     HiOutlineUsers,
     HiOutlineDocumentText,
-    HiOutlineAnnotation,
     HiOutlineQuestionMarkCircle,
     HiOutlineCog,
+    HiOutlineAnnotation,
 } from 'react-icons/hi'
 
 export const DASHBOARD_SIDEBAR_LINKS = [
@@ -43,9 +43,9 @@ export const DASHBOARD_SIDEBAR_LINKS = [
     },
 
     {
-        key: 'notificaciones',
-        label: 'notificaciones',
-        path: '/dashboard/notificaciones',
+        key: 'reclamos',
+        label: 'Reclamos',
+        path: '/dashboard/claims',
         icon: <HiOutlineAnnotation />,
     },
 ]

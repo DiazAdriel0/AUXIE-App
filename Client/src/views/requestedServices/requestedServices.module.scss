@@ -2,3 +2,21 @@
     display: flex;
     justify-content: center;
 }
+
+.servicesTitleCont {
+    background-color: var(--div-border-color-dark);
+    color: var(--button-color-dark);
+    width: 100%;
+    height: 3em;
+    padding: 1% 2%;
+    margin-bottom: 1%;
+}
+
+.servicesTitleContNight {
+    background-color: var(--background-light);
+    color: var(--text-color-light);
+    width: 100%;
+    height: 3em;
+    padding: 1% 2%;
+    margin-bottom: 1%;
+}

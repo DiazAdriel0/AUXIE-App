@@ -8,7 +8,7 @@ import Pagination from '../pagination/Pagination'
 import { useSelector } from 'react-redux'
 
 const Cards = () => {
-    const users = useSelector((state) => state.filteredAuxies)
+    const users = useSelector((state) => state.shownAuxies)
     const { currentPageData } = usePagination(12, users)
 
     return (

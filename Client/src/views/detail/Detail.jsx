@@ -103,11 +103,11 @@ const Detail = () => {
                             </div>
                             <div className={style.carousel}>
                                 <Carousel
-                                    showThumbs={false} // Desactiva las miniaturas (thumbs) si no las necesitas
-                                    showIndicators={true} // Muestra los indicadores de las diapositivas
-                                    infiniteLoop={true} // Hace que el carousel sea infinito
-                                    autoPlay={true} // Activa la reproducción automática
-                                    interval={3000} // Intervalo de tiempo en milisegundos entre diapositivas
+                                    showThumbs={false}
+                                    showIndicators={true}
+                                    infiniteLoop={true}
+                                    autoPlay={true}
+                                    interval={3000}
                                     transitionTime={500}
                                     showStatus={false}
                                 >

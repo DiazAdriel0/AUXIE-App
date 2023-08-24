@@ -12,8 +12,12 @@
     padding: 20px;
     margin: 5% auto; /* Center the container horizontally */
     border-radius: 2%;
-    max-width: 50%; /* Set a maximum width for the container */
+    max-width: 800px; /* Set a maximum width for the container */
     width: 100%; /* Allow the container to take the full width if smaller than max-width */
+    input{
+        background-color: #6d6c6c5d;
+       }
+
     .name {
         height: 150px;
         // margin-right: 40%;
@@ -253,4 +257,10 @@
     display: flex;
     align-content: center;
     justify-content: center;
+}
+.description{
+    textarea{
+        background-color: #6d6c6c5d;
+
+    }
 }

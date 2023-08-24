@@ -8,7 +8,7 @@ const matchConsumer = async (email, password) => {
 
             if (consumer) {
                 const consumerWithout = {
-                    isActive: true,
+                    isActive: consumer.isActive,
                     isAdmin: consumer.isAdmin,
                     firstName: consumer.firstName,
                     lastName: consumer.lastName,
@@ -59,8 +59,8 @@ const matchConsumer = async (email, password) => {
                 consumer.password
             )
             const consumerWithout = {
-                isActive: true,
-                isAdmin: false,
+                isActive: consumer.isActive,
+                isAdmin: consumer.isAdmin,
                 firstName: consumer.firstName,
                 lastName: consumer.lastName,
                 gender: consumer.gender,
