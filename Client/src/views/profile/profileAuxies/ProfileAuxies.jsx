@@ -7,8 +7,6 @@ import NavGeneral from '../../../components/nav-general/NavGeneral'
 import style from './ProfileAuxies.module.scss'
 import axios from 'axios'
 import { loggedUser } from '../../../redux/actions/actions'
-
-import ResetPassword from '../../reset-password/ResetPassword'
 import { TextField } from '@mui/material'
 
 const ProfileAuxies = () => {
@@ -34,7 +32,6 @@ const ProfileAuxies = () => {
     const [edit, setEdit] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [password, setPasswords] = useState(false)
     const registerDate = provider.registerDate
     const luxonDate = DateTime.fromISO(registerDate)
     const toDateMed = luxonDate.toLocaleString(DateTime.DATE_MED)
@@ -56,12 +53,6 @@ const ProfileAuxies = () => {
         setEdit(true)
         if (edit === true) {
             setEdit(false)
-        }
-    }
-    const handlePassword = () => {
-        setPasswords(true)
-        if (password === true) {
-            setPasswords(false)
         }
     }
     const handleImageChange = event => {
@@ -257,14 +248,20 @@ const ProfileAuxies = () => {
 
                             <h4>Género: {provider.gender}</h4>
                             <h3>
-                                Email: {provider.email}{' '}
-                                {edit && <button onClick={handlePassword}>Cambiar la contraseña</button>}
-                                {password && <ResetPassword />}
+                                Email: {provider.email}
                             </h3>
                             <h3>Descripción:</h3>
-                            <div className={style.description}>
-                                {' '}
-                                <textarea value={newBio} onChange={handleBioChange} />
+                            <div >
+                            {' '}
+                            <TextField
+                            multiline
+                            fullWidth
+                            rows={3}
+                            value={newBio}
+                            onChange={handleBioChange}
+                        />
+                                
+                    
                             </div>
 
                             <div>

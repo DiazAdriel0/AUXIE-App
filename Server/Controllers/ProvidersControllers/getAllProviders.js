@@ -2,7 +2,7 @@ const Provider = require('../../Models/provider')
 
 const getAllProviders = async () => {
     try {
-        const providers = await Provider.find({isActive: true},
+        const providers = await Provider.find({ },
             { password: 0, usernameLower: 0 }
         )
         return providers

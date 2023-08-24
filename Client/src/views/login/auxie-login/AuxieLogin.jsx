@@ -156,10 +156,13 @@ const ClientLogin = () => {
     }
 
     return (
-        <div className={style.login}>
-        
-         <Pruebas/>
-        </div>
+        <>
+        <NavLanding />
+             <div className={style.login}>
+             <Pruebas />
+             </div>
+             
+         </>
     )
 }
 

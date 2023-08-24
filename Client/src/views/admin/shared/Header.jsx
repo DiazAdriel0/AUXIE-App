@@ -17,7 +17,7 @@ const Header = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector(state => state.loggedUser)
-    const userImage = user.image.secure_url
+    const userImage = user.image?.secure_url
     const handleLogOut = async () => {
         try {
             if (user.googleId) {

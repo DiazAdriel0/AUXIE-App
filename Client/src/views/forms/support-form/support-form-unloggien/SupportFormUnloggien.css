@@ -3,6 +3,16 @@
     color: #333;
     margin: 20px;
     text-align: center;
+    background-color: var(--card-background-light);
+    border: 2px solid var(--card-background-light);
+    border-radius: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-left: 25%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 
 .email-link {

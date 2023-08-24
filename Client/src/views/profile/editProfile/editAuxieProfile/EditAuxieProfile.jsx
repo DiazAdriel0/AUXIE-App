@@ -107,8 +107,7 @@ const EditAuxieProfile = () => {
         const newFullAddress = `${address},${city}, ${provinces}, ${country}`
         setFullAddress(newFullAddress)
     }, [address, provinces, country])
-    useEffect(() => {
-    }, [fullAddress])
+    useEffect(() => {}, [fullAddress])
     function handlePriceChange(e, serviceName) {
         const newPrice = parseFloat(e.target.value)
 
@@ -196,9 +195,9 @@ const EditAuxieProfile = () => {
         navigate('/profile')
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         if (!provider.isAuxie) return navigate('/editconsumerProfile')
-    },[])
+    }, [])
 
     return (
         <>
@@ -209,7 +208,7 @@ const EditAuxieProfile = () => {
                         <h1>Editar perfil</h1>
                     </div>
                     <div className={style.secondContainer}>
-                    <div className={style.editImageContainer}>
+                        <div className={style.editImageContainer}>
                             <div className={style.imageContainer}>
                                 <img src={provider.image?.secure_url} alt='imagen de perfil' />
                             </div>
@@ -223,34 +222,34 @@ const EditAuxieProfile = () => {
                             </div>
                         </div>
                         <div className={style.inputs}>
-                                <TextField
-                                    className={style.picker}
-                                    id='outlined-basic'
-                                    label='Nombre'
-                                    variant='outlined'
-                                    required
-                                    multiline
-                                    color='primary'
-                                    name='firstName'
-                                    value={newfirstName}
-                                    onChange={handlefirstname}
-                                    sx={{ backgroundColor: ' #6d6c6c5d' }}
-                                    focused
-                                />
-                                <TextField
-                                    className={style.picker}
-                                    id='outlined-basic'
-                                    label='Apellido'
-                                    variant='outlined'
-                                    required
-                                    multiline
-                                    color='primary'
-                                    name='lastName'
-                                    value={newlastName}
-                                    onChange={handleLastname}
-                                    focused
-                                    sx={{ backgroundColor: ' #6d6c6c5d' }}
-                                />
+                            <TextField
+                                className={style.picker}
+                                id='outlined-basic'
+                                label='Nombre'
+                                variant='outlined'
+                                required
+                                multiline
+                                color='primary'
+                                name='firstName'
+                                value={newfirstName}
+                                onChange={handlefirstname}
+                                sx={{ backgroundColor: ' #6d6c6c5d' }}
+                                focused
+                            />
+                            <TextField
+                                className={style.picker}
+                                id='outlined-basic'
+                                label='Apellido'
+                                variant='outlined'
+                                required
+                                multiline
+                                color='primary'
+                                name='lastName'
+                                value={newlastName}
+                                onChange={handleLastname}
+                                focused
+                                sx={{ backgroundColor: ' #6d6c6c5d' }}
+                            />
                             {error && <p style={{ color: 'red' }}>{error}</p>}
 
                             <h4>Género: {provider.gender}</h4>
@@ -261,50 +260,54 @@ const EditAuxieProfile = () => {
                             </h3>
                             <h3>Descripción:</h3>
                             <div className={style.description}>
-                                <textarea value={newBio} onChange={handleBioChange} cols='80'/>
+                                <textarea value={newBio} onChange={handleBioChange} cols='80' />
                             </div>
-                                    <center>
-                                        <div className={style.typechecksContainer}>
-                                            <div className={style.typechecks}>
-                                                {allServices.map(service => (
-                                                    <label key={service.name} className={style.serviceLabel}>
+                            <center>
+                                <div className={style.typechecksContainer}>
+                                    <div className={style.typechecks}>
+                                        {allServices.map(service => (
+                                            <label key={service.name} className={style.serviceLabel}>
+                                                <input
+                                                    type='checkbox'
+                                                    value={service.name}
+                                                    checked={serviceUpdate.services.some(
+                                                        selectedService => selectedService.name === service.name
+                                                    )}
+                                                    onChange={e => handleSelect(e)}
+                                                />
+                                                <div className={style.checkmark}></div>
+                                                {service.name}
+                                                {serviceUpdate.services.some(
+                                                    selectedService => selectedService.name === service.name
+                                                ) ? (
+                                                    <div className={style.priceContainer}>
+                                                        {' '}
                                                         <input
-                                                            type='checkbox'
-                                                            value={service.name}
-                                                            checked={serviceUpdate.services.some(
-                                                                selectedService => selectedService.name === service.name
-                                                            )}
-                                                            onChange={e => handleSelect(e)}
+                                                            type='number'
+                                                            placeholder='Tarifa del servicio'
+                                                            value={getPriceForService(service.name)}
+                                                            onChange={e => handlePriceChange(e, service.name)}
                                                         />
-                                                        <div className={style.checkmark}></div>
-                                                        {service.name}
-                                                        {serviceUpdate.services.some(
-                                                            selectedService => selectedService.name === service.name
-                                                        ) ? (
-                                                            <div className={style.priceContainer}>
-                                                                {' '}
-                                                                <input
-                                                                    type='number'
-                                                                    placeholder='Tarifa del servicio'
-                                                                    value={getPriceForService(service.name)}
-                                                                    onChange={e => handlePriceChange(e, service.name)}
-                                                                />
-                                                            </div>
-                                                        ) : (
-                                                            <div className={style.priceContainer}></div>
-                                                        )}
-                                                    </label>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </center>
+                                                    </div>
+                                                ) : (
+                                                    <div className={style.priceContainer}></div>
+                                                )}
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+                            </center>
                             <div className='gallery-container'>
                                 <h5>Fotos de tus trabajos realizados:</h5>
                                 <input type='file' accept='.jpg, .png' multiple onChange={handleAddPhoto} />
-                                <ul>
+                                <ul className='flex gap-2'>
                                     {gallery.map((photo, index) => (
                                         <li className='gallery-item' key={index}>
-                                            <img src={URL.createObjectURL(photo)} alt={`Photo ${index}`} />
+                                            <img
+                                                className='w-32 '
+                                                src={URL.createObjectURL(photo)}
+                                                alt={`Photo ${index}`}
+                                            />
                                             <button className='delete-button' onClick={() => handleRemovePhoto(index)}>
                                                 X
                                             </button>
@@ -314,66 +317,66 @@ const EditAuxieProfile = () => {
                             </div>
                             <div className={style.address}>
                                 <h3>Tu Direccion</h3>
-                                    <TextField
-                                        className={style.picker}
-                                        id='outlined-basic'
-                                        label='Calle y numero'
-                                        variant='outlined'
-                                        required
-                                        multiline
-                                        color='primary'
-                                        name='street'
-                                        value={address}
-                                        onChange={handleAddressChange}
-                                        sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
-                                        focused
-                                    />
-                                    <TextField
-                                        className={style.picker}
-                                        id='outlined-basic'
-                                        label='ciudad'
-                                        variant='outlined'
-                                        color='primary'
-                                        name='city'
-                                        value={city}
-                                        onChange={handleAddressChange}
-                                        sx={{ width: 150, margin: 1 }}
-                                        focused
-                                    />
-                                    <TextField
-                                        className={style.picker}
-                                        id='outlined-basic'
-                                        label='Provincia'
-                                        variant='outlined'
-                                        color='primary'
-                                        name='province'
-                                        value={provinces}
-                                        onChange={handleAddressChange}
-                                        sx={{ width: 150, margin: 1 }}
-                                        focused
-                                    />
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='Calle y numero'
+                                    variant='outlined'
+                                    required
+                                    multiline
+                                    color='primary'
+                                    name='street'
+                                    value={address}
+                                    onChange={handleAddressChange}
+                                    sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
+                                    focused
+                                />
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='ciudad'
+                                    variant='outlined'
+                                    color='primary'
+                                    name='city'
+                                    value={city}
+                                    onChange={handleAddressChange}
+                                    sx={{ width: 150, margin: 1 }}
+                                    focused
+                                />
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='Provincia'
+                                    variant='outlined'
+                                    color='primary'
+                                    name='province'
+                                    value={provinces}
+                                    onChange={handleAddressChange}
+                                    sx={{ width: 150, margin: 1 }}
+                                    focused
+                                />
 
-                                    <TextField
-                                        className={style.picker}
-                                        id='outlined-basic'
-                                        label='pais'
-                                        variant='outlined'
-                                        color='primary'
-                                        name='country'
-                                        value={country}
-                                        onChange={handleAddressChange}
-                                        sx={{ width: 150, margin: 1 }}
-                                        focused
-                                    />
+                                <TextField
+                                    className={style.picker}
+                                    id='outlined-basic'
+                                    label='pais'
+                                    variant='outlined'
+                                    color='primary'
+                                    name='country'
+                                    value={country}
+                                    onChange={handleAddressChange}
+                                    sx={{ width: 150, margin: 1 }}
+                                    focused
+                                />
                             </div>
 
-                                <button className={style.updatebutton} onClick={handleUpdateProfile}>
-                                    Guardar Cambios
-                                </button>
-                        </div>
+                            <button className={style.updatebutton} onClick={handleUpdateProfile}>
+                                Guardar Cambios
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
         </>
     )
 }

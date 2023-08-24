@@ -42,17 +42,17 @@ const AuxieServices = () => {
                     <AsideAuxie /> 
                 </aside>
 
-                <main className={nightMode ? '-ml-[23rem] px-16 pt-2 bg-div-text-color-dark text-color-dark border-2 border-div-text-color-light-900 w-max':'-ml-[23rem] px-16 pt-2 bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 pt-20 w-max'}>
-
-                    <button onClick={handleChange} className='px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white'>
+                <main className={nightMode ? '-ml-[23rem] px-16 pt-20 bg-div-text-color-dark text-color-dark border-2 border-div-text-color-light-900 w-max ':'-ml-[23rem] px-16  bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 pt-20 w-max'}>
+ 
+                    <button onClick={handleChange} className={nightMode ? 'px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white':'px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white'}>
                         {tableOrCard ? 'Cambiar a cards' : 'Cambiar a tabla'}  
                     </button>
                     {tableOrCard ? (
-                        <div >
+                        <div className='pt-2' >
                             <TableServices />
                         </div> 
                     ) : (
-                        <div className='mr-24 pl-0.5'>
+                        <div className='pt-2'>
                             <CardsJobs />
                         </div>
                     )}
@@ -60,7 +60,7 @@ const AuxieServices = () => {
                         {tableOrCard ? (
                             <Pagination data={loggedUser.jobs} num={15} />
                         ) : (
-                            <Pagination data={loggedUser.jobs} num={8} />
+                            <Pagination data={loggedUser.jobs} num={6} />
                         )}
                     </div>
                 </main>

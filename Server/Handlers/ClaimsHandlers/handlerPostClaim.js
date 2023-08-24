@@ -39,7 +39,7 @@ const handlerPostClaim = async (req, res) => {
                     image,
                     isConsumer
                 )
-                res.status(200).json(newClaim)
+                return res.status(200).json(newClaim)
             }
             const newClaim = await postClaim(
                 email,
