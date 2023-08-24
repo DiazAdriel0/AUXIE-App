@@ -12,6 +12,12 @@
         margin-top: 2%;
         padding: 2%;
     }
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+       
+    }
+    
   }
   .errors{
     height: 3%;
@@ -20,4 +26,11 @@
     p{
         font-weight: 300;
     }
+  }
+  .sendbutton{
+   
+        justify-content: center;
+            text-align: center;
+        
+    
   }

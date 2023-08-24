@@ -3,17 +3,20 @@ import React, { useEffect, useState } from 'react'
 import { useValidations } from '../../utils/validationutils'
 import axios from 'axios'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loggedUser, updateProfile } from '../../redux/actions/actions'
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../config/firebase-config'
 import Swal from 'sweetalert2'
 import style from './loginregister.module.scss'
+import { CircularProgress } from '@mui/material'
 
 function LoginRegisterAuxie() {
     const correo = 'auxieapp@gmail.com'
     const [signIn, toggle] = useState(true)
+    const [loading, setLoading] = useState(false)
+
     const {
         Container,
         SignUpContainer,
@@ -131,7 +134,7 @@ function LoginRegisterAuxie() {
     const handleSubmit = async e => {
         e.preventDefault()
 
-        const form = document.getElementById('form')
+       
         const email = input.email
         const password = input.password
 
@@ -139,7 +142,8 @@ function LoginRegisterAuxie() {
             const credential = await signInWithEmailAndPassword(auth, email, password)
             if (credential) {
                 handleLogin(input)
-            }
+            } 
+            const form = document.getElementById('form')
             form.reset()
         } catch (error) {
             Swal.fire(error.message)
@@ -148,11 +152,18 @@ function LoginRegisterAuxie() {
 
     //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
-        if (input.password.trim().length === 0 || input.email.trim().length === 0) {
+        if (
+            signUp.password.trim().length === 0 ||
+            signUp.email.trim().length === 0 ||
+            signUp.firstName.trim().length === 0 ||
+            signUp.lastName.trim().length === 0 ||
+            signUp.age.trim().length === 0 ||
+            signUp.username.trim().length === 0 ||
+            signUp.gender.trim().length === 0
+        ) {
             return true
         }
 
-        // Check if any error message is not empty for other fields
         for (let error in errors) {
             if (errors[error] !== '') {
                 return true
@@ -216,7 +227,7 @@ function LoginRegisterAuxie() {
         try {
             const response = await axios.post('/providers/', signUp)
             if (response) {
-                // setLoading(false)
+                setLoading(false)
                 let welcome
                 switch (signUp.gender) {
                     case 'Masculino':
@@ -240,7 +251,7 @@ function LoginRegisterAuxie() {
 
             // navigate('/home')
         } catch (error) {
-            // setLoading(false)
+            setLoading(false)
             let er = error.response.data.error
             console.error(er)
             Swal.fire({
@@ -253,7 +264,7 @@ function LoginRegisterAuxie() {
     }
     const handleRegisterSubmit = async e => {
         e.preventDefault()
-        // setLoading(true)
+        setLoading(true)
         try {
             const credential = await createUserWithEmailAndPassword(auth, signUp.email, signUp.password)
             const uid = credential.user.uid
@@ -266,7 +277,7 @@ function LoginRegisterAuxie() {
             }
             handlePost(data)
         } catch (error) {
-            // setLoading(false)
+            setLoading(false)
             console.error(error.message)
             Swal.fire({
                 icon: 'error',
@@ -280,7 +291,7 @@ function LoginRegisterAuxie() {
         <div>
             <Container className={style.container}>
                 <SignUpContainer signingin={signIn}>
-                    <Form>
+                    <Form id='form'>
                         <Title>Registrarse</Title>
                         <Input type='text' placeholder='Nombre' name='firstName' onChange={handleSignUpChange} />
 
@@ -313,7 +324,12 @@ function LoginRegisterAuxie() {
                             <option value='Femenino'>Femenino</option>
                             <option value='Otro'>Otro</option>
                         </select>
-                        <Button onClick={handleRegisterSubmit}>Registrarse</Button>
+                        {loading ? (
+                        <CircularProgress />
+                    ) : (
+                        <Button onClick={handleRegisterSubmit} className={style.sendbutton }disabled={buttonDisabled()}>Registrarse</Button>
+                        
+                    )}
                     </Form>
                 </SignUpContainer>
                 <SignInContainer signingin={signIn}>
@@ -325,8 +341,10 @@ function LoginRegisterAuxie() {
                         </div>
                         <Input type='password' placeholder='Password' name='password' onChange={handleChange} />
                         <div className={style.errors}></div>
-                        <Anchor href='#'>Forgot your password?</Anchor>
-                        <Button>Inicia Sesión</Button>
+                        <Link to={('/resetpassword')}>
+                        <Anchor href='#'>¿Olvidaste tu contraseña?</Anchor>
+                        </Link>
+                        <Button className={style.sendbutton}>Inicia Sesión</Button>
                     </Form>
                 </SignInContainer>
                 <OverlayContainer signingin={signIn}>
@@ -334,12 +352,12 @@ function LoginRegisterAuxie() {
                         <LeftOverlayPanel signingin={signIn}>
                             <Title>¡Bienvenido!</Title>
                             <Paragraph>¡Inicia sesión ahora para acceder a Auxie!</Paragraph>
-                            <GhostButton onClick={() => toggle(true)}>Inicia Sesión</GhostButton>
+                            <GhostButton onClick={() => toggle(true)} className={style.sendbutton}>Inicia Sesión</GhostButton>
                         </LeftOverlayPanel>
                         <RightOverlayPanel signingin={signIn}>
                             <Title>¡Bienvenido!</Title>
                             <Paragraph>Completa el formulario para crear tu cuenta</Paragraph>
-                            <GhostButton onClick={() => toggle(false)}>Registrarse</GhostButton>
+                            <GhostButton onClick={() => toggle(false)} className={style.sendbutton}>Registrarse</GhostButton>
                         </RightOverlayPanel>
                     </Overlay>
                 </OverlayContainer>

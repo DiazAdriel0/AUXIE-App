@@ -3,13 +3,14 @@ import React, { useEffect, useState } from 'react'
 import { useValidations } from '../../utils/validationutils'
 import axios from 'axios'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loggedUser, updateProfile } from '../../redux/actions/actions'
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../config/firebase-config'
 import Swal from 'sweetalert2'
 import style from './loginregister.module.scss'
+import { CircularProgress } from '@mui/material'
 
 function LoginRegister() {
     const [signIn, toggle] = useState(true)
@@ -35,6 +36,7 @@ function LoginRegister() {
     const dispatch = useDispatch()
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
+    const [loading, setLoading] = useState(false)
     const correo = 'auxieapp@gmail.com'
     const [input, setInput] = useState({
         email: '',
@@ -64,6 +66,8 @@ function LoginRegister() {
                 if (data.isActive) {
                   setAccess(true)
                   dispatch(loggedUser(data))
+                  const form = document.getElementById('form')
+                  form.reset()
               }else{
                   return Swal.fire({
                       icon: 'error',
@@ -129,7 +133,7 @@ function LoginRegister() {
     const handleSubmit = async e => {
         e.preventDefault()
 
-        const form = document.getElementById('form')
+       
         const email = input.email
         const password = input.password
         
@@ -138,6 +142,7 @@ function LoginRegister() {
             if (credential) {
                 handleLogin(input)
             }
+            const form = document.getElementById('form')
             form.reset()
         } catch (error) {
             Swal.fire(error.message)
@@ -146,11 +151,18 @@ function LoginRegister() {
 
     //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
-        if (input.password.trim().length === 0 || input.email.trim().length === 0) {
+        if (
+            signUp.password.trim().length === 0 ||
+            signUp.email.trim().length === 0 ||
+            signUp.firstName.trim().length === 0 ||
+            signUp.lastName.trim().length === 0 ||
+            signUp.age.trim().length === 0 ||
+            signUp.username.trim().length === 0 ||
+            signUp.gender.trim().length === 0
+        ) {
             return true
         }
 
-        // Check if any error message is not empty for other fields
         for (let error in errors) {
             if (errors[error] !== '') {
                 return true
@@ -159,6 +171,7 @@ function LoginRegister() {
 
         return false
     }
+
     //google Login
     const signInGoogle = async () => {
         try {
@@ -214,7 +227,7 @@ function LoginRegister() {
         try {
             const response = await axios.post('/consumers/', signUp)
             if (response) {
-                // setLoading(false)
+                setLoading(false)
                 let welcome
                 switch (signUp.gender) {
                     case 'Masculino':
@@ -238,7 +251,7 @@ function LoginRegister() {
 
             // navigate('/home')
         } catch (error) {
-            // setLoading(false)
+            setLoading(false)
             let er = error.response.data.error
             console.error(er)
             Swal.fire({
@@ -251,7 +264,7 @@ function LoginRegister() {
     }
     const handleRegisterSubmit = async e => {
         e.preventDefault()
-        // setLoading(true)
+        setLoading(true)
         try {
             const credential = await createUserWithEmailAndPassword(auth, signUp.email, signUp.password)
             const uid = credential.user.uid
@@ -264,7 +277,7 @@ function LoginRegister() {
             }
             handlePost(data)
         } catch (error) {
-            // setLoading(false)
+            setLoading(false)
             console.error(error.message)
             Swal.fire({
                 icon: 'error',
@@ -278,7 +291,7 @@ function LoginRegister() {
         <div>
             <Container className={style.container}>
                 <SignUpContainer signingin={signIn}>
-                    <Form>
+                    <Form id='form'>
                         <Title>Registrarse</Title>
                         <Input type='text' placeholder='Nombre' name='firstName' onChange={handleSignUpChange} />
 
@@ -311,7 +324,14 @@ function LoginRegister() {
                             <option value='Femenino'>Femenino</option>
                             <option value='Otro'>Otro</option>
                         </select>
-                        <Button onClick={handleRegisterSubmit}>Registrarse</Button>
+                        
+                    {loading ? (
+                        <CircularProgress />
+                    ) : (
+                        <Button onClick={handleRegisterSubmit} className={style.sendbutton }disabled={buttonDisabled()}>Registrarse</Button>
+                        
+                    )}
+                     
                     </Form>
                 </SignUpContainer>
                 <SignInContainer signingin={signIn}>
@@ -325,8 +345,11 @@ function LoginRegister() {
                         <div className={style.errors}>
                            
                         </div>
-                        <Anchor href='#'>Forgot your password?</Anchor>
-                        <Button>Inicia Sesión</Button>
+                        <Link to={('/resetpassword')}>
+                        <Anchor href='#'>¿Olvidaste tu contraseña?</Anchor>
+                        </Link>
+
+                        <Button className={style.sendbutton}>Inicia Sesión</Button>
                     </Form>
                 </SignInContainer>
                 <OverlayContainer signingin={signIn}>
@@ -334,12 +357,12 @@ function LoginRegister() {
                         <LeftOverlayPanel signingin={signIn}>
                             <Title>¡Bienvenido!</Title>
                             <Paragraph>¡Inicia sesión ahora para acceder a Auxie!</Paragraph>
-                            <GhostButton onClick={() => toggle(true)}>Inicia Sesión</GhostButton>
+                            <GhostButton onClick={() => toggle(true)} className={style.sendbutton}>Inicia Sesión</GhostButton>
                         </LeftOverlayPanel>
                         <RightOverlayPanel signingin={signIn}>
                             <Title>¡Bienvenido!</Title>
                             <Paragraph>Completa el formulario para crear tu cuenta</Paragraph>
-                            <GhostButton onClick={() => toggle(false)}>Registrarse</GhostButton>
+                            <GhostButton className={style.sendbutton} onClick={() => toggle(false)}>Registrarse</GhostButton>
                         </RightOverlayPanel>
                     </Overlay>
                 </OverlayContainer>
