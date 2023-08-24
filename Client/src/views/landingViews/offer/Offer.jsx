@@ -93,12 +93,12 @@ const Offer = () => {
             <div>
                 <section className={style.Footer}>
                     <div className={style.Register}>
-                        <Link to='/auxieform'>
+                        <Link to='/auxielogin'>
                             <h3>Quiero ser un Auxie</h3>
                         </Link>
                     </div>
                     <div className={style.Register}>
-                        <Link to='/clientform'>
+                        <Link to='/clientlogin'>
                             <h3>Necesito un Auxie</h3>
                         </Link>
                     </div>
