@@ -1,30 +1,51 @@
+
 .CardJobsDay {
     width: 300px;
     height: 300px;
-    background-color:var(--card-background-light);
-    border-radius: 2%;
-         
-    h4{
-    
-        display: flex;
-        justify-content: center;
-        margin-top: 12%;
+    background-color: var(--card-background-light);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid rgba(128, 128, 128, 0.294);
+  
+    h4 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
     }
-}
-
-.CardJobsDark {
-    width: 300px; 
+  
+    p {
+      font-size: 14px;
+      color: #251772;
+    }
+  
+  }
+  
+  .CardJobsDark {
+    width: 300px;
     height: 300px;
-    background-color:var(--div-text-color-dark);
-    border: 2px solid white;
-    border-radius: 2%;
-            
-    h4{
-    
-        display: flex;
-        justify-content: center;
-        margin-top: 12%;
+    background-color: var(--div-border-color-dark);
+    border: 2px solid #111645;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(233, 222, 222, 0.3);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  
+    h4 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
     }
-         
-}
-
+  
+    p {
+      font-size: 14px;
+      color: #dddddd;
+    }
+  
+  }

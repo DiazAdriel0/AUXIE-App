@@ -1,9 +1,12 @@
 .support-form-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    width: 100%;
-    align-items: center;
+    align-items: center; 
+    padding: 2%;
+    width: max-content;
+    background-color:rgba(238, 237, 237, 0.836);
+    margin: 0 auto; 
+ 
 }
 
 .cards-container {
@@ -13,16 +16,17 @@
 }
 
 .card {
-    background-color: #ffffff;
+    background-color: var(--card-background-light);
     border: 1px solid #ccc;
     padding: 16px;
     margin: 8px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
+    width: 34rem;
 }
 
 .pagination {
-    margin-top: 16px;
+    margin-top: 1%;
 }
 
 .back-button{
