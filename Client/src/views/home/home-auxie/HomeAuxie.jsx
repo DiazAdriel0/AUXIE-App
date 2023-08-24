@@ -88,7 +88,7 @@ const HomeAuxie = () => {
                                 {services ? (
                                     services.map(service => (
                                         <div
-                                            className={nightMode ? 'flex flex-col items-center justify-center h-20 w-44 bg-div-color-dark text-color-dark border rounded-lg p-4 space-y-2':'flex flex-col items-center justify-center h-20 w-44 bg-white border rounded-lg p-4 space-y-2'}
+                                            className={nightMode ? 'flex flex-col items-center justify-center h-20 w-44  p-4 space-y-2':'flex flex-col items-center justify-center h-20 w-44 p-4 space-y-2'}
                                             key={service.name}
                                         >
                                             {' '}
