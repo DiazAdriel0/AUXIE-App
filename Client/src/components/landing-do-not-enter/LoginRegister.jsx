@@ -10,6 +10,7 @@ import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 
 import { auth } from '../../config/firebase-config'
 import Swal from 'sweetalert2'
 import style from './loginregister.module.scss'
+import { CircularProgress } from '@mui/material'
 
 function LoginRegister() {
     const [signIn, toggle] = useState(true)
@@ -35,6 +36,7 @@ function LoginRegister() {
     const dispatch = useDispatch()
     const { errors, validate } = useValidations()
     const [access, setAccess] = useState(false) //eslint-disable-line
+    const [loading, setLoading] = useState(false)
     const correo = 'auxieapp@gmail.com'
     const [input, setInput] = useState({
         email: '',
@@ -149,11 +151,18 @@ function LoginRegister() {
 
     //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
-        if (input.password.trim().length === 0 || input.email.trim().length === 0) {
+        if (
+            signUp.password.trim().length === 0 ||
+            signUp.email.trim().length === 0 ||
+            signUp.firstName.trim().length === 0 ||
+            signUp.lastName.trim().length === 0 ||
+            signUp.age.trim().length === 0 ||
+            signUp.username.trim().length === 0 ||
+            signUp.gender.trim().length === 0
+        ) {
             return true
         }
 
-        // Check if any error message is not empty for other fields
         for (let error in errors) {
             if (errors[error] !== '') {
                 return true
@@ -162,6 +171,7 @@ function LoginRegister() {
 
         return false
     }
+
     //google Login
     const signInGoogle = async () => {
         try {
@@ -217,7 +227,7 @@ function LoginRegister() {
         try {
             const response = await axios.post('/consumers/', signUp)
             if (response) {
-                // setLoading(false)
+                setLoading(false)
                 let welcome
                 switch (signUp.gender) {
                     case 'Masculino':
@@ -241,7 +251,7 @@ function LoginRegister() {
 
             // navigate('/home')
         } catch (error) {
-            // setLoading(false)
+            setLoading(false)
             let er = error.response.data.error
             console.error(er)
             Swal.fire({
@@ -254,7 +264,7 @@ function LoginRegister() {
     }
     const handleRegisterSubmit = async e => {
         e.preventDefault()
-        // setLoading(true)
+        setLoading(true)
         try {
             const credential = await createUserWithEmailAndPassword(auth, signUp.email, signUp.password)
             const uid = credential.user.uid
@@ -267,7 +277,7 @@ function LoginRegister() {
             }
             handlePost(data)
         } catch (error) {
-            // setLoading(false)
+            setLoading(false)
             console.error(error.message)
             Swal.fire({
                 icon: 'error',
@@ -314,7 +324,14 @@ function LoginRegister() {
                             <option value='Femenino'>Femenino</option>
                             <option value='Otro'>Otro</option>
                         </select>
-                        <Button onClick={handleRegisterSubmit} className={style.sendbutton}>Registrarse</Button>
+                        
+                    {loading ? (
+                        <CircularProgress />
+                    ) : (
+                        <Button onClick={handleRegisterSubmit} className={style.sendbutton }disabled={buttonDisabled()}>Registrarse</Button>
+                        
+                    )}
+                     
                     </Form>
                 </SignUpContainer>
                 <SignInContainer signingin={signIn}>
@@ -331,6 +348,7 @@ function LoginRegister() {
                         <Link to={('/resetpassword')}>
                         <Anchor href='#'>¿Olvidaste tu contraseña?</Anchor>
                         </Link>
+
                         <Button className={style.sendbutton}>Inicia Sesión</Button>
                     </Form>
                 </SignInContainer>

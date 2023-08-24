@@ -12,6 +12,11 @@
         margin-top: 2%;
         padding: 2%;
     }
+    button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+       
+    }
     
   }
   .errors{
