@@ -17,11 +17,8 @@ export const Notifications = () => {
     const [loading, setLoading] = useState(true)
     const night = useSelector(state => state.nightMode)
 
-    // Change: Use 'conversations' collection
     useEffect(() => {
-        // Fetch or create a conversation document
         const getOrCreateConversation = async () => {
-            // Fetch notifications for the conversation
             const notificationsRef = collection(db, `notifications/${auth.currentUser?.uid}/notification`)
             const queryNotifications = query(notificationsRef, orderBy('createdAt'))
             const unsubscribe = onSnapshot(queryNotifications, snapshot => {
@@ -58,7 +55,7 @@ export const Notifications = () => {
             return navigate('/requestedservices')
         }
         if (texto.includes('mensaje') && loggedUser.hasOwnProperty('services')) {
-            return navigate('/auxieinbox') //msj de consumer a definir
+            return navigate('/auxieinbox')
         }
         if (texto.includes('acreditado el pago') && loggedUser.hasOwnProperty('services')) {
             return navigate('/auxieservices')

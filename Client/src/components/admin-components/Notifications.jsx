@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 const Notifications = () => {
     return (
         <div>
-            <p> Notifications </p>
+            <p> Notificaciones </p>
             <Link className='underline' to='/dashboard'>
-                Go to home
+                Ir a home
             </Link>
         </div>
     )

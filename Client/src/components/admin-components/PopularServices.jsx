@@ -12,7 +12,7 @@ const PopularServices = () => {
             }
         >
             <strong className={nightMode ? 'text-gray-200 font-medium' : 'text-gray-700 font-medium'}>
-                Servicios Populares
+                Servicios populares
             </strong>
             <div className='mt-4 flex flex-col gap-3'>
                 {popularServices.map(product => (

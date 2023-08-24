@@ -1,4 +1,3 @@
-// import style from './auxieStatistics.module.scss'
 import NavGeneral from '../../../../components/nav-general/NavGeneral'
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import VisitsChart from '../../../../components/home-auxie-components/statistics-auxie/VisitsChart'
@@ -29,7 +28,6 @@ const AuxieStatistics = () => {
                     <NavGeneral />
                 </header>
         <div className='flex'>
-            {/* Aside */}
             <aside className='text-color-light border-2 border-div-text-color-light-900 w-52 pl-20'>
                 <div className=' h-screen flex flex-col justify-between'>
                     <AsideAuxie />
@@ -38,7 +36,6 @@ const AuxieStatistics = () => {
             <div className='ml-8 h-16 w-96'>
               <StatsGrid/>  
             </div>
-            {/* Main Content */}    
             <div className='mt-32 -mx-96 w-2/3'> 
                 <VisitsChart/>
             </div>

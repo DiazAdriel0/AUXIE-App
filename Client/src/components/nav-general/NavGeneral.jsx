@@ -1,10 +1,5 @@
-//estilos
 import style from './navGeneral.module.scss'
-
-//hooks
 import { useSelector } from 'react-redux'
-
-//Components
 import LogoAuxie from '../logo/logoAuxie/LogoAuxie'
 import ProfilePic from '../profile-pic/profile-pic-auxie/ProfilePic'
 import LogoClient from '../logo/logoClient/LogoCLient'

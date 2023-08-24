@@ -41,7 +41,7 @@ const NewProfileConsumers = () => {
                         </div>
                         {/* Container info usuario */}
                         <div className='flex flex-col justify-start  gap-16'>
-                            <h3 className='text-[2rem] border-t-4 border-blue-600'>Información Personal</h3>
+                            <h3 className='text-[2rem] border-t-4 border-blue-600'>Información personal</h3>
                             <ul className='flex flex-col  gap-8 text-xl'>
                                 <li>
                                     <span className='font-semibold'>{`Nombre : `}</span>
@@ -57,11 +57,11 @@ const NewProfileConsumers = () => {
                                     <span>{email}</span>
                                 </li>
                                 <li>
-                                    <span className='font-semibold'>{`Servicios Contratados : `}</span>
+                                    <span className='font-semibold'>{`Servicios contratados : `}</span>
                                     <span>{totalServices}</span>
                                 </li>
                                 <li>
-                                    <span className='font-semibold'>{`Servicios Favoritos : `}</span>
+                                    <span className='font-semibold'>{`Servicios favoritos : `}</span>
                                     <span>{favorites}</span>
                                 </li>
                                 <li>

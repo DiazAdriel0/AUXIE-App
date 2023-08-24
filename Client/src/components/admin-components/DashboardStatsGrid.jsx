@@ -11,7 +11,7 @@ const DashboardStatsGrid = () => {
                     <IoBagHandle className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className={nightMode ? spanStyleNight : spanStyle}>Ventas del Dia</span>
+                    <span className={nightMode ? spanStyleNight : spanStyle}>Ventas del día</span>
                     <div className='flex items-center'>
                         <strong className={nightMode ? strongStyleNight : strongStyle}>$5132.21</strong>
                         <span className='text-sm text-green-500 pl-2'>+1123</span>
@@ -23,7 +23,7 @@ const DashboardStatsGrid = () => {
                     <IoPieChart className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className={nightMode ? spanStyleNight : spanStyle}>Auxies Nuevos</span>
+                    <span className={nightMode ? spanStyleNight : spanStyle}>Auxies nuevos</span>
                     <div className='flex items-center'>
                         <strong className={nightMode ? strongStyleNight : strongStyle}>1532</strong>
                         <span className='text-sm text-green-500 pl-2'>+254</span>
@@ -35,7 +35,7 @@ const DashboardStatsGrid = () => {
                     <IoPeople className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className={nightMode ? spanStyleNight : spanStyle}> Usuarios Nuevos</span>
+                    <span className={nightMode ? spanStyleNight : spanStyle}> Usuarios nuevos</span>
                     <div className='flex items-center'>
                         <strong className={nightMode ? strongStyleNight : strongStyle}>15320</strong>
                         <span className='text-sm text-green-500 pl-2'>+1543</span>
@@ -47,7 +47,7 @@ const DashboardStatsGrid = () => {
                     <IoCart className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className={nightMode ? spanStyleNight : spanStyle}>Ventas Totales</span>
+                    <span className={nightMode ? spanStyleNight : spanStyle}>Ventas totales</span>
                     <div className='flex items-center'>
                         <strong className={nightMode ? strongStyleNight : strongStyle}>$312,521.12</strong>
                         <span className='text-sm text-red-500 pl-2'>-2544</span>

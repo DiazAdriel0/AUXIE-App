@@ -115,7 +115,7 @@ const Filters = () => {
                     }}
                 />
             </div>
-            <span>Filtrar por Servicios: </span>
+            <span>Filtrar por servicios: </span>
             <Select
                 placeholder='Elegir servicios'
                 onChange={input => filterByService(input)}
@@ -139,7 +139,7 @@ const Filters = () => {
             }
             {priceOn && (
                 <>
-                    <span>Ordenar por Precio: </span>
+                    <span>Ordenar por precio: </span>
                     <Select
                         onChange={input => orderByPrice(input)}
                         name='orderByPrice'

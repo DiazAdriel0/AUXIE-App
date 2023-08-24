@@ -23,7 +23,7 @@ const Footer = ({ myRef3 }) => {
                                 color='blue-gray'
                                 className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'
                             >
-                                Sobre Nosotros
+                                Sobre nosotros
                             </Typography>
                         </li>
                     </Link>
@@ -33,7 +33,7 @@ const Footer = ({ myRef3 }) => {
                                 color='blue-gray'
                                 className='font-normal transition-colors hover:text-blue-500 focus:text-blue-500'
                             >
-                                Garantias
+                                Garantías
                             </Typography>
                         </li>
                     </Link>

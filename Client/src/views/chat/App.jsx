@@ -24,11 +24,11 @@ function ChatApp({ recipient }) {
                             setIsInChat(true)
                         }}
                     >
-                        Start Conversation
+                        Iniciar conversación
                     </button>
                 </div>
             ) : (
-                <Chat recipient={recipient} /> /* Change: Pass 'recipient' prop */
+                <Chat recipient={recipient} />
             )}
         </AppWrapper>
     )

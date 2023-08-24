@@ -13,18 +13,18 @@ export default function RecentOrders() {
             }
         >
             <strong className={nightMode ? 'text-gray-200 font-medium' : 'text-gray-700 font-medium'}>
-                Ordenes Recientes
+                Ordenes recientes
             </strong>
             <div className='border-x border-gray-200 rounded-sm mt-3'>
                 <table className={nightMode ? 'w-full text-gray-200' : 'w-full text-gray-700'}>
                     <thead>
                         <tr>
                             <th className='text-left'>ID</th>
-                            <th className='text-left'>ID Servicio</th>
-                            <th className='text-left'>Nombre Cliente</th>
-                            <th className='text-left'>Fecha Orden</th>
+                            <th className='text-left'>ID servicio</th>
+                            <th className='text-left'>Nombre cliente</th>
+                            <th className='text-left'>Fecha orden</th>
                             <th className='text-left'>Precio</th>
-                            <th className='text-left'>Direccion</th>
+                            <th className='text-left'>Dirección</th>
                             <th className='text-left'>Estado</th>
                         </tr>
                     </thead>

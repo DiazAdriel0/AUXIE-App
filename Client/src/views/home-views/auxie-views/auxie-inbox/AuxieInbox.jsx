@@ -1,4 +1,3 @@
-// import style from './auxieInbox.module.scss'
 import NavGeneral from '../../../../components/nav-general/NavGeneral'
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 
@@ -28,16 +27,13 @@ const AuxieInbox = () => {
 
     return (
         <div>
-            {/* Header */}
             <header className='h-16'>
                 <NavGeneral />
             </header>
             <div className='grid grid-cols-3 mb-2'>
                 <aside className={ nightMode ?' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-[12.5rem] pl-10 pt-28': 'text-color-light border-2 border-div-text-color-light-900 w-80 pl-10 pt-28'}>
-                    {/* Aside */}
                     <AsideAuxie />
                 </aside>
-                {/* Main */}
                 <main className={nightMode ? 'bg-div-text-color-dark -ml-64 pr-40 pt-2  text-color-dark border-2 border-div-text-color-light-900 w-[44.5rem]' : '-ml-64 pr-40 pt-2 bg-div-text-color-light  text-color-light border-2 border-div-text-color-light-900 w-[44.5rem]'}>
                     <Chatlist />
                 </main>

@@ -32,8 +32,6 @@ const NotificationButton = () => {
                     className={style.fullcontainer}
                     sx={{
                         display: 'flex',
-                        // border: 0.5,
-                        // borderColor: 'primary.main',
                         borderRadius: 1,
                         width: 400,
                         marginTop: 2,

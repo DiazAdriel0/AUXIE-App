@@ -56,13 +56,13 @@ const ReviewForm = () => {
     }
     const labels = {
         0.5: 'Horrible',
-        1: 'Pesimo',
+        1: 'Pésimo',
         1.5: 'Muy Malo',
         2: 'Malo',
         2.5: 'Regular',
         3: 'Bueno',
         3.5: 'Muy Bueno',
-        4: 'Buenisimo',
+        4: 'Buenísimo',
         4.5: 'Excelente',
         5: 'El Mejor servicio',
     }
@@ -79,7 +79,7 @@ const ReviewForm = () => {
             if (response) {
                 const form = document.getElementById('form')
                 form.reset()
-                Swal.fire('Gracias por tu opinion!')
+                Swal.fire('Gracias por tu opinión!')
                 navigate('/profile')
             }
         } catch (error) {

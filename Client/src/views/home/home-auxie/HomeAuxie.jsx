@@ -1,15 +1,12 @@
-// import style from './homeAuxie.module.scss'
-
 import { useSelector, useDispatch } from 'react-redux'
-//Import components
-// import CardServices from '../../../components/card-services/CardServices'
+
 import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 
 import axios from 'axios'
 import { useEffect } from 'react'
 import { loggedUser } from '../../../redux/actions/actions'
-//Hooks
+
 import useNotify from './../../../hooks/useNotify'
 
 const HomeAuxie = () => {
@@ -48,7 +45,7 @@ const HomeAuxie = () => {
                 welcome = 'Bienvenidx'
         }
         if (logged.firstLogin) {
-            sendNotification(`${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu bio`)
+            sendNotification(`${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu biografía`)
             axios.put('/providers/firstLogin', { id: logged.id })
         }
         handleRefresh()
@@ -60,15 +57,12 @@ const HomeAuxie = () => {
                 <NavGeneral />
             </header>
             <div className='flex'>
-                {/* Aside */}
                 <aside className={ nightMode ?' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-80 pl-20': 'text-color-light border-2 border-div-text-color-light-900 w-80 pl-20'}>
                     <div className=' h-screen flex flex-col justify-between'>
                         <AsideAuxie />
                     </div>
                 </aside>
-                {/* Main Content */}
                 <div className='grid grid-cols-2'>
-                    {/* Main */}
                     <main className={nightMode ? 'bg-div-color-dark text-color-dark p-4 pl-8 w-fit border-2 border-div-text-color-light-900 ':'bg-div-text-color-light text-color-light p-4 pl-8 w-fit border-2 border-div-text-color-light-900 '}>
                         <div>
                             <h3 className='mb-4'>Servicios</h3>
@@ -100,7 +94,7 @@ const HomeAuxie = () => {
                                 <tr>
                                     <th className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300 bg-gray-100 ' :'py-2 px-14 border border-gray-300 bg-gray-100 '}>Trabajos</th>
                                     <th className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300 bg-gray-100 ' :'py-2 px-14 border border-gray-300 bg-gray-100 '}>Precio</th>
-                                    <th className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300 bg-gray-100 ' :'py-2 px-14 border border-gray-300 bg-gray-100 '}>Forma de Pago</th>
+                                    <th className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300 bg-gray-100 ' :'py-2 px-14 border border-gray-300 bg-gray-100 '}>Forma de pago</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -121,7 +115,7 @@ const HomeAuxie = () => {
                         </table>
                     </div>
                     <div className='py-10'>
-                        <p className='mt-4 w-full ml-20'>Calificación de los ultimos servicios</p>
+                        <p className='mt-4 w-full ml-20'>Calificación de los últimos servicios</p>
                         <table className='mx-auto border-collapse mt-2 ml-20'>
                             <thead>
                                 <tr>
