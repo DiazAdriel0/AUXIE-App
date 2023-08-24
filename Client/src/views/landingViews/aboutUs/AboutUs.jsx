@@ -5,6 +5,9 @@ import style from './aboutUs.module.scss'
 import NavLanding from '../../../components/nav-landing/NavLanding'
 import Footer from '../../../components/footer/Footer.jsx'
 import { GitHub, Instagram, LinkedIn } from '@mui/icons-material'
+import handyman from '../../../assets/handyman.png'
+import csatisfaction from '../../../assets/customerSatisfaction.png'
+import latam from '../../../assets/Map-of-Latin-America-5.png'
 
 const AboutUs = () => {
     const user = useSelector((state) => state.loggedUser)
@@ -47,7 +50,7 @@ const AboutUs = () => {
                         {/* Reemplaza el contenido con tu bio */}
                         <div className={style.imageabout2}>
                             <img
-                                src='https://www.pngkey.com/png/full/319-3193616_handyman-services-competitors-revenue-and-employees-handyman.png'
+                                src={handyman}
                                 alt='Imagen'
                             />
                         </div>
@@ -76,7 +79,7 @@ const AboutUs = () => {
                     <div className={style.cardback}>
                         <div className={style.imageabout2}>
                             <img
-                                src='https://files.quantzig.com/wp-content/uploads/2020/11/customerSatisfaction.png'
+                                src={csatisfaction}
                                 alt='Imagen'
                             />
                         </div>
@@ -105,7 +108,7 @@ const AboutUs = () => {
                     <div className={style.cardback}>
                         {/* Reemplaza el contenido con tu bio */}
                         <img
-                            src='https://ambientelegal.com/wp-content/uploads/2022/07/Map-of-Latin-America-5.png'
+                            src={latam}
                             alt='Imagen'
                         />
                     </div>
