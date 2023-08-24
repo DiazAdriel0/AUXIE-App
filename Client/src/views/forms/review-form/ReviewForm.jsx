@@ -8,11 +8,9 @@ import style from './reviewform.module.scss'
 import SendIcon from '@mui/icons-material/Send'
 import Swal from 'sweetalert2'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
 import useNotify from '../../../hooks/useNotify'
 
 const ReviewForm = ({ serviceName, providerName, providerId }) => {
-    const navigate = useNavigate()
     const user = useSelector(state => state.loggedUser)
     const [review, setReview] = useState({
         consumerId: user.id,
@@ -64,7 +62,6 @@ const ReviewForm = ({ serviceName, providerName, providerId }) => {
                 const form = document.getElementById('form')
                 form.reset()
                 Swal.fire('Gracias por tu opinión!')
-                navigate('/profile')
             }
         } catch (error) {
             console.error(error + error.response)
