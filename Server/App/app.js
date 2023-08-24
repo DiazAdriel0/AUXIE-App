@@ -39,7 +39,7 @@ server.use(
 )
 server.use('/', mainRouter)
 
-// Error catching endware.
+// Error catching endware
 // eslint-disable-next-line no-unused-vars
 server.use((err, req, res, next) => {
     const status = err.status || 500
