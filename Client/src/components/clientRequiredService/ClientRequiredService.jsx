@@ -1,17 +1,13 @@
-// hooks
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-// actions
 import { setServiceStatus, updateConsumer } from '../../redux/actions/actions'
 
-// components
 import ButtonMercadoPago from '../buttonMercadoPago/ButtonMercadoPago'
 import ReviewForm from '../../views/forms/review-form/ReviewForm'
 import Swal from 'sweetalert2'
 
-// style
 import style from './clientRequiredService.module.scss'
 
 const ClientRequiredService = job => {
@@ -21,16 +17,13 @@ const ClientRequiredService = job => {
     const nightMode = useSelector(state => state.nightMode)
     const [update, setUpdate] = useState(false)
 
-    // local states para manejar el popup del form review
     const targetRef = useRef(null)
     const [showForm, setShowForm] = useState(false)
     const [shouldCloseForm, setShouldCloseForm] = useState(false)
 
-    // props
     const { id, providerId, providerName, service, requestDate, jobDate, status, description, price, paymentMethod } =
         job
 
-    // objecto para traducir mi estado a español
     const translated = {
         approved: 'Aprobado',
         cancelled: 'Cancelado',
@@ -58,7 +51,6 @@ const ClientRequiredService = job => {
     }
     const formattedDate2 = formatISOStringToReadable(jobDate)
 
-    // función que hace desaparecer el popup
     const handleClickOutside = event => {
         if (shouldCloseForm && targetRef.current && !targetRef.current.contains(event.target)) {
             setShowForm(false)
@@ -66,7 +58,6 @@ const ClientRequiredService = job => {
         }
     }
 
-    // función que acepta o rechaza una propuesta del auxie
     const handleProposal = status => {
         const data = {
             providerId: providerId,
@@ -82,7 +73,6 @@ const ClientRequiredService = job => {
         return navigate(`/detail/${providerId}`)
     }
 
-    // función que maneja la acción que va a realizar el botón que se renderiza dependiendo del estado
     const handleClick = e => {
         if (e.target.innerText === 'Valorar') {
             setShowForm(true)
@@ -94,11 +84,10 @@ const ClientRequiredService = job => {
         if (e.target.innerText === 'Efectivo') return Swal.fire('Pagar en efectivo')
         if (e.target.innerText === 'Cancelado') return Swal.fire('Has cancelado tu pedido')
         if (e.target.innerText === 'Pendiente') return Swal.fire('Espera a que el Auxie apruebe tu pedido')
-        if (e.target.innerText === 'Rechazado') return Swal.fire('El auxie ha rechazado tu pedido')
+        if (e.target.innerText === 'Rechazado') return Swal.fire('El Auxie ha rechazado tu pedido')
         setUpdate(true)
     }
 
-    // hook que escucha si se hace click fuera del form review
     useEffect(() => {
         document.addEventListener('click', handleClickOutside)
         return () => {

@@ -32,6 +32,10 @@ const ResetPassword = () => {
                     clearInterval(timerInterval)
                     navigate('/')
                 },
+            }).then(result => {
+                if (result.dismiss === Swal.DismissReason.timer) {
+                    console.log('I was closed by the timer')
+                }
             })
         } catch (error) {
             console.error(error.message)

@@ -81,7 +81,6 @@ const ProfilePicAuxie = () => {
 
     return (
         <div className={style.profile}>
-            {/* Botón para desplegar menu con opciones del perfil*/}
             <button onClick={handleClick} aria-describedby={id} className={style.buttonPic}>
                 <img className={style.img} src={user.image?.secure_url} alt='imagen de perfil' />
             </button>
@@ -123,7 +122,6 @@ const ProfilePicAuxie = () => {
             >
                 {isAuxie ? (
                     <>
-                        {/*Botones para el perfil auxie*/}
                         <ClickAwayListener onClickAway={handleClickAway}>
                             <Box className={style.profileMenu}>
                                 <p onClick={handleRedirect} className={style.profileButtonTop}>
@@ -140,7 +138,6 @@ const ProfilePicAuxie = () => {
                     </>
                 ) : (
                     <>
-                        {/*Botones para el perfil consumer*/}
                         <ClickAwayListener onClickAway={handleClickAway}>
                             <Box className={nightMode ? style.profileMenuNight : style.profileMenu}>
                                 <p onClick={handleRedirect} className={style.profileButtonTop}>

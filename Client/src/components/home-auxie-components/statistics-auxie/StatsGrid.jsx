@@ -7,7 +7,7 @@ const DashboardStatsGrid = () => {
                     <IoBagHandle className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className='text-sm text-gray-500 font-light'>Pagos del Día</span>
+                    <span className='text-sm text-gray-500 font-light'>Pagos del día</span>
                     <div className='flex items-center'>
                         <strong className='text-xl text-gray-700 font-semibold'>$3132.21</strong>
                         <span className='text-sm text-green-500 pl-2'>+1153</span>
@@ -19,7 +19,7 @@ const DashboardStatsGrid = () => {
                     <IoPieChart className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className='text-sm text-gray-500 font-light'>Visitas Nuevas</span>
+                    <span className='text-sm text-gray-500 font-light'>Visitas nuevas</span>
                     <div className='flex items-center'>
                         <strong className='text-xl text-gray-700 font-semibold'>1532</strong>
                         <span className='text-sm text-green-500 pl-2'>+254</span>
@@ -31,7 +31,7 @@ const DashboardStatsGrid = () => {
                     <IoPeople className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className='text-sm text-gray-500 font-light'>Reservas Nuevas</span>
+                    <span className='text-sm text-gray-500 font-light'>Reservas nuevas</span>
                     <div className='flex items-center'>
                         <strong className='text-xl text-gray-700 font-semibold'>1001</strong>
                         <span className='text-sm text-green-500 pl-2'>+150</span>
@@ -43,7 +43,7 @@ const DashboardStatsGrid = () => {
                     <IoCart className='text-2xl text-white' />
                 </div>
                 <div className='pl-4'>
-                    <span className='text-sm text-gray-500 font-light'>Ventas Totales</span>
+                    <span className='text-sm text-gray-500 font-light'>Ventas totales</span>
                     <div className='flex items-center'>
                         <strong className='text-xl text-gray-700 font-semibold'>$312,521.12</strong>
                         <span className='text-sm text-green-500 pl-2'>+2544</span>

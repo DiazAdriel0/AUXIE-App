@@ -1,22 +1,16 @@
 import style from './navLanding.module.scss'
-
 import LogoLight from '../../assets/logos/7.png'
 import LogoNight from '../../assets/logos/7.png'
-// Hooks
 import useMenuStates from '../../hooks/useMenuStates'
 import { Animated } from 'react-animated-css'
-
-// Actions
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
-//Components
 import BasicSelect from '../selects/Select'
 import ButtonLightNight from '../buttons/button-light-night/ButtonLightNight'
 const NavLanding = () => {
     const menuLanding = useSelector(state => state.menuLanding)
     const nightMode = useSelector(state => state.nightMode)
-    const { handlerLogIn, handlerRegister, logInMenu, registerMenu, setLogInMenu, setRegisterMenu } = useMenuStates()
+    const { handlerLogIn, logInMenu, registerMenu, setLogInMenu, setRegisterMenu } = useMenuStates()
 
     return (
         <>

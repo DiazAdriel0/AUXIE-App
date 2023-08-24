@@ -1,17 +1,9 @@
 import style from './landing.module.scss'
-
-//* Import Hooks
 import { useState, useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
-//*Import Animations
 import { Animated } from 'react-animated-css'
-
-//* Import icons
-
-//* Import components
 import CardsServices from '../../components/cards-services/CardsServices'
 import NavLanding from '../../components/nav-landing/NavLanding'
 import ButtonUp from '../../components/buttons/buttonUp/ButtonUp'
@@ -19,7 +11,6 @@ import FeaturedAuxies from '../../components/featuredAuxies/FeaturedAuxies'
 import Footer from '../../components/footer/Footer'
 
 const Landing = () => {
-    //style tags
     const {
         landing,
         hiden,
@@ -40,13 +31,10 @@ const Landing = () => {
         serviceCards,
         sectionMenu,
     } = style
-    //* First Intersection Observer
     const { ref: myRef, inView: firstObserver } = useInView()
 
-    //* Second Intersection Observer
     const { ref: myRef2, inView: secondObserver } = useInView()
 
-    //* Third Intersection Observer
     const { ref: myRef3, inView: thirdObserver } = useInView()
 
     const [animationObserver, setAnimationObserver] = useState({
@@ -54,11 +42,9 @@ const Landing = () => {
         secondCardsAnimated: false,
         footerAnimated: false,
     })
-    //* Global State
     const nightMode = useSelector(state => state.nightMode)
     const user = useSelector(state => state.loggedUser)
     const menuLanding = useSelector(state => state.menuLanding)
-    //* state for changes
     const [menuChange, setMenuChange] = useState(true)
 
     const navigate = useNavigate()
@@ -72,7 +58,6 @@ const Landing = () => {
         }
     }, [])
 
-    //* useEffect animations
     useEffect(() => {
         if (firstObserver) {
             setAnimationObserver(prevAnimationObserver => ({
@@ -125,7 +110,6 @@ const Landing = () => {
         <>
             <NavLanding />
 
-            {/* Button to go up */}
             <ButtonUp
                 observersLanding={{
                     firstObserver,
@@ -134,9 +118,7 @@ const Landing = () => {
                 }}
             />
 
-            {/* main */}
             <main className={!menuLanding ? landing : hiden}>
-                {/* Section Menu Prinipal */}
                 <Animated animationIn='fadeIn' animationOut='fadeOut' animationInDuration={1000} isVisible={true}>
                     <section className={sectionMenu}>
                         <div className={!nightMode ? `${menuLogo} ${menuLogoLight}` : `${menuLogo} ${menuLogoNight}`}>
@@ -162,22 +144,7 @@ const Landing = () => {
                                         }
                                     >
                                         <h3>Contrata a un Auxie que te ayude</h3>
-                                        {/*  <select defaultValue="default">
-                                            <option disabled value="default">
-                                                Servicios Mas Solicitados
-                                            </option>
-                                            {services &&
-                                                services.map((service) => {
-                                                    return (
-                                                        <option
-                                                            key={service.name}
-                                                            value={service.name}
-                                                        >
-                                                            {service.name}
-                                                        </option>
-                                                    )
-                                                })}
-                                        </select> */}
+                                        
                                         <button onClick={handleClick} value={'toClientlogin'} className={buttonMenu}>
                                             Necesito un Auxie
                                         </button>
@@ -185,22 +152,7 @@ const Landing = () => {
                                 ) : (
                                     <div className={style.menuTurnAuxie}>
                                         <h3>Conviértete en Auxie y genera ganancias</h3>
-                                        {/* <select defaultValue="default">
-                                            <option disabled value="default">
-                                                Servicios a los que Aplicar
-                                            </option>
-                                            {services &&
-                                                services.map((service) => {
-                                                    return (
-                                                        <option
-                                                            key={service.name}
-                                                            value={service.name}
-                                                        >
-                                                            {service.name}
-                                                        </option>
-                                                    )
-                                                })}
-                                        </select> */}
+                                        
                                         <button onClick={handleClick} value={'toAuxieForm'} className={buttonMenu}>
                                             Convertirme en Auxie
                                         </button>
@@ -292,7 +244,7 @@ const Landing = () => {
 
                         {/* Section Auxies */}
                         <section className={style.auxies}>
-                            <h3>Auxies Destacados</h3>
+                            <h3>Auxies destacados</h3>
                             <div className={style.featuredAuxiesCont}>
                                 <FeaturedAuxies />
                             </div>

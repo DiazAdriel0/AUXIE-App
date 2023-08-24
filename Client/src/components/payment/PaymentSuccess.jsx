@@ -40,7 +40,7 @@ return (
         <section className="flex flex-col items-center justify-center h-screen">
             <CheckCircleOutlineRoundedIcon style={{ fontSize: '240px', width: '240px', height: '240px' }}className="text-green-500 h-72 w-72" ></CheckCircleOutlineRoundedIcon>
             <h1 className="py-6 font-bold text-3xl">
-                El pago se ha registrado con exito
+                El pago se ha registrado con éxito
             </h1>
             <button className=" font-semibold py-4 px-4 rounded-md" onClick={handleRedirect} >Volver a Home</button>
         </section>

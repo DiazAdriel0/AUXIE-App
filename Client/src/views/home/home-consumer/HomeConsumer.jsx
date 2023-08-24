@@ -45,7 +45,7 @@ const HomeConsumer = () => {
                 welcome = 'Bienvenidx'
         }
         if (user.firstLogin) {
-            sendNotification(`${welcome} a Auxie ${user.firstName}, ingresa a tu perfil para modificar tu bio`)
+            sendNotification(`${welcome} a Auxie ${user.firstName}, ingresa a tu perfil para modificar tu biografía`)
             dispatch(updateFirstLogin('consumers', user.id))
         }
 

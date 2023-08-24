@@ -15,7 +15,6 @@ const JobRequestForm = ({ services, recipient }) => {
     let { id } = useParams()
     const client = useSelector(state => state.loggedUser)
     const [loading, setLoading] = useState(false)
-    // const services = useSelector((state) => state.services)
     const [value, setValue] = useState({
         clientId: client.id,
         service: '',
@@ -23,7 +22,6 @@ const JobRequestForm = ({ services, recipient }) => {
         jobTime: '',
         description: '',
         paymentMethod: '',
-        // price:'',
     })
     const { sendNotification } = useNotify(recipient)
 
@@ -32,10 +30,10 @@ const JobRequestForm = ({ services, recipient }) => {
         setValue(previousvalue => ({ ...previousvalue, [name]: value }))
     }
     const handleServiceChange = event => {
-        const { value } = event.target // Obtenemos el valor seleccionado del campo de selección
+        const { value } = event.target 
         setValue(previousvalue => ({
             ...previousvalue,
-            service: value, // Actualizamos solo el campo 'service'
+            service: value,
         }))
     }
     const handlePaymentChange = event => {
@@ -79,7 +77,6 @@ const JobRequestForm = ({ services, recipient }) => {
         sendNotification(`${client.firstName} ${client.lastName} te ha solicitado un servicio de ${value.service}`)
     }
     return (
-        //pasar por param id de auxie y por body "service name" (mapeado de servicios) "description" "client id de logged user"
         <div>
             <center>
                 <div className={style.form}>

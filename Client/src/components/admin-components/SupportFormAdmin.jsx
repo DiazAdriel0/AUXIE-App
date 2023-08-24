@@ -38,7 +38,7 @@ const SupportFormAdmin = () => {
             <div className='support-form-container'>
                 <div className='cards-container'>
                     {claims.length === 0 ? (
-                        <p>No hay ningun reclamo</p>
+                        <p>No hay ningún reclamo</p>
                     ) : (
                         currentClaims
                             .map((claim, index) => (

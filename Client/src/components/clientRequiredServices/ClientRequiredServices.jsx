@@ -26,22 +26,19 @@ const ClientRequiredServices = () => {
 
     function formatDateFromMilliseconds(milliseconds) {
         const date = new Date(milliseconds)
-        const options = { year: 'numeric', month: 'long', day: 'numeric' }
+        const options = { year: 'numeric', month: 'long', day: 'numeric'}
         return date.toLocaleDateString(undefined, options)
-    }
-    // const formattedDate = formatDateFromMilliseconds(requestDate);
+      }
 
     function formatISOStringToReadable(isoString) {
-        const date = new Date(isoString)
-        const year = date.getFullYear()
+        const date = new Date(isoString);
+        const year = date.getFullYear();
         const month = date.toLocaleString('default', { month: 'long' })
         const day = date.getDate()
-
+      
         const formattedDate = `${day} de ${month} de ${year}`
-        return formattedDate
-    }
-    //   const formattedDate2 = formatISOStringToReadable(jobDate)
-
+        return formattedDate;
+      }
     const handleClickOutside = event => {
         if (shouldCloseForm && targetRef.current && !targetRef.current.contains(event.target)) {
             setShowForm(false)

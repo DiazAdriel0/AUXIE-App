@@ -1,12 +1,8 @@
-// import style from './auxieServices.module.scss'
 import axios from 'axios'
-//Hooks
 import { useEffect } from 'react'
 import { loggedUser } from '../../../../redux/actions/actions'
-
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-//Components
 import NavGeneral from '../../../../components/nav-general/NavGeneral'
 import AsideAuxie from '../../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import TableServices from '../../../../components/home-auxie-components/table-services/TableServices'
@@ -41,13 +37,13 @@ const AuxieServices = () => {
             <header className='h-16 '>
                 <NavGeneral />
             </header>
-            {/* aside */}
             <div className='grid grid-cols-2 mb-4 mr-52'>
                 <aside className={nightMode ? 'bg-div-color-dark text-color-dark border-2 border-div-text-color-light-900 h-screen w-[12.5rem] pl-12':'bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-[12.5rem] h-screen pl-12 '}>
                     <AsideAuxie /> 
                 </aside>
-                {/* main */}
-                <main className={nightMode ? '-ml-[23rem] px-16 bg-div-text-color-dark text-color-dark border-2 border-div-text-color-light-900 h-min pt-2 w-max':'-ml-[23rem] px-16  bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 pt-2 h-min w-max'}>
+
+                <main className={nightMode ? '-ml-[23rem] px-16 pt-2 bg-div-text-color-dark text-color-dark border-2 border-div-text-color-light-900 w-max':'-ml-[23rem] px-16 pt-2 bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 pt-20 w-max'}>
+
                     <button onClick={handleChange} className='px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white'>
                         {tableOrCard ? 'Cambiar a cards' : 'Cambiar a tabla'}  
                     </button>

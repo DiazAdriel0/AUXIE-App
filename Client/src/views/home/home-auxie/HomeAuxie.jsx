@@ -1,15 +1,12 @@
-// import style from './homeAuxie.module.scss'
-
 import { useSelector, useDispatch } from 'react-redux'
-//Import components
-// import CardServices from '../../../components/card-services/CardServices'
+
 import AsideAuxie from '../../../components/home-auxie-components/aside-auxie/AsideAuxie'
 import NavGeneral from '../../../components/nav-general/NavGeneral'
 
 import axios from 'axios'
 import { useEffect } from 'react'
 import { loggedUser } from '../../../redux/actions/actions'
-//Hooks
+
 import useNotify from './../../../hooks/useNotify'
 
 const HomeAuxie = () => {
@@ -48,7 +45,7 @@ const HomeAuxie = () => {
                 welcome = 'Bienvenidx'
         }
         if (logged.firstLogin) {
-            sendNotification(`${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu bio`)
+            sendNotification(`${welcome} a Auxie ${logged.firstName}, ingresa a tu perfil para modificar tu biografía`)
             axios.put('/providers/firstLogin', { id: logged.id })
         }
         handleRefresh()
@@ -60,7 +57,8 @@ const HomeAuxie = () => {
                 <NavGeneral />
             </header>
             <div className='flex'>
-                {/* Aside */}
+
+               
                 <aside
                     className={
                         nightMode
@@ -68,12 +66,13 @@ const HomeAuxie = () => {
                             : 'text-color-light border-2 border-div-text-color-light-900 w-[12.5rem] pl-12'
                     }
                 >
+
                     <div className=' h-screen flex flex-col justify-between'>
                         <AsideAuxie />
                     </div>
                 </aside>
-                {/* Main Content */}
                 <div className='grid grid-cols-2 '>
+
                     {/* Main */}
                     <main
                         className={
@@ -82,6 +81,7 @@ const HomeAuxie = () => {
                                 : 'lg:bg-div-text-color-light text-color-light py-4 pl-8 w-fit border-2 border-div-text-color-light-900 xl:bg-div-text-color-light text-color-light p-4 pl-8 w-fit h-max border-2 border-div-text-color-light-900 '
                         }
                     >
+
                         <div>
                             <h3>Servicios</h3>
                             <div className='grid grid-cols-2 grid-rows-2 gap-x-20 gap-y-10 px-4'>
@@ -177,9 +177,12 @@ const HomeAuxie = () => {
                             </tbody>
                         </table>
                     </div>
+
+
                     <div>
                         <p className='w-full ml-20'>Calificación de los ultimos servicios</p>
                         <table className='mx-auto border-collapse ml-20'>
+
                             <thead>
                                 <tr>
                                     <th

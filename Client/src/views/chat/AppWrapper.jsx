@@ -2,7 +2,7 @@ import Cookies from 'universal-cookie'
 
 const cookies = new Cookies()
 
-export const AppWrapper = ({ children, setIsInChat }) => {
+export const AppWrapper = ({ children }) => {
     cookies.remove('auth-token')
 
     return (

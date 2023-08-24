@@ -18,7 +18,7 @@ const BasicSelect = () => {
         <Box sx={{ minWidth: 120 }}>
             <FormControl className='w-full h-6 '>
                 <InputLabel size='small' id='demo-simple-select-label'>
-                    Compañia
+                    Compañía
                 </InputLabel>
                 <Select
                     className='w-full h-10'
@@ -28,9 +28,9 @@ const BasicSelect = () => {
                     label='Compañia'
                     onChange={handleChange}
                 >
-                    <MenuItem value='aboutUs'>Quiénes Somos</MenuItem>
-                    <MenuItem value='offer'>Que ofrecemos</MenuItem>
-                    <MenuItem value='howItWorks'>Como funciona Auxie</MenuItem>
+                    <MenuItem value='aboutUs'>¿Quiénes somos?</MenuItem>
+                    <MenuItem value='offer'>¿Qué ofrecemos?</MenuItem>
+                    <MenuItem value='howItWorks'>¿Cómo funciona Auxie?</MenuItem>
                 </Select>
             </FormControl>
         </Box>

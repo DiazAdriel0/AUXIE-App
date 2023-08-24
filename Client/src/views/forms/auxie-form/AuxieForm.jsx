@@ -3,7 +3,6 @@ import style from './auxieform.module.scss'
 import NavLanding from '../../../components/nav-landing/NavLanding'
 import CircularProgress from '@mui/material/CircularProgress'
 
-// Hooks
 import { useEffect, useState } from 'react'
 import { useValidations } from '../../../utils/validationutils'
 import { useNavigate } from 'react-router-dom'
@@ -65,7 +64,7 @@ const Form = () => {
                 setAccess(true)
                 const form = document.getElementById('form')
                 form.reset()
-                Swal.fire(`Usuario creado con exito. ${welcome} a Auxie!`)
+                Swal.fire(`Usuario creado con éxito. ${welcome} a Auxie!`)
             }
         } catch (error) {
             let er = error.response.data.error
@@ -110,9 +109,7 @@ const Form = () => {
         }
     }
 
-    //////para desabilitar el boton si no esta lleno el formulario=>
     const buttonDisabled = () => {
-        //check if empty
         if (
             input.password.trim().length === 0 ||
             input.email.trim().length === 0 ||
@@ -125,7 +122,6 @@ const Form = () => {
             return true
         }
 
-        // Check if any error message is not empty for other fields
         for (let error in errors) {
             if (errors[error] !== '') {
                 return true
