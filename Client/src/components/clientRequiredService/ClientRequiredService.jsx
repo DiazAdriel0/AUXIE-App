@@ -96,7 +96,10 @@ const ClientRequiredService = job => {
     }, [shouldCloseForm])
 
     useEffect(() => {
-        dispatch(updateConsumer(client.userUid))
+        if (update) {
+            dispatch(updateConsumer(client.userUid))
+            setUpdate(false)
+        }
     }, [update])
 
     return (
