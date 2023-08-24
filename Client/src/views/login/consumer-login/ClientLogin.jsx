@@ -159,7 +159,7 @@ const ClientLogin = () => {
 
     return (
         <>
-       
+       <NavLanding />
             <div className={style.login}>
             <Pruebas />
             </div>
