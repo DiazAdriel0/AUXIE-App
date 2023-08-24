@@ -3,7 +3,7 @@ import style from './chatSelector.module.scss'
 const ChatSelector = ({ inbox, handleUserSelection }) => {
     return (
         <div>
-            {inbox.map((item, index) => (
+            {inbox?.map((item, index) => (
                 <div
                     className={style.chatlist}
                     key={index}
