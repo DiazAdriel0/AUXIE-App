@@ -314,7 +314,7 @@ function LoginRegisterAuxie() {
                             <option value='Femenino'>Femenino</option>
                             <option value='Otro'>Otro</option>
                         </select>
-                        <Button onClick={handleRegisterSubmit}>Registrarse</Button>
+                        <Button className={style.sendbutton} onClick={handleRegisterSubmit}>Registrarse</Button>
                     </Form>
                 </SignUpContainer>
                 <SignInContainer signingin={signIn}>
@@ -327,7 +327,7 @@ function LoginRegisterAuxie() {
                         <Input type='password' placeholder='Password' name='password' onChange={handleChange} />
                         <div className={style.errors}></div>
                         <Anchor href='#'>Forgot your password?</Anchor>
-                        <Button>Inicia Sesión</Button>
+                        <Button className={style.sendbutton}>Inicia Sesión</Button>
                     </Form>
                 </SignInContainer>
                 <OverlayContainer signingin={signIn}>
@@ -335,12 +335,12 @@ function LoginRegisterAuxie() {
                         <LeftOverlayPanel signingin={signIn}>
                             <Title>¡Bienvenido!</Title>
                             <Paragraph>¡Inicia sesión ahora para acceder a Auxie!</Paragraph>
-                            <GhostButton onClick={() => toggle(true)}>Inicia Sesión</GhostButton>
+                            <GhostButton onClick={() => toggle(true)} className={style.sendbutton}>Inicia Sesión</GhostButton>
                         </LeftOverlayPanel>
                         <RightOverlayPanel signingin={signIn}>
                             <Title>¡Bienvenido!</Title>
                             <Paragraph>Completa el formulario para crear tu cuenta</Paragraph>
-                            <GhostButton onClick={() => toggle(false)}>Registrarse</GhostButton>
+                            <GhostButton onClick={() => toggle(false)} className={style.sendbutton}>Registrarse</GhostButton>
                         </RightOverlayPanel>
                     </Overlay>
                 </OverlayContainer>

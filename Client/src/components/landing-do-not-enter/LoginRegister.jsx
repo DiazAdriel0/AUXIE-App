@@ -314,7 +314,7 @@ function LoginRegister() {
                             <option value='Femenino'>Femenino</option>
                             <option value='Otro'>Otro</option>
                         </select>
-                        <Button onClick={handleRegisterSubmit}>Registrarse</Button>
+                        <Button onClick={handleRegisterSubmit} className={style.sendbutton}>Registrarse</Button>
                     </Form>
                 </SignUpContainer>
                 <SignInContainer signingin={signIn}>
@@ -329,7 +329,7 @@ function LoginRegister() {
                            
                         </div>
                         <Anchor href='#'>Forgot your password?</Anchor>
-                        <Button>Inicia Sesión</Button>
+                        <Button className={style.sendbutton}>Inicia Sesión</Button>
                     </Form>
                 </SignInContainer>
                 <OverlayContainer signingin={signIn}>
@@ -337,12 +337,12 @@ function LoginRegister() {
                         <LeftOverlayPanel signingin={signIn}>
                             <Title>¡Bienvenido!</Title>
                             <Paragraph>¡Inicia sesión ahora para acceder a Auxie!</Paragraph>
-                            <GhostButton onClick={() => toggle(true)}>Inicia Sesión</GhostButton>
+                            <GhostButton onClick={() => toggle(true)} className={style.sendbutton}>Inicia Sesión</GhostButton>
                         </LeftOverlayPanel>
                         <RightOverlayPanel signingin={signIn}>
                             <Title>¡Bienvenido!</Title>
                             <Paragraph>Completa el formulario para crear tu cuenta</Paragraph>
-                            <GhostButton onClick={() => toggle(false)}>Registrarse</GhostButton>
+                            <GhostButton className={style.sendbutton} onClick={() => toggle(false)}>Registrarse</GhostButton>
                         </RightOverlayPanel>
                     </Overlay>
                 </OverlayContainer>
