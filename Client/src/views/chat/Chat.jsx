@@ -1,13 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { db, auth } from '../../config/firebase-config'
-import {
-    collection,
-    addDoc,
-    serverTimestamp,
-    onSnapshot,
-    query,
-    orderBy,
-} from 'firebase/firestore'
+import { collection, addDoc, serverTimestamp, onSnapshot, query, orderBy } from 'firebase/firestore'
 import style from './chat.module.scss'
 import { useSelector } from 'react-redux'
 import useNotify from './../../hooks/useNotify'
@@ -15,7 +8,7 @@ import useNotify from './../../hooks/useNotify'
 export const Chat = ({ recipient }) => {
     const messageRefEnd = useRef(null)
     const smtRef = useRef(null)
-    const user = useSelector((state) => state.loggedUser)
+    const user = useSelector(state => state.loggedUser)
     const [messages, setMessages] = useState([])
     const [newMessage, setNewMessage] = useState('')
     const [sent, setSent] = useState(false)
@@ -45,10 +38,11 @@ export const Chat = ({ recipient }) => {
                 db,
                 `conversations/${conversationId}/messages`
             )
+
             const queryMessages = query(messagesRef, orderBy('createdAt'))
-            const unsubscribe = onSnapshot(queryMessages, (snapshot) => {
+            const unsubscribe = onSnapshot(queryMessages, snapshot => {
                 let messages = []
-                snapshot.forEach((doc) => {
+                snapshot.forEach(doc => {
                     messages.push({ ...doc.data(), id: doc.id })
                 })
 
@@ -63,23 +57,22 @@ export const Chat = ({ recipient }) => {
 
     useEffect(() => {
         if (sent) {
-            sendNotification(
-                `${user.firstName} ${user.lastName} te ha enviado un mensaje`
-            )
+            sendNotification(`${user.firstName} ${user.lastName} te ha enviado un mensaje`)
         }
     }, [sent])
 
-    useEffect(()=>{
-        messageRefEnd.current?.scrollIntoView({behavior: 'instant', block:'end'})
-        smtRef.current?.scrollIntoView({behavior: 'instant', block:'end'})
-    },[messages])
+    useEffect(() => {
+        messageRefEnd.current?.scrollIntoView({ behavior: 'instant', block: 'end' })
+        smtRef.current?.scrollIntoView({ behavior: 'instant', block: 'end' })
+    }, [messages])
 
-    const handleSubmit = async (event) => {
+    const handleSubmit = async event => {
         event.preventDefault()
 
         if (newMessage === '') return
 
         const participants = [auth.currentUser.uid, recipient]
+
         participants.sort()
         const conversationId = ordered.join('_')
         const conversationData = { participants }
@@ -89,6 +82,7 @@ export const Chat = ({ recipient }) => {
             db,
             `conversations/${conversationId}/messages`
         )
+
         await addDoc(messagesRef, {
             text: newMessage,
             createdAt: serverTimestamp(),
@@ -107,13 +101,11 @@ export const Chat = ({ recipient }) => {
             <div className='header'></div>
 
             <div className={style.messages}>
-                {messages.map((message) => (
+                {messages.map(message => (
                     <div key={message.id}>
                         <span
                             className={` ${
-                                message.recipient === auth.currentUser.uid
-                                    ? style.receivername
-                                    : style.sendername
+                                message.recipient === auth.currentUser.uid ? style.receivername : style.sendername
                             }`}
                         >
                             {message.recipient === auth.currentUser.uid
@@ -121,29 +113,26 @@ export const Chat = ({ recipient }) => {
                                 : 'You'}
                         </span>
                         <div className={style.chatbubbles}>
-                            <div
-                                className={` ${
-                                    message.recipient === auth.currentUser.uid
-                                        ? style.receiver
-                                        : style.sender
-                                }`}
-                            >
+                            <div>
+                                className=
+                                {` ${message.recipient === auth.currentUser.uid ? style.receiver : style.sender}`}
                                 {message.text}
                             </div>
                         </div>
                     </div>
                 ))}
-                <div ref={messageRefEnd}/>
+                <div ref={messageRefEnd} />
             </div>
+
             <form onSubmit={handleSubmit} className={style.chatform}>
                 <input
                     type='text'
                     value={newMessage}
-                    onChange={(event) => setNewMessage(event.target.value)}
+                    onChange={event => setNewMessage(event.target.value)}
                     className={style.messageinput}
                     placeholder='Escribe tu mensaje...'
                 />
-                
+
                 <button type='submit' className={style.send}>
                     Enviar
                 </button>

@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { Chat } from '../chat/Chat'
-// import { Auth } from "../Chat/Auth";
 import { AppWrapper } from '../chat/AppWrapper'
 import Cookies from 'universal-cookie'
-
-const cookies = new Cookies()
+ 
+const cookies = new Cookies();
 
 function ChatApp({ recipient }) {
     const [isAuth, setIsAuth] = useState(cookies.get('auth-token'))
