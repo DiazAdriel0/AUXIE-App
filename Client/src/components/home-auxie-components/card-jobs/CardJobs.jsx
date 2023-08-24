@@ -6,10 +6,10 @@ const CardJobs = ({ data }) => {
 
     return (
         <div className={nightMode ? `${style.CardJobsDark}` : `${style.CardJobsDay}`}>
-            <h4>Nombre: {service}</h4>
-            <h4>Trabajo: {description}</h4>
-            <h4>Status: {status}</h4>
-            <h4>Precio: {price}</h4>
+            <h4><p>Nombre:</p>{service}</h4>
+            <h4><p>Trabajo: </p>{description}</h4>
+            <h4><p>Status:</p> {status}</h4>
+            <h4><p>Precio:</p> {price}</h4> 
         </div>
     )
 }

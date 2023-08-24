@@ -262,9 +262,17 @@ const ProfileAuxies = () => {
                                 {password && <ResetPassword />}
                             </h3>
                             <h3>Descripción:</h3>
-                            <div className={style.description}>
-                                {' '}
-                                <textarea value={newBio} onChange={handleBioChange} />
+                            <div >
+                            {' '}
+                            <TextField
+                            multiline
+                            fullWidth
+                            rows={3}
+                            value={newBio}
+                            onChange={handleBioChange}
+                        />
+                                
+                    
                             </div>
 
                             <div>
