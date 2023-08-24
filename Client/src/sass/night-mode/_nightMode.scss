@@ -5,7 +5,9 @@
     div {
         border-color: var(--transition-color);
     }
-
+    p{
+        color: var(--text-color-dark);
+    }
     a {
         color: var(--text-color-dark);
         transition: var(--transition-color);

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 const CardsJobs = () => {
     const loggedUser = useSelector((state) => state.loggedUser)
 
-    const { currentPageData } = usePagination(8, loggedUser.jobs)
+    const { currentPageData } = usePagination(6, loggedUser.jobs)
     return (
         <div className={style.cardsJobs}>
             {currentPageData.map((data) => (
