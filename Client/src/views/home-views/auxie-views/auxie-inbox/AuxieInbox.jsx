@@ -35,7 +35,8 @@ const AuxieInbox = () => {
         const formattedDate = `${day} de ${month} de ${year}`;
         return formattedDate;
       }
-      const formatedDate = formatISOStringToReadable(futureJobs.jobDate)
+      
+      console.log( futureJobs.jobDate)
 
     return (
         <div>
@@ -68,7 +69,7 @@ const AuxieInbox = () => {
                                             {service.service}
                                         </td>
                                         <td className={nightMode ?'bg-div-color-dark py-2 px-14 border border-gray-300 ' :'py-2 px-14 border border-gray-300 '}>
-                                            {formatedDate}
+                                            {formatISOStringToReadable(service.jobDate)}
                                         </td>
                                     </tr>
                                 ))}
