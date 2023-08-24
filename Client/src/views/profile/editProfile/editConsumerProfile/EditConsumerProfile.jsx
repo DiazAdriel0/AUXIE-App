@@ -1,32 +1,28 @@
 import { useEffect, useState } from 'react'
-import { DateTime } from 'luxon'
 import { useSelector, useDispatch } from 'react-redux'
-import { updateProfile } from '../../../redux/actions/actions'
-import NavGeneral from '../../../components/nav-general/NavGeneral'
-import style from './ProfileConsumers.module.scss'
-import Swal from 'sweetalert2'
+import { updateProfile } from '../../../../redux/actions/actions'
+import NavGeneral from '../../../../components/nav-general/NavGeneral'
+import style from './editConsumerProfile.module.scss'
 import { TextField } from '@mui/material'
-import ResetPassword from '../../reset-password/ResetPassword'
+import ResetPassword from '../../../reset-password/ResetPassword'
+import { useNavigate } from 'react-router-dom'
 
-const ProfileConsumers = () => {
-    const user = useSelector(state => state.loggedUser)
+const EditConsumerProfile = () => {
     const consumer = useSelector(state => state.loggedUser)
+    const navigate = useNavigate()
     const [newImage, setNewImage] = useState(null)
     const [error, setError] = useState(null)
-    const [profileData, setProfileData] = useState({})
-    const [edit, setEdit] = useState(false)
+    const [profileData, setProfileData] = useState({
+        firstName: consumer.firstName,
+        lastName: consumer.lastName,
+    })
     const [password, setPasswords] = useState(false)
-    const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [provinces, setProvinces] = useState('')
-    const [country, setCountry] = useState('')
-    const [fullAddress, setFullAddress] = useState('')
-    const handleEdit = () => {
-        setEdit(true)
-        if (edit === true) {
-            setEdit(false)
-        }
-    }
+    const [address, setAddress] = useState(consumer?.address.split(',')[0])
+    const [city, setCity] = useState(consumer?.address.split(',')[1])
+    const [provinces, setProvinces] = useState(consumer?.address.split(',')[2])
+    const [country, setCountry] = useState(consumer?.address.split(',')[3])
+    const [fullAddress, setFullAddress] = useState(consumer?.address)
+
     const handlePassword = () => {
         setPasswords(true)
         if (password === true) {
@@ -34,10 +30,6 @@ const ProfileConsumers = () => {
         }
     }
     const dispatch = useDispatch()
-
-    const registerDate = consumer.registerDate
-    const luxonDate = DateTime.fromISO(registerDate)
-    const toDateMed = luxonDate.toLocaleString(DateTime.DATE_MED)
 
     const handleImageChange = event => {
         const fileInput = event.target.files[0]
@@ -67,36 +59,20 @@ const ProfileConsumers = () => {
     }
     useEffect(() => {
         // Concatenate the address, province, and country
-        const newFullAddress = `${address} ${city} ${provinces} ${country}`
+        const newFullAddress = `${address},${city}, ${provinces}, ${country}`
         setFullAddress(newFullAddress)
     }, [address, provinces, country])
-  
+    useEffect(() => {}, [fullAddress])
     ///put de datos ///
     const handleUpdateProfile = () => {
-        setEdit(false)
         const formData = new FormData()
         formData.append('image', newImage)
-
-        dispatch(
-            updateProfile(
-                { id: consumer.id, image: newImage, ...profileData, address: fullAddress },
-
-                'consumers'
-            )
-        )
-
-        Swal.fire('Datos actualizados exitosamente!')
+        dispatch(updateProfile({ id: consumer.id, image: newImage, ...profileData, address: fullAddress }, 'consumers'))
+        navigate('/profile')
     }
-
-    // const favNames = consumer.favoritesProviders
-    //     .map((favorite) => favorite.firstName)
-    //     .join(' | ')
-
-    // const requiredServicesNames = consumer.requiredServices
-    //     ?.map((service) => service.service)
-    //     .join(' | ')
-    // const requiredServicesNamesSet = new Set(requiredServicesNames)
-
+    useEffect(()=> {
+        if (consumer.isAuxie) return navigate('/editauxieprofile')
+    },[])
     return (
         <div>
             <div>
@@ -104,29 +80,26 @@ const ProfileConsumers = () => {
             </div>
             <div className={style.fullProfileContainer}>
                 <div className={style.profileContainer}>
-                    <div className={style.secondcontainer}>
-                        <button type='button' className={style.edit} onClick={handleEdit}>
-                            Editar perfil
-                        </button>
-                        <div className={style.datejoined}> Te uniste: {toDateMed}</div>
+                    <div className={style.title}>
+                        <h1>Editar perfil</h1>
+                    </div>
 
-                        <div className={style.imagecontainer}>
-                            <img src={consumer.image?.secure_url} alt='imagen de perfil' />
+                    <div className={style.secondContainer}>
+                        <div className={style.editImageContainer}>
+                            <div className={style.imageContainer}>
+                                <img src={consumer.image?.secure_url} alt='imagen de perfil' />
+                            </div>
+                            <div className={style.imageInput}>
+                                <input
+                                    type='file'
+                                    accept='.jpg, .png'
+                                    onChange={handleImageChange}
+                                    className={style.imageButton}
+                                />
+                            </div>
                         </div>
-                        {edit && (
-                            <input
-                                type='file'
-                                accept='.jpg, .png'
-                                onChange={handleImageChange}
-                                className={style.imageButton}
-                            />
-                        )}
 
-                        <h1 className={style.name}>
-                            {consumer.firstName} {consumer.lastName}
-                        </h1>
-
-                        {edit && (
+                        <div className={style.inputs}>
                             <TextField
                                 className={style.picker}
                                 id='outlined-basic'
@@ -136,11 +109,9 @@ const ProfileConsumers = () => {
                                 name='firstName'
                                 value={profileData.firstName}
                                 onChange={handleChange}
-                                sx={{ marginLeft: 22, backgroundColor: ' #6d6c6c5d' }}
+                                sx={{ backgroundColor: ' #6d6c6c5d' }}
                                 focused
                             />
-                        )}
-                        {edit && (
                             <TextField
                                 className={style.picker}
                                 id='outlined-basic'
@@ -151,20 +122,18 @@ const ProfileConsumers = () => {
                                 value={profileData.lastName}
                                 onChange={handleChange}
                                 focused
-                                sx={{ marginLeft: 5, backgroundColor: ' #6d6c6c5d' }}
+                                sx={{ backgroundColor: ' #6d6c6c5d' }}
                             />
-                        )}
-                        {error && <p style={{ color: 'red' }}>{error}</p>}
-                        <h4>
-                            {consumer.isAdmin && (
-                                <div>
-                                    <h4>Admin</h4>
-                                </div>
-                            )}
-                        </h4>
-                        <h4>Género: {consumer.gender}</h4>
-                        {edit && (
-                            <select onChange={handleChange} name='gender' defaultValue={''}>
+                            {error && <p style={{ color: 'red' }}>{error}</p>}
+                            <h4>
+                                {consumer.isAdmin && (
+                                    <div>
+                                        <h4>Admin</h4>
+                                    </div>
+                                )}
+                            </h4>
+                            <p>Género: </p>
+                            <select onChange={handleChange} name='gender' defaultValue={consumer.gender}>
                                 <option disabled value=''>
                                     Género
                                 </option>
@@ -172,18 +141,17 @@ const ProfileConsumers = () => {
                                 <option value='Femenino'>Femenino</option>
                                 <option value='Otro'>Otro</option>
                             </select>
-                        )}
-                        <div className={style.emailpassword}>
-                            <h3>
-                                Email: {consumer.email}{' '}
-                                {edit && <button onClick={handlePassword}>Cambiar la contraseña</button>}
-                                {password && <ResetPassword />}
-                            </h3>
-                        </div>
-                        <div className={style.address}>
-                            <h3>Tu Direccion</h3>
-                            {!edit && <p>{user.address}</p>}
-                            {edit && (
+                            <div className={style.emailpassword}>
+                                <h3>
+                                    <p>Email: </p>
+                                    {consumer.email}
+                                    <button onClick={handlePassword}>Cambiar la contraseña</button>
+                                    {password && <ResetPassword />}
+                                </h3>
+                            </div>
+                            <div className={style.address}>
+                                <h3>Tu Direccion</h3>
+                                <p>{consumer.address}</p>
                                 <TextField
                                     className={style.picker}
                                     id='outlined-basic'
@@ -198,8 +166,6 @@ const ProfileConsumers = () => {
                                     focused
                                     sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
-                            )}
-                            {edit && (
                                 <TextField
                                     className={style.picker}
                                     id='outlined-basic'
@@ -212,8 +178,6 @@ const ProfileConsumers = () => {
                                     focused
                                     sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
-                            )}
-                            {edit && (
                                 <TextField
                                     className={style.picker}
                                     id='outlined-basic'
@@ -226,9 +190,7 @@ const ProfileConsumers = () => {
                                     focused
                                     sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
-                            )}
 
-                            {edit && (
                                 <TextField
                                     className={style.picker}
                                     id='outlined-basic'
@@ -241,10 +203,10 @@ const ProfileConsumers = () => {
                                     focused
                                     sx={{ width: 150, margin: 1, backgroundColor: ' #6d6c6c5d' }}
                                 />
-                            )}
-                        </div>
-                        <div className={style.savebutton}>
-                            {edit && <button onClick={handleUpdateProfile}>Guardar Cambios</button>}
+                            </div>
+                            <div className={style.savebutton}>
+                                <button onClick={handleUpdateProfile}>Guardar Cambios</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -253,4 +215,4 @@ const ProfileConsumers = () => {
     )
 }
 
-export default ProfileConsumers
+export default EditConsumerProfile

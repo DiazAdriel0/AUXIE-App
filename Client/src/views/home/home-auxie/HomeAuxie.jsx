@@ -53,31 +53,27 @@ const HomeAuxie = () => {
 
     return (
         <div>
-            <header className='h-16'>
+            <header className='h-16'>     
                 <NavGeneral />
             </header>
             <div className='flex'>
-                <aside className={ nightMode ?' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-80 pl-20': 'text-color-light border-2 border-div-text-color-light-900 w-80 pl-20'}>
+                <aside className={ nightMode ?' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-[12.5rem] pl-12': 'text-color-light border-2 border-div-text-color-light-900 w-[12.5rem] pl-12'}>
                     <div className=' h-screen flex flex-col justify-between'>
                         <AsideAuxie />
                     </div>
                 </aside>
-                <div className='grid grid-cols-2'>
-                    <main className={nightMode ? 'bg-div-color-dark text-color-dark p-4 pl-8 w-fit border-2 border-div-text-color-light-900 ':'bg-div-text-color-light text-color-light p-4 pl-8 w-fit border-2 border-div-text-color-light-900 '}>
+                <div className='grid grid-cols-2 '>
+                    <main className={nightMode ? 'lg:bg-div-color-dark text-color-dark p-4 pl-8 w-fit border-2 border-div-text-color-light-900 xl:bg-div-color-dark text-color-dark p-4 pl-8 w-fit border-2 border-div-text-color-light-900':'lg:bg-div-text-color-light text-color-light py-4 pl-8 w-fit border-2 border-div-text-color-light-900 xl:bg-div-text-color-light text-color-light p-4 pl-8 w-fit h-max border-2 border-div-text-color-light-900 '}>
                         <div>
-                            <h3 className='mb-4'>Servicios</h3>
-                            <div className='grid grid-cols-2 grid-rows-2 gap-x-20 gap-y-0.5 px-4'>
+                            <h3 >Servicios</h3> 
+                            <div className='grid grid-cols-2 grid-rows-2 gap-x-20 gap-y-10 px-4'>
                                 {services ? (
                                     services.map(service => (
                                         <div
                                             className='flex flex-col items-center justify-center h-20 w-44 bg-white border rounded-lg p-4 space-y-2'
                                             key={service.name}
-                                        >
-                                            <img
-                                                className='w-full h-full rounded-t-lg'
-                                                src={service.image?.secure_url}
-                                                alt={service.name}
-                                            />
+                                            
+                                        >   <img src={service.image} alt={service.image}/>
                                             <h4 className='bg-white rounded-lg p-2 text-center'>{service.name}</h4>
                                         </div>
                                     ))
@@ -87,26 +83,26 @@ const HomeAuxie = () => {
                             </div>
                         </div>
                     </main>
-                    <div className={nightMode ? ' -ml-[3.8rem] bg-div-color-dark p-4 border-t-2 border-b-2 border-r-2 border-div-text-color-light-900 ':'bg-div-text-color-light p-4 border-t-2 border-b-2 border-r-2 border-div-text-color-light-900 -ml-[3.8rem]'}>
-                        <h3 className='mb-4 text-color-light'>Pagos</h3>
+                    <div className={nightMode ? ' bg-div-color-dark px-4 border-t-2 border-b-2 border-r-2 border-div-text-color-light-900 ':'lg:bg-div-text-color-light px-4 border-2 border-div-text-color-light-900 , xl:bg-div-text-color-light  pb-2 border-2 border-div-text-color-light-900 w-[42rem] h-fit -ml-40'}> 
+                        <h3 className='mb-4 text-color-light'>Pagos</h3> 
                         <table>
                             <thead>
                                 <tr>
-                                    <th className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300 bg-gray-100 ' :'py-2 px-14 border border-gray-300 bg-gray-100 '}>Trabajos</th>
-                                    <th className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300 bg-gray-100 ' :'py-2 px-14 border border-gray-300 bg-gray-100 '}>Precio</th>
-                                    <th className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300 bg-gray-100 ' :'py-2 px-14 border border-gray-300 bg-gray-100 '}>Forma de pago</th>
+                                    <th className={nightMode ?'bg-div-color-dark  px-14 border border-gray-300 bg-gray-100 ' :' px-14 border border-gray-300 bg-gray-100 '}>Trabajos</th> 
+                                    <th className={nightMode ?'bg-div-color-dark  px-14 border border-gray-300 bg-gray-100 ' :' px-14 border border-gray-300 bg-gray-100 '}>Precio</th>
+                                    <th className={nightMode ?'bg-div-color-dark  px-14 border border-gray-300 bg-gray-100 ' :' px-14 border border-gray-300 bg-gray-100 '}>Forma de Pago</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {payment?.map((service, index) => (
                                     <tr key={index}>
-                                        <td className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300 bg-gray-100 ' :'py-2 px-14 border border-gray-300 bg-gray-100 '}>
+                                        <td className={nightMode ?'bg-div-color-dark  py-1 px-14 border border-gray-300 bg-gray-100 ' :'py-1 px-14 border border-gray-300 bg-gray-100 '}>
                                             {service.service}
                                         </td>
-                                        <td className={nightMode ?'bg-div-color-dark py-2 px-14 border border-gray-300 bg-gray-100 ' :'py-2 px-14 border border-gray-300 bg-gray-100 '}>
+                                        <td className={nightMode ?'bg-div-color-dark py-1  px-14 border border-gray-300 bg-gray-100 ' :'py-1 px-14 border border-gray-300 bg-gray-100 '}>
                                             {service.price}
                                         </td>
-                                        <td className={nightMode ?'bg-div-color-dark py-2 px-14 border border-gray-300 bg-gray-100 ' :'py-2 px-14 border border-gray-300 bg-gray-100 '}>
+                                        <td className={nightMode ?'bg-div-color-dark py-1 px-14 border border-gray-300 bg-gray-100 ' :'py-1 px-14 border border-gray-300 bg-gray-100 '}>
                                             {service.paymentMethod}
                                         </td>
                                     </tr>
@@ -114,8 +110,8 @@ const HomeAuxie = () => {
                             </tbody>
                         </table>
                     </div>
-                    <div className='py-10'>
-                        <p className='mt-4 w-full ml-20'>Calificación de los últimos servicios</p>
+                    <div className='-mt-10'>
+                        <p className='w-full ml-20'>Calificación de los últimos servicios</p>
                         <table className='mx-auto border-collapse mt-2 ml-20'>
                             <thead>
                                 <tr>

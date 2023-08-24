@@ -9,14 +9,15 @@
 
     .buttonPic {
         all: unset;
-        width: 40%;
-        height: 40%;
+        width: 50%;
+        height: 50%;
         clip-path: circle();
         img {
             height: 100%;
             width: 100%;
             border-radius: 50%;
             clip-path: circle();
+            object-fit:contain;
         }
 
         height: 10vh;

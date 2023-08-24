@@ -18,8 +18,8 @@ const TransactionChart = () => {
                         <YAxis />
                         <Tooltip />
                         <Legend />
-                        <Bar dataKey='Visitas' fill='#0ea5e9' />
-                        <Bar dataKey='Reservas' fill='#ea580c' />
+                        <Bar dataKey='Visitas' fill='#6631a4' />
+                        <Bar dataKey='Reservas' fill='#319aa4' />
                     </BarChart>
                 </ResponsiveContainer>
             </div>
