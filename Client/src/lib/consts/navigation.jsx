@@ -44,7 +44,7 @@ export const DASHBOARD_SIDEBAR_LINKS = [
 
     {
         key: 'reclamos',
-        label: 'reclamos',
+        label: 'Reclamos',
         path: '/dashboard/claims',
         icon: <HiOutlineAnnotation />,
     },
