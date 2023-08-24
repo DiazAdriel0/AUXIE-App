@@ -12,7 +12,8 @@ const Cards = () => {
     const { currentPageData } = usePagination(12, users)
 
     return (
-        <>
+        <>  
+            <div className={style.cont}>
             <div className={style.cards}>
                 {currentPageData &&
                     currentPageData.map((user) => (
@@ -32,6 +33,7 @@ const Cards = () => {
             </div>
             <div className={style.pagination}>
                 <Pagination num={12} data={users} />
+            </div>
             </div>
         </>
     )
