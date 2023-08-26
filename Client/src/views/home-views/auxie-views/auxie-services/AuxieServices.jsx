@@ -38,7 +38,7 @@ const AuxieServices = () => {
                 <NavGeneral />
             </header>
             <div className='grid grid-cols-2 mb-4 mr-52'>
-                <aside className={nightMode ? 'bg-div-color-dark text-color-dark border-2 border-div-text-color-light-900 h-screen w-[12.5rem] pl-12':'bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-[12.5rem] h-screen pl-12 '}>
+                <aside className={nightMode ? 'bg-div-color-dark text-color-dark border-2 border-div-text-color-light-900 h-screen w-[12.5rem] pl-12':'bg-div-text-color-light text-color-light border-2 border-div-text-color-light-900 w-[12.5rem] bg-[#d6d6d6] h-screen pl-12 '}>
                     <AsideAuxie /> 
                 </aside>
 
