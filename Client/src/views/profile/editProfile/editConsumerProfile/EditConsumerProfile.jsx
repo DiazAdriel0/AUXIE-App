@@ -17,10 +17,10 @@ const EditConsumerProfile = () => {
         lastName: consumer.lastName,
     })
     const [password, setPasswords] = useState(false)
-    const [address, setAddress] = useState(consumer?.address.split(',')[0])
-    const [city, setCity] = useState(consumer?.address.split(',')[1])
-    const [provinces, setProvinces] = useState(consumer?.address.split(',')[2])
-    const [country, setCountry] = useState(consumer?.address.split(',')[3])
+    const [address, setAddress] = useState(consumer?.address?.split(',')[0])
+    const [city, setCity] = useState(consumer?.address?.split(',')[1])
+    const [provinces, setProvinces] = useState(consumer?.address?.split(',')[2])
+    const [country, setCountry] = useState(consumer?.address?.split(',')[3])
     const [fullAddress, setFullAddress] = useState(consumer?.address)
 
     const handlePassword = () => {
@@ -70,9 +70,9 @@ const EditConsumerProfile = () => {
         dispatch(updateProfile({ id: consumer.id, image: newImage, ...profileData, address: fullAddress }, 'consumers'))
         navigate('/profile')
     }
-    useEffect(()=> {
+    useEffect(() => {
         if (consumer.isAuxie) return navigate('/editauxieprofile')
-    },[])
+    }, [])
     return (
         <div>
             <div>

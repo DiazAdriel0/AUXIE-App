@@ -18,10 +18,10 @@ const EditAuxieProfile = () => {
         providerId: provider.id,
         services: [...provider.services],
     })
-    const [address, setAddress] = useState(provider?.address.split(',')[0])
-    const [city, setCity] = useState(provider?.address.split(',')[1])
-    const [provinces, setProvinces] = useState(provider?.address.split(',')[2])
-    const [country, setCountry] = useState(provider?.address.split(',')[3])
+    const [address, setAddress] = useState(provider?.address?.split(',')[0])
+    const [city, setCity] = useState(provider?.address?.split(',')[1])
+    const [provinces, setProvinces] = useState(provider?.address?.split(',')[2])
+    const [country, setCountry] = useState(provider?.address?.split(',')[3])
     const [fullAddress, setFullAddress] = useState(provider?.address)
     const [newImage, setNewImage] = useState('')
     const [newlastName, setNewlastName] = useState(provider?.lastName)

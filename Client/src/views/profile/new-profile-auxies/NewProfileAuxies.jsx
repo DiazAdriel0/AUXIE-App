@@ -20,7 +20,7 @@ const NewProfileAuxies = () => {
     const fechaTransformada = formatISOStringToReadable(registerDate)
     const totalJobs = jobs.length
     const totalServices = services.length
-    const rating = averageRating.toFixed(1)
+    const rating = averageRating?.toFixed(1)
 
     return (
         <>
