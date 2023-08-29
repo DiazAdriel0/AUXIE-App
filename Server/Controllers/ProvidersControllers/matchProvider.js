@@ -1,5 +1,5 @@
 const Provider = require('../../Models/provider')
-const bcrypt = require('bcrypt')
+/* const bcrypt = require('bcrypt') */
 
 const matchProvider = async (email, password) => {
     try {
@@ -54,10 +54,10 @@ const matchProvider = async (email, password) => {
         const provider = await Provider.findOne({ email })
 
         if (provider) {
-            const passwordMatch = await bcrypt.compare(
+            /* const passwordMatch = await bcrypt.compare(
                 password,
                 provider.password
-            )
+            ) */
             const providerWithout = {
                 id: provider._id,
                 isActive: provider.isActive,
@@ -79,7 +79,7 @@ const matchProvider = async (email, password) => {
                 address: provider.address,
                 isAuxie: provider.isAuxie,
             }
-            return passwordMatch ? providerWithout : new Error('wrongPassword')
+            return  providerWithout /* passwordMatch ? providerWithout : new Error('wrongPassword') */
         } else {
             throw new Error('inexistente')
         }
