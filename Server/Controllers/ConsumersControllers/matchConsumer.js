@@ -1,5 +1,5 @@
 const Consumer = require('../../Models/consumer')
-const bcrypt = require('bcrypt')
+/* const bcrypt = require('bcrypt') */
 
 const matchConsumer = async (email, password) => {
     try {
@@ -32,7 +32,6 @@ const matchConsumer = async (email, password) => {
                 let newConsumer = {
                     email,
                     googleId: password.googleId,
-                    isActive: true,
                 }
 
                 if (password.name.indexOf(' ') !== -1) {
@@ -54,10 +53,10 @@ const matchConsumer = async (email, password) => {
         const consumer = await Consumer.findOne({ email })
 
         if (consumer) {
-            const passwordMatch = await bcrypt.compare(
+            /* const passwordMatch = await bcrypt.compare(
                 password,
                 consumer.password
-            )
+            ) */
             const consumerWithout = {
                 isActive: consumer.isActive,
                 isAdmin: consumer.isAdmin,
@@ -79,7 +78,7 @@ const matchConsumer = async (email, password) => {
                 isAuxie: consumer.isAuxie,
             }
 
-            return passwordMatch ? consumerWithout : new Error('wrongPassword')
+            return  consumerWithout/* passwordMatch ? consumerWithout : new Error('wrongPassword') */
         } else {
             throw new Error('inexistente')
         }
