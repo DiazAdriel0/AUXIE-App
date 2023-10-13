@@ -26,16 +26,14 @@ const AuxieInbox = () => {
     }, [])
 
     function formatISOStringToReadable(isoString) {
-        const date = new Date(isoString);
-        const year = date.getFullYear();
-        const month = date.toLocaleString('default', { month: 'long' });
-        const day = date.getDate();
-      
-        const formattedDate = `${day} de ${month} de ${year}`;
-        return formattedDate;
-      }
-      
-      console.log( futureJobs.jobDate)
+        const date = new Date(isoString)
+        const year = date.getFullYear()
+        const month = date.toLocaleString('default', { month: 'long' })
+        const day = date.getDate()
+
+        const formattedDate = `${day} de ${month} de ${year}`
+        return formattedDate
+    }
 
     return (
         <div>
@@ -43,37 +41,80 @@ const AuxieInbox = () => {
                 <NavGeneral />
             </header>
             <div className='grid grid-cols-3 mb-2'>
-
-                <aside className={ nightMode ?' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-[12.5rem] pl-12 ': 'text-color-light border-2 border-div-text-color-light-900 h-screen w-[12.5rem] pl-12 '}>
+                <aside
+                    className={
+                        nightMode
+                            ? ' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-[12.5rem] pl-12 '
+                            : 'text-color-light border-2 border-div-text-color-light-900 h-screen w-[12.5rem] pl-12 '
+                    }
+                >
                     <AsideAuxie />
                 </aside>
-                <main className={nightMode ? 'bg-div-text-color-dark -ml-64 pr-40 pt-2  text-color-dark border-2 border-div-text-color-light-900 w-[44.5rem]' : '-ml-64 pr-40 pt-2 bg-div-text-color-light  text-color-light border-2 border-div-text-color-light-900 w-auto'}>
-
-  
+                <main
+                    className={
+                        nightMode
+                            ? 'bg-div-text-color-dark -ml-64 pr-40 pt-2  text-color-dark border-2 border-div-text-color-light-900 w-[44.5rem]'
+                            : '-ml-64 pr-40 pt-2 bg-div-text-color-light  text-color-light border-2 border-div-text-color-light-900 w-auto'
+                    }
+                >
                     <Chatlist />
                 </main>
-                <div className={nightMode ?  ' bg-div-text-color-dark w-fit border-2 border-div-text-color-light-900 ': ' bg-div-text-color-light w-fit border-2 border-div-text-color-light-900 '}>
+                <div
+                    className={
+                        nightMode
+                            ? ' bg-div-text-color-dark w-fit border-2 border-div-text-color-light-900 '
+                            : ' bg-div-text-color-light w-fit border-2 border-div-text-color-light-900 '
+                    }
+                >
                     <h3 className='m-2'>Futuros Trabajos</h3>
                     <table>
-                            <thead>
-                                <tr>
-                                    <th className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300  ' :'py-2 px-14 border border-gray-300 '}>Trabajos</th>
-                                    <th className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300 ' :'py-2 px-14 border border-gray-300  '}>Fecha</th>
+                        <thead>
+                            <tr>
+                                <th
+                                    className={
+                                        nightMode
+                                            ? 'bg-div-color-dark  py-2 px-14 border border-gray-300  '
+                                            : 'py-2 px-14 border border-gray-300 '
+                                    }
+                                >
+                                    Trabajos
+                                </th>
+                                <th
+                                    className={
+                                        nightMode
+                                            ? 'bg-div-color-dark  py-2 px-14 border border-gray-300 '
+                                            : 'py-2 px-14 border border-gray-300  '
+                                    }
+                                >
+                                    Fecha
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {futureJobs?.map((service, index) => (
+                                <tr key={index}>
+                                    <td
+                                        className={
+                                            nightMode
+                                                ? 'bg-div-color-dark  py-2 px-14 border border-gray-300  '
+                                                : 'py-2 px-14 border border-gray-300 '
+                                        }
+                                    >
+                                        {service.service}
+                                    </td>
+                                    <td
+                                        className={
+                                            nightMode
+                                                ? 'bg-div-color-dark py-2 px-14 border border-gray-300 '
+                                                : 'py-2 px-14 border border-gray-300 '
+                                        }
+                                    >
+                                        {formatISOStringToReadable(service.jobDate)}
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {futureJobs?.map((service, index) => (
-                                    <tr key={index}>
-                                        <td className={nightMode ?'bg-div-color-dark  py-2 px-14 border border-gray-300  ' :'py-2 px-14 border border-gray-300 '}>
-                                            {service.service}
-                                        </td>
-                                        <td className={nightMode ?'bg-div-color-dark py-2 px-14 border border-gray-300 ' :'py-2 px-14 border border-gray-300 '}>
-                                            {formatISOStringToReadable(service.jobDate)}
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                            ))}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
