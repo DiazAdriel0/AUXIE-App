@@ -57,48 +57,55 @@ const HomeAuxie = () => {
                 <NavGeneral />
             </header>
             <div className='flex'>
-
-               
                 <aside
                     className={
                         nightMode
                             ? ' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-[12.5rem] pl-12'
-                            : 'text-color-light border-2 border-div-text-color-light-900 w-[12.5rem] pl-12'
+                            : 'text-color-light border-2 border-div-text-color-light-900 w-[12.5rem] pl-12 bg-[#d6d6d6]'
                     }
                 >
-
                     <div className=' h-screen flex flex-col justify-between'>
                         <AsideAuxie />
                     </div>
                 </aside>
                 <div className='grid grid-cols-2 '>
-
                     {/* Main */}
                     <main
                         className={
                             nightMode
-                                ? 'lg:bg-div-color-dark text-color-dark p-4 pl-8 w-fit h-fit border-2 border-div-text-color-light-900 xl:bg-div-color-dark text-color-dark p-4 pl-8 w-fit h-fit border-2 border-div-text-color-light-900'
-                                : 'lg:bg-div-text-color-light text-color-light py-4 pl-8 w-fit border-2 border-div-text-color-light-900 xl:bg-div-text-color-light text-color-light p-4 pl-8 w-fit h-max border-2 border-div-text-color-light-900 '
+                                ? 'lg: text-color-dark p-4 pl-8 w-fit h-fit xl:text-color-dark p-4 pl-8 w-fit h-fit'
+                                : 'lg: text-color-light py-4 pl-8 w-fit xl: text-color-light p-4 pl-8 w-fit h-max '
                         }
                     >
-
                         <div>
                             <h3>Servicios</h3>
                             <div className='grid grid-cols-2 grid-rows-2 gap-x-20 gap-y-10 px-4'>
-                                {services ? (
-                                    services.map(service => (
-                                        <div
-                                            className={nightMode ? 'flex flex-col items-center justify-center h-20 w-44  p-4 space-y-2':'flex flex-col items-center justify-center h-20 w-44 p-4 space-y-2'}
-                                            key={service.name}
-                                        >
-                                            {' '}
-                                            <img src={service.image} alt={service.image} />
-                                            <h4 className={nightMode ? 'rounded-lg p-2 text-center' :'bg-white rounded-lg p-2 text-center'}>{service.name}</h4>
-                                        </div>
-                                    ))
-                                ) : (
-                                    <p>No ofrece servicios</p>
-                                )}
+                            {services ? (
+    services.map(service => (
+        <div
+            className={`relative h-44 w-48 p-4 ${
+                nightMode ? 'bg-div-color-dark text-color-light' : 'bg-card-background-light text-color-dark'
+            } group transition-transform transform-gpu hover:scale-105 rounded-lg`}
+            key={service.name}
+        >
+            {/* Front side */}
+            <div className={`front-side flex flex-col justify-center items-center`}>
+                <div className="group-hover:hidden text-center flex flex-col items-center h-full justify-center">
+                    <p className="mt-10">Nombre:</p>
+                    <h4 className={nightMode ? 'rounded-lg p-2 text-center' : 'rounded-lg p-2 text-center'}>{service.name}</h4>
+                </div>
+            </div>
+
+            {/* Back side (hidden by default, shown on hover) */}
+            <div className={`back-side absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex flex-col justify-center items-center`}>
+                <p className="mb-1">Tarifa:</p>
+                <h4>{service.price}</h4>
+            </div>
+        </div>
+    ))
+) : (
+    <p>No ofrece servicios</p>
+)}
                             </div>
                         </div>
                     </main>
@@ -178,11 +185,9 @@ const HomeAuxie = () => {
                         </table>
                     </div>
 
-
                     <div>
                         <p className='w-full ml-20'>Calificación de los ultimos servicios</p>
                         <table className='mx-auto border-collapse ml-20'>
-
                             <thead>
                                 <tr>
                                     <th

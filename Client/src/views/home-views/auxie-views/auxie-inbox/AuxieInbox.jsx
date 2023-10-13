@@ -41,13 +41,8 @@ const AuxieInbox = () => {
                 <NavGeneral />
             </header>
             <div className='grid grid-cols-3 mb-2'>
-                <aside
-                    className={
-                        nightMode
-                            ? ' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-[12.5rem] pl-12 '
-                            : 'text-color-light border-2 border-div-text-color-light-900 h-screen w-[12.5rem] pl-12 '
-                    }
-                >
+
+                <aside className={ nightMode ?' bg-div-color-dark  text-color-dark border-2 border-div-color-dark-600 w-[12.5rem] pl-12 ': 'text-color-light border-2 border-div-text-color-light-900 h-screen w-[12.5rem] bg-[#d6d6d6] pl-12 '}>
                     <AsideAuxie />
                 </aside>
                 <main

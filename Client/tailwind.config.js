@@ -20,6 +20,7 @@ export default {
                 'button-text-color-dark': '#0b0b25',
                 'hover-color-dark': '#d2cfcf',
                 'text-color-dark': '#fcfcfc',
+                'card-background-light': 'rgba(128, 128, 128, 0.294)',
             },
             fontFamily: {
                 // main font
