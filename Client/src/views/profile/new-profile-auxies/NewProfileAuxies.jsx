@@ -14,13 +14,12 @@ function formatISOStringToReadable(isoString) {
 const NewProfileAuxies = () => {
     const navigate = useNavigate()
     const logged = useSelector(state => state.loggedUser)
-    console.log(logged)
     const { firstName, lastName, image, email, registerDate, jobs, services, averageRating } = logged
 
     const fechaTransformada = formatISOStringToReadable(registerDate)
     const totalJobs = jobs.length
     const totalServices = services.length
-    const rating = averageRating.toFixed(1)
+    const rating = averageRating?.toFixed(1)
 
     return (
         <>
