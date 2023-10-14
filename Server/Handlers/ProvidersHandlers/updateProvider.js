@@ -41,7 +41,7 @@ const updateProvider = async (req, res) => {
 
             await fs.unlink(req.files.image.tempFilePath)
         }
-        console.log(req.files['gallery[]'])
+
         if (req.files['gallery[]']) {
             try {
                 const newPhotos = []

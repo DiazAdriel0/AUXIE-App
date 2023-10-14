@@ -1,7 +1,7 @@
 const matchConsumer = require('../../Controllers/ConsumersControllers/matchConsumer')
 
 const loginConsumer = async (req, res) => {
-    const { password, email} = req.body
+    const { password, email } = req.body
     try {
         const logedUser = await matchConsumer(email, password)
         if (logedUser.message === 'inexistente')
@@ -12,6 +12,7 @@ const loginConsumer = async (req, res) => {
 
         res.status(200).json(logedUser)
     } catch (error) {
+        console.error(error)
         res.status(400).json({ error: error.message })
     }
 }

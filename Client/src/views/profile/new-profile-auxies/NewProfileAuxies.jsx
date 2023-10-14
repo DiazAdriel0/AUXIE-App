@@ -14,7 +14,6 @@ function formatISOStringToReadable(isoString) {
 const NewProfileAuxies = () => {
     const navigate = useNavigate()
     const logged = useSelector(state => state.loggedUser)
-    console.log(logged)
     const { firstName, lastName, image, email, registerDate, jobs, services, averageRating } = logged
 
     const fechaTransformada = formatISOStringToReadable(registerDate)
